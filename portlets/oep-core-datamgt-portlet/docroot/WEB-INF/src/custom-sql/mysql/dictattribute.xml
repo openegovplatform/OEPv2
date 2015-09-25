@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<custom-sql>
+	<sql id="mysql.org.oep.core.datamgt.dictionary.service.persistence.DictAttributeFinder.countByCustomCondition">
+		<![CDATA[
+			SELECT COUNT(*) total
+			FROM OEP_DATAMGT_DICTATTRIBUTE
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$COLLECTIONNAME_FILTER$]
+			[$NAME_FILTER$]
+			[$DATATYPE_FILTER$]
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.core.datamgt.dictionary.service.persistence.DictAttributeFinder.findByCustomCondition">
+		<![CDATA[
+			SELECT *
+			FROM OEP_DATAMGT_DICTATTRIBUTE
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$COLLECTIONNAME_FILTER$]
+			[$NAME_FILTER$]
+			[$DATATYPE_FILTER$]
+		]]>
+	</sql>
+</custom-sql>
