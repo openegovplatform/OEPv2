@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="org.oep.core.processmgt">
+	<author>trungdk</author>
+	<namespace>oep_processmgt</namespace>
+    <entity name="DossierProcess" local-service="true">
+        <column name="dossierProcessId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="dossierProcId" type="long"></column>
+        <column name="govAgentNo" type="String"></column>
+        <column name="govAgentName" type="String"></column>
+        <column name="startDossierStepId" type="long"></column>
+        <column name="daysDuration" type="int"></column>
+        <reference entity="User" package-path="com.liferay.portal"></reference>
+    </entity>
+    <entity name="DossierStep" local-service="true">
+        <column name="dossierStepId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="dossierProcessId" type="long"></column>
+        <column name="title" type="String"></column>
+        <column name="sequenceNo" type="int"></column>
+        <column name="stepType" type="int"></column>
+    </entity>
+    <entity name="StepTransition" local-service="true">
+        <column name="stepTransionId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="dossierProcessId" type="long"></column>
+        <column name="preDossierStepId" type="long"></column>
+        <column name="postDossierStepId" type="long"></column>
+        <column name="precondition" type="String"></column>
+        <column name="transitionName" type="String"></column>
+        <column name="daysDuration" type="int"></column>
+        <column name="dossierStatus" type="String"></column>
+        <column name="userAssignment" type="int"></column>
+        <column name="newOrder" type="int"></column>
+        <column name="errorMessage" type="String"></column>
+    </entity>
+    <entity name="ProcessOrder" local-service="true">
+        <column name="processOrderId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="organizationId" type="long"></column>
+        <column name="parentProcessOrderId" type="long"></column>
+        <column name="dossierId" type="long"></column>
+        <column name="dossierProcessId" type="long"></column>
+        <column name="dossierStepId" type="long"></column>
+        <column name="dossierStatus" type="String"></column>
+        <column name="dossierResume" type="String"></column>
+        <column name="stepDate" type="Date"></column>
+        <column name="stepNote" type="String"></column>
+        <column name="assignToUserId" type="long"></column>
+        <column name="currentCondition" type="String"></column>
+        <column name="endState" type="int"></column>
+        <reference entity="User" package-path="com.liferay.portal"></reference>
+    </entity>
+    <entity name="TransitionHistory" local-service="true">
+        <column name="transitionHistoryId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="dossierId" type="long"></column>
+        <column name="processOrderId" type="long"></column>
+        <column name="daysDoing" type="int"></column>
+        <column name="daysDelay" type="int"></column>
+        <column name="startDate" type="Date"></column>
+        <column name="stepTransitionId" type="long"></column>
+        <column name="preDossierStepId" type="long"></column>
+        <column name="postDossierStepId" type="long"></column>
+        <column name="transitionName" type="String"></column>
+        <column name="note" type="String"></column>
+        <reference entity="User" package-path="com.liferay.portal"></reference>
+    </entity>
+    <entity name="UserAssignment" local-service="true">
+        <column name="userAssignmentId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="processOrderId" type="long"></column>
+        <column name="dossierStepId" type="long"></column>
+        <column name="assignToUserId" type="long"></column>
+    </entity>
+    <entity name="DossierStep2Role" local-service="true">
+        <column name="id" type="long" primary="true"></column>
+        <column name="companyId" type="long"></column>
+        <column name="dossierStepId" type="long"></column>
+        <column name="roleId" type="long"></column>
+    </entity>
+    <entity name="ProcessOrder2User" local-service="true">
+        <column name="id" type="long" primary="true"></column>
+        <column name="companyId" type="long"></column>
+        <column name="processOrderId" type="long"></column>
+        <column name="userId" type="long"></column>
+    </entity>	
+</service-builder>

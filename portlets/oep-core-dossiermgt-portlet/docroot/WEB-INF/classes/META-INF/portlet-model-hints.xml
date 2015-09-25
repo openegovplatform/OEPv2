@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="org.oep.core.dossiermgt.model.DocFile">
+		<field name="uuid" type="String" />
+		<field name="docFileId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="dossierId" type="long" />
+		<field name="dossierDocId" type="long" />
+		<field name="docTemplateId" type="long" />
+		<field name="docFileVersionId" type="long" />
+		<field name="docName" type="String" />
+		<field name="issueDate" type="Date" />
+		<field name="note" type="String" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.DocFileVersion">
+		<field name="uuid" type="String" />
+		<field name="docFileVersionId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="docFileId" type="long" />
+		<field name="fileEntryId" type="long" />
+		<field name="xmlContent" type="String" />
+		<field name="issueDate" type="Date" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.DocTemplate">
+		<field name="docTemplateId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="templateNo" type="String" />
+		<field name="title" type="String" />
+		<field name="enTitle" type="String" />
+		<field name="fileEntryId" type="long" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.Dossier">
+		<field name="uuid" type="String" />
+		<field name="dossierId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="organizationId" type="long" />
+		<field name="dossierProcId" type="long" />
+		<field name="govAgentNo" type="String" />
+		<field name="govAgentName" type="String" />
+		<field name="submitterName" type="String" />
+		<field name="actorType" type="int" />
+		<field name="actorNo" type="String" />
+		<field name="actorName" type="String" />
+		<field name="address" type="String" />
+		<field name="cityNo" type="String" />
+		<field name="cityName" type="String" />
+		<field name="districtNo" type="String" />
+		<field name="districtName" type="String" />
+		<field name="wardNo" type="String" />
+		<field name="wardName" type="String" />
+		<field name="description" type="String" />
+		<field name="note" type="String" />
+		<field name="receptionNo" type="String" />
+		<field name="submissionDate" type="Date" />
+		<field name="receptionDate" type="Date" />
+		<field name="resubmissionDate" type="Date" />
+		<field name="appointmentDate" type="Date" />
+		<field name="releaseDate" type="Date" />
+		<field name="completionDate" type="Date" />
+		<field name="status" type="String" />
+		<field name="statusName" type="String" />
+		<field name="feedbackNote" type="String" />
+		<field name="paymentConfirmed" type="int" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.DossierDoc">
+		<field name="dossierDocId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="dossierProcId" type="long" />
+		<field name="documentNo" type="String" />
+		<field name="documentName" type="String" />
+		<field name="note" type="String" />
+		<field name="sequenceNo" type="int" />
+		<field name="documentType" type="int" />
+		<field name="numberOfFile" type="int" />
+		<field name="onlineForm" type="String" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.DossierDoc2Template">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="dossierDocId" type="long" />
+		<field name="docTemplateId" type="long" />
+		<field name="sequenceNo" type="int" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.DossierFolder">
+		<field name="uuid" type="String" />
+		<field name="dossierFolderId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="folderName" type="String" />
+		<field name="parentFolderId" type="long" />
+		<field name="sequenceNo" type="int" />
+		<field name="procedureFilter" type="String" />
+		<field name="statusFilter" type="String" />
+		<field name="filterByOrganization" type="int" />
+		<field name="filterByUser" type="int" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.DossierFolder2Role">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="dossierFolderId" type="long" />
+		<field name="roleId" type="long" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.DossierProc">
+		<field name="dossierProcId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="dossierProcNo" type="String" />
+		<field name="name" type="String" />
+		<field name="enName" type="String" />
+		<field name="shortName" type="String" />
+		<field name="processDescription" type="String" />
+		<field name="methodDescription" type="String" />
+		<field name="dossierDescription" type="String" />
+		<field name="conditionDescription" type="String" />
+		<field name="durationDescription" type="String" />
+		<field name="actorsDescription" type="String" />
+		<field name="resultsDescription" type="String" />
+		<field name="feeDescription" type="String" />
+		<field name="instructionsDescription" type="String" />
+		<field name="administrationNo" type="String" />
+		<field name="administrationName" type="String" />
+		<field name="domainNo" type="String" />
+		<field name="domainName" type="String" />
+		<field name="effectDate" type="Date" />
+		<field name="expireDate" type="Date" />
+		<field name="active" type="int" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.DossierProc2Agent">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="dossierProcId" type="long" />
+		<field name="govAgentNo" type="String" />
+		<field name="govAgentName" type="String" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.PaymentConfig">
+		<field name="paymentConfigId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="dossierProcId" type="long" />
+		<field name="govAgentNo" type="String" />
+		<field name="govAgentName" type="String" />
+		<field name="prePaidFee" type="long" />
+		<field name="bankTransfer" type="String" />
+		<field name="keypay" type="String" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.PaymentFile">
+		<field name="uuid" type="String" />
+		<field name="paymentFileId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="organizationId" type="long" />
+		<field name="amount" type="long" />
+		<field name="paymentType" type="int" />
+		<field name="detailInfo" type="String" />
+		<field name="note" type="String" />
+		<field name="fileEntryId" type="long" />
+		<field name="issueDate" type="Date" />
+		<field name="checkingDate" type="Date" />
+		<field name="checkingUserId" type="long" />
+		<field name="checkingUserName" type="String" />
+		<field name="checkingResult" type="int" />
+		<field name="checkingNote" type="String" />
+		<field name="feedbackDate" type="Date" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.PaymentFile2Dossier">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="paymentFileId" type="long" />
+		<field name="dossierId" type="long" />
+		<field name="amount" type="long" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.PaymentRequest">
+		<field name="uuid" type="String" />
+		<field name="paymentRequestId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="organizationId" type="long" />
+		<field name="dossierId" type="long" />
+		<field name="amount" type="long" />
+		<field name="note" type="String" />
+		<field name="issueDate" type="Date" />
+		<field name="paymentFileId" type="long" />
+	</model>
+</model-hints>

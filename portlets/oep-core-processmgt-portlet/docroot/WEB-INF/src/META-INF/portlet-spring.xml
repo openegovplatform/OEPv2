@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="org.oep.core.processmgt.service.DossierProcessLocalService" class="org.oep.core.processmgt.service.impl.DossierProcessLocalServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.DossierProcessService" class="org.oep.core.processmgt.service.impl.DossierProcessServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.persistence.DossierProcessPersistence" class="org.oep.core.processmgt.service.persistence.DossierProcessPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.processmgt.service.DossierStepLocalService" class="org.oep.core.processmgt.service.impl.DossierStepLocalServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.DossierStepService" class="org.oep.core.processmgt.service.impl.DossierStepServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.persistence.DossierStepPersistence" class="org.oep.core.processmgt.service.persistence.DossierStepPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.processmgt.service.DossierStep2RoleLocalService" class="org.oep.core.processmgt.service.impl.DossierStep2RoleLocalServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.DossierStep2RoleService" class="org.oep.core.processmgt.service.impl.DossierStep2RoleServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.persistence.DossierStep2RolePersistence" class="org.oep.core.processmgt.service.persistence.DossierStep2RolePersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.processmgt.service.ProcessOrderLocalService" class="org.oep.core.processmgt.service.impl.ProcessOrderLocalServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.ProcessOrderService" class="org.oep.core.processmgt.service.impl.ProcessOrderServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.persistence.ProcessOrderPersistence" class="org.oep.core.processmgt.service.persistence.ProcessOrderPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.processmgt.service.ProcessOrder2UserLocalService" class="org.oep.core.processmgt.service.impl.ProcessOrder2UserLocalServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.ProcessOrder2UserService" class="org.oep.core.processmgt.service.impl.ProcessOrder2UserServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.persistence.ProcessOrder2UserPersistence" class="org.oep.core.processmgt.service.persistence.ProcessOrder2UserPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.processmgt.service.StepTransitionLocalService" class="org.oep.core.processmgt.service.impl.StepTransitionLocalServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.StepTransitionService" class="org.oep.core.processmgt.service.impl.StepTransitionServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.persistence.StepTransitionPersistence" class="org.oep.core.processmgt.service.persistence.StepTransitionPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.processmgt.service.TransitionHistoryLocalService" class="org.oep.core.processmgt.service.impl.TransitionHistoryLocalServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.TransitionHistoryService" class="org.oep.core.processmgt.service.impl.TransitionHistoryServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.persistence.TransitionHistoryPersistence" class="org.oep.core.processmgt.service.persistence.TransitionHistoryPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.processmgt.service.UserAssignmentLocalService" class="org.oep.core.processmgt.service.impl.UserAssignmentLocalServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.UserAssignmentService" class="org.oep.core.processmgt.service.impl.UserAssignmentServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.persistence.UserAssignmentPersistence" class="org.oep.core.processmgt.service.persistence.UserAssignmentPersistenceImpl" parent="basePersistence" />
+</beans>

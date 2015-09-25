@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="org.oep.core.processmgt.model.impl.DossierProcessModelImpl">
+		<attributes>
+			<id name="dossierProcessId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="dossierProcId" />
+			<basic name="govAgentNo" />
+			<basic name="govAgentName" />
+			<basic name="startDossierStepId" />
+			<basic name="daysDuration" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.processmgt.model.impl.DossierStepModelImpl">
+		<attributes>
+			<id name="dossierStepId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="dossierProcessId" />
+			<basic name="title" />
+			<basic name="sequenceNo" />
+			<basic name="stepType" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.processmgt.model.impl.DossierStep2RoleModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID_" />
+			</id>
+			<basic name="companyId" />
+			<basic name="dossierStepId" />
+			<basic name="roleId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.processmgt.model.impl.ProcessOrderModelImpl">
+		<attributes>
+			<id name="processOrderId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="organizationId" />
+			<basic name="parentProcessOrderId" />
+			<basic name="dossierId" />
+			<basic name="dossierProcessId" />
+			<basic name="dossierStepId" />
+			<basic name="dossierStatus" />
+			<basic name="dossierResume" />
+			<basic name="stepDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="stepNote" />
+			<basic name="assignToUserId" />
+			<basic name="currentCondition" />
+			<basic name="endState" />
+			<transient name="assignToUserUuid" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.processmgt.model.impl.ProcessOrder2UserModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID_" />
+			</id>
+			<basic name="companyId" />
+			<basic name="processOrderId" />
+			<basic name="userId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.processmgt.model.impl.StepTransitionModelImpl">
+		<attributes>
+			<id name="stepTransionId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="dossierProcessId" />
+			<basic name="preDossierStepId" />
+			<basic name="postDossierStepId" />
+			<basic name="precondition" />
+			<basic name="transitionName" />
+			<basic name="daysDuration" />
+			<basic name="dossierStatus" />
+			<basic name="userAssignment" />
+			<basic name="newOrder" />
+			<basic name="errorMessage" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.processmgt.model.impl.TransitionHistoryModelImpl">
+		<attributes>
+			<id name="transitionHistoryId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="dossierId" />
+			<basic name="processOrderId" />
+			<basic name="daysDoing" />
+			<basic name="daysDelay" />
+			<basic name="startDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="stepTransitionId" />
+			<basic name="preDossierStepId" />
+			<basic name="postDossierStepId" />
+			<basic name="transitionName" />
+			<basic name="note" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.processmgt.model.impl.UserAssignmentModelImpl">
+		<attributes>
+			<id name="userAssignmentId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="processOrderId" />
+			<basic name="dossierStepId" />
+			<basic name="assignToUserId" />
+			<transient name="assignToUserUuid" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="org.oep.core.processmgt.model.impl.DossierProcessImpl" name="DossierProcess">
+		<table name="oep_processmgt_DossierProcess" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.processmgt.model.impl.DossierStepImpl" name="DossierStep">
+		<table name="oep_processmgt_DossierStep" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.processmgt.model.impl.DossierStep2RoleImpl" name="DossierStep2Role">
+		<table name="oep_processmgt_DossierStep2Role" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.processmgt.model.impl.ProcessOrderImpl" name="ProcessOrder">
+		<table name="oep_processmgt_ProcessOrder" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.processmgt.model.impl.ProcessOrder2UserImpl" name="ProcessOrder2User">
+		<table name="oep_processmgt_ProcessOrder2User" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.processmgt.model.impl.StepTransitionImpl" name="StepTransition">
+		<table name="oep_processmgt_StepTransition" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.processmgt.model.impl.TransitionHistoryImpl" name="TransitionHistory">
+		<table name="oep_processmgt_TransitionHistory" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.processmgt.model.impl.UserAssignmentImpl" name="UserAssignment">
+		<table name="oep_processmgt_UserAssignment" />
+		<attributes />
+	</entity>
+</entity-mappings>
