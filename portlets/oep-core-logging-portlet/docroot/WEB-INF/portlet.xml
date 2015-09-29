@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" version="2.0">
+	
+	<portlet>
+		<portlet-name>oep-logging-useractivity</portlet-name>
+		<display-name>Oep Logging Useractivity</display-name>
+		<portlet-class>
+			org.oep.core.logging.action.UserActivityAction
+		</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>/html/logging/portlet/useractivity/view.jsp</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<resource-bundle>content.Language_userlog</resource-bundle>
+		<portlet-info>
+			<title>Oep Logging Useractivity</title>
+			<short-title>Oep Logging Useractivity</short-title>
+			<keywords></keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+	<portlet>
+		<portlet-name>oep-logging-useractivity-audit</portlet-name>
+		<display-name>Oep Logging UserActivity Audit</display-name>
+		<portlet-class>
+			org.oep.core.logging.action.UserActivityAuditAction
+		</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>
+				/html/logging/portlet/useractivityaudit/view.jsp
+			</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>User Activity Audit</title>
+			<short-title>User Activity Audit</short-title>
+			<keywords></keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+</portlet-app>

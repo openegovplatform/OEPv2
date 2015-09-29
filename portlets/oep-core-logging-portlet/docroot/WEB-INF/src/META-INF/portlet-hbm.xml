@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="org.oep.core.logging.model.NewUserLog" />
+	<import class="org.oep.core.logging.model.UserActivity" />
+	<class name="org.oep.core.logging.model.impl.NewUserLogImpl" table="oep_logging_newuserlog">
+		<cache usage="read-write" />
+		<id name="id" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="userActivityId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="useractivityid" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="email" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="site" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="page" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="action" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="org.oep.core.logging.model.impl.UserActivityImpl" table="oep_logging_useractivity">
+		<cache usage="read-write" />
+		<id name="id" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="email" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="site" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="page" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="action" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="url" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="sessionId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="ip" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="userAgent" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+</hibernate-mapping>

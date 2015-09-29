@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="org.oep.core.logging.service.NewUserLogLocalService" class="org.oep.core.logging.service.impl.NewUserLogLocalServiceImpl" />
+	<bean id="org.oep.core.logging.service.persistence.NewUserLogPersistence" class="org.oep.core.logging.service.persistence.NewUserLogPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.logging.service.persistence.NewUserLogFinder" class="org.oep.core.logging.service.persistence.NewUserLogFinderImpl" parent="basePersistence" />
+	<bean id="org.oep.core.logging.service.UserActivityLocalService" class="org.oep.core.logging.service.impl.UserActivityLocalServiceImpl" />
+	<bean id="org.oep.core.logging.service.persistence.UserActivityPersistence" class="org.oep.core.logging.service.persistence.UserActivityPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.logging.service.persistence.UserActivityFinder" class="org.oep.core.logging.service.persistence.UserActivityFinderImpl" parent="basePersistence" />
+</beans>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="org.oep.core.logging">
+	<namespace>logging</namespace>
+	<entity name="UserActivity" table="oep_logging_useractivity" local-service="true" remote-service="false">
+		<!-- PK fields -->
+		<column name="id" db-name="id" type="long" primary="true" />
+		<!-- Group instance -->
+		<column name="userId" db-name="userId" type="long"/>
+		<column name="groupId" db-name="groupId" type="long" />
+		<column name="companyId" db-name="companyId" type="long" />
+		<!-- Audit fields -->
+		<column name="createDate" db-name="createDate" type="Date" />
+		<column name="userName" db-name="userName" type="String" />
+		<!-- Other fields -->
+		<column name="email" db-name="email" type="String" />
+		<column name="site" db-name="site" type="String" />
+		<column name="page" db-name="page" type="String" />
+		<column name="action" db-name="action" type="String" />
+		<column name="description" db-name="description" type="String" />
+		<column name="url" db-name="url" type="String"/>
+		<column name="sessionId" db-name="sessionId" type="String"/>
+		<column name="ip" db-name="ip" type="String"/>
+		<column name="userAgent" db-name="userAgent" type="String"/>
+		<!-- Order -->
+		<order by="desc">
+			<order-column name="createDate" />
+		</order>
+		<!-- Finder methods -->
+		<finder name="A" return-type="Collection">
+			<finder-column name="action" />
+		</finder>
+		<finder name="U" return-type="Collection">
+			<finder-column name="userId"/>
+		</finder>
+		<finder name="A_C" return-type="Collection">
+			<finder-column name="action"/>
+			<finder-column name="createDate"/>
+		</finder>
+	</entity>
+	
+	<entity name="NewUserLog" table="oep_logging_newuserlog" local-service="true" remote-service="false">
+		<!-- PK fields -->
+		<column name="id" db-name="id" type="long" primary="true"/>
+		<column name="userActivityId" db-name="useractivityid" type="long"/>
+		<column name="userId" db-name="userId" type="long"/>
+		<column name="groupId" db-name="groupId" type="long" />
+		<column name="companyId" db-name="companyId" type="long" />
+		<!-- Audit fields -->
+		<column name="createDate" db-name="createDate" type="Date" />
+		<column name="userName" db-name="userName" type="String" />
+		<!-- Other fields -->
+		<column name="email" db-name="email" type="String" />
+		<column name="site" db-name="site" type="String" />
+		<column name="page" db-name="page" type="String" />
+		<column name="action" db-name="action" type="String" />
+		<column name="description" db-name="description" type="String" />
+		<order by="desc">
+			<order-column name="createDate"/>
+		</order>
+		<finder name="U" return-type="NewUserLog">
+			<finder-column name="userId"/>
+		</finder>
+		<finder name="Uai" return-type="NewUserLog">
+			<finder-column name="userActivityId"/>
+		</finder>
+		<finder name="U_E_C" return-type="Collection">
+			<finder-column name="userName"/>
+			<finder-column name="email"/>
+			<finder-column name="createDate"/>
+		</finder>
+	</entity>
+	
+</service-builder>

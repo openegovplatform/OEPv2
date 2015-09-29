@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<beans
+    default-destroy-method="destroy"
+    default-init-method="afterPropertiesSet"
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+>
+    <bean id="destination.userlog" class="com.liferay.portal.kernel.messaging.ParallelDestination">
+        <property name="name" value="destination/userlog" />
+        <property name="workersCoreSize" value="5" />
+        <property name="workersMaxSize" value="5" />
+    </bean>
+    
+    <bean id="messageListener.userlog" class="org.oep.core.logging.listener.UserLogMessageImpl" />
+    
+    <bean id="messagingConfigurator" class="com.liferay.portal.kernel.messaging.config.PluginMessagingConfigurator">
+        <property name="messageListeners">
+            <map key-type="java.lang.String" value-type="java.util.List">
+                <entry key="destination/userlog">
+                    <list value-type="com.liferay.portal.kernel.messaging.MessageListener">
+                            <ref bean="messageListener.userlog" />
+                    </list>
+                </entry>
+            </map>
+        </property>
+        <property name="destinations">
+            <list>
+                <ref bean="destination.userlog"/>
+            </list>
+        </property>
+    </bean>
+</beans>

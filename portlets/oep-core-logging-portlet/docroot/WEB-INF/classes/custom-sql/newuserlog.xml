@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<custom-sql>
+	<sql id="org.oep.core.logging.service.persistence.NewUserLogFinderImpl.getNewUserLog">
+		<![CDATA[
+			SELECT * 
+			FROM oep_logging_newuserlog
+			WHERE companyId=?
+			AND groupId=?
+				 [$CREATEDATE_BEGIN$]
+				 [$CREATEDATE_END$]
+				 [$IS_USERNAME$]
+				 [$IS_EMAIL$]
+			 ORDER BY createDate DESC
+		]]>
+	</sql>
+	<sql id="org.oep.core.logging.service.persistence.NewUserLogFinderImpl.countNewUserLog">
+		<![CDATA[
+			SELECT COUNT(id) AS TOTAL
+			FROM oep_logging_newuserlog
+			WHERE companyId=?
+			AND groupId=?
+			[$CREATEDATE_BEGIN$]
+			[$CREATEDATE_END$]
+	 		[$IS_USERNAME$]
+		 	[$IS_EMAIL$]
+		]]>
+	</sql>
+	
+	<sql id="org.oep.core.logging.service.persistence.NewUserLogFinderImpl.CREATEDATE_BEGIN">
+		<![CDATA[
+		 	 STR_TO_DATE(createDate,'%Y-%m-%d') >= STR_TO_DATE(?,'%Y-%m-%d')
+		]]>
+	</sql>
+	
+	<sql id="org.oep.core.logging.service.persistence.NewUserLogFinderImpl.CREATEDATE_END">
+		<![CDATA[
+			 STR_TO_DATE(createDate,'%Y-%m-%d') <= STR_TO_DATE(?,'%Y-%m-%d')
+		]]>
+	</sql>
+</custom-sql>

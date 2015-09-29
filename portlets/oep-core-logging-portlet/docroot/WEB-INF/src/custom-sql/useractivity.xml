@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+	<sql id="org.oep.core.logging.service.persistence.UserActivityFinderImpl.getUserActivity">
+		<![CDATA[
+			SELECT * 
+			FROM oep_logging_useractivity
+			WHERE companyId=?
+			AND groupId=?
+				[$ACTION$]
+				[$CREATEDATE_BEGIN$]
+				[$CREATEDATE_END$]
+			ORDER BY createDate DESC
+		]]>
+	</sql>
+	<sql id="org.oep.core.logging.service.persistence.UserActivityFinderImpl.countUserActivity">
+		<![CDATA[
+			SELECT COUNT(id) AS TOTAL
+			FROM oep_logging_useractivity
+			WHERE companyId=?
+			AND groupId=?
+			[$ACTION$]
+			[$CREATEDATE_BEGIN$]
+			[$CREATEDATE_END$]
+		]]>
+	</sql>
+	
+	<sql id="org.oep.core.logging.service.persistence.UserActivityFinderImpl.getDistinctAction">
+		<![CDATA[
+			SELECT DISTINCT action
+			FROM oep_logging_useractivity
+			WHERE companyId=?
+			AND groupId=?
+			ORDER BY action ASC
+		]]>
+	</sql>
+</custom-sql>
