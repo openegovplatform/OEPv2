@@ -24,6 +24,7 @@ import com.liferay.portal.util.PortalUtil;
 
 import org.oep.core.processmgt.service.ClpSerializer;
 import org.oep.core.processmgt.service.ProcessOrder2UserLocalServiceUtil;
+import org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK;
 
 import java.io.Serializable;
 
@@ -51,31 +52,30 @@ public class ProcessOrder2UserClp extends BaseModelImpl<ProcessOrder2User>
 	}
 
 	@Override
-	public long getPrimaryKey() {
-		return _id;
+	public ProcessOrder2UserPK getPrimaryKey() {
+		return new ProcessOrder2UserPK(_processOrderId, _userId);
 	}
 
 	@Override
-	public void setPrimaryKey(long primaryKey) {
-		setId(primaryKey);
+	public void setPrimaryKey(ProcessOrder2UserPK primaryKey) {
+		setProcessOrderId(primaryKey.processOrderId);
+		setUserId(primaryKey.userId);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _id;
+		return new ProcessOrder2UserPK(_processOrderId, _userId);
 	}
 
 	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey(((Long)primaryKeyObj).longValue());
+		setPrimaryKey((ProcessOrder2UserPK)primaryKeyObj);
 	}
 
 	@Override
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("id", getId());
-		attributes.put("companyId", getCompanyId());
 		attributes.put("processOrderId", getProcessOrderId());
 		attributes.put("userId", getUserId());
 
@@ -84,18 +84,6 @@ public class ProcessOrder2UserClp extends BaseModelImpl<ProcessOrder2User>
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long id = (Long)attributes.get("id");
-
-		if (id != null) {
-			setId(id);
-		}
-
-		Long companyId = (Long)attributes.get("companyId");
-
-		if (companyId != null) {
-			setCompanyId(companyId);
-		}
-
 		Long processOrderId = (Long)attributes.get("processOrderId");
 
 		if (processOrderId != null) {
@@ -106,52 +94,6 @@ public class ProcessOrder2UserClp extends BaseModelImpl<ProcessOrder2User>
 
 		if (userId != null) {
 			setUserId(userId);
-		}
-	}
-
-	@Override
-	public long getId() {
-		return _id;
-	}
-
-	@Override
-	public void setId(long id) {
-		_id = id;
-
-		if (_processOrder2UserRemoteModel != null) {
-			try {
-				Class<?> clazz = _processOrder2UserRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setId", long.class);
-
-				method.invoke(_processOrder2UserRemoteModel, id);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
-	public long getCompanyId() {
-		return _companyId;
-	}
-
-	@Override
-	public void setCompanyId(long companyId) {
-		_companyId = companyId;
-
-		if (_processOrder2UserRemoteModel != null) {
-			try {
-				Class<?> clazz = _processOrder2UserRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setCompanyId", long.class);
-
-				method.invoke(_processOrder2UserRemoteModel, companyId);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
 		}
 	}
 
@@ -282,8 +224,6 @@ public class ProcessOrder2UserClp extends BaseModelImpl<ProcessOrder2User>
 	public Object clone() {
 		ProcessOrder2UserClp clone = new ProcessOrder2UserClp();
 
-		clone.setId(getId());
-		clone.setCompanyId(getCompanyId());
 		clone.setProcessOrderId(getProcessOrderId());
 		clone.setUserId(getUserId());
 
@@ -292,17 +232,9 @@ public class ProcessOrder2UserClp extends BaseModelImpl<ProcessOrder2User>
 
 	@Override
 	public int compareTo(ProcessOrder2User processOrder2User) {
-		long primaryKey = processOrder2User.getPrimaryKey();
+		ProcessOrder2UserPK primaryKey = processOrder2User.getPrimaryKey();
 
-		if (getPrimaryKey() < primaryKey) {
-			return -1;
-		}
-		else if (getPrimaryKey() > primaryKey) {
-			return 1;
-		}
-		else {
-			return 0;
-		}
+		return getPrimaryKey().compareTo(primaryKey);
 	}
 
 	@Override
@@ -317,9 +249,9 @@ public class ProcessOrder2UserClp extends BaseModelImpl<ProcessOrder2User>
 
 		ProcessOrder2UserClp processOrder2User = (ProcessOrder2UserClp)obj;
 
-		long primaryKey = processOrder2User.getPrimaryKey();
+		ProcessOrder2UserPK primaryKey = processOrder2User.getPrimaryKey();
 
-		if (getPrimaryKey() == primaryKey) {
+		if (getPrimaryKey().equals(primaryKey)) {
 			return true;
 		}
 		else {
@@ -333,18 +265,14 @@ public class ProcessOrder2UserClp extends BaseModelImpl<ProcessOrder2User>
 
 	@Override
 	public int hashCode() {
-		return (int)getPrimaryKey();
+		return getPrimaryKey().hashCode();
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(9);
+		StringBundler sb = new StringBundler(5);
 
-		sb.append("{id=");
-		sb.append(getId());
-		sb.append(", companyId=");
-		sb.append(getCompanyId());
-		sb.append(", processOrderId=");
+		sb.append("{processOrderId=");
 		sb.append(getProcessOrderId());
 		sb.append(", userId=");
 		sb.append(getUserId());
@@ -355,20 +283,12 @@ public class ProcessOrder2UserClp extends BaseModelImpl<ProcessOrder2User>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(16);
+		StringBundler sb = new StringBundler(10);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.ProcessOrder2User");
 		sb.append("</model-name>");
 
-		sb.append(
-			"<column><column-name>id</column-name><column-value><![CDATA[");
-		sb.append(getId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>companyId</column-name><column-value><![CDATA[");
-		sb.append(getCompanyId());
-		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>processOrderId</column-name><column-value><![CDATA[");
 		sb.append(getProcessOrderId());
@@ -383,8 +303,6 @@ public class ProcessOrder2UserClp extends BaseModelImpl<ProcessOrder2User>
 		return sb.toString();
 	}
 
-	private long _id;
-	private long _companyId;
 	private long _processOrderId;
 	private long _userId;
 	private String _userUuid;

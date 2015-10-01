@@ -1823,10 +1823,16 @@ public class PaymentRequestPersistenceImpl extends BasePersistenceImpl<PaymentRe
 		paymentRequestImpl.setModifiedDate(paymentRequest.getModifiedDate());
 		paymentRequestImpl.setOrganizationId(paymentRequest.getOrganizationId());
 		paymentRequestImpl.setDossierId(paymentRequest.getDossierId());
+		paymentRequestImpl.setGovAgentId(paymentRequest.getGovAgentId());
+		paymentRequestImpl.setGovAgentName(paymentRequest.getGovAgentName());
+		paymentRequestImpl.setSubjectId(paymentRequest.getSubjectId());
+		paymentRequestImpl.setSubjectType(paymentRequest.getSubjectType());
+		paymentRequestImpl.setSubjectName(paymentRequest.getSubjectName());
 		paymentRequestImpl.setAmount(paymentRequest.getAmount());
-		paymentRequestImpl.setNote(paymentRequest.getNote());
-		paymentRequestImpl.setIssueDate(paymentRequest.getIssueDate());
+		paymentRequestImpl.setRequestNote(paymentRequest.getRequestNote());
 		paymentRequestImpl.setPaymentFileId(paymentRequest.getPaymentFileId());
+		paymentRequestImpl.setConfirmOK(paymentRequest.getConfirmOK());
+		paymentRequestImpl.setEbMessageId(paymentRequest.getEbMessageId());
 
 		return paymentRequestImpl;
 	}

@@ -35,13 +35,9 @@ public class DossierStep2RoleCacheModel implements CacheModel<DossierStep2Role>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(9);
+		StringBundler sb = new StringBundler(5);
 
-		sb.append("{id=");
-		sb.append(id);
-		sb.append(", companyId=");
-		sb.append(companyId);
-		sb.append(", dossierStepId=");
+		sb.append("{dossierStepId=");
 		sb.append(dossierStepId);
 		sb.append(", roleId=");
 		sb.append(roleId);
@@ -54,8 +50,6 @@ public class DossierStep2RoleCacheModel implements CacheModel<DossierStep2Role>,
 	public DossierStep2Role toEntityModel() {
 		DossierStep2RoleImpl dossierStep2RoleImpl = new DossierStep2RoleImpl();
 
-		dossierStep2RoleImpl.setId(id);
-		dossierStep2RoleImpl.setCompanyId(companyId);
 		dossierStep2RoleImpl.setDossierStepId(dossierStepId);
 		dossierStep2RoleImpl.setRoleId(roleId);
 
@@ -66,8 +60,6 @@ public class DossierStep2RoleCacheModel implements CacheModel<DossierStep2Role>,
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		id = objectInput.readLong();
-		companyId = objectInput.readLong();
 		dossierStepId = objectInput.readLong();
 		roleId = objectInput.readLong();
 	}
@@ -75,14 +67,10 @@ public class DossierStep2RoleCacheModel implements CacheModel<DossierStep2Role>,
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeLong(id);
-		objectOutput.writeLong(companyId);
 		objectOutput.writeLong(dossierStepId);
 		objectOutput.writeLong(roleId);
 	}
 
-	public long id;
-	public long companyId;
 	public long dossierStepId;
 	public long roleId;
 }

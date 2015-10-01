@@ -130,6 +130,64 @@ public class PaymentRequestLocalServiceClp implements PaymentRequestLocalService
 		_methodName21 = "setBeanIdentifier";
 
 		_methodParameterTypes21 = new String[] { "java.lang.String" };
+
+		_methodName23 = "addPaymentRequest";
+
+		_methodParameterTypes23 = new String[] {
+				"long", "long", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"int", "java.lang.String", "long", "int", "long",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName24 = "updatePaymentRequest";
+
+		_methodParameterTypes24 = new String[] {
+				"long", "long", "long", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"int", "java.lang.String", "long", "int", "long",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName25 = "updatePaymentRequestResources";
+
+		_methodParameterTypes25 = new String[] {
+				"org.oep.core.dossiermgt.model.PaymentRequest",
+				"java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName26 = "removePaymentRequest";
+
+		_methodParameterTypes26 = new String[] {
+				"org.oep.core.dossiermgt.model.PaymentRequest"
+			};
+
+		_methodName27 = "removePaymentRequest";
+
+		_methodParameterTypes27 = new String[] { "long" };
+
+		_methodName28 = "addPaymentRequestResources";
+
+		_methodParameterTypes28 = new String[] {
+				"org.oep.core.dossiermgt.model.PaymentRequest", "boolean",
+				"boolean", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName29 = "addPaymentRequestResources";
+
+		_methodParameterTypes29 = new String[] {
+				"org.oep.core.dossiermgt.model.PaymentRequest",
+				"java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName30 = "addPaymentRequestResources";
+
+		_methodParameterTypes30 = new String[] {
+				"long", "java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
 	}
 
 	@Override
@@ -812,6 +870,366 @@ public class PaymentRequestLocalServiceClp implements PaymentRequestLocalService
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public org.oep.core.dossiermgt.model.PaymentRequest addPaymentRequest(
+		long organizationId, long dossierId, java.lang.String govAgentId,
+		java.lang.String govAgentName, java.lang.String subjectId,
+		java.lang.String subjectType, java.lang.String subjectName, int amount,
+		java.lang.String requestNote, long paymentFileId, int confirmOK,
+		long ebMessageId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName23,
+					_methodParameterTypes23,
+					new Object[] {
+						organizationId,
+						
+					dossierId,
+						
+					ClpSerializer.translateInput(govAgentId),
+						
+					ClpSerializer.translateInput(govAgentName),
+						
+					ClpSerializer.translateInput(subjectId),
+						
+					ClpSerializer.translateInput(subjectType),
+						
+					ClpSerializer.translateInput(subjectName),
+						
+					amount,
+						
+					ClpSerializer.translateInput(requestNote),
+						
+					paymentFileId,
+						
+					confirmOK,
+						
+					ebMessageId,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.dossiermgt.model.PaymentRequest)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.PaymentRequest updatePaymentRequest(
+		long id, long organizationId, long dossierId,
+		java.lang.String govAgentId, java.lang.String govAgentName,
+		java.lang.String subjectId, java.lang.String subjectType,
+		java.lang.String subjectName, int amount, java.lang.String requestNote,
+		long paymentFileId, int confirmOK, long ebMessageId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName24,
+					_methodParameterTypes24,
+					new Object[] {
+						id,
+						
+					organizationId,
+						
+					dossierId,
+						
+					ClpSerializer.translateInput(govAgentId),
+						
+					ClpSerializer.translateInput(govAgentName),
+						
+					ClpSerializer.translateInput(subjectId),
+						
+					ClpSerializer.translateInput(subjectType),
+						
+					ClpSerializer.translateInput(subjectName),
+						
+					amount,
+						
+					ClpSerializer.translateInput(requestNote),
+						
+					paymentFileId,
+						
+					confirmOK,
+						
+					ebMessageId,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.dossiermgt.model.PaymentRequest)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public void updatePaymentRequestResources(
+		org.oep.core.dossiermgt.model.PaymentRequest paymentRequest,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName25,
+				_methodParameterTypes25,
+				new Object[] {
+					ClpSerializer.translateInput(paymentRequest),
+					
+				ClpSerializer.translateInput(groupPermissions),
+					
+				ClpSerializer.translateInput(guestPermissions),
+					
+				ClpSerializer.translateInput(serviceContext)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void removePaymentRequest(
+		org.oep.core.dossiermgt.model.PaymentRequest paymentRequest)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName26,
+				_methodParameterTypes26,
+				new Object[] { ClpSerializer.translateInput(paymentRequest) });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void removePaymentRequest(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName27,
+				_methodParameterTypes27, new Object[] { id });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void addPaymentRequestResources(
+		org.oep.core.dossiermgt.model.PaymentRequest paymentRequest,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName28,
+				_methodParameterTypes28,
+				new Object[] {
+					ClpSerializer.translateInput(paymentRequest),
+					
+				addGroupPermission,
+					
+				addGuestPermission,
+					
+				ClpSerializer.translateInput(serviceContext)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void addPaymentRequestResources(
+		org.oep.core.dossiermgt.model.PaymentRequest paymentRequest,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName29,
+				_methodParameterTypes29,
+				new Object[] {
+					ClpSerializer.translateInput(paymentRequest),
+					
+				ClpSerializer.translateInput(groupPermissions),
+					
+				ClpSerializer.translateInput(guestPermissions),
+					
+				ClpSerializer.translateInput(serviceContext)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void addPaymentRequestResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName30,
+				_methodParameterTypes30,
+				new Object[] {
+					id,
+					
+				ClpSerializer.translateInput(groupPermissions),
+					
+				ClpSerializer.translateInput(guestPermissions),
+					
+				ClpSerializer.translateInput(serviceContext)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
 	private InvokableLocalService _invokableLocalService;
 	private String _methodName0;
 	private String[] _methodParameterTypes0;
@@ -857,4 +1275,20 @@ public class PaymentRequestLocalServiceClp implements PaymentRequestLocalService
 	private String[] _methodParameterTypes20;
 	private String _methodName21;
 	private String[] _methodParameterTypes21;
+	private String _methodName23;
+	private String[] _methodParameterTypes23;
+	private String _methodName24;
+	private String[] _methodParameterTypes24;
+	private String _methodName25;
+	private String[] _methodParameterTypes25;
+	private String _methodName26;
+	private String[] _methodParameterTypes26;
+	private String _methodName27;
+	private String[] _methodParameterTypes27;
+	private String _methodName28;
+	private String[] _methodParameterTypes28;
+	private String _methodName29;
+	private String[] _methodParameterTypes29;
+	private String _methodName30;
+	private String[] _methodParameterTypes30;
 }

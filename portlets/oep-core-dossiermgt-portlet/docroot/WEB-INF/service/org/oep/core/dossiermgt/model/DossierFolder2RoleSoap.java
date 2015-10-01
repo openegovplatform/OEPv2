@@ -14,6 +14,8 @@
 
 package org.oep.core.dossiermgt.model;
 
+import org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK;
+
 import java.io.Serializable;
 
 import java.util.ArrayList;
@@ -30,8 +32,6 @@ public class DossierFolder2RoleSoap implements Serializable {
 	public static DossierFolder2RoleSoap toSoapModel(DossierFolder2Role model) {
 		DossierFolder2RoleSoap soapModel = new DossierFolder2RoleSoap();
 
-		soapModel.setId(model.getId());
-		soapModel.setCompanyId(model.getCompanyId());
 		soapModel.setDossierFolderId(model.getDossierFolderId());
 		soapModel.setRoleId(model.getRoleId());
 
@@ -81,28 +81,13 @@ public class DossierFolder2RoleSoap implements Serializable {
 	public DossierFolder2RoleSoap() {
 	}
 
-	public long getPrimaryKey() {
-		return _id;
+	public DossierFolder2RolePK getPrimaryKey() {
+		return new DossierFolder2RolePK(_dossierFolderId, _roleId);
 	}
 
-	public void setPrimaryKey(long pk) {
-		setId(pk);
-	}
-
-	public long getId() {
-		return _id;
-	}
-
-	public void setId(long id) {
-		_id = id;
-	}
-
-	public long getCompanyId() {
-		return _companyId;
-	}
-
-	public void setCompanyId(long companyId) {
-		_companyId = companyId;
+	public void setPrimaryKey(DossierFolder2RolePK pk) {
+		setDossierFolderId(pk.dossierFolderId);
+		setRoleId(pk.roleId);
 	}
 
 	public long getDossierFolderId() {
@@ -121,8 +106,6 @@ public class DossierFolder2RoleSoap implements Serializable {
 		_roleId = roleId;
 	}
 
-	private long _id;
-	private long _companyId;
 	private long _dossierFolderId;
 	private long _roleId;
 }

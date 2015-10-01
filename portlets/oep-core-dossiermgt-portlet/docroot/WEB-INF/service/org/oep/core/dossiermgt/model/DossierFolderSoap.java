@@ -37,7 +37,7 @@ public class DossierFolderSoap implements Serializable {
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setFolderName(model.getFolderName());
-		soapModel.setParentFolderId(model.getParentFolderId());
+		soapModel.setParentDossierFolderId(model.getParentDossierFolderId());
 		soapModel.setSequenceNo(model.getSequenceNo());
 		soapModel.setProcedureFilter(model.getProcedureFilter());
 		soapModel.setStatusFilter(model.getStatusFilter());
@@ -143,12 +143,12 @@ public class DossierFolderSoap implements Serializable {
 		_folderName = folderName;
 	}
 
-	public long getParentFolderId() {
-		return _parentFolderId;
+	public long getParentDossierFolderId() {
+		return _parentDossierFolderId;
 	}
 
-	public void setParentFolderId(long parentFolderId) {
-		_parentFolderId = parentFolderId;
+	public void setParentDossierFolderId(long parentDossierFolderId) {
+		_parentDossierFolderId = parentDossierFolderId;
 	}
 
 	public int getSequenceNo() {
@@ -197,7 +197,7 @@ public class DossierFolderSoap implements Serializable {
 	private Date _createDate;
 	private Date _modifiedDate;
 	private String _folderName;
-	private long _parentFolderId;
+	private long _parentDossierFolderId;
 	private int _sequenceNo;
 	private String _procedureFilter;
 	private String _statusFilter;

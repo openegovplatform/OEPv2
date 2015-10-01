@@ -35,18 +35,12 @@ public class DossierDoc2TemplateCacheModel implements CacheModel<DossierDoc2Temp
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(11);
+		StringBundler sb = new StringBundler(5);
 
-		sb.append("{id=");
-		sb.append(id);
-		sb.append(", companyId=");
-		sb.append(companyId);
-		sb.append(", dossierDocId=");
+		sb.append("{dossierDocId=");
 		sb.append(dossierDocId);
 		sb.append(", docTemplateId=");
 		sb.append(docTemplateId);
-		sb.append(", sequenceNo=");
-		sb.append(sequenceNo);
 		sb.append("}");
 
 		return sb.toString();
@@ -56,11 +50,8 @@ public class DossierDoc2TemplateCacheModel implements CacheModel<DossierDoc2Temp
 	public DossierDoc2Template toEntityModel() {
 		DossierDoc2TemplateImpl dossierDoc2TemplateImpl = new DossierDoc2TemplateImpl();
 
-		dossierDoc2TemplateImpl.setId(id);
-		dossierDoc2TemplateImpl.setCompanyId(companyId);
 		dossierDoc2TemplateImpl.setDossierDocId(dossierDocId);
 		dossierDoc2TemplateImpl.setDocTemplateId(docTemplateId);
-		dossierDoc2TemplateImpl.setSequenceNo(sequenceNo);
 
 		dossierDoc2TemplateImpl.resetOriginalValues();
 
@@ -69,26 +60,17 @@ public class DossierDoc2TemplateCacheModel implements CacheModel<DossierDoc2Temp
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		id = objectInput.readLong();
-		companyId = objectInput.readLong();
 		dossierDocId = objectInput.readLong();
 		docTemplateId = objectInput.readLong();
-		sequenceNo = objectInput.readInt();
 	}
 
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeLong(id);
-		objectOutput.writeLong(companyId);
 		objectOutput.writeLong(dossierDocId);
 		objectOutput.writeLong(docTemplateId);
-		objectOutput.writeInt(sequenceNo);
 	}
 
-	public long id;
-	public long companyId;
 	public long dossierDocId;
 	public long docTemplateId;
-	public int sequenceNo;
 }

@@ -82,7 +82,7 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("folderName", getFolderName());
-		attributes.put("parentFolderId", getParentFolderId());
+		attributes.put("parentDossierFolderId", getParentDossierFolderId());
 		attributes.put("sequenceNo", getSequenceNo());
 		attributes.put("procedureFilter", getProcedureFilter());
 		attributes.put("statusFilter", getStatusFilter());
@@ -130,10 +130,11 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 			setFolderName(folderName);
 		}
 
-		Long parentFolderId = (Long)attributes.get("parentFolderId");
+		Long parentDossierFolderId = (Long)attributes.get(
+				"parentDossierFolderId");
 
-		if (parentFolderId != null) {
-			setParentFolderId(parentFolderId);
+		if (parentDossierFolderId != null) {
+			setParentDossierFolderId(parentDossierFolderId);
 		}
 
 		Integer sequenceNo = (Integer)attributes.get("sequenceNo");
@@ -307,21 +308,22 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 	}
 
 	@Override
-	public long getParentFolderId() {
-		return _parentFolderId;
+	public long getParentDossierFolderId() {
+		return _parentDossierFolderId;
 	}
 
 	@Override
-	public void setParentFolderId(long parentFolderId) {
-		_parentFolderId = parentFolderId;
+	public void setParentDossierFolderId(long parentDossierFolderId) {
+		_parentDossierFolderId = parentDossierFolderId;
 
 		if (_dossierFolderRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierFolderRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setParentFolderId", long.class);
+				Method method = clazz.getMethod("setParentDossierFolderId",
+						long.class);
 
-				method.invoke(_dossierFolderRemoteModel, parentFolderId);
+				method.invoke(_dossierFolderRemoteModel, parentDossierFolderId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -528,7 +530,7 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 		clone.setCreateDate(getCreateDate());
 		clone.setModifiedDate(getModifiedDate());
 		clone.setFolderName(getFolderName());
-		clone.setParentFolderId(getParentFolderId());
+		clone.setParentDossierFolderId(getParentDossierFolderId());
 		clone.setSequenceNo(getSequenceNo());
 		clone.setProcedureFilter(getProcedureFilter());
 		clone.setStatusFilter(getStatusFilter());
@@ -600,8 +602,8 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 		sb.append(getModifiedDate());
 		sb.append(", folderName=");
 		sb.append(getFolderName());
-		sb.append(", parentFolderId=");
-		sb.append(getParentFolderId());
+		sb.append(", parentDossierFolderId=");
+		sb.append(getParentDossierFolderId());
 		sb.append(", sequenceNo=");
 		sb.append(getSequenceNo());
 		sb.append(", procedureFilter=");
@@ -650,8 +652,8 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 		sb.append(getFolderName());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>parentFolderId</column-name><column-value><![CDATA[");
-		sb.append(getParentFolderId());
+			"<column><column-name>parentDossierFolderId</column-name><column-value><![CDATA[");
+		sb.append(getParentDossierFolderId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>sequenceNo</column-name><column-value><![CDATA[");
@@ -685,7 +687,7 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 	private Date _createDate;
 	private Date _modifiedDate;
 	private String _folderName;
-	private long _parentFolderId;
+	private long _parentDossierFolderId;
 	private int _sequenceNo;
 	private String _procedureFilter;
 	private String _statusFilter;

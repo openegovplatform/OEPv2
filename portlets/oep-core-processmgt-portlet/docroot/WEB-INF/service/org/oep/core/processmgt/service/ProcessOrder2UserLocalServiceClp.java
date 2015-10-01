@@ -34,11 +34,15 @@ public class ProcessOrder2UserLocalServiceClp
 
 		_methodName1 = "createProcessOrder2User";
 
-		_methodParameterTypes1 = new String[] { "long" };
+		_methodParameterTypes1 = new String[] {
+				"org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK"
+			};
 
 		_methodName2 = "deleteProcessOrder2User";
 
-		_methodParameterTypes2 = new String[] { "long" };
+		_methodParameterTypes2 = new String[] {
+				"org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK"
+			};
 
 		_methodName3 = "deleteProcessOrder2User";
 
@@ -84,11 +88,15 @@ public class ProcessOrder2UserLocalServiceClp
 
 		_methodName10 = "fetchProcessOrder2User";
 
-		_methodParameterTypes10 = new String[] { "long" };
+		_methodParameterTypes10 = new String[] {
+				"org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK"
+			};
 
 		_methodName11 = "getProcessOrder2User";
 
-		_methodParameterTypes11 = new String[] { "long" };
+		_methodParameterTypes11 = new String[] {
+				"org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK"
+			};
 
 		_methodName12 = "getPersistedModel";
 
@@ -150,12 +158,15 @@ public class ProcessOrder2UserLocalServiceClp
 
 	@Override
 	public org.oep.core.processmgt.model.ProcessOrder2User createProcessOrder2User(
-		long id) {
+		org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK processOrder2UserPK) {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName1,
-					_methodParameterTypes1, new Object[] { id });
+					_methodParameterTypes1,
+					new Object[] {
+						ClpSerializer.translateInput(processOrder2UserPK)
+					});
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -174,14 +185,17 @@ public class ProcessOrder2UserLocalServiceClp
 
 	@Override
 	public org.oep.core.processmgt.model.ProcessOrder2User deleteProcessOrder2User(
-		long id)
+		org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK processOrder2UserPK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName2,
-					_methodParameterTypes2, new Object[] { id });
+					_methodParameterTypes2,
+					new Object[] {
+						ClpSerializer.translateInput(processOrder2UserPK)
+					});
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -436,12 +450,16 @@ public class ProcessOrder2UserLocalServiceClp
 
 	@Override
 	public org.oep.core.processmgt.model.ProcessOrder2User fetchProcessOrder2User(
-		long id) throws com.liferay.portal.kernel.exception.SystemException {
+		org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK processOrder2UserPK)
+		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName10,
-					_methodParameterTypes10, new Object[] { id });
+					_methodParameterTypes10,
+					new Object[] {
+						ClpSerializer.translateInput(processOrder2UserPK)
+					});
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -464,14 +482,17 @@ public class ProcessOrder2UserLocalServiceClp
 
 	@Override
 	public org.oep.core.processmgt.model.ProcessOrder2User getProcessOrder2User(
-		long id)
+		org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK processOrder2UserPK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName11,
-					_methodParameterTypes11, new Object[] { id });
+					_methodParameterTypes11,
+					new Object[] {
+						ClpSerializer.translateInput(processOrder2UserPK)
+					});
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);

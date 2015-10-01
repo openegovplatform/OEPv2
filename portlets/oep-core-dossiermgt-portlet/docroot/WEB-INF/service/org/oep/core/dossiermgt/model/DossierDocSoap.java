@@ -38,11 +38,12 @@ public class DossierDocSoap implements Serializable {
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setDossierProcId(model.getDossierProcId());
-		soapModel.setDocumentNo(model.getDocumentNo());
-		soapModel.setDocumentName(model.getDocumentName());
+		soapModel.setDossierDocNo(model.getDossierDocNo());
+		soapModel.setDossierDocName(model.getDossierDocName());
 		soapModel.setNote(model.getNote());
 		soapModel.setSequenceNo(model.getSequenceNo());
-		soapModel.setDocumentType(model.getDocumentType());
+		soapModel.setDefaultDocTemplateId(model.getDefaultDocTemplateId());
+		soapModel.setValidationType(model.getValidationType());
 		soapModel.setNumberOfFile(model.getNumberOfFile());
 		soapModel.setOnlineForm(model.getOnlineForm());
 
@@ -153,20 +154,20 @@ public class DossierDocSoap implements Serializable {
 		_dossierProcId = dossierProcId;
 	}
 
-	public String getDocumentNo() {
-		return _documentNo;
+	public String getDossierDocNo() {
+		return _dossierDocNo;
 	}
 
-	public void setDocumentNo(String documentNo) {
-		_documentNo = documentNo;
+	public void setDossierDocNo(String dossierDocNo) {
+		_dossierDocNo = dossierDocNo;
 	}
 
-	public String getDocumentName() {
-		return _documentName;
+	public String getDossierDocName() {
+		return _dossierDocName;
 	}
 
-	public void setDocumentName(String documentName) {
-		_documentName = documentName;
+	public void setDossierDocName(String dossierDocName) {
+		_dossierDocName = dossierDocName;
 	}
 
 	public String getNote() {
@@ -185,12 +186,20 @@ public class DossierDocSoap implements Serializable {
 		_sequenceNo = sequenceNo;
 	}
 
-	public int getDocumentType() {
-		return _documentType;
+	public long getDefaultDocTemplateId() {
+		return _defaultDocTemplateId;
 	}
 
-	public void setDocumentType(int documentType) {
-		_documentType = documentType;
+	public void setDefaultDocTemplateId(long defaultDocTemplateId) {
+		_defaultDocTemplateId = defaultDocTemplateId;
+	}
+
+	public int getValidationType() {
+		return _validationType;
+	}
+
+	public void setValidationType(int validationType) {
+		_validationType = validationType;
 	}
 
 	public int getNumberOfFile() {
@@ -216,11 +225,12 @@ public class DossierDocSoap implements Serializable {
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _dossierProcId;
-	private String _documentNo;
-	private String _documentName;
+	private String _dossierDocNo;
+	private String _dossierDocName;
 	private String _note;
 	private int _sequenceNo;
-	private int _documentType;
+	private long _defaultDocTemplateId;
+	private int _validationType;
 	private int _numberOfFile;
 	private String _onlineForm;
 }

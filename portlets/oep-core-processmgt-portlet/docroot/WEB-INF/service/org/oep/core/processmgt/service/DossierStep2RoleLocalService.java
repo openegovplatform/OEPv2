@@ -61,23 +61,23 @@ public interface DossierStep2RoleLocalService extends BaseLocalService,
 	/**
 	* Creates a new dossier step2 role with the primary key. Does not add the dossier step2 role to the database.
 	*
-	* @param id the primary key for the new dossier step2 role
+	* @param dossierStep2RolePK the primary key for the new dossier step2 role
 	* @return the new dossier step2 role
 	*/
 	public org.oep.core.processmgt.model.DossierStep2Role createDossierStep2Role(
-		long id);
+		org.oep.core.processmgt.service.persistence.DossierStep2RolePK dossierStep2RolePK);
 
 	/**
 	* Deletes the dossier step2 role with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the dossier step2 role
+	* @param dossierStep2RolePK the primary key of the dossier step2 role
 	* @return the dossier step2 role that was removed
 	* @throws PortalException if a dossier step2 role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.DELETE)
 	public org.oep.core.processmgt.model.DossierStep2Role deleteDossierStep2Role(
-		long id)
+		org.oep.core.processmgt.service.persistence.DossierStep2RolePK dossierStep2RolePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
@@ -172,19 +172,20 @@ public interface DossierStep2RoleLocalService extends BaseLocalService,
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public org.oep.core.processmgt.model.DossierStep2Role fetchDossierStep2Role(
-		long id) throws com.liferay.portal.kernel.exception.SystemException;
+		org.oep.core.processmgt.service.persistence.DossierStep2RolePK dossierStep2RolePK)
+		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
 	* Returns the dossier step2 role with the primary key.
 	*
-	* @param id the primary key of the dossier step2 role
+	* @param dossierStep2RolePK the primary key of the dossier step2 role
 	* @return the dossier step2 role
 	* @throws PortalException if a dossier step2 role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public org.oep.core.processmgt.model.DossierStep2Role getDossierStep2Role(
-		long id)
+		org.oep.core.processmgt.service.persistence.DossierStep2RolePK dossierStep2RolePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 

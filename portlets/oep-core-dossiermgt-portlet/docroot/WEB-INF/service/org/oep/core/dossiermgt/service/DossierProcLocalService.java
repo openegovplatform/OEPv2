@@ -253,4 +253,127 @@ public interface DossierProcLocalService extends BaseLocalService,
 	public java.lang.Object invokeMethod(java.lang.String name,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;
+
+	/**
+	* Add dossier proc
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new dossier proc
+	*/
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.dossiermgt.model.DossierProc addDossierProc(
+		java.lang.String dossierProcNo, java.lang.String name,
+		java.lang.String enName, java.lang.String shortName,
+		java.lang.String processDescription,
+		java.lang.String methodDescription,
+		java.lang.String dossierDescription,
+		java.lang.String conditionDescription,
+		java.lang.String durationDescription,
+		java.lang.String actorsDescription,
+		java.lang.String resultsDescription,
+		java.lang.String recordsDescription, java.lang.String feeDescription,
+		java.lang.String instructionsDescription,
+		java.lang.String administrationNo, java.lang.String administrationName,
+		java.lang.String domainNo, java.lang.String domainName,
+		java.util.Date effectDate, java.util.Date expireDate, int active,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.dossiermgt.model.DossierProc updateDossierProc(
+		long id, java.lang.String dossierProcNo, java.lang.String name,
+		java.lang.String enName, java.lang.String shortName,
+		java.lang.String processDescription,
+		java.lang.String methodDescription,
+		java.lang.String dossierDescription,
+		java.lang.String conditionDescription,
+		java.lang.String durationDescription,
+		java.lang.String actorsDescription,
+		java.lang.String resultsDescription,
+		java.lang.String recordsDescription, java.lang.String feeDescription,
+		java.lang.String instructionsDescription,
+		java.lang.String administrationNo, java.lang.String administrationName,
+		java.lang.String domainNo, java.lang.String domainName,
+		java.util.Date effectDate, java.util.Date expireDate, int active,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void updateDossierProcResources(
+		org.oep.core.dossiermgt.model.DossierProc dossierProc,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void removeDossierProc(
+		org.oep.core.dossiermgt.model.DossierProc dossierProc)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void removeDossierProc(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addDossierProcResources(
+		org.oep.core.dossiermgt.model.DossierProc dossierProc,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addDossierProcResources(
+		org.oep.core.dossiermgt.model.DossierProc dossierProc,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addDossierProcResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public org.oep.core.dossiermgt.model.DossierProc getByDossierProcNo(
+		java.lang.String dossierProcNo,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findAllByAdministrationNo(
+		java.lang.String administrationNo,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findAllByDomainNo(
+		java.lang.String domainNo,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findAllByAdministrationAndDomain(
+		java.lang.String administrationNo, java.lang.String domainNo,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByGroupAdministrationAndDomain(
+		java.lang.String administrationNo, java.lang.String domainNo,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
 }

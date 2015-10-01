@@ -32,6 +32,6 @@ public abstract class ProcessOrder2UserActionableDynamicQuery
 
 		setClassLoader(org.oep.core.processmgt.service.ClpSerializer.class.getClassLoader());
 
-		setPrimaryKeyPropertyName("id");
+		setPrimaryKeyPropertyName("primaryKey.processOrderId");
 	}
 }

@@ -275,6 +275,102 @@ public class DossierProcessLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	/**
+	* Add dossier process
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new dossier process
+	*/
+	public static org.oep.core.processmgt.model.DossierProcess addDossierProcess(
+		long dossierProcId, java.lang.String govAgentId,
+		java.lang.String govAgentName, long startDossierStepId,
+		int daysDuration,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addDossierProcess(dossierProcId, govAgentId, govAgentName,
+			startDossierStepId, daysDuration, serviceContext);
+	}
+
+	public static org.oep.core.processmgt.model.DossierProcess updateDossierProcess(
+		long id, long dossierProcId, java.lang.String govAgentId,
+		java.lang.String govAgentName, long startDossierStepId,
+		int daysDuration,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .updateDossierProcess(id, dossierProcId, govAgentId,
+			govAgentName, startDossierStepId, daysDuration, serviceContext);
+	}
+
+	public static void updateDossierProcessResources(
+		org.oep.core.processmgt.model.DossierProcess dossierProcess,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.updateDossierProcessResources(dossierProcess, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	public static void removeDossierProcess(
+		org.oep.core.processmgt.model.DossierProcess dossierProcess)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeDossierProcess(dossierProcess);
+	}
+
+	public static void removeDossierProcess(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeDossierProcess(id);
+	}
+
+	public static void addDossierProcessResources(
+		org.oep.core.processmgt.model.DossierProcess dossierProcess,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addDossierProcessResources(dossierProcess, addGroupPermission,
+			addGuestPermission, serviceContext);
+	}
+
+	public static void addDossierProcessResources(
+		org.oep.core.processmgt.model.DossierProcess dossierProcess,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addDossierProcessResources(dossierProcess, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	public static void addDossierProcessResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addDossierProcessResources(id, groupPermissions, guestPermissions,
+			serviceContext);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

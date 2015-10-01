@@ -33,10 +33,11 @@ import org.oep.core.dossiermgt.model.DossierDoc2TemplateClp;
 import org.oep.core.dossiermgt.model.DossierDocClp;
 import org.oep.core.dossiermgt.model.DossierFolder2RoleClp;
 import org.oep.core.dossiermgt.model.DossierFolderClp;
-import org.oep.core.dossiermgt.model.DossierProc2AgentClp;
+import org.oep.core.dossiermgt.model.DossierProcAgentClp;
 import org.oep.core.dossiermgt.model.DossierProcClp;
+import org.oep.core.dossiermgt.model.EbMessageClp;
+import org.oep.core.dossiermgt.model.EbPartnerShipClp;
 import org.oep.core.dossiermgt.model.PaymentConfigClp;
-import org.oep.core.dossiermgt.model.PaymentFile2DossierClp;
 import org.oep.core.dossiermgt.model.PaymentFileClp;
 import org.oep.core.dossiermgt.model.PaymentRequestClp;
 
@@ -151,8 +152,16 @@ public class ClpSerializer {
 			return translateInputDossierProc(oldModel);
 		}
 
-		if (oldModelClassName.equals(DossierProc2AgentClp.class.getName())) {
-			return translateInputDossierProc2Agent(oldModel);
+		if (oldModelClassName.equals(DossierProcAgentClp.class.getName())) {
+			return translateInputDossierProcAgent(oldModel);
+		}
+
+		if (oldModelClassName.equals(EbMessageClp.class.getName())) {
+			return translateInputEbMessage(oldModel);
+		}
+
+		if (oldModelClassName.equals(EbPartnerShipClp.class.getName())) {
+			return translateInputEbPartnerShip(oldModel);
 		}
 
 		if (oldModelClassName.equals(PaymentConfigClp.class.getName())) {
@@ -161,10 +170,6 @@ public class ClpSerializer {
 
 		if (oldModelClassName.equals(PaymentFileClp.class.getName())) {
 			return translateInputPaymentFile(oldModel);
-		}
-
-		if (oldModelClassName.equals(PaymentFile2DossierClp.class.getName())) {
-			return translateInputPaymentFile2Dossier(oldModel);
 		}
 
 		if (oldModelClassName.equals(PaymentRequestClp.class.getName())) {
@@ -277,10 +282,30 @@ public class ClpSerializer {
 		return newModel;
 	}
 
-	public static Object translateInputDossierProc2Agent(BaseModel<?> oldModel) {
-		DossierProc2AgentClp oldClpModel = (DossierProc2AgentClp)oldModel;
+	public static Object translateInputDossierProcAgent(BaseModel<?> oldModel) {
+		DossierProcAgentClp oldClpModel = (DossierProcAgentClp)oldModel;
 
-		BaseModel<?> newModel = oldClpModel.getDossierProc2AgentRemoteModel();
+		BaseModel<?> newModel = oldClpModel.getDossierProcAgentRemoteModel();
+
+		newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+		return newModel;
+	}
+
+	public static Object translateInputEbMessage(BaseModel<?> oldModel) {
+		EbMessageClp oldClpModel = (EbMessageClp)oldModel;
+
+		BaseModel<?> newModel = oldClpModel.getEbMessageRemoteModel();
+
+		newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+		return newModel;
+	}
+
+	public static Object translateInputEbPartnerShip(BaseModel<?> oldModel) {
+		EbPartnerShipClp oldClpModel = (EbPartnerShipClp)oldModel;
+
+		BaseModel<?> newModel = oldClpModel.getEbPartnerShipRemoteModel();
 
 		newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -301,17 +326,6 @@ public class ClpSerializer {
 		PaymentFileClp oldClpModel = (PaymentFileClp)oldModel;
 
 		BaseModel<?> newModel = oldClpModel.getPaymentFileRemoteModel();
-
-		newModel.setModelAttributes(oldClpModel.getModelAttributes());
-
-		return newModel;
-	}
-
-	public static Object translateInputPaymentFile2Dossier(
-		BaseModel<?> oldModel) {
-		PaymentFile2DossierClp oldClpModel = (PaymentFile2DossierClp)oldModel;
-
-		BaseModel<?> newModel = oldClpModel.getPaymentFile2DossierRemoteModel();
 
 		newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -679,8 +693,82 @@ public class ClpSerializer {
 		}
 
 		if (oldModelClassName.equals(
-					"org.oep.core.dossiermgt.model.impl.DossierProc2AgentImpl")) {
-			return translateOutputDossierProc2Agent(oldModel);
+					"org.oep.core.dossiermgt.model.impl.DossierProcAgentImpl")) {
+			return translateOutputDossierProcAgent(oldModel);
+		}
+		else if (oldModelClassName.endsWith("Clp")) {
+			try {
+				ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+				Method getClpSerializerClassMethod = oldModelClass.getMethod(
+						"getClpSerializerClass");
+
+				Class<?> oldClpSerializerClass = (Class<?>)getClpSerializerClassMethod.invoke(oldModel);
+
+				Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+				Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+						BaseModel.class);
+
+				Class<?> oldModelModelClass = oldModel.getModelClass();
+
+				Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+						oldModelModelClass.getSimpleName() + "RemoteModel");
+
+				Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+				BaseModel<?> newModel = (BaseModel<?>)translateOutputMethod.invoke(null,
+						oldRemoteModel);
+
+				return newModel;
+			}
+			catch (Throwable t) {
+				if (_log.isInfoEnabled()) {
+					_log.info("Unable to translate " + oldModelClassName, t);
+				}
+			}
+		}
+
+		if (oldModelClassName.equals(
+					"org.oep.core.dossiermgt.model.impl.EbMessageImpl")) {
+			return translateOutputEbMessage(oldModel);
+		}
+		else if (oldModelClassName.endsWith("Clp")) {
+			try {
+				ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+				Method getClpSerializerClassMethod = oldModelClass.getMethod(
+						"getClpSerializerClass");
+
+				Class<?> oldClpSerializerClass = (Class<?>)getClpSerializerClassMethod.invoke(oldModel);
+
+				Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+				Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+						BaseModel.class);
+
+				Class<?> oldModelModelClass = oldModel.getModelClass();
+
+				Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+						oldModelModelClass.getSimpleName() + "RemoteModel");
+
+				Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+				BaseModel<?> newModel = (BaseModel<?>)translateOutputMethod.invoke(null,
+						oldRemoteModel);
+
+				return newModel;
+			}
+			catch (Throwable t) {
+				if (_log.isInfoEnabled()) {
+					_log.info("Unable to translate " + oldModelClassName, t);
+				}
+			}
+		}
+
+		if (oldModelClassName.equals(
+					"org.oep.core.dossiermgt.model.impl.EbPartnerShipImpl")) {
+			return translateOutputEbPartnerShip(oldModel);
 		}
 		else if (oldModelClassName.endsWith("Clp")) {
 			try {
@@ -755,43 +843,6 @@ public class ClpSerializer {
 		if (oldModelClassName.equals(
 					"org.oep.core.dossiermgt.model.impl.PaymentFileImpl")) {
 			return translateOutputPaymentFile(oldModel);
-		}
-		else if (oldModelClassName.endsWith("Clp")) {
-			try {
-				ClassLoader classLoader = ClpSerializer.class.getClassLoader();
-
-				Method getClpSerializerClassMethod = oldModelClass.getMethod(
-						"getClpSerializerClass");
-
-				Class<?> oldClpSerializerClass = (Class<?>)getClpSerializerClassMethod.invoke(oldModel);
-
-				Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
-
-				Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
-						BaseModel.class);
-
-				Class<?> oldModelModelClass = oldModel.getModelClass();
-
-				Method getRemoteModelMethod = oldModelClass.getMethod("get" +
-						oldModelModelClass.getSimpleName() + "RemoteModel");
-
-				Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
-
-				BaseModel<?> newModel = (BaseModel<?>)translateOutputMethod.invoke(null,
-						oldRemoteModel);
-
-				return newModel;
-			}
-			catch (Throwable t) {
-				if (_log.isInfoEnabled()) {
-					_log.info("Unable to translate " + oldModelClassName, t);
-				}
-			}
-		}
-
-		if (oldModelClassName.equals(
-					"org.oep.core.dossiermgt.model.impl.PaymentFile2DossierImpl")) {
-			return translateOutputPaymentFile2Dossier(oldModel);
 		}
 		else if (oldModelClassName.endsWith("Clp")) {
 			try {
@@ -943,6 +994,33 @@ public class ClpSerializer {
 			return new SystemException();
 		}
 
+		if (className.equals("org.oep.core.dossiermgt.DossierProcNoException")) {
+			return new org.oep.core.dossiermgt.DossierProcNoException();
+		}
+
+		if (className.equals(
+					"org.oep.core.dossiermgt.DupplicateDocTemplateException")) {
+			return new org.oep.core.dossiermgt.DupplicateDocTemplateException();
+		}
+
+		if (className.equals(
+					"org.oep.core.dossiermgt.DupplicateDossierException")) {
+			return new org.oep.core.dossiermgt.DupplicateDossierException();
+		}
+
+		if (className.equals(
+					"org.oep.core.dossiermgt.NoSuchDocTemplateException")) {
+			return new org.oep.core.dossiermgt.NoSuchDocTemplateException();
+		}
+
+		if (className.equals("org.oep.core.dossiermgt.NoSuchDossierException")) {
+			return new org.oep.core.dossiermgt.NoSuchDossierException();
+		}
+
+		if (className.equals("org.oep.core.dossiermgt.TemplateNoException")) {
+			return new org.oep.core.dossiermgt.TemplateNoException();
+		}
+
 		if (className.equals("org.oep.core.dossiermgt.NoSuchDocFileException")) {
 			return new org.oep.core.dossiermgt.NoSuchDocFileException();
 		}
@@ -987,8 +1065,17 @@ public class ClpSerializer {
 		}
 
 		if (className.equals(
-					"org.oep.core.dossiermgt.NoSuchDossierProc2AgentException")) {
-			return new org.oep.core.dossiermgt.NoSuchDossierProc2AgentException();
+					"org.oep.core.dossiermgt.NoSuchDossierProcAgentException")) {
+			return new org.oep.core.dossiermgt.NoSuchDossierProcAgentException();
+		}
+
+		if (className.equals("org.oep.core.dossiermgt.NoSuchEbMessageException")) {
+			return new org.oep.core.dossiermgt.NoSuchEbMessageException();
+		}
+
+		if (className.equals(
+					"org.oep.core.dossiermgt.NoSuchEbPartnerShipException")) {
+			return new org.oep.core.dossiermgt.NoSuchEbPartnerShipException();
 		}
 
 		if (className.equals(
@@ -999,11 +1086,6 @@ public class ClpSerializer {
 		if (className.equals(
 					"org.oep.core.dossiermgt.NoSuchPaymentFileException")) {
 			return new org.oep.core.dossiermgt.NoSuchPaymentFileException();
-		}
-
-		if (className.equals(
-					"org.oep.core.dossiermgt.NoSuchPaymentFile2DossierException")) {
-			return new org.oep.core.dossiermgt.NoSuchPaymentFile2DossierException();
 		}
 
 		if (className.equals(
@@ -1106,12 +1188,32 @@ public class ClpSerializer {
 		return newModel;
 	}
 
-	public static Object translateOutputDossierProc2Agent(BaseModel<?> oldModel) {
-		DossierProc2AgentClp newModel = new DossierProc2AgentClp();
+	public static Object translateOutputDossierProcAgent(BaseModel<?> oldModel) {
+		DossierProcAgentClp newModel = new DossierProcAgentClp();
 
 		newModel.setModelAttributes(oldModel.getModelAttributes());
 
-		newModel.setDossierProc2AgentRemoteModel(oldModel);
+		newModel.setDossierProcAgentRemoteModel(oldModel);
+
+		return newModel;
+	}
+
+	public static Object translateOutputEbMessage(BaseModel<?> oldModel) {
+		EbMessageClp newModel = new EbMessageClp();
+
+		newModel.setModelAttributes(oldModel.getModelAttributes());
+
+		newModel.setEbMessageRemoteModel(oldModel);
+
+		return newModel;
+	}
+
+	public static Object translateOutputEbPartnerShip(BaseModel<?> oldModel) {
+		EbPartnerShipClp newModel = new EbPartnerShipClp();
+
+		newModel.setModelAttributes(oldModel.getModelAttributes());
+
+		newModel.setEbPartnerShipRemoteModel(oldModel);
 
 		return newModel;
 	}
@@ -1132,17 +1234,6 @@ public class ClpSerializer {
 		newModel.setModelAttributes(oldModel.getModelAttributes());
 
 		newModel.setPaymentFileRemoteModel(oldModel);
-
-		return newModel;
-	}
-
-	public static Object translateOutputPaymentFile2Dossier(
-		BaseModel<?> oldModel) {
-		PaymentFile2DossierClp newModel = new PaymentFile2DossierClp();
-
-		newModel.setModelAttributes(oldModel.getModelAttributes());
-
-		newModel.setPaymentFile2DossierRemoteModel(oldModel);
 
 		return newModel;
 	}

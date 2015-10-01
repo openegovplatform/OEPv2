@@ -35,12 +35,11 @@ public class PaymentConfigSoap implements Serializable {
 		soapModel.setCompanyId(model.getCompanyId());
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
-		soapModel.setDossierProcId(model.getDossierProcId());
-		soapModel.setGovAgentNo(model.getGovAgentNo());
+		soapModel.setGovAgentId(model.getGovAgentId());
 		soapModel.setGovAgentName(model.getGovAgentName());
-		soapModel.setPrePaidFee(model.getPrePaidFee());
 		soapModel.setBankTransfer(model.getBankTransfer());
 		soapModel.setKeypay(model.getKeypay());
+		soapModel.setEbPartnerShipId(model.getEbPartnerShipId());
 
 		return soapModel;
 	}
@@ -125,20 +124,12 @@ public class PaymentConfigSoap implements Serializable {
 		_modifiedDate = modifiedDate;
 	}
 
-	public long getDossierProcId() {
-		return _dossierProcId;
+	public String getGovAgentId() {
+		return _govAgentId;
 	}
 
-	public void setDossierProcId(long dossierProcId) {
-		_dossierProcId = dossierProcId;
-	}
-
-	public String getGovAgentNo() {
-		return _govAgentNo;
-	}
-
-	public void setGovAgentNo(String govAgentNo) {
-		_govAgentNo = govAgentNo;
+	public void setGovAgentId(String govAgentId) {
+		_govAgentId = govAgentId;
 	}
 
 	public String getGovAgentName() {
@@ -147,14 +138,6 @@ public class PaymentConfigSoap implements Serializable {
 
 	public void setGovAgentName(String govAgentName) {
 		_govAgentName = govAgentName;
-	}
-
-	public long getPrePaidFee() {
-		return _prePaidFee;
-	}
-
-	public void setPrePaidFee(long prePaidFee) {
-		_prePaidFee = prePaidFee;
 	}
 
 	public String getBankTransfer() {
@@ -173,14 +156,21 @@ public class PaymentConfigSoap implements Serializable {
 		_keypay = keypay;
 	}
 
+	public long getEbPartnerShipId() {
+		return _ebPartnerShipId;
+	}
+
+	public void setEbPartnerShipId(long ebPartnerShipId) {
+		_ebPartnerShipId = ebPartnerShipId;
+	}
+
 	private long _paymentConfigId;
 	private long _companyId;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private long _dossierProcId;
-	private String _govAgentNo;
+	private String _govAgentId;
 	private String _govAgentName;
-	private long _prePaidFee;
 	private String _bankTransfer;
 	private String _keypay;
+	private long _ebPartnerShipId;
 }

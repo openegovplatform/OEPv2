@@ -330,7 +330,7 @@ public class DossierProcessPersistenceImpl extends BasePersistenceImpl<DossierPr
 		dossierProcessImpl.setCreateDate(dossierProcess.getCreateDate());
 		dossierProcessImpl.setModifiedDate(dossierProcess.getModifiedDate());
 		dossierProcessImpl.setDossierProcId(dossierProcess.getDossierProcId());
-		dossierProcessImpl.setGovAgentNo(dossierProcess.getGovAgentNo());
+		dossierProcessImpl.setGovAgentId(dossierProcess.getGovAgentId());
 		dossierProcessImpl.setGovAgentName(dossierProcess.getGovAgentName());
 		dossierProcessImpl.setStartDossierStepId(dossierProcess.getStartDossierStepId());
 		dossierProcessImpl.setDaysDuration(dossierProcess.getDaysDuration());

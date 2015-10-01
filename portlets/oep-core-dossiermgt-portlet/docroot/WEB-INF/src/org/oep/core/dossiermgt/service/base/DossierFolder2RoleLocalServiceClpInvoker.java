@@ -32,11 +32,15 @@ public class DossierFolder2RoleLocalServiceClpInvoker {
 
 		_methodName1 = "createDossierFolder2Role";
 
-		_methodParameterTypes1 = new String[] { "long" };
+		_methodParameterTypes1 = new String[] {
+				"org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK"
+			};
 
 		_methodName2 = "deleteDossierFolder2Role";
 
-		_methodParameterTypes2 = new String[] { "long" };
+		_methodParameterTypes2 = new String[] {
+				"org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK"
+			};
 
 		_methodName3 = "deleteDossierFolder2Role";
 
@@ -82,11 +86,15 @@ public class DossierFolder2RoleLocalServiceClpInvoker {
 
 		_methodName10 = "fetchDossierFolder2Role";
 
-		_methodParameterTypes10 = new String[] { "long" };
+		_methodParameterTypes10 = new String[] {
+				"org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK"
+			};
 
 		_methodName11 = "getDossierFolder2Role";
 
-		_methodParameterTypes11 = new String[] { "long" };
+		_methodParameterTypes11 = new String[] {
+				"org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK"
+			};
 
 		_methodName12 = "getPersistedModel";
 
@@ -106,13 +114,13 @@ public class DossierFolder2RoleLocalServiceClpInvoker {
 				"org.oep.core.dossiermgt.model.DossierFolder2Role"
 			};
 
-		_methodName112 = "getBeanIdentifier";
+		_methodName118 = "getBeanIdentifier";
 
-		_methodParameterTypes112 = new String[] {  };
+		_methodParameterTypes118 = new String[] {  };
 
-		_methodName113 = "setBeanIdentifier";
+		_methodName119 = "setBeanIdentifier";
 
-		_methodParameterTypes113 = new String[] { "java.lang.String" };
+		_methodParameterTypes119 = new String[] { "java.lang.String" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -124,12 +132,12 @@ public class DossierFolder2RoleLocalServiceClpInvoker {
 
 		if (_methodName1.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes1, parameterTypes)) {
-			return DossierFolder2RoleLocalServiceUtil.createDossierFolder2Role(((Long)arguments[0]).longValue());
+			return DossierFolder2RoleLocalServiceUtil.createDossierFolder2Role((org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK)arguments[0]);
 		}
 
 		if (_methodName2.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes2, parameterTypes)) {
-			return DossierFolder2RoleLocalServiceUtil.deleteDossierFolder2Role(((Long)arguments[0]).longValue());
+			return DossierFolder2RoleLocalServiceUtil.deleteDossierFolder2Role((org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK)arguments[0]);
 		}
 
 		if (_methodName3.equals(name) &&
@@ -175,12 +183,12 @@ public class DossierFolder2RoleLocalServiceClpInvoker {
 
 		if (_methodName10.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes10, parameterTypes)) {
-			return DossierFolder2RoleLocalServiceUtil.fetchDossierFolder2Role(((Long)arguments[0]).longValue());
+			return DossierFolder2RoleLocalServiceUtil.fetchDossierFolder2Role((org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK)arguments[0]);
 		}
 
 		if (_methodName11.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes11, parameterTypes)) {
-			return DossierFolder2RoleLocalServiceUtil.getDossierFolder2Role(((Long)arguments[0]).longValue());
+			return DossierFolder2RoleLocalServiceUtil.getDossierFolder2Role((org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK)arguments[0]);
 		}
 
 		if (_methodName12.equals(name) &&
@@ -204,13 +212,13 @@ public class DossierFolder2RoleLocalServiceClpInvoker {
 			return DossierFolder2RoleLocalServiceUtil.updateDossierFolder2Role((org.oep.core.dossiermgt.model.DossierFolder2Role)arguments[0]);
 		}
 
-		if (_methodName112.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
+		if (_methodName118.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes118, parameterTypes)) {
 			return DossierFolder2RoleLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName113.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes113, parameterTypes)) {
+		if (_methodName119.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes119, parameterTypes)) {
 			DossierFolder2RoleLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
@@ -251,8 +259,8 @@ public class DossierFolder2RoleLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName112;
-	private String[] _methodParameterTypes112;
-	private String _methodName113;
-	private String[] _methodParameterTypes113;
+	private String _methodName118;
+	private String[] _methodParameterTypes118;
+	private String _methodName119;
+	private String[] _methodParameterTypes119;
 }

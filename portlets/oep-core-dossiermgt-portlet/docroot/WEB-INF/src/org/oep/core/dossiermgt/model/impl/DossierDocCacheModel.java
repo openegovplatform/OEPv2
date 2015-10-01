@@ -38,7 +38,7 @@ public class DossierDocCacheModel implements CacheModel<DossierDoc>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(29);
+		StringBundler sb = new StringBundler(31);
 
 		sb.append("{dossierDocId=");
 		sb.append(dossierDocId);
@@ -54,16 +54,18 @@ public class DossierDocCacheModel implements CacheModel<DossierDoc>,
 		sb.append(modifiedDate);
 		sb.append(", dossierProcId=");
 		sb.append(dossierProcId);
-		sb.append(", documentNo=");
-		sb.append(documentNo);
-		sb.append(", documentName=");
-		sb.append(documentName);
+		sb.append(", dossierDocNo=");
+		sb.append(dossierDocNo);
+		sb.append(", dossierDocName=");
+		sb.append(dossierDocName);
 		sb.append(", note=");
 		sb.append(note);
 		sb.append(", sequenceNo=");
 		sb.append(sequenceNo);
-		sb.append(", documentType=");
-		sb.append(documentType);
+		sb.append(", defaultDocTemplateId=");
+		sb.append(defaultDocTemplateId);
+		sb.append(", validationType=");
+		sb.append(validationType);
 		sb.append(", numberOfFile=");
 		sb.append(numberOfFile);
 		sb.append(", onlineForm=");
@@ -98,18 +100,18 @@ public class DossierDocCacheModel implements CacheModel<DossierDoc>,
 
 		dossierDocImpl.setDossierProcId(dossierProcId);
 
-		if (documentNo == null) {
-			dossierDocImpl.setDocumentNo(StringPool.BLANK);
+		if (dossierDocNo == null) {
+			dossierDocImpl.setDossierDocNo(StringPool.BLANK);
 		}
 		else {
-			dossierDocImpl.setDocumentNo(documentNo);
+			dossierDocImpl.setDossierDocNo(dossierDocNo);
 		}
 
-		if (documentName == null) {
-			dossierDocImpl.setDocumentName(StringPool.BLANK);
+		if (dossierDocName == null) {
+			dossierDocImpl.setDossierDocName(StringPool.BLANK);
 		}
 		else {
-			dossierDocImpl.setDocumentName(documentName);
+			dossierDocImpl.setDossierDocName(dossierDocName);
 		}
 
 		if (note == null) {
@@ -120,7 +122,8 @@ public class DossierDocCacheModel implements CacheModel<DossierDoc>,
 		}
 
 		dossierDocImpl.setSequenceNo(sequenceNo);
-		dossierDocImpl.setDocumentType(documentType);
+		dossierDocImpl.setDefaultDocTemplateId(defaultDocTemplateId);
+		dossierDocImpl.setValidationType(validationType);
 		dossierDocImpl.setNumberOfFile(numberOfFile);
 
 		if (onlineForm == null) {
@@ -144,11 +147,12 @@ public class DossierDocCacheModel implements CacheModel<DossierDoc>,
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
 		dossierProcId = objectInput.readLong();
-		documentNo = objectInput.readUTF();
-		documentName = objectInput.readUTF();
+		dossierDocNo = objectInput.readUTF();
+		dossierDocName = objectInput.readUTF();
 		note = objectInput.readUTF();
 		sequenceNo = objectInput.readInt();
-		documentType = objectInput.readInt();
+		defaultDocTemplateId = objectInput.readLong();
+		validationType = objectInput.readInt();
 		numberOfFile = objectInput.readInt();
 		onlineForm = objectInput.readUTF();
 	}
@@ -164,18 +168,18 @@ public class DossierDocCacheModel implements CacheModel<DossierDoc>,
 		objectOutput.writeLong(modifiedDate);
 		objectOutput.writeLong(dossierProcId);
 
-		if (documentNo == null) {
+		if (dossierDocNo == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(documentNo);
+			objectOutput.writeUTF(dossierDocNo);
 		}
 
-		if (documentName == null) {
+		if (dossierDocName == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(documentName);
+			objectOutput.writeUTF(dossierDocName);
 		}
 
 		if (note == null) {
@@ -186,7 +190,8 @@ public class DossierDocCacheModel implements CacheModel<DossierDoc>,
 		}
 
 		objectOutput.writeInt(sequenceNo);
-		objectOutput.writeInt(documentType);
+		objectOutput.writeLong(defaultDocTemplateId);
+		objectOutput.writeInt(validationType);
 		objectOutput.writeInt(numberOfFile);
 
 		if (onlineForm == null) {
@@ -204,11 +209,12 @@ public class DossierDocCacheModel implements CacheModel<DossierDoc>,
 	public long createDate;
 	public long modifiedDate;
 	public long dossierProcId;
-	public String documentNo;
-	public String documentName;
+	public String dossierDocNo;
+	public String dossierDocName;
 	public String note;
 	public int sequenceNo;
-	public int documentType;
+	public long defaultDocTemplateId;
+	public int validationType;
 	public int numberOfFile;
 	public String onlineForm;
 }

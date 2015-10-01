@@ -129,6 +129,78 @@ public class DossierLocalServiceClp implements DossierLocalService {
 		_methodName21 = "setBeanIdentifier";
 
 		_methodParameterTypes21 = new String[] { "java.lang.String" };
+
+		_methodName23 = "addDossier";
+
+		_methodParameterTypes23 = new String[] {
+				"long", "long", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.util.Date", "java.util.Date",
+				"java.util.Date", "java.util.Date", "java.util.Date",
+				"java.util.Date", "java.lang.String", "java.lang.String",
+				"java.lang.String", "int",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName24 = "updateDossier";
+
+		_methodParameterTypes24 = new String[] {
+				"long", "long", "long", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.util.Date", "java.util.Date",
+				"java.util.Date", "java.util.Date", "java.util.Date",
+				"java.util.Date", "java.lang.String", "java.lang.String",
+				"java.lang.String", "int",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName25 = "updateDossierResources";
+
+		_methodParameterTypes25 = new String[] {
+				"org.oep.core.dossiermgt.model.Dossier", "java.lang.String[][]",
+				"java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName26 = "removeDossier";
+
+		_methodParameterTypes26 = new String[] {
+				"org.oep.core.dossiermgt.model.Dossier"
+			};
+
+		_methodName27 = "removeDossier";
+
+		_methodParameterTypes27 = new String[] { "long" };
+
+		_methodName28 = "addDossierResources";
+
+		_methodParameterTypes28 = new String[] {
+				"org.oep.core.dossiermgt.model.Dossier", "boolean", "boolean",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName29 = "addDossierResources";
+
+		_methodParameterTypes29 = new String[] {
+				"org.oep.core.dossiermgt.model.Dossier", "java.lang.String[][]",
+				"java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName30 = "addDossierResources";
+
+		_methodParameterTypes30 = new String[] {
+				"long", "java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
 	}
 
 	@Override
@@ -807,6 +879,455 @@ public class DossierLocalServiceClp implements DossierLocalService {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public org.oep.core.dossiermgt.model.Dossier addDossier(
+		long organizationId, long dossierProcId, java.lang.String govAgentId,
+		java.lang.String govAgentName, java.lang.String subjectId,
+		java.lang.String subjectType, java.lang.String subjectName,
+		java.lang.String address, java.lang.String cityNo,
+		java.lang.String cityName, java.lang.String districtNo,
+		java.lang.String districtName, java.lang.String wardNo,
+		java.lang.String wardName, java.lang.String telNo,
+		java.lang.String contactPersonName, java.lang.String contactPersonTel,
+		java.lang.String note, java.lang.String resumeDescription,
+		java.lang.String receptionNo, java.util.Date submissionDate,
+		java.util.Date receptionDate, java.util.Date resubmissionDate,
+		java.util.Date appointmentDate, java.util.Date releaseDate,
+		java.util.Date completionDate, java.lang.String status,
+		java.lang.String statusDescription, java.lang.String feedbackNote,
+		int dirty, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName23,
+					_methodParameterTypes23,
+					new Object[] {
+						organizationId,
+						
+					dossierProcId,
+						
+					ClpSerializer.translateInput(govAgentId),
+						
+					ClpSerializer.translateInput(govAgentName),
+						
+					ClpSerializer.translateInput(subjectId),
+						
+					ClpSerializer.translateInput(subjectType),
+						
+					ClpSerializer.translateInput(subjectName),
+						
+					ClpSerializer.translateInput(address),
+						
+					ClpSerializer.translateInput(cityNo),
+						
+					ClpSerializer.translateInput(cityName),
+						
+					ClpSerializer.translateInput(districtNo),
+						
+					ClpSerializer.translateInput(districtName),
+						
+					ClpSerializer.translateInput(wardNo),
+						
+					ClpSerializer.translateInput(wardName),
+						
+					ClpSerializer.translateInput(telNo),
+						
+					ClpSerializer.translateInput(contactPersonName),
+						
+					ClpSerializer.translateInput(contactPersonTel),
+						
+					ClpSerializer.translateInput(note),
+						
+					ClpSerializer.translateInput(resumeDescription),
+						
+					ClpSerializer.translateInput(receptionNo),
+						
+					ClpSerializer.translateInput(submissionDate),
+						
+					ClpSerializer.translateInput(receptionDate),
+						
+					ClpSerializer.translateInput(resubmissionDate),
+						
+					ClpSerializer.translateInput(appointmentDate),
+						
+					ClpSerializer.translateInput(releaseDate),
+						
+					ClpSerializer.translateInput(completionDate),
+						
+					ClpSerializer.translateInput(status),
+						
+					ClpSerializer.translateInput(statusDescription),
+						
+					ClpSerializer.translateInput(feedbackNote),
+						
+					dirty,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.dossiermgt.model.Dossier)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.Dossier updateDossier(long id,
+		long organizationId, long dossierProcId, java.lang.String govAgentId,
+		java.lang.String govAgentName, java.lang.String subjectId,
+		java.lang.String subjectType, java.lang.String subjectName,
+		java.lang.String address, java.lang.String cityNo,
+		java.lang.String cityName, java.lang.String districtNo,
+		java.lang.String districtName, java.lang.String wardNo,
+		java.lang.String wardName, java.lang.String telNo,
+		java.lang.String contactPersonName, java.lang.String contactPersonTel,
+		java.lang.String note, java.lang.String resumeDescription,
+		java.lang.String receptionNo, java.util.Date submissionDate,
+		java.util.Date receptionDate, java.util.Date resubmissionDate,
+		java.util.Date appointmentDate, java.util.Date releaseDate,
+		java.util.Date completionDate, java.lang.String status,
+		java.lang.String statusDescription, java.lang.String feedbackNote,
+		int dirty, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName24,
+					_methodParameterTypes24,
+					new Object[] {
+						id,
+						
+					organizationId,
+						
+					dossierProcId,
+						
+					ClpSerializer.translateInput(govAgentId),
+						
+					ClpSerializer.translateInput(govAgentName),
+						
+					ClpSerializer.translateInput(subjectId),
+						
+					ClpSerializer.translateInput(subjectType),
+						
+					ClpSerializer.translateInput(subjectName),
+						
+					ClpSerializer.translateInput(address),
+						
+					ClpSerializer.translateInput(cityNo),
+						
+					ClpSerializer.translateInput(cityName),
+						
+					ClpSerializer.translateInput(districtNo),
+						
+					ClpSerializer.translateInput(districtName),
+						
+					ClpSerializer.translateInput(wardNo),
+						
+					ClpSerializer.translateInput(wardName),
+						
+					ClpSerializer.translateInput(telNo),
+						
+					ClpSerializer.translateInput(contactPersonName),
+						
+					ClpSerializer.translateInput(contactPersonTel),
+						
+					ClpSerializer.translateInput(note),
+						
+					ClpSerializer.translateInput(resumeDescription),
+						
+					ClpSerializer.translateInput(receptionNo),
+						
+					ClpSerializer.translateInput(submissionDate),
+						
+					ClpSerializer.translateInput(receptionDate),
+						
+					ClpSerializer.translateInput(resubmissionDate),
+						
+					ClpSerializer.translateInput(appointmentDate),
+						
+					ClpSerializer.translateInput(releaseDate),
+						
+					ClpSerializer.translateInput(completionDate),
+						
+					ClpSerializer.translateInput(status),
+						
+					ClpSerializer.translateInput(statusDescription),
+						
+					ClpSerializer.translateInput(feedbackNote),
+						
+					dirty,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.dossiermgt.model.Dossier)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public void updateDossierResources(
+		org.oep.core.dossiermgt.model.Dossier dossier,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName25,
+				_methodParameterTypes25,
+				new Object[] {
+					ClpSerializer.translateInput(dossier),
+					
+				ClpSerializer.translateInput(groupPermissions),
+					
+				ClpSerializer.translateInput(guestPermissions),
+					
+				ClpSerializer.translateInput(serviceContext)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void removeDossier(org.oep.core.dossiermgt.model.Dossier dossier)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName26,
+				_methodParameterTypes26,
+				new Object[] { ClpSerializer.translateInput(dossier) });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void removeDossier(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName27,
+				_methodParameterTypes27, new Object[] { id });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void addDossierResources(
+		org.oep.core.dossiermgt.model.Dossier dossier,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName28,
+				_methodParameterTypes28,
+				new Object[] {
+					ClpSerializer.translateInput(dossier),
+					
+				addGroupPermission,
+					
+				addGuestPermission,
+					
+				ClpSerializer.translateInput(serviceContext)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void addDossierResources(
+		org.oep.core.dossiermgt.model.Dossier dossier,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName29,
+				_methodParameterTypes29,
+				new Object[] {
+					ClpSerializer.translateInput(dossier),
+					
+				ClpSerializer.translateInput(groupPermissions),
+					
+				ClpSerializer.translateInput(guestPermissions),
+					
+				ClpSerializer.translateInput(serviceContext)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void addDossierResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName30,
+				_methodParameterTypes30,
+				new Object[] {
+					id,
+					
+				ClpSerializer.translateInput(groupPermissions),
+					
+				ClpSerializer.translateInput(guestPermissions),
+					
+				ClpSerializer.translateInput(serviceContext)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
 	private InvokableLocalService _invokableLocalService;
 	private String _methodName0;
 	private String[] _methodParameterTypes0;
@@ -852,4 +1373,20 @@ public class DossierLocalServiceClp implements DossierLocalService {
 	private String[] _methodParameterTypes20;
 	private String _methodName21;
 	private String[] _methodParameterTypes21;
+	private String _methodName23;
+	private String[] _methodParameterTypes23;
+	private String _methodName24;
+	private String[] _methodParameterTypes24;
+	private String _methodName25;
+	private String[] _methodParameterTypes25;
+	private String _methodName26;
+	private String[] _methodParameterTypes26;
+	private String _methodName27;
+	private String[] _methodParameterTypes27;
+	private String _methodName28;
+	private String[] _methodParameterTypes28;
+	private String _methodName29;
+	private String[] _methodParameterTypes29;
+	private String _methodName30;
+	private String[] _methodParameterTypes30;
 }

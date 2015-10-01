@@ -50,7 +50,7 @@ public class StepTransitionWrapper implements StepTransition,
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("stepTransionId", getStepTransionId());
+		attributes.put("stepTransitionId", getStepTransitionId());
 		attributes.put("userId", getUserId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
@@ -64,7 +64,7 @@ public class StepTransitionWrapper implements StepTransition,
 		attributes.put("daysDuration", getDaysDuration());
 		attributes.put("dossierStatus", getDossierStatus());
 		attributes.put("userAssignment", getUserAssignment());
-		attributes.put("newOrder", getNewOrder());
+		attributes.put("newProcessOrder", getNewProcessOrder());
 		attributes.put("errorMessage", getErrorMessage());
 
 		return attributes;
@@ -72,10 +72,10 @@ public class StepTransitionWrapper implements StepTransition,
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long stepTransionId = (Long)attributes.get("stepTransionId");
+		Long stepTransitionId = (Long)attributes.get("stepTransitionId");
 
-		if (stepTransionId != null) {
-			setStepTransionId(stepTransionId);
+		if (stepTransitionId != null) {
+			setStepTransitionId(stepTransitionId);
 		}
 
 		Long userId = (Long)attributes.get("userId");
@@ -156,10 +156,10 @@ public class StepTransitionWrapper implements StepTransition,
 			setUserAssignment(userAssignment);
 		}
 
-		Integer newOrder = (Integer)attributes.get("newOrder");
+		Integer newProcessOrder = (Integer)attributes.get("newProcessOrder");
 
-		if (newOrder != null) {
-			setNewOrder(newOrder);
+		if (newProcessOrder != null) {
+			setNewProcessOrder(newProcessOrder);
 		}
 
 		String errorMessage = (String)attributes.get("errorMessage");
@@ -190,23 +190,23 @@ public class StepTransitionWrapper implements StepTransition,
 	}
 
 	/**
-	* Returns the step transion ID of this step transition.
+	* Returns the step transition ID of this step transition.
 	*
-	* @return the step transion ID of this step transition
+	* @return the step transition ID of this step transition
 	*/
 	@Override
-	public long getStepTransionId() {
-		return _stepTransition.getStepTransionId();
+	public long getStepTransitionId() {
+		return _stepTransition.getStepTransitionId();
 	}
 
 	/**
-	* Sets the step transion ID of this step transition.
+	* Sets the step transition ID of this step transition.
 	*
-	* @param stepTransionId the step transion ID of this step transition
+	* @param stepTransitionId the step transition ID of this step transition
 	*/
 	@Override
-	public void setStepTransionId(long stepTransionId) {
-		_stepTransition.setStepTransionId(stepTransionId);
+	public void setStepTransitionId(long stepTransitionId) {
+		_stepTransition.setStepTransitionId(stepTransitionId);
 	}
 
 	/**
@@ -492,23 +492,23 @@ public class StepTransitionWrapper implements StepTransition,
 	}
 
 	/**
-	* Returns the new order of this step transition.
+	* Returns the new process order of this step transition.
 	*
-	* @return the new order of this step transition
+	* @return the new process order of this step transition
 	*/
 	@Override
-	public int getNewOrder() {
-		return _stepTransition.getNewOrder();
+	public int getNewProcessOrder() {
+		return _stepTransition.getNewProcessOrder();
 	}
 
 	/**
-	* Sets the new order of this step transition.
+	* Sets the new process order of this step transition.
 	*
-	* @param newOrder the new order of this step transition
+	* @param newProcessOrder the new process order of this step transition
 	*/
 	@Override
-	public void setNewOrder(int newOrder) {
-		_stepTransition.setNewOrder(newOrder);
+	public void setNewProcessOrder(int newProcessOrder) {
+		_stepTransition.setNewProcessOrder(newProcessOrder);
 	}
 
 	/**

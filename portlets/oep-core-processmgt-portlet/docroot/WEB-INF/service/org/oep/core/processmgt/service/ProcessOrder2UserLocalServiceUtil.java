@@ -55,27 +55,27 @@ public class ProcessOrder2UserLocalServiceUtil {
 	/**
 	* Creates a new process order2 user with the primary key. Does not add the process order2 user to the database.
 	*
-	* @param id the primary key for the new process order2 user
+	* @param processOrder2UserPK the primary key for the new process order2 user
 	* @return the new process order2 user
 	*/
 	public static org.oep.core.processmgt.model.ProcessOrder2User createProcessOrder2User(
-		long id) {
-		return getService().createProcessOrder2User(id);
+		org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK processOrder2UserPK) {
+		return getService().createProcessOrder2User(processOrder2UserPK);
 	}
 
 	/**
 	* Deletes the process order2 user with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the process order2 user
+	* @param processOrder2UserPK the primary key of the process order2 user
 	* @return the process order2 user that was removed
 	* @throws PortalException if a process order2 user with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static org.oep.core.processmgt.model.ProcessOrder2User deleteProcessOrder2User(
-		long id)
+		org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK processOrder2UserPK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return getService().deleteProcessOrder2User(id);
+		return getService().deleteProcessOrder2User(processOrder2UserPK);
 	}
 
 	/**
@@ -182,23 +182,24 @@ public class ProcessOrder2UserLocalServiceUtil {
 	}
 
 	public static org.oep.core.processmgt.model.ProcessOrder2User fetchProcessOrder2User(
-		long id) throws com.liferay.portal.kernel.exception.SystemException {
-		return getService().fetchProcessOrder2User(id);
+		org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK processOrder2UserPK)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().fetchProcessOrder2User(processOrder2UserPK);
 	}
 
 	/**
 	* Returns the process order2 user with the primary key.
 	*
-	* @param id the primary key of the process order2 user
+	* @param processOrder2UserPK the primary key of the process order2 user
 	* @return the process order2 user
 	* @throws PortalException if a process order2 user with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static org.oep.core.processmgt.model.ProcessOrder2User getProcessOrder2User(
-		long id)
+		org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK processOrder2UserPK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return getService().getProcessOrder2User(id);
+		return getService().getProcessOrder2User(processOrder2UserPK);
 	}
 
 	public static com.liferay.portal.model.PersistedModel getPersistedModel(

@@ -34,11 +34,15 @@ public class DossierDoc2TemplateLocalServiceClp
 
 		_methodName1 = "createDossierDoc2Template";
 
-		_methodParameterTypes1 = new String[] { "long" };
+		_methodParameterTypes1 = new String[] {
+				"org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK"
+			};
 
 		_methodName2 = "deleteDossierDoc2Template";
 
-		_methodParameterTypes2 = new String[] { "long" };
+		_methodParameterTypes2 = new String[] {
+				"org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK"
+			};
 
 		_methodName3 = "deleteDossierDoc2Template";
 
@@ -84,11 +88,15 @@ public class DossierDoc2TemplateLocalServiceClp
 
 		_methodName10 = "fetchDossierDoc2Template";
 
-		_methodParameterTypes10 = new String[] { "long" };
+		_methodParameterTypes10 = new String[] {
+				"org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK"
+			};
 
 		_methodName11 = "getDossierDoc2Template";
 
-		_methodParameterTypes11 = new String[] { "long" };
+		_methodParameterTypes11 = new String[] {
+				"org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK"
+			};
 
 		_methodName12 = "getPersistedModel";
 
@@ -151,12 +159,15 @@ public class DossierDoc2TemplateLocalServiceClp
 
 	@Override
 	public org.oep.core.dossiermgt.model.DossierDoc2Template createDossierDoc2Template(
-		long id) {
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK dossierDoc2TemplatePK) {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName1,
-					_methodParameterTypes1, new Object[] { id });
+					_methodParameterTypes1,
+					new Object[] {
+						ClpSerializer.translateInput(dossierDoc2TemplatePK)
+					});
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -175,14 +186,17 @@ public class DossierDoc2TemplateLocalServiceClp
 
 	@Override
 	public org.oep.core.dossiermgt.model.DossierDoc2Template deleteDossierDoc2Template(
-		long id)
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK dossierDoc2TemplatePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName2,
-					_methodParameterTypes2, new Object[] { id });
+					_methodParameterTypes2,
+					new Object[] {
+						ClpSerializer.translateInput(dossierDoc2TemplatePK)
+					});
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -438,12 +452,16 @@ public class DossierDoc2TemplateLocalServiceClp
 
 	@Override
 	public org.oep.core.dossiermgt.model.DossierDoc2Template fetchDossierDoc2Template(
-		long id) throws com.liferay.portal.kernel.exception.SystemException {
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK dossierDoc2TemplatePK)
+		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName10,
-					_methodParameterTypes10, new Object[] { id });
+					_methodParameterTypes10,
+					new Object[] {
+						ClpSerializer.translateInput(dossierDoc2TemplatePK)
+					});
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -466,14 +484,17 @@ public class DossierDoc2TemplateLocalServiceClp
 
 	@Override
 	public org.oep.core.dossiermgt.model.DossierDoc2Template getDossierDoc2Template(
-		long id)
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK dossierDoc2TemplatePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName11,
-					_methodParameterTypes11, new Object[] { id });
+					_methodParameterTypes11,
+					new Object[] {
+						ClpSerializer.translateInput(dossierDoc2TemplatePK)
+					});
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);

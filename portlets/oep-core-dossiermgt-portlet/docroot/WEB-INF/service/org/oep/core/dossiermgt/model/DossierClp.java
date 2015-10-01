@@ -84,12 +84,11 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("organizationId", getOrganizationId());
 		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgentNo", getGovAgentNo());
+		attributes.put("govAgentId", getGovAgentId());
 		attributes.put("govAgentName", getGovAgentName());
-		attributes.put("submitterName", getSubmitterName());
-		attributes.put("actorType", getActorType());
-		attributes.put("actorNo", getActorNo());
-		attributes.put("actorName", getActorName());
+		attributes.put("subjectId", getSubjectId());
+		attributes.put("subjectType", getSubjectType());
+		attributes.put("subjectName", getSubjectName());
 		attributes.put("address", getAddress());
 		attributes.put("cityNo", getCityNo());
 		attributes.put("cityName", getCityName());
@@ -97,8 +96,11 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		attributes.put("districtName", getDistrictName());
 		attributes.put("wardNo", getWardNo());
 		attributes.put("wardName", getWardName());
-		attributes.put("description", getDescription());
+		attributes.put("telNo", getTelNo());
+		attributes.put("contactPersonName", getContactPersonName());
+		attributes.put("contactPersonTel", getContactPersonTel());
 		attributes.put("note", getNote());
+		attributes.put("resumeDescription", getResumeDescription());
 		attributes.put("receptionNo", getReceptionNo());
 		attributes.put("submissionDate", getSubmissionDate());
 		attributes.put("receptionDate", getReceptionDate());
@@ -107,9 +109,9 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		attributes.put("releaseDate", getReleaseDate());
 		attributes.put("completionDate", getCompletionDate());
 		attributes.put("status", getStatus());
-		attributes.put("statusName", getStatusName());
+		attributes.put("statusDescription", getStatusDescription());
 		attributes.put("feedbackNote", getFeedbackNote());
-		attributes.put("paymentConfirmed", getPaymentConfirmed());
+		attributes.put("dirty", getDirty());
 
 		return attributes;
 	}
@@ -170,10 +172,10 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 			setDossierProcId(dossierProcId);
 		}
 
-		String govAgentNo = (String)attributes.get("govAgentNo");
+		String govAgentId = (String)attributes.get("govAgentId");
 
-		if (govAgentNo != null) {
-			setGovAgentNo(govAgentNo);
+		if (govAgentId != null) {
+			setGovAgentId(govAgentId);
 		}
 
 		String govAgentName = (String)attributes.get("govAgentName");
@@ -182,28 +184,22 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 			setGovAgentName(govAgentName);
 		}
 
-		String submitterName = (String)attributes.get("submitterName");
+		String subjectId = (String)attributes.get("subjectId");
 
-		if (submitterName != null) {
-			setSubmitterName(submitterName);
+		if (subjectId != null) {
+			setSubjectId(subjectId);
 		}
 
-		Integer actorType = (Integer)attributes.get("actorType");
+		String subjectType = (String)attributes.get("subjectType");
 
-		if (actorType != null) {
-			setActorType(actorType);
+		if (subjectType != null) {
+			setSubjectType(subjectType);
 		}
 
-		String actorNo = (String)attributes.get("actorNo");
+		String subjectName = (String)attributes.get("subjectName");
 
-		if (actorNo != null) {
-			setActorNo(actorNo);
-		}
-
-		String actorName = (String)attributes.get("actorName");
-
-		if (actorName != null) {
-			setActorName(actorName);
+		if (subjectName != null) {
+			setSubjectName(subjectName);
 		}
 
 		String address = (String)attributes.get("address");
@@ -248,16 +244,34 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 			setWardName(wardName);
 		}
 
-		String description = (String)attributes.get("description");
+		String telNo = (String)attributes.get("telNo");
 
-		if (description != null) {
-			setDescription(description);
+		if (telNo != null) {
+			setTelNo(telNo);
+		}
+
+		String contactPersonName = (String)attributes.get("contactPersonName");
+
+		if (contactPersonName != null) {
+			setContactPersonName(contactPersonName);
+		}
+
+		String contactPersonTel = (String)attributes.get("contactPersonTel");
+
+		if (contactPersonTel != null) {
+			setContactPersonTel(contactPersonTel);
 		}
 
 		String note = (String)attributes.get("note");
 
 		if (note != null) {
 			setNote(note);
+		}
+
+		String resumeDescription = (String)attributes.get("resumeDescription");
+
+		if (resumeDescription != null) {
+			setResumeDescription(resumeDescription);
 		}
 
 		String receptionNo = (String)attributes.get("receptionNo");
@@ -308,10 +322,10 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 			setStatus(status);
 		}
 
-		String statusName = (String)attributes.get("statusName");
+		String statusDescription = (String)attributes.get("statusDescription");
 
-		if (statusName != null) {
-			setStatusName(statusName);
+		if (statusDescription != null) {
+			setStatusDescription(statusDescription);
 		}
 
 		String feedbackNote = (String)attributes.get("feedbackNote");
@@ -320,10 +334,10 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 			setFeedbackNote(feedbackNote);
 		}
 
-		Integer paymentConfirmed = (Integer)attributes.get("paymentConfirmed");
+		Integer dirty = (Integer)attributes.get("dirty");
 
-		if (paymentConfirmed != null) {
-			setPaymentConfirmed(paymentConfirmed);
+		if (dirty != null) {
+			setDirty(dirty);
 		}
 	}
 
@@ -545,21 +559,21 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public String getGovAgentNo() {
-		return _govAgentNo;
+	public String getGovAgentId() {
+		return _govAgentId;
 	}
 
 	@Override
-	public void setGovAgentNo(String govAgentNo) {
-		_govAgentNo = govAgentNo;
+	public void setGovAgentId(String govAgentId) {
+		_govAgentId = govAgentId;
 
 		if (_dossierRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setGovAgentNo", String.class);
+				Method method = clazz.getMethod("setGovAgentId", String.class);
 
-				method.invoke(_dossierRemoteModel, govAgentNo);
+				method.invoke(_dossierRemoteModel, govAgentId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -591,21 +605,21 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public String getSubmitterName() {
-		return _submitterName;
+	public String getSubjectId() {
+		return _subjectId;
 	}
 
 	@Override
-	public void setSubmitterName(String submitterName) {
-		_submitterName = submitterName;
+	public void setSubjectId(String subjectId) {
+		_subjectId = subjectId;
 
 		if (_dossierRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setSubmitterName", String.class);
+				Method method = clazz.getMethod("setSubjectId", String.class);
 
-				method.invoke(_dossierRemoteModel, submitterName);
+				method.invoke(_dossierRemoteModel, subjectId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -614,21 +628,21 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public int getActorType() {
-		return _actorType;
+	public String getSubjectType() {
+		return _subjectType;
 	}
 
 	@Override
-	public void setActorType(int actorType) {
-		_actorType = actorType;
+	public void setSubjectType(String subjectType) {
+		_subjectType = subjectType;
 
 		if (_dossierRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setActorType", int.class);
+				Method method = clazz.getMethod("setSubjectType", String.class);
 
-				method.invoke(_dossierRemoteModel, actorType);
+				method.invoke(_dossierRemoteModel, subjectType);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -637,44 +651,21 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public String getActorNo() {
-		return _actorNo;
+	public String getSubjectName() {
+		return _subjectName;
 	}
 
 	@Override
-	public void setActorNo(String actorNo) {
-		_actorNo = actorNo;
+	public void setSubjectName(String subjectName) {
+		_subjectName = subjectName;
 
 		if (_dossierRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setActorNo", String.class);
+				Method method = clazz.getMethod("setSubjectName", String.class);
 
-				method.invoke(_dossierRemoteModel, actorNo);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
-	public String getActorName() {
-		return _actorName;
-	}
-
-	@Override
-	public void setActorName(String actorName) {
-		_actorName = actorName;
-
-		if (_dossierRemoteModel != null) {
-			try {
-				Class<?> clazz = _dossierRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setActorName", String.class);
-
-				method.invoke(_dossierRemoteModel, actorName);
+				method.invoke(_dossierRemoteModel, subjectName);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -844,21 +835,69 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public String getDescription() {
-		return _description;
+	public String getTelNo() {
+		return _telNo;
 	}
 
 	@Override
-	public void setDescription(String description) {
-		_description = description;
+	public void setTelNo(String telNo) {
+		_telNo = telNo;
 
 		if (_dossierRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setDescription", String.class);
+				Method method = clazz.getMethod("setTelNo", String.class);
 
-				method.invoke(_dossierRemoteModel, description);
+				method.invoke(_dossierRemoteModel, telNo);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getContactPersonName() {
+		return _contactPersonName;
+	}
+
+	@Override
+	public void setContactPersonName(String contactPersonName) {
+		_contactPersonName = contactPersonName;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setContactPersonName",
+						String.class);
+
+				method.invoke(_dossierRemoteModel, contactPersonName);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getContactPersonTel() {
+		return _contactPersonTel;
+	}
+
+	@Override
+	public void setContactPersonTel(String contactPersonTel) {
+		_contactPersonTel = contactPersonTel;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setContactPersonTel",
+						String.class);
+
+				method.invoke(_dossierRemoteModel, contactPersonTel);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -882,6 +921,30 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 				Method method = clazz.getMethod("setNote", String.class);
 
 				method.invoke(_dossierRemoteModel, note);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getResumeDescription() {
+		return _resumeDescription;
+	}
+
+	@Override
+	public void setResumeDescription(String resumeDescription) {
+		_resumeDescription = resumeDescription;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setResumeDescription",
+						String.class);
+
+				method.invoke(_dossierRemoteModel, resumeDescription);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -1075,21 +1138,22 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public String getStatusName() {
-		return _statusName;
+	public String getStatusDescription() {
+		return _statusDescription;
 	}
 
 	@Override
-	public void setStatusName(String statusName) {
-		_statusName = statusName;
+	public void setStatusDescription(String statusDescription) {
+		_statusDescription = statusDescription;
 
 		if (_dossierRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setStatusName", String.class);
+				Method method = clazz.getMethod("setStatusDescription",
+						String.class);
 
-				method.invoke(_dossierRemoteModel, statusName);
+				method.invoke(_dossierRemoteModel, statusDescription);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -1121,21 +1185,21 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public int getPaymentConfirmed() {
-		return _paymentConfirmed;
+	public int getDirty() {
+		return _dirty;
 	}
 
 	@Override
-	public void setPaymentConfirmed(int paymentConfirmed) {
-		_paymentConfirmed = paymentConfirmed;
+	public void setDirty(int dirty) {
+		_dirty = dirty;
 
 		if (_dossierRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setPaymentConfirmed", int.class);
+				Method method = clazz.getMethod("setDirty", int.class);
 
-				method.invoke(_dossierRemoteModel, paymentConfirmed);
+				method.invoke(_dossierRemoteModel, dirty);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -1227,12 +1291,11 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		clone.setModifiedDate(getModifiedDate());
 		clone.setOrganizationId(getOrganizationId());
 		clone.setDossierProcId(getDossierProcId());
-		clone.setGovAgentNo(getGovAgentNo());
+		clone.setGovAgentId(getGovAgentId());
 		clone.setGovAgentName(getGovAgentName());
-		clone.setSubmitterName(getSubmitterName());
-		clone.setActorType(getActorType());
-		clone.setActorNo(getActorNo());
-		clone.setActorName(getActorName());
+		clone.setSubjectId(getSubjectId());
+		clone.setSubjectType(getSubjectType());
+		clone.setSubjectName(getSubjectName());
 		clone.setAddress(getAddress());
 		clone.setCityNo(getCityNo());
 		clone.setCityName(getCityName());
@@ -1240,8 +1303,11 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		clone.setDistrictName(getDistrictName());
 		clone.setWardNo(getWardNo());
 		clone.setWardName(getWardName());
-		clone.setDescription(getDescription());
+		clone.setTelNo(getTelNo());
+		clone.setContactPersonName(getContactPersonName());
+		clone.setContactPersonTel(getContactPersonTel());
 		clone.setNote(getNote());
+		clone.setResumeDescription(getResumeDescription());
 		clone.setReceptionNo(getReceptionNo());
 		clone.setSubmissionDate(getSubmissionDate());
 		clone.setReceptionDate(getReceptionDate());
@@ -1250,9 +1316,9 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		clone.setReleaseDate(getReleaseDate());
 		clone.setCompletionDate(getCompletionDate());
 		clone.setStatus(getStatus());
-		clone.setStatusName(getStatusName());
+		clone.setStatusDescription(getStatusDescription());
 		clone.setFeedbackNote(getFeedbackNote());
-		clone.setPaymentConfirmed(getPaymentConfirmed());
+		clone.setDirty(getDirty());
 
 		return clone;
 	}
@@ -1305,7 +1371,7 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(71);
+		StringBundler sb = new StringBundler(75);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
@@ -1325,18 +1391,16 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getOrganizationId());
 		sb.append(", dossierProcId=");
 		sb.append(getDossierProcId());
-		sb.append(", govAgentNo=");
-		sb.append(getGovAgentNo());
+		sb.append(", govAgentId=");
+		sb.append(getGovAgentId());
 		sb.append(", govAgentName=");
 		sb.append(getGovAgentName());
-		sb.append(", submitterName=");
-		sb.append(getSubmitterName());
-		sb.append(", actorType=");
-		sb.append(getActorType());
-		sb.append(", actorNo=");
-		sb.append(getActorNo());
-		sb.append(", actorName=");
-		sb.append(getActorName());
+		sb.append(", subjectId=");
+		sb.append(getSubjectId());
+		sb.append(", subjectType=");
+		sb.append(getSubjectType());
+		sb.append(", subjectName=");
+		sb.append(getSubjectName());
 		sb.append(", address=");
 		sb.append(getAddress());
 		sb.append(", cityNo=");
@@ -1351,10 +1415,16 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getWardNo());
 		sb.append(", wardName=");
 		sb.append(getWardName());
-		sb.append(", description=");
-		sb.append(getDescription());
+		sb.append(", telNo=");
+		sb.append(getTelNo());
+		sb.append(", contactPersonName=");
+		sb.append(getContactPersonName());
+		sb.append(", contactPersonTel=");
+		sb.append(getContactPersonTel());
 		sb.append(", note=");
 		sb.append(getNote());
+		sb.append(", resumeDescription=");
+		sb.append(getResumeDescription());
 		sb.append(", receptionNo=");
 		sb.append(getReceptionNo());
 		sb.append(", submissionDate=");
@@ -1371,12 +1441,12 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getCompletionDate());
 		sb.append(", status=");
 		sb.append(getStatus());
-		sb.append(", statusName=");
-		sb.append(getStatusName());
+		sb.append(", statusDescription=");
+		sb.append(getStatusDescription());
 		sb.append(", feedbackNote=");
 		sb.append(getFeedbackNote());
-		sb.append(", paymentConfirmed=");
-		sb.append(getPaymentConfirmed());
+		sb.append(", dirty=");
+		sb.append(getDirty());
 		sb.append("}");
 
 		return sb.toString();
@@ -1384,7 +1454,7 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(109);
+		StringBundler sb = new StringBundler(115);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.Dossier");
@@ -1427,28 +1497,24 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getDossierProcId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentNo</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentNo());
+			"<column><column-name>govAgentId</column-name><column-value><![CDATA[");
+		sb.append(getGovAgentId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>govAgentName</column-name><column-value><![CDATA[");
 		sb.append(getGovAgentName());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>submitterName</column-name><column-value><![CDATA[");
-		sb.append(getSubmitterName());
+			"<column><column-name>subjectId</column-name><column-value><![CDATA[");
+		sb.append(getSubjectId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>actorType</column-name><column-value><![CDATA[");
-		sb.append(getActorType());
+			"<column><column-name>subjectType</column-name><column-value><![CDATA[");
+		sb.append(getSubjectType());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>actorNo</column-name><column-value><![CDATA[");
-		sb.append(getActorNo());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>actorName</column-name><column-value><![CDATA[");
-		sb.append(getActorName());
+			"<column><column-name>subjectName</column-name><column-value><![CDATA[");
+		sb.append(getSubjectName());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>address</column-name><column-value><![CDATA[");
@@ -1479,12 +1545,24 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getWardName());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>description</column-name><column-value><![CDATA[");
-		sb.append(getDescription());
+			"<column><column-name>telNo</column-name><column-value><![CDATA[");
+		sb.append(getTelNo());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>contactPersonName</column-name><column-value><![CDATA[");
+		sb.append(getContactPersonName());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>contactPersonTel</column-name><column-value><![CDATA[");
+		sb.append(getContactPersonTel());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>note</column-name><column-value><![CDATA[");
 		sb.append(getNote());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>resumeDescription</column-name><column-value><![CDATA[");
+		sb.append(getResumeDescription());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>receptionNo</column-name><column-value><![CDATA[");
@@ -1519,16 +1597,16 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getStatus());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>statusName</column-name><column-value><![CDATA[");
-		sb.append(getStatusName());
+			"<column><column-name>statusDescription</column-name><column-value><![CDATA[");
+		sb.append(getStatusDescription());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>feedbackNote</column-name><column-value><![CDATA[");
 		sb.append(getFeedbackNote());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>paymentConfirmed</column-name><column-value><![CDATA[");
-		sb.append(getPaymentConfirmed());
+			"<column><column-name>dirty</column-name><column-value><![CDATA[");
+		sb.append(getDirty());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -1546,12 +1624,11 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	private Date _modifiedDate;
 	private long _organizationId;
 	private long _dossierProcId;
-	private String _govAgentNo;
+	private String _govAgentId;
 	private String _govAgentName;
-	private String _submitterName;
-	private int _actorType;
-	private String _actorNo;
-	private String _actorName;
+	private String _subjectId;
+	private String _subjectType;
+	private String _subjectName;
 	private String _address;
 	private String _cityNo;
 	private String _cityName;
@@ -1559,8 +1636,11 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	private String _districtName;
 	private String _wardNo;
 	private String _wardName;
-	private String _description;
+	private String _telNo;
+	private String _contactPersonName;
+	private String _contactPersonTel;
 	private String _note;
+	private String _resumeDescription;
 	private String _receptionNo;
 	private Date _submissionDate;
 	private Date _receptionDate;
@@ -1569,9 +1649,9 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	private Date _releaseDate;
 	private Date _completionDate;
 	private String _status;
-	private String _statusName;
+	private String _statusDescription;
 	private String _feedbackNote;
-	private int _paymentConfirmed;
+	private int _dirty;
 	private BaseModel<?> _dossierRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.dossiermgt.service.ClpSerializer.class;
 }

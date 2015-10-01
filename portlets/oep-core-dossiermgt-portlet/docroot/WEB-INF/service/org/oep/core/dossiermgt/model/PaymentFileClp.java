@@ -84,18 +84,22 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("organizationId", getOrganizationId());
+		attributes.put("govAgentId", getGovAgentId());
+		attributes.put("govAgentName", getGovAgentName());
+		attributes.put("subjectId", getSubjectId());
+		attributes.put("subjectType", getSubjectType());
+		attributes.put("subjectName", getSubjectName());
 		attributes.put("amount", getAmount());
 		attributes.put("paymentType", getPaymentType());
-		attributes.put("detailInfo", getDetailInfo());
-		attributes.put("note", getNote());
+		attributes.put("paymentDescription", getPaymentDescription());
+		attributes.put("transactionInfo", getTransactionInfo());
 		attributes.put("fileEntryId", getFileEntryId());
-		attributes.put("issueDate", getIssueDate());
 		attributes.put("checkingDate", getCheckingDate());
 		attributes.put("checkingUserId", getCheckingUserId());
 		attributes.put("checkingUserName", getCheckingUserName());
 		attributes.put("checkingResult", getCheckingResult());
 		attributes.put("checkingNote", getCheckingNote());
-		attributes.put("feedbackDate", getFeedbackDate());
+		attributes.put("ebMessageId", getEbMessageId());
 
 		return attributes;
 	}
@@ -150,40 +154,64 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 			setOrganizationId(organizationId);
 		}
 
+		String govAgentId = (String)attributes.get("govAgentId");
+
+		if (govAgentId != null) {
+			setGovAgentId(govAgentId);
+		}
+
+		String govAgentName = (String)attributes.get("govAgentName");
+
+		if (govAgentName != null) {
+			setGovAgentName(govAgentName);
+		}
+
+		String subjectId = (String)attributes.get("subjectId");
+
+		if (subjectId != null) {
+			setSubjectId(subjectId);
+		}
+
+		String subjectType = (String)attributes.get("subjectType");
+
+		if (subjectType != null) {
+			setSubjectType(subjectType);
+		}
+
+		String subjectName = (String)attributes.get("subjectName");
+
+		if (subjectName != null) {
+			setSubjectName(subjectName);
+		}
+
 		Long amount = (Long)attributes.get("amount");
 
 		if (amount != null) {
 			setAmount(amount);
 		}
 
-		Integer paymentType = (Integer)attributes.get("paymentType");
+		String paymentType = (String)attributes.get("paymentType");
 
 		if (paymentType != null) {
 			setPaymentType(paymentType);
 		}
 
-		String detailInfo = (String)attributes.get("detailInfo");
+		String paymentDescription = (String)attributes.get("paymentDescription");
 
-		if (detailInfo != null) {
-			setDetailInfo(detailInfo);
+		if (paymentDescription != null) {
+			setPaymentDescription(paymentDescription);
 		}
 
-		String note = (String)attributes.get("note");
+		String transactionInfo = (String)attributes.get("transactionInfo");
 
-		if (note != null) {
-			setNote(note);
+		if (transactionInfo != null) {
+			setTransactionInfo(transactionInfo);
 		}
 
 		Long fileEntryId = (Long)attributes.get("fileEntryId");
 
 		if (fileEntryId != null) {
 			setFileEntryId(fileEntryId);
-		}
-
-		Date issueDate = (Date)attributes.get("issueDate");
-
-		if (issueDate != null) {
-			setIssueDate(issueDate);
 		}
 
 		Date checkingDate = (Date)attributes.get("checkingDate");
@@ -216,10 +244,10 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 			setCheckingNote(checkingNote);
 		}
 
-		Date feedbackDate = (Date)attributes.get("feedbackDate");
+		Long ebMessageId = (Long)attributes.get("ebMessageId");
 
-		if (feedbackDate != null) {
-			setFeedbackDate(feedbackDate);
+		if (ebMessageId != null) {
+			setEbMessageId(ebMessageId);
 		}
 	}
 
@@ -418,6 +446,121 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 	}
 
 	@Override
+	public String getGovAgentId() {
+		return _govAgentId;
+	}
+
+	@Override
+	public void setGovAgentId(String govAgentId) {
+		_govAgentId = govAgentId;
+
+		if (_paymentFileRemoteModel != null) {
+			try {
+				Class<?> clazz = _paymentFileRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setGovAgentId", String.class);
+
+				method.invoke(_paymentFileRemoteModel, govAgentId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getGovAgentName() {
+		return _govAgentName;
+	}
+
+	@Override
+	public void setGovAgentName(String govAgentName) {
+		_govAgentName = govAgentName;
+
+		if (_paymentFileRemoteModel != null) {
+			try {
+				Class<?> clazz = _paymentFileRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setGovAgentName", String.class);
+
+				method.invoke(_paymentFileRemoteModel, govAgentName);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getSubjectId() {
+		return _subjectId;
+	}
+
+	@Override
+	public void setSubjectId(String subjectId) {
+		_subjectId = subjectId;
+
+		if (_paymentFileRemoteModel != null) {
+			try {
+				Class<?> clazz = _paymentFileRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setSubjectId", String.class);
+
+				method.invoke(_paymentFileRemoteModel, subjectId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getSubjectType() {
+		return _subjectType;
+	}
+
+	@Override
+	public void setSubjectType(String subjectType) {
+		_subjectType = subjectType;
+
+		if (_paymentFileRemoteModel != null) {
+			try {
+				Class<?> clazz = _paymentFileRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setSubjectType", String.class);
+
+				method.invoke(_paymentFileRemoteModel, subjectType);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getSubjectName() {
+		return _subjectName;
+	}
+
+	@Override
+	public void setSubjectName(String subjectName) {
+		_subjectName = subjectName;
+
+		if (_paymentFileRemoteModel != null) {
+			try {
+				Class<?> clazz = _paymentFileRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setSubjectName", String.class);
+
+				method.invoke(_paymentFileRemoteModel, subjectName);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
 	public long getAmount() {
 		return _amount;
 	}
@@ -441,19 +584,19 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 	}
 
 	@Override
-	public int getPaymentType() {
+	public String getPaymentType() {
 		return _paymentType;
 	}
 
 	@Override
-	public void setPaymentType(int paymentType) {
+	public void setPaymentType(String paymentType) {
 		_paymentType = paymentType;
 
 		if (_paymentFileRemoteModel != null) {
 			try {
 				Class<?> clazz = _paymentFileRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setPaymentType", int.class);
+				Method method = clazz.getMethod("setPaymentType", String.class);
 
 				method.invoke(_paymentFileRemoteModel, paymentType);
 			}
@@ -464,21 +607,22 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 	}
 
 	@Override
-	public String getDetailInfo() {
-		return _detailInfo;
+	public String getPaymentDescription() {
+		return _paymentDescription;
 	}
 
 	@Override
-	public void setDetailInfo(String detailInfo) {
-		_detailInfo = detailInfo;
+	public void setPaymentDescription(String paymentDescription) {
+		_paymentDescription = paymentDescription;
 
 		if (_paymentFileRemoteModel != null) {
 			try {
 				Class<?> clazz = _paymentFileRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setDetailInfo", String.class);
+				Method method = clazz.getMethod("setPaymentDescription",
+						String.class);
 
-				method.invoke(_paymentFileRemoteModel, detailInfo);
+				method.invoke(_paymentFileRemoteModel, paymentDescription);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -487,21 +631,22 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 	}
 
 	@Override
-	public String getNote() {
-		return _note;
+	public String getTransactionInfo() {
+		return _transactionInfo;
 	}
 
 	@Override
-	public void setNote(String note) {
-		_note = note;
+	public void setTransactionInfo(String transactionInfo) {
+		_transactionInfo = transactionInfo;
 
 		if (_paymentFileRemoteModel != null) {
 			try {
 				Class<?> clazz = _paymentFileRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setNote", String.class);
+				Method method = clazz.getMethod("setTransactionInfo",
+						String.class);
 
-				method.invoke(_paymentFileRemoteModel, note);
+				method.invoke(_paymentFileRemoteModel, transactionInfo);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -525,29 +670,6 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 				Method method = clazz.getMethod("setFileEntryId", long.class);
 
 				method.invoke(_paymentFileRemoteModel, fileEntryId);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
-	public Date getIssueDate() {
-		return _issueDate;
-	}
-
-	@Override
-	public void setIssueDate(Date issueDate) {
-		_issueDate = issueDate;
-
-		if (_paymentFileRemoteModel != null) {
-			try {
-				Class<?> clazz = _paymentFileRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setIssueDate", Date.class);
-
-				method.invoke(_paymentFileRemoteModel, issueDate);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -683,21 +805,21 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 	}
 
 	@Override
-	public Date getFeedbackDate() {
-		return _feedbackDate;
+	public long getEbMessageId() {
+		return _ebMessageId;
 	}
 
 	@Override
-	public void setFeedbackDate(Date feedbackDate) {
-		_feedbackDate = feedbackDate;
+	public void setEbMessageId(long ebMessageId) {
+		_ebMessageId = ebMessageId;
 
 		if (_paymentFileRemoteModel != null) {
 			try {
 				Class<?> clazz = _paymentFileRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setFeedbackDate", Date.class);
+				Method method = clazz.getMethod("setEbMessageId", long.class);
 
-				method.invoke(_paymentFileRemoteModel, feedbackDate);
+				method.invoke(_paymentFileRemoteModel, ebMessageId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -788,18 +910,22 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 		clone.setCreateDate(getCreateDate());
 		clone.setModifiedDate(getModifiedDate());
 		clone.setOrganizationId(getOrganizationId());
+		clone.setGovAgentId(getGovAgentId());
+		clone.setGovAgentName(getGovAgentName());
+		clone.setSubjectId(getSubjectId());
+		clone.setSubjectType(getSubjectType());
+		clone.setSubjectName(getSubjectName());
 		clone.setAmount(getAmount());
 		clone.setPaymentType(getPaymentType());
-		clone.setDetailInfo(getDetailInfo());
-		clone.setNote(getNote());
+		clone.setPaymentDescription(getPaymentDescription());
+		clone.setTransactionInfo(getTransactionInfo());
 		clone.setFileEntryId(getFileEntryId());
-		clone.setIssueDate(getIssueDate());
 		clone.setCheckingDate(getCheckingDate());
 		clone.setCheckingUserId(getCheckingUserId());
 		clone.setCheckingUserName(getCheckingUserName());
 		clone.setCheckingResult(getCheckingResult());
 		clone.setCheckingNote(getCheckingNote());
-		clone.setFeedbackDate(getFeedbackDate());
+		clone.setEbMessageId(getEbMessageId());
 
 		return clone;
 	}
@@ -852,7 +978,7 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(41);
+		StringBundler sb = new StringBundler(49);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
@@ -870,18 +996,26 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 		sb.append(getModifiedDate());
 		sb.append(", organizationId=");
 		sb.append(getOrganizationId());
+		sb.append(", govAgentId=");
+		sb.append(getGovAgentId());
+		sb.append(", govAgentName=");
+		sb.append(getGovAgentName());
+		sb.append(", subjectId=");
+		sb.append(getSubjectId());
+		sb.append(", subjectType=");
+		sb.append(getSubjectType());
+		sb.append(", subjectName=");
+		sb.append(getSubjectName());
 		sb.append(", amount=");
 		sb.append(getAmount());
 		sb.append(", paymentType=");
 		sb.append(getPaymentType());
-		sb.append(", detailInfo=");
-		sb.append(getDetailInfo());
-		sb.append(", note=");
-		sb.append(getNote());
+		sb.append(", paymentDescription=");
+		sb.append(getPaymentDescription());
+		sb.append(", transactionInfo=");
+		sb.append(getTransactionInfo());
 		sb.append(", fileEntryId=");
 		sb.append(getFileEntryId());
-		sb.append(", issueDate=");
-		sb.append(getIssueDate());
 		sb.append(", checkingDate=");
 		sb.append(getCheckingDate());
 		sb.append(", checkingUserId=");
@@ -892,8 +1026,8 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 		sb.append(getCheckingResult());
 		sb.append(", checkingNote=");
 		sb.append(getCheckingNote());
-		sb.append(", feedbackDate=");
-		sb.append(getFeedbackDate());
+		sb.append(", ebMessageId=");
+		sb.append(getEbMessageId());
 		sb.append("}");
 
 		return sb.toString();
@@ -901,7 +1035,7 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(64);
+		StringBundler sb = new StringBundler(76);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.PaymentFile");
@@ -940,6 +1074,26 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 		sb.append(getOrganizationId());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>govAgentId</column-name><column-value><![CDATA[");
+		sb.append(getGovAgentId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>govAgentName</column-name><column-value><![CDATA[");
+		sb.append(getGovAgentName());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>subjectId</column-name><column-value><![CDATA[");
+		sb.append(getSubjectId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>subjectType</column-name><column-value><![CDATA[");
+		sb.append(getSubjectType());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>subjectName</column-name><column-value><![CDATA[");
+		sb.append(getSubjectName());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>amount</column-name><column-value><![CDATA[");
 		sb.append(getAmount());
 		sb.append("]]></column-value></column>");
@@ -948,20 +1102,16 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 		sb.append(getPaymentType());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>detailInfo</column-name><column-value><![CDATA[");
-		sb.append(getDetailInfo());
+			"<column><column-name>paymentDescription</column-name><column-value><![CDATA[");
+		sb.append(getPaymentDescription());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>note</column-name><column-value><![CDATA[");
-		sb.append(getNote());
+			"<column><column-name>transactionInfo</column-name><column-value><![CDATA[");
+		sb.append(getTransactionInfo());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>fileEntryId</column-name><column-value><![CDATA[");
 		sb.append(getFileEntryId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>issueDate</column-name><column-value><![CDATA[");
-		sb.append(getIssueDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>checkingDate</column-name><column-value><![CDATA[");
@@ -984,8 +1134,8 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 		sb.append(getCheckingNote());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>feedbackDate</column-name><column-value><![CDATA[");
-		sb.append(getFeedbackDate());
+			"<column><column-name>ebMessageId</column-name><column-value><![CDATA[");
+		sb.append(getEbMessageId());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -1002,19 +1152,23 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _organizationId;
+	private String _govAgentId;
+	private String _govAgentName;
+	private String _subjectId;
+	private String _subjectType;
+	private String _subjectName;
 	private long _amount;
-	private int _paymentType;
-	private String _detailInfo;
-	private String _note;
+	private String _paymentType;
+	private String _paymentDescription;
+	private String _transactionInfo;
 	private long _fileEntryId;
-	private Date _issueDate;
 	private Date _checkingDate;
 	private long _checkingUserId;
 	private String _checkingUserUuid;
 	private String _checkingUserName;
 	private int _checkingResult;
 	private String _checkingNote;
-	private Date _feedbackDate;
+	private long _ebMessageId;
 	private BaseModel<?> _paymentFileRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.dossiermgt.service.ClpSerializer.class;
 }

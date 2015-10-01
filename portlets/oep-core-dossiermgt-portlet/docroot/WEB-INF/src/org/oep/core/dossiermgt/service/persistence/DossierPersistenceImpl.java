@@ -1797,12 +1797,11 @@ public class DossierPersistenceImpl extends BasePersistenceImpl<Dossier>
 		dossierImpl.setModifiedDate(dossier.getModifiedDate());
 		dossierImpl.setOrganizationId(dossier.getOrganizationId());
 		dossierImpl.setDossierProcId(dossier.getDossierProcId());
-		dossierImpl.setGovAgentNo(dossier.getGovAgentNo());
+		dossierImpl.setGovAgentId(dossier.getGovAgentId());
 		dossierImpl.setGovAgentName(dossier.getGovAgentName());
-		dossierImpl.setSubmitterName(dossier.getSubmitterName());
-		dossierImpl.setActorType(dossier.getActorType());
-		dossierImpl.setActorNo(dossier.getActorNo());
-		dossierImpl.setActorName(dossier.getActorName());
+		dossierImpl.setSubjectId(dossier.getSubjectId());
+		dossierImpl.setSubjectType(dossier.getSubjectType());
+		dossierImpl.setSubjectName(dossier.getSubjectName());
 		dossierImpl.setAddress(dossier.getAddress());
 		dossierImpl.setCityNo(dossier.getCityNo());
 		dossierImpl.setCityName(dossier.getCityName());
@@ -1810,8 +1809,11 @@ public class DossierPersistenceImpl extends BasePersistenceImpl<Dossier>
 		dossierImpl.setDistrictName(dossier.getDistrictName());
 		dossierImpl.setWardNo(dossier.getWardNo());
 		dossierImpl.setWardName(dossier.getWardName());
-		dossierImpl.setDescription(dossier.getDescription());
+		dossierImpl.setTelNo(dossier.getTelNo());
+		dossierImpl.setContactPersonName(dossier.getContactPersonName());
+		dossierImpl.setContactPersonTel(dossier.getContactPersonTel());
 		dossierImpl.setNote(dossier.getNote());
+		dossierImpl.setResumeDescription(dossier.getResumeDescription());
 		dossierImpl.setReceptionNo(dossier.getReceptionNo());
 		dossierImpl.setSubmissionDate(dossier.getSubmissionDate());
 		dossierImpl.setReceptionDate(dossier.getReceptionDate());
@@ -1820,9 +1822,9 @@ public class DossierPersistenceImpl extends BasePersistenceImpl<Dossier>
 		dossierImpl.setReleaseDate(dossier.getReleaseDate());
 		dossierImpl.setCompletionDate(dossier.getCompletionDate());
 		dossierImpl.setStatus(dossier.getStatus());
-		dossierImpl.setStatusName(dossier.getStatusName());
+		dossierImpl.setStatusDescription(dossier.getStatusDescription());
 		dossierImpl.setFeedbackNote(dossier.getFeedbackNote());
-		dossierImpl.setPaymentConfirmed(dossier.getPaymentConfirmed());
+		dossierImpl.setDirty(dossier.getDirty());
 
 		return dossierImpl;
 	}

@@ -17,7 +17,7 @@ package org.oep.core.dossiermgt.model;
 import com.liferay.portal.model.PersistedModel;
 
 /**
- * The extended model interface for the DossierDoc service. Represents a row in the &quot;oep_dossiermgt_DossierDoc&quot; database table, with each column mapped to a property of this class.
+ * The extended model interface for the DossierDoc service. Represents a row in the &quot;oep_dossiermgt_dossierdoc&quot; database table, with each column mapped to a property of this class.
  *
  * @author trungdk
  * @see DossierDocModel

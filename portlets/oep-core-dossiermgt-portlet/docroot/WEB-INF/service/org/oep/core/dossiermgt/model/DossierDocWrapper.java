@@ -56,11 +56,12 @@ public class DossierDocWrapper implements DossierDoc, ModelWrapper<DossierDoc> {
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("documentNo", getDocumentNo());
-		attributes.put("documentName", getDocumentName());
+		attributes.put("dossierDocNo", getDossierDocNo());
+		attributes.put("dossierDocName", getDossierDocName());
 		attributes.put("note", getNote());
 		attributes.put("sequenceNo", getSequenceNo());
-		attributes.put("documentType", getDocumentType());
+		attributes.put("defaultDocTemplateId", getDefaultDocTemplateId());
+		attributes.put("validationType", getValidationType());
 		attributes.put("numberOfFile", getNumberOfFile());
 		attributes.put("onlineForm", getOnlineForm());
 
@@ -111,16 +112,16 @@ public class DossierDocWrapper implements DossierDoc, ModelWrapper<DossierDoc> {
 			setDossierProcId(dossierProcId);
 		}
 
-		String documentNo = (String)attributes.get("documentNo");
+		String dossierDocNo = (String)attributes.get("dossierDocNo");
 
-		if (documentNo != null) {
-			setDocumentNo(documentNo);
+		if (dossierDocNo != null) {
+			setDossierDocNo(dossierDocNo);
 		}
 
-		String documentName = (String)attributes.get("documentName");
+		String dossierDocName = (String)attributes.get("dossierDocName");
 
-		if (documentName != null) {
-			setDocumentName(documentName);
+		if (dossierDocName != null) {
+			setDossierDocName(dossierDocName);
 		}
 
 		String note = (String)attributes.get("note");
@@ -135,10 +136,16 @@ public class DossierDocWrapper implements DossierDoc, ModelWrapper<DossierDoc> {
 			setSequenceNo(sequenceNo);
 		}
 
-		Integer documentType = (Integer)attributes.get("documentType");
+		Long defaultDocTemplateId = (Long)attributes.get("defaultDocTemplateId");
 
-		if (documentType != null) {
-			setDocumentType(documentType);
+		if (defaultDocTemplateId != null) {
+			setDefaultDocTemplateId(defaultDocTemplateId);
+		}
+
+		Integer validationType = (Integer)attributes.get("validationType");
+
+		if (validationType != null) {
+			setValidationType(validationType);
 		}
 
 		Integer numberOfFile = (Integer)attributes.get("numberOfFile");
@@ -337,43 +344,43 @@ public class DossierDocWrapper implements DossierDoc, ModelWrapper<DossierDoc> {
 	}
 
 	/**
-	* Returns the document no of this dossier doc.
+	* Returns the dossier doc no of this dossier doc.
 	*
-	* @return the document no of this dossier doc
+	* @return the dossier doc no of this dossier doc
 	*/
 	@Override
-	public java.lang.String getDocumentNo() {
-		return _dossierDoc.getDocumentNo();
+	public java.lang.String getDossierDocNo() {
+		return _dossierDoc.getDossierDocNo();
 	}
 
 	/**
-	* Sets the document no of this dossier doc.
+	* Sets the dossier doc no of this dossier doc.
 	*
-	* @param documentNo the document no of this dossier doc
+	* @param dossierDocNo the dossier doc no of this dossier doc
 	*/
 	@Override
-	public void setDocumentNo(java.lang.String documentNo) {
-		_dossierDoc.setDocumentNo(documentNo);
+	public void setDossierDocNo(java.lang.String dossierDocNo) {
+		_dossierDoc.setDossierDocNo(dossierDocNo);
 	}
 
 	/**
-	* Returns the document name of this dossier doc.
+	* Returns the dossier doc name of this dossier doc.
 	*
-	* @return the document name of this dossier doc
+	* @return the dossier doc name of this dossier doc
 	*/
 	@Override
-	public java.lang.String getDocumentName() {
-		return _dossierDoc.getDocumentName();
+	public java.lang.String getDossierDocName() {
+		return _dossierDoc.getDossierDocName();
 	}
 
 	/**
-	* Sets the document name of this dossier doc.
+	* Sets the dossier doc name of this dossier doc.
 	*
-	* @param documentName the document name of this dossier doc
+	* @param dossierDocName the dossier doc name of this dossier doc
 	*/
 	@Override
-	public void setDocumentName(java.lang.String documentName) {
-		_dossierDoc.setDocumentName(documentName);
+	public void setDossierDocName(java.lang.String dossierDocName) {
+		_dossierDoc.setDossierDocName(dossierDocName);
 	}
 
 	/**
@@ -417,23 +424,43 @@ public class DossierDocWrapper implements DossierDoc, ModelWrapper<DossierDoc> {
 	}
 
 	/**
-	* Returns the document type of this dossier doc.
+	* Returns the default doc template ID of this dossier doc.
 	*
-	* @return the document type of this dossier doc
+	* @return the default doc template ID of this dossier doc
 	*/
 	@Override
-	public int getDocumentType() {
-		return _dossierDoc.getDocumentType();
+	public long getDefaultDocTemplateId() {
+		return _dossierDoc.getDefaultDocTemplateId();
 	}
 
 	/**
-	* Sets the document type of this dossier doc.
+	* Sets the default doc template ID of this dossier doc.
 	*
-	* @param documentType the document type of this dossier doc
+	* @param defaultDocTemplateId the default doc template ID of this dossier doc
 	*/
 	@Override
-	public void setDocumentType(int documentType) {
-		_dossierDoc.setDocumentType(documentType);
+	public void setDefaultDocTemplateId(long defaultDocTemplateId) {
+		_dossierDoc.setDefaultDocTemplateId(defaultDocTemplateId);
+	}
+
+	/**
+	* Returns the validation type of this dossier doc.
+	*
+	* @return the validation type of this dossier doc
+	*/
+	@Override
+	public int getValidationType() {
+		return _dossierDoc.getValidationType();
+	}
+
+	/**
+	* Sets the validation type of this dossier doc.
+	*
+	* @param validationType the validation type of this dossier doc
+	*/
+	@Override
+	public void setValidationType(int validationType) {
+		_dossierDoc.setValidationType(validationType);
 	}
 
 	/**
@@ -540,7 +567,7 @@ public class DossierDocWrapper implements DossierDoc, ModelWrapper<DossierDoc> {
 	}
 
 	@Override
-	public int compareTo(DossierDoc dossierDoc) {
+	public int compareTo(org.oep.core.dossiermgt.model.DossierDoc dossierDoc) {
 		return _dossierDoc.compareTo(dossierDoc);
 	}
 
@@ -550,17 +577,17 @@ public class DossierDocWrapper implements DossierDoc, ModelWrapper<DossierDoc> {
 	}
 
 	@Override
-	public com.liferay.portal.model.CacheModel<DossierDoc> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<org.oep.core.dossiermgt.model.DossierDoc> toCacheModel() {
 		return _dossierDoc.toCacheModel();
 	}
 
 	@Override
-	public DossierDoc toEscapedModel() {
+	public org.oep.core.dossiermgt.model.DossierDoc toEscapedModel() {
 		return new DossierDocWrapper(_dossierDoc.toEscapedModel());
 	}
 
 	@Override
-	public DossierDoc toUnescapedModel() {
+	public org.oep.core.dossiermgt.model.DossierDoc toUnescapedModel() {
 		return new DossierDocWrapper(_dossierDoc.toUnescapedModel());
 	}
 

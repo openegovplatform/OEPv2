@@ -106,13 +106,73 @@ public class TransitionHistoryLocalServiceClpInvoker {
 				"org.oep.core.processmgt.model.TransitionHistory"
 			};
 
-		_methodName76 = "getBeanIdentifier";
+		_methodName72 = "getBeanIdentifier";
 
-		_methodParameterTypes76 = new String[] {  };
+		_methodParameterTypes72 = new String[] {  };
 
-		_methodName77 = "setBeanIdentifier";
+		_methodName73 = "setBeanIdentifier";
 
-		_methodParameterTypes77 = new String[] { "java.lang.String" };
+		_methodParameterTypes73 = new String[] { "java.lang.String" };
+
+		_methodName78 = "addTransitionHistory";
+
+		_methodParameterTypes78 = new String[] {
+				"long", "long", "int", "int", "java.util.Date", "long", "long",
+				"long", "java.lang.String", "java.lang.String",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName79 = "updateTransitionHistory";
+
+		_methodParameterTypes79 = new String[] {
+				"long", "long", "long", "int", "int", "java.util.Date", "long",
+				"long", "long", "java.lang.String", "java.lang.String",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName80 = "updateTransitionHistoryResources";
+
+		_methodParameterTypes80 = new String[] {
+				"org.oep.core.processmgt.model.TransitionHistory",
+				"java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName81 = "removeTransitionHistory";
+
+		_methodParameterTypes81 = new String[] {
+				"org.oep.core.processmgt.model.TransitionHistory"
+			};
+
+		_methodName82 = "removeTransitionHistory";
+
+		_methodParameterTypes82 = new String[] { "long" };
+
+		_methodName83 = "getTransitionHistory";
+
+		_methodParameterTypes83 = new String[] { "long" };
+
+		_methodName84 = "addTransitionHistoryResources";
+
+		_methodParameterTypes84 = new String[] {
+				"org.oep.core.processmgt.model.TransitionHistory", "boolean",
+				"boolean", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName85 = "addTransitionHistoryResources";
+
+		_methodParameterTypes85 = new String[] {
+				"org.oep.core.processmgt.model.TransitionHistory",
+				"java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName86 = "addTransitionHistoryResources";
+
+		_methodParameterTypes86 = new String[] {
+				"long", "java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -204,14 +264,101 @@ public class TransitionHistoryLocalServiceClpInvoker {
 			return TransitionHistoryLocalServiceUtil.updateTransitionHistory((org.oep.core.processmgt.model.TransitionHistory)arguments[0]);
 		}
 
-		if (_methodName76.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes76, parameterTypes)) {
+		if (_methodName72.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes72, parameterTypes)) {
 			return TransitionHistoryLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName77.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes77, parameterTypes)) {
+		if (_methodName73.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes73, parameterTypes)) {
 			TransitionHistoryLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
+
+			return null;
+		}
+
+		if (_methodName78.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes78, parameterTypes)) {
+			return TransitionHistoryLocalServiceUtil.addTransitionHistory(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				((Integer)arguments[2]).intValue(),
+				((Integer)arguments[3]).intValue(),
+				(java.util.Date)arguments[4], ((Long)arguments[5]).longValue(),
+				((Long)arguments[6]).longValue(),
+				((Long)arguments[7]).longValue(),
+				(java.lang.String)arguments[8], (java.lang.String)arguments[9],
+				(com.liferay.portal.service.ServiceContext)arguments[10]);
+		}
+
+		if (_methodName79.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes79, parameterTypes)) {
+			return TransitionHistoryLocalServiceUtil.updateTransitionHistory(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				((Long)arguments[2]).longValue(),
+				((Integer)arguments[3]).intValue(),
+				((Integer)arguments[4]).intValue(),
+				(java.util.Date)arguments[5], ((Long)arguments[6]).longValue(),
+				((Long)arguments[7]).longValue(),
+				((Long)arguments[8]).longValue(),
+				(java.lang.String)arguments[9],
+				(java.lang.String)arguments[10],
+				(com.liferay.portal.service.ServiceContext)arguments[11]);
+		}
+
+		if (_methodName80.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes80, parameterTypes)) {
+			TransitionHistoryLocalServiceUtil.updateTransitionHistoryResources((org.oep.core.processmgt.model.TransitionHistory)arguments[0],
+				(java.lang.String[])arguments[1],
+				(java.lang.String[])arguments[2],
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
+
+			return null;
+		}
+
+		if (_methodName81.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes81, parameterTypes)) {
+			TransitionHistoryLocalServiceUtil.removeTransitionHistory((org.oep.core.processmgt.model.TransitionHistory)arguments[0]);
+
+			return null;
+		}
+
+		if (_methodName82.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
+			TransitionHistoryLocalServiceUtil.removeTransitionHistory(((Long)arguments[0]).longValue());
+
+			return null;
+		}
+
+		if (_methodName83.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
+			return TransitionHistoryLocalServiceUtil.getTransitionHistory(((Long)arguments[0]).longValue());
+		}
+
+		if (_methodName84.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes84, parameterTypes)) {
+			TransitionHistoryLocalServiceUtil.addTransitionHistoryResources((org.oep.core.processmgt.model.TransitionHistory)arguments[0],
+				((Boolean)arguments[1]).booleanValue(),
+				((Boolean)arguments[2]).booleanValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
+
+			return null;
+		}
+
+		if (_methodName85.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes85, parameterTypes)) {
+			TransitionHistoryLocalServiceUtil.addTransitionHistoryResources((org.oep.core.processmgt.model.TransitionHistory)arguments[0],
+				(java.lang.String[])arguments[1],
+				(java.lang.String[])arguments[2],
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
+
+			return null;
+		}
+
+		if (_methodName86.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes86, parameterTypes)) {
+			TransitionHistoryLocalServiceUtil.addTransitionHistoryResources(((Long)arguments[0]).longValue(),
+				(java.lang.String[])arguments[1],
+				(java.lang.String[])arguments[2],
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
 
 			return null;
 		}
@@ -251,8 +398,26 @@ public class TransitionHistoryLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName76;
-	private String[] _methodParameterTypes76;
-	private String _methodName77;
-	private String[] _methodParameterTypes77;
+	private String _methodName72;
+	private String[] _methodParameterTypes72;
+	private String _methodName73;
+	private String[] _methodParameterTypes73;
+	private String _methodName78;
+	private String[] _methodParameterTypes78;
+	private String _methodName79;
+	private String[] _methodParameterTypes79;
+	private String _methodName80;
+	private String[] _methodParameterTypes80;
+	private String _methodName81;
+	private String[] _methodParameterTypes81;
+	private String _methodName82;
+	private String[] _methodParameterTypes82;
+	private String _methodName83;
+	private String[] _methodParameterTypes83;
+	private String _methodName84;
+	private String[] _methodParameterTypes84;
+	private String _methodName85;
+	private String[] _methodParameterTypes85;
+	private String _methodName86;
+	private String[] _methodParameterTypes86;
 }

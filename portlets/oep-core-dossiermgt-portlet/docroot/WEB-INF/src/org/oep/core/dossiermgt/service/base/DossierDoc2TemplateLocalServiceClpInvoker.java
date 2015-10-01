@@ -32,11 +32,15 @@ public class DossierDoc2TemplateLocalServiceClpInvoker {
 
 		_methodName1 = "createDossierDoc2Template";
 
-		_methodParameterTypes1 = new String[] { "long" };
+		_methodParameterTypes1 = new String[] {
+				"org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK"
+			};
 
 		_methodName2 = "deleteDossierDoc2Template";
 
-		_methodParameterTypes2 = new String[] { "long" };
+		_methodParameterTypes2 = new String[] {
+				"org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK"
+			};
 
 		_methodName3 = "deleteDossierDoc2Template";
 
@@ -82,11 +86,15 @@ public class DossierDoc2TemplateLocalServiceClpInvoker {
 
 		_methodName10 = "fetchDossierDoc2Template";
 
-		_methodParameterTypes10 = new String[] { "long" };
+		_methodParameterTypes10 = new String[] {
+				"org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK"
+			};
 
 		_methodName11 = "getDossierDoc2Template";
 
-		_methodParameterTypes11 = new String[] { "long" };
+		_methodParameterTypes11 = new String[] {
+				"org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK"
+			};
 
 		_methodName12 = "getPersistedModel";
 
@@ -106,13 +114,13 @@ public class DossierDoc2TemplateLocalServiceClpInvoker {
 				"org.oep.core.dossiermgt.model.DossierDoc2Template"
 			};
 
-		_methodName112 = "getBeanIdentifier";
+		_methodName118 = "getBeanIdentifier";
 
-		_methodParameterTypes112 = new String[] {  };
+		_methodParameterTypes118 = new String[] {  };
 
-		_methodName113 = "setBeanIdentifier";
+		_methodName119 = "setBeanIdentifier";
 
-		_methodParameterTypes113 = new String[] { "java.lang.String" };
+		_methodParameterTypes119 = new String[] { "java.lang.String" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -124,12 +132,12 @@ public class DossierDoc2TemplateLocalServiceClpInvoker {
 
 		if (_methodName1.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes1, parameterTypes)) {
-			return DossierDoc2TemplateLocalServiceUtil.createDossierDoc2Template(((Long)arguments[0]).longValue());
+			return DossierDoc2TemplateLocalServiceUtil.createDossierDoc2Template((org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK)arguments[0]);
 		}
 
 		if (_methodName2.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes2, parameterTypes)) {
-			return DossierDoc2TemplateLocalServiceUtil.deleteDossierDoc2Template(((Long)arguments[0]).longValue());
+			return DossierDoc2TemplateLocalServiceUtil.deleteDossierDoc2Template((org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK)arguments[0]);
 		}
 
 		if (_methodName3.equals(name) &&
@@ -175,12 +183,12 @@ public class DossierDoc2TemplateLocalServiceClpInvoker {
 
 		if (_methodName10.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes10, parameterTypes)) {
-			return DossierDoc2TemplateLocalServiceUtil.fetchDossierDoc2Template(((Long)arguments[0]).longValue());
+			return DossierDoc2TemplateLocalServiceUtil.fetchDossierDoc2Template((org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK)arguments[0]);
 		}
 
 		if (_methodName11.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes11, parameterTypes)) {
-			return DossierDoc2TemplateLocalServiceUtil.getDossierDoc2Template(((Long)arguments[0]).longValue());
+			return DossierDoc2TemplateLocalServiceUtil.getDossierDoc2Template((org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK)arguments[0]);
 		}
 
 		if (_methodName12.equals(name) &&
@@ -204,13 +212,13 @@ public class DossierDoc2TemplateLocalServiceClpInvoker {
 			return DossierDoc2TemplateLocalServiceUtil.updateDossierDoc2Template((org.oep.core.dossiermgt.model.DossierDoc2Template)arguments[0]);
 		}
 
-		if (_methodName112.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
+		if (_methodName118.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes118, parameterTypes)) {
 			return DossierDoc2TemplateLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName113.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes113, parameterTypes)) {
+		if (_methodName119.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes119, parameterTypes)) {
 			DossierDoc2TemplateLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
@@ -251,8 +259,8 @@ public class DossierDoc2TemplateLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName112;
-	private String[] _methodParameterTypes112;
-	private String _methodName113;
-	private String[] _methodParameterTypes113;
+	private String _methodName118;
+	private String[] _methodParameterTypes118;
+	private String _methodName119;
+	private String[] _methodParameterTypes119;
 }

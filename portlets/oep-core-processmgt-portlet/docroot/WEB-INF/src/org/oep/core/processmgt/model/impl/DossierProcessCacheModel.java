@@ -54,8 +54,8 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 		sb.append(modifiedDate);
 		sb.append(", dossierProcId=");
 		sb.append(dossierProcId);
-		sb.append(", govAgentNo=");
-		sb.append(govAgentNo);
+		sb.append(", govAgentId=");
+		sb.append(govAgentId);
 		sb.append(", govAgentName=");
 		sb.append(govAgentName);
 		sb.append(", startDossierStepId=");
@@ -92,11 +92,11 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 
 		dossierProcessImpl.setDossierProcId(dossierProcId);
 
-		if (govAgentNo == null) {
-			dossierProcessImpl.setGovAgentNo(StringPool.BLANK);
+		if (govAgentId == null) {
+			dossierProcessImpl.setGovAgentId(StringPool.BLANK);
 		}
 		else {
-			dossierProcessImpl.setGovAgentNo(govAgentNo);
+			dossierProcessImpl.setGovAgentId(govAgentId);
 		}
 
 		if (govAgentName == null) {
@@ -123,7 +123,7 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
 		dossierProcId = objectInput.readLong();
-		govAgentNo = objectInput.readUTF();
+		govAgentId = objectInput.readUTF();
 		govAgentName = objectInput.readUTF();
 		startDossierStepId = objectInput.readLong();
 		daysDuration = objectInput.readInt();
@@ -140,11 +140,11 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 		objectOutput.writeLong(modifiedDate);
 		objectOutput.writeLong(dossierProcId);
 
-		if (govAgentNo == null) {
+		if (govAgentId == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(govAgentNo);
+			objectOutput.writeUTF(govAgentId);
 		}
 
 		if (govAgentName == null) {
@@ -165,7 +165,7 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 	public long createDate;
 	public long modifiedDate;
 	public long dossierProcId;
-	public String govAgentNo;
+	public String govAgentId;
 	public String govAgentName;
 	public long startDossierStepId;
 	public int daysDuration;

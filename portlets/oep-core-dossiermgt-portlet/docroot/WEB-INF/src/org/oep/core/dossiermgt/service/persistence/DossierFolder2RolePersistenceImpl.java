@@ -29,7 +29,6 @@ import com.liferay.portal.kernel.util.InstanceFactory;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
-import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.UnmodifiableList;
@@ -47,7 +46,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 /**
  * The persistence implementation for the dossier folder2 role service.
@@ -173,15 +171,15 @@ public class DossierFolder2RolePersistenceImpl extends BasePersistenceImpl<Dossi
 	/**
 	 * Creates a new dossier folder2 role with the primary key. Does not add the dossier folder2 role to the database.
 	 *
-	 * @param id the primary key for the new dossier folder2 role
+	 * @param dossierFolder2RolePK the primary key for the new dossier folder2 role
 	 * @return the new dossier folder2 role
 	 */
 	@Override
-	public DossierFolder2Role create(long id) {
+	public DossierFolder2Role create(DossierFolder2RolePK dossierFolder2RolePK) {
 		DossierFolder2Role dossierFolder2Role = new DossierFolder2RoleImpl();
 
 		dossierFolder2Role.setNew(true);
-		dossierFolder2Role.setPrimaryKey(id);
+		dossierFolder2Role.setPrimaryKey(dossierFolder2RolePK);
 
 		return dossierFolder2Role;
 	}
@@ -189,15 +187,15 @@ public class DossierFolder2RolePersistenceImpl extends BasePersistenceImpl<Dossi
 	/**
 	 * Removes the dossier folder2 role with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param id the primary key of the dossier folder2 role
+	 * @param dossierFolder2RolePK the primary key of the dossier folder2 role
 	 * @return the dossier folder2 role that was removed
 	 * @throws org.oep.core.dossiermgt.NoSuchDossierFolder2RoleException if a dossier folder2 role with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierFolder2Role remove(long id)
+	public DossierFolder2Role remove(DossierFolder2RolePK dossierFolder2RolePK)
 		throws NoSuchDossierFolder2RoleException, SystemException {
-		return remove((Serializable)id);
+		return remove((Serializable)dossierFolder2RolePK);
 	}
 
 	/**
@@ -327,8 +325,6 @@ public class DossierFolder2RolePersistenceImpl extends BasePersistenceImpl<Dossi
 		dossierFolder2RoleImpl.setNew(dossierFolder2Role.isNew());
 		dossierFolder2RoleImpl.setPrimaryKey(dossierFolder2Role.getPrimaryKey());
 
-		dossierFolder2RoleImpl.setId(dossierFolder2Role.getId());
-		dossierFolder2RoleImpl.setCompanyId(dossierFolder2Role.getCompanyId());
 		dossierFolder2RoleImpl.setDossierFolderId(dossierFolder2Role.getDossierFolderId());
 		dossierFolder2RoleImpl.setRoleId(dossierFolder2Role.getRoleId());
 
@@ -363,15 +359,16 @@ public class DossierFolder2RolePersistenceImpl extends BasePersistenceImpl<Dossi
 	/**
 	 * Returns the dossier folder2 role with the primary key or throws a {@link org.oep.core.dossiermgt.NoSuchDossierFolder2RoleException} if it could not be found.
 	 *
-	 * @param id the primary key of the dossier folder2 role
+	 * @param dossierFolder2RolePK the primary key of the dossier folder2 role
 	 * @return the dossier folder2 role
 	 * @throws org.oep.core.dossiermgt.NoSuchDossierFolder2RoleException if a dossier folder2 role with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierFolder2Role findByPrimaryKey(long id)
+	public DossierFolder2Role findByPrimaryKey(
+		DossierFolder2RolePK dossierFolder2RolePK)
 		throws NoSuchDossierFolder2RoleException, SystemException {
-		return findByPrimaryKey((Serializable)id);
+		return findByPrimaryKey((Serializable)dossierFolder2RolePK);
 	}
 
 	/**
@@ -426,14 +423,14 @@ public class DossierFolder2RolePersistenceImpl extends BasePersistenceImpl<Dossi
 	/**
 	 * Returns the dossier folder2 role with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param id the primary key of the dossier folder2 role
+	 * @param dossierFolder2RolePK the primary key of the dossier folder2 role
 	 * @return the dossier folder2 role, or <code>null</code> if a dossier folder2 role with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierFolder2Role fetchByPrimaryKey(long id)
-		throws SystemException {
-		return fetchByPrimaryKey((Serializable)id);
+	public DossierFolder2Role fetchByPrimaryKey(
+		DossierFolder2RolePK dossierFolder2RolePK) throws SystemException {
+		return fetchByPrimaryKey((Serializable)dossierFolder2RolePK);
 	}
 
 	/**
@@ -609,11 +606,6 @@ public class DossierFolder2RolePersistenceImpl extends BasePersistenceImpl<Dossi
 		return count.intValue();
 	}
 
-	@Override
-	protected Set<String> getBadColumnNames() {
-		return _badColumnNames;
-	}
-
 	/**
 	 * Initializes the dossier folder2 role persistence.
 	 */
@@ -653,9 +645,6 @@ public class DossierFolder2RolePersistenceImpl extends BasePersistenceImpl<Dossi
 	private static final boolean _HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE = GetterUtil.getBoolean(PropsUtil.get(
 				PropsKeys.HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE));
 	private static Log _log = LogFactoryUtil.getLog(DossierFolder2RolePersistenceImpl.class);
-	private static Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
-				"id"
-			});
 	private static DossierFolder2Role _nullDossierFolder2Role = new DossierFolder2RoleImpl() {
 			@Override
 			public Object clone() {

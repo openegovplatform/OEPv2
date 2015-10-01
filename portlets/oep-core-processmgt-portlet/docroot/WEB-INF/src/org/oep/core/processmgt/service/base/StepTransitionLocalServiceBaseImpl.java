@@ -88,27 +88,27 @@ public abstract class StepTransitionLocalServiceBaseImpl
 	/**
 	 * Creates a new step transition with the primary key. Does not add the step transition to the database.
 	 *
-	 * @param stepTransionId the primary key for the new step transition
+	 * @param stepTransitionId the primary key for the new step transition
 	 * @return the new step transition
 	 */
 	@Override
-	public StepTransition createStepTransition(long stepTransionId) {
-		return stepTransitionPersistence.create(stepTransionId);
+	public StepTransition createStepTransition(long stepTransitionId) {
+		return stepTransitionPersistence.create(stepTransitionId);
 	}
 
 	/**
 	 * Deletes the step transition with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param stepTransionId the primary key of the step transition
+	 * @param stepTransitionId the primary key of the step transition
 	 * @return the step transition that was removed
 	 * @throws PortalException if a step transition with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public StepTransition deleteStepTransition(long stepTransionId)
+	public StepTransition deleteStepTransition(long stepTransitionId)
 		throws PortalException, SystemException {
-		return stepTransitionPersistence.remove(stepTransionId);
+		return stepTransitionPersistence.remove(stepTransitionId);
 	}
 
 	/**
@@ -219,23 +219,23 @@ public abstract class StepTransitionLocalServiceBaseImpl
 	}
 
 	@Override
-	public StepTransition fetchStepTransition(long stepTransionId)
+	public StepTransition fetchStepTransition(long stepTransitionId)
 		throws SystemException {
-		return stepTransitionPersistence.fetchByPrimaryKey(stepTransionId);
+		return stepTransitionPersistence.fetchByPrimaryKey(stepTransitionId);
 	}
 
 	/**
 	 * Returns the step transition with the primary key.
 	 *
-	 * @param stepTransionId the primary key of the step transition
+	 * @param stepTransitionId the primary key of the step transition
 	 * @return the step transition
 	 * @throws PortalException if a step transition with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public StepTransition getStepTransition(long stepTransionId)
+	public StepTransition getStepTransition(long stepTransitionId)
 		throws PortalException, SystemException {
-		return stepTransitionPersistence.findByPrimaryKey(stepTransionId);
+		return stepTransitionPersistence.findByPrimaryKey(stepTransitionId);
 	}
 
 	@Override
@@ -421,25 +421,6 @@ public abstract class StepTransitionLocalServiceBaseImpl
 	}
 
 	/**
-	 * Returns the dossier step2 role remote service.
-	 *
-	 * @return the dossier step2 role remote service
-	 */
-	public org.oep.core.processmgt.service.DossierStep2RoleService getDossierStep2RoleService() {
-		return dossierStep2RoleService;
-	}
-
-	/**
-	 * Sets the dossier step2 role remote service.
-	 *
-	 * @param dossierStep2RoleService the dossier step2 role remote service
-	 */
-	public void setDossierStep2RoleService(
-		org.oep.core.processmgt.service.DossierStep2RoleService dossierStep2RoleService) {
-		this.dossierStep2RoleService = dossierStep2RoleService;
-	}
-
-	/**
 	 * Returns the dossier step2 role persistence.
 	 *
 	 * @return the dossier step2 role persistence
@@ -532,25 +513,6 @@ public abstract class StepTransitionLocalServiceBaseImpl
 	public void setProcessOrder2UserLocalService(
 		org.oep.core.processmgt.service.ProcessOrder2UserLocalService processOrder2UserLocalService) {
 		this.processOrder2UserLocalService = processOrder2UserLocalService;
-	}
-
-	/**
-	 * Returns the process order2 user remote service.
-	 *
-	 * @return the process order2 user remote service
-	 */
-	public org.oep.core.processmgt.service.ProcessOrder2UserService getProcessOrder2UserService() {
-		return processOrder2UserService;
-	}
-
-	/**
-	 * Sets the process order2 user remote service.
-	 *
-	 * @param processOrder2UserService the process order2 user remote service
-	 */
-	public void setProcessOrder2UserService(
-		org.oep.core.processmgt.service.ProcessOrder2UserService processOrder2UserService) {
-		this.processOrder2UserService = processOrder2UserService;
 	}
 
 	/**
@@ -933,8 +895,6 @@ public abstract class StepTransitionLocalServiceBaseImpl
 	protected DossierStepPersistence dossierStepPersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.DossierStep2RoleLocalService.class)
 	protected org.oep.core.processmgt.service.DossierStep2RoleLocalService dossierStep2RoleLocalService;
-	@BeanReference(type = org.oep.core.processmgt.service.DossierStep2RoleService.class)
-	protected org.oep.core.processmgt.service.DossierStep2RoleService dossierStep2RoleService;
 	@BeanReference(type = DossierStep2RolePersistence.class)
 	protected DossierStep2RolePersistence dossierStep2RolePersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.ProcessOrderLocalService.class)
@@ -945,8 +905,6 @@ public abstract class StepTransitionLocalServiceBaseImpl
 	protected ProcessOrderPersistence processOrderPersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.ProcessOrder2UserLocalService.class)
 	protected org.oep.core.processmgt.service.ProcessOrder2UserLocalService processOrder2UserLocalService;
-	@BeanReference(type = org.oep.core.processmgt.service.ProcessOrder2UserService.class)
-	protected org.oep.core.processmgt.service.ProcessOrder2UserService processOrder2UserService;
 	@BeanReference(type = ProcessOrder2UserPersistence.class)
 	protected ProcessOrder2UserPersistence processOrder2UserPersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.StepTransitionLocalService.class)

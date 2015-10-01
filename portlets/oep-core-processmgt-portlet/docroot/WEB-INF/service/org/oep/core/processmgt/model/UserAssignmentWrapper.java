@@ -401,7 +401,8 @@ public class UserAssignmentWrapper implements UserAssignment,
 	}
 
 	@Override
-	public int compareTo(UserAssignment userAssignment) {
+	public int compareTo(
+		org.oep.core.processmgt.model.UserAssignment userAssignment) {
 		return _userAssignment.compareTo(userAssignment);
 	}
 
@@ -411,17 +412,17 @@ public class UserAssignmentWrapper implements UserAssignment,
 	}
 
 	@Override
-	public com.liferay.portal.model.CacheModel<UserAssignment> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<org.oep.core.processmgt.model.UserAssignment> toCacheModel() {
 		return _userAssignment.toCacheModel();
 	}
 
 	@Override
-	public UserAssignment toEscapedModel() {
+	public org.oep.core.processmgt.model.UserAssignment toEscapedModel() {
 		return new UserAssignmentWrapper(_userAssignment.toEscapedModel());
 	}
 
 	@Override
-	public UserAssignment toUnescapedModel() {
+	public org.oep.core.processmgt.model.UserAssignment toUnescapedModel() {
 		return new UserAssignmentWrapper(_userAssignment.toUnescapedModel());
 	}
 

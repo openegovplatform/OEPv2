@@ -82,7 +82,7 @@ public class DossierProcessClp extends BaseModelImpl<DossierProcess>
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgentNo", getGovAgentNo());
+		attributes.put("govAgentId", getGovAgentId());
 		attributes.put("govAgentName", getGovAgentName());
 		attributes.put("startDossierStepId", getStartDossierStepId());
 		attributes.put("daysDuration", getDaysDuration());
@@ -134,10 +134,10 @@ public class DossierProcessClp extends BaseModelImpl<DossierProcess>
 			setDossierProcId(dossierProcId);
 		}
 
-		String govAgentNo = (String)attributes.get("govAgentNo");
+		String govAgentId = (String)attributes.get("govAgentId");
 
-		if (govAgentNo != null) {
-			setGovAgentNo(govAgentNo);
+		if (govAgentId != null) {
+			setGovAgentId(govAgentId);
 		}
 
 		String govAgentName = (String)attributes.get("govAgentName");
@@ -332,21 +332,21 @@ public class DossierProcessClp extends BaseModelImpl<DossierProcess>
 	}
 
 	@Override
-	public String getGovAgentNo() {
-		return _govAgentNo;
+	public String getGovAgentId() {
+		return _govAgentId;
 	}
 
 	@Override
-	public void setGovAgentNo(String govAgentNo) {
-		_govAgentNo = govAgentNo;
+	public void setGovAgentId(String govAgentId) {
+		_govAgentId = govAgentId;
 
 		if (_dossierProcessRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierProcessRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setGovAgentNo", String.class);
+				Method method = clazz.getMethod("setGovAgentId", String.class);
 
-				method.invoke(_dossierProcessRemoteModel, govAgentNo);
+				method.invoke(_dossierProcessRemoteModel, govAgentId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -502,7 +502,7 @@ public class DossierProcessClp extends BaseModelImpl<DossierProcess>
 		clone.setCreateDate(getCreateDate());
 		clone.setModifiedDate(getModifiedDate());
 		clone.setDossierProcId(getDossierProcId());
-		clone.setGovAgentNo(getGovAgentNo());
+		clone.setGovAgentId(getGovAgentId());
 		clone.setGovAgentName(getGovAgentName());
 		clone.setStartDossierStepId(getStartDossierStepId());
 		clone.setDaysDuration(getDaysDuration());
@@ -574,8 +574,8 @@ public class DossierProcessClp extends BaseModelImpl<DossierProcess>
 		sb.append(getModifiedDate());
 		sb.append(", dossierProcId=");
 		sb.append(getDossierProcId());
-		sb.append(", govAgentNo=");
-		sb.append(getGovAgentNo());
+		sb.append(", govAgentId=");
+		sb.append(getGovAgentId());
 		sb.append(", govAgentName=");
 		sb.append(getGovAgentName());
 		sb.append(", startDossierStepId=");
@@ -624,8 +624,8 @@ public class DossierProcessClp extends BaseModelImpl<DossierProcess>
 		sb.append(getDossierProcId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentNo</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentNo());
+			"<column><column-name>govAgentId</column-name><column-value><![CDATA[");
+		sb.append(getGovAgentId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>govAgentName</column-name><column-value><![CDATA[");
@@ -653,7 +653,7 @@ public class DossierProcessClp extends BaseModelImpl<DossierProcess>
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _dossierProcId;
-	private String _govAgentNo;
+	private String _govAgentId;
 	private String _govAgentName;
 	private long _startDossierStepId;
 	private int _daysDuration;

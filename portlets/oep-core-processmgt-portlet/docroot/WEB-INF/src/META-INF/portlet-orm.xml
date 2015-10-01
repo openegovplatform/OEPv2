@@ -20,7 +20,7 @@
 				<temporal>TIMESTAMP</temporal>
 			</basic>
 			<basic name="dossierProcId" />
-			<basic name="govAgentNo" />
+			<basic name="govAgentId" />
 			<basic name="govAgentName" />
 			<basic name="startDossierStepId" />
 			<basic name="daysDuration" />
@@ -53,13 +53,10 @@
 		</attributes>
 	</mapped-superclass>
 	<mapped-superclass class="org.oep.core.processmgt.model.impl.DossierStep2RoleModelImpl">
+		<id-class class="org.oep.core.processmgt.service.persistence.DossierStep2RolePK" />
 		<attributes>
-			<id name="id">
-				<column name="ID_" />
-			</id>
-			<basic name="companyId" />
-			<basic name="dossierStepId" />
-			<basic name="roleId" />
+			<id name="dossierStepId" />
+			<id name="roleId" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
@@ -99,13 +96,10 @@
 		</attributes>
 	</mapped-superclass>
 	<mapped-superclass class="org.oep.core.processmgt.model.impl.ProcessOrder2UserModelImpl">
+		<id-class class="org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK" />
 		<attributes>
-			<id name="id">
-				<column name="ID_" />
-			</id>
-			<basic name="companyId" />
-			<basic name="processOrderId" />
-			<basic name="userId" />
+			<id name="processOrderId" />
+			<id name="userId" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
@@ -114,7 +108,7 @@
 	</mapped-superclass>
 	<mapped-superclass class="org.oep.core.processmgt.model.impl.StepTransitionModelImpl">
 		<attributes>
-			<id name="stepTransionId" />
+			<id name="stepTransitionId" />
 			<basic name="userId" />
 			<basic name="groupId" />
 			<basic name="companyId" />
@@ -132,7 +126,7 @@
 			<basic name="daysDuration" />
 			<basic name="dossierStatus" />
 			<basic name="userAssignment" />
-			<basic name="newOrder" />
+			<basic name="newProcessOrder" />
 			<basic name="errorMessage" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
@@ -187,35 +181,35 @@
 		</attributes>
 	</mapped-superclass>
 	<entity class="org.oep.core.processmgt.model.impl.DossierProcessImpl" name="DossierProcess">
-		<table name="oep_processmgt_DossierProcess" />
+		<table name="oep_processmgt_dossierprocess" />
 		<attributes />
 	</entity>
 	<entity class="org.oep.core.processmgt.model.impl.DossierStepImpl" name="DossierStep">
-		<table name="oep_processmgt_DossierStep" />
+		<table name="oep_processmgt_dossierstep" />
 		<attributes />
 	</entity>
 	<entity class="org.oep.core.processmgt.model.impl.DossierStep2RoleImpl" name="DossierStep2Role">
-		<table name="oep_processmgt_DossierStep2Role" />
+		<table name="oep_processmgt_dossierstep2role" />
 		<attributes />
 	</entity>
 	<entity class="org.oep.core.processmgt.model.impl.ProcessOrderImpl" name="ProcessOrder">
-		<table name="oep_processmgt_ProcessOrder" />
+		<table name="oep_processmgt_processorder" />
 		<attributes />
 	</entity>
 	<entity class="org.oep.core.processmgt.model.impl.ProcessOrder2UserImpl" name="ProcessOrder2User">
-		<table name="oep_processmgt_ProcessOrder2User" />
+		<table name="oep_processmgt_processorder2user" />
 		<attributes />
 	</entity>
 	<entity class="org.oep.core.processmgt.model.impl.StepTransitionImpl" name="StepTransition">
-		<table name="oep_processmgt_StepTransition" />
+		<table name="oep_processmgt_steptransition" />
 		<attributes />
 	</entity>
 	<entity class="org.oep.core.processmgt.model.impl.TransitionHistoryImpl" name="TransitionHistory">
-		<table name="oep_processmgt_TransitionHistory" />
+		<table name="oep_processmgt_transitionhistory" />
 		<attributes />
 	</entity>
 	<entity class="org.oep.core.processmgt.model.impl.UserAssignmentImpl" name="UserAssignment">
-		<table name="oep_processmgt_UserAssignment" />
+		<table name="oep_processmgt_userassignment" />
 		<attributes />
 	</entity>
 </entity-mappings>

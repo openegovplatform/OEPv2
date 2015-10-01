@@ -1800,7 +1800,6 @@ public class DocFilePersistenceImpl extends BasePersistenceImpl<DocFile>
 		docFileImpl.setDocTemplateId(docFile.getDocTemplateId());
 		docFileImpl.setDocFileVersionId(docFile.getDocFileVersionId());
 		docFileImpl.setDocName(docFile.getDocName());
-		docFileImpl.setIssueDate(docFile.getIssueDate());
 		docFileImpl.setNote(docFile.getNote());
 
 		return docFileImpl;

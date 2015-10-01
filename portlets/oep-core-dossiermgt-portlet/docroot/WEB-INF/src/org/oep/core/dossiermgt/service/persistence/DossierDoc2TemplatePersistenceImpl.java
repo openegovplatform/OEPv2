@@ -29,7 +29,6 @@ import com.liferay.portal.kernel.util.InstanceFactory;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
-import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.UnmodifiableList;
@@ -47,7 +46,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 /**
  * The persistence implementation for the dossier doc2 template service.
@@ -174,15 +172,16 @@ public class DossierDoc2TemplatePersistenceImpl extends BasePersistenceImpl<Doss
 	/**
 	 * Creates a new dossier doc2 template with the primary key. Does not add the dossier doc2 template to the database.
 	 *
-	 * @param id the primary key for the new dossier doc2 template
+	 * @param dossierDoc2TemplatePK the primary key for the new dossier doc2 template
 	 * @return the new dossier doc2 template
 	 */
 	@Override
-	public DossierDoc2Template create(long id) {
+	public DossierDoc2Template create(
+		DossierDoc2TemplatePK dossierDoc2TemplatePK) {
 		DossierDoc2Template dossierDoc2Template = new DossierDoc2TemplateImpl();
 
 		dossierDoc2Template.setNew(true);
-		dossierDoc2Template.setPrimaryKey(id);
+		dossierDoc2Template.setPrimaryKey(dossierDoc2TemplatePK);
 
 		return dossierDoc2Template;
 	}
@@ -190,15 +189,16 @@ public class DossierDoc2TemplatePersistenceImpl extends BasePersistenceImpl<Doss
 	/**
 	 * Removes the dossier doc2 template with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param id the primary key of the dossier doc2 template
+	 * @param dossierDoc2TemplatePK the primary key of the dossier doc2 template
 	 * @return the dossier doc2 template that was removed
 	 * @throws org.oep.core.dossiermgt.NoSuchDossierDoc2TemplateException if a dossier doc2 template with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierDoc2Template remove(long id)
+	public DossierDoc2Template remove(
+		DossierDoc2TemplatePK dossierDoc2TemplatePK)
 		throws NoSuchDossierDoc2TemplateException, SystemException {
-		return remove((Serializable)id);
+		return remove((Serializable)dossierDoc2TemplatePK);
 	}
 
 	/**
@@ -328,11 +328,8 @@ public class DossierDoc2TemplatePersistenceImpl extends BasePersistenceImpl<Doss
 		dossierDoc2TemplateImpl.setNew(dossierDoc2Template.isNew());
 		dossierDoc2TemplateImpl.setPrimaryKey(dossierDoc2Template.getPrimaryKey());
 
-		dossierDoc2TemplateImpl.setId(dossierDoc2Template.getId());
-		dossierDoc2TemplateImpl.setCompanyId(dossierDoc2Template.getCompanyId());
 		dossierDoc2TemplateImpl.setDossierDocId(dossierDoc2Template.getDossierDocId());
 		dossierDoc2TemplateImpl.setDocTemplateId(dossierDoc2Template.getDocTemplateId());
-		dossierDoc2TemplateImpl.setSequenceNo(dossierDoc2Template.getSequenceNo());
 
 		return dossierDoc2TemplateImpl;
 	}
@@ -365,15 +362,16 @@ public class DossierDoc2TemplatePersistenceImpl extends BasePersistenceImpl<Doss
 	/**
 	 * Returns the dossier doc2 template with the primary key or throws a {@link org.oep.core.dossiermgt.NoSuchDossierDoc2TemplateException} if it could not be found.
 	 *
-	 * @param id the primary key of the dossier doc2 template
+	 * @param dossierDoc2TemplatePK the primary key of the dossier doc2 template
 	 * @return the dossier doc2 template
 	 * @throws org.oep.core.dossiermgt.NoSuchDossierDoc2TemplateException if a dossier doc2 template with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierDoc2Template findByPrimaryKey(long id)
+	public DossierDoc2Template findByPrimaryKey(
+		DossierDoc2TemplatePK dossierDoc2TemplatePK)
 		throws NoSuchDossierDoc2TemplateException, SystemException {
-		return findByPrimaryKey((Serializable)id);
+		return findByPrimaryKey((Serializable)dossierDoc2TemplatePK);
 	}
 
 	/**
@@ -428,14 +426,14 @@ public class DossierDoc2TemplatePersistenceImpl extends BasePersistenceImpl<Doss
 	/**
 	 * Returns the dossier doc2 template with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param id the primary key of the dossier doc2 template
+	 * @param dossierDoc2TemplatePK the primary key of the dossier doc2 template
 	 * @return the dossier doc2 template, or <code>null</code> if a dossier doc2 template with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierDoc2Template fetchByPrimaryKey(long id)
-		throws SystemException {
-		return fetchByPrimaryKey((Serializable)id);
+	public DossierDoc2Template fetchByPrimaryKey(
+		DossierDoc2TemplatePK dossierDoc2TemplatePK) throws SystemException {
+		return fetchByPrimaryKey((Serializable)dossierDoc2TemplatePK);
 	}
 
 	/**
@@ -611,11 +609,6 @@ public class DossierDoc2TemplatePersistenceImpl extends BasePersistenceImpl<Doss
 		return count.intValue();
 	}
 
-	@Override
-	protected Set<String> getBadColumnNames() {
-		return _badColumnNames;
-	}
-
 	/**
 	 * Initializes the dossier doc2 template persistence.
 	 */
@@ -655,9 +648,6 @@ public class DossierDoc2TemplatePersistenceImpl extends BasePersistenceImpl<Doss
 	private static final boolean _HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE = GetterUtil.getBoolean(PropsUtil.get(
 				PropsKeys.HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE));
 	private static Log _log = LogFactoryUtil.getLog(DossierDoc2TemplatePersistenceImpl.class);
-	private static Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
-				"id"
-			});
 	private static DossierDoc2Template _nullDossierDoc2Template = new DossierDoc2TemplateImpl() {
 			@Override
 			public Object clone() {

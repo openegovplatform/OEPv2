@@ -40,8 +40,8 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 	public String toString() {
 		StringBundler sb = new StringBundler(33);
 
-		sb.append("{stepTransionId=");
-		sb.append(stepTransionId);
+		sb.append("{stepTransitionId=");
+		sb.append(stepTransitionId);
 		sb.append(", userId=");
 		sb.append(userId);
 		sb.append(", groupId=");
@@ -68,8 +68,8 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 		sb.append(dossierStatus);
 		sb.append(", userAssignment=");
 		sb.append(userAssignment);
-		sb.append(", newOrder=");
-		sb.append(newOrder);
+		sb.append(", newProcessOrder=");
+		sb.append(newProcessOrder);
 		sb.append(", errorMessage=");
 		sb.append(errorMessage);
 		sb.append("}");
@@ -81,7 +81,7 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 	public StepTransition toEntityModel() {
 		StepTransitionImpl stepTransitionImpl = new StepTransitionImpl();
 
-		stepTransitionImpl.setStepTransionId(stepTransionId);
+		stepTransitionImpl.setStepTransitionId(stepTransitionId);
 		stepTransitionImpl.setUserId(userId);
 		stepTransitionImpl.setGroupId(groupId);
 		stepTransitionImpl.setCompanyId(companyId);
@@ -128,7 +128,7 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 		}
 
 		stepTransitionImpl.setUserAssignment(userAssignment);
-		stepTransitionImpl.setNewOrder(newOrder);
+		stepTransitionImpl.setNewProcessOrder(newProcessOrder);
 
 		if (errorMessage == null) {
 			stepTransitionImpl.setErrorMessage(StringPool.BLANK);
@@ -144,7 +144,7 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		stepTransionId = objectInput.readLong();
+		stepTransitionId = objectInput.readLong();
 		userId = objectInput.readLong();
 		groupId = objectInput.readLong();
 		companyId = objectInput.readLong();
@@ -158,14 +158,14 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 		daysDuration = objectInput.readInt();
 		dossierStatus = objectInput.readUTF();
 		userAssignment = objectInput.readInt();
-		newOrder = objectInput.readInt();
+		newProcessOrder = objectInput.readInt();
 		errorMessage = objectInput.readUTF();
 	}
 
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeLong(stepTransionId);
+		objectOutput.writeLong(stepTransitionId);
 		objectOutput.writeLong(userId);
 		objectOutput.writeLong(groupId);
 		objectOutput.writeLong(companyId);
@@ -199,7 +199,7 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 		}
 
 		objectOutput.writeInt(userAssignment);
-		objectOutput.writeInt(newOrder);
+		objectOutput.writeInt(newProcessOrder);
 
 		if (errorMessage == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
@@ -209,7 +209,7 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 		}
 	}
 
-	public long stepTransionId;
+	public long stepTransitionId;
 	public long userId;
 	public long groupId;
 	public long companyId;
@@ -223,6 +223,6 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 	public int daysDuration;
 	public String dossierStatus;
 	public int userAssignment;
-	public int newOrder;
+	public int newProcessOrder;
 	public String errorMessage;
 }

@@ -309,4 +309,84 @@ public interface PaymentFileLocalService extends BaseLocalService,
 	public java.lang.Object invokeMethod(java.lang.String name,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;
+
+	/**
+	* Add payment file
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new payment file
+	*/
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.dossiermgt.model.PaymentFile addPaymentFile(
+		long organizationId, java.lang.String govAgentId,
+		java.lang.String govAgentName, java.lang.String subjectId,
+		java.lang.String subjectType, java.lang.String subjectName, int amount,
+		java.lang.String paymentType, java.lang.String paymentDescription,
+		java.lang.String transactionInfo, long fileEntryId,
+		java.util.Date checkingDate, long checkingUserId,
+		java.lang.String checkingUserName, int checkingResult,
+		java.lang.String checkingNote, long ebMessageId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.dossiermgt.model.PaymentFile updatePaymentFile(
+		long id, long organizationId, java.lang.String govAgentId,
+		java.lang.String govAgentName, java.lang.String subjectId,
+		java.lang.String subjectType, java.lang.String subjectName, int amount,
+		java.lang.String paymentType, java.lang.String paymentDescription,
+		java.lang.String transactionInfo, long fileEntryId,
+		java.util.Date checkingDate, long checkingUserId,
+		java.lang.String checkingUserName, int checkingResult,
+		java.lang.String checkingNote, long ebMessageId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void updatePaymentFileResources(
+		org.oep.core.dossiermgt.model.PaymentFile paymentFile,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void removePaymentFile(
+		org.oep.core.dossiermgt.model.PaymentFile paymentFile)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void removePaymentFile(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addPaymentFileResources(
+		org.oep.core.dossiermgt.model.PaymentFile paymentFile,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addPaymentFileResources(
+		org.oep.core.dossiermgt.model.PaymentFile paymentFile,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addPaymentFileResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
 }

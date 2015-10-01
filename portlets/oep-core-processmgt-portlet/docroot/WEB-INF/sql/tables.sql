@@ -1,4 +1,4 @@
-create table oep_processmgt_DossierProcess (
+create table oep_processmgt_dossierprocess (
 	dossierProcessId LONG not null primary key,
 	userId LONG,
 	groupId LONG,
@@ -6,13 +6,13 @@ create table oep_processmgt_DossierProcess (
 	createDate DATE null,
 	modifiedDate DATE null,
 	dossierProcId LONG,
-	govAgentNo VARCHAR(75) null,
+	govAgentId VARCHAR(75) null,
 	govAgentName VARCHAR(75) null,
 	startDossierStepId LONG,
 	daysDuration INTEGER
 );
 
-create table oep_processmgt_DossierStep (
+create table oep_processmgt_dossierstep (
 	dossierStepId LONG not null primary key,
 	userId LONG,
 	groupId LONG,
@@ -25,14 +25,13 @@ create table oep_processmgt_DossierStep (
 	stepType INTEGER
 );
 
-create table oep_processmgt_DossierStep2Role (
-	id_ LONG not null primary key,
-	companyId LONG,
-	dossierStepId LONG,
-	roleId LONG
+create table oep_processmgt_dossierstep2role (
+	dossierStepId LONG not null,
+	roleId LONG not null,
+	primary key (dossierStepId, roleId)
 );
 
-create table oep_processmgt_ProcessOrder (
+create table oep_processmgt_processorder (
 	processOrderId LONG not null primary key,
 	userId LONG,
 	groupId LONG,
@@ -53,15 +52,14 @@ create table oep_processmgt_ProcessOrder (
 	endState INTEGER
 );
 
-create table oep_processmgt_ProcessOrder2User (
-	id_ LONG not null primary key,
-	companyId LONG,
-	processOrderId LONG,
-	userId LONG
+create table oep_processmgt_processorder2user (
+	processOrderId LONG not null,
+	userId LONG not null,
+	primary key (processOrderId, userId)
 );
 
-create table oep_processmgt_StepTransition (
-	stepTransionId LONG not null primary key,
+create table oep_processmgt_steptransition (
+	stepTransitionId LONG not null primary key,
 	userId LONG,
 	groupId LONG,
 	companyId LONG,
@@ -75,11 +73,11 @@ create table oep_processmgt_StepTransition (
 	daysDuration INTEGER,
 	dossierStatus VARCHAR(75) null,
 	userAssignment INTEGER,
-	newOrder INTEGER,
+	newProcessOrder INTEGER,
 	errorMessage VARCHAR(75) null
 );
 
-create table oep_processmgt_TransitionHistory (
+create table oep_processmgt_transitionhistory (
 	transitionHistoryId LONG not null primary key,
 	userId LONG,
 	groupId LONG,
@@ -97,7 +95,7 @@ create table oep_processmgt_TransitionHistory (
 	note VARCHAR(75) null
 );
 
-create table oep_processmgt_UserAssignment (
+create table oep_processmgt_userassignment (
 	userAssignmentId LONG not null primary key,
 	userId LONG,
 	groupId LONG,

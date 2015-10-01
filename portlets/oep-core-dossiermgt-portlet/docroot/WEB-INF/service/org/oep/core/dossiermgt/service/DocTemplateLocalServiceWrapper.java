@@ -288,6 +288,102 @@ public class DocTemplateLocalServiceWrapper implements DocTemplateLocalService,
 	}
 
 	/**
+	* Add doc template
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new doc template
+	*/
+	@Override
+	public org.oep.core.dossiermgt.model.DocTemplate addDocTemplate(
+		java.lang.String templateNo, java.lang.String title,
+		java.lang.String enTitle, long fileEntryId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _docTemplateLocalService.addDocTemplate(templateNo, title,
+			enTitle, fileEntryId, serviceContext);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.DocTemplate updateDocTemplate(
+		long id, java.lang.String templateNo, java.lang.String title,
+		java.lang.String enTitle, long fileEntryId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _docTemplateLocalService.updateDocTemplate(id, templateNo,
+			title, enTitle, fileEntryId, serviceContext);
+	}
+
+	@Override
+	public void updateDocTemplateResources(
+		org.oep.core.dossiermgt.model.DocTemplate docTemplate,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_docTemplateLocalService.updateDocTemplateResources(docTemplate,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void removeDocTemplate(
+		org.oep.core.dossiermgt.model.DocTemplate docTemplate)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_docTemplateLocalService.removeDocTemplate(docTemplate);
+	}
+
+	@Override
+	public void removeDocTemplate(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_docTemplateLocalService.removeDocTemplate(id);
+	}
+
+	@Override
+	public void addDocTemplateResources(
+		org.oep.core.dossiermgt.model.DocTemplate docTemplate,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_docTemplateLocalService.addDocTemplateResources(docTemplate,
+			addGroupPermission, addGuestPermission, serviceContext);
+	}
+
+	@Override
+	public void addDocTemplateResources(
+		org.oep.core.dossiermgt.model.DocTemplate docTemplate,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_docTemplateLocalService.addDocTemplateResources(docTemplate,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void addDocTemplateResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_docTemplateLocalService.addDocTemplateResources(id, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */
 	public DocTemplateLocalService getWrappedDocTemplateLocalService() {

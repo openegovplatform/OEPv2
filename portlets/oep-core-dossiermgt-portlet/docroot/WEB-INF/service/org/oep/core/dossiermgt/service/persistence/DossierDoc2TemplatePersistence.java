@@ -56,20 +56,22 @@ public interface DossierDoc2TemplatePersistence extends BasePersistence<DossierD
 	/**
 	* Creates a new dossier doc2 template with the primary key. Does not add the dossier doc2 template to the database.
 	*
-	* @param id the primary key for the new dossier doc2 template
+	* @param dossierDoc2TemplatePK the primary key for the new dossier doc2 template
 	* @return the new dossier doc2 template
 	*/
-	public org.oep.core.dossiermgt.model.DossierDoc2Template create(long id);
+	public org.oep.core.dossiermgt.model.DossierDoc2Template create(
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK dossierDoc2TemplatePK);
 
 	/**
 	* Removes the dossier doc2 template with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the dossier doc2 template
+	* @param dossierDoc2TemplatePK the primary key of the dossier doc2 template
 	* @return the dossier doc2 template that was removed
 	* @throws org.oep.core.dossiermgt.NoSuchDossierDoc2TemplateException if a dossier doc2 template with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.core.dossiermgt.model.DossierDoc2Template remove(long id)
+	public org.oep.core.dossiermgt.model.DossierDoc2Template remove(
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK dossierDoc2TemplatePK)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			org.oep.core.dossiermgt.NoSuchDossierDoc2TemplateException;
 
@@ -80,25 +82,26 @@ public interface DossierDoc2TemplatePersistence extends BasePersistence<DossierD
 	/**
 	* Returns the dossier doc2 template with the primary key or throws a {@link org.oep.core.dossiermgt.NoSuchDossierDoc2TemplateException} if it could not be found.
 	*
-	* @param id the primary key of the dossier doc2 template
+	* @param dossierDoc2TemplatePK the primary key of the dossier doc2 template
 	* @return the dossier doc2 template
 	* @throws org.oep.core.dossiermgt.NoSuchDossierDoc2TemplateException if a dossier doc2 template with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public org.oep.core.dossiermgt.model.DossierDoc2Template findByPrimaryKey(
-		long id)
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK dossierDoc2TemplatePK)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			org.oep.core.dossiermgt.NoSuchDossierDoc2TemplateException;
 
 	/**
 	* Returns the dossier doc2 template with the primary key or returns <code>null</code> if it could not be found.
 	*
-	* @param id the primary key of the dossier doc2 template
+	* @param dossierDoc2TemplatePK the primary key of the dossier doc2 template
 	* @return the dossier doc2 template, or <code>null</code> if a dossier doc2 template with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public org.oep.core.dossiermgt.model.DossierDoc2Template fetchByPrimaryKey(
-		long id) throws com.liferay.portal.kernel.exception.SystemException;
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK dossierDoc2TemplatePK)
+		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
 	* Returns all the dossier doc2 templates.

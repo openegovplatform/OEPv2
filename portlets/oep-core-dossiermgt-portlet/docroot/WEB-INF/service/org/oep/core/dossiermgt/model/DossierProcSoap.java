@@ -48,6 +48,7 @@ public class DossierProcSoap implements Serializable {
 		soapModel.setDurationDescription(model.getDurationDescription());
 		soapModel.setActorsDescription(model.getActorsDescription());
 		soapModel.setResultsDescription(model.getResultsDescription());
+		soapModel.setRecordsDescription(model.getRecordsDescription());
 		soapModel.setFeeDescription(model.getFeeDescription());
 		soapModel.setInstructionsDescription(model.getInstructionsDescription());
 		soapModel.setAdministrationNo(model.getAdministrationNo());
@@ -245,6 +246,14 @@ public class DossierProcSoap implements Serializable {
 		_resultsDescription = resultsDescription;
 	}
 
+	public String getRecordsDescription() {
+		return _recordsDescription;
+	}
+
+	public void setRecordsDescription(String recordsDescription) {
+		_recordsDescription = recordsDescription;
+	}
+
 	public String getFeeDescription() {
 		return _feeDescription;
 	}
@@ -334,6 +343,7 @@ public class DossierProcSoap implements Serializable {
 	private String _durationDescription;
 	private String _actorsDescription;
 	private String _resultsDescription;
+	private String _recordsDescription;
 	private String _feeDescription;
 	private String _instructionsDescription;
 	private String _administrationNo;

@@ -106,13 +106,71 @@ public class DossierStepLocalServiceClpInvoker {
 				"org.oep.core.processmgt.model.DossierStep"
 			};
 
-		_methodName76 = "getBeanIdentifier";
+		_methodName90 = "getBeanIdentifier";
 
-		_methodParameterTypes76 = new String[] {  };
+		_methodParameterTypes90 = new String[] {  };
 
-		_methodName77 = "setBeanIdentifier";
+		_methodName91 = "setBeanIdentifier";
 
-		_methodParameterTypes77 = new String[] { "java.lang.String" };
+		_methodParameterTypes91 = new String[] { "java.lang.String" };
+
+		_methodName96 = "addDossierStep";
+
+		_methodParameterTypes96 = new String[] {
+				"long", "java.lang.String", "int", "int",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName97 = "updateDossierStep";
+
+		_methodParameterTypes97 = new String[] {
+				"long", "long", "java.lang.String", "int", "int",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName98 = "updateDossierStepResources";
+
+		_methodParameterTypes98 = new String[] {
+				"org.oep.core.processmgt.model.DossierStep",
+				"java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName99 = "removeDossierStep";
+
+		_methodParameterTypes99 = new String[] {
+				"org.oep.core.processmgt.model.DossierStep"
+			};
+
+		_methodName100 = "removeDossierStep";
+
+		_methodParameterTypes100 = new String[] { "long" };
+
+		_methodName101 = "getDossierStep";
+
+		_methodParameterTypes101 = new String[] { "long" };
+
+		_methodName102 = "addDossierStepResources";
+
+		_methodParameterTypes102 = new String[] {
+				"org.oep.core.processmgt.model.DossierStep", "boolean",
+				"boolean", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName103 = "addDossierStepResources";
+
+		_methodParameterTypes103 = new String[] {
+				"org.oep.core.processmgt.model.DossierStep",
+				"java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName104 = "addDossierStepResources";
+
+		_methodParameterTypes104 = new String[] {
+				"long", "java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -204,14 +262,92 @@ public class DossierStepLocalServiceClpInvoker {
 			return DossierStepLocalServiceUtil.updateDossierStep((org.oep.core.processmgt.model.DossierStep)arguments[0]);
 		}
 
-		if (_methodName76.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes76, parameterTypes)) {
+		if (_methodName90.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes90, parameterTypes)) {
 			return DossierStepLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName77.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes77, parameterTypes)) {
+		if (_methodName91.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes91, parameterTypes)) {
 			DossierStepLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
+
+			return null;
+		}
+
+		if (_methodName96.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
+			return DossierStepLocalServiceUtil.addDossierStep(((Long)arguments[0]).longValue(),
+				(java.lang.String)arguments[1],
+				((Integer)arguments[2]).intValue(),
+				((Integer)arguments[3]).intValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[4]);
+		}
+
+		if (_methodName97.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
+			return DossierStepLocalServiceUtil.updateDossierStep(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				(java.lang.String)arguments[2],
+				((Integer)arguments[3]).intValue(),
+				((Integer)arguments[4]).intValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[5]);
+		}
+
+		if (_methodName98.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
+			DossierStepLocalServiceUtil.updateDossierStepResources((org.oep.core.processmgt.model.DossierStep)arguments[0],
+				(java.lang.String[])arguments[1],
+				(java.lang.String[])arguments[2],
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
+
+			return null;
+		}
+
+		if (_methodName99.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes99, parameterTypes)) {
+			DossierStepLocalServiceUtil.removeDossierStep((org.oep.core.processmgt.model.DossierStep)arguments[0]);
+
+			return null;
+		}
+
+		if (_methodName100.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
+			DossierStepLocalServiceUtil.removeDossierStep(((Long)arguments[0]).longValue());
+
+			return null;
+		}
+
+		if (_methodName101.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
+			return DossierStepLocalServiceUtil.getDossierStep(((Long)arguments[0]).longValue());
+		}
+
+		if (_methodName102.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes102, parameterTypes)) {
+			DossierStepLocalServiceUtil.addDossierStepResources((org.oep.core.processmgt.model.DossierStep)arguments[0],
+				((Boolean)arguments[1]).booleanValue(),
+				((Boolean)arguments[2]).booleanValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
+
+			return null;
+		}
+
+		if (_methodName103.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes103, parameterTypes)) {
+			DossierStepLocalServiceUtil.addDossierStepResources((org.oep.core.processmgt.model.DossierStep)arguments[0],
+				(java.lang.String[])arguments[1],
+				(java.lang.String[])arguments[2],
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
+
+			return null;
+		}
+
+		if (_methodName104.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
+			DossierStepLocalServiceUtil.addDossierStepResources(((Long)arguments[0]).longValue(),
+				(java.lang.String[])arguments[1],
+				(java.lang.String[])arguments[2],
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
 
 			return null;
 		}
@@ -251,8 +387,26 @@ public class DossierStepLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName76;
-	private String[] _methodParameterTypes76;
-	private String _methodName77;
-	private String[] _methodParameterTypes77;
+	private String _methodName90;
+	private String[] _methodParameterTypes90;
+	private String _methodName91;
+	private String[] _methodParameterTypes91;
+	private String _methodName96;
+	private String[] _methodParameterTypes96;
+	private String _methodName97;
+	private String[] _methodParameterTypes97;
+	private String _methodName98;
+	private String[] _methodParameterTypes98;
+	private String _methodName99;
+	private String[] _methodParameterTypes99;
+	private String _methodName100;
+	private String[] _methodParameterTypes100;
+	private String _methodName101;
+	private String[] _methodParameterTypes101;
+	private String _methodName102;
+	private String[] _methodParameterTypes102;
+	private String _methodName103;
+	private String[] _methodParameterTypes103;
+	private String _methodName104;
+	private String[] _methodParameterTypes104;
 }

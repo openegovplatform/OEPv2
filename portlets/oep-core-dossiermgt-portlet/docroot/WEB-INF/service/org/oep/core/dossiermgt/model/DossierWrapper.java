@@ -59,12 +59,11 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("organizationId", getOrganizationId());
 		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgentNo", getGovAgentNo());
+		attributes.put("govAgentId", getGovAgentId());
 		attributes.put("govAgentName", getGovAgentName());
-		attributes.put("submitterName", getSubmitterName());
-		attributes.put("actorType", getActorType());
-		attributes.put("actorNo", getActorNo());
-		attributes.put("actorName", getActorName());
+		attributes.put("subjectId", getSubjectId());
+		attributes.put("subjectType", getSubjectType());
+		attributes.put("subjectName", getSubjectName());
 		attributes.put("address", getAddress());
 		attributes.put("cityNo", getCityNo());
 		attributes.put("cityName", getCityName());
@@ -72,8 +71,11 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 		attributes.put("districtName", getDistrictName());
 		attributes.put("wardNo", getWardNo());
 		attributes.put("wardName", getWardName());
-		attributes.put("description", getDescription());
+		attributes.put("telNo", getTelNo());
+		attributes.put("contactPersonName", getContactPersonName());
+		attributes.put("contactPersonTel", getContactPersonTel());
 		attributes.put("note", getNote());
+		attributes.put("resumeDescription", getResumeDescription());
 		attributes.put("receptionNo", getReceptionNo());
 		attributes.put("submissionDate", getSubmissionDate());
 		attributes.put("receptionDate", getReceptionDate());
@@ -82,9 +84,9 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 		attributes.put("releaseDate", getReleaseDate());
 		attributes.put("completionDate", getCompletionDate());
 		attributes.put("status", getStatus());
-		attributes.put("statusName", getStatusName());
+		attributes.put("statusDescription", getStatusDescription());
 		attributes.put("feedbackNote", getFeedbackNote());
-		attributes.put("paymentConfirmed", getPaymentConfirmed());
+		attributes.put("dirty", getDirty());
 
 		return attributes;
 	}
@@ -145,10 +147,10 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 			setDossierProcId(dossierProcId);
 		}
 
-		String govAgentNo = (String)attributes.get("govAgentNo");
+		String govAgentId = (String)attributes.get("govAgentId");
 
-		if (govAgentNo != null) {
-			setGovAgentNo(govAgentNo);
+		if (govAgentId != null) {
+			setGovAgentId(govAgentId);
 		}
 
 		String govAgentName = (String)attributes.get("govAgentName");
@@ -157,28 +159,22 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 			setGovAgentName(govAgentName);
 		}
 
-		String submitterName = (String)attributes.get("submitterName");
+		String subjectId = (String)attributes.get("subjectId");
 
-		if (submitterName != null) {
-			setSubmitterName(submitterName);
+		if (subjectId != null) {
+			setSubjectId(subjectId);
 		}
 
-		Integer actorType = (Integer)attributes.get("actorType");
+		String subjectType = (String)attributes.get("subjectType");
 
-		if (actorType != null) {
-			setActorType(actorType);
+		if (subjectType != null) {
+			setSubjectType(subjectType);
 		}
 
-		String actorNo = (String)attributes.get("actorNo");
+		String subjectName = (String)attributes.get("subjectName");
 
-		if (actorNo != null) {
-			setActorNo(actorNo);
-		}
-
-		String actorName = (String)attributes.get("actorName");
-
-		if (actorName != null) {
-			setActorName(actorName);
+		if (subjectName != null) {
+			setSubjectName(subjectName);
 		}
 
 		String address = (String)attributes.get("address");
@@ -223,16 +219,34 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 			setWardName(wardName);
 		}
 
-		String description = (String)attributes.get("description");
+		String telNo = (String)attributes.get("telNo");
 
-		if (description != null) {
-			setDescription(description);
+		if (telNo != null) {
+			setTelNo(telNo);
+		}
+
+		String contactPersonName = (String)attributes.get("contactPersonName");
+
+		if (contactPersonName != null) {
+			setContactPersonName(contactPersonName);
+		}
+
+		String contactPersonTel = (String)attributes.get("contactPersonTel");
+
+		if (contactPersonTel != null) {
+			setContactPersonTel(contactPersonTel);
 		}
 
 		String note = (String)attributes.get("note");
 
 		if (note != null) {
 			setNote(note);
+		}
+
+		String resumeDescription = (String)attributes.get("resumeDescription");
+
+		if (resumeDescription != null) {
+			setResumeDescription(resumeDescription);
 		}
 
 		String receptionNo = (String)attributes.get("receptionNo");
@@ -283,10 +297,10 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 			setStatus(status);
 		}
 
-		String statusName = (String)attributes.get("statusName");
+		String statusDescription = (String)attributes.get("statusDescription");
 
-		if (statusName != null) {
-			setStatusName(statusName);
+		if (statusDescription != null) {
+			setStatusDescription(statusDescription);
 		}
 
 		String feedbackNote = (String)attributes.get("feedbackNote");
@@ -295,10 +309,10 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 			setFeedbackNote(feedbackNote);
 		}
 
-		Integer paymentConfirmed = (Integer)attributes.get("paymentConfirmed");
+		Integer dirty = (Integer)attributes.get("dirty");
 
-		if (paymentConfirmed != null) {
-			setPaymentConfirmed(paymentConfirmed);
+		if (dirty != null) {
+			setDirty(dirty);
 		}
 	}
 
@@ -525,23 +539,23 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	}
 
 	/**
-	* Returns the gov agent no of this dossier.
+	* Returns the gov agent ID of this dossier.
 	*
-	* @return the gov agent no of this dossier
+	* @return the gov agent ID of this dossier
 	*/
 	@Override
-	public java.lang.String getGovAgentNo() {
-		return _dossier.getGovAgentNo();
+	public java.lang.String getGovAgentId() {
+		return _dossier.getGovAgentId();
 	}
 
 	/**
-	* Sets the gov agent no of this dossier.
+	* Sets the gov agent ID of this dossier.
 	*
-	* @param govAgentNo the gov agent no of this dossier
+	* @param govAgentId the gov agent ID of this dossier
 	*/
 	@Override
-	public void setGovAgentNo(java.lang.String govAgentNo) {
-		_dossier.setGovAgentNo(govAgentNo);
+	public void setGovAgentId(java.lang.String govAgentId) {
+		_dossier.setGovAgentId(govAgentId);
 	}
 
 	/**
@@ -565,83 +579,63 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	}
 
 	/**
-	* Returns the submitter name of this dossier.
+	* Returns the subject ID of this dossier.
 	*
-	* @return the submitter name of this dossier
+	* @return the subject ID of this dossier
 	*/
 	@Override
-	public java.lang.String getSubmitterName() {
-		return _dossier.getSubmitterName();
+	public java.lang.String getSubjectId() {
+		return _dossier.getSubjectId();
 	}
 
 	/**
-	* Sets the submitter name of this dossier.
+	* Sets the subject ID of this dossier.
 	*
-	* @param submitterName the submitter name of this dossier
+	* @param subjectId the subject ID of this dossier
 	*/
 	@Override
-	public void setSubmitterName(java.lang.String submitterName) {
-		_dossier.setSubmitterName(submitterName);
+	public void setSubjectId(java.lang.String subjectId) {
+		_dossier.setSubjectId(subjectId);
 	}
 
 	/**
-	* Returns the actor type of this dossier.
+	* Returns the subject type of this dossier.
 	*
-	* @return the actor type of this dossier
+	* @return the subject type of this dossier
 	*/
 	@Override
-	public int getActorType() {
-		return _dossier.getActorType();
+	public java.lang.String getSubjectType() {
+		return _dossier.getSubjectType();
 	}
 
 	/**
-	* Sets the actor type of this dossier.
+	* Sets the subject type of this dossier.
 	*
-	* @param actorType the actor type of this dossier
+	* @param subjectType the subject type of this dossier
 	*/
 	@Override
-	public void setActorType(int actorType) {
-		_dossier.setActorType(actorType);
+	public void setSubjectType(java.lang.String subjectType) {
+		_dossier.setSubjectType(subjectType);
 	}
 
 	/**
-	* Returns the actor no of this dossier.
+	* Returns the subject name of this dossier.
 	*
-	* @return the actor no of this dossier
+	* @return the subject name of this dossier
 	*/
 	@Override
-	public java.lang.String getActorNo() {
-		return _dossier.getActorNo();
+	public java.lang.String getSubjectName() {
+		return _dossier.getSubjectName();
 	}
 
 	/**
-	* Sets the actor no of this dossier.
+	* Sets the subject name of this dossier.
 	*
-	* @param actorNo the actor no of this dossier
+	* @param subjectName the subject name of this dossier
 	*/
 	@Override
-	public void setActorNo(java.lang.String actorNo) {
-		_dossier.setActorNo(actorNo);
-	}
-
-	/**
-	* Returns the actor name of this dossier.
-	*
-	* @return the actor name of this dossier
-	*/
-	@Override
-	public java.lang.String getActorName() {
-		return _dossier.getActorName();
-	}
-
-	/**
-	* Sets the actor name of this dossier.
-	*
-	* @param actorName the actor name of this dossier
-	*/
-	@Override
-	public void setActorName(java.lang.String actorName) {
-		_dossier.setActorName(actorName);
+	public void setSubjectName(java.lang.String subjectName) {
+		_dossier.setSubjectName(subjectName);
 	}
 
 	/**
@@ -785,23 +779,63 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	}
 
 	/**
-	* Returns the description of this dossier.
+	* Returns the tel no of this dossier.
 	*
-	* @return the description of this dossier
+	* @return the tel no of this dossier
 	*/
 	@Override
-	public java.lang.String getDescription() {
-		return _dossier.getDescription();
+	public java.lang.String getTelNo() {
+		return _dossier.getTelNo();
 	}
 
 	/**
-	* Sets the description of this dossier.
+	* Sets the tel no of this dossier.
 	*
-	* @param description the description of this dossier
+	* @param telNo the tel no of this dossier
 	*/
 	@Override
-	public void setDescription(java.lang.String description) {
-		_dossier.setDescription(description);
+	public void setTelNo(java.lang.String telNo) {
+		_dossier.setTelNo(telNo);
+	}
+
+	/**
+	* Returns the contact person name of this dossier.
+	*
+	* @return the contact person name of this dossier
+	*/
+	@Override
+	public java.lang.String getContactPersonName() {
+		return _dossier.getContactPersonName();
+	}
+
+	/**
+	* Sets the contact person name of this dossier.
+	*
+	* @param contactPersonName the contact person name of this dossier
+	*/
+	@Override
+	public void setContactPersonName(java.lang.String contactPersonName) {
+		_dossier.setContactPersonName(contactPersonName);
+	}
+
+	/**
+	* Returns the contact person tel of this dossier.
+	*
+	* @return the contact person tel of this dossier
+	*/
+	@Override
+	public java.lang.String getContactPersonTel() {
+		return _dossier.getContactPersonTel();
+	}
+
+	/**
+	* Sets the contact person tel of this dossier.
+	*
+	* @param contactPersonTel the contact person tel of this dossier
+	*/
+	@Override
+	public void setContactPersonTel(java.lang.String contactPersonTel) {
+		_dossier.setContactPersonTel(contactPersonTel);
 	}
 
 	/**
@@ -822,6 +856,26 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	@Override
 	public void setNote(java.lang.String note) {
 		_dossier.setNote(note);
+	}
+
+	/**
+	* Returns the resume description of this dossier.
+	*
+	* @return the resume description of this dossier
+	*/
+	@Override
+	public java.lang.String getResumeDescription() {
+		return _dossier.getResumeDescription();
+	}
+
+	/**
+	* Sets the resume description of this dossier.
+	*
+	* @param resumeDescription the resume description of this dossier
+	*/
+	@Override
+	public void setResumeDescription(java.lang.String resumeDescription) {
+		_dossier.setResumeDescription(resumeDescription);
 	}
 
 	/**
@@ -985,23 +1039,23 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	}
 
 	/**
-	* Returns the status name of this dossier.
+	* Returns the status description of this dossier.
 	*
-	* @return the status name of this dossier
+	* @return the status description of this dossier
 	*/
 	@Override
-	public java.lang.String getStatusName() {
-		return _dossier.getStatusName();
+	public java.lang.String getStatusDescription() {
+		return _dossier.getStatusDescription();
 	}
 
 	/**
-	* Sets the status name of this dossier.
+	* Sets the status description of this dossier.
 	*
-	* @param statusName the status name of this dossier
+	* @param statusDescription the status description of this dossier
 	*/
 	@Override
-	public void setStatusName(java.lang.String statusName) {
-		_dossier.setStatusName(statusName);
+	public void setStatusDescription(java.lang.String statusDescription) {
+		_dossier.setStatusDescription(statusDescription);
 	}
 
 	/**
@@ -1025,23 +1079,23 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	}
 
 	/**
-	* Returns the payment confirmed of this dossier.
+	* Returns the dirty of this dossier.
 	*
-	* @return the payment confirmed of this dossier
+	* @return the dirty of this dossier
 	*/
 	@Override
-	public int getPaymentConfirmed() {
-		return _dossier.getPaymentConfirmed();
+	public int getDirty() {
+		return _dossier.getDirty();
 	}
 
 	/**
-	* Sets the payment confirmed of this dossier.
+	* Sets the dirty of this dossier.
 	*
-	* @param paymentConfirmed the payment confirmed of this dossier
+	* @param dirty the dirty of this dossier
 	*/
 	@Override
-	public void setPaymentConfirmed(int paymentConfirmed) {
-		_dossier.setPaymentConfirmed(paymentConfirmed);
+	public void setDirty(int dirty) {
+		_dossier.setDirty(dirty);
 	}
 
 	@Override
@@ -1108,7 +1162,7 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	}
 
 	@Override
-	public int compareTo(Dossier dossier) {
+	public int compareTo(org.oep.core.dossiermgt.model.Dossier dossier) {
 		return _dossier.compareTo(dossier);
 	}
 
@@ -1118,17 +1172,17 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	}
 
 	@Override
-	public com.liferay.portal.model.CacheModel<Dossier> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<org.oep.core.dossiermgt.model.Dossier> toCacheModel() {
 		return _dossier.toCacheModel();
 	}
 
 	@Override
-	public Dossier toEscapedModel() {
+	public org.oep.core.dossiermgt.model.Dossier toEscapedModel() {
 		return new DossierWrapper(_dossier.toEscapedModel());
 	}
 
 	@Override
-	public Dossier toUnescapedModel() {
+	public org.oep.core.dossiermgt.model.Dossier toUnescapedModel() {
 		return new DossierWrapper(_dossier.toUnescapedModel());
 	}
 

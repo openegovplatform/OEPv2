@@ -8,13 +8,11 @@
 	<bean id="org.oep.core.processmgt.service.DossierStepService" class="org.oep.core.processmgt.service.impl.DossierStepServiceImpl" />
 	<bean id="org.oep.core.processmgt.service.persistence.DossierStepPersistence" class="org.oep.core.processmgt.service.persistence.DossierStepPersistenceImpl" parent="basePersistence" />
 	<bean id="org.oep.core.processmgt.service.DossierStep2RoleLocalService" class="org.oep.core.processmgt.service.impl.DossierStep2RoleLocalServiceImpl" />
-	<bean id="org.oep.core.processmgt.service.DossierStep2RoleService" class="org.oep.core.processmgt.service.impl.DossierStep2RoleServiceImpl" />
 	<bean id="org.oep.core.processmgt.service.persistence.DossierStep2RolePersistence" class="org.oep.core.processmgt.service.persistence.DossierStep2RolePersistenceImpl" parent="basePersistence" />
 	<bean id="org.oep.core.processmgt.service.ProcessOrderLocalService" class="org.oep.core.processmgt.service.impl.ProcessOrderLocalServiceImpl" />
 	<bean id="org.oep.core.processmgt.service.ProcessOrderService" class="org.oep.core.processmgt.service.impl.ProcessOrderServiceImpl" />
 	<bean id="org.oep.core.processmgt.service.persistence.ProcessOrderPersistence" class="org.oep.core.processmgt.service.persistence.ProcessOrderPersistenceImpl" parent="basePersistence" />
 	<bean id="org.oep.core.processmgt.service.ProcessOrder2UserLocalService" class="org.oep.core.processmgt.service.impl.ProcessOrder2UserLocalServiceImpl" />
-	<bean id="org.oep.core.processmgt.service.ProcessOrder2UserService" class="org.oep.core.processmgt.service.impl.ProcessOrder2UserServiceImpl" />
 	<bean id="org.oep.core.processmgt.service.persistence.ProcessOrder2UserPersistence" class="org.oep.core.processmgt.service.persistence.ProcessOrder2UserPersistenceImpl" parent="basePersistence" />
 	<bean id="org.oep.core.processmgt.service.StepTransitionLocalService" class="org.oep.core.processmgt.service.impl.StepTransitionLocalServiceImpl" />
 	<bean id="org.oep.core.processmgt.service.StepTransitionService" class="org.oep.core.processmgt.service.impl.StepTransitionServiceImpl" />

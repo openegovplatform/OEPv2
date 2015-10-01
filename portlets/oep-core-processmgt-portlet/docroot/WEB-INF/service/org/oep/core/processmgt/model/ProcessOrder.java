@@ -17,7 +17,7 @@ package org.oep.core.processmgt.model;
 import com.liferay.portal.model.PersistedModel;
 
 /**
- * The extended model interface for the ProcessOrder service. Represents a row in the &quot;oep_processmgt_ProcessOrder&quot; database table, with each column mapped to a property of this class.
+ * The extended model interface for the ProcessOrder service. Represents a row in the &quot;oep_processmgt_processorder&quot; database table, with each column mapped to a property of this class.
  *
  * @author trungdk
  * @see ProcessOrderModel

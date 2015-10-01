@@ -20,6 +20,8 @@ import com.liferay.portal.kernel.dao.jdbc.SqlUpdate;
 import com.liferay.portal.kernel.dao.jdbc.SqlUpdateFactoryUtil;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.service.BaseServiceImpl;
+import com.liferay.portal.service.persistence.CompanyPersistence;
+import com.liferay.portal.service.persistence.GroupPersistence;
 import com.liferay.portal.service.persistence.UserPersistence;
 
 import org.oep.core.processmgt.model.DossierProcess;
@@ -189,25 +191,6 @@ public abstract class DossierProcessServiceBaseImpl extends BaseServiceImpl
 	}
 
 	/**
-	 * Returns the dossier step2 role remote service.
-	 *
-	 * @return the dossier step2 role remote service
-	 */
-	public org.oep.core.processmgt.service.DossierStep2RoleService getDossierStep2RoleService() {
-		return dossierStep2RoleService;
-	}
-
-	/**
-	 * Sets the dossier step2 role remote service.
-	 *
-	 * @param dossierStep2RoleService the dossier step2 role remote service
-	 */
-	public void setDossierStep2RoleService(
-		org.oep.core.processmgt.service.DossierStep2RoleService dossierStep2RoleService) {
-		this.dossierStep2RoleService = dossierStep2RoleService;
-	}
-
-	/**
 	 * Returns the dossier step2 role persistence.
 	 *
 	 * @return the dossier step2 role persistence
@@ -300,25 +283,6 @@ public abstract class DossierProcessServiceBaseImpl extends BaseServiceImpl
 	public void setProcessOrder2UserLocalService(
 		org.oep.core.processmgt.service.ProcessOrder2UserLocalService processOrder2UserLocalService) {
 		this.processOrder2UserLocalService = processOrder2UserLocalService;
-	}
-
-	/**
-	 * Returns the process order2 user remote service.
-	 *
-	 * @return the process order2 user remote service
-	 */
-	public org.oep.core.processmgt.service.ProcessOrder2UserService getProcessOrder2UserService() {
-		return processOrder2UserService;
-	}
-
-	/**
-	 * Sets the process order2 user remote service.
-	 *
-	 * @param processOrder2UserService the process order2 user remote service
-	 */
-	public void setProcessOrder2UserService(
-		org.oep.core.processmgt.service.ProcessOrder2UserService processOrder2UserService) {
-		this.processOrder2UserService = processOrder2UserService;
 	}
 
 	/**
@@ -531,6 +495,118 @@ public abstract class DossierProcessServiceBaseImpl extends BaseServiceImpl
 	}
 
 	/**
+	 * Returns the company local service.
+	 *
+	 * @return the company local service
+	 */
+	public com.liferay.portal.service.CompanyLocalService getCompanyLocalService() {
+		return companyLocalService;
+	}
+
+	/**
+	 * Sets the company local service.
+	 *
+	 * @param companyLocalService the company local service
+	 */
+	public void setCompanyLocalService(
+		com.liferay.portal.service.CompanyLocalService companyLocalService) {
+		this.companyLocalService = companyLocalService;
+	}
+
+	/**
+	 * Returns the company remote service.
+	 *
+	 * @return the company remote service
+	 */
+	public com.liferay.portal.service.CompanyService getCompanyService() {
+		return companyService;
+	}
+
+	/**
+	 * Sets the company remote service.
+	 *
+	 * @param companyService the company remote service
+	 */
+	public void setCompanyService(
+		com.liferay.portal.service.CompanyService companyService) {
+		this.companyService = companyService;
+	}
+
+	/**
+	 * Returns the company persistence.
+	 *
+	 * @return the company persistence
+	 */
+	public CompanyPersistence getCompanyPersistence() {
+		return companyPersistence;
+	}
+
+	/**
+	 * Sets the company persistence.
+	 *
+	 * @param companyPersistence the company persistence
+	 */
+	public void setCompanyPersistence(CompanyPersistence companyPersistence) {
+		this.companyPersistence = companyPersistence;
+	}
+
+	/**
+	 * Returns the group local service.
+	 *
+	 * @return the group local service
+	 */
+	public com.liferay.portal.service.GroupLocalService getGroupLocalService() {
+		return groupLocalService;
+	}
+
+	/**
+	 * Sets the group local service.
+	 *
+	 * @param groupLocalService the group local service
+	 */
+	public void setGroupLocalService(
+		com.liferay.portal.service.GroupLocalService groupLocalService) {
+		this.groupLocalService = groupLocalService;
+	}
+
+	/**
+	 * Returns the group remote service.
+	 *
+	 * @return the group remote service
+	 */
+	public com.liferay.portal.service.GroupService getGroupService() {
+		return groupService;
+	}
+
+	/**
+	 * Sets the group remote service.
+	 *
+	 * @param groupService the group remote service
+	 */
+	public void setGroupService(
+		com.liferay.portal.service.GroupService groupService) {
+		this.groupService = groupService;
+	}
+
+	/**
+	 * Returns the group persistence.
+	 *
+	 * @return the group persistence
+	 */
+	public GroupPersistence getGroupPersistence() {
+		return groupPersistence;
+	}
+
+	/**
+	 * Sets the group persistence.
+	 *
+	 * @param groupPersistence the group persistence
+	 */
+	public void setGroupPersistence(GroupPersistence groupPersistence) {
+		this.groupPersistence = groupPersistence;
+	}
+
+	/**
 	 * Returns the resource local service.
 	 *
 	 * @return the resource local service
@@ -696,8 +772,6 @@ public abstract class DossierProcessServiceBaseImpl extends BaseServiceImpl
 	protected DossierStepPersistence dossierStepPersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.DossierStep2RoleLocalService.class)
 	protected org.oep.core.processmgt.service.DossierStep2RoleLocalService dossierStep2RoleLocalService;
-	@BeanReference(type = org.oep.core.processmgt.service.DossierStep2RoleService.class)
-	protected org.oep.core.processmgt.service.DossierStep2RoleService dossierStep2RoleService;
 	@BeanReference(type = DossierStep2RolePersistence.class)
 	protected DossierStep2RolePersistence dossierStep2RolePersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.ProcessOrderLocalService.class)
@@ -708,8 +782,6 @@ public abstract class DossierProcessServiceBaseImpl extends BaseServiceImpl
 	protected ProcessOrderPersistence processOrderPersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.ProcessOrder2UserLocalService.class)
 	protected org.oep.core.processmgt.service.ProcessOrder2UserLocalService processOrder2UserLocalService;
-	@BeanReference(type = org.oep.core.processmgt.service.ProcessOrder2UserService.class)
-	protected org.oep.core.processmgt.service.ProcessOrder2UserService processOrder2UserService;
 	@BeanReference(type = ProcessOrder2UserPersistence.class)
 	protected ProcessOrder2UserPersistence processOrder2UserPersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.StepTransitionLocalService.class)
@@ -732,6 +804,18 @@ public abstract class DossierProcessServiceBaseImpl extends BaseServiceImpl
 	protected UserAssignmentPersistence userAssignmentPersistence;
 	@BeanReference(type = com.liferay.counter.service.CounterLocalService.class)
 	protected com.liferay.counter.service.CounterLocalService counterLocalService;
+	@BeanReference(type = com.liferay.portal.service.CompanyLocalService.class)
+	protected com.liferay.portal.service.CompanyLocalService companyLocalService;
+	@BeanReference(type = com.liferay.portal.service.CompanyService.class)
+	protected com.liferay.portal.service.CompanyService companyService;
+	@BeanReference(type = CompanyPersistence.class)
+	protected CompanyPersistence companyPersistence;
+	@BeanReference(type = com.liferay.portal.service.GroupLocalService.class)
+	protected com.liferay.portal.service.GroupLocalService groupLocalService;
+	@BeanReference(type = com.liferay.portal.service.GroupService.class)
+	protected com.liferay.portal.service.GroupService groupService;
+	@BeanReference(type = GroupPersistence.class)
+	protected GroupPersistence groupPersistence;
 	@BeanReference(type = com.liferay.portal.service.ResourceLocalService.class)
 	protected com.liferay.portal.service.ResourceLocalService resourceLocalService;
 	@BeanReference(type = com.liferay.portal.service.UserLocalService.class)

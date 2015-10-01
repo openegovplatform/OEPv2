@@ -59,7 +59,7 @@ public class DocFileVersionWrapper implements DocFileVersion,
 		attributes.put("docFileId", getDocFileId());
 		attributes.put("fileEntryId", getFileEntryId());
 		attributes.put("xmlContent", getXmlContent());
-		attributes.put("issueDate", getIssueDate());
+		attributes.put("ebMessageId", getEbMessageId());
 
 		return attributes;
 	}
@@ -120,10 +120,10 @@ public class DocFileVersionWrapper implements DocFileVersion,
 			setXmlContent(xmlContent);
 		}
 
-		Date issueDate = (Date)attributes.get("issueDate");
+		Long ebMessageId = (Long)attributes.get("ebMessageId");
 
-		if (issueDate != null) {
-			setIssueDate(issueDate);
+		if (ebMessageId != null) {
+			setEbMessageId(ebMessageId);
 		}
 	}
 
@@ -350,23 +350,23 @@ public class DocFileVersionWrapper implements DocFileVersion,
 	}
 
 	/**
-	* Returns the issue date of this doc file version.
+	* Returns the eb message ID of this doc file version.
 	*
-	* @return the issue date of this doc file version
+	* @return the eb message ID of this doc file version
 	*/
 	@Override
-	public java.util.Date getIssueDate() {
-		return _docFileVersion.getIssueDate();
+	public long getEbMessageId() {
+		return _docFileVersion.getEbMessageId();
 	}
 
 	/**
-	* Sets the issue date of this doc file version.
+	* Sets the eb message ID of this doc file version.
 	*
-	* @param issueDate the issue date of this doc file version
+	* @param ebMessageId the eb message ID of this doc file version
 	*/
 	@Override
-	public void setIssueDate(java.util.Date issueDate) {
-		_docFileVersion.setIssueDate(issueDate);
+	public void setEbMessageId(long ebMessageId) {
+		_docFileVersion.setEbMessageId(ebMessageId);
 	}
 
 	@Override
@@ -433,7 +433,8 @@ public class DocFileVersionWrapper implements DocFileVersion,
 	}
 
 	@Override
-	public int compareTo(DocFileVersion docFileVersion) {
+	public int compareTo(
+		org.oep.core.dossiermgt.model.DocFileVersion docFileVersion) {
 		return _docFileVersion.compareTo(docFileVersion);
 	}
 
@@ -443,17 +444,17 @@ public class DocFileVersionWrapper implements DocFileVersion,
 	}
 
 	@Override
-	public com.liferay.portal.model.CacheModel<DocFileVersion> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<org.oep.core.dossiermgt.model.DocFileVersion> toCacheModel() {
 		return _docFileVersion.toCacheModel();
 	}
 
 	@Override
-	public DocFileVersion toEscapedModel() {
+	public org.oep.core.dossiermgt.model.DocFileVersion toEscapedModel() {
 		return new DocFileVersionWrapper(_docFileVersion.toEscapedModel());
 	}
 
 	@Override
-	public DocFileVersion toUnescapedModel() {
+	public org.oep.core.dossiermgt.model.DocFileVersion toUnescapedModel() {
 		return new DocFileVersionWrapper(_docFileVersion.toUnescapedModel());
 	}
 

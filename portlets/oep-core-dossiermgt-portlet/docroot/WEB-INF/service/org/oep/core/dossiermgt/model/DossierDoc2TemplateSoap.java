@@ -14,6 +14,8 @@
 
 package org.oep.core.dossiermgt.model;
 
+import org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK;
+
 import java.io.Serializable;
 
 import java.util.ArrayList;
@@ -30,11 +32,8 @@ public class DossierDoc2TemplateSoap implements Serializable {
 	public static DossierDoc2TemplateSoap toSoapModel(DossierDoc2Template model) {
 		DossierDoc2TemplateSoap soapModel = new DossierDoc2TemplateSoap();
 
-		soapModel.setId(model.getId());
-		soapModel.setCompanyId(model.getCompanyId());
 		soapModel.setDossierDocId(model.getDossierDocId());
 		soapModel.setDocTemplateId(model.getDocTemplateId());
-		soapModel.setSequenceNo(model.getSequenceNo());
 
 		return soapModel;
 	}
@@ -82,28 +81,13 @@ public class DossierDoc2TemplateSoap implements Serializable {
 	public DossierDoc2TemplateSoap() {
 	}
 
-	public long getPrimaryKey() {
-		return _id;
+	public DossierDoc2TemplatePK getPrimaryKey() {
+		return new DossierDoc2TemplatePK(_dossierDocId, _docTemplateId);
 	}
 
-	public void setPrimaryKey(long pk) {
-		setId(pk);
-	}
-
-	public long getId() {
-		return _id;
-	}
-
-	public void setId(long id) {
-		_id = id;
-	}
-
-	public long getCompanyId() {
-		return _companyId;
-	}
-
-	public void setCompanyId(long companyId) {
-		_companyId = companyId;
+	public void setPrimaryKey(DossierDoc2TemplatePK pk) {
+		setDossierDocId(pk.dossierDocId);
+		setDocTemplateId(pk.docTemplateId);
 	}
 
 	public long getDossierDocId() {
@@ -122,17 +106,6 @@ public class DossierDoc2TemplateSoap implements Serializable {
 		_docTemplateId = docTemplateId;
 	}
 
-	public int getSequenceNo() {
-		return _sequenceNo;
-	}
-
-	public void setSequenceNo(int sequenceNo) {
-		_sequenceNo = sequenceNo;
-	}
-
-	private long _id;
-	private long _companyId;
 	private long _dossierDocId;
 	private long _docTemplateId;
-	private int _sequenceNo;
 }

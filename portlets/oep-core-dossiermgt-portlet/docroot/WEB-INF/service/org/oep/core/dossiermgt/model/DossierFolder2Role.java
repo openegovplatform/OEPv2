@@ -17,7 +17,7 @@ package org.oep.core.dossiermgt.model;
 import com.liferay.portal.model.PersistedModel;
 
 /**
- * The extended model interface for the DossierFolder2Role service. Represents a row in the &quot;oep_dossiermgt_DossierFolder2Role&quot; database table, with each column mapped to a property of this class.
+ * The extended model interface for the DossierFolder2Role service. Represents a row in the &quot;oep_dossiermgt_dossierfolder2role&quot; database table, with each column mapped to a property of this class.
  *
  * @author trungdk
  * @see DossierFolder2RoleModel

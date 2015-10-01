@@ -38,7 +38,7 @@ public class DossierProcessSoap implements Serializable {
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setDossierProcId(model.getDossierProcId());
-		soapModel.setGovAgentNo(model.getGovAgentNo());
+		soapModel.setGovAgentId(model.getGovAgentId());
 		soapModel.setGovAgentName(model.getGovAgentName());
 		soapModel.setStartDossierStepId(model.getStartDossierStepId());
 		soapModel.setDaysDuration(model.getDaysDuration());
@@ -150,12 +150,12 @@ public class DossierProcessSoap implements Serializable {
 		_dossierProcId = dossierProcId;
 	}
 
-	public String getGovAgentNo() {
-		return _govAgentNo;
+	public String getGovAgentId() {
+		return _govAgentId;
 	}
 
-	public void setGovAgentNo(String govAgentNo) {
-		_govAgentNo = govAgentNo;
+	public void setGovAgentId(String govAgentId) {
+		_govAgentId = govAgentId;
 	}
 
 	public String getGovAgentName() {
@@ -189,7 +189,7 @@ public class DossierProcessSoap implements Serializable {
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _dossierProcId;
-	private String _govAgentNo;
+	private String _govAgentId;
 	private String _govAgentName;
 	private long _startDossierStepId;
 	private int _daysDuration;

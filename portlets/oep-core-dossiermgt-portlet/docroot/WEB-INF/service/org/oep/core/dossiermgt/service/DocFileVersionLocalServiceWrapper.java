@@ -357,6 +357,102 @@ public class DocFileVersionLocalServiceWrapper
 	}
 
 	/**
+	* Add doc file version
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new doc file version
+	*/
+	@Override
+	public org.oep.core.dossiermgt.model.DocFileVersion addDocFileVersion(
+		long docFileId, long fileEntryId, java.lang.String xmlContent,
+		long ebMessageId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _docFileVersionLocalService.addDocFileVersion(docFileId,
+			fileEntryId, xmlContent, ebMessageId, serviceContext);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.DocFileVersion updateDocFileVersion(
+		long id, long docFileId, long fileEntryId, java.lang.String xmlContent,
+		long ebMessageId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _docFileVersionLocalService.updateDocFileVersion(id, docFileId,
+			fileEntryId, xmlContent, ebMessageId, serviceContext);
+	}
+
+	@Override
+	public void updateDocFileVersionResources(
+		org.oep.core.dossiermgt.model.DocFileVersion docFileVersion,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_docFileVersionLocalService.updateDocFileVersionResources(docFileVersion,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void removeDocFileVersion(
+		org.oep.core.dossiermgt.model.DocFileVersion docFileVersion)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_docFileVersionLocalService.removeDocFileVersion(docFileVersion);
+	}
+
+	@Override
+	public void removeDocFileVersion(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_docFileVersionLocalService.removeDocFileVersion(id);
+	}
+
+	@Override
+	public void addDocFileVersionResources(
+		org.oep.core.dossiermgt.model.DocFileVersion docFileVersion,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_docFileVersionLocalService.addDocFileVersionResources(docFileVersion,
+			addGroupPermission, addGuestPermission, serviceContext);
+	}
+
+	@Override
+	public void addDocFileVersionResources(
+		org.oep.core.dossiermgt.model.DocFileVersion docFileVersion,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_docFileVersionLocalService.addDocFileVersionResources(docFileVersion,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void addDocFileVersionResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_docFileVersionLocalService.addDocFileVersionResources(id,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */
 	public DocFileVersionLocalService getWrappedDocFileVersionLocalService() {

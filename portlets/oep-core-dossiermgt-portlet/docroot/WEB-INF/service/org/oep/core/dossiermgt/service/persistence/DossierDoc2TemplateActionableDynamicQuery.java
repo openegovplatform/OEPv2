@@ -33,6 +33,6 @@ public abstract class DossierDoc2TemplateActionableDynamicQuery
 
 		setClassLoader(org.oep.core.dossiermgt.service.ClpSerializer.class.getClassLoader());
 
-		setPrimaryKeyPropertyName("id");
+		setPrimaryKeyPropertyName("primaryKey.dossierDocId");
 	}
 }

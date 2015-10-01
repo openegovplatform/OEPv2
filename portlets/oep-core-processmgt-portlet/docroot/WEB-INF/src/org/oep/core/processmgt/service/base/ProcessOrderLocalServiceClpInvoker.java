@@ -106,13 +106,75 @@ public class ProcessOrderLocalServiceClpInvoker {
 				"org.oep.core.processmgt.model.ProcessOrder"
 			};
 
-		_methodName76 = "getBeanIdentifier";
+		_methodName72 = "getBeanIdentifier";
 
-		_methodParameterTypes76 = new String[] {  };
+		_methodParameterTypes72 = new String[] {  };
 
-		_methodName77 = "setBeanIdentifier";
+		_methodName73 = "setBeanIdentifier";
 
-		_methodParameterTypes77 = new String[] { "java.lang.String" };
+		_methodParameterTypes73 = new String[] { "java.lang.String" };
+
+		_methodName78 = "addProcessOrder";
+
+		_methodParameterTypes78 = new String[] {
+				"long", "long", "long", "long", "long", "java.lang.String",
+				"java.lang.String", "java.util.Date", "java.lang.String", "long",
+				"java.lang.String", "int",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName79 = "updateProcessOrder";
+
+		_methodParameterTypes79 = new String[] {
+				"long", "long", "long", "long", "long", "long",
+				"java.lang.String", "java.lang.String", "java.util.Date",
+				"java.lang.String", "long", "java.lang.String", "int",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName80 = "updateProcessOrderResources";
+
+		_methodParameterTypes80 = new String[] {
+				"org.oep.core.processmgt.model.ProcessOrder",
+				"java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName81 = "removeProcessOrder";
+
+		_methodParameterTypes81 = new String[] {
+				"org.oep.core.processmgt.model.ProcessOrder"
+			};
+
+		_methodName82 = "removeProcessOrder";
+
+		_methodParameterTypes82 = new String[] { "long" };
+
+		_methodName83 = "getProcessOrder";
+
+		_methodParameterTypes83 = new String[] { "long" };
+
+		_methodName84 = "addProcessOrderResources";
+
+		_methodParameterTypes84 = new String[] {
+				"org.oep.core.processmgt.model.ProcessOrder", "boolean",
+				"boolean", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName85 = "addProcessOrderResources";
+
+		_methodParameterTypes85 = new String[] {
+				"org.oep.core.processmgt.model.ProcessOrder",
+				"java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName86 = "addProcessOrderResources";
+
+		_methodParameterTypes86 = new String[] {
+				"long", "java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -204,14 +266,104 @@ public class ProcessOrderLocalServiceClpInvoker {
 			return ProcessOrderLocalServiceUtil.updateProcessOrder((org.oep.core.processmgt.model.ProcessOrder)arguments[0]);
 		}
 
-		if (_methodName76.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes76, parameterTypes)) {
+		if (_methodName72.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes72, parameterTypes)) {
 			return ProcessOrderLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName77.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes77, parameterTypes)) {
+		if (_methodName73.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes73, parameterTypes)) {
 			ProcessOrderLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
+
+			return null;
+		}
+
+		if (_methodName78.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes78, parameterTypes)) {
+			return ProcessOrderLocalServiceUtil.addProcessOrder(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				((Long)arguments[2]).longValue(),
+				((Long)arguments[3]).longValue(),
+				((Long)arguments[4]).longValue(),
+				(java.lang.String)arguments[5], (java.lang.String)arguments[6],
+				(java.util.Date)arguments[7], (java.lang.String)arguments[8],
+				((Long)arguments[9]).longValue(),
+				(java.lang.String)arguments[10],
+				((Integer)arguments[11]).intValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[12]);
+		}
+
+		if (_methodName79.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes79, parameterTypes)) {
+			return ProcessOrderLocalServiceUtil.updateProcessOrder(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				((Long)arguments[2]).longValue(),
+				((Long)arguments[3]).longValue(),
+				((Long)arguments[4]).longValue(),
+				((Long)arguments[5]).longValue(),
+				(java.lang.String)arguments[6], (java.lang.String)arguments[7],
+				(java.util.Date)arguments[8], (java.lang.String)arguments[9],
+				((Long)arguments[10]).longValue(),
+				(java.lang.String)arguments[11],
+				((Integer)arguments[12]).intValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[13]);
+		}
+
+		if (_methodName80.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes80, parameterTypes)) {
+			ProcessOrderLocalServiceUtil.updateProcessOrderResources((org.oep.core.processmgt.model.ProcessOrder)arguments[0],
+				(java.lang.String[])arguments[1],
+				(java.lang.String[])arguments[2],
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
+
+			return null;
+		}
+
+		if (_methodName81.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes81, parameterTypes)) {
+			ProcessOrderLocalServiceUtil.removeProcessOrder((org.oep.core.processmgt.model.ProcessOrder)arguments[0]);
+
+			return null;
+		}
+
+		if (_methodName82.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
+			ProcessOrderLocalServiceUtil.removeProcessOrder(((Long)arguments[0]).longValue());
+
+			return null;
+		}
+
+		if (_methodName83.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
+			return ProcessOrderLocalServiceUtil.getProcessOrder(((Long)arguments[0]).longValue());
+		}
+
+		if (_methodName84.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes84, parameterTypes)) {
+			ProcessOrderLocalServiceUtil.addProcessOrderResources((org.oep.core.processmgt.model.ProcessOrder)arguments[0],
+				((Boolean)arguments[1]).booleanValue(),
+				((Boolean)arguments[2]).booleanValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
+
+			return null;
+		}
+
+		if (_methodName85.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes85, parameterTypes)) {
+			ProcessOrderLocalServiceUtil.addProcessOrderResources((org.oep.core.processmgt.model.ProcessOrder)arguments[0],
+				(java.lang.String[])arguments[1],
+				(java.lang.String[])arguments[2],
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
+
+			return null;
+		}
+
+		if (_methodName86.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes86, parameterTypes)) {
+			ProcessOrderLocalServiceUtil.addProcessOrderResources(((Long)arguments[0]).longValue(),
+				(java.lang.String[])arguments[1],
+				(java.lang.String[])arguments[2],
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
 
 			return null;
 		}
@@ -251,8 +403,26 @@ public class ProcessOrderLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName76;
-	private String[] _methodParameterTypes76;
-	private String _methodName77;
-	private String[] _methodParameterTypes77;
+	private String _methodName72;
+	private String[] _methodParameterTypes72;
+	private String _methodName73;
+	private String[] _methodParameterTypes73;
+	private String _methodName78;
+	private String[] _methodParameterTypes78;
+	private String _methodName79;
+	private String[] _methodParameterTypes79;
+	private String _methodName80;
+	private String[] _methodParameterTypes80;
+	private String _methodName81;
+	private String[] _methodParameterTypes81;
+	private String _methodName82;
+	private String[] _methodParameterTypes82;
+	private String _methodName83;
+	private String[] _methodParameterTypes83;
+	private String _methodName84;
+	private String[] _methodParameterTypes84;
+	private String _methodName85;
+	private String[] _methodParameterTypes85;
+	private String _methodName86;
+	private String[] _methodParameterTypes86;
 }

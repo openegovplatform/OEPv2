@@ -122,13 +122,71 @@ public class DocFileLocalServiceClpInvoker {
 				"org.oep.core.dossiermgt.model.DocFile"
 			};
 
-		_methodName116 = "getBeanIdentifier";
+		_methodName122 = "getBeanIdentifier";
 
-		_methodParameterTypes116 = new String[] {  };
+		_methodParameterTypes122 = new String[] {  };
 
-		_methodName117 = "setBeanIdentifier";
+		_methodName123 = "setBeanIdentifier";
 
-		_methodParameterTypes117 = new String[] { "java.lang.String" };
+		_methodParameterTypes123 = new String[] { "java.lang.String" };
+
+		_methodName128 = "addDocFile";
+
+		_methodParameterTypes128 = new String[] {
+				"long", "long", "long", "long", "java.lang.String",
+				"java.lang.String", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName129 = "updateDocFile";
+
+		_methodParameterTypes129 = new String[] {
+				"long", "long", "long", "long", "long", "java.lang.String",
+				"java.lang.String", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName130 = "updateDocFileResources";
+
+		_methodParameterTypes130 = new String[] {
+				"org.oep.core.dossiermgt.model.DocFile", "java.lang.String[][]",
+				"java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName131 = "removeDocFile";
+
+		_methodParameterTypes131 = new String[] {
+				"org.oep.core.dossiermgt.model.DocFile"
+			};
+
+		_methodName132 = "removeDocFile";
+
+		_methodParameterTypes132 = new String[] { "long" };
+
+		_methodName133 = "getDocFile";
+
+		_methodParameterTypes133 = new String[] { "long" };
+
+		_methodName134 = "addDocFileResources";
+
+		_methodParameterTypes134 = new String[] {
+				"org.oep.core.dossiermgt.model.DocFile", "boolean", "boolean",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName135 = "addDocFileResources";
+
+		_methodParameterTypes135 = new String[] {
+				"org.oep.core.dossiermgt.model.DocFile", "java.lang.String[][]",
+				"java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName136 = "addDocFileResources";
+
+		_methodParameterTypes136 = new String[] {
+				"long", "java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -244,14 +302,94 @@ public class DocFileLocalServiceClpInvoker {
 			return DocFileLocalServiceUtil.updateDocFile((org.oep.core.dossiermgt.model.DocFile)arguments[0]);
 		}
 
-		if (_methodName116.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes116, parameterTypes)) {
+		if (_methodName122.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes122, parameterTypes)) {
 			return DocFileLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName117.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes117, parameterTypes)) {
+		if (_methodName123.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes123, parameterTypes)) {
 			DocFileLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
+
+			return null;
+		}
+
+		if (_methodName128.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes128, parameterTypes)) {
+			return DocFileLocalServiceUtil.addDocFile(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				((Long)arguments[2]).longValue(),
+				((Long)arguments[3]).longValue(),
+				(java.lang.String)arguments[4], (java.lang.String)arguments[5],
+				(com.liferay.portal.service.ServiceContext)arguments[6]);
+		}
+
+		if (_methodName129.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes129, parameterTypes)) {
+			return DocFileLocalServiceUtil.updateDocFile(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				((Long)arguments[2]).longValue(),
+				((Long)arguments[3]).longValue(),
+				((Long)arguments[4]).longValue(),
+				(java.lang.String)arguments[5], (java.lang.String)arguments[6],
+				(com.liferay.portal.service.ServiceContext)arguments[7]);
+		}
+
+		if (_methodName130.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes130, parameterTypes)) {
+			DocFileLocalServiceUtil.updateDocFileResources((org.oep.core.dossiermgt.model.DocFile)arguments[0],
+				(java.lang.String[])arguments[1],
+				(java.lang.String[])arguments[2],
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
+
+			return null;
+		}
+
+		if (_methodName131.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes131, parameterTypes)) {
+			DocFileLocalServiceUtil.removeDocFile((org.oep.core.dossiermgt.model.DocFile)arguments[0]);
+
+			return null;
+		}
+
+		if (_methodName132.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes132, parameterTypes)) {
+			DocFileLocalServiceUtil.removeDocFile(((Long)arguments[0]).longValue());
+
+			return null;
+		}
+
+		if (_methodName133.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes133, parameterTypes)) {
+			return DocFileLocalServiceUtil.getDocFile(((Long)arguments[0]).longValue());
+		}
+
+		if (_methodName134.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes134, parameterTypes)) {
+			DocFileLocalServiceUtil.addDocFileResources((org.oep.core.dossiermgt.model.DocFile)arguments[0],
+				((Boolean)arguments[1]).booleanValue(),
+				((Boolean)arguments[2]).booleanValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
+
+			return null;
+		}
+
+		if (_methodName135.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes135, parameterTypes)) {
+			DocFileLocalServiceUtil.addDocFileResources((org.oep.core.dossiermgt.model.DocFile)arguments[0],
+				(java.lang.String[])arguments[1],
+				(java.lang.String[])arguments[2],
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
+
+			return null;
+		}
+
+		if (_methodName136.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes136, parameterTypes)) {
+			DocFileLocalServiceUtil.addDocFileResources(((Long)arguments[0]).longValue(),
+				(java.lang.String[])arguments[1],
+				(java.lang.String[])arguments[2],
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
 
 			return null;
 		}
@@ -299,8 +437,26 @@ public class DocFileLocalServiceClpInvoker {
 	private String[] _methodParameterTypes18;
 	private String _methodName19;
 	private String[] _methodParameterTypes19;
-	private String _methodName116;
-	private String[] _methodParameterTypes116;
-	private String _methodName117;
-	private String[] _methodParameterTypes117;
+	private String _methodName122;
+	private String[] _methodParameterTypes122;
+	private String _methodName123;
+	private String[] _methodParameterTypes123;
+	private String _methodName128;
+	private String[] _methodParameterTypes128;
+	private String _methodName129;
+	private String[] _methodParameterTypes129;
+	private String _methodName130;
+	private String[] _methodParameterTypes130;
+	private String _methodName131;
+	private String[] _methodParameterTypes131;
+	private String _methodName132;
+	private String[] _methodParameterTypes132;
+	private String _methodName133;
+	private String[] _methodParameterTypes133;
+	private String _methodName134;
+	private String[] _methodParameterTypes134;
+	private String _methodName135;
+	private String[] _methodParameterTypes135;
+	private String _methodName136;
+	private String[] _methodParameterTypes136;
 }

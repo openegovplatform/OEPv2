@@ -326,11 +326,12 @@ public class DossierDocPersistenceImpl extends BasePersistenceImpl<DossierDoc>
 		dossierDocImpl.setCreateDate(dossierDoc.getCreateDate());
 		dossierDocImpl.setModifiedDate(dossierDoc.getModifiedDate());
 		dossierDocImpl.setDossierProcId(dossierDoc.getDossierProcId());
-		dossierDocImpl.setDocumentNo(dossierDoc.getDocumentNo());
-		dossierDocImpl.setDocumentName(dossierDoc.getDocumentName());
+		dossierDocImpl.setDossierDocNo(dossierDoc.getDossierDocNo());
+		dossierDocImpl.setDossierDocName(dossierDoc.getDossierDocName());
 		dossierDocImpl.setNote(dossierDoc.getNote());
 		dossierDocImpl.setSequenceNo(dossierDoc.getSequenceNo());
-		dossierDocImpl.setDocumentType(dossierDoc.getDocumentType());
+		dossierDocImpl.setDefaultDocTemplateId(dossierDoc.getDefaultDocTemplateId());
+		dossierDocImpl.setValidationType(dossierDoc.getValidationType());
 		dossierDocImpl.setNumberOfFile(dossierDoc.getNumberOfFile());
 		dossierDocImpl.setOnlineForm(dossierDoc.getOnlineForm());
 

@@ -58,8 +58,8 @@ public class DocFileVersionCacheModel implements CacheModel<DocFileVersion>,
 		sb.append(fileEntryId);
 		sb.append(", xmlContent=");
 		sb.append(xmlContent);
-		sb.append(", issueDate=");
-		sb.append(issueDate);
+		sb.append(", ebMessageId=");
+		sb.append(ebMessageId);
 		sb.append("}");
 
 		return sb.toString();
@@ -98,12 +98,7 @@ public class DocFileVersionCacheModel implements CacheModel<DocFileVersion>,
 			docFileVersionImpl.setXmlContent(xmlContent);
 		}
 
-		if (issueDate == Long.MIN_VALUE) {
-			docFileVersionImpl.setIssueDate(null);
-		}
-		else {
-			docFileVersionImpl.setIssueDate(new Date(issueDate));
-		}
+		docFileVersionImpl.setEbMessageId(ebMessageId);
 
 		docFileVersionImpl.resetOriginalValues();
 
@@ -121,7 +116,7 @@ public class DocFileVersionCacheModel implements CacheModel<DocFileVersion>,
 		docFileId = objectInput.readLong();
 		fileEntryId = objectInput.readLong();
 		xmlContent = objectInput.readUTF();
-		issueDate = objectInput.readLong();
+		ebMessageId = objectInput.readLong();
 	}
 
 	@Override
@@ -149,7 +144,7 @@ public class DocFileVersionCacheModel implements CacheModel<DocFileVersion>,
 			objectOutput.writeUTF(xmlContent);
 		}
 
-		objectOutput.writeLong(issueDate);
+		objectOutput.writeLong(ebMessageId);
 	}
 
 	public String uuid;
@@ -161,5 +156,5 @@ public class DocFileVersionCacheModel implements CacheModel<DocFileVersion>,
 	public long docFileId;
 	public long fileEntryId;
 	public String xmlContent;
-	public long issueDate;
+	public long ebMessageId;
 }

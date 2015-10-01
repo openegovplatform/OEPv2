@@ -31,7 +31,7 @@ public class StepTransitionSoap implements Serializable {
 	public static StepTransitionSoap toSoapModel(StepTransition model) {
 		StepTransitionSoap soapModel = new StepTransitionSoap();
 
-		soapModel.setStepTransionId(model.getStepTransionId());
+		soapModel.setStepTransitionId(model.getStepTransitionId());
 		soapModel.setUserId(model.getUserId());
 		soapModel.setGroupId(model.getGroupId());
 		soapModel.setCompanyId(model.getCompanyId());
@@ -45,7 +45,7 @@ public class StepTransitionSoap implements Serializable {
 		soapModel.setDaysDuration(model.getDaysDuration());
 		soapModel.setDossierStatus(model.getDossierStatus());
 		soapModel.setUserAssignment(model.getUserAssignment());
-		soapModel.setNewOrder(model.getNewOrder());
+		soapModel.setNewProcessOrder(model.getNewProcessOrder());
 		soapModel.setErrorMessage(model.getErrorMessage());
 
 		return soapModel;
@@ -92,19 +92,19 @@ public class StepTransitionSoap implements Serializable {
 	}
 
 	public long getPrimaryKey() {
-		return _stepTransionId;
+		return _stepTransitionId;
 	}
 
 	public void setPrimaryKey(long pk) {
-		setStepTransionId(pk);
+		setStepTransitionId(pk);
 	}
 
-	public long getStepTransionId() {
-		return _stepTransionId;
+	public long getStepTransitionId() {
+		return _stepTransitionId;
 	}
 
-	public void setStepTransionId(long stepTransionId) {
-		_stepTransionId = stepTransionId;
+	public void setStepTransitionId(long stepTransitionId) {
+		_stepTransitionId = stepTransitionId;
 	}
 
 	public long getUserId() {
@@ -211,12 +211,12 @@ public class StepTransitionSoap implements Serializable {
 		_userAssignment = userAssignment;
 	}
 
-	public int getNewOrder() {
-		return _newOrder;
+	public int getNewProcessOrder() {
+		return _newProcessOrder;
 	}
 
-	public void setNewOrder(int newOrder) {
-		_newOrder = newOrder;
+	public void setNewProcessOrder(int newProcessOrder) {
+		_newProcessOrder = newProcessOrder;
 	}
 
 	public String getErrorMessage() {
@@ -227,7 +227,7 @@ public class StepTransitionSoap implements Serializable {
 		_errorMessage = errorMessage;
 	}
 
-	private long _stepTransionId;
+	private long _stepTransitionId;
 	private long _userId;
 	private long _groupId;
 	private long _companyId;
@@ -241,6 +241,6 @@ public class StepTransitionSoap implements Serializable {
 	private int _daysDuration;
 	private String _dossierStatus;
 	private int _userAssignment;
-	private int _newOrder;
+	private int _newProcessOrder;
 	private String _errorMessage;
 }

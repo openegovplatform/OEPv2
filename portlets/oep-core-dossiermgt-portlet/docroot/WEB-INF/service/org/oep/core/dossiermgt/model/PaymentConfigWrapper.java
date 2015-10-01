@@ -54,12 +54,11 @@ public class PaymentConfigWrapper implements PaymentConfig,
 		attributes.put("companyId", getCompanyId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgentNo", getGovAgentNo());
+		attributes.put("govAgentId", getGovAgentId());
 		attributes.put("govAgentName", getGovAgentName());
-		attributes.put("prePaidFee", getPrePaidFee());
 		attributes.put("bankTransfer", getBankTransfer());
 		attributes.put("keypay", getKeypay());
+		attributes.put("ebPartnerShipId", getEbPartnerShipId());
 
 		return attributes;
 	}
@@ -90,28 +89,16 @@ public class PaymentConfigWrapper implements PaymentConfig,
 			setModifiedDate(modifiedDate);
 		}
 
-		Long dossierProcId = (Long)attributes.get("dossierProcId");
+		String govAgentId = (String)attributes.get("govAgentId");
 
-		if (dossierProcId != null) {
-			setDossierProcId(dossierProcId);
-		}
-
-		String govAgentNo = (String)attributes.get("govAgentNo");
-
-		if (govAgentNo != null) {
-			setGovAgentNo(govAgentNo);
+		if (govAgentId != null) {
+			setGovAgentId(govAgentId);
 		}
 
 		String govAgentName = (String)attributes.get("govAgentName");
 
 		if (govAgentName != null) {
 			setGovAgentName(govAgentName);
-		}
-
-		Long prePaidFee = (Long)attributes.get("prePaidFee");
-
-		if (prePaidFee != null) {
-			setPrePaidFee(prePaidFee);
 		}
 
 		String bankTransfer = (String)attributes.get("bankTransfer");
@@ -124,6 +111,12 @@ public class PaymentConfigWrapper implements PaymentConfig,
 
 		if (keypay != null) {
 			setKeypay(keypay);
+		}
+
+		Long ebPartnerShipId = (Long)attributes.get("ebPartnerShipId");
+
+		if (ebPartnerShipId != null) {
+			setEbPartnerShipId(ebPartnerShipId);
 		}
 	}
 
@@ -228,43 +221,23 @@ public class PaymentConfigWrapper implements PaymentConfig,
 	}
 
 	/**
-	* Returns the dossier proc ID of this payment config.
+	* Returns the gov agent ID of this payment config.
 	*
-	* @return the dossier proc ID of this payment config
+	* @return the gov agent ID of this payment config
 	*/
 	@Override
-	public long getDossierProcId() {
-		return _paymentConfig.getDossierProcId();
+	public java.lang.String getGovAgentId() {
+		return _paymentConfig.getGovAgentId();
 	}
 
 	/**
-	* Sets the dossier proc ID of this payment config.
+	* Sets the gov agent ID of this payment config.
 	*
-	* @param dossierProcId the dossier proc ID of this payment config
+	* @param govAgentId the gov agent ID of this payment config
 	*/
 	@Override
-	public void setDossierProcId(long dossierProcId) {
-		_paymentConfig.setDossierProcId(dossierProcId);
-	}
-
-	/**
-	* Returns the gov agent no of this payment config.
-	*
-	* @return the gov agent no of this payment config
-	*/
-	@Override
-	public java.lang.String getGovAgentNo() {
-		return _paymentConfig.getGovAgentNo();
-	}
-
-	/**
-	* Sets the gov agent no of this payment config.
-	*
-	* @param govAgentNo the gov agent no of this payment config
-	*/
-	@Override
-	public void setGovAgentNo(java.lang.String govAgentNo) {
-		_paymentConfig.setGovAgentNo(govAgentNo);
+	public void setGovAgentId(java.lang.String govAgentId) {
+		_paymentConfig.setGovAgentId(govAgentId);
 	}
 
 	/**
@@ -285,26 +258,6 @@ public class PaymentConfigWrapper implements PaymentConfig,
 	@Override
 	public void setGovAgentName(java.lang.String govAgentName) {
 		_paymentConfig.setGovAgentName(govAgentName);
-	}
-
-	/**
-	* Returns the pre paid fee of this payment config.
-	*
-	* @return the pre paid fee of this payment config
-	*/
-	@Override
-	public long getPrePaidFee() {
-		return _paymentConfig.getPrePaidFee();
-	}
-
-	/**
-	* Sets the pre paid fee of this payment config.
-	*
-	* @param prePaidFee the pre paid fee of this payment config
-	*/
-	@Override
-	public void setPrePaidFee(long prePaidFee) {
-		_paymentConfig.setPrePaidFee(prePaidFee);
 	}
 
 	/**
@@ -345,6 +298,26 @@ public class PaymentConfigWrapper implements PaymentConfig,
 	@Override
 	public void setKeypay(java.lang.String keypay) {
 		_paymentConfig.setKeypay(keypay);
+	}
+
+	/**
+	* Returns the eb partner ship ID of this payment config.
+	*
+	* @return the eb partner ship ID of this payment config
+	*/
+	@Override
+	public long getEbPartnerShipId() {
+		return _paymentConfig.getEbPartnerShipId();
+	}
+
+	/**
+	* Sets the eb partner ship ID of this payment config.
+	*
+	* @param ebPartnerShipId the eb partner ship ID of this payment config
+	*/
+	@Override
+	public void setEbPartnerShipId(long ebPartnerShipId) {
+		_paymentConfig.setEbPartnerShipId(ebPartnerShipId);
 	}
 
 	@Override
@@ -411,7 +384,8 @@ public class PaymentConfigWrapper implements PaymentConfig,
 	}
 
 	@Override
-	public int compareTo(PaymentConfig paymentConfig) {
+	public int compareTo(
+		org.oep.core.dossiermgt.model.PaymentConfig paymentConfig) {
 		return _paymentConfig.compareTo(paymentConfig);
 	}
 
@@ -421,17 +395,17 @@ public class PaymentConfigWrapper implements PaymentConfig,
 	}
 
 	@Override
-	public com.liferay.portal.model.CacheModel<PaymentConfig> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<org.oep.core.dossiermgt.model.PaymentConfig> toCacheModel() {
 		return _paymentConfig.toCacheModel();
 	}
 
 	@Override
-	public PaymentConfig toEscapedModel() {
+	public org.oep.core.dossiermgt.model.PaymentConfig toEscapedModel() {
 		return new PaymentConfigWrapper(_paymentConfig.toEscapedModel());
 	}
 
 	@Override
-	public PaymentConfig toUnescapedModel() {
+	public org.oep.core.dossiermgt.model.PaymentConfig toUnescapedModel() {
 		return new PaymentConfigWrapper(_paymentConfig.toUnescapedModel());
 	}
 

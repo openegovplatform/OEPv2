@@ -37,7 +37,7 @@ import java.util.Date;
 public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(29);
+		StringBundler sb = new StringBundler(27);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -63,8 +63,6 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 		sb.append(docFileVersionId);
 		sb.append(", docName=");
 		sb.append(docName);
-		sb.append(", issueDate=");
-		sb.append(issueDate);
 		sb.append(", note=");
 		sb.append(note);
 		sb.append("}");
@@ -114,13 +112,6 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 			docFileImpl.setDocName(docName);
 		}
 
-		if (issueDate == Long.MIN_VALUE) {
-			docFileImpl.setIssueDate(null);
-		}
-		else {
-			docFileImpl.setIssueDate(new Date(issueDate));
-		}
-
 		if (note == null) {
 			docFileImpl.setNote(StringPool.BLANK);
 		}
@@ -147,7 +138,6 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 		docTemplateId = objectInput.readLong();
 		docFileVersionId = objectInput.readLong();
 		docName = objectInput.readUTF();
-		issueDate = objectInput.readLong();
 		note = objectInput.readUTF();
 	}
 
@@ -179,8 +169,6 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 			objectOutput.writeUTF(docName);
 		}
 
-		objectOutput.writeLong(issueDate);
-
 		if (note == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
@@ -201,6 +189,5 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 	public long docTemplateId;
 	public long docFileVersionId;
 	public String docName;
-	public long issueDate;
 	public String note;
 }

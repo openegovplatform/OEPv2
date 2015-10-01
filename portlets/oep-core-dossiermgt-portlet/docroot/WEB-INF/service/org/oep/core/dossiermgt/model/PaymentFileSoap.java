@@ -39,18 +39,22 @@ public class PaymentFileSoap implements Serializable {
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setOrganizationId(model.getOrganizationId());
+		soapModel.setGovAgentId(model.getGovAgentId());
+		soapModel.setGovAgentName(model.getGovAgentName());
+		soapModel.setSubjectId(model.getSubjectId());
+		soapModel.setSubjectType(model.getSubjectType());
+		soapModel.setSubjectName(model.getSubjectName());
 		soapModel.setAmount(model.getAmount());
 		soapModel.setPaymentType(model.getPaymentType());
-		soapModel.setDetailInfo(model.getDetailInfo());
-		soapModel.setNote(model.getNote());
+		soapModel.setPaymentDescription(model.getPaymentDescription());
+		soapModel.setTransactionInfo(model.getTransactionInfo());
 		soapModel.setFileEntryId(model.getFileEntryId());
-		soapModel.setIssueDate(model.getIssueDate());
 		soapModel.setCheckingDate(model.getCheckingDate());
 		soapModel.setCheckingUserId(model.getCheckingUserId());
 		soapModel.setCheckingUserName(model.getCheckingUserName());
 		soapModel.setCheckingResult(model.getCheckingResult());
 		soapModel.setCheckingNote(model.getCheckingNote());
-		soapModel.setFeedbackDate(model.getFeedbackDate());
+		soapModel.setEbMessageId(model.getEbMessageId());
 
 		return soapModel;
 	}
@@ -167,6 +171,46 @@ public class PaymentFileSoap implements Serializable {
 		_organizationId = organizationId;
 	}
 
+	public String getGovAgentId() {
+		return _govAgentId;
+	}
+
+	public void setGovAgentId(String govAgentId) {
+		_govAgentId = govAgentId;
+	}
+
+	public String getGovAgentName() {
+		return _govAgentName;
+	}
+
+	public void setGovAgentName(String govAgentName) {
+		_govAgentName = govAgentName;
+	}
+
+	public String getSubjectId() {
+		return _subjectId;
+	}
+
+	public void setSubjectId(String subjectId) {
+		_subjectId = subjectId;
+	}
+
+	public String getSubjectType() {
+		return _subjectType;
+	}
+
+	public void setSubjectType(String subjectType) {
+		_subjectType = subjectType;
+	}
+
+	public String getSubjectName() {
+		return _subjectName;
+	}
+
+	public void setSubjectName(String subjectName) {
+		_subjectName = subjectName;
+	}
+
 	public long getAmount() {
 		return _amount;
 	}
@@ -175,28 +219,28 @@ public class PaymentFileSoap implements Serializable {
 		_amount = amount;
 	}
 
-	public int getPaymentType() {
+	public String getPaymentType() {
 		return _paymentType;
 	}
 
-	public void setPaymentType(int paymentType) {
+	public void setPaymentType(String paymentType) {
 		_paymentType = paymentType;
 	}
 
-	public String getDetailInfo() {
-		return _detailInfo;
+	public String getPaymentDescription() {
+		return _paymentDescription;
 	}
 
-	public void setDetailInfo(String detailInfo) {
-		_detailInfo = detailInfo;
+	public void setPaymentDescription(String paymentDescription) {
+		_paymentDescription = paymentDescription;
 	}
 
-	public String getNote() {
-		return _note;
+	public String getTransactionInfo() {
+		return _transactionInfo;
 	}
 
-	public void setNote(String note) {
-		_note = note;
+	public void setTransactionInfo(String transactionInfo) {
+		_transactionInfo = transactionInfo;
 	}
 
 	public long getFileEntryId() {
@@ -205,14 +249,6 @@ public class PaymentFileSoap implements Serializable {
 
 	public void setFileEntryId(long fileEntryId) {
 		_fileEntryId = fileEntryId;
-	}
-
-	public Date getIssueDate() {
-		return _issueDate;
-	}
-
-	public void setIssueDate(Date issueDate) {
-		_issueDate = issueDate;
 	}
 
 	public Date getCheckingDate() {
@@ -255,12 +291,12 @@ public class PaymentFileSoap implements Serializable {
 		_checkingNote = checkingNote;
 	}
 
-	public Date getFeedbackDate() {
-		return _feedbackDate;
+	public long getEbMessageId() {
+		return _ebMessageId;
 	}
 
-	public void setFeedbackDate(Date feedbackDate) {
-		_feedbackDate = feedbackDate;
+	public void setEbMessageId(long ebMessageId) {
+		_ebMessageId = ebMessageId;
 	}
 
 	private String _uuid;
@@ -271,16 +307,20 @@ public class PaymentFileSoap implements Serializable {
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _organizationId;
+	private String _govAgentId;
+	private String _govAgentName;
+	private String _subjectId;
+	private String _subjectType;
+	private String _subjectName;
 	private long _amount;
-	private int _paymentType;
-	private String _detailInfo;
-	private String _note;
+	private String _paymentType;
+	private String _paymentDescription;
+	private String _transactionInfo;
 	private long _fileEntryId;
-	private Date _issueDate;
 	private Date _checkingDate;
 	private long _checkingUserId;
 	private String _checkingUserName;
 	private int _checkingResult;
 	private String _checkingNote;
-	private Date _feedbackDate;
+	private long _ebMessageId;
 }

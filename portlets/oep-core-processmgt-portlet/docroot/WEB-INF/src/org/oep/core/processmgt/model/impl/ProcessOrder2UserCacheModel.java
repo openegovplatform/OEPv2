@@ -35,13 +35,9 @@ public class ProcessOrder2UserCacheModel implements CacheModel<ProcessOrder2User
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(9);
+		StringBundler sb = new StringBundler(5);
 
-		sb.append("{id=");
-		sb.append(id);
-		sb.append(", companyId=");
-		sb.append(companyId);
-		sb.append(", processOrderId=");
+		sb.append("{processOrderId=");
 		sb.append(processOrderId);
 		sb.append(", userId=");
 		sb.append(userId);
@@ -54,8 +50,6 @@ public class ProcessOrder2UserCacheModel implements CacheModel<ProcessOrder2User
 	public ProcessOrder2User toEntityModel() {
 		ProcessOrder2UserImpl processOrder2UserImpl = new ProcessOrder2UserImpl();
 
-		processOrder2UserImpl.setId(id);
-		processOrder2UserImpl.setCompanyId(companyId);
 		processOrder2UserImpl.setProcessOrderId(processOrderId);
 		processOrder2UserImpl.setUserId(userId);
 
@@ -66,8 +60,6 @@ public class ProcessOrder2UserCacheModel implements CacheModel<ProcessOrder2User
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		id = objectInput.readLong();
-		companyId = objectInput.readLong();
 		processOrderId = objectInput.readLong();
 		userId = objectInput.readLong();
 	}
@@ -75,14 +67,10 @@ public class ProcessOrder2UserCacheModel implements CacheModel<ProcessOrder2User
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeLong(id);
-		objectOutput.writeLong(companyId);
 		objectOutput.writeLong(processOrderId);
 		objectOutput.writeLong(userId);
 	}
 
-	public long id;
-	public long companyId;
 	public long processOrderId;
 	public long userId;
 }

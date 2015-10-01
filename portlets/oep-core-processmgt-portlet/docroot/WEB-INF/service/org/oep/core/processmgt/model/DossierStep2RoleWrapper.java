@@ -49,8 +49,6 @@ public class DossierStep2RoleWrapper implements DossierStep2Role,
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("id", getId());
-		attributes.put("companyId", getCompanyId());
 		attributes.put("dossierStepId", getDossierStepId());
 		attributes.put("roleId", getRoleId());
 
@@ -59,18 +57,6 @@ public class DossierStep2RoleWrapper implements DossierStep2Role,
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long id = (Long)attributes.get("id");
-
-		if (id != null) {
-			setId(id);
-		}
-
-		Long companyId = (Long)attributes.get("companyId");
-
-		if (companyId != null) {
-			setCompanyId(companyId);
-		}
-
 		Long dossierStepId = (Long)attributes.get("dossierStepId");
 
 		if (dossierStepId != null) {
@@ -90,7 +76,7 @@ public class DossierStep2RoleWrapper implements DossierStep2Role,
 	* @return the primary key of this dossier step2 role
 	*/
 	@Override
-	public long getPrimaryKey() {
+	public org.oep.core.processmgt.service.persistence.DossierStep2RolePK getPrimaryKey() {
 		return _dossierStep2Role.getPrimaryKey();
 	}
 
@@ -100,48 +86,9 @@ public class DossierStep2RoleWrapper implements DossierStep2Role,
 	* @param primaryKey the primary key of this dossier step2 role
 	*/
 	@Override
-	public void setPrimaryKey(long primaryKey) {
+	public void setPrimaryKey(
+		org.oep.core.processmgt.service.persistence.DossierStep2RolePK primaryKey) {
 		_dossierStep2Role.setPrimaryKey(primaryKey);
-	}
-
-	/**
-	* Returns the ID of this dossier step2 role.
-	*
-	* @return the ID of this dossier step2 role
-	*/
-	@Override
-	public long getId() {
-		return _dossierStep2Role.getId();
-	}
-
-	/**
-	* Sets the ID of this dossier step2 role.
-	*
-	* @param id the ID of this dossier step2 role
-	*/
-	@Override
-	public void setId(long id) {
-		_dossierStep2Role.setId(id);
-	}
-
-	/**
-	* Returns the company ID of this dossier step2 role.
-	*
-	* @return the company ID of this dossier step2 role
-	*/
-	@Override
-	public long getCompanyId() {
-		return _dossierStep2Role.getCompanyId();
-	}
-
-	/**
-	* Sets the company ID of this dossier step2 role.
-	*
-	* @param companyId the company ID of this dossier step2 role
-	*/
-	@Override
-	public void setCompanyId(long companyId) {
-		_dossierStep2Role.setCompanyId(companyId);
 	}
 
 	/**

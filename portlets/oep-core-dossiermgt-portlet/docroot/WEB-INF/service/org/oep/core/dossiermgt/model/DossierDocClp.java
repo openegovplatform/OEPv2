@@ -82,11 +82,12 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("documentNo", getDocumentNo());
-		attributes.put("documentName", getDocumentName());
+		attributes.put("dossierDocNo", getDossierDocNo());
+		attributes.put("dossierDocName", getDossierDocName());
 		attributes.put("note", getNote());
 		attributes.put("sequenceNo", getSequenceNo());
-		attributes.put("documentType", getDocumentType());
+		attributes.put("defaultDocTemplateId", getDefaultDocTemplateId());
+		attributes.put("validationType", getValidationType());
 		attributes.put("numberOfFile", getNumberOfFile());
 		attributes.put("onlineForm", getOnlineForm());
 
@@ -137,16 +138,16 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 			setDossierProcId(dossierProcId);
 		}
 
-		String documentNo = (String)attributes.get("documentNo");
+		String dossierDocNo = (String)attributes.get("dossierDocNo");
 
-		if (documentNo != null) {
-			setDocumentNo(documentNo);
+		if (dossierDocNo != null) {
+			setDossierDocNo(dossierDocNo);
 		}
 
-		String documentName = (String)attributes.get("documentName");
+		String dossierDocName = (String)attributes.get("dossierDocName");
 
-		if (documentName != null) {
-			setDocumentName(documentName);
+		if (dossierDocName != null) {
+			setDossierDocName(dossierDocName);
 		}
 
 		String note = (String)attributes.get("note");
@@ -161,10 +162,16 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 			setSequenceNo(sequenceNo);
 		}
 
-		Integer documentType = (Integer)attributes.get("documentType");
+		Long defaultDocTemplateId = (Long)attributes.get("defaultDocTemplateId");
 
-		if (documentType != null) {
-			setDocumentType(documentType);
+		if (defaultDocTemplateId != null) {
+			setDefaultDocTemplateId(defaultDocTemplateId);
+		}
+
+		Integer validationType = (Integer)attributes.get("validationType");
+
+		if (validationType != null) {
+			setValidationType(validationType);
 		}
 
 		Integer numberOfFile = (Integer)attributes.get("numberOfFile");
@@ -352,21 +359,21 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 	}
 
 	@Override
-	public String getDocumentNo() {
-		return _documentNo;
+	public String getDossierDocNo() {
+		return _dossierDocNo;
 	}
 
 	@Override
-	public void setDocumentNo(String documentNo) {
-		_documentNo = documentNo;
+	public void setDossierDocNo(String dossierDocNo) {
+		_dossierDocNo = dossierDocNo;
 
 		if (_dossierDocRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierDocRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setDocumentNo", String.class);
+				Method method = clazz.getMethod("setDossierDocNo", String.class);
 
-				method.invoke(_dossierDocRemoteModel, documentNo);
+				method.invoke(_dossierDocRemoteModel, dossierDocNo);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -375,21 +382,22 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 	}
 
 	@Override
-	public String getDocumentName() {
-		return _documentName;
+	public String getDossierDocName() {
+		return _dossierDocName;
 	}
 
 	@Override
-	public void setDocumentName(String documentName) {
-		_documentName = documentName;
+	public void setDossierDocName(String dossierDocName) {
+		_dossierDocName = dossierDocName;
 
 		if (_dossierDocRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierDocRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setDocumentName", String.class);
+				Method method = clazz.getMethod("setDossierDocName",
+						String.class);
 
-				method.invoke(_dossierDocRemoteModel, documentName);
+				method.invoke(_dossierDocRemoteModel, dossierDocName);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -444,21 +452,45 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 	}
 
 	@Override
-	public int getDocumentType() {
-		return _documentType;
+	public long getDefaultDocTemplateId() {
+		return _defaultDocTemplateId;
 	}
 
 	@Override
-	public void setDocumentType(int documentType) {
-		_documentType = documentType;
+	public void setDefaultDocTemplateId(long defaultDocTemplateId) {
+		_defaultDocTemplateId = defaultDocTemplateId;
 
 		if (_dossierDocRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierDocRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setDocumentType", int.class);
+				Method method = clazz.getMethod("setDefaultDocTemplateId",
+						long.class);
 
-				method.invoke(_dossierDocRemoteModel, documentType);
+				method.invoke(_dossierDocRemoteModel, defaultDocTemplateId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public int getValidationType() {
+		return _validationType;
+	}
+
+	@Override
+	public void setValidationType(int validationType) {
+		_validationType = validationType;
+
+		if (_dossierDocRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierDocRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setValidationType", int.class);
+
+				method.invoke(_dossierDocRemoteModel, validationType);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -588,11 +620,12 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 		clone.setCreateDate(getCreateDate());
 		clone.setModifiedDate(getModifiedDate());
 		clone.setDossierProcId(getDossierProcId());
-		clone.setDocumentNo(getDocumentNo());
-		clone.setDocumentName(getDocumentName());
+		clone.setDossierDocNo(getDossierDocNo());
+		clone.setDossierDocName(getDossierDocName());
 		clone.setNote(getNote());
 		clone.setSequenceNo(getSequenceNo());
-		clone.setDocumentType(getDocumentType());
+		clone.setDefaultDocTemplateId(getDefaultDocTemplateId());
+		clone.setValidationType(getValidationType());
 		clone.setNumberOfFile(getNumberOfFile());
 		clone.setOnlineForm(getOnlineForm());
 
@@ -647,7 +680,7 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(29);
+		StringBundler sb = new StringBundler(31);
 
 		sb.append("{dossierDocId=");
 		sb.append(getDossierDocId());
@@ -663,16 +696,18 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 		sb.append(getModifiedDate());
 		sb.append(", dossierProcId=");
 		sb.append(getDossierProcId());
-		sb.append(", documentNo=");
-		sb.append(getDocumentNo());
-		sb.append(", documentName=");
-		sb.append(getDocumentName());
+		sb.append(", dossierDocNo=");
+		sb.append(getDossierDocNo());
+		sb.append(", dossierDocName=");
+		sb.append(getDossierDocName());
 		sb.append(", note=");
 		sb.append(getNote());
 		sb.append(", sequenceNo=");
 		sb.append(getSequenceNo());
-		sb.append(", documentType=");
-		sb.append(getDocumentType());
+		sb.append(", defaultDocTemplateId=");
+		sb.append(getDefaultDocTemplateId());
+		sb.append(", validationType=");
+		sb.append(getValidationType());
 		sb.append(", numberOfFile=");
 		sb.append(getNumberOfFile());
 		sb.append(", onlineForm=");
@@ -684,7 +719,7 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(46);
+		StringBundler sb = new StringBundler(49);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.DossierDoc");
@@ -719,12 +754,12 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 		sb.append(getDossierProcId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>documentNo</column-name><column-value><![CDATA[");
-		sb.append(getDocumentNo());
+			"<column><column-name>dossierDocNo</column-name><column-value><![CDATA[");
+		sb.append(getDossierDocNo());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>documentName</column-name><column-value><![CDATA[");
-		sb.append(getDocumentName());
+			"<column><column-name>dossierDocName</column-name><column-value><![CDATA[");
+		sb.append(getDossierDocName());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>note</column-name><column-value><![CDATA[");
@@ -735,8 +770,12 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 		sb.append(getSequenceNo());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>documentType</column-name><column-value><![CDATA[");
-		sb.append(getDocumentType());
+			"<column><column-name>defaultDocTemplateId</column-name><column-value><![CDATA[");
+		sb.append(getDefaultDocTemplateId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>validationType</column-name><column-value><![CDATA[");
+		sb.append(getValidationType());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>numberOfFile</column-name><column-value><![CDATA[");
@@ -760,11 +799,12 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _dossierProcId;
-	private String _documentNo;
-	private String _documentName;
+	private String _dossierDocNo;
+	private String _dossierDocName;
 	private String _note;
 	private int _sequenceNo;
-	private int _documentType;
+	private long _defaultDocTemplateId;
+	private int _validationType;
 	private int _numberOfFile;
 	private String _onlineForm;
 	private BaseModel<?> _dossierDocRemoteModel;

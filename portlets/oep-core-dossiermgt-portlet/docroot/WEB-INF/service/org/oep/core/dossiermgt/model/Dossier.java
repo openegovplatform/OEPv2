@@ -18,7 +18,7 @@ import com.liferay.portal.kernel.util.Accessor;
 import com.liferay.portal.model.PersistedModel;
 
 /**
- * The extended model interface for the Dossier service. Represents a row in the &quot;oep_dossiermgt_Dossier&quot; database table, with each column mapped to a property of this class.
+ * The extended model interface for the Dossier service. Represents a row in the &quot;oep_dossiermgt_dossier&quot; database table, with each column mapped to a property of this class.
  *
  * @author trungdk
  * @see DossierModel

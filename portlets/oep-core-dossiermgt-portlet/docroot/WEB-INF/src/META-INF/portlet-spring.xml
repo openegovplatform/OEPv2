@@ -28,18 +28,21 @@
 	<bean id="org.oep.core.dossiermgt.service.DossierProcLocalService" class="org.oep.core.dossiermgt.service.impl.DossierProcLocalServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.DossierProcService" class="org.oep.core.dossiermgt.service.impl.DossierProcServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.persistence.DossierProcPersistence" class="org.oep.core.dossiermgt.service.persistence.DossierProcPersistenceImpl" parent="basePersistence" />
-	<bean id="org.oep.core.dossiermgt.service.DossierProc2AgentLocalService" class="org.oep.core.dossiermgt.service.impl.DossierProc2AgentLocalServiceImpl" />
-	<bean id="org.oep.core.dossiermgt.service.DossierProc2AgentService" class="org.oep.core.dossiermgt.service.impl.DossierProc2AgentServiceImpl" />
-	<bean id="org.oep.core.dossiermgt.service.persistence.DossierProc2AgentPersistence" class="org.oep.core.dossiermgt.service.persistence.DossierProc2AgentPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.dossiermgt.service.DossierProcAgentLocalService" class="org.oep.core.dossiermgt.service.impl.DossierProcAgentLocalServiceImpl" />
+	<bean id="org.oep.core.dossiermgt.service.DossierProcAgentService" class="org.oep.core.dossiermgt.service.impl.DossierProcAgentServiceImpl" />
+	<bean id="org.oep.core.dossiermgt.service.persistence.DossierProcAgentPersistence" class="org.oep.core.dossiermgt.service.persistence.DossierProcAgentPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.dossiermgt.service.EbMessageLocalService" class="org.oep.core.dossiermgt.service.impl.EbMessageLocalServiceImpl" />
+	<bean id="org.oep.core.dossiermgt.service.EbMessageService" class="org.oep.core.dossiermgt.service.impl.EbMessageServiceImpl" />
+	<bean id="org.oep.core.dossiermgt.service.persistence.EbMessagePersistence" class="org.oep.core.dossiermgt.service.persistence.EbMessagePersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.dossiermgt.service.EbPartnerShipLocalService" class="org.oep.core.dossiermgt.service.impl.EbPartnerShipLocalServiceImpl" />
+	<bean id="org.oep.core.dossiermgt.service.EbPartnerShipService" class="org.oep.core.dossiermgt.service.impl.EbPartnerShipServiceImpl" />
+	<bean id="org.oep.core.dossiermgt.service.persistence.EbPartnerShipPersistence" class="org.oep.core.dossiermgt.service.persistence.EbPartnerShipPersistenceImpl" parent="basePersistence" />
 	<bean id="org.oep.core.dossiermgt.service.PaymentConfigLocalService" class="org.oep.core.dossiermgt.service.impl.PaymentConfigLocalServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.PaymentConfigService" class="org.oep.core.dossiermgt.service.impl.PaymentConfigServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.persistence.PaymentConfigPersistence" class="org.oep.core.dossiermgt.service.persistence.PaymentConfigPersistenceImpl" parent="basePersistence" />
 	<bean id="org.oep.core.dossiermgt.service.PaymentFileLocalService" class="org.oep.core.dossiermgt.service.impl.PaymentFileLocalServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.PaymentFileService" class="org.oep.core.dossiermgt.service.impl.PaymentFileServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.persistence.PaymentFilePersistence" class="org.oep.core.dossiermgt.service.persistence.PaymentFilePersistenceImpl" parent="basePersistence" />
-	<bean id="org.oep.core.dossiermgt.service.PaymentFile2DossierLocalService" class="org.oep.core.dossiermgt.service.impl.PaymentFile2DossierLocalServiceImpl" />
-	<bean id="org.oep.core.dossiermgt.service.PaymentFile2DossierService" class="org.oep.core.dossiermgt.service.impl.PaymentFile2DossierServiceImpl" />
-	<bean id="org.oep.core.dossiermgt.service.persistence.PaymentFile2DossierPersistence" class="org.oep.core.dossiermgt.service.persistence.PaymentFile2DossierPersistenceImpl" parent="basePersistence" />
 	<bean id="org.oep.core.dossiermgt.service.PaymentRequestLocalService" class="org.oep.core.dossiermgt.service.impl.PaymentRequestLocalServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.PaymentRequestService" class="org.oep.core.dossiermgt.service.impl.PaymentRequestServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.persistence.PaymentRequestPersistence" class="org.oep.core.dossiermgt.service.persistence.PaymentRequestPersistenceImpl" parent="basePersistence" />

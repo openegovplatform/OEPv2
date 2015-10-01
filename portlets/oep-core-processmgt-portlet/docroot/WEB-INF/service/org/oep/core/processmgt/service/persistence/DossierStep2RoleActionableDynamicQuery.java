@@ -32,6 +32,6 @@ public abstract class DossierStep2RoleActionableDynamicQuery
 
 		setClassLoader(org.oep.core.processmgt.service.ClpSerializer.class.getClassLoader());
 
-		setPrimaryKeyPropertyName("id");
+		setPrimaryKeyPropertyName("primaryKey.dossierStepId");
 	}
 }

@@ -35,13 +35,9 @@ public class DossierFolder2RoleCacheModel implements CacheModel<DossierFolder2Ro
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(9);
+		StringBundler sb = new StringBundler(5);
 
-		sb.append("{id=");
-		sb.append(id);
-		sb.append(", companyId=");
-		sb.append(companyId);
-		sb.append(", dossierFolderId=");
+		sb.append("{dossierFolderId=");
 		sb.append(dossierFolderId);
 		sb.append(", roleId=");
 		sb.append(roleId);
@@ -54,8 +50,6 @@ public class DossierFolder2RoleCacheModel implements CacheModel<DossierFolder2Ro
 	public DossierFolder2Role toEntityModel() {
 		DossierFolder2RoleImpl dossierFolder2RoleImpl = new DossierFolder2RoleImpl();
 
-		dossierFolder2RoleImpl.setId(id);
-		dossierFolder2RoleImpl.setCompanyId(companyId);
 		dossierFolder2RoleImpl.setDossierFolderId(dossierFolderId);
 		dossierFolder2RoleImpl.setRoleId(roleId);
 
@@ -66,8 +60,6 @@ public class DossierFolder2RoleCacheModel implements CacheModel<DossierFolder2Ro
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		id = objectInput.readLong();
-		companyId = objectInput.readLong();
 		dossierFolderId = objectInput.readLong();
 		roleId = objectInput.readLong();
 	}
@@ -75,14 +67,10 @@ public class DossierFolder2RoleCacheModel implements CacheModel<DossierFolder2Ro
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeLong(id);
-		objectOutput.writeLong(companyId);
 		objectOutput.writeLong(dossierFolderId);
 		objectOutput.writeLong(roleId);
 	}
 
-	public long id;
-	public long companyId;
 	public long dossierFolderId;
 	public long roleId;
 }

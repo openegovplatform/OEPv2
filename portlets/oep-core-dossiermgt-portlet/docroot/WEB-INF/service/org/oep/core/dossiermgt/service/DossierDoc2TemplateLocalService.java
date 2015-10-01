@@ -61,23 +61,23 @@ public interface DossierDoc2TemplateLocalService extends BaseLocalService,
 	/**
 	* Creates a new dossier doc2 template with the primary key. Does not add the dossier doc2 template to the database.
 	*
-	* @param id the primary key for the new dossier doc2 template
+	* @param dossierDoc2TemplatePK the primary key for the new dossier doc2 template
 	* @return the new dossier doc2 template
 	*/
 	public org.oep.core.dossiermgt.model.DossierDoc2Template createDossierDoc2Template(
-		long id);
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK dossierDoc2TemplatePK);
 
 	/**
 	* Deletes the dossier doc2 template with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the dossier doc2 template
+	* @param dossierDoc2TemplatePK the primary key of the dossier doc2 template
 	* @return the dossier doc2 template that was removed
 	* @throws PortalException if a dossier doc2 template with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.DELETE)
 	public org.oep.core.dossiermgt.model.DossierDoc2Template deleteDossierDoc2Template(
-		long id)
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK dossierDoc2TemplatePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
@@ -172,19 +172,20 @@ public interface DossierDoc2TemplateLocalService extends BaseLocalService,
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public org.oep.core.dossiermgt.model.DossierDoc2Template fetchDossierDoc2Template(
-		long id) throws com.liferay.portal.kernel.exception.SystemException;
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK dossierDoc2TemplatePK)
+		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
 	* Returns the dossier doc2 template with the primary key.
 	*
-	* @param id the primary key of the dossier doc2 template
+	* @param dossierDoc2TemplatePK the primary key of the dossier doc2 template
 	* @return the dossier doc2 template
 	* @throws PortalException if a dossier doc2 template with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public org.oep.core.dossiermgt.model.DossierDoc2Template getDossierDoc2Template(
-		long id)
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK dossierDoc2TemplatePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 

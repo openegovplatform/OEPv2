@@ -1823,7 +1823,7 @@ public class DocFileVersionPersistenceImpl extends BasePersistenceImpl<DocFileVe
 		docFileVersionImpl.setDocFileId(docFileVersion.getDocFileId());
 		docFileVersionImpl.setFileEntryId(docFileVersion.getFileEntryId());
 		docFileVersionImpl.setXmlContent(docFileVersion.getXmlContent());
-		docFileVersionImpl.setIssueDate(docFileVersion.getIssueDate());
+		docFileVersionImpl.setEbMessageId(docFileVersion.getEbMessageId());
 
 		return docFileVersionImpl;
 	}

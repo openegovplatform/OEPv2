@@ -133,25 +133,27 @@ public class DossierStep2RoleUtil {
 	/**
 	* Creates a new dossier step2 role with the primary key. Does not add the dossier step2 role to the database.
 	*
-	* @param id the primary key for the new dossier step2 role
+	* @param dossierStep2RolePK the primary key for the new dossier step2 role
 	* @return the new dossier step2 role
 	*/
-	public static org.oep.core.processmgt.model.DossierStep2Role create(long id) {
-		return getPersistence().create(id);
+	public static org.oep.core.processmgt.model.DossierStep2Role create(
+		org.oep.core.processmgt.service.persistence.DossierStep2RolePK dossierStep2RolePK) {
+		return getPersistence().create(dossierStep2RolePK);
 	}
 
 	/**
 	* Removes the dossier step2 role with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the dossier step2 role
+	* @param dossierStep2RolePK the primary key of the dossier step2 role
 	* @return the dossier step2 role that was removed
 	* @throws org.oep.core.processmgt.NoSuchDossierStep2RoleException if a dossier step2 role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public static org.oep.core.processmgt.model.DossierStep2Role remove(long id)
+	public static org.oep.core.processmgt.model.DossierStep2Role remove(
+		org.oep.core.processmgt.service.persistence.DossierStep2RolePK dossierStep2RolePK)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			org.oep.core.processmgt.NoSuchDossierStep2RoleException {
-		return getPersistence().remove(id);
+		return getPersistence().remove(dossierStep2RolePK);
 	}
 
 	public static org.oep.core.processmgt.model.DossierStep2Role updateImpl(
@@ -163,28 +165,29 @@ public class DossierStep2RoleUtil {
 	/**
 	* Returns the dossier step2 role with the primary key or throws a {@link org.oep.core.processmgt.NoSuchDossierStep2RoleException} if it could not be found.
 	*
-	* @param id the primary key of the dossier step2 role
+	* @param dossierStep2RolePK the primary key of the dossier step2 role
 	* @return the dossier step2 role
 	* @throws org.oep.core.processmgt.NoSuchDossierStep2RoleException if a dossier step2 role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static org.oep.core.processmgt.model.DossierStep2Role findByPrimaryKey(
-		long id)
+		org.oep.core.processmgt.service.persistence.DossierStep2RolePK dossierStep2RolePK)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			org.oep.core.processmgt.NoSuchDossierStep2RoleException {
-		return getPersistence().findByPrimaryKey(id);
+		return getPersistence().findByPrimaryKey(dossierStep2RolePK);
 	}
 
 	/**
 	* Returns the dossier step2 role with the primary key or returns <code>null</code> if it could not be found.
 	*
-	* @param id the primary key of the dossier step2 role
+	* @param dossierStep2RolePK the primary key of the dossier step2 role
 	* @return the dossier step2 role, or <code>null</code> if a dossier step2 role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static org.oep.core.processmgt.model.DossierStep2Role fetchByPrimaryKey(
-		long id) throws com.liferay.portal.kernel.exception.SystemException {
-		return getPersistence().fetchByPrimaryKey(id);
+		org.oep.core.processmgt.service.persistence.DossierStep2RolePK dossierStep2RolePK)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByPrimaryKey(dossierStep2RolePK);
 	}
 
 	/**

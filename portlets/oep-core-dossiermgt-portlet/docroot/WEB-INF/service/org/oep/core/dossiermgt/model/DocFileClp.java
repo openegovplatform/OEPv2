@@ -87,7 +87,6 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 		attributes.put("docTemplateId", getDocTemplateId());
 		attributes.put("docFileVersionId", getDocFileVersionId());
 		attributes.put("docName", getDocName());
-		attributes.put("issueDate", getIssueDate());
 		attributes.put("note", getNote());
 
 		return attributes;
@@ -165,12 +164,6 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 
 		if (docName != null) {
 			setDocName(docName);
-		}
-
-		Date issueDate = (Date)attributes.get("issueDate");
-
-		if (issueDate != null) {
-			setIssueDate(issueDate);
 		}
 
 		String note = (String)attributes.get("note");
@@ -468,29 +461,6 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 	}
 
 	@Override
-	public Date getIssueDate() {
-		return _issueDate;
-	}
-
-	@Override
-	public void setIssueDate(Date issueDate) {
-		_issueDate = issueDate;
-
-		if (_docFileRemoteModel != null) {
-			try {
-				Class<?> clazz = _docFileRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setIssueDate", Date.class);
-
-				method.invoke(_docFileRemoteModel, issueDate);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
 	public String getNote() {
 		return _note;
 	}
@@ -600,7 +570,6 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 		clone.setDocTemplateId(getDocTemplateId());
 		clone.setDocFileVersionId(getDocFileVersionId());
 		clone.setDocName(getDocName());
-		clone.setIssueDate(getIssueDate());
 		clone.setNote(getNote());
 
 		return clone;
@@ -654,7 +623,7 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(29);
+		StringBundler sb = new StringBundler(27);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
@@ -680,8 +649,6 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 		sb.append(getDocFileVersionId());
 		sb.append(", docName=");
 		sb.append(getDocName());
-		sb.append(", issueDate=");
-		sb.append(getIssueDate());
 		sb.append(", note=");
 		sb.append(getNote());
 		sb.append("}");
@@ -691,7 +658,7 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(46);
+		StringBundler sb = new StringBundler(43);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.DocFile");
@@ -746,10 +713,6 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 		sb.append(getDocName());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>issueDate</column-name><column-value><![CDATA[");
-		sb.append(getIssueDate());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>note</column-name><column-value><![CDATA[");
 		sb.append(getNote());
 		sb.append("]]></column-value></column>");
@@ -772,7 +735,6 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 	private long _docTemplateId;
 	private long _docFileVersionId;
 	private String _docName;
-	private Date _issueDate;
 	private String _note;
 	private BaseModel<?> _docFileRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.dossiermgt.service.ClpSerializer.class;

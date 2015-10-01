@@ -288,6 +288,100 @@ public class DossierStepLocalServiceWrapper implements DossierStepLocalService,
 	}
 
 	/**
+	* Add dossier step
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new dossier process
+	*/
+	@Override
+	public org.oep.core.processmgt.model.DossierStep addDossierStep(
+		long dossierProcessId, java.lang.String title, int sequenceNo,
+		int stepType, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierStepLocalService.addDossierStep(dossierProcessId, title,
+			sequenceNo, stepType, serviceContext);
+	}
+
+	@Override
+	public org.oep.core.processmgt.model.DossierStep updateDossierStep(
+		long id, long dossierProcessId, java.lang.String title, int sequenceNo,
+		int stepType, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierStepLocalService.updateDossierStep(id, dossierProcessId,
+			title, sequenceNo, stepType, serviceContext);
+	}
+
+	@Override
+	public void updateDossierStepResources(
+		org.oep.core.processmgt.model.DossierStep dossierStep,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierStepLocalService.updateDossierStepResources(dossierStep,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void removeDossierStep(
+		org.oep.core.processmgt.model.DossierStep dossierStep)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierStepLocalService.removeDossierStep(dossierStep);
+	}
+
+	@Override
+	public void removeDossierStep(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierStepLocalService.removeDossierStep(id);
+	}
+
+	@Override
+	public void addDossierStepResources(
+		org.oep.core.processmgt.model.DossierStep dossierStep,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierStepLocalService.addDossierStepResources(dossierStep,
+			addGroupPermission, addGuestPermission, serviceContext);
+	}
+
+	@Override
+	public void addDossierStepResources(
+		org.oep.core.processmgt.model.DossierStep dossierStep,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierStepLocalService.addDossierStepResources(dossierStep,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void addDossierStepResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierStepLocalService.addDossierStepResources(id, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */
 	public DossierStepLocalService getWrappedDossierStepLocalService() {

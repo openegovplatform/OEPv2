@@ -55,27 +55,27 @@ public class StepTransitionLocalServiceUtil {
 	/**
 	* Creates a new step transition with the primary key. Does not add the step transition to the database.
 	*
-	* @param stepTransionId the primary key for the new step transition
+	* @param stepTransitionId the primary key for the new step transition
 	* @return the new step transition
 	*/
 	public static org.oep.core.processmgt.model.StepTransition createStepTransition(
-		long stepTransionId) {
-		return getService().createStepTransition(stepTransionId);
+		long stepTransitionId) {
+		return getService().createStepTransition(stepTransitionId);
 	}
 
 	/**
 	* Deletes the step transition with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param stepTransionId the primary key of the step transition
+	* @param stepTransitionId the primary key of the step transition
 	* @return the step transition that was removed
 	* @throws PortalException if a step transition with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static org.oep.core.processmgt.model.StepTransition deleteStepTransition(
-		long stepTransionId)
+		long stepTransitionId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return getService().deleteStepTransition(stepTransionId);
+		return getService().deleteStepTransition(stepTransitionId);
 	}
 
 	/**
@@ -182,24 +182,24 @@ public class StepTransitionLocalServiceUtil {
 	}
 
 	public static org.oep.core.processmgt.model.StepTransition fetchStepTransition(
-		long stepTransionId)
+		long stepTransitionId)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return getService().fetchStepTransition(stepTransionId);
+		return getService().fetchStepTransition(stepTransitionId);
 	}
 
 	/**
 	* Returns the step transition with the primary key.
 	*
-	* @param stepTransionId the primary key of the step transition
+	* @param stepTransitionId the primary key of the step transition
 	* @return the step transition
 	* @throws PortalException if a step transition with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static org.oep.core.processmgt.model.StepTransition getStepTransition(
-		long stepTransionId)
+		long stepTransitionId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return getService().getStepTransition(stepTransionId);
+		return getService().getStepTransition(stepTransitionId);
 	}
 
 	public static com.liferay.portal.model.PersistedModel getPersistedModel(
@@ -273,6 +273,109 @@ public class StepTransitionLocalServiceUtil {
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable {
 		return getService().invokeMethod(name, parameterTypes, arguments);
+	}
+
+	/**
+	* Add step transition
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new step transition
+	*/
+	public static org.oep.core.processmgt.model.StepTransition addStepTransition(
+		long dossierProcessId, long preDossierStepId, long postDossierStepId,
+		java.lang.String precondition, java.lang.String transitionName,
+		int daysDuration, java.lang.String dossierStatus, int userAssignment,
+		int newProcessOrder, java.lang.String errorMessage,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addStepTransition(dossierProcessId, preDossierStepId,
+			postDossierStepId, precondition, transitionName, daysDuration,
+			dossierStatus, userAssignment, newProcessOrder, errorMessage,
+			serviceContext);
+	}
+
+	public static org.oep.core.processmgt.model.StepTransition updateStepTransition(
+		long id, long dossierProcessId, long preDossierStepId,
+		long postDossierStepId, java.lang.String precondition,
+		java.lang.String transitionName, int daysDuration,
+		java.lang.String dossierStatus, int userAssignment,
+		int newProcessOrder, java.lang.String errorMessage,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .updateStepTransition(id, dossierProcessId,
+			preDossierStepId, postDossierStepId, precondition, transitionName,
+			daysDuration, dossierStatus, userAssignment, newProcessOrder,
+			errorMessage, serviceContext);
+	}
+
+	public static void updateStepTransitionResources(
+		org.oep.core.processmgt.model.StepTransition stepTransition,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.updateStepTransitionResources(stepTransition, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	public static void removeStepTransition(
+		org.oep.core.processmgt.model.StepTransition stepTransition)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeStepTransition(stepTransition);
+	}
+
+	public static void removeStepTransition(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeStepTransition(id);
+	}
+
+	public static void addStepTransitionResources(
+		org.oep.core.processmgt.model.StepTransition stepTransition,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addStepTransitionResources(stepTransition, addGroupPermission,
+			addGuestPermission, serviceContext);
+	}
+
+	public static void addStepTransitionResources(
+		org.oep.core.processmgt.model.StepTransition stepTransition,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addStepTransitionResources(stepTransition, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	public static void addStepTransitionResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addStepTransitionResources(id, groupPermissions, guestPermissions,
+			serviceContext);
 	}
 
 	public static void clearService() {

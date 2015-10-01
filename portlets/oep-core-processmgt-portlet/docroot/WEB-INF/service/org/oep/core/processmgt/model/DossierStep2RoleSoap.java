@@ -14,24 +14,23 @@
 
 package org.oep.core.processmgt.model;
 
+import org.oep.core.processmgt.service.persistence.DossierStep2RolePK;
+
 import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class is used by SOAP remote services, specifically {@link org.oep.core.processmgt.service.http.DossierStep2RoleServiceSoap}.
+ * This class is used by SOAP remote services.
  *
  * @author trungdk
- * @see org.oep.core.processmgt.service.http.DossierStep2RoleServiceSoap
  * @generated
  */
 public class DossierStep2RoleSoap implements Serializable {
 	public static DossierStep2RoleSoap toSoapModel(DossierStep2Role model) {
 		DossierStep2RoleSoap soapModel = new DossierStep2RoleSoap();
 
-		soapModel.setId(model.getId());
-		soapModel.setCompanyId(model.getCompanyId());
 		soapModel.setDossierStepId(model.getDossierStepId());
 		soapModel.setRoleId(model.getRoleId());
 
@@ -80,28 +79,13 @@ public class DossierStep2RoleSoap implements Serializable {
 	public DossierStep2RoleSoap() {
 	}
 
-	public long getPrimaryKey() {
-		return _id;
+	public DossierStep2RolePK getPrimaryKey() {
+		return new DossierStep2RolePK(_dossierStepId, _roleId);
 	}
 
-	public void setPrimaryKey(long pk) {
-		setId(pk);
-	}
-
-	public long getId() {
-		return _id;
-	}
-
-	public void setId(long id) {
-		_id = id;
-	}
-
-	public long getCompanyId() {
-		return _companyId;
-	}
-
-	public void setCompanyId(long companyId) {
-		_companyId = companyId;
+	public void setPrimaryKey(DossierStep2RolePK pk) {
+		setDossierStepId(pk.dossierStepId);
+		setRoleId(pk.roleId);
 	}
 
 	public long getDossierStepId() {
@@ -120,8 +104,6 @@ public class DossierStep2RoleSoap implements Serializable {
 		_roleId = roleId;
 	}
 
-	private long _id;
-	private long _companyId;
 	private long _dossierStepId;
 	private long _roleId;
 }

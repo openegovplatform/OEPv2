@@ -36,6 +36,7 @@ import org.oep.core.processmgt.service.ProcessOrder2UserLocalService;
 import org.oep.core.processmgt.service.persistence.DossierProcessPersistence;
 import org.oep.core.processmgt.service.persistence.DossierStep2RolePersistence;
 import org.oep.core.processmgt.service.persistence.DossierStepPersistence;
+import org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK;
 import org.oep.core.processmgt.service.persistence.ProcessOrder2UserPersistence;
 import org.oep.core.processmgt.service.persistence.ProcessOrderPersistence;
 import org.oep.core.processmgt.service.persistence.StepTransitionPersistence;
@@ -88,27 +89,29 @@ public abstract class ProcessOrder2UserLocalServiceBaseImpl
 	/**
 	 * Creates a new process order2 user with the primary key. Does not add the process order2 user to the database.
 	 *
-	 * @param id the primary key for the new process order2 user
+	 * @param processOrder2UserPK the primary key for the new process order2 user
 	 * @return the new process order2 user
 	 */
 	@Override
-	public ProcessOrder2User createProcessOrder2User(long id) {
-		return processOrder2UserPersistence.create(id);
+	public ProcessOrder2User createProcessOrder2User(
+		ProcessOrder2UserPK processOrder2UserPK) {
+		return processOrder2UserPersistence.create(processOrder2UserPK);
 	}
 
 	/**
 	 * Deletes the process order2 user with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param id the primary key of the process order2 user
+	 * @param processOrder2UserPK the primary key of the process order2 user
 	 * @return the process order2 user that was removed
 	 * @throws PortalException if a process order2 user with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public ProcessOrder2User deleteProcessOrder2User(long id)
+	public ProcessOrder2User deleteProcessOrder2User(
+		ProcessOrder2UserPK processOrder2UserPK)
 		throws PortalException, SystemException {
-		return processOrder2UserPersistence.remove(id);
+		return processOrder2UserPersistence.remove(processOrder2UserPK);
 	}
 
 	/**
@@ -219,23 +222,24 @@ public abstract class ProcessOrder2UserLocalServiceBaseImpl
 	}
 
 	@Override
-	public ProcessOrder2User fetchProcessOrder2User(long id)
-		throws SystemException {
-		return processOrder2UserPersistence.fetchByPrimaryKey(id);
+	public ProcessOrder2User fetchProcessOrder2User(
+		ProcessOrder2UserPK processOrder2UserPK) throws SystemException {
+		return processOrder2UserPersistence.fetchByPrimaryKey(processOrder2UserPK);
 	}
 
 	/**
 	 * Returns the process order2 user with the primary key.
 	 *
-	 * @param id the primary key of the process order2 user
+	 * @param processOrder2UserPK the primary key of the process order2 user
 	 * @return the process order2 user
 	 * @throws PortalException if a process order2 user with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public ProcessOrder2User getProcessOrder2User(long id)
+	public ProcessOrder2User getProcessOrder2User(
+		ProcessOrder2UserPK processOrder2UserPK)
 		throws PortalException, SystemException {
-		return processOrder2UserPersistence.findByPrimaryKey(id);
+		return processOrder2UserPersistence.findByPrimaryKey(processOrder2UserPK);
 	}
 
 	@Override
@@ -421,25 +425,6 @@ public abstract class ProcessOrder2UserLocalServiceBaseImpl
 	}
 
 	/**
-	 * Returns the dossier step2 role remote service.
-	 *
-	 * @return the dossier step2 role remote service
-	 */
-	public org.oep.core.processmgt.service.DossierStep2RoleService getDossierStep2RoleService() {
-		return dossierStep2RoleService;
-	}
-
-	/**
-	 * Sets the dossier step2 role remote service.
-	 *
-	 * @param dossierStep2RoleService the dossier step2 role remote service
-	 */
-	public void setDossierStep2RoleService(
-		org.oep.core.processmgt.service.DossierStep2RoleService dossierStep2RoleService) {
-		this.dossierStep2RoleService = dossierStep2RoleService;
-	}
-
-	/**
 	 * Returns the dossier step2 role persistence.
 	 *
 	 * @return the dossier step2 role persistence
@@ -532,25 +517,6 @@ public abstract class ProcessOrder2UserLocalServiceBaseImpl
 	public void setProcessOrder2UserLocalService(
 		org.oep.core.processmgt.service.ProcessOrder2UserLocalService processOrder2UserLocalService) {
 		this.processOrder2UserLocalService = processOrder2UserLocalService;
-	}
-
-	/**
-	 * Returns the process order2 user remote service.
-	 *
-	 * @return the process order2 user remote service
-	 */
-	public org.oep.core.processmgt.service.ProcessOrder2UserService getProcessOrder2UserService() {
-		return processOrder2UserService;
-	}
-
-	/**
-	 * Sets the process order2 user remote service.
-	 *
-	 * @param processOrder2UserService the process order2 user remote service
-	 */
-	public void setProcessOrder2UserService(
-		org.oep.core.processmgt.service.ProcessOrder2UserService processOrder2UserService) {
-		this.processOrder2UserService = processOrder2UserService;
 	}
 
 	/**
@@ -933,8 +899,6 @@ public abstract class ProcessOrder2UserLocalServiceBaseImpl
 	protected DossierStepPersistence dossierStepPersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.DossierStep2RoleLocalService.class)
 	protected org.oep.core.processmgt.service.DossierStep2RoleLocalService dossierStep2RoleLocalService;
-	@BeanReference(type = org.oep.core.processmgt.service.DossierStep2RoleService.class)
-	protected org.oep.core.processmgt.service.DossierStep2RoleService dossierStep2RoleService;
 	@BeanReference(type = DossierStep2RolePersistence.class)
 	protected DossierStep2RolePersistence dossierStep2RolePersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.ProcessOrderLocalService.class)
@@ -945,8 +909,6 @@ public abstract class ProcessOrder2UserLocalServiceBaseImpl
 	protected ProcessOrderPersistence processOrderPersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.ProcessOrder2UserLocalService.class)
 	protected org.oep.core.processmgt.service.ProcessOrder2UserLocalService processOrder2UserLocalService;
-	@BeanReference(type = org.oep.core.processmgt.service.ProcessOrder2UserService.class)
-	protected org.oep.core.processmgt.service.ProcessOrder2UserService processOrder2UserService;
 	@BeanReference(type = ProcessOrder2UserPersistence.class)
 	protected ProcessOrder2UserPersistence processOrder2UserPersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.StepTransitionLocalService.class)

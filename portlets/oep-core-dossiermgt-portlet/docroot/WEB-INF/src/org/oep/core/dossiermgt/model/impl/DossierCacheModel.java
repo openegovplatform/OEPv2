@@ -37,7 +37,7 @@ import java.util.Date;
 public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(71);
+		StringBundler sb = new StringBundler(75);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -57,18 +57,16 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		sb.append(organizationId);
 		sb.append(", dossierProcId=");
 		sb.append(dossierProcId);
-		sb.append(", govAgentNo=");
-		sb.append(govAgentNo);
+		sb.append(", govAgentId=");
+		sb.append(govAgentId);
 		sb.append(", govAgentName=");
 		sb.append(govAgentName);
-		sb.append(", submitterName=");
-		sb.append(submitterName);
-		sb.append(", actorType=");
-		sb.append(actorType);
-		sb.append(", actorNo=");
-		sb.append(actorNo);
-		sb.append(", actorName=");
-		sb.append(actorName);
+		sb.append(", subjectId=");
+		sb.append(subjectId);
+		sb.append(", subjectType=");
+		sb.append(subjectType);
+		sb.append(", subjectName=");
+		sb.append(subjectName);
 		sb.append(", address=");
 		sb.append(address);
 		sb.append(", cityNo=");
@@ -83,10 +81,16 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		sb.append(wardNo);
 		sb.append(", wardName=");
 		sb.append(wardName);
-		sb.append(", description=");
-		sb.append(description);
+		sb.append(", telNo=");
+		sb.append(telNo);
+		sb.append(", contactPersonName=");
+		sb.append(contactPersonName);
+		sb.append(", contactPersonTel=");
+		sb.append(contactPersonTel);
 		sb.append(", note=");
 		sb.append(note);
+		sb.append(", resumeDescription=");
+		sb.append(resumeDescription);
 		sb.append(", receptionNo=");
 		sb.append(receptionNo);
 		sb.append(", submissionDate=");
@@ -103,12 +107,12 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		sb.append(completionDate);
 		sb.append(", status=");
 		sb.append(status);
-		sb.append(", statusName=");
-		sb.append(statusName);
+		sb.append(", statusDescription=");
+		sb.append(statusDescription);
 		sb.append(", feedbackNote=");
 		sb.append(feedbackNote);
-		sb.append(", paymentConfirmed=");
-		sb.append(paymentConfirmed);
+		sb.append(", dirty=");
+		sb.append(dirty);
 		sb.append("}");
 
 		return sb.toString();
@@ -147,11 +151,11 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		dossierImpl.setOrganizationId(organizationId);
 		dossierImpl.setDossierProcId(dossierProcId);
 
-		if (govAgentNo == null) {
-			dossierImpl.setGovAgentNo(StringPool.BLANK);
+		if (govAgentId == null) {
+			dossierImpl.setGovAgentId(StringPool.BLANK);
 		}
 		else {
-			dossierImpl.setGovAgentNo(govAgentNo);
+			dossierImpl.setGovAgentId(govAgentId);
 		}
 
 		if (govAgentName == null) {
@@ -161,27 +165,25 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			dossierImpl.setGovAgentName(govAgentName);
 		}
 
-		if (submitterName == null) {
-			dossierImpl.setSubmitterName(StringPool.BLANK);
+		if (subjectId == null) {
+			dossierImpl.setSubjectId(StringPool.BLANK);
 		}
 		else {
-			dossierImpl.setSubmitterName(submitterName);
+			dossierImpl.setSubjectId(subjectId);
 		}
 
-		dossierImpl.setActorType(actorType);
-
-		if (actorNo == null) {
-			dossierImpl.setActorNo(StringPool.BLANK);
+		if (subjectType == null) {
+			dossierImpl.setSubjectType(StringPool.BLANK);
 		}
 		else {
-			dossierImpl.setActorNo(actorNo);
+			dossierImpl.setSubjectType(subjectType);
 		}
 
-		if (actorName == null) {
-			dossierImpl.setActorName(StringPool.BLANK);
+		if (subjectName == null) {
+			dossierImpl.setSubjectName(StringPool.BLANK);
 		}
 		else {
-			dossierImpl.setActorName(actorName);
+			dossierImpl.setSubjectName(subjectName);
 		}
 
 		if (address == null) {
@@ -233,11 +235,25 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			dossierImpl.setWardName(wardName);
 		}
 
-		if (description == null) {
-			dossierImpl.setDescription(StringPool.BLANK);
+		if (telNo == null) {
+			dossierImpl.setTelNo(StringPool.BLANK);
 		}
 		else {
-			dossierImpl.setDescription(description);
+			dossierImpl.setTelNo(telNo);
+		}
+
+		if (contactPersonName == null) {
+			dossierImpl.setContactPersonName(StringPool.BLANK);
+		}
+		else {
+			dossierImpl.setContactPersonName(contactPersonName);
+		}
+
+		if (contactPersonTel == null) {
+			dossierImpl.setContactPersonTel(StringPool.BLANK);
+		}
+		else {
+			dossierImpl.setContactPersonTel(contactPersonTel);
 		}
 
 		if (note == null) {
@@ -245,6 +261,13 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		}
 		else {
 			dossierImpl.setNote(note);
+		}
+
+		if (resumeDescription == null) {
+			dossierImpl.setResumeDescription(StringPool.BLANK);
+		}
+		else {
+			dossierImpl.setResumeDescription(resumeDescription);
 		}
 
 		if (receptionNo == null) {
@@ -303,11 +326,11 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			dossierImpl.setStatus(status);
 		}
 
-		if (statusName == null) {
-			dossierImpl.setStatusName(StringPool.BLANK);
+		if (statusDescription == null) {
+			dossierImpl.setStatusDescription(StringPool.BLANK);
 		}
 		else {
-			dossierImpl.setStatusName(statusName);
+			dossierImpl.setStatusDescription(statusDescription);
 		}
 
 		if (feedbackNote == null) {
@@ -317,7 +340,7 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			dossierImpl.setFeedbackNote(feedbackNote);
 		}
 
-		dossierImpl.setPaymentConfirmed(paymentConfirmed);
+		dossierImpl.setDirty(dirty);
 
 		dossierImpl.resetOriginalValues();
 
@@ -335,12 +358,11 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		modifiedDate = objectInput.readLong();
 		organizationId = objectInput.readLong();
 		dossierProcId = objectInput.readLong();
-		govAgentNo = objectInput.readUTF();
+		govAgentId = objectInput.readUTF();
 		govAgentName = objectInput.readUTF();
-		submitterName = objectInput.readUTF();
-		actorType = objectInput.readInt();
-		actorNo = objectInput.readUTF();
-		actorName = objectInput.readUTF();
+		subjectId = objectInput.readUTF();
+		subjectType = objectInput.readUTF();
+		subjectName = objectInput.readUTF();
 		address = objectInput.readUTF();
 		cityNo = objectInput.readUTF();
 		cityName = objectInput.readUTF();
@@ -348,8 +370,11 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		districtName = objectInput.readUTF();
 		wardNo = objectInput.readUTF();
 		wardName = objectInput.readUTF();
-		description = objectInput.readUTF();
+		telNo = objectInput.readUTF();
+		contactPersonName = objectInput.readUTF();
+		contactPersonTel = objectInput.readUTF();
 		note = objectInput.readUTF();
+		resumeDescription = objectInput.readUTF();
 		receptionNo = objectInput.readUTF();
 		submissionDate = objectInput.readLong();
 		receptionDate = objectInput.readLong();
@@ -358,9 +383,9 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		releaseDate = objectInput.readLong();
 		completionDate = objectInput.readLong();
 		status = objectInput.readUTF();
-		statusName = objectInput.readUTF();
+		statusDescription = objectInput.readUTF();
 		feedbackNote = objectInput.readUTF();
-		paymentConfirmed = objectInput.readInt();
+		dirty = objectInput.readInt();
 	}
 
 	@Override
@@ -382,11 +407,11 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		objectOutput.writeLong(organizationId);
 		objectOutput.writeLong(dossierProcId);
 
-		if (govAgentNo == null) {
+		if (govAgentId == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(govAgentNo);
+			objectOutput.writeUTF(govAgentId);
 		}
 
 		if (govAgentName == null) {
@@ -396,27 +421,25 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			objectOutput.writeUTF(govAgentName);
 		}
 
-		if (submitterName == null) {
+		if (subjectId == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(submitterName);
+			objectOutput.writeUTF(subjectId);
 		}
 
-		objectOutput.writeInt(actorType);
-
-		if (actorNo == null) {
+		if (subjectType == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(actorNo);
+			objectOutput.writeUTF(subjectType);
 		}
 
-		if (actorName == null) {
+		if (subjectName == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(actorName);
+			objectOutput.writeUTF(subjectName);
 		}
 
 		if (address == null) {
@@ -468,11 +491,25 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			objectOutput.writeUTF(wardName);
 		}
 
-		if (description == null) {
+		if (telNo == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(description);
+			objectOutput.writeUTF(telNo);
+		}
+
+		if (contactPersonName == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(contactPersonName);
+		}
+
+		if (contactPersonTel == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(contactPersonTel);
 		}
 
 		if (note == null) {
@@ -480,6 +517,13 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		}
 		else {
 			objectOutput.writeUTF(note);
+		}
+
+		if (resumeDescription == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(resumeDescription);
 		}
 
 		if (receptionNo == null) {
@@ -503,11 +547,11 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			objectOutput.writeUTF(status);
 		}
 
-		if (statusName == null) {
+		if (statusDescription == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(statusName);
+			objectOutput.writeUTF(statusDescription);
 		}
 
 		if (feedbackNote == null) {
@@ -517,7 +561,7 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			objectOutput.writeUTF(feedbackNote);
 		}
 
-		objectOutput.writeInt(paymentConfirmed);
+		objectOutput.writeInt(dirty);
 	}
 
 	public String uuid;
@@ -529,12 +573,11 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 	public long modifiedDate;
 	public long organizationId;
 	public long dossierProcId;
-	public String govAgentNo;
+	public String govAgentId;
 	public String govAgentName;
-	public String submitterName;
-	public int actorType;
-	public String actorNo;
-	public String actorName;
+	public String subjectId;
+	public String subjectType;
+	public String subjectName;
 	public String address;
 	public String cityNo;
 	public String cityName;
@@ -542,8 +585,11 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 	public String districtName;
 	public String wardNo;
 	public String wardName;
-	public String description;
+	public String telNo;
+	public String contactPersonName;
+	public String contactPersonTel;
 	public String note;
+	public String resumeDescription;
 	public String receptionNo;
 	public long submissionDate;
 	public long receptionDate;
@@ -552,7 +598,7 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 	public long releaseDate;
 	public long completionDate;
 	public String status;
-	public String statusName;
+	public String statusDescription;
 	public String feedbackNote;
-	public int paymentConfirmed;
+	public int dirty;
 }

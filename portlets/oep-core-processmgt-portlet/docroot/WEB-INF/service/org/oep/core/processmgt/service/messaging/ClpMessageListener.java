@@ -21,11 +21,9 @@ import org.oep.core.processmgt.service.ClpSerializer;
 import org.oep.core.processmgt.service.DossierProcessLocalServiceUtil;
 import org.oep.core.processmgt.service.DossierProcessServiceUtil;
 import org.oep.core.processmgt.service.DossierStep2RoleLocalServiceUtil;
-import org.oep.core.processmgt.service.DossierStep2RoleServiceUtil;
 import org.oep.core.processmgt.service.DossierStepLocalServiceUtil;
 import org.oep.core.processmgt.service.DossierStepServiceUtil;
 import org.oep.core.processmgt.service.ProcessOrder2UserLocalServiceUtil;
-import org.oep.core.processmgt.service.ProcessOrder2UserServiceUtil;
 import org.oep.core.processmgt.service.ProcessOrderLocalServiceUtil;
 import org.oep.core.processmgt.service.ProcessOrderServiceUtil;
 import org.oep.core.processmgt.service.StepTransitionLocalServiceUtil;
@@ -58,13 +56,11 @@ public class ClpMessageListener extends BaseMessageListener {
 			DossierStepServiceUtil.clearService();
 			DossierStep2RoleLocalServiceUtil.clearService();
 
-			DossierStep2RoleServiceUtil.clearService();
 			ProcessOrderLocalServiceUtil.clearService();
 
 			ProcessOrderServiceUtil.clearService();
 			ProcessOrder2UserLocalServiceUtil.clearService();
 
-			ProcessOrder2UserServiceUtil.clearService();
 			StepTransitionLocalServiceUtil.clearService();
 
 			StepTransitionServiceUtil.clearService();

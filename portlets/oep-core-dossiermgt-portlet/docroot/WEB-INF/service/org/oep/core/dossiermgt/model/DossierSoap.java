@@ -40,12 +40,11 @@ public class DossierSoap implements Serializable {
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setOrganizationId(model.getOrganizationId());
 		soapModel.setDossierProcId(model.getDossierProcId());
-		soapModel.setGovAgentNo(model.getGovAgentNo());
+		soapModel.setGovAgentId(model.getGovAgentId());
 		soapModel.setGovAgentName(model.getGovAgentName());
-		soapModel.setSubmitterName(model.getSubmitterName());
-		soapModel.setActorType(model.getActorType());
-		soapModel.setActorNo(model.getActorNo());
-		soapModel.setActorName(model.getActorName());
+		soapModel.setSubjectId(model.getSubjectId());
+		soapModel.setSubjectType(model.getSubjectType());
+		soapModel.setSubjectName(model.getSubjectName());
 		soapModel.setAddress(model.getAddress());
 		soapModel.setCityNo(model.getCityNo());
 		soapModel.setCityName(model.getCityName());
@@ -53,8 +52,11 @@ public class DossierSoap implements Serializable {
 		soapModel.setDistrictName(model.getDistrictName());
 		soapModel.setWardNo(model.getWardNo());
 		soapModel.setWardName(model.getWardName());
-		soapModel.setDescription(model.getDescription());
+		soapModel.setTelNo(model.getTelNo());
+		soapModel.setContactPersonName(model.getContactPersonName());
+		soapModel.setContactPersonTel(model.getContactPersonTel());
 		soapModel.setNote(model.getNote());
+		soapModel.setResumeDescription(model.getResumeDescription());
 		soapModel.setReceptionNo(model.getReceptionNo());
 		soapModel.setSubmissionDate(model.getSubmissionDate());
 		soapModel.setReceptionDate(model.getReceptionDate());
@@ -63,9 +65,9 @@ public class DossierSoap implements Serializable {
 		soapModel.setReleaseDate(model.getReleaseDate());
 		soapModel.setCompletionDate(model.getCompletionDate());
 		soapModel.setStatus(model.getStatus());
-		soapModel.setStatusName(model.getStatusName());
+		soapModel.setStatusDescription(model.getStatusDescription());
 		soapModel.setFeedbackNote(model.getFeedbackNote());
-		soapModel.setPaymentConfirmed(model.getPaymentConfirmed());
+		soapModel.setDirty(model.getDirty());
 
 		return soapModel;
 	}
@@ -190,12 +192,12 @@ public class DossierSoap implements Serializable {
 		_dossierProcId = dossierProcId;
 	}
 
-	public String getGovAgentNo() {
-		return _govAgentNo;
+	public String getGovAgentId() {
+		return _govAgentId;
 	}
 
-	public void setGovAgentNo(String govAgentNo) {
-		_govAgentNo = govAgentNo;
+	public void setGovAgentId(String govAgentId) {
+		_govAgentId = govAgentId;
 	}
 
 	public String getGovAgentName() {
@@ -206,36 +208,28 @@ public class DossierSoap implements Serializable {
 		_govAgentName = govAgentName;
 	}
 
-	public String getSubmitterName() {
-		return _submitterName;
+	public String getSubjectId() {
+		return _subjectId;
 	}
 
-	public void setSubmitterName(String submitterName) {
-		_submitterName = submitterName;
+	public void setSubjectId(String subjectId) {
+		_subjectId = subjectId;
 	}
 
-	public int getActorType() {
-		return _actorType;
+	public String getSubjectType() {
+		return _subjectType;
 	}
 
-	public void setActorType(int actorType) {
-		_actorType = actorType;
+	public void setSubjectType(String subjectType) {
+		_subjectType = subjectType;
 	}
 
-	public String getActorNo() {
-		return _actorNo;
+	public String getSubjectName() {
+		return _subjectName;
 	}
 
-	public void setActorNo(String actorNo) {
-		_actorNo = actorNo;
-	}
-
-	public String getActorName() {
-		return _actorName;
-	}
-
-	public void setActorName(String actorName) {
-		_actorName = actorName;
+	public void setSubjectName(String subjectName) {
+		_subjectName = subjectName;
 	}
 
 	public String getAddress() {
@@ -294,12 +288,28 @@ public class DossierSoap implements Serializable {
 		_wardName = wardName;
 	}
 
-	public String getDescription() {
-		return _description;
+	public String getTelNo() {
+		return _telNo;
 	}
 
-	public void setDescription(String description) {
-		_description = description;
+	public void setTelNo(String telNo) {
+		_telNo = telNo;
+	}
+
+	public String getContactPersonName() {
+		return _contactPersonName;
+	}
+
+	public void setContactPersonName(String contactPersonName) {
+		_contactPersonName = contactPersonName;
+	}
+
+	public String getContactPersonTel() {
+		return _contactPersonTel;
+	}
+
+	public void setContactPersonTel(String contactPersonTel) {
+		_contactPersonTel = contactPersonTel;
 	}
 
 	public String getNote() {
@@ -308,6 +318,14 @@ public class DossierSoap implements Serializable {
 
 	public void setNote(String note) {
 		_note = note;
+	}
+
+	public String getResumeDescription() {
+		return _resumeDescription;
+	}
+
+	public void setResumeDescription(String resumeDescription) {
+		_resumeDescription = resumeDescription;
 	}
 
 	public String getReceptionNo() {
@@ -374,12 +392,12 @@ public class DossierSoap implements Serializable {
 		_status = status;
 	}
 
-	public String getStatusName() {
-		return _statusName;
+	public String getStatusDescription() {
+		return _statusDescription;
 	}
 
-	public void setStatusName(String statusName) {
-		_statusName = statusName;
+	public void setStatusDescription(String statusDescription) {
+		_statusDescription = statusDescription;
 	}
 
 	public String getFeedbackNote() {
@@ -390,12 +408,12 @@ public class DossierSoap implements Serializable {
 		_feedbackNote = feedbackNote;
 	}
 
-	public int getPaymentConfirmed() {
-		return _paymentConfirmed;
+	public int getDirty() {
+		return _dirty;
 	}
 
-	public void setPaymentConfirmed(int paymentConfirmed) {
-		_paymentConfirmed = paymentConfirmed;
+	public void setDirty(int dirty) {
+		_dirty = dirty;
 	}
 
 	private String _uuid;
@@ -407,12 +425,11 @@ public class DossierSoap implements Serializable {
 	private Date _modifiedDate;
 	private long _organizationId;
 	private long _dossierProcId;
-	private String _govAgentNo;
+	private String _govAgentId;
 	private String _govAgentName;
-	private String _submitterName;
-	private int _actorType;
-	private String _actorNo;
-	private String _actorName;
+	private String _subjectId;
+	private String _subjectType;
+	private String _subjectName;
 	private String _address;
 	private String _cityNo;
 	private String _cityName;
@@ -420,8 +437,11 @@ public class DossierSoap implements Serializable {
 	private String _districtName;
 	private String _wardNo;
 	private String _wardName;
-	private String _description;
+	private String _telNo;
+	private String _contactPersonName;
+	private String _contactPersonTel;
 	private String _note;
+	private String _resumeDescription;
 	private String _receptionNo;
 	private Date _submissionDate;
 	private Date _receptionDate;
@@ -430,7 +450,7 @@ public class DossierSoap implements Serializable {
 	private Date _releaseDate;
 	private Date _completionDate;
 	private String _status;
-	private String _statusName;
+	private String _statusDescription;
 	private String _feedbackNote;
-	private int _paymentConfirmed;
+	private int _dirty;
 }

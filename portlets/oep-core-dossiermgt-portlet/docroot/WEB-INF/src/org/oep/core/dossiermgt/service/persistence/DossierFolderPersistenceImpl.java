@@ -1493,7 +1493,7 @@ public class DossierFolderPersistenceImpl extends BasePersistenceImpl<DossierFol
 		dossierFolderImpl.setCreateDate(dossierFolder.getCreateDate());
 		dossierFolderImpl.setModifiedDate(dossierFolder.getModifiedDate());
 		dossierFolderImpl.setFolderName(dossierFolder.getFolderName());
-		dossierFolderImpl.setParentFolderId(dossierFolder.getParentFolderId());
+		dossierFolderImpl.setParentDossierFolderId(dossierFolder.getParentDossierFolderId());
 		dossierFolderImpl.setSequenceNo(dossierFolder.getSequenceNo());
 		dossierFolderImpl.setProcedureFilter(dossierFolder.getProcedureFilter());
 		dossierFolderImpl.setStatusFilter(dossierFolder.getStatusFilter());

@@ -433,7 +433,7 @@ public class DocTemplateWrapper implements DocTemplate,
 	}
 
 	@Override
-	public int compareTo(DocTemplate docTemplate) {
+	public int compareTo(org.oep.core.dossiermgt.model.DocTemplate docTemplate) {
 		return _docTemplate.compareTo(docTemplate);
 	}
 
@@ -443,17 +443,17 @@ public class DocTemplateWrapper implements DocTemplate,
 	}
 
 	@Override
-	public com.liferay.portal.model.CacheModel<DocTemplate> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<org.oep.core.dossiermgt.model.DocTemplate> toCacheModel() {
 		return _docTemplate.toCacheModel();
 	}
 
 	@Override
-	public DocTemplate toEscapedModel() {
+	public org.oep.core.dossiermgt.model.DocTemplate toEscapedModel() {
 		return new DocTemplateWrapper(_docTemplate.toEscapedModel());
 	}
 
 	@Override
-	public DocTemplate toUnescapedModel() {
+	public org.oep.core.dossiermgt.model.DocTemplate toUnescapedModel() {
 		return new DocTemplateWrapper(_docTemplate.toUnescapedModel());
 	}
 

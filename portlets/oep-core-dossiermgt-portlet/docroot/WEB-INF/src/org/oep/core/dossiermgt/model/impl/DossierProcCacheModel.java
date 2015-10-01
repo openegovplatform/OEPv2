@@ -38,7 +38,7 @@ public class DossierProcCacheModel implements CacheModel<DossierProc>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(53);
+		StringBundler sb = new StringBundler(55);
 
 		sb.append("{dossierProcId=");
 		sb.append(dossierProcId);
@@ -74,6 +74,8 @@ public class DossierProcCacheModel implements CacheModel<DossierProc>,
 		sb.append(actorsDescription);
 		sb.append(", resultsDescription=");
 		sb.append(resultsDescription);
+		sb.append(", recordsDescription=");
+		sb.append(recordsDescription);
 		sb.append(", feeDescription=");
 		sb.append(feeDescription);
 		sb.append(", instructionsDescription=");
@@ -197,6 +199,13 @@ public class DossierProcCacheModel implements CacheModel<DossierProc>,
 			dossierProcImpl.setResultsDescription(resultsDescription);
 		}
 
+		if (recordsDescription == null) {
+			dossierProcImpl.setRecordsDescription(StringPool.BLANK);
+		}
+		else {
+			dossierProcImpl.setRecordsDescription(recordsDescription);
+		}
+
 		if (feeDescription == null) {
 			dossierProcImpl.setFeeDescription(StringPool.BLANK);
 		}
@@ -279,6 +288,7 @@ public class DossierProcCacheModel implements CacheModel<DossierProc>,
 		durationDescription = objectInput.readUTF();
 		actorsDescription = objectInput.readUTF();
 		resultsDescription = objectInput.readUTF();
+		recordsDescription = objectInput.readUTF();
 		feeDescription = objectInput.readUTF();
 		instructionsDescription = objectInput.readUTF();
 		administrationNo = objectInput.readUTF();
@@ -377,6 +387,13 @@ public class DossierProcCacheModel implements CacheModel<DossierProc>,
 			objectOutput.writeUTF(resultsDescription);
 		}
 
+		if (recordsDescription == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(recordsDescription);
+		}
+
 		if (feeDescription == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
@@ -441,6 +458,7 @@ public class DossierProcCacheModel implements CacheModel<DossierProc>,
 	public String durationDescription;
 	public String actorsDescription;
 	public String resultsDescription;
+	public String recordsDescription;
 	public String feeDescription;
 	public String instructionsDescription;
 	public String administrationNo;

@@ -60,10 +60,16 @@ public class PaymentRequestWrapper implements PaymentRequest,
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("organizationId", getOrganizationId());
 		attributes.put("dossierId", getDossierId());
+		attributes.put("govAgentId", getGovAgentId());
+		attributes.put("govAgentName", getGovAgentName());
+		attributes.put("subjectId", getSubjectId());
+		attributes.put("subjectType", getSubjectType());
+		attributes.put("subjectName", getSubjectName());
 		attributes.put("amount", getAmount());
-		attributes.put("note", getNote());
-		attributes.put("issueDate", getIssueDate());
+		attributes.put("requestNote", getRequestNote());
 		attributes.put("paymentFileId", getPaymentFileId());
+		attributes.put("confirmOK", getConfirmOK());
+		attributes.put("ebMessageId", getEbMessageId());
 
 		return attributes;
 	}
@@ -124,28 +130,64 @@ public class PaymentRequestWrapper implements PaymentRequest,
 			setDossierId(dossierId);
 		}
 
+		String govAgentId = (String)attributes.get("govAgentId");
+
+		if (govAgentId != null) {
+			setGovAgentId(govAgentId);
+		}
+
+		String govAgentName = (String)attributes.get("govAgentName");
+
+		if (govAgentName != null) {
+			setGovAgentName(govAgentName);
+		}
+
+		String subjectId = (String)attributes.get("subjectId");
+
+		if (subjectId != null) {
+			setSubjectId(subjectId);
+		}
+
+		String subjectType = (String)attributes.get("subjectType");
+
+		if (subjectType != null) {
+			setSubjectType(subjectType);
+		}
+
+		String subjectName = (String)attributes.get("subjectName");
+
+		if (subjectName != null) {
+			setSubjectName(subjectName);
+		}
+
 		Long amount = (Long)attributes.get("amount");
 
 		if (amount != null) {
 			setAmount(amount);
 		}
 
-		String note = (String)attributes.get("note");
+		String requestNote = (String)attributes.get("requestNote");
 
-		if (note != null) {
-			setNote(note);
-		}
-
-		Date issueDate = (Date)attributes.get("issueDate");
-
-		if (issueDate != null) {
-			setIssueDate(issueDate);
+		if (requestNote != null) {
+			setRequestNote(requestNote);
 		}
 
 		Long paymentFileId = (Long)attributes.get("paymentFileId");
 
 		if (paymentFileId != null) {
 			setPaymentFileId(paymentFileId);
+		}
+
+		Integer confirmOK = (Integer)attributes.get("confirmOK");
+
+		if (confirmOK != null) {
+			setConfirmOK(confirmOK);
+		}
+
+		Long ebMessageId = (Long)attributes.get("ebMessageId");
+
+		if (ebMessageId != null) {
+			setEbMessageId(ebMessageId);
 		}
 	}
 
@@ -372,6 +414,106 @@ public class PaymentRequestWrapper implements PaymentRequest,
 	}
 
 	/**
+	* Returns the gov agent ID of this payment request.
+	*
+	* @return the gov agent ID of this payment request
+	*/
+	@Override
+	public java.lang.String getGovAgentId() {
+		return _paymentRequest.getGovAgentId();
+	}
+
+	/**
+	* Sets the gov agent ID of this payment request.
+	*
+	* @param govAgentId the gov agent ID of this payment request
+	*/
+	@Override
+	public void setGovAgentId(java.lang.String govAgentId) {
+		_paymentRequest.setGovAgentId(govAgentId);
+	}
+
+	/**
+	* Returns the gov agent name of this payment request.
+	*
+	* @return the gov agent name of this payment request
+	*/
+	@Override
+	public java.lang.String getGovAgentName() {
+		return _paymentRequest.getGovAgentName();
+	}
+
+	/**
+	* Sets the gov agent name of this payment request.
+	*
+	* @param govAgentName the gov agent name of this payment request
+	*/
+	@Override
+	public void setGovAgentName(java.lang.String govAgentName) {
+		_paymentRequest.setGovAgentName(govAgentName);
+	}
+
+	/**
+	* Returns the subject ID of this payment request.
+	*
+	* @return the subject ID of this payment request
+	*/
+	@Override
+	public java.lang.String getSubjectId() {
+		return _paymentRequest.getSubjectId();
+	}
+
+	/**
+	* Sets the subject ID of this payment request.
+	*
+	* @param subjectId the subject ID of this payment request
+	*/
+	@Override
+	public void setSubjectId(java.lang.String subjectId) {
+		_paymentRequest.setSubjectId(subjectId);
+	}
+
+	/**
+	* Returns the subject type of this payment request.
+	*
+	* @return the subject type of this payment request
+	*/
+	@Override
+	public java.lang.String getSubjectType() {
+		return _paymentRequest.getSubjectType();
+	}
+
+	/**
+	* Sets the subject type of this payment request.
+	*
+	* @param subjectType the subject type of this payment request
+	*/
+	@Override
+	public void setSubjectType(java.lang.String subjectType) {
+		_paymentRequest.setSubjectType(subjectType);
+	}
+
+	/**
+	* Returns the subject name of this payment request.
+	*
+	* @return the subject name of this payment request
+	*/
+	@Override
+	public java.lang.String getSubjectName() {
+		return _paymentRequest.getSubjectName();
+	}
+
+	/**
+	* Sets the subject name of this payment request.
+	*
+	* @param subjectName the subject name of this payment request
+	*/
+	@Override
+	public void setSubjectName(java.lang.String subjectName) {
+		_paymentRequest.setSubjectName(subjectName);
+	}
+
+	/**
 	* Returns the amount of this payment request.
 	*
 	* @return the amount of this payment request
@@ -392,43 +534,23 @@ public class PaymentRequestWrapper implements PaymentRequest,
 	}
 
 	/**
-	* Returns the note of this payment request.
+	* Returns the request note of this payment request.
 	*
-	* @return the note of this payment request
+	* @return the request note of this payment request
 	*/
 	@Override
-	public java.lang.String getNote() {
-		return _paymentRequest.getNote();
+	public java.lang.String getRequestNote() {
+		return _paymentRequest.getRequestNote();
 	}
 
 	/**
-	* Sets the note of this payment request.
+	* Sets the request note of this payment request.
 	*
-	* @param note the note of this payment request
+	* @param requestNote the request note of this payment request
 	*/
 	@Override
-	public void setNote(java.lang.String note) {
-		_paymentRequest.setNote(note);
-	}
-
-	/**
-	* Returns the issue date of this payment request.
-	*
-	* @return the issue date of this payment request
-	*/
-	@Override
-	public java.util.Date getIssueDate() {
-		return _paymentRequest.getIssueDate();
-	}
-
-	/**
-	* Sets the issue date of this payment request.
-	*
-	* @param issueDate the issue date of this payment request
-	*/
-	@Override
-	public void setIssueDate(java.util.Date issueDate) {
-		_paymentRequest.setIssueDate(issueDate);
+	public void setRequestNote(java.lang.String requestNote) {
+		_paymentRequest.setRequestNote(requestNote);
 	}
 
 	/**
@@ -449,6 +571,46 @@ public class PaymentRequestWrapper implements PaymentRequest,
 	@Override
 	public void setPaymentFileId(long paymentFileId) {
 		_paymentRequest.setPaymentFileId(paymentFileId);
+	}
+
+	/**
+	* Returns the confirm o k of this payment request.
+	*
+	* @return the confirm o k of this payment request
+	*/
+	@Override
+	public int getConfirmOK() {
+		return _paymentRequest.getConfirmOK();
+	}
+
+	/**
+	* Sets the confirm o k of this payment request.
+	*
+	* @param confirmOK the confirm o k of this payment request
+	*/
+	@Override
+	public void setConfirmOK(int confirmOK) {
+		_paymentRequest.setConfirmOK(confirmOK);
+	}
+
+	/**
+	* Returns the eb message ID of this payment request.
+	*
+	* @return the eb message ID of this payment request
+	*/
+	@Override
+	public long getEbMessageId() {
+		return _paymentRequest.getEbMessageId();
+	}
+
+	/**
+	* Sets the eb message ID of this payment request.
+	*
+	* @param ebMessageId the eb message ID of this payment request
+	*/
+	@Override
+	public void setEbMessageId(long ebMessageId) {
+		_paymentRequest.setEbMessageId(ebMessageId);
 	}
 
 	@Override
@@ -515,7 +677,8 @@ public class PaymentRequestWrapper implements PaymentRequest,
 	}
 
 	@Override
-	public int compareTo(PaymentRequest paymentRequest) {
+	public int compareTo(
+		org.oep.core.dossiermgt.model.PaymentRequest paymentRequest) {
 		return _paymentRequest.compareTo(paymentRequest);
 	}
 
@@ -525,17 +688,17 @@ public class PaymentRequestWrapper implements PaymentRequest,
 	}
 
 	@Override
-	public com.liferay.portal.model.CacheModel<PaymentRequest> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<org.oep.core.dossiermgt.model.PaymentRequest> toCacheModel() {
 		return _paymentRequest.toCacheModel();
 	}
 
 	@Override
-	public PaymentRequest toEscapedModel() {
+	public org.oep.core.dossiermgt.model.PaymentRequest toEscapedModel() {
 		return new PaymentRequestWrapper(_paymentRequest.toEscapedModel());
 	}
 
 	@Override
-	public PaymentRequest toUnescapedModel() {
+	public org.oep.core.dossiermgt.model.PaymentRequest toUnescapedModel() {
 		return new PaymentRequestWrapper(_paymentRequest.toUnescapedModel());
 	}
 

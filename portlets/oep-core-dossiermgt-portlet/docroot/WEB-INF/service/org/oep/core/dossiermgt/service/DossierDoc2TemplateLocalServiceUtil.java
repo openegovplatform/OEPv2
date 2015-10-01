@@ -55,27 +55,27 @@ public class DossierDoc2TemplateLocalServiceUtil {
 	/**
 	* Creates a new dossier doc2 template with the primary key. Does not add the dossier doc2 template to the database.
 	*
-	* @param id the primary key for the new dossier doc2 template
+	* @param dossierDoc2TemplatePK the primary key for the new dossier doc2 template
 	* @return the new dossier doc2 template
 	*/
 	public static org.oep.core.dossiermgt.model.DossierDoc2Template createDossierDoc2Template(
-		long id) {
-		return getService().createDossierDoc2Template(id);
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK dossierDoc2TemplatePK) {
+		return getService().createDossierDoc2Template(dossierDoc2TemplatePK);
 	}
 
 	/**
 	* Deletes the dossier doc2 template with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the dossier doc2 template
+	* @param dossierDoc2TemplatePK the primary key of the dossier doc2 template
 	* @return the dossier doc2 template that was removed
 	* @throws PortalException if a dossier doc2 template with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static org.oep.core.dossiermgt.model.DossierDoc2Template deleteDossierDoc2Template(
-		long id)
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK dossierDoc2TemplatePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return getService().deleteDossierDoc2Template(id);
+		return getService().deleteDossierDoc2Template(dossierDoc2TemplatePK);
 	}
 
 	/**
@@ -182,23 +182,24 @@ public class DossierDoc2TemplateLocalServiceUtil {
 	}
 
 	public static org.oep.core.dossiermgt.model.DossierDoc2Template fetchDossierDoc2Template(
-		long id) throws com.liferay.portal.kernel.exception.SystemException {
-		return getService().fetchDossierDoc2Template(id);
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK dossierDoc2TemplatePK)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().fetchDossierDoc2Template(dossierDoc2TemplatePK);
 	}
 
 	/**
 	* Returns the dossier doc2 template with the primary key.
 	*
-	* @param id the primary key of the dossier doc2 template
+	* @param dossierDoc2TemplatePK the primary key of the dossier doc2 template
 	* @return the dossier doc2 template
 	* @throws PortalException if a dossier doc2 template with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static org.oep.core.dossiermgt.model.DossierDoc2Template getDossierDoc2Template(
-		long id)
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK dossierDoc2TemplatePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return getService().getDossierDoc2Template(id);
+		return getService().getDossierDoc2Template(dossierDoc2TemplatePK);
 	}
 
 	public static com.liferay.portal.model.PersistedModel getPersistedModel(

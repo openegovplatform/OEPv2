@@ -57,7 +57,7 @@ public class DossierProcessWrapper implements DossierProcess,
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgentNo", getGovAgentNo());
+		attributes.put("govAgentId", getGovAgentId());
 		attributes.put("govAgentName", getGovAgentName());
 		attributes.put("startDossierStepId", getStartDossierStepId());
 		attributes.put("daysDuration", getDaysDuration());
@@ -109,10 +109,10 @@ public class DossierProcessWrapper implements DossierProcess,
 			setDossierProcId(dossierProcId);
 		}
 
-		String govAgentNo = (String)attributes.get("govAgentNo");
+		String govAgentId = (String)attributes.get("govAgentId");
 
-		if (govAgentNo != null) {
-			setGovAgentNo(govAgentNo);
+		if (govAgentId != null) {
+			setGovAgentId(govAgentId);
 		}
 
 		String govAgentName = (String)attributes.get("govAgentName");
@@ -317,23 +317,23 @@ public class DossierProcessWrapper implements DossierProcess,
 	}
 
 	/**
-	* Returns the gov agent no of this dossier process.
+	* Returns the gov agent ID of this dossier process.
 	*
-	* @return the gov agent no of this dossier process
+	* @return the gov agent ID of this dossier process
 	*/
 	@Override
-	public java.lang.String getGovAgentNo() {
-		return _dossierProcess.getGovAgentNo();
+	public java.lang.String getGovAgentId() {
+		return _dossierProcess.getGovAgentId();
 	}
 
 	/**
-	* Sets the gov agent no of this dossier process.
+	* Sets the gov agent ID of this dossier process.
 	*
-	* @param govAgentNo the gov agent no of this dossier process
+	* @param govAgentId the gov agent ID of this dossier process
 	*/
 	@Override
-	public void setGovAgentNo(java.lang.String govAgentNo) {
-		_dossierProcess.setGovAgentNo(govAgentNo);
+	public void setGovAgentId(java.lang.String govAgentId) {
+		_dossierProcess.setGovAgentId(govAgentId);
 	}
 
 	/**

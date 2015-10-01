@@ -356,6 +356,120 @@ public class PaymentFileLocalServiceWrapper implements PaymentFileLocalService,
 	}
 
 	/**
+	* Add payment file
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new payment file
+	*/
+	@Override
+	public org.oep.core.dossiermgt.model.PaymentFile addPaymentFile(
+		long organizationId, java.lang.String govAgentId,
+		java.lang.String govAgentName, java.lang.String subjectId,
+		java.lang.String subjectType, java.lang.String subjectName, int amount,
+		java.lang.String paymentType, java.lang.String paymentDescription,
+		java.lang.String transactionInfo, long fileEntryId,
+		java.util.Date checkingDate, long checkingUserId,
+		java.lang.String checkingUserName, int checkingResult,
+		java.lang.String checkingNote, long ebMessageId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _paymentFileLocalService.addPaymentFile(organizationId,
+			govAgentId, govAgentName, subjectId, subjectType, subjectName,
+			amount, paymentType, paymentDescription, transactionInfo,
+			fileEntryId, checkingDate, checkingUserId, checkingUserName,
+			checkingResult, checkingNote, ebMessageId, serviceContext);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.PaymentFile updatePaymentFile(
+		long id, long organizationId, java.lang.String govAgentId,
+		java.lang.String govAgentName, java.lang.String subjectId,
+		java.lang.String subjectType, java.lang.String subjectName, int amount,
+		java.lang.String paymentType, java.lang.String paymentDescription,
+		java.lang.String transactionInfo, long fileEntryId,
+		java.util.Date checkingDate, long checkingUserId,
+		java.lang.String checkingUserName, int checkingResult,
+		java.lang.String checkingNote, long ebMessageId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _paymentFileLocalService.updatePaymentFile(id, organizationId,
+			govAgentId, govAgentName, subjectId, subjectType, subjectName,
+			amount, paymentType, paymentDescription, transactionInfo,
+			fileEntryId, checkingDate, checkingUserId, checkingUserName,
+			checkingResult, checkingNote, ebMessageId, serviceContext);
+	}
+
+	@Override
+	public void updatePaymentFileResources(
+		org.oep.core.dossiermgt.model.PaymentFile paymentFile,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentFileLocalService.updatePaymentFileResources(paymentFile,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void removePaymentFile(
+		org.oep.core.dossiermgt.model.PaymentFile paymentFile)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentFileLocalService.removePaymentFile(paymentFile);
+	}
+
+	@Override
+	public void removePaymentFile(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentFileLocalService.removePaymentFile(id);
+	}
+
+	@Override
+	public void addPaymentFileResources(
+		org.oep.core.dossiermgt.model.PaymentFile paymentFile,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentFileLocalService.addPaymentFileResources(paymentFile,
+			addGroupPermission, addGuestPermission, serviceContext);
+	}
+
+	@Override
+	public void addPaymentFileResources(
+		org.oep.core.dossiermgt.model.PaymentFile paymentFile,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentFileLocalService.addPaymentFileResources(paymentFile,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void addPaymentFileResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentFileLocalService.addPaymentFileResources(id, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */
 	public PaymentFileLocalService getWrappedPaymentFileLocalService() {

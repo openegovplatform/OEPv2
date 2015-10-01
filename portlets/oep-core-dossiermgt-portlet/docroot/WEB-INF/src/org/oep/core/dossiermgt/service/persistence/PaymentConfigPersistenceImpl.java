@@ -327,12 +327,11 @@ public class PaymentConfigPersistenceImpl extends BasePersistenceImpl<PaymentCon
 		paymentConfigImpl.setCompanyId(paymentConfig.getCompanyId());
 		paymentConfigImpl.setCreateDate(paymentConfig.getCreateDate());
 		paymentConfigImpl.setModifiedDate(paymentConfig.getModifiedDate());
-		paymentConfigImpl.setDossierProcId(paymentConfig.getDossierProcId());
-		paymentConfigImpl.setGovAgentNo(paymentConfig.getGovAgentNo());
+		paymentConfigImpl.setGovAgentId(paymentConfig.getGovAgentId());
 		paymentConfigImpl.setGovAgentName(paymentConfig.getGovAgentName());
-		paymentConfigImpl.setPrePaidFee(paymentConfig.getPrePaidFee());
 		paymentConfigImpl.setBankTransfer(paymentConfig.getBankTransfer());
 		paymentConfigImpl.setKeypay(paymentConfig.getKeypay());
+		paymentConfigImpl.setEbPartnerShipId(paymentConfig.getEbPartnerShipId());
 
 		return paymentConfigImpl;
 	}

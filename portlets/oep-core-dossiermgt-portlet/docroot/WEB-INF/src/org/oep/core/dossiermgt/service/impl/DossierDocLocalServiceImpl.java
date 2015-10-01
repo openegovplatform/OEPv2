@@ -14,7 +14,19 @@
 
 package org.oep.core.dossiermgt.service.impl;
 
+import java.util.Date;
+
+import org.oep.core.dossiermgt.model.DossierDoc;
 import org.oep.core.dossiermgt.service.base.DossierDocLocalServiceBaseImpl;
+
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.search.Indexable;
+import com.liferay.portal.kernel.search.IndexableType;
+import com.liferay.portal.model.ResourceConstants;
+import com.liferay.portal.service.ServiceContext;
 
 /**
  * The implementation of the dossier doc local service.
@@ -36,4 +48,149 @@ public class DossierDocLocalServiceImpl extends DossierDocLocalServiceBaseImpl {
 	 *
 	 * Never reference this interface directly. Always use {@link org.oep.core.dossiermgt.service.DossierDocLocalServiceUtil} to access the dossier doc local service.
 	 */
+	
+	/** 
+	 * Add dossier doc
+	 * 
+	 * Version: OEP 2.0
+	 *  
+	 * History: 
+	 *   DATE        AUTHOR      DESCRIPTION 
+	 *  ------------------------------------------------- 
+	 *  21-September-2015  trungdk    Create new
+	 * @param
+	 * @return: new dossier doc
+	 */
+	@Indexable(type = IndexableType.REINDEX)	
+	public DossierDoc addDossierDoc(
+			long dossierProcId,
+			String dossierDocNo,
+			String dossierDocName,
+			String note,
+			int sequenceNo,
+			long defaultDocTemplateId,
+			int validationType,
+			int numberOfFile,
+			String onlineForm,
+			ServiceContext serviceContext) throws SystemException, PortalException {
+		validate();
+		long id = counterLocalService.increment();
+		DossierDoc dossierDoc = dossierDocPersistence.create(id);
+		Date now = new Date();
+				
+		dossierDoc.setCompanyId(serviceContext.getCompanyId());
+		dossierDoc.setGroupId(serviceContext.getScopeGroupId());
+		dossierDoc.setUserId(serviceContext.getUserId());
+		dossierDoc.setCreateDate(serviceContext.getCreateDate(now));
+		dossierDoc.setDossierProcId(dossierProcId);
+		dossierDoc.setDossierDocNo(dossierDocNo);
+		dossierDoc.setDossierDocName(dossierDocName);
+		dossierDoc.setNote(note);
+		dossierDoc.setSequenceNo(sequenceNo);
+		dossierDoc.setDefaultDocTemplateId(defaultDocTemplateId);
+		dossierDoc.setValidationType(validationType);
+		dossierDoc.setNumberOfFile(numberOfFile);
+		dossierDoc.setOnlineForm(onlineForm);
+		
+		dossierDocPersistence.update(dossierDoc);
+
+		if (_log.isInfoEnabled()) {
+			_log.info("Create new dossier doc " + id);
+		}
+		
+		if (serviceContext.isAddGroupPermissions() || serviceContext.isAddGuestPermissions()) {
+			addDossierDocResources(dossierDoc, serviceContext.isAddGroupPermissions(), serviceContext.isAddGuestPermissions(), serviceContext);
+		}
+		else {
+			addDossierDocResources(dossierDoc, serviceContext.getGroupPermissions(), serviceContext.getGuestPermissions(), serviceContext);
+		}
+		return getDossierDoc(id);
+	}
+
+	@Indexable(type = IndexableType.REINDEX)
+	public DossierDoc updateDossierDoc(
+			long id, 
+			long dossierProcId,
+			String dossierDocNo,
+			String dossierDocName,
+			String note,
+			int sequenceNo,
+			long defaultDocTemplateId,
+			int validationType,
+			int numberOfFile,
+			String onlineForm,
+			ServiceContext serviceContext)
+		throws PortalException, SystemException {
+
+		validate();
+
+		DossierDoc dossierDoc = dossierDocPersistence.findByPrimaryKey(id);
+
+		dossierDoc.setModifiedDate(serviceContext.getModifiedDate(null));
+		dossierDoc.setDossierProcId(dossierProcId);
+		dossierDoc.setDossierDocNo(dossierDocNo);
+		dossierDoc.setDossierDocName(dossierDocName);
+		dossierDoc.setNote(note);
+		dossierDoc.setSequenceNo(sequenceNo);
+		dossierDoc.setDefaultDocTemplateId(defaultDocTemplateId);
+		dossierDoc.setValidationType(validationType);
+		dossierDoc.setNumberOfFile(numberOfFile);
+		dossierDoc.setOnlineForm(onlineForm);
+
+		dossierDocPersistence.update(dossierDoc);
+
+		if ((serviceContext.getGroupPermissions() != null) ||
+			(serviceContext.getGuestPermissions() != null)) {
+
+			updateDossierDocResources(
+				dossierDoc, serviceContext.getGroupPermissions(),
+				serviceContext.getGuestPermissions(), serviceContext);
+		}
+
+		return getDossierDoc(dossierDoc.getDossierDocId());
+	}
+	
+	public void updateDossierDocResources(
+			DossierDoc dossierDoc, String[] groupPermissions,
+			String[] guestPermissions, ServiceContext serviceContext)
+		throws PortalException, SystemException {
+
+		resourceLocalService.updateResources(
+			dossierDoc.getCompanyId(), serviceContext.getScopeGroupId(),
+			DossierDoc.class.getName(), dossierDoc.getDossierDocId(), groupPermissions,
+			guestPermissions);
+	}
+	
+	public void removeDossierDoc(DossierDoc dossierDoc) throws PortalException, SystemException {
+		dossierDocPersistence.remove(dossierDoc);
+		resourceLocalService.deleteResource(dossierDoc.getCompanyId(), DossierDoc.class.getName(), ResourceConstants.SCOPE_INDIVIDUAL, dossierDoc.getDossierDocId());
+	}
+	
+	public void removeDossierDoc(long id) throws PortalException, SystemException {
+		DossierDoc dossierDoc = dossierDocPersistence.findByPrimaryKey(id);
+		removeDossierDoc(dossierDoc);
+	}
+	
+	public DossierDoc getDossierDoc(long id) throws PortalException, SystemException {
+		return dossierDocPersistence.findByPrimaryKey(id);
+	}
+
+	public void addDossierDocResources(DossierDoc dossierDoc, boolean addGroupPermission, boolean addGuestPermission, ServiceContext serviceContext) throws PortalException, SystemException {
+		resourceLocalService.addResources(dossierDoc.getCompanyId(), serviceContext.getScopeGroupId(), serviceContext.getUserId(), DossierDoc.class.getName(), dossierDoc.getDossierDocId(), false, addGroupPermission, addGuestPermission);
+	}
+
+	public void addDossierDocResources(DossierDoc dossierDoc, String[] groupPermissions, String[] guestPermissions, ServiceContext serviceContext) throws PortalException, SystemException {
+		resourceLocalService.addModelResources(dossierDoc.getCompanyId(), serviceContext.getScopeGroupId(), serviceContext.getUserId(), DossierDoc.class.getName(), dossierDoc.getDossierDocId(), groupPermissions, guestPermissions);
+	}
+	
+	public void addDossierDocResources(long id, String[] groupPermissions, String[] guestPermissions, ServiceContext serviceContext) throws PortalException, SystemException {
+		DossierDoc dossierDoc = dossierDocPersistence.findByPrimaryKey(id);
+		addDossierDocResources(dossierDoc, groupPermissions, guestPermissions, serviceContext);
+	}
+	
+	protected void validate() throws PortalException {
+	}
+	
+	private static Log _log = LogFactoryUtil.getLog(DossierDocLocalServiceImpl.class);
+	
 }

@@ -17,7 +17,7 @@ package org.oep.core.processmgt.model;
 import com.liferay.portal.model.PersistedModel;
 
 /**
- * The extended model interface for the DossierStep service. Represents a row in the &quot;oep_processmgt_DossierStep&quot; database table, with each column mapped to a property of this class.
+ * The extended model interface for the DossierStep service. Represents a row in the &quot;oep_processmgt_dossierstep&quot; database table, with each column mapped to a property of this class.
  *
  * @author trungdk
  * @see DossierStepModel

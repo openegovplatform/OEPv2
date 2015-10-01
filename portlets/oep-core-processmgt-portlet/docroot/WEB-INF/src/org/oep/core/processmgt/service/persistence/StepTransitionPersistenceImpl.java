@@ -170,15 +170,15 @@ public class StepTransitionPersistenceImpl extends BasePersistenceImpl<StepTrans
 	/**
 	 * Creates a new step transition with the primary key. Does not add the step transition to the database.
 	 *
-	 * @param stepTransionId the primary key for the new step transition
+	 * @param stepTransitionId the primary key for the new step transition
 	 * @return the new step transition
 	 */
 	@Override
-	public StepTransition create(long stepTransionId) {
+	public StepTransition create(long stepTransitionId) {
 		StepTransition stepTransition = new StepTransitionImpl();
 
 		stepTransition.setNew(true);
-		stepTransition.setPrimaryKey(stepTransionId);
+		stepTransition.setPrimaryKey(stepTransitionId);
 
 		return stepTransition;
 	}
@@ -186,15 +186,15 @@ public class StepTransitionPersistenceImpl extends BasePersistenceImpl<StepTrans
 	/**
 	 * Removes the step transition with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param stepTransionId the primary key of the step transition
+	 * @param stepTransitionId the primary key of the step transition
 	 * @return the step transition that was removed
 	 * @throws org.oep.core.processmgt.NoSuchStepTransitionException if a step transition with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public StepTransition remove(long stepTransionId)
+	public StepTransition remove(long stepTransitionId)
 		throws NoSuchStepTransitionException, SystemException {
-		return remove((Serializable)stepTransionId);
+		return remove((Serializable)stepTransitionId);
 	}
 
 	/**
@@ -323,7 +323,7 @@ public class StepTransitionPersistenceImpl extends BasePersistenceImpl<StepTrans
 		stepTransitionImpl.setNew(stepTransition.isNew());
 		stepTransitionImpl.setPrimaryKey(stepTransition.getPrimaryKey());
 
-		stepTransitionImpl.setStepTransionId(stepTransition.getStepTransionId());
+		stepTransitionImpl.setStepTransitionId(stepTransition.getStepTransitionId());
 		stepTransitionImpl.setUserId(stepTransition.getUserId());
 		stepTransitionImpl.setGroupId(stepTransition.getGroupId());
 		stepTransitionImpl.setCompanyId(stepTransition.getCompanyId());
@@ -337,7 +337,7 @@ public class StepTransitionPersistenceImpl extends BasePersistenceImpl<StepTrans
 		stepTransitionImpl.setDaysDuration(stepTransition.getDaysDuration());
 		stepTransitionImpl.setDossierStatus(stepTransition.getDossierStatus());
 		stepTransitionImpl.setUserAssignment(stepTransition.getUserAssignment());
-		stepTransitionImpl.setNewOrder(stepTransition.getNewOrder());
+		stepTransitionImpl.setNewProcessOrder(stepTransition.getNewProcessOrder());
 		stepTransitionImpl.setErrorMessage(stepTransition.getErrorMessage());
 
 		return stepTransitionImpl;
@@ -371,15 +371,15 @@ public class StepTransitionPersistenceImpl extends BasePersistenceImpl<StepTrans
 	/**
 	 * Returns the step transition with the primary key or throws a {@link org.oep.core.processmgt.NoSuchStepTransitionException} if it could not be found.
 	 *
-	 * @param stepTransionId the primary key of the step transition
+	 * @param stepTransitionId the primary key of the step transition
 	 * @return the step transition
 	 * @throws org.oep.core.processmgt.NoSuchStepTransitionException if a step transition with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public StepTransition findByPrimaryKey(long stepTransionId)
+	public StepTransition findByPrimaryKey(long stepTransitionId)
 		throws NoSuchStepTransitionException, SystemException {
-		return findByPrimaryKey((Serializable)stepTransionId);
+		return findByPrimaryKey((Serializable)stepTransitionId);
 	}
 
 	/**
@@ -434,14 +434,14 @@ public class StepTransitionPersistenceImpl extends BasePersistenceImpl<StepTrans
 	/**
 	 * Returns the step transition with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param stepTransionId the primary key of the step transition
+	 * @param stepTransitionId the primary key of the step transition
 	 * @return the step transition, or <code>null</code> if a step transition with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public StepTransition fetchByPrimaryKey(long stepTransionId)
+	public StepTransition fetchByPrimaryKey(long stepTransitionId)
 		throws SystemException {
-		return fetchByPrimaryKey((Serializable)stepTransionId);
+		return fetchByPrimaryKey((Serializable)stepTransitionId);
 	}
 
 	/**

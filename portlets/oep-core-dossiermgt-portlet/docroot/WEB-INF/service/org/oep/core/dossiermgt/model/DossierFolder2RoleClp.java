@@ -23,6 +23,7 @@ import com.liferay.portal.model.impl.BaseModelImpl;
 
 import org.oep.core.dossiermgt.service.ClpSerializer;
 import org.oep.core.dossiermgt.service.DossierFolder2RoleLocalServiceUtil;
+import org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK;
 
 import java.io.Serializable;
 
@@ -50,31 +51,30 @@ public class DossierFolder2RoleClp extends BaseModelImpl<DossierFolder2Role>
 	}
 
 	@Override
-	public long getPrimaryKey() {
-		return _id;
+	public DossierFolder2RolePK getPrimaryKey() {
+		return new DossierFolder2RolePK(_dossierFolderId, _roleId);
 	}
 
 	@Override
-	public void setPrimaryKey(long primaryKey) {
-		setId(primaryKey);
+	public void setPrimaryKey(DossierFolder2RolePK primaryKey) {
+		setDossierFolderId(primaryKey.dossierFolderId);
+		setRoleId(primaryKey.roleId);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _id;
+		return new DossierFolder2RolePK(_dossierFolderId, _roleId);
 	}
 
 	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey(((Long)primaryKeyObj).longValue());
+		setPrimaryKey((DossierFolder2RolePK)primaryKeyObj);
 	}
 
 	@Override
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("id", getId());
-		attributes.put("companyId", getCompanyId());
 		attributes.put("dossierFolderId", getDossierFolderId());
 		attributes.put("roleId", getRoleId());
 
@@ -83,18 +83,6 @@ public class DossierFolder2RoleClp extends BaseModelImpl<DossierFolder2Role>
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long id = (Long)attributes.get("id");
-
-		if (id != null) {
-			setId(id);
-		}
-
-		Long companyId = (Long)attributes.get("companyId");
-
-		if (companyId != null) {
-			setCompanyId(companyId);
-		}
-
 		Long dossierFolderId = (Long)attributes.get("dossierFolderId");
 
 		if (dossierFolderId != null) {
@@ -105,52 +93,6 @@ public class DossierFolder2RoleClp extends BaseModelImpl<DossierFolder2Role>
 
 		if (roleId != null) {
 			setRoleId(roleId);
-		}
-	}
-
-	@Override
-	public long getId() {
-		return _id;
-	}
-
-	@Override
-	public void setId(long id) {
-		_id = id;
-
-		if (_dossierFolder2RoleRemoteModel != null) {
-			try {
-				Class<?> clazz = _dossierFolder2RoleRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setId", long.class);
-
-				method.invoke(_dossierFolder2RoleRemoteModel, id);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
-	public long getCompanyId() {
-		return _companyId;
-	}
-
-	@Override
-	public void setCompanyId(long companyId) {
-		_companyId = companyId;
-
-		if (_dossierFolder2RoleRemoteModel != null) {
-			try {
-				Class<?> clazz = _dossierFolder2RoleRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setCompanyId", long.class);
-
-				method.invoke(_dossierFolder2RoleRemoteModel, companyId);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
 		}
 	}
 
@@ -271,8 +213,6 @@ public class DossierFolder2RoleClp extends BaseModelImpl<DossierFolder2Role>
 	public Object clone() {
 		DossierFolder2RoleClp clone = new DossierFolder2RoleClp();
 
-		clone.setId(getId());
-		clone.setCompanyId(getCompanyId());
 		clone.setDossierFolderId(getDossierFolderId());
 		clone.setRoleId(getRoleId());
 
@@ -281,17 +221,9 @@ public class DossierFolder2RoleClp extends BaseModelImpl<DossierFolder2Role>
 
 	@Override
 	public int compareTo(DossierFolder2Role dossierFolder2Role) {
-		long primaryKey = dossierFolder2Role.getPrimaryKey();
+		DossierFolder2RolePK primaryKey = dossierFolder2Role.getPrimaryKey();
 
-		if (getPrimaryKey() < primaryKey) {
-			return -1;
-		}
-		else if (getPrimaryKey() > primaryKey) {
-			return 1;
-		}
-		else {
-			return 0;
-		}
+		return getPrimaryKey().compareTo(primaryKey);
 	}
 
 	@Override
@@ -306,9 +238,9 @@ public class DossierFolder2RoleClp extends BaseModelImpl<DossierFolder2Role>
 
 		DossierFolder2RoleClp dossierFolder2Role = (DossierFolder2RoleClp)obj;
 
-		long primaryKey = dossierFolder2Role.getPrimaryKey();
+		DossierFolder2RolePK primaryKey = dossierFolder2Role.getPrimaryKey();
 
-		if (getPrimaryKey() == primaryKey) {
+		if (getPrimaryKey().equals(primaryKey)) {
 			return true;
 		}
 		else {
@@ -322,18 +254,14 @@ public class DossierFolder2RoleClp extends BaseModelImpl<DossierFolder2Role>
 
 	@Override
 	public int hashCode() {
-		return (int)getPrimaryKey();
+		return getPrimaryKey().hashCode();
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(9);
+		StringBundler sb = new StringBundler(5);
 
-		sb.append("{id=");
-		sb.append(getId());
-		sb.append(", companyId=");
-		sb.append(getCompanyId());
-		sb.append(", dossierFolderId=");
+		sb.append("{dossierFolderId=");
 		sb.append(getDossierFolderId());
 		sb.append(", roleId=");
 		sb.append(getRoleId());
@@ -344,20 +272,12 @@ public class DossierFolder2RoleClp extends BaseModelImpl<DossierFolder2Role>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(16);
+		StringBundler sb = new StringBundler(10);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.DossierFolder2Role");
 		sb.append("</model-name>");
 
-		sb.append(
-			"<column><column-name>id</column-name><column-value><![CDATA[");
-		sb.append(getId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>companyId</column-name><column-value><![CDATA[");
-		sb.append(getCompanyId());
-		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>dossierFolderId</column-name><column-value><![CDATA[");
 		sb.append(getDossierFolderId());
@@ -372,8 +292,6 @@ public class DossierFolder2RoleClp extends BaseModelImpl<DossierFolder2Role>
 		return sb.toString();
 	}
 
-	private long _id;
-	private long _companyId;
 	private long _dossierFolderId;
 	private long _roleId;
 	private BaseModel<?> _dossierFolder2RoleRemoteModel;

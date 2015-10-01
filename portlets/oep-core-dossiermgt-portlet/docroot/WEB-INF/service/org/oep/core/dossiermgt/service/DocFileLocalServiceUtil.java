@@ -335,6 +335,100 @@ public class DocFileLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	/**
+	* Add dossier proc
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new dossier proc
+	*/
+	public static org.oep.core.dossiermgt.model.DocFile addDocFile(
+		long dossierId, long dossierDocId, long docTemplateId,
+		long docFileVersionId, java.lang.String docName, java.lang.String note,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addDocFile(dossierId, dossierDocId, docTemplateId,
+			docFileVersionId, docName, note, serviceContext);
+	}
+
+	public static org.oep.core.dossiermgt.model.DocFile updateDocFile(long id,
+		long dossierId, long dossierDocId, long docTemplateId,
+		long docFileVersionId, java.lang.String docName, java.lang.String note,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .updateDocFile(id, dossierId, dossierDocId, docTemplateId,
+			docFileVersionId, docName, note, serviceContext);
+	}
+
+	public static void updateDocFileResources(
+		org.oep.core.dossiermgt.model.DocFile docFile,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.updateDocFileResources(docFile, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	public static void removeDocFile(
+		org.oep.core.dossiermgt.model.DocFile docFile)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeDocFile(docFile);
+	}
+
+	public static void removeDocFile(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeDocFile(id);
+	}
+
+	public static void addDocFileResources(
+		org.oep.core.dossiermgt.model.DocFile docFile,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addDocFileResources(docFile, addGroupPermission,
+			addGuestPermission, serviceContext);
+	}
+
+	public static void addDocFileResources(
+		org.oep.core.dossiermgt.model.DocFile docFile,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addDocFileResources(docFile, groupPermissions, guestPermissions,
+			serviceContext);
+	}
+
+	public static void addDocFileResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addDocFileResources(id, groupPermissions, guestPermissions,
+			serviceContext);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

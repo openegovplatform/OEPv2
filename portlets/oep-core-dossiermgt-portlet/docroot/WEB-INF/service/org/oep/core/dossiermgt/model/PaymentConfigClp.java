@@ -78,12 +78,11 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 		attributes.put("companyId", getCompanyId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgentNo", getGovAgentNo());
+		attributes.put("govAgentId", getGovAgentId());
 		attributes.put("govAgentName", getGovAgentName());
-		attributes.put("prePaidFee", getPrePaidFee());
 		attributes.put("bankTransfer", getBankTransfer());
 		attributes.put("keypay", getKeypay());
+		attributes.put("ebPartnerShipId", getEbPartnerShipId());
 
 		return attributes;
 	}
@@ -114,28 +113,16 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 			setModifiedDate(modifiedDate);
 		}
 
-		Long dossierProcId = (Long)attributes.get("dossierProcId");
+		String govAgentId = (String)attributes.get("govAgentId");
 
-		if (dossierProcId != null) {
-			setDossierProcId(dossierProcId);
-		}
-
-		String govAgentNo = (String)attributes.get("govAgentNo");
-
-		if (govAgentNo != null) {
-			setGovAgentNo(govAgentNo);
+		if (govAgentId != null) {
+			setGovAgentId(govAgentId);
 		}
 
 		String govAgentName = (String)attributes.get("govAgentName");
 
 		if (govAgentName != null) {
 			setGovAgentName(govAgentName);
-		}
-
-		Long prePaidFee = (Long)attributes.get("prePaidFee");
-
-		if (prePaidFee != null) {
-			setPrePaidFee(prePaidFee);
 		}
 
 		String bankTransfer = (String)attributes.get("bankTransfer");
@@ -148,6 +135,12 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 
 		if (keypay != null) {
 			setKeypay(keypay);
+		}
+
+		Long ebPartnerShipId = (Long)attributes.get("ebPartnerShipId");
+
+		if (ebPartnerShipId != null) {
+			setEbPartnerShipId(ebPartnerShipId);
 		}
 	}
 
@@ -244,44 +237,21 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 	}
 
 	@Override
-	public long getDossierProcId() {
-		return _dossierProcId;
+	public String getGovAgentId() {
+		return _govAgentId;
 	}
 
 	@Override
-	public void setDossierProcId(long dossierProcId) {
-		_dossierProcId = dossierProcId;
+	public void setGovAgentId(String govAgentId) {
+		_govAgentId = govAgentId;
 
 		if (_paymentConfigRemoteModel != null) {
 			try {
 				Class<?> clazz = _paymentConfigRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setDossierProcId", long.class);
+				Method method = clazz.getMethod("setGovAgentId", String.class);
 
-				method.invoke(_paymentConfigRemoteModel, dossierProcId);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
-	public String getGovAgentNo() {
-		return _govAgentNo;
-	}
-
-	@Override
-	public void setGovAgentNo(String govAgentNo) {
-		_govAgentNo = govAgentNo;
-
-		if (_paymentConfigRemoteModel != null) {
-			try {
-				Class<?> clazz = _paymentConfigRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setGovAgentNo", String.class);
-
-				method.invoke(_paymentConfigRemoteModel, govAgentNo);
+				method.invoke(_paymentConfigRemoteModel, govAgentId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -305,29 +275,6 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 				Method method = clazz.getMethod("setGovAgentName", String.class);
 
 				method.invoke(_paymentConfigRemoteModel, govAgentName);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
-	public long getPrePaidFee() {
-		return _prePaidFee;
-	}
-
-	@Override
-	public void setPrePaidFee(long prePaidFee) {
-		_prePaidFee = prePaidFee;
-
-		if (_paymentConfigRemoteModel != null) {
-			try {
-				Class<?> clazz = _paymentConfigRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setPrePaidFee", long.class);
-
-				method.invoke(_paymentConfigRemoteModel, prePaidFee);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -374,6 +321,29 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 				Method method = clazz.getMethod("setKeypay", String.class);
 
 				method.invoke(_paymentConfigRemoteModel, keypay);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public long getEbPartnerShipId() {
+		return _ebPartnerShipId;
+	}
+
+	@Override
+	public void setEbPartnerShipId(long ebPartnerShipId) {
+		_ebPartnerShipId = ebPartnerShipId;
+
+		if (_paymentConfigRemoteModel != null) {
+			try {
+				Class<?> clazz = _paymentConfigRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setEbPartnerShipId", long.class);
+
+				method.invoke(_paymentConfigRemoteModel, ebPartnerShipId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -455,12 +425,11 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 		clone.setCompanyId(getCompanyId());
 		clone.setCreateDate(getCreateDate());
 		clone.setModifiedDate(getModifiedDate());
-		clone.setDossierProcId(getDossierProcId());
-		clone.setGovAgentNo(getGovAgentNo());
+		clone.setGovAgentId(getGovAgentId());
 		clone.setGovAgentName(getGovAgentName());
-		clone.setPrePaidFee(getPrePaidFee());
 		clone.setBankTransfer(getBankTransfer());
 		clone.setKeypay(getKeypay());
+		clone.setEbPartnerShipId(getEbPartnerShipId());
 
 		return clone;
 	}
@@ -513,7 +482,7 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(19);
 
 		sb.append("{paymentConfigId=");
 		sb.append(getPaymentConfigId());
@@ -523,18 +492,16 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 		sb.append(getCreateDate());
 		sb.append(", modifiedDate=");
 		sb.append(getModifiedDate());
-		sb.append(", dossierProcId=");
-		sb.append(getDossierProcId());
-		sb.append(", govAgentNo=");
-		sb.append(getGovAgentNo());
+		sb.append(", govAgentId=");
+		sb.append(getGovAgentId());
 		sb.append(", govAgentName=");
 		sb.append(getGovAgentName());
-		sb.append(", prePaidFee=");
-		sb.append(getPrePaidFee());
 		sb.append(", bankTransfer=");
 		sb.append(getBankTransfer());
 		sb.append(", keypay=");
 		sb.append(getKeypay());
+		sb.append(", ebPartnerShipId=");
+		sb.append(getEbPartnerShipId());
 		sb.append("}");
 
 		return sb.toString();
@@ -542,7 +509,7 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(34);
+		StringBundler sb = new StringBundler(31);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.PaymentConfig");
@@ -565,20 +532,12 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 		sb.append(getModifiedDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>dossierProcId</column-name><column-value><![CDATA[");
-		sb.append(getDossierProcId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>govAgentNo</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentNo());
+			"<column><column-name>govAgentId</column-name><column-value><![CDATA[");
+		sb.append(getGovAgentId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>govAgentName</column-name><column-value><![CDATA[");
 		sb.append(getGovAgentName());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>prePaidFee</column-name><column-value><![CDATA[");
-		sb.append(getPrePaidFee());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>bankTransfer</column-name><column-value><![CDATA[");
@@ -587,6 +546,10 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 		sb.append(
 			"<column><column-name>keypay</column-name><column-value><![CDATA[");
 		sb.append(getKeypay());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>ebPartnerShipId</column-name><column-value><![CDATA[");
+		sb.append(getEbPartnerShipId());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -598,12 +561,11 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 	private long _companyId;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private long _dossierProcId;
-	private String _govAgentNo;
+	private String _govAgentId;
 	private String _govAgentName;
-	private long _prePaidFee;
 	private String _bankTransfer;
 	private String _keypay;
+	private long _ebPartnerShipId;
 	private BaseModel<?> _paymentConfigRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.dossiermgt.service.ClpSerializer.class;
 }

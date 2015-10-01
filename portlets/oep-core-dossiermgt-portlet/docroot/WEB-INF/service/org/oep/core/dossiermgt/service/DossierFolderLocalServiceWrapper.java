@@ -323,6 +323,108 @@ public class DossierFolderLocalServiceWrapper
 	}
 
 	/**
+	* Add dossier folder
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new dossier folder
+	*/
+	@Override
+	public org.oep.core.dossiermgt.model.DossierFolder addDossierFolder(
+		java.lang.String folderName, long parentDossierFolderId,
+		int sequenceNo, java.lang.String procedureFilter,
+		java.lang.String statusFilter, int filterByOrganization,
+		int filterByUser,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierFolderLocalService.addDossierFolder(folderName,
+			parentDossierFolderId, sequenceNo, procedureFilter, statusFilter,
+			filterByOrganization, filterByUser, serviceContext);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.DossierFolder updateDossierFolder(
+		long id, java.lang.String folderName, long parentDossierFolderId,
+		int sequenceNo, java.lang.String procedureFilter,
+		java.lang.String statusFilter, int filterByOrganization,
+		int filterByUser,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierFolderLocalService.updateDossierFolder(id, folderName,
+			parentDossierFolderId, sequenceNo, procedureFilter, statusFilter,
+			filterByOrganization, filterByUser, serviceContext);
+	}
+
+	@Override
+	public void updateDossierFolderResources(
+		org.oep.core.dossiermgt.model.DossierFolder dossierFolder,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierFolderLocalService.updateDossierFolderResources(dossierFolder,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void removeDossierFolder(
+		org.oep.core.dossiermgt.model.DossierFolder dossierFolder)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierFolderLocalService.removeDossierFolder(dossierFolder);
+	}
+
+	@Override
+	public void removeDossierFolder(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierFolderLocalService.removeDossierFolder(id);
+	}
+
+	@Override
+	public void addDossierFolderResources(
+		org.oep.core.dossiermgt.model.DossierFolder dossierFolder,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierFolderLocalService.addDossierFolderResources(dossierFolder,
+			addGroupPermission, addGuestPermission, serviceContext);
+	}
+
+	@Override
+	public void addDossierFolderResources(
+		org.oep.core.dossiermgt.model.DossierFolder dossierFolder,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierFolderLocalService.addDossierFolderResources(dossierFolder,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void addDossierFolderResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierFolderLocalService.addDossierFolderResources(id,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */
 	public DossierFolderLocalService getWrappedDossierFolderLocalService() {

@@ -49,8 +49,6 @@ public class ProcessOrder2UserWrapper implements ProcessOrder2User,
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("id", getId());
-		attributes.put("companyId", getCompanyId());
 		attributes.put("processOrderId", getProcessOrderId());
 		attributes.put("userId", getUserId());
 
@@ -59,18 +57,6 @@ public class ProcessOrder2UserWrapper implements ProcessOrder2User,
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long id = (Long)attributes.get("id");
-
-		if (id != null) {
-			setId(id);
-		}
-
-		Long companyId = (Long)attributes.get("companyId");
-
-		if (companyId != null) {
-			setCompanyId(companyId);
-		}
-
 		Long processOrderId = (Long)attributes.get("processOrderId");
 
 		if (processOrderId != null) {
@@ -90,7 +76,7 @@ public class ProcessOrder2UserWrapper implements ProcessOrder2User,
 	* @return the primary key of this process order2 user
 	*/
 	@Override
-	public long getPrimaryKey() {
+	public org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK getPrimaryKey() {
 		return _processOrder2User.getPrimaryKey();
 	}
 
@@ -100,48 +86,9 @@ public class ProcessOrder2UserWrapper implements ProcessOrder2User,
 	* @param primaryKey the primary key of this process order2 user
 	*/
 	@Override
-	public void setPrimaryKey(long primaryKey) {
+	public void setPrimaryKey(
+		org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK primaryKey) {
 		_processOrder2User.setPrimaryKey(primaryKey);
-	}
-
-	/**
-	* Returns the ID of this process order2 user.
-	*
-	* @return the ID of this process order2 user
-	*/
-	@Override
-	public long getId() {
-		return _processOrder2User.getId();
-	}
-
-	/**
-	* Sets the ID of this process order2 user.
-	*
-	* @param id the ID of this process order2 user
-	*/
-	@Override
-	public void setId(long id) {
-		_processOrder2User.setId(id);
-	}
-
-	/**
-	* Returns the company ID of this process order2 user.
-	*
-	* @return the company ID of this process order2 user
-	*/
-	@Override
-	public long getCompanyId() {
-		return _processOrder2User.getCompanyId();
-	}
-
-	/**
-	* Sets the company ID of this process order2 user.
-	*
-	* @param companyId the company ID of this process order2 user
-	*/
-	@Override
-	public void setCompanyId(long companyId) {
-		_processOrder2User.setCompanyId(companyId);
 	}
 
 	/**

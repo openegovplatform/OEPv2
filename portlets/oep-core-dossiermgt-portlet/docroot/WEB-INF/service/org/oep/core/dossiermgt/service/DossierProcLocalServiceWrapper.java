@@ -288,6 +288,186 @@ public class DossierProcLocalServiceWrapper implements DossierProcLocalService,
 	}
 
 	/**
+	* Add dossier proc
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new dossier proc
+	*/
+	@Override
+	public org.oep.core.dossiermgt.model.DossierProc addDossierProc(
+		java.lang.String dossierProcNo, java.lang.String name,
+		java.lang.String enName, java.lang.String shortName,
+		java.lang.String processDescription,
+		java.lang.String methodDescription,
+		java.lang.String dossierDescription,
+		java.lang.String conditionDescription,
+		java.lang.String durationDescription,
+		java.lang.String actorsDescription,
+		java.lang.String resultsDescription,
+		java.lang.String recordsDescription, java.lang.String feeDescription,
+		java.lang.String instructionsDescription,
+		java.lang.String administrationNo, java.lang.String administrationName,
+		java.lang.String domainNo, java.lang.String domainName,
+		java.util.Date effectDate, java.util.Date expireDate, int active,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierProcLocalService.addDossierProc(dossierProcNo, name,
+			enName, shortName, processDescription, methodDescription,
+			dossierDescription, conditionDescription, durationDescription,
+			actorsDescription, resultsDescription, recordsDescription,
+			feeDescription, instructionsDescription, administrationNo,
+			administrationName, domainNo, domainName, effectDate, expireDate,
+			active, serviceContext);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.DossierProc updateDossierProc(
+		long id, java.lang.String dossierProcNo, java.lang.String name,
+		java.lang.String enName, java.lang.String shortName,
+		java.lang.String processDescription,
+		java.lang.String methodDescription,
+		java.lang.String dossierDescription,
+		java.lang.String conditionDescription,
+		java.lang.String durationDescription,
+		java.lang.String actorsDescription,
+		java.lang.String resultsDescription,
+		java.lang.String recordsDescription, java.lang.String feeDescription,
+		java.lang.String instructionsDescription,
+		java.lang.String administrationNo, java.lang.String administrationName,
+		java.lang.String domainNo, java.lang.String domainName,
+		java.util.Date effectDate, java.util.Date expireDate, int active,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierProcLocalService.updateDossierProc(id, dossierProcNo,
+			name, enName, shortName, processDescription, methodDescription,
+			dossierDescription, conditionDescription, durationDescription,
+			actorsDescription, resultsDescription, recordsDescription,
+			feeDescription, instructionsDescription, administrationNo,
+			administrationName, domainNo, domainName, effectDate, expireDate,
+			active, serviceContext);
+	}
+
+	@Override
+	public void updateDossierProcResources(
+		org.oep.core.dossiermgt.model.DossierProc dossierProc,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierProcLocalService.updateDossierProcResources(dossierProc,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void removeDossierProc(
+		org.oep.core.dossiermgt.model.DossierProc dossierProc)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierProcLocalService.removeDossierProc(dossierProc);
+	}
+
+	@Override
+	public void removeDossierProc(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierProcLocalService.removeDossierProc(id);
+	}
+
+	@Override
+	public void addDossierProcResources(
+		org.oep.core.dossiermgt.model.DossierProc dossierProc,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierProcLocalService.addDossierProcResources(dossierProc,
+			addGroupPermission, addGuestPermission, serviceContext);
+	}
+
+	@Override
+	public void addDossierProcResources(
+		org.oep.core.dossiermgt.model.DossierProc dossierProc,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierProcLocalService.addDossierProcResources(dossierProc,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void addDossierProcResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierProcLocalService.addDossierProcResources(id, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.DossierProc getByDossierProcNo(
+		java.lang.String dossierProcNo,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierProcLocalService.getByDossierProcNo(dossierProcNo,
+			serviceContext);
+	}
+
+	@Override
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findAllByAdministrationNo(
+		java.lang.String administrationNo,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierProcLocalService.findAllByAdministrationNo(administrationNo,
+			serviceContext);
+	}
+
+	@Override
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findAllByDomainNo(
+		java.lang.String domainNo,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierProcLocalService.findAllByDomainNo(domainNo,
+			serviceContext);
+	}
+
+	@Override
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findAllByAdministrationAndDomain(
+		java.lang.String administrationNo, java.lang.String domainNo,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierProcLocalService.findAllByAdministrationAndDomain(administrationNo,
+			domainNo, serviceContext);
+	}
+
+	@Override
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByGroupAdministrationAndDomain(
+		java.lang.String administrationNo, java.lang.String domainNo,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierProcLocalService.findByGroupAdministrationAndDomain(administrationNo,
+			domainNo, serviceContext);
+	}
+
+	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */
 	public DossierProcLocalService getWrappedDossierProcLocalService() {

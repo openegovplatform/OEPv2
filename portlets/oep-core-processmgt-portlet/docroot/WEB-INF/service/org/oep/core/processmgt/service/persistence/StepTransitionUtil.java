@@ -133,27 +133,27 @@ public class StepTransitionUtil {
 	/**
 	* Creates a new step transition with the primary key. Does not add the step transition to the database.
 	*
-	* @param stepTransionId the primary key for the new step transition
+	* @param stepTransitionId the primary key for the new step transition
 	* @return the new step transition
 	*/
 	public static org.oep.core.processmgt.model.StepTransition create(
-		long stepTransionId) {
-		return getPersistence().create(stepTransionId);
+		long stepTransitionId) {
+		return getPersistence().create(stepTransitionId);
 	}
 
 	/**
 	* Removes the step transition with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param stepTransionId the primary key of the step transition
+	* @param stepTransitionId the primary key of the step transition
 	* @return the step transition that was removed
 	* @throws org.oep.core.processmgt.NoSuchStepTransitionException if a step transition with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static org.oep.core.processmgt.model.StepTransition remove(
-		long stepTransionId)
+		long stepTransitionId)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			org.oep.core.processmgt.NoSuchStepTransitionException {
-		return getPersistence().remove(stepTransionId);
+		return getPersistence().remove(stepTransitionId);
 	}
 
 	public static org.oep.core.processmgt.model.StepTransition updateImpl(
@@ -165,29 +165,29 @@ public class StepTransitionUtil {
 	/**
 	* Returns the step transition with the primary key or throws a {@link org.oep.core.processmgt.NoSuchStepTransitionException} if it could not be found.
 	*
-	* @param stepTransionId the primary key of the step transition
+	* @param stepTransitionId the primary key of the step transition
 	* @return the step transition
 	* @throws org.oep.core.processmgt.NoSuchStepTransitionException if a step transition with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static org.oep.core.processmgt.model.StepTransition findByPrimaryKey(
-		long stepTransionId)
+		long stepTransitionId)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			org.oep.core.processmgt.NoSuchStepTransitionException {
-		return getPersistence().findByPrimaryKey(stepTransionId);
+		return getPersistence().findByPrimaryKey(stepTransitionId);
 	}
 
 	/**
 	* Returns the step transition with the primary key or returns <code>null</code> if it could not be found.
 	*
-	* @param stepTransionId the primary key of the step transition
+	* @param stepTransitionId the primary key of the step transition
 	* @return the step transition, or <code>null</code> if a step transition with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public static org.oep.core.processmgt.model.StepTransition fetchByPrimaryKey(
-		long stepTransionId)
+		long stepTransitionId)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return getPersistence().fetchByPrimaryKey(stepTransionId);
+		return getPersistence().fetchByPrimaryKey(stepTransitionId);
 	}
 
 	/**

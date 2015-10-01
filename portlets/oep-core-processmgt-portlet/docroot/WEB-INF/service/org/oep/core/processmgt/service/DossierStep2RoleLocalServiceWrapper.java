@@ -48,29 +48,29 @@ public class DossierStep2RoleLocalServiceWrapper
 	/**
 	* Creates a new dossier step2 role with the primary key. Does not add the dossier step2 role to the database.
 	*
-	* @param id the primary key for the new dossier step2 role
+	* @param dossierStep2RolePK the primary key for the new dossier step2 role
 	* @return the new dossier step2 role
 	*/
 	@Override
 	public org.oep.core.processmgt.model.DossierStep2Role createDossierStep2Role(
-		long id) {
-		return _dossierStep2RoleLocalService.createDossierStep2Role(id);
+		org.oep.core.processmgt.service.persistence.DossierStep2RolePK dossierStep2RolePK) {
+		return _dossierStep2RoleLocalService.createDossierStep2Role(dossierStep2RolePK);
 	}
 
 	/**
 	* Deletes the dossier step2 role with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the dossier step2 role
+	* @param dossierStep2RolePK the primary key of the dossier step2 role
 	* @return the dossier step2 role that was removed
 	* @throws PortalException if a dossier step2 role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	@Override
 	public org.oep.core.processmgt.model.DossierStep2Role deleteDossierStep2Role(
-		long id)
+		org.oep.core.processmgt.service.persistence.DossierStep2RolePK dossierStep2RolePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return _dossierStep2RoleLocalService.deleteDossierStep2Role(id);
+		return _dossierStep2RoleLocalService.deleteDossierStep2Role(dossierStep2RolePK);
 	}
 
 	/**
@@ -187,24 +187,25 @@ public class DossierStep2RoleLocalServiceWrapper
 
 	@Override
 	public org.oep.core.processmgt.model.DossierStep2Role fetchDossierStep2Role(
-		long id) throws com.liferay.portal.kernel.exception.SystemException {
-		return _dossierStep2RoleLocalService.fetchDossierStep2Role(id);
+		org.oep.core.processmgt.service.persistence.DossierStep2RolePK dossierStep2RolePK)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dossierStep2RoleLocalService.fetchDossierStep2Role(dossierStep2RolePK);
 	}
 
 	/**
 	* Returns the dossier step2 role with the primary key.
 	*
-	* @param id the primary key of the dossier step2 role
+	* @param dossierStep2RolePK the primary key of the dossier step2 role
 	* @return the dossier step2 role
 	* @throws PortalException if a dossier step2 role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	@Override
 	public org.oep.core.processmgt.model.DossierStep2Role getDossierStep2Role(
-		long id)
+		org.oep.core.processmgt.service.persistence.DossierStep2RolePK dossierStep2RolePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return _dossierStep2RoleLocalService.getDossierStep2Role(id);
+		return _dossierStep2RoleLocalService.getDossierStep2Role(dossierStep2RolePK);
 	}
 
 	@Override

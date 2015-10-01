@@ -9,8 +9,12 @@
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
 		<field name="dossierProcId" type="long" />
-		<field name="govAgentNo" type="String" />
-		<field name="govAgentName" type="String" />
+		<field name="govAgentId" type="String">
+			<hint name="max-length">30</hint>			
+		</field>
+		<field name="govAgentName" type="String">
+			<hint name="max-length">200</hint>
+		</field>
 		<field name="startDossierStepId" type="long" />
 		<field name="daysDuration" type="int" />
 	</model>
@@ -27,8 +31,6 @@
 		<field name="stepType" type="int" />
 	</model>
 	<model name="org.oep.core.processmgt.model.DossierStep2Role">
-		<field name="id" type="long" />
-		<field name="companyId" type="long" />
 		<field name="dossierStepId" type="long" />
 		<field name="roleId" type="long" />
 	</model>
@@ -53,13 +55,11 @@
 		<field name="endState" type="int" />
 	</model>
 	<model name="org.oep.core.processmgt.model.ProcessOrder2User">
-		<field name="id" type="long" />
-		<field name="companyId" type="long" />
 		<field name="processOrderId" type="long" />
 		<field name="userId" type="long" />
 	</model>
 	<model name="org.oep.core.processmgt.model.StepTransition">
-		<field name="stepTransionId" type="long" />
+		<field name="stepTransitionId" type="long" />
 		<field name="userId" type="long" />
 		<field name="groupId" type="long" />
 		<field name="companyId" type="long" />
@@ -73,7 +73,7 @@
 		<field name="daysDuration" type="int" />
 		<field name="dossierStatus" type="String" />
 		<field name="userAssignment" type="int" />
-		<field name="newOrder" type="int" />
+		<field name="newProcessOrder" type="int" />
 		<field name="errorMessage" type="String" />
 	</model>
 	<model name="org.oep.core.processmgt.model.TransitionHistory">

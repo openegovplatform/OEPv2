@@ -29,7 +29,6 @@ import com.liferay.portal.kernel.util.InstanceFactory;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
-import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.UnmodifiableList;
@@ -47,7 +46,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 /**
  * The persistence implementation for the dossier step2 role service.
@@ -173,15 +171,15 @@ public class DossierStep2RolePersistenceImpl extends BasePersistenceImpl<Dossier
 	/**
 	 * Creates a new dossier step2 role with the primary key. Does not add the dossier step2 role to the database.
 	 *
-	 * @param id the primary key for the new dossier step2 role
+	 * @param dossierStep2RolePK the primary key for the new dossier step2 role
 	 * @return the new dossier step2 role
 	 */
 	@Override
-	public DossierStep2Role create(long id) {
+	public DossierStep2Role create(DossierStep2RolePK dossierStep2RolePK) {
 		DossierStep2Role dossierStep2Role = new DossierStep2RoleImpl();
 
 		dossierStep2Role.setNew(true);
-		dossierStep2Role.setPrimaryKey(id);
+		dossierStep2Role.setPrimaryKey(dossierStep2RolePK);
 
 		return dossierStep2Role;
 	}
@@ -189,15 +187,15 @@ public class DossierStep2RolePersistenceImpl extends BasePersistenceImpl<Dossier
 	/**
 	 * Removes the dossier step2 role with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param id the primary key of the dossier step2 role
+	 * @param dossierStep2RolePK the primary key of the dossier step2 role
 	 * @return the dossier step2 role that was removed
 	 * @throws org.oep.core.processmgt.NoSuchDossierStep2RoleException if a dossier step2 role with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierStep2Role remove(long id)
+	public DossierStep2Role remove(DossierStep2RolePK dossierStep2RolePK)
 		throws NoSuchDossierStep2RoleException, SystemException {
-		return remove((Serializable)id);
+		return remove((Serializable)dossierStep2RolePK);
 	}
 
 	/**
@@ -327,8 +325,6 @@ public class DossierStep2RolePersistenceImpl extends BasePersistenceImpl<Dossier
 		dossierStep2RoleImpl.setNew(dossierStep2Role.isNew());
 		dossierStep2RoleImpl.setPrimaryKey(dossierStep2Role.getPrimaryKey());
 
-		dossierStep2RoleImpl.setId(dossierStep2Role.getId());
-		dossierStep2RoleImpl.setCompanyId(dossierStep2Role.getCompanyId());
 		dossierStep2RoleImpl.setDossierStepId(dossierStep2Role.getDossierStepId());
 		dossierStep2RoleImpl.setRoleId(dossierStep2Role.getRoleId());
 
@@ -363,15 +359,16 @@ public class DossierStep2RolePersistenceImpl extends BasePersistenceImpl<Dossier
 	/**
 	 * Returns the dossier step2 role with the primary key or throws a {@link org.oep.core.processmgt.NoSuchDossierStep2RoleException} if it could not be found.
 	 *
-	 * @param id the primary key of the dossier step2 role
+	 * @param dossierStep2RolePK the primary key of the dossier step2 role
 	 * @return the dossier step2 role
 	 * @throws org.oep.core.processmgt.NoSuchDossierStep2RoleException if a dossier step2 role with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierStep2Role findByPrimaryKey(long id)
+	public DossierStep2Role findByPrimaryKey(
+		DossierStep2RolePK dossierStep2RolePK)
 		throws NoSuchDossierStep2RoleException, SystemException {
-		return findByPrimaryKey((Serializable)id);
+		return findByPrimaryKey((Serializable)dossierStep2RolePK);
 	}
 
 	/**
@@ -426,14 +423,14 @@ public class DossierStep2RolePersistenceImpl extends BasePersistenceImpl<Dossier
 	/**
 	 * Returns the dossier step2 role with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param id the primary key of the dossier step2 role
+	 * @param dossierStep2RolePK the primary key of the dossier step2 role
 	 * @return the dossier step2 role, or <code>null</code> if a dossier step2 role with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierStep2Role fetchByPrimaryKey(long id)
-		throws SystemException {
-		return fetchByPrimaryKey((Serializable)id);
+	public DossierStep2Role fetchByPrimaryKey(
+		DossierStep2RolePK dossierStep2RolePK) throws SystemException {
+		return fetchByPrimaryKey((Serializable)dossierStep2RolePK);
 	}
 
 	/**
@@ -609,11 +606,6 @@ public class DossierStep2RolePersistenceImpl extends BasePersistenceImpl<Dossier
 		return count.intValue();
 	}
 
-	@Override
-	protected Set<String> getBadColumnNames() {
-		return _badColumnNames;
-	}
-
 	/**
 	 * Initializes the dossier step2 role persistence.
 	 */
@@ -653,9 +645,6 @@ public class DossierStep2RolePersistenceImpl extends BasePersistenceImpl<Dossier
 	private static final boolean _HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE = GetterUtil.getBoolean(PropsUtil.get(
 				PropsKeys.HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE));
 	private static Log _log = LogFactoryUtil.getLog(DossierStep2RolePersistenceImpl.class);
-	private static Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
-				"id"
-			});
 	private static DossierStep2Role _nullDossierStep2Role = new DossierStep2RoleImpl() {
 			@Override
 			public Object clone() {

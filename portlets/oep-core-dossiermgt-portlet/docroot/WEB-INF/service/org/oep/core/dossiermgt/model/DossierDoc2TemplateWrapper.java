@@ -49,29 +49,14 @@ public class DossierDoc2TemplateWrapper implements DossierDoc2Template,
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("id", getId());
-		attributes.put("companyId", getCompanyId());
 		attributes.put("dossierDocId", getDossierDocId());
 		attributes.put("docTemplateId", getDocTemplateId());
-		attributes.put("sequenceNo", getSequenceNo());
 
 		return attributes;
 	}
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long id = (Long)attributes.get("id");
-
-		if (id != null) {
-			setId(id);
-		}
-
-		Long companyId = (Long)attributes.get("companyId");
-
-		if (companyId != null) {
-			setCompanyId(companyId);
-		}
-
 		Long dossierDocId = (Long)attributes.get("dossierDocId");
 
 		if (dossierDocId != null) {
@@ -83,12 +68,6 @@ public class DossierDoc2TemplateWrapper implements DossierDoc2Template,
 		if (docTemplateId != null) {
 			setDocTemplateId(docTemplateId);
 		}
-
-		Integer sequenceNo = (Integer)attributes.get("sequenceNo");
-
-		if (sequenceNo != null) {
-			setSequenceNo(sequenceNo);
-		}
 	}
 
 	/**
@@ -97,7 +76,7 @@ public class DossierDoc2TemplateWrapper implements DossierDoc2Template,
 	* @return the primary key of this dossier doc2 template
 	*/
 	@Override
-	public long getPrimaryKey() {
+	public org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK getPrimaryKey() {
 		return _dossierDoc2Template.getPrimaryKey();
 	}
 
@@ -107,48 +86,9 @@ public class DossierDoc2TemplateWrapper implements DossierDoc2Template,
 	* @param primaryKey the primary key of this dossier doc2 template
 	*/
 	@Override
-	public void setPrimaryKey(long primaryKey) {
+	public void setPrimaryKey(
+		org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK primaryKey) {
 		_dossierDoc2Template.setPrimaryKey(primaryKey);
-	}
-
-	/**
-	* Returns the ID of this dossier doc2 template.
-	*
-	* @return the ID of this dossier doc2 template
-	*/
-	@Override
-	public long getId() {
-		return _dossierDoc2Template.getId();
-	}
-
-	/**
-	* Sets the ID of this dossier doc2 template.
-	*
-	* @param id the ID of this dossier doc2 template
-	*/
-	@Override
-	public void setId(long id) {
-		_dossierDoc2Template.setId(id);
-	}
-
-	/**
-	* Returns the company ID of this dossier doc2 template.
-	*
-	* @return the company ID of this dossier doc2 template
-	*/
-	@Override
-	public long getCompanyId() {
-		return _dossierDoc2Template.getCompanyId();
-	}
-
-	/**
-	* Sets the company ID of this dossier doc2 template.
-	*
-	* @param companyId the company ID of this dossier doc2 template
-	*/
-	@Override
-	public void setCompanyId(long companyId) {
-		_dossierDoc2Template.setCompanyId(companyId);
 	}
 
 	/**
@@ -189,26 +129,6 @@ public class DossierDoc2TemplateWrapper implements DossierDoc2Template,
 	@Override
 	public void setDocTemplateId(long docTemplateId) {
 		_dossierDoc2Template.setDocTemplateId(docTemplateId);
-	}
-
-	/**
-	* Returns the sequence no of this dossier doc2 template.
-	*
-	* @return the sequence no of this dossier doc2 template
-	*/
-	@Override
-	public int getSequenceNo() {
-		return _dossierDoc2Template.getSequenceNo();
-	}
-
-	/**
-	* Sets the sequence no of this dossier doc2 template.
-	*
-	* @param sequenceNo the sequence no of this dossier doc2 template
-	*/
-	@Override
-	public void setSequenceNo(int sequenceNo) {
-		_dossierDoc2Template.setSequenceNo(sequenceNo);
 	}
 
 	@Override
@@ -275,7 +195,8 @@ public class DossierDoc2TemplateWrapper implements DossierDoc2Template,
 	}
 
 	@Override
-	public int compareTo(DossierDoc2Template dossierDoc2Template) {
+	public int compareTo(
+		org.oep.core.dossiermgt.model.DossierDoc2Template dossierDoc2Template) {
 		return _dossierDoc2Template.compareTo(dossierDoc2Template);
 	}
 
@@ -285,17 +206,17 @@ public class DossierDoc2TemplateWrapper implements DossierDoc2Template,
 	}
 
 	@Override
-	public com.liferay.portal.model.CacheModel<DossierDoc2Template> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<org.oep.core.dossiermgt.model.DossierDoc2Template> toCacheModel() {
 		return _dossierDoc2Template.toCacheModel();
 	}
 
 	@Override
-	public DossierDoc2Template toEscapedModel() {
+	public org.oep.core.dossiermgt.model.DossierDoc2Template toEscapedModel() {
 		return new DossierDoc2TemplateWrapper(_dossierDoc2Template.toEscapedModel());
 	}
 
 	@Override
-	public DossierDoc2Template toUnescapedModel() {
+	public org.oep.core.dossiermgt.model.DossierDoc2Template toUnescapedModel() {
 		return new DossierDoc2TemplateWrapper(_dossierDoc2Template.toUnescapedModel());
 	}
 

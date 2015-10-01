@@ -335,6 +335,134 @@ public class DossierLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	/**
+	* Add dossier
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new dossier
+	*/
+	public static org.oep.core.dossiermgt.model.Dossier addDossier(
+		long organizationId, long dossierProcId, java.lang.String govAgentId,
+		java.lang.String govAgentName, java.lang.String subjectId,
+		java.lang.String subjectType, java.lang.String subjectName,
+		java.lang.String address, java.lang.String cityNo,
+		java.lang.String cityName, java.lang.String districtNo,
+		java.lang.String districtName, java.lang.String wardNo,
+		java.lang.String wardName, java.lang.String telNo,
+		java.lang.String contactPersonName, java.lang.String contactPersonTel,
+		java.lang.String note, java.lang.String resumeDescription,
+		java.lang.String receptionNo, java.util.Date submissionDate,
+		java.util.Date receptionDate, java.util.Date resubmissionDate,
+		java.util.Date appointmentDate, java.util.Date releaseDate,
+		java.util.Date completionDate, java.lang.String status,
+		java.lang.String statusDescription, java.lang.String feedbackNote,
+		int dirty, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addDossier(organizationId, dossierProcId, govAgentId,
+			govAgentName, subjectId, subjectType, subjectName, address, cityNo,
+			cityName, districtNo, districtName, wardNo, wardName, telNo,
+			contactPersonName, contactPersonTel, note, resumeDescription,
+			receptionNo, submissionDate, receptionDate, resubmissionDate,
+			appointmentDate, releaseDate, completionDate, status,
+			statusDescription, feedbackNote, dirty, serviceContext);
+	}
+
+	public static org.oep.core.dossiermgt.model.Dossier updateDossier(long id,
+		long organizationId, long dossierProcId, java.lang.String govAgentId,
+		java.lang.String govAgentName, java.lang.String subjectId,
+		java.lang.String subjectType, java.lang.String subjectName,
+		java.lang.String address, java.lang.String cityNo,
+		java.lang.String cityName, java.lang.String districtNo,
+		java.lang.String districtName, java.lang.String wardNo,
+		java.lang.String wardName, java.lang.String telNo,
+		java.lang.String contactPersonName, java.lang.String contactPersonTel,
+		java.lang.String note, java.lang.String resumeDescription,
+		java.lang.String receptionNo, java.util.Date submissionDate,
+		java.util.Date receptionDate, java.util.Date resubmissionDate,
+		java.util.Date appointmentDate, java.util.Date releaseDate,
+		java.util.Date completionDate, java.lang.String status,
+		java.lang.String statusDescription, java.lang.String feedbackNote,
+		int dirty, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .updateDossier(id, organizationId, dossierProcId,
+			govAgentId, govAgentName, subjectId, subjectType, subjectName,
+			address, cityNo, cityName, districtNo, districtName, wardNo,
+			wardName, telNo, contactPersonName, contactPersonTel, note,
+			resumeDescription, receptionNo, submissionDate, receptionDate,
+			resubmissionDate, appointmentDate, releaseDate, completionDate,
+			status, statusDescription, feedbackNote, dirty, serviceContext);
+	}
+
+	public static void updateDossierResources(
+		org.oep.core.dossiermgt.model.Dossier dossier,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.updateDossierResources(dossier, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	public static void removeDossier(
+		org.oep.core.dossiermgt.model.Dossier dossier)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeDossier(dossier);
+	}
+
+	public static void removeDossier(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeDossier(id);
+	}
+
+	public static void addDossierResources(
+		org.oep.core.dossiermgt.model.Dossier dossier,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addDossierResources(dossier, addGroupPermission,
+			addGuestPermission, serviceContext);
+	}
+
+	public static void addDossierResources(
+		org.oep.core.dossiermgt.model.Dossier dossier,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addDossierResources(dossier, groupPermissions, guestPermissions,
+			serviceContext);
+	}
+
+	public static void addDossierResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addDossierResources(id, groupPermissions, guestPermissions,
+			serviceContext);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

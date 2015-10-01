@@ -10,7 +10,7 @@
 	<import class="org.oep.core.processmgt.model.StepTransition" />
 	<import class="org.oep.core.processmgt.model.TransitionHistory" />
 	<import class="org.oep.core.processmgt.model.UserAssignment" />
-	<class name="org.oep.core.processmgt.model.impl.DossierProcessImpl" table="oep_processmgt_DossierProcess">
+	<class name="org.oep.core.processmgt.model.impl.DossierProcessImpl" table="oep_processmgt_dossierprocess">
 		<cache usage="read-write" />
 		<id name="dossierProcessId" type="long">
 			<generator class="assigned" />
@@ -21,12 +21,12 @@
 		<property name="createDate" type="org.hibernate.type.TimestampType" />
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
 		<property name="dossierProcId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="govAgentNo" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="govAgentId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="govAgentName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="startDossierStepId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="daysDuration" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
-	<class name="org.oep.core.processmgt.model.impl.DossierStepImpl" table="oep_processmgt_DossierStep">
+	<class name="org.oep.core.processmgt.model.impl.DossierStepImpl" table="oep_processmgt_dossierstep">
 		<cache usage="read-write" />
 		<id name="dossierStepId" type="long">
 			<generator class="assigned" />
@@ -41,16 +41,14 @@
 		<property name="sequenceNo" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="stepType" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
-	<class name="org.oep.core.processmgt.model.impl.DossierStep2RoleImpl" table="oep_processmgt_DossierStep2Role">
+	<class name="org.oep.core.processmgt.model.impl.DossierStep2RoleImpl" table="oep_processmgt_dossierstep2role">
 		<cache usage="read-write" />
-		<id name="id" column="id_" type="long">
-			<generator class="assigned" />
-		</id>
-		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="dossierStepId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="roleId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<composite-id name="primaryKey" class="org.oep.core.processmgt.service.persistence.DossierStep2RolePK">
+			<key-property name="dossierStepId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+			<key-property name="roleId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		</composite-id>
 	</class>
-	<class name="org.oep.core.processmgt.model.impl.ProcessOrderImpl" table="oep_processmgt_ProcessOrder">
+	<class name="org.oep.core.processmgt.model.impl.ProcessOrderImpl" table="oep_processmgt_processorder">
 		<cache usage="read-write" />
 		<id name="processOrderId" type="long">
 			<generator class="assigned" />
@@ -73,18 +71,16 @@
 		<property name="currentCondition" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="endState" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
-	<class name="org.oep.core.processmgt.model.impl.ProcessOrder2UserImpl" table="oep_processmgt_ProcessOrder2User">
+	<class name="org.oep.core.processmgt.model.impl.ProcessOrder2UserImpl" table="oep_processmgt_processorder2user">
 		<cache usage="read-write" />
-		<id name="id" column="id_" type="long">
-			<generator class="assigned" />
-		</id>
-		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="processOrderId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<composite-id name="primaryKey" class="org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK">
+			<key-property name="processOrderId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+			<key-property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		</composite-id>
 	</class>
-	<class name="org.oep.core.processmgt.model.impl.StepTransitionImpl" table="oep_processmgt_StepTransition">
+	<class name="org.oep.core.processmgt.model.impl.StepTransitionImpl" table="oep_processmgt_steptransition">
 		<cache usage="read-write" />
-		<id name="stepTransionId" type="long">
+		<id name="stepTransitionId" type="long">
 			<generator class="assigned" />
 		</id>
 		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
@@ -100,10 +96,10 @@
 		<property name="daysDuration" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="dossierStatus" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="userAssignment" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
-		<property name="newOrder" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="newProcessOrder" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="errorMessage" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
-	<class name="org.oep.core.processmgt.model.impl.TransitionHistoryImpl" table="oep_processmgt_TransitionHistory">
+	<class name="org.oep.core.processmgt.model.impl.TransitionHistoryImpl" table="oep_processmgt_transitionhistory">
 		<cache usage="read-write" />
 		<id name="transitionHistoryId" type="long">
 			<generator class="assigned" />
@@ -123,7 +119,7 @@
 		<property name="transitionName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="note" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
-	<class name="org.oep.core.processmgt.model.impl.UserAssignmentImpl" table="oep_processmgt_UserAssignment">
+	<class name="org.oep.core.processmgt.model.impl.UserAssignmentImpl" table="oep_processmgt_userassignment">
 		<cache usage="read-write" />
 		<id name="userAssignmentId" type="long">
 			<generator class="assigned" />

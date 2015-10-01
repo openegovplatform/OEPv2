@@ -38,7 +38,7 @@ public class PaymentConfigCacheModel implements CacheModel<PaymentConfig>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(19);
 
 		sb.append("{paymentConfigId=");
 		sb.append(paymentConfigId);
@@ -48,18 +48,16 @@ public class PaymentConfigCacheModel implements CacheModel<PaymentConfig>,
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
 		sb.append(modifiedDate);
-		sb.append(", dossierProcId=");
-		sb.append(dossierProcId);
-		sb.append(", govAgentNo=");
-		sb.append(govAgentNo);
+		sb.append(", govAgentId=");
+		sb.append(govAgentId);
 		sb.append(", govAgentName=");
 		sb.append(govAgentName);
-		sb.append(", prePaidFee=");
-		sb.append(prePaidFee);
 		sb.append(", bankTransfer=");
 		sb.append(bankTransfer);
 		sb.append(", keypay=");
 		sb.append(keypay);
+		sb.append(", ebPartnerShipId=");
+		sb.append(ebPartnerShipId);
 		sb.append("}");
 
 		return sb.toString();
@@ -86,13 +84,11 @@ public class PaymentConfigCacheModel implements CacheModel<PaymentConfig>,
 			paymentConfigImpl.setModifiedDate(new Date(modifiedDate));
 		}
 
-		paymentConfigImpl.setDossierProcId(dossierProcId);
-
-		if (govAgentNo == null) {
-			paymentConfigImpl.setGovAgentNo(StringPool.BLANK);
+		if (govAgentId == null) {
+			paymentConfigImpl.setGovAgentId(StringPool.BLANK);
 		}
 		else {
-			paymentConfigImpl.setGovAgentNo(govAgentNo);
+			paymentConfigImpl.setGovAgentId(govAgentId);
 		}
 
 		if (govAgentName == null) {
@@ -101,8 +97,6 @@ public class PaymentConfigCacheModel implements CacheModel<PaymentConfig>,
 		else {
 			paymentConfigImpl.setGovAgentName(govAgentName);
 		}
-
-		paymentConfigImpl.setPrePaidFee(prePaidFee);
 
 		if (bankTransfer == null) {
 			paymentConfigImpl.setBankTransfer(StringPool.BLANK);
@@ -118,6 +112,8 @@ public class PaymentConfigCacheModel implements CacheModel<PaymentConfig>,
 			paymentConfigImpl.setKeypay(keypay);
 		}
 
+		paymentConfigImpl.setEbPartnerShipId(ebPartnerShipId);
+
 		paymentConfigImpl.resetOriginalValues();
 
 		return paymentConfigImpl;
@@ -129,12 +125,11 @@ public class PaymentConfigCacheModel implements CacheModel<PaymentConfig>,
 		companyId = objectInput.readLong();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
-		dossierProcId = objectInput.readLong();
-		govAgentNo = objectInput.readUTF();
+		govAgentId = objectInput.readUTF();
 		govAgentName = objectInput.readUTF();
-		prePaidFee = objectInput.readLong();
 		bankTransfer = objectInput.readUTF();
 		keypay = objectInput.readUTF();
+		ebPartnerShipId = objectInput.readLong();
 	}
 
 	@Override
@@ -144,13 +139,12 @@ public class PaymentConfigCacheModel implements CacheModel<PaymentConfig>,
 		objectOutput.writeLong(companyId);
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
-		objectOutput.writeLong(dossierProcId);
 
-		if (govAgentNo == null) {
+		if (govAgentId == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(govAgentNo);
+			objectOutput.writeUTF(govAgentId);
 		}
 
 		if (govAgentName == null) {
@@ -159,8 +153,6 @@ public class PaymentConfigCacheModel implements CacheModel<PaymentConfig>,
 		else {
 			objectOutput.writeUTF(govAgentName);
 		}
-
-		objectOutput.writeLong(prePaidFee);
 
 		if (bankTransfer == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
@@ -175,16 +167,17 @@ public class PaymentConfigCacheModel implements CacheModel<PaymentConfig>,
 		else {
 			objectOutput.writeUTF(keypay);
 		}
+
+		objectOutput.writeLong(ebPartnerShipId);
 	}
 
 	public long paymentConfigId;
 	public long companyId;
 	public long createDate;
 	public long modifiedDate;
-	public long dossierProcId;
-	public String govAgentNo;
+	public String govAgentId;
 	public String govAgentName;
-	public long prePaidFee;
 	public String bankTransfer;
 	public String keypay;
+	public long ebPartnerShipId;
 }

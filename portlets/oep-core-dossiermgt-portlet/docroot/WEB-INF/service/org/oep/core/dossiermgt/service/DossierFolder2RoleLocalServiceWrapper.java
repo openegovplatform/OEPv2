@@ -48,29 +48,29 @@ public class DossierFolder2RoleLocalServiceWrapper
 	/**
 	* Creates a new dossier folder2 role with the primary key. Does not add the dossier folder2 role to the database.
 	*
-	* @param id the primary key for the new dossier folder2 role
+	* @param dossierFolder2RolePK the primary key for the new dossier folder2 role
 	* @return the new dossier folder2 role
 	*/
 	@Override
 	public org.oep.core.dossiermgt.model.DossierFolder2Role createDossierFolder2Role(
-		long id) {
-		return _dossierFolder2RoleLocalService.createDossierFolder2Role(id);
+		org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK dossierFolder2RolePK) {
+		return _dossierFolder2RoleLocalService.createDossierFolder2Role(dossierFolder2RolePK);
 	}
 
 	/**
 	* Deletes the dossier folder2 role with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the dossier folder2 role
+	* @param dossierFolder2RolePK the primary key of the dossier folder2 role
 	* @return the dossier folder2 role that was removed
 	* @throws PortalException if a dossier folder2 role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	@Override
 	public org.oep.core.dossiermgt.model.DossierFolder2Role deleteDossierFolder2Role(
-		long id)
+		org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK dossierFolder2RolePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return _dossierFolder2RoleLocalService.deleteDossierFolder2Role(id);
+		return _dossierFolder2RoleLocalService.deleteDossierFolder2Role(dossierFolder2RolePK);
 	}
 
 	/**
@@ -187,24 +187,25 @@ public class DossierFolder2RoleLocalServiceWrapper
 
 	@Override
 	public org.oep.core.dossiermgt.model.DossierFolder2Role fetchDossierFolder2Role(
-		long id) throws com.liferay.portal.kernel.exception.SystemException {
-		return _dossierFolder2RoleLocalService.fetchDossierFolder2Role(id);
+		org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK dossierFolder2RolePK)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dossierFolder2RoleLocalService.fetchDossierFolder2Role(dossierFolder2RolePK);
 	}
 
 	/**
 	* Returns the dossier folder2 role with the primary key.
 	*
-	* @param id the primary key of the dossier folder2 role
+	* @param dossierFolder2RolePK the primary key of the dossier folder2 role
 	* @return the dossier folder2 role
 	* @throws PortalException if a dossier folder2 role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	@Override
 	public org.oep.core.dossiermgt.model.DossierFolder2Role getDossierFolder2Role(
-		long id)
+		org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK dossierFolder2RolePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return _dossierFolder2RoleLocalService.getDossierFolder2Role(id);
+		return _dossierFolder2RoleLocalService.getDossierFolder2Role(dossierFolder2RolePK);
 	}
 
 	@Override

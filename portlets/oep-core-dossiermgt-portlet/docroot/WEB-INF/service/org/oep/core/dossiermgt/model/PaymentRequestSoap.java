@@ -40,10 +40,16 @@ public class PaymentRequestSoap implements Serializable {
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setOrganizationId(model.getOrganizationId());
 		soapModel.setDossierId(model.getDossierId());
+		soapModel.setGovAgentId(model.getGovAgentId());
+		soapModel.setGovAgentName(model.getGovAgentName());
+		soapModel.setSubjectId(model.getSubjectId());
+		soapModel.setSubjectType(model.getSubjectType());
+		soapModel.setSubjectName(model.getSubjectName());
 		soapModel.setAmount(model.getAmount());
-		soapModel.setNote(model.getNote());
-		soapModel.setIssueDate(model.getIssueDate());
+		soapModel.setRequestNote(model.getRequestNote());
 		soapModel.setPaymentFileId(model.getPaymentFileId());
+		soapModel.setConfirmOK(model.getConfirmOK());
+		soapModel.setEbMessageId(model.getEbMessageId());
 
 		return soapModel;
 	}
@@ -168,6 +174,46 @@ public class PaymentRequestSoap implements Serializable {
 		_dossierId = dossierId;
 	}
 
+	public String getGovAgentId() {
+		return _govAgentId;
+	}
+
+	public void setGovAgentId(String govAgentId) {
+		_govAgentId = govAgentId;
+	}
+
+	public String getGovAgentName() {
+		return _govAgentName;
+	}
+
+	public void setGovAgentName(String govAgentName) {
+		_govAgentName = govAgentName;
+	}
+
+	public String getSubjectId() {
+		return _subjectId;
+	}
+
+	public void setSubjectId(String subjectId) {
+		_subjectId = subjectId;
+	}
+
+	public String getSubjectType() {
+		return _subjectType;
+	}
+
+	public void setSubjectType(String subjectType) {
+		_subjectType = subjectType;
+	}
+
+	public String getSubjectName() {
+		return _subjectName;
+	}
+
+	public void setSubjectName(String subjectName) {
+		_subjectName = subjectName;
+	}
+
 	public long getAmount() {
 		return _amount;
 	}
@@ -176,20 +222,12 @@ public class PaymentRequestSoap implements Serializable {
 		_amount = amount;
 	}
 
-	public String getNote() {
-		return _note;
+	public String getRequestNote() {
+		return _requestNote;
 	}
 
-	public void setNote(String note) {
-		_note = note;
-	}
-
-	public Date getIssueDate() {
-		return _issueDate;
-	}
-
-	public void setIssueDate(Date issueDate) {
-		_issueDate = issueDate;
+	public void setRequestNote(String requestNote) {
+		_requestNote = requestNote;
 	}
 
 	public long getPaymentFileId() {
@@ -198,6 +236,22 @@ public class PaymentRequestSoap implements Serializable {
 
 	public void setPaymentFileId(long paymentFileId) {
 		_paymentFileId = paymentFileId;
+	}
+
+	public int getConfirmOK() {
+		return _confirmOK;
+	}
+
+	public void setConfirmOK(int confirmOK) {
+		_confirmOK = confirmOK;
+	}
+
+	public long getEbMessageId() {
+		return _ebMessageId;
+	}
+
+	public void setEbMessageId(long ebMessageId) {
+		_ebMessageId = ebMessageId;
 	}
 
 	private String _uuid;
@@ -209,8 +263,14 @@ public class PaymentRequestSoap implements Serializable {
 	private Date _modifiedDate;
 	private long _organizationId;
 	private long _dossierId;
+	private String _govAgentId;
+	private String _govAgentName;
+	private String _subjectId;
+	private String _subjectType;
+	private String _subjectName;
 	private long _amount;
-	private String _note;
-	private Date _issueDate;
+	private String _requestNote;
 	private long _paymentFileId;
+	private int _confirmOK;
+	private long _ebMessageId;
 }

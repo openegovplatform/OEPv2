@@ -84,7 +84,7 @@ public class DocFileVersionClp extends BaseModelImpl<DocFileVersion>
 		attributes.put("docFileId", getDocFileId());
 		attributes.put("fileEntryId", getFileEntryId());
 		attributes.put("xmlContent", getXmlContent());
-		attributes.put("issueDate", getIssueDate());
+		attributes.put("ebMessageId", getEbMessageId());
 
 		return attributes;
 	}
@@ -145,10 +145,10 @@ public class DocFileVersionClp extends BaseModelImpl<DocFileVersion>
 			setXmlContent(xmlContent);
 		}
 
-		Date issueDate = (Date)attributes.get("issueDate");
+		Long ebMessageId = (Long)attributes.get("ebMessageId");
 
-		if (issueDate != null) {
-			setIssueDate(issueDate);
+		if (ebMessageId != null) {
+			setEbMessageId(ebMessageId);
 		}
 	}
 
@@ -371,21 +371,21 @@ public class DocFileVersionClp extends BaseModelImpl<DocFileVersion>
 	}
 
 	@Override
-	public Date getIssueDate() {
-		return _issueDate;
+	public long getEbMessageId() {
+		return _ebMessageId;
 	}
 
 	@Override
-	public void setIssueDate(Date issueDate) {
-		_issueDate = issueDate;
+	public void setEbMessageId(long ebMessageId) {
+		_ebMessageId = ebMessageId;
 
 		if (_docFileVersionRemoteModel != null) {
 			try {
 				Class<?> clazz = _docFileVersionRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setIssueDate", Date.class);
+				Method method = clazz.getMethod("setEbMessageId", long.class);
 
-				method.invoke(_docFileVersionRemoteModel, issueDate);
+				method.invoke(_docFileVersionRemoteModel, ebMessageId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -473,7 +473,7 @@ public class DocFileVersionClp extends BaseModelImpl<DocFileVersion>
 		clone.setDocFileId(getDocFileId());
 		clone.setFileEntryId(getFileEntryId());
 		clone.setXmlContent(getXmlContent());
-		clone.setIssueDate(getIssueDate());
+		clone.setEbMessageId(getEbMessageId());
 
 		return clone;
 	}
@@ -546,8 +546,8 @@ public class DocFileVersionClp extends BaseModelImpl<DocFileVersion>
 		sb.append(getFileEntryId());
 		sb.append(", xmlContent=");
 		sb.append(getXmlContent());
-		sb.append(", issueDate=");
-		sb.append(getIssueDate());
+		sb.append(", ebMessageId=");
+		sb.append(getEbMessageId());
 		sb.append("}");
 
 		return sb.toString();
@@ -598,8 +598,8 @@ public class DocFileVersionClp extends BaseModelImpl<DocFileVersion>
 		sb.append(getXmlContent());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>issueDate</column-name><column-value><![CDATA[");
-		sb.append(getIssueDate());
+			"<column><column-name>ebMessageId</column-name><column-value><![CDATA[");
+		sb.append(getEbMessageId());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -617,7 +617,7 @@ public class DocFileVersionClp extends BaseModelImpl<DocFileVersion>
 	private long _docFileId;
 	private long _fileEntryId;
 	private String _xmlContent;
-	private Date _issueDate;
+	private long _ebMessageId;
 	private BaseModel<?> _docFileVersionRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.dossiermgt.service.ClpSerializer.class;
 }

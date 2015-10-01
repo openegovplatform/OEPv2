@@ -275,6 +275,102 @@ public class PaymentConfigLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	/**
+	* Add dossier proc
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new dossier proc
+	*/
+	public static org.oep.core.dossiermgt.model.PaymentConfig addPaymentConfig(
+		java.lang.String govAgentId, java.lang.String govAgentName,
+		java.lang.String bankTransfer, java.lang.String keypay,
+		long ebPartnerShipId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addPaymentConfig(govAgentId, govAgentName, bankTransfer,
+			keypay, ebPartnerShipId, serviceContext);
+	}
+
+	public static org.oep.core.dossiermgt.model.PaymentConfig updatePaymentConfig(
+		long id, java.lang.String govAgentId, java.lang.String govAgentName,
+		java.lang.String bankTransfer, java.lang.String keypay,
+		long ebPartnerShipId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .updatePaymentConfig(id, govAgentId, govAgentName,
+			bankTransfer, keypay, ebPartnerShipId, serviceContext);
+	}
+
+	public static void updatePaymentConfigResources(
+		org.oep.core.dossiermgt.model.PaymentConfig paymentConfig,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.updatePaymentConfigResources(paymentConfig, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	public static void removePaymentConfig(
+		org.oep.core.dossiermgt.model.PaymentConfig paymentConfig)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removePaymentConfig(paymentConfig);
+	}
+
+	public static void removePaymentConfig(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removePaymentConfig(id);
+	}
+
+	public static void addPaymentConfigResources(
+		org.oep.core.dossiermgt.model.PaymentConfig paymentConfig,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addPaymentConfigResources(paymentConfig, addGroupPermission,
+			addGuestPermission, serviceContext);
+	}
+
+	public static void addPaymentConfigResources(
+		org.oep.core.dossiermgt.model.PaymentConfig paymentConfig,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addPaymentConfigResources(paymentConfig, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	public static void addPaymentConfigResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addPaymentConfigResources(id, groupPermissions, guestPermissions,
+			serviceContext);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

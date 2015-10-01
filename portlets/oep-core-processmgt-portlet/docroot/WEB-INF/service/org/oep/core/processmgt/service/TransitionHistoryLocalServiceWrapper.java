@@ -290,6 +290,110 @@ public class TransitionHistoryLocalServiceWrapper
 	}
 
 	/**
+	* Add transition history
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new transition history
+	*/
+	@Override
+	public org.oep.core.processmgt.model.TransitionHistory addTransitionHistory(
+		long dossierId, long processOrderId, int daysDoing, int daysDelay,
+		java.util.Date startDate, long stepTransitionId, long preDossierStepId,
+		long postDossierStepId, java.lang.String transitionName,
+		java.lang.String note,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _transitionHistoryLocalService.addTransitionHistory(dossierId,
+			processOrderId, daysDoing, daysDelay, startDate, stepTransitionId,
+			preDossierStepId, postDossierStepId, transitionName, note,
+			serviceContext);
+	}
+
+	@Override
+	public org.oep.core.processmgt.model.TransitionHistory updateTransitionHistory(
+		long id, long dossierId, long processOrderId, int daysDoing,
+		int daysDelay, java.util.Date startDate, long stepTransitionId,
+		long preDossierStepId, long postDossierStepId,
+		java.lang.String transitionName, java.lang.String note,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _transitionHistoryLocalService.updateTransitionHistory(id,
+			dossierId, processOrderId, daysDoing, daysDelay, startDate,
+			stepTransitionId, preDossierStepId, postDossierStepId,
+			transitionName, note, serviceContext);
+	}
+
+	@Override
+	public void updateTransitionHistoryResources(
+		org.oep.core.processmgt.model.TransitionHistory transitionHistory,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_transitionHistoryLocalService.updateTransitionHistoryResources(transitionHistory,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void removeTransitionHistory(
+		org.oep.core.processmgt.model.TransitionHistory transitionHistory)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_transitionHistoryLocalService.removeTransitionHistory(transitionHistory);
+	}
+
+	@Override
+	public void removeTransitionHistory(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_transitionHistoryLocalService.removeTransitionHistory(id);
+	}
+
+	@Override
+	public void addTransitionHistoryResources(
+		org.oep.core.processmgt.model.TransitionHistory transitionHistory,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_transitionHistoryLocalService.addTransitionHistoryResources(transitionHistory,
+			addGroupPermission, addGuestPermission, serviceContext);
+	}
+
+	@Override
+	public void addTransitionHistoryResources(
+		org.oep.core.processmgt.model.TransitionHistory transitionHistory,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_transitionHistoryLocalService.addTransitionHistoryResources(transitionHistory,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void addTransitionHistoryResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_transitionHistoryLocalService.addTransitionHistoryResources(id,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */
 	public TransitionHistoryLocalService getWrappedTransitionHistoryLocalService() {

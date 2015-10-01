@@ -253,4 +253,79 @@ public interface ProcessOrderLocalService extends BaseLocalService,
 	public java.lang.Object invokeMethod(java.lang.String name,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;
+
+	/**
+	* Add process order
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new process order
+	*/
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	@com.liferay.portal.kernel.transaction.Transactional
+	public org.oep.core.processmgt.model.ProcessOrder addProcessOrder(
+		long organizationId, long parentProcessOrderId, long dossierId,
+		long dossierProcessId, long dossierStepId,
+		java.lang.String dossierStatus, java.lang.String dossierResume,
+		java.util.Date stepDate, java.lang.String stepNote,
+		long assignToUserId, java.lang.String currentCondition, int endState,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.processmgt.model.ProcessOrder updateProcessOrder(
+		long id, long organizationId, long parentProcessOrderId,
+		long dossierId, long dossierProcessId, long dossierStepId,
+		java.lang.String dossierStatus, java.lang.String dossierResume,
+		java.util.Date stepDate, java.lang.String stepNote,
+		long assignToUserId, java.lang.String currentCondition, int endState,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void updateProcessOrderResources(
+		org.oep.core.processmgt.model.ProcessOrder processOrder,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void removeProcessOrder(
+		org.oep.core.processmgt.model.ProcessOrder processOrder)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void removeProcessOrder(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addProcessOrderResources(
+		org.oep.core.processmgt.model.ProcessOrder processOrder,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addProcessOrderResources(
+		org.oep.core.processmgt.model.ProcessOrder processOrder,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addProcessOrderResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
 }

@@ -32,6 +32,6 @@ public abstract class StepTransitionActionableDynamicQuery
 
 		setClassLoader(org.oep.core.processmgt.service.ClpSerializer.class.getClassLoader());
 
-		setPrimaryKeyPropertyName("stepTransionId");
+		setPrimaryKeyPropertyName("stepTransitionId");
 	}
 }

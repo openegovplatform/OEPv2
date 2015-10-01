@@ -1811,18 +1811,22 @@ public class PaymentFilePersistenceImpl extends BasePersistenceImpl<PaymentFile>
 		paymentFileImpl.setCreateDate(paymentFile.getCreateDate());
 		paymentFileImpl.setModifiedDate(paymentFile.getModifiedDate());
 		paymentFileImpl.setOrganizationId(paymentFile.getOrganizationId());
+		paymentFileImpl.setGovAgentId(paymentFile.getGovAgentId());
+		paymentFileImpl.setGovAgentName(paymentFile.getGovAgentName());
+		paymentFileImpl.setSubjectId(paymentFile.getSubjectId());
+		paymentFileImpl.setSubjectType(paymentFile.getSubjectType());
+		paymentFileImpl.setSubjectName(paymentFile.getSubjectName());
 		paymentFileImpl.setAmount(paymentFile.getAmount());
 		paymentFileImpl.setPaymentType(paymentFile.getPaymentType());
-		paymentFileImpl.setDetailInfo(paymentFile.getDetailInfo());
-		paymentFileImpl.setNote(paymentFile.getNote());
+		paymentFileImpl.setPaymentDescription(paymentFile.getPaymentDescription());
+		paymentFileImpl.setTransactionInfo(paymentFile.getTransactionInfo());
 		paymentFileImpl.setFileEntryId(paymentFile.getFileEntryId());
-		paymentFileImpl.setIssueDate(paymentFile.getIssueDate());
 		paymentFileImpl.setCheckingDate(paymentFile.getCheckingDate());
 		paymentFileImpl.setCheckingUserId(paymentFile.getCheckingUserId());
 		paymentFileImpl.setCheckingUserName(paymentFile.getCheckingUserName());
 		paymentFileImpl.setCheckingResult(paymentFile.getCheckingResult());
 		paymentFileImpl.setCheckingNote(paymentFile.getCheckingNote());
-		paymentFileImpl.setFeedbackDate(paymentFile.getFeedbackDate());
+		paymentFileImpl.setEbMessageId(paymentFile.getEbMessageId());
 
 		return paymentFileImpl;
 	}

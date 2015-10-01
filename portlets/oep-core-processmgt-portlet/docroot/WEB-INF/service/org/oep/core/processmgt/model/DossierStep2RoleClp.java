@@ -23,6 +23,7 @@ import com.liferay.portal.model.impl.BaseModelImpl;
 
 import org.oep.core.processmgt.service.ClpSerializer;
 import org.oep.core.processmgt.service.DossierStep2RoleLocalServiceUtil;
+import org.oep.core.processmgt.service.persistence.DossierStep2RolePK;
 
 import java.io.Serializable;
 
@@ -50,31 +51,30 @@ public class DossierStep2RoleClp extends BaseModelImpl<DossierStep2Role>
 	}
 
 	@Override
-	public long getPrimaryKey() {
-		return _id;
+	public DossierStep2RolePK getPrimaryKey() {
+		return new DossierStep2RolePK(_dossierStepId, _roleId);
 	}
 
 	@Override
-	public void setPrimaryKey(long primaryKey) {
-		setId(primaryKey);
+	public void setPrimaryKey(DossierStep2RolePK primaryKey) {
+		setDossierStepId(primaryKey.dossierStepId);
+		setRoleId(primaryKey.roleId);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _id;
+		return new DossierStep2RolePK(_dossierStepId, _roleId);
 	}
 
 	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey(((Long)primaryKeyObj).longValue());
+		setPrimaryKey((DossierStep2RolePK)primaryKeyObj);
 	}
 
 	@Override
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("id", getId());
-		attributes.put("companyId", getCompanyId());
 		attributes.put("dossierStepId", getDossierStepId());
 		attributes.put("roleId", getRoleId());
 
@@ -83,18 +83,6 @@ public class DossierStep2RoleClp extends BaseModelImpl<DossierStep2Role>
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long id = (Long)attributes.get("id");
-
-		if (id != null) {
-			setId(id);
-		}
-
-		Long companyId = (Long)attributes.get("companyId");
-
-		if (companyId != null) {
-			setCompanyId(companyId);
-		}
-
 		Long dossierStepId = (Long)attributes.get("dossierStepId");
 
 		if (dossierStepId != null) {
@@ -105,52 +93,6 @@ public class DossierStep2RoleClp extends BaseModelImpl<DossierStep2Role>
 
 		if (roleId != null) {
 			setRoleId(roleId);
-		}
-	}
-
-	@Override
-	public long getId() {
-		return _id;
-	}
-
-	@Override
-	public void setId(long id) {
-		_id = id;
-
-		if (_dossierStep2RoleRemoteModel != null) {
-			try {
-				Class<?> clazz = _dossierStep2RoleRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setId", long.class);
-
-				method.invoke(_dossierStep2RoleRemoteModel, id);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
-	public long getCompanyId() {
-		return _companyId;
-	}
-
-	@Override
-	public void setCompanyId(long companyId) {
-		_companyId = companyId;
-
-		if (_dossierStep2RoleRemoteModel != null) {
-			try {
-				Class<?> clazz = _dossierStep2RoleRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setCompanyId", long.class);
-
-				method.invoke(_dossierStep2RoleRemoteModel, companyId);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
 		}
 	}
 
@@ -271,8 +213,6 @@ public class DossierStep2RoleClp extends BaseModelImpl<DossierStep2Role>
 	public Object clone() {
 		DossierStep2RoleClp clone = new DossierStep2RoleClp();
 
-		clone.setId(getId());
-		clone.setCompanyId(getCompanyId());
 		clone.setDossierStepId(getDossierStepId());
 		clone.setRoleId(getRoleId());
 
@@ -281,17 +221,9 @@ public class DossierStep2RoleClp extends BaseModelImpl<DossierStep2Role>
 
 	@Override
 	public int compareTo(DossierStep2Role dossierStep2Role) {
-		long primaryKey = dossierStep2Role.getPrimaryKey();
+		DossierStep2RolePK primaryKey = dossierStep2Role.getPrimaryKey();
 
-		if (getPrimaryKey() < primaryKey) {
-			return -1;
-		}
-		else if (getPrimaryKey() > primaryKey) {
-			return 1;
-		}
-		else {
-			return 0;
-		}
+		return getPrimaryKey().compareTo(primaryKey);
 	}
 
 	@Override
@@ -306,9 +238,9 @@ public class DossierStep2RoleClp extends BaseModelImpl<DossierStep2Role>
 
 		DossierStep2RoleClp dossierStep2Role = (DossierStep2RoleClp)obj;
 
-		long primaryKey = dossierStep2Role.getPrimaryKey();
+		DossierStep2RolePK primaryKey = dossierStep2Role.getPrimaryKey();
 
-		if (getPrimaryKey() == primaryKey) {
+		if (getPrimaryKey().equals(primaryKey)) {
 			return true;
 		}
 		else {
@@ -322,18 +254,14 @@ public class DossierStep2RoleClp extends BaseModelImpl<DossierStep2Role>
 
 	@Override
 	public int hashCode() {
-		return (int)getPrimaryKey();
+		return getPrimaryKey().hashCode();
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(9);
+		StringBundler sb = new StringBundler(5);
 
-		sb.append("{id=");
-		sb.append(getId());
-		sb.append(", companyId=");
-		sb.append(getCompanyId());
-		sb.append(", dossierStepId=");
+		sb.append("{dossierStepId=");
 		sb.append(getDossierStepId());
 		sb.append(", roleId=");
 		sb.append(getRoleId());
@@ -344,20 +272,12 @@ public class DossierStep2RoleClp extends BaseModelImpl<DossierStep2Role>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(16);
+		StringBundler sb = new StringBundler(10);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.DossierStep2Role");
 		sb.append("</model-name>");
 
-		sb.append(
-			"<column><column-name>id</column-name><column-value><![CDATA[");
-		sb.append(getId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>companyId</column-name><column-value><![CDATA[");
-		sb.append(getCompanyId());
-		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>dossierStepId</column-name><column-value><![CDATA[");
 		sb.append(getDossierStepId());
@@ -372,8 +292,6 @@ public class DossierStep2RoleClp extends BaseModelImpl<DossierStep2Role>
 		return sb.toString();
 	}
 
-	private long _id;
-	private long _companyId;
 	private long _dossierStepId;
 	private long _roleId;
 	private BaseModel<?> _dossierStep2RoleRemoteModel;

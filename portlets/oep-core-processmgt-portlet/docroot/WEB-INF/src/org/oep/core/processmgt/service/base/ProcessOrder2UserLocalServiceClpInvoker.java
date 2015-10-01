@@ -32,11 +32,15 @@ public class ProcessOrder2UserLocalServiceClpInvoker {
 
 		_methodName1 = "createProcessOrder2User";
 
-		_methodParameterTypes1 = new String[] { "long" };
+		_methodParameterTypes1 = new String[] {
+				"org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK"
+			};
 
 		_methodName2 = "deleteProcessOrder2User";
 
-		_methodParameterTypes2 = new String[] { "long" };
+		_methodParameterTypes2 = new String[] {
+				"org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK"
+			};
 
 		_methodName3 = "deleteProcessOrder2User";
 
@@ -82,11 +86,15 @@ public class ProcessOrder2UserLocalServiceClpInvoker {
 
 		_methodName10 = "fetchProcessOrder2User";
 
-		_methodParameterTypes10 = new String[] { "long" };
+		_methodParameterTypes10 = new String[] {
+				"org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK"
+			};
 
 		_methodName11 = "getProcessOrder2User";
 
-		_methodParameterTypes11 = new String[] { "long" };
+		_methodParameterTypes11 = new String[] {
+				"org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK"
+			};
 
 		_methodName12 = "getPersistedModel";
 
@@ -106,13 +114,13 @@ public class ProcessOrder2UserLocalServiceClpInvoker {
 				"org.oep.core.processmgt.model.ProcessOrder2User"
 			};
 
-		_methodName76 = "getBeanIdentifier";
+		_methodName72 = "getBeanIdentifier";
 
-		_methodParameterTypes76 = new String[] {  };
+		_methodParameterTypes72 = new String[] {  };
 
-		_methodName77 = "setBeanIdentifier";
+		_methodName73 = "setBeanIdentifier";
 
-		_methodParameterTypes77 = new String[] { "java.lang.String" };
+		_methodParameterTypes73 = new String[] { "java.lang.String" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -124,12 +132,12 @@ public class ProcessOrder2UserLocalServiceClpInvoker {
 
 		if (_methodName1.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes1, parameterTypes)) {
-			return ProcessOrder2UserLocalServiceUtil.createProcessOrder2User(((Long)arguments[0]).longValue());
+			return ProcessOrder2UserLocalServiceUtil.createProcessOrder2User((org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK)arguments[0]);
 		}
 
 		if (_methodName2.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes2, parameterTypes)) {
-			return ProcessOrder2UserLocalServiceUtil.deleteProcessOrder2User(((Long)arguments[0]).longValue());
+			return ProcessOrder2UserLocalServiceUtil.deleteProcessOrder2User((org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK)arguments[0]);
 		}
 
 		if (_methodName3.equals(name) &&
@@ -175,12 +183,12 @@ public class ProcessOrder2UserLocalServiceClpInvoker {
 
 		if (_methodName10.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes10, parameterTypes)) {
-			return ProcessOrder2UserLocalServiceUtil.fetchProcessOrder2User(((Long)arguments[0]).longValue());
+			return ProcessOrder2UserLocalServiceUtil.fetchProcessOrder2User((org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK)arguments[0]);
 		}
 
 		if (_methodName11.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes11, parameterTypes)) {
-			return ProcessOrder2UserLocalServiceUtil.getProcessOrder2User(((Long)arguments[0]).longValue());
+			return ProcessOrder2UserLocalServiceUtil.getProcessOrder2User((org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK)arguments[0]);
 		}
 
 		if (_methodName12.equals(name) &&
@@ -204,13 +212,13 @@ public class ProcessOrder2UserLocalServiceClpInvoker {
 			return ProcessOrder2UserLocalServiceUtil.updateProcessOrder2User((org.oep.core.processmgt.model.ProcessOrder2User)arguments[0]);
 		}
 
-		if (_methodName76.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes76, parameterTypes)) {
+		if (_methodName72.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes72, parameterTypes)) {
 			return ProcessOrder2UserLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName77.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes77, parameterTypes)) {
+		if (_methodName73.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes73, parameterTypes)) {
 			ProcessOrder2UserLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
@@ -251,8 +259,8 @@ public class ProcessOrder2UserLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName76;
-	private String[] _methodParameterTypes76;
-	private String _methodName77;
-	private String[] _methodParameterTypes77;
+	private String _methodName72;
+	private String[] _methodParameterTypes72;
+	private String _methodName73;
+	private String[] _methodParameterTypes73;
 }

@@ -29,7 +29,6 @@ import com.liferay.portal.kernel.util.InstanceFactory;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
-import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.UnmodifiableList;
@@ -47,7 +46,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 /**
  * The persistence implementation for the process order2 user service.
@@ -173,15 +171,15 @@ public class ProcessOrder2UserPersistenceImpl extends BasePersistenceImpl<Proces
 	/**
 	 * Creates a new process order2 user with the primary key. Does not add the process order2 user to the database.
 	 *
-	 * @param id the primary key for the new process order2 user
+	 * @param processOrder2UserPK the primary key for the new process order2 user
 	 * @return the new process order2 user
 	 */
 	@Override
-	public ProcessOrder2User create(long id) {
+	public ProcessOrder2User create(ProcessOrder2UserPK processOrder2UserPK) {
 		ProcessOrder2User processOrder2User = new ProcessOrder2UserImpl();
 
 		processOrder2User.setNew(true);
-		processOrder2User.setPrimaryKey(id);
+		processOrder2User.setPrimaryKey(processOrder2UserPK);
 
 		return processOrder2User;
 	}
@@ -189,15 +187,15 @@ public class ProcessOrder2UserPersistenceImpl extends BasePersistenceImpl<Proces
 	/**
 	 * Removes the process order2 user with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param id the primary key of the process order2 user
+	 * @param processOrder2UserPK the primary key of the process order2 user
 	 * @return the process order2 user that was removed
 	 * @throws org.oep.core.processmgt.NoSuchProcessOrder2UserException if a process order2 user with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public ProcessOrder2User remove(long id)
+	public ProcessOrder2User remove(ProcessOrder2UserPK processOrder2UserPK)
 		throws NoSuchProcessOrder2UserException, SystemException {
-		return remove((Serializable)id);
+		return remove((Serializable)processOrder2UserPK);
 	}
 
 	/**
@@ -327,8 +325,6 @@ public class ProcessOrder2UserPersistenceImpl extends BasePersistenceImpl<Proces
 		processOrder2UserImpl.setNew(processOrder2User.isNew());
 		processOrder2UserImpl.setPrimaryKey(processOrder2User.getPrimaryKey());
 
-		processOrder2UserImpl.setId(processOrder2User.getId());
-		processOrder2UserImpl.setCompanyId(processOrder2User.getCompanyId());
 		processOrder2UserImpl.setProcessOrderId(processOrder2User.getProcessOrderId());
 		processOrder2UserImpl.setUserId(processOrder2User.getUserId());
 
@@ -363,15 +359,16 @@ public class ProcessOrder2UserPersistenceImpl extends BasePersistenceImpl<Proces
 	/**
 	 * Returns the process order2 user with the primary key or throws a {@link org.oep.core.processmgt.NoSuchProcessOrder2UserException} if it could not be found.
 	 *
-	 * @param id the primary key of the process order2 user
+	 * @param processOrder2UserPK the primary key of the process order2 user
 	 * @return the process order2 user
 	 * @throws org.oep.core.processmgt.NoSuchProcessOrder2UserException if a process order2 user with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public ProcessOrder2User findByPrimaryKey(long id)
+	public ProcessOrder2User findByPrimaryKey(
+		ProcessOrder2UserPK processOrder2UserPK)
 		throws NoSuchProcessOrder2UserException, SystemException {
-		return findByPrimaryKey((Serializable)id);
+		return findByPrimaryKey((Serializable)processOrder2UserPK);
 	}
 
 	/**
@@ -426,14 +423,14 @@ public class ProcessOrder2UserPersistenceImpl extends BasePersistenceImpl<Proces
 	/**
 	 * Returns the process order2 user with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param id the primary key of the process order2 user
+	 * @param processOrder2UserPK the primary key of the process order2 user
 	 * @return the process order2 user, or <code>null</code> if a process order2 user with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public ProcessOrder2User fetchByPrimaryKey(long id)
-		throws SystemException {
-		return fetchByPrimaryKey((Serializable)id);
+	public ProcessOrder2User fetchByPrimaryKey(
+		ProcessOrder2UserPK processOrder2UserPK) throws SystemException {
+		return fetchByPrimaryKey((Serializable)processOrder2UserPK);
 	}
 
 	/**
@@ -609,11 +606,6 @@ public class ProcessOrder2UserPersistenceImpl extends BasePersistenceImpl<Proces
 		return count.intValue();
 	}
 
-	@Override
-	protected Set<String> getBadColumnNames() {
-		return _badColumnNames;
-	}
-
 	/**
 	 * Initializes the process order2 user persistence.
 	 */
@@ -653,9 +645,6 @@ public class ProcessOrder2UserPersistenceImpl extends BasePersistenceImpl<Proces
 	private static final boolean _HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE = GetterUtil.getBoolean(PropsUtil.get(
 				PropsKeys.HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE));
 	private static Log _log = LogFactoryUtil.getLog(ProcessOrder2UserPersistenceImpl.class);
-	private static Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
-				"id"
-			});
 	private static ProcessOrder2User _nullProcessOrder2User = new ProcessOrder2UserImpl() {
 			@Override
 			public Object clone() {

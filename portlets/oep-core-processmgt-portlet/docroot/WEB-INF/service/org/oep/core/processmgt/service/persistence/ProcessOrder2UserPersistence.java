@@ -56,20 +56,22 @@ public interface ProcessOrder2UserPersistence extends BasePersistence<ProcessOrd
 	/**
 	* Creates a new process order2 user with the primary key. Does not add the process order2 user to the database.
 	*
-	* @param id the primary key for the new process order2 user
+	* @param processOrder2UserPK the primary key for the new process order2 user
 	* @return the new process order2 user
 	*/
-	public org.oep.core.processmgt.model.ProcessOrder2User create(long id);
+	public org.oep.core.processmgt.model.ProcessOrder2User create(
+		org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK processOrder2UserPK);
 
 	/**
 	* Removes the process order2 user with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the process order2 user
+	* @param processOrder2UserPK the primary key of the process order2 user
 	* @return the process order2 user that was removed
 	* @throws org.oep.core.processmgt.NoSuchProcessOrder2UserException if a process order2 user with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.core.processmgt.model.ProcessOrder2User remove(long id)
+	public org.oep.core.processmgt.model.ProcessOrder2User remove(
+		org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK processOrder2UserPK)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			org.oep.core.processmgt.NoSuchProcessOrder2UserException;
 
@@ -80,25 +82,26 @@ public interface ProcessOrder2UserPersistence extends BasePersistence<ProcessOrd
 	/**
 	* Returns the process order2 user with the primary key or throws a {@link org.oep.core.processmgt.NoSuchProcessOrder2UserException} if it could not be found.
 	*
-	* @param id the primary key of the process order2 user
+	* @param processOrder2UserPK the primary key of the process order2 user
 	* @return the process order2 user
 	* @throws org.oep.core.processmgt.NoSuchProcessOrder2UserException if a process order2 user with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public org.oep.core.processmgt.model.ProcessOrder2User findByPrimaryKey(
-		long id)
+		org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK processOrder2UserPK)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			org.oep.core.processmgt.NoSuchProcessOrder2UserException;
 
 	/**
 	* Returns the process order2 user with the primary key or returns <code>null</code> if it could not be found.
 	*
-	* @param id the primary key of the process order2 user
+	* @param processOrder2UserPK the primary key of the process order2 user
 	* @return the process order2 user, or <code>null</code> if a process order2 user with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public org.oep.core.processmgt.model.ProcessOrder2User fetchByPrimaryKey(
-		long id) throws com.liferay.portal.kernel.exception.SystemException;
+		org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK processOrder2UserPK)
+		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
 	* Returns all the process order2 users.

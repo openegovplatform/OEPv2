@@ -275,6 +275,100 @@ public class DocTemplateLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	/**
+	* Add doc template
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new doc template
+	*/
+	public static org.oep.core.dossiermgt.model.DocTemplate addDocTemplate(
+		java.lang.String templateNo, java.lang.String title,
+		java.lang.String enTitle, long fileEntryId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addDocTemplate(templateNo, title, enTitle, fileEntryId,
+			serviceContext);
+	}
+
+	public static org.oep.core.dossiermgt.model.DocTemplate updateDocTemplate(
+		long id, java.lang.String templateNo, java.lang.String title,
+		java.lang.String enTitle, long fileEntryId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .updateDocTemplate(id, templateNo, title, enTitle,
+			fileEntryId, serviceContext);
+	}
+
+	public static void updateDocTemplateResources(
+		org.oep.core.dossiermgt.model.DocTemplate docTemplate,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.updateDocTemplateResources(docTemplate, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	public static void removeDocTemplate(
+		org.oep.core.dossiermgt.model.DocTemplate docTemplate)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeDocTemplate(docTemplate);
+	}
+
+	public static void removeDocTemplate(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeDocTemplate(id);
+	}
+
+	public static void addDocTemplateResources(
+		org.oep.core.dossiermgt.model.DocTemplate docTemplate,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addDocTemplateResources(docTemplate, addGroupPermission,
+			addGuestPermission, serviceContext);
+	}
+
+	public static void addDocTemplateResources(
+		org.oep.core.dossiermgt.model.DocTemplate docTemplate,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addDocTemplateResources(docTemplate, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	public static void addDocTemplateResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addDocTemplateResources(id, groupPermissions, guestPermissions,
+			serviceContext);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

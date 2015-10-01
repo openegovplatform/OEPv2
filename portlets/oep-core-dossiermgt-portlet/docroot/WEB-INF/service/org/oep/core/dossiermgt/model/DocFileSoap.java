@@ -43,7 +43,6 @@ public class DocFileSoap implements Serializable {
 		soapModel.setDocTemplateId(model.getDocTemplateId());
 		soapModel.setDocFileVersionId(model.getDocFileVersionId());
 		soapModel.setDocName(model.getDocName());
-		soapModel.setIssueDate(model.getIssueDate());
 		soapModel.setNote(model.getNote());
 
 		return soapModel;
@@ -193,14 +192,6 @@ public class DocFileSoap implements Serializable {
 		_docName = docName;
 	}
 
-	public Date getIssueDate() {
-		return _issueDate;
-	}
-
-	public void setIssueDate(Date issueDate) {
-		_issueDate = issueDate;
-	}
-
 	public String getNote() {
 		return _note;
 	}
@@ -221,6 +212,5 @@ public class DocFileSoap implements Serializable {
 	private long _docTemplateId;
 	private long _docFileVersionId;
 	private String _docName;
-	private Date _issueDate;
 	private String _note;
 }

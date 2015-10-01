@@ -57,7 +57,7 @@ public class DossierFolderWrapper implements DossierFolder,
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("folderName", getFolderName());
-		attributes.put("parentFolderId", getParentFolderId());
+		attributes.put("parentDossierFolderId", getParentDossierFolderId());
 		attributes.put("sequenceNo", getSequenceNo());
 		attributes.put("procedureFilter", getProcedureFilter());
 		attributes.put("statusFilter", getStatusFilter());
@@ -105,10 +105,11 @@ public class DossierFolderWrapper implements DossierFolder,
 			setFolderName(folderName);
 		}
 
-		Long parentFolderId = (Long)attributes.get("parentFolderId");
+		Long parentDossierFolderId = (Long)attributes.get(
+				"parentDossierFolderId");
 
-		if (parentFolderId != null) {
-			setParentFolderId(parentFolderId);
+		if (parentDossierFolderId != null) {
+			setParentDossierFolderId(parentDossierFolderId);
 		}
 
 		Integer sequenceNo = (Integer)attributes.get("sequenceNo");
@@ -284,23 +285,23 @@ public class DossierFolderWrapper implements DossierFolder,
 	}
 
 	/**
-	* Returns the parent folder ID of this dossier folder.
+	* Returns the parent dossier folder ID of this dossier folder.
 	*
-	* @return the parent folder ID of this dossier folder
+	* @return the parent dossier folder ID of this dossier folder
 	*/
 	@Override
-	public long getParentFolderId() {
-		return _dossierFolder.getParentFolderId();
+	public long getParentDossierFolderId() {
+		return _dossierFolder.getParentDossierFolderId();
 	}
 
 	/**
-	* Sets the parent folder ID of this dossier folder.
+	* Sets the parent dossier folder ID of this dossier folder.
 	*
-	* @param parentFolderId the parent folder ID of this dossier folder
+	* @param parentDossierFolderId the parent dossier folder ID of this dossier folder
 	*/
 	@Override
-	public void setParentFolderId(long parentFolderId) {
-		_dossierFolder.setParentFolderId(parentFolderId);
+	public void setParentDossierFolderId(long parentDossierFolderId) {
+		_dossierFolder.setParentDossierFolderId(parentDossierFolderId);
 	}
 
 	/**
@@ -467,7 +468,8 @@ public class DossierFolderWrapper implements DossierFolder,
 	}
 
 	@Override
-	public int compareTo(DossierFolder dossierFolder) {
+	public int compareTo(
+		org.oep.core.dossiermgt.model.DossierFolder dossierFolder) {
 		return _dossierFolder.compareTo(dossierFolder);
 	}
 
@@ -477,17 +479,17 @@ public class DossierFolderWrapper implements DossierFolder,
 	}
 
 	@Override
-	public com.liferay.portal.model.CacheModel<DossierFolder> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<org.oep.core.dossiermgt.model.DossierFolder> toCacheModel() {
 		return _dossierFolder.toCacheModel();
 	}
 
 	@Override
-	public DossierFolder toEscapedModel() {
+	public org.oep.core.dossiermgt.model.DossierFolder toEscapedModel() {
 		return new DossierFolderWrapper(_dossierFolder.toEscapedModel());
 	}
 
 	@Override
-	public DossierFolder toUnescapedModel() {
+	public org.oep.core.dossiermgt.model.DossierFolder toUnescapedModel() {
 		return new DossierFolderWrapper(_dossierFolder.toUnescapedModel());
 	}
 

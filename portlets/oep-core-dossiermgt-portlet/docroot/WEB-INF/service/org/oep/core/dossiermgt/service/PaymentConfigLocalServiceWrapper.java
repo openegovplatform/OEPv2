@@ -289,6 +289,104 @@ public class PaymentConfigLocalServiceWrapper
 	}
 
 	/**
+	* Add dossier proc
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new dossier proc
+	*/
+	@Override
+	public org.oep.core.dossiermgt.model.PaymentConfig addPaymentConfig(
+		java.lang.String govAgentId, java.lang.String govAgentName,
+		java.lang.String bankTransfer, java.lang.String keypay,
+		long ebPartnerShipId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _paymentConfigLocalService.addPaymentConfig(govAgentId,
+			govAgentName, bankTransfer, keypay, ebPartnerShipId, serviceContext);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.PaymentConfig updatePaymentConfig(
+		long id, java.lang.String govAgentId, java.lang.String govAgentName,
+		java.lang.String bankTransfer, java.lang.String keypay,
+		long ebPartnerShipId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _paymentConfigLocalService.updatePaymentConfig(id, govAgentId,
+			govAgentName, bankTransfer, keypay, ebPartnerShipId, serviceContext);
+	}
+
+	@Override
+	public void updatePaymentConfigResources(
+		org.oep.core.dossiermgt.model.PaymentConfig paymentConfig,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentConfigLocalService.updatePaymentConfigResources(paymentConfig,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void removePaymentConfig(
+		org.oep.core.dossiermgt.model.PaymentConfig paymentConfig)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentConfigLocalService.removePaymentConfig(paymentConfig);
+	}
+
+	@Override
+	public void removePaymentConfig(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentConfigLocalService.removePaymentConfig(id);
+	}
+
+	@Override
+	public void addPaymentConfigResources(
+		org.oep.core.dossiermgt.model.PaymentConfig paymentConfig,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentConfigLocalService.addPaymentConfigResources(paymentConfig,
+			addGroupPermission, addGuestPermission, serviceContext);
+	}
+
+	@Override
+	public void addPaymentConfigResources(
+		org.oep.core.dossiermgt.model.PaymentConfig paymentConfig,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentConfigLocalService.addPaymentConfigResources(paymentConfig,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void addPaymentConfigResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentConfigLocalService.addPaymentConfigResources(id,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */
 	public PaymentConfigLocalService getWrappedPaymentConfigLocalService() {

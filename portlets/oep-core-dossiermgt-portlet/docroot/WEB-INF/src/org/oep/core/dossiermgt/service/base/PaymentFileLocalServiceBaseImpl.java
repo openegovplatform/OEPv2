@@ -41,10 +41,11 @@ import org.oep.core.dossiermgt.service.persistence.DossierDocPersistence;
 import org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePersistence;
 import org.oep.core.dossiermgt.service.persistence.DossierFolderPersistence;
 import org.oep.core.dossiermgt.service.persistence.DossierPersistence;
-import org.oep.core.dossiermgt.service.persistence.DossierProc2AgentPersistence;
+import org.oep.core.dossiermgt.service.persistence.DossierProcAgentPersistence;
 import org.oep.core.dossiermgt.service.persistence.DossierProcPersistence;
+import org.oep.core.dossiermgt.service.persistence.EbMessagePersistence;
+import org.oep.core.dossiermgt.service.persistence.EbPartnerShipPersistence;
 import org.oep.core.dossiermgt.service.persistence.PaymentConfigPersistence;
-import org.oep.core.dossiermgt.service.persistence.PaymentFile2DossierPersistence;
 import org.oep.core.dossiermgt.service.persistence.PaymentFilePersistence;
 import org.oep.core.dossiermgt.service.persistence.PaymentRequestPersistence;
 
@@ -863,60 +864,174 @@ public abstract class PaymentFileLocalServiceBaseImpl
 	}
 
 	/**
-	 * Returns the dossier proc2 agent local service.
+	 * Returns the dossier proc agent local service.
 	 *
-	 * @return the dossier proc2 agent local service
+	 * @return the dossier proc agent local service
 	 */
-	public org.oep.core.dossiermgt.service.DossierProc2AgentLocalService getDossierProc2AgentLocalService() {
-		return dossierProc2AgentLocalService;
+	public org.oep.core.dossiermgt.service.DossierProcAgentLocalService getDossierProcAgentLocalService() {
+		return dossierProcAgentLocalService;
 	}
 
 	/**
-	 * Sets the dossier proc2 agent local service.
+	 * Sets the dossier proc agent local service.
 	 *
-	 * @param dossierProc2AgentLocalService the dossier proc2 agent local service
+	 * @param dossierProcAgentLocalService the dossier proc agent local service
 	 */
-	public void setDossierProc2AgentLocalService(
-		org.oep.core.dossiermgt.service.DossierProc2AgentLocalService dossierProc2AgentLocalService) {
-		this.dossierProc2AgentLocalService = dossierProc2AgentLocalService;
+	public void setDossierProcAgentLocalService(
+		org.oep.core.dossiermgt.service.DossierProcAgentLocalService dossierProcAgentLocalService) {
+		this.dossierProcAgentLocalService = dossierProcAgentLocalService;
 	}
 
 	/**
-	 * Returns the dossier proc2 agent remote service.
+	 * Returns the dossier proc agent remote service.
 	 *
-	 * @return the dossier proc2 agent remote service
+	 * @return the dossier proc agent remote service
 	 */
-	public org.oep.core.dossiermgt.service.DossierProc2AgentService getDossierProc2AgentService() {
-		return dossierProc2AgentService;
+	public org.oep.core.dossiermgt.service.DossierProcAgentService getDossierProcAgentService() {
+		return dossierProcAgentService;
 	}
 
 	/**
-	 * Sets the dossier proc2 agent remote service.
+	 * Sets the dossier proc agent remote service.
 	 *
-	 * @param dossierProc2AgentService the dossier proc2 agent remote service
+	 * @param dossierProcAgentService the dossier proc agent remote service
 	 */
-	public void setDossierProc2AgentService(
-		org.oep.core.dossiermgt.service.DossierProc2AgentService dossierProc2AgentService) {
-		this.dossierProc2AgentService = dossierProc2AgentService;
+	public void setDossierProcAgentService(
+		org.oep.core.dossiermgt.service.DossierProcAgentService dossierProcAgentService) {
+		this.dossierProcAgentService = dossierProcAgentService;
 	}
 
 	/**
-	 * Returns the dossier proc2 agent persistence.
+	 * Returns the dossier proc agent persistence.
 	 *
-	 * @return the dossier proc2 agent persistence
+	 * @return the dossier proc agent persistence
 	 */
-	public DossierProc2AgentPersistence getDossierProc2AgentPersistence() {
-		return dossierProc2AgentPersistence;
+	public DossierProcAgentPersistence getDossierProcAgentPersistence() {
+		return dossierProcAgentPersistence;
 	}
 
 	/**
-	 * Sets the dossier proc2 agent persistence.
+	 * Sets the dossier proc agent persistence.
 	 *
-	 * @param dossierProc2AgentPersistence the dossier proc2 agent persistence
+	 * @param dossierProcAgentPersistence the dossier proc agent persistence
 	 */
-	public void setDossierProc2AgentPersistence(
-		DossierProc2AgentPersistence dossierProc2AgentPersistence) {
-		this.dossierProc2AgentPersistence = dossierProc2AgentPersistence;
+	public void setDossierProcAgentPersistence(
+		DossierProcAgentPersistence dossierProcAgentPersistence) {
+		this.dossierProcAgentPersistence = dossierProcAgentPersistence;
+	}
+
+	/**
+	 * Returns the eb message local service.
+	 *
+	 * @return the eb message local service
+	 */
+	public org.oep.core.dossiermgt.service.EbMessageLocalService getEbMessageLocalService() {
+		return ebMessageLocalService;
+	}
+
+	/**
+	 * Sets the eb message local service.
+	 *
+	 * @param ebMessageLocalService the eb message local service
+	 */
+	public void setEbMessageLocalService(
+		org.oep.core.dossiermgt.service.EbMessageLocalService ebMessageLocalService) {
+		this.ebMessageLocalService = ebMessageLocalService;
+	}
+
+	/**
+	 * Returns the eb message remote service.
+	 *
+	 * @return the eb message remote service
+	 */
+	public org.oep.core.dossiermgt.service.EbMessageService getEbMessageService() {
+		return ebMessageService;
+	}
+
+	/**
+	 * Sets the eb message remote service.
+	 *
+	 * @param ebMessageService the eb message remote service
+	 */
+	public void setEbMessageService(
+		org.oep.core.dossiermgt.service.EbMessageService ebMessageService) {
+		this.ebMessageService = ebMessageService;
+	}
+
+	/**
+	 * Returns the eb message persistence.
+	 *
+	 * @return the eb message persistence
+	 */
+	public EbMessagePersistence getEbMessagePersistence() {
+		return ebMessagePersistence;
+	}
+
+	/**
+	 * Sets the eb message persistence.
+	 *
+	 * @param ebMessagePersistence the eb message persistence
+	 */
+	public void setEbMessagePersistence(
+		EbMessagePersistence ebMessagePersistence) {
+		this.ebMessagePersistence = ebMessagePersistence;
+	}
+
+	/**
+	 * Returns the eb partner ship local service.
+	 *
+	 * @return the eb partner ship local service
+	 */
+	public org.oep.core.dossiermgt.service.EbPartnerShipLocalService getEbPartnerShipLocalService() {
+		return ebPartnerShipLocalService;
+	}
+
+	/**
+	 * Sets the eb partner ship local service.
+	 *
+	 * @param ebPartnerShipLocalService the eb partner ship local service
+	 */
+	public void setEbPartnerShipLocalService(
+		org.oep.core.dossiermgt.service.EbPartnerShipLocalService ebPartnerShipLocalService) {
+		this.ebPartnerShipLocalService = ebPartnerShipLocalService;
+	}
+
+	/**
+	 * Returns the eb partner ship remote service.
+	 *
+	 * @return the eb partner ship remote service
+	 */
+	public org.oep.core.dossiermgt.service.EbPartnerShipService getEbPartnerShipService() {
+		return ebPartnerShipService;
+	}
+
+	/**
+	 * Sets the eb partner ship remote service.
+	 *
+	 * @param ebPartnerShipService the eb partner ship remote service
+	 */
+	public void setEbPartnerShipService(
+		org.oep.core.dossiermgt.service.EbPartnerShipService ebPartnerShipService) {
+		this.ebPartnerShipService = ebPartnerShipService;
+	}
+
+	/**
+	 * Returns the eb partner ship persistence.
+	 *
+	 * @return the eb partner ship persistence
+	 */
+	public EbPartnerShipPersistence getEbPartnerShipPersistence() {
+		return ebPartnerShipPersistence;
+	}
+
+	/**
+	 * Sets the eb partner ship persistence.
+	 *
+	 * @param ebPartnerShipPersistence the eb partner ship persistence
+	 */
+	public void setEbPartnerShipPersistence(
+		EbPartnerShipPersistence ebPartnerShipPersistence) {
+		this.ebPartnerShipPersistence = ebPartnerShipPersistence;
 	}
 
 	/**
@@ -1031,63 +1146,6 @@ public abstract class PaymentFileLocalServiceBaseImpl
 	public void setPaymentFilePersistence(
 		PaymentFilePersistence paymentFilePersistence) {
 		this.paymentFilePersistence = paymentFilePersistence;
-	}
-
-	/**
-	 * Returns the payment file2 dossier local service.
-	 *
-	 * @return the payment file2 dossier local service
-	 */
-	public org.oep.core.dossiermgt.service.PaymentFile2DossierLocalService getPaymentFile2DossierLocalService() {
-		return paymentFile2DossierLocalService;
-	}
-
-	/**
-	 * Sets the payment file2 dossier local service.
-	 *
-	 * @param paymentFile2DossierLocalService the payment file2 dossier local service
-	 */
-	public void setPaymentFile2DossierLocalService(
-		org.oep.core.dossiermgt.service.PaymentFile2DossierLocalService paymentFile2DossierLocalService) {
-		this.paymentFile2DossierLocalService = paymentFile2DossierLocalService;
-	}
-
-	/**
-	 * Returns the payment file2 dossier remote service.
-	 *
-	 * @return the payment file2 dossier remote service
-	 */
-	public org.oep.core.dossiermgt.service.PaymentFile2DossierService getPaymentFile2DossierService() {
-		return paymentFile2DossierService;
-	}
-
-	/**
-	 * Sets the payment file2 dossier remote service.
-	 *
-	 * @param paymentFile2DossierService the payment file2 dossier remote service
-	 */
-	public void setPaymentFile2DossierService(
-		org.oep.core.dossiermgt.service.PaymentFile2DossierService paymentFile2DossierService) {
-		this.paymentFile2DossierService = paymentFile2DossierService;
-	}
-
-	/**
-	 * Returns the payment file2 dossier persistence.
-	 *
-	 * @return the payment file2 dossier persistence
-	 */
-	public PaymentFile2DossierPersistence getPaymentFile2DossierPersistence() {
-		return paymentFile2DossierPersistence;
-	}
-
-	/**
-	 * Sets the payment file2 dossier persistence.
-	 *
-	 * @param paymentFile2DossierPersistence the payment file2 dossier persistence
-	 */
-	public void setPaymentFile2DossierPersistence(
-		PaymentFile2DossierPersistence paymentFile2DossierPersistence) {
-		this.paymentFile2DossierPersistence = paymentFile2DossierPersistence;
 	}
 
 	/**
@@ -1377,12 +1435,24 @@ public abstract class PaymentFileLocalServiceBaseImpl
 	protected org.oep.core.dossiermgt.service.DossierProcService dossierProcService;
 	@BeanReference(type = DossierProcPersistence.class)
 	protected DossierProcPersistence dossierProcPersistence;
-	@BeanReference(type = org.oep.core.dossiermgt.service.DossierProc2AgentLocalService.class)
-	protected org.oep.core.dossiermgt.service.DossierProc2AgentLocalService dossierProc2AgentLocalService;
-	@BeanReference(type = org.oep.core.dossiermgt.service.DossierProc2AgentService.class)
-	protected org.oep.core.dossiermgt.service.DossierProc2AgentService dossierProc2AgentService;
-	@BeanReference(type = DossierProc2AgentPersistence.class)
-	protected DossierProc2AgentPersistence dossierProc2AgentPersistence;
+	@BeanReference(type = org.oep.core.dossiermgt.service.DossierProcAgentLocalService.class)
+	protected org.oep.core.dossiermgt.service.DossierProcAgentLocalService dossierProcAgentLocalService;
+	@BeanReference(type = org.oep.core.dossiermgt.service.DossierProcAgentService.class)
+	protected org.oep.core.dossiermgt.service.DossierProcAgentService dossierProcAgentService;
+	@BeanReference(type = DossierProcAgentPersistence.class)
+	protected DossierProcAgentPersistence dossierProcAgentPersistence;
+	@BeanReference(type = org.oep.core.dossiermgt.service.EbMessageLocalService.class)
+	protected org.oep.core.dossiermgt.service.EbMessageLocalService ebMessageLocalService;
+	@BeanReference(type = org.oep.core.dossiermgt.service.EbMessageService.class)
+	protected org.oep.core.dossiermgt.service.EbMessageService ebMessageService;
+	@BeanReference(type = EbMessagePersistence.class)
+	protected EbMessagePersistence ebMessagePersistence;
+	@BeanReference(type = org.oep.core.dossiermgt.service.EbPartnerShipLocalService.class)
+	protected org.oep.core.dossiermgt.service.EbPartnerShipLocalService ebPartnerShipLocalService;
+	@BeanReference(type = org.oep.core.dossiermgt.service.EbPartnerShipService.class)
+	protected org.oep.core.dossiermgt.service.EbPartnerShipService ebPartnerShipService;
+	@BeanReference(type = EbPartnerShipPersistence.class)
+	protected EbPartnerShipPersistence ebPartnerShipPersistence;
 	@BeanReference(type = org.oep.core.dossiermgt.service.PaymentConfigLocalService.class)
 	protected org.oep.core.dossiermgt.service.PaymentConfigLocalService paymentConfigLocalService;
 	@BeanReference(type = org.oep.core.dossiermgt.service.PaymentConfigService.class)
@@ -1395,12 +1465,6 @@ public abstract class PaymentFileLocalServiceBaseImpl
 	protected org.oep.core.dossiermgt.service.PaymentFileService paymentFileService;
 	@BeanReference(type = PaymentFilePersistence.class)
 	protected PaymentFilePersistence paymentFilePersistence;
-	@BeanReference(type = org.oep.core.dossiermgt.service.PaymentFile2DossierLocalService.class)
-	protected org.oep.core.dossiermgt.service.PaymentFile2DossierLocalService paymentFile2DossierLocalService;
-	@BeanReference(type = org.oep.core.dossiermgt.service.PaymentFile2DossierService.class)
-	protected org.oep.core.dossiermgt.service.PaymentFile2DossierService paymentFile2DossierService;
-	@BeanReference(type = PaymentFile2DossierPersistence.class)
-	protected PaymentFile2DossierPersistence paymentFile2DossierPersistence;
 	@BeanReference(type = org.oep.core.dossiermgt.service.PaymentRequestLocalService.class)
 	protected org.oep.core.dossiermgt.service.PaymentRequestLocalService paymentRequestLocalService;
 	@BeanReference(type = org.oep.core.dossiermgt.service.PaymentRequestService.class)

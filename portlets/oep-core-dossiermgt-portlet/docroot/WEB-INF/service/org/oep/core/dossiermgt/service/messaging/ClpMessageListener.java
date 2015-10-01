@@ -33,15 +33,17 @@ import org.oep.core.dossiermgt.service.DossierFolder2RoleServiceUtil;
 import org.oep.core.dossiermgt.service.DossierFolderLocalServiceUtil;
 import org.oep.core.dossiermgt.service.DossierFolderServiceUtil;
 import org.oep.core.dossiermgt.service.DossierLocalServiceUtil;
-import org.oep.core.dossiermgt.service.DossierProc2AgentLocalServiceUtil;
-import org.oep.core.dossiermgt.service.DossierProc2AgentServiceUtil;
+import org.oep.core.dossiermgt.service.DossierProcAgentLocalServiceUtil;
+import org.oep.core.dossiermgt.service.DossierProcAgentServiceUtil;
 import org.oep.core.dossiermgt.service.DossierProcLocalServiceUtil;
 import org.oep.core.dossiermgt.service.DossierProcServiceUtil;
 import org.oep.core.dossiermgt.service.DossierServiceUtil;
+import org.oep.core.dossiermgt.service.EbMessageLocalServiceUtil;
+import org.oep.core.dossiermgt.service.EbMessageServiceUtil;
+import org.oep.core.dossiermgt.service.EbPartnerShipLocalServiceUtil;
+import org.oep.core.dossiermgt.service.EbPartnerShipServiceUtil;
 import org.oep.core.dossiermgt.service.PaymentConfigLocalServiceUtil;
 import org.oep.core.dossiermgt.service.PaymentConfigServiceUtil;
-import org.oep.core.dossiermgt.service.PaymentFile2DossierLocalServiceUtil;
-import org.oep.core.dossiermgt.service.PaymentFile2DossierServiceUtil;
 import org.oep.core.dossiermgt.service.PaymentFileLocalServiceUtil;
 import org.oep.core.dossiermgt.service.PaymentFileServiceUtil;
 import org.oep.core.dossiermgt.service.PaymentRequestLocalServiceUtil;
@@ -89,18 +91,21 @@ public class ClpMessageListener extends BaseMessageListener {
 			DossierProcLocalServiceUtil.clearService();
 
 			DossierProcServiceUtil.clearService();
-			DossierProc2AgentLocalServiceUtil.clearService();
+			DossierProcAgentLocalServiceUtil.clearService();
 
-			DossierProc2AgentServiceUtil.clearService();
+			DossierProcAgentServiceUtil.clearService();
+			EbMessageLocalServiceUtil.clearService();
+
+			EbMessageServiceUtil.clearService();
+			EbPartnerShipLocalServiceUtil.clearService();
+
+			EbPartnerShipServiceUtil.clearService();
 			PaymentConfigLocalServiceUtil.clearService();
 
 			PaymentConfigServiceUtil.clearService();
 			PaymentFileLocalServiceUtil.clearService();
 
 			PaymentFileServiceUtil.clearService();
-			PaymentFile2DossierLocalServiceUtil.clearService();
-
-			PaymentFile2DossierServiceUtil.clearService();
 			PaymentRequestLocalServiceUtil.clearService();
 
 			PaymentRequestServiceUtil.clearService();

@@ -56,20 +56,22 @@ public interface DossierFolder2RolePersistence extends BasePersistence<DossierFo
 	/**
 	* Creates a new dossier folder2 role with the primary key. Does not add the dossier folder2 role to the database.
 	*
-	* @param id the primary key for the new dossier folder2 role
+	* @param dossierFolder2RolePK the primary key for the new dossier folder2 role
 	* @return the new dossier folder2 role
 	*/
-	public org.oep.core.dossiermgt.model.DossierFolder2Role create(long id);
+	public org.oep.core.dossiermgt.model.DossierFolder2Role create(
+		org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK dossierFolder2RolePK);
 
 	/**
 	* Removes the dossier folder2 role with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param id the primary key of the dossier folder2 role
+	* @param dossierFolder2RolePK the primary key of the dossier folder2 role
 	* @return the dossier folder2 role that was removed
 	* @throws org.oep.core.dossiermgt.NoSuchDossierFolder2RoleException if a dossier folder2 role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.core.dossiermgt.model.DossierFolder2Role remove(long id)
+	public org.oep.core.dossiermgt.model.DossierFolder2Role remove(
+		org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK dossierFolder2RolePK)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			org.oep.core.dossiermgt.NoSuchDossierFolder2RoleException;
 
@@ -80,25 +82,26 @@ public interface DossierFolder2RolePersistence extends BasePersistence<DossierFo
 	/**
 	* Returns the dossier folder2 role with the primary key or throws a {@link org.oep.core.dossiermgt.NoSuchDossierFolder2RoleException} if it could not be found.
 	*
-	* @param id the primary key of the dossier folder2 role
+	* @param dossierFolder2RolePK the primary key of the dossier folder2 role
 	* @return the dossier folder2 role
 	* @throws org.oep.core.dossiermgt.NoSuchDossierFolder2RoleException if a dossier folder2 role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public org.oep.core.dossiermgt.model.DossierFolder2Role findByPrimaryKey(
-		long id)
+		org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK dossierFolder2RolePK)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			org.oep.core.dossiermgt.NoSuchDossierFolder2RoleException;
 
 	/**
 	* Returns the dossier folder2 role with the primary key or returns <code>null</code> if it could not be found.
 	*
-	* @param id the primary key of the dossier folder2 role
+	* @param dossierFolder2RolePK the primary key of the dossier folder2 role
 	* @return the dossier folder2 role, or <code>null</code> if a dossier folder2 role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	public org.oep.core.dossiermgt.model.DossierFolder2Role fetchByPrimaryKey(
-		long id) throws com.liferay.portal.kernel.exception.SystemException;
+		org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK dossierFolder2RolePK)
+		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
 	* Returns all the dossier folder2 roles.

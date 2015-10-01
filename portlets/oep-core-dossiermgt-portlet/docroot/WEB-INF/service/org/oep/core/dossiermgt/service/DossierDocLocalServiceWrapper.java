@@ -288,6 +288,110 @@ public class DossierDocLocalServiceWrapper implements DossierDocLocalService,
 	}
 
 	/**
+	* Add dossier doc
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new dossier doc
+	*/
+	@Override
+	public org.oep.core.dossiermgt.model.DossierDoc addDossierDoc(
+		long dossierProcId, java.lang.String dossierDocNo,
+		java.lang.String dossierDocName, java.lang.String note, int sequenceNo,
+		long defaultDocTemplateId, int validationType, int numberOfFile,
+		java.lang.String onlineForm,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierDocLocalService.addDossierDoc(dossierProcId,
+			dossierDocNo, dossierDocName, note, sequenceNo,
+			defaultDocTemplateId, validationType, numberOfFile, onlineForm,
+			serviceContext);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.DossierDoc updateDossierDoc(long id,
+		long dossierProcId, java.lang.String dossierDocNo,
+		java.lang.String dossierDocName, java.lang.String note, int sequenceNo,
+		long defaultDocTemplateId, int validationType, int numberOfFile,
+		java.lang.String onlineForm,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierDocLocalService.updateDossierDoc(id, dossierProcId,
+			dossierDocNo, dossierDocName, note, sequenceNo,
+			defaultDocTemplateId, validationType, numberOfFile, onlineForm,
+			serviceContext);
+	}
+
+	@Override
+	public void updateDossierDocResources(
+		org.oep.core.dossiermgt.model.DossierDoc dossierDoc,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierDocLocalService.updateDossierDocResources(dossierDoc,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void removeDossierDoc(
+		org.oep.core.dossiermgt.model.DossierDoc dossierDoc)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierDocLocalService.removeDossierDoc(dossierDoc);
+	}
+
+	@Override
+	public void removeDossierDoc(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierDocLocalService.removeDossierDoc(id);
+	}
+
+	@Override
+	public void addDossierDocResources(
+		org.oep.core.dossiermgt.model.DossierDoc dossierDoc,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierDocLocalService.addDossierDocResources(dossierDoc,
+			addGroupPermission, addGuestPermission, serviceContext);
+	}
+
+	@Override
+	public void addDossierDocResources(
+		org.oep.core.dossiermgt.model.DossierDoc dossierDoc,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierDocLocalService.addDossierDocResources(dossierDoc,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void addDossierDocResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierDocLocalService.addDossierDocResources(id, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */
 	public DossierDocLocalService getWrappedDossierDocLocalService() {

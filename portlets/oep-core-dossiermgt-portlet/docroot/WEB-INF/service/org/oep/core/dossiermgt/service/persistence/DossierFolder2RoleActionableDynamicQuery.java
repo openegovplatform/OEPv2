@@ -32,6 +32,6 @@ public abstract class DossierFolder2RoleActionableDynamicQuery
 
 		setClassLoader(org.oep.core.dossiermgt.service.ClpSerializer.class.getClassLoader());
 
-		setPrimaryKeyPropertyName("id");
+		setPrimaryKeyPropertyName("primaryKey.dossierFolderId");
 	}
 }

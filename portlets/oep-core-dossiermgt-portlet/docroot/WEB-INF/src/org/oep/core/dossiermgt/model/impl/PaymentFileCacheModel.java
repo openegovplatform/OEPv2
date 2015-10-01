@@ -38,7 +38,7 @@ public class PaymentFileCacheModel implements CacheModel<PaymentFile>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(41);
+		StringBundler sb = new StringBundler(49);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -56,18 +56,26 @@ public class PaymentFileCacheModel implements CacheModel<PaymentFile>,
 		sb.append(modifiedDate);
 		sb.append(", organizationId=");
 		sb.append(organizationId);
+		sb.append(", govAgentId=");
+		sb.append(govAgentId);
+		sb.append(", govAgentName=");
+		sb.append(govAgentName);
+		sb.append(", subjectId=");
+		sb.append(subjectId);
+		sb.append(", subjectType=");
+		sb.append(subjectType);
+		sb.append(", subjectName=");
+		sb.append(subjectName);
 		sb.append(", amount=");
 		sb.append(amount);
 		sb.append(", paymentType=");
 		sb.append(paymentType);
-		sb.append(", detailInfo=");
-		sb.append(detailInfo);
-		sb.append(", note=");
-		sb.append(note);
+		sb.append(", paymentDescription=");
+		sb.append(paymentDescription);
+		sb.append(", transactionInfo=");
+		sb.append(transactionInfo);
 		sb.append(", fileEntryId=");
 		sb.append(fileEntryId);
-		sb.append(", issueDate=");
-		sb.append(issueDate);
 		sb.append(", checkingDate=");
 		sb.append(checkingDate);
 		sb.append(", checkingUserId=");
@@ -78,8 +86,8 @@ public class PaymentFileCacheModel implements CacheModel<PaymentFile>,
 		sb.append(checkingResult);
 		sb.append(", checkingNote=");
 		sb.append(checkingNote);
-		sb.append(", feedbackDate=");
-		sb.append(feedbackDate);
+		sb.append(", ebMessageId=");
+		sb.append(ebMessageId);
 		sb.append("}");
 
 		return sb.toString();
@@ -116,31 +124,66 @@ public class PaymentFileCacheModel implements CacheModel<PaymentFile>,
 		}
 
 		paymentFileImpl.setOrganizationId(organizationId);
+
+		if (govAgentId == null) {
+			paymentFileImpl.setGovAgentId(StringPool.BLANK);
+		}
+		else {
+			paymentFileImpl.setGovAgentId(govAgentId);
+		}
+
+		if (govAgentName == null) {
+			paymentFileImpl.setGovAgentName(StringPool.BLANK);
+		}
+		else {
+			paymentFileImpl.setGovAgentName(govAgentName);
+		}
+
+		if (subjectId == null) {
+			paymentFileImpl.setSubjectId(StringPool.BLANK);
+		}
+		else {
+			paymentFileImpl.setSubjectId(subjectId);
+		}
+
+		if (subjectType == null) {
+			paymentFileImpl.setSubjectType(StringPool.BLANK);
+		}
+		else {
+			paymentFileImpl.setSubjectType(subjectType);
+		}
+
+		if (subjectName == null) {
+			paymentFileImpl.setSubjectName(StringPool.BLANK);
+		}
+		else {
+			paymentFileImpl.setSubjectName(subjectName);
+		}
+
 		paymentFileImpl.setAmount(amount);
-		paymentFileImpl.setPaymentType(paymentType);
 
-		if (detailInfo == null) {
-			paymentFileImpl.setDetailInfo(StringPool.BLANK);
+		if (paymentType == null) {
+			paymentFileImpl.setPaymentType(StringPool.BLANK);
 		}
 		else {
-			paymentFileImpl.setDetailInfo(detailInfo);
+			paymentFileImpl.setPaymentType(paymentType);
 		}
 
-		if (note == null) {
-			paymentFileImpl.setNote(StringPool.BLANK);
+		if (paymentDescription == null) {
+			paymentFileImpl.setPaymentDescription(StringPool.BLANK);
 		}
 		else {
-			paymentFileImpl.setNote(note);
+			paymentFileImpl.setPaymentDescription(paymentDescription);
+		}
+
+		if (transactionInfo == null) {
+			paymentFileImpl.setTransactionInfo(StringPool.BLANK);
+		}
+		else {
+			paymentFileImpl.setTransactionInfo(transactionInfo);
 		}
 
 		paymentFileImpl.setFileEntryId(fileEntryId);
-
-		if (issueDate == Long.MIN_VALUE) {
-			paymentFileImpl.setIssueDate(null);
-		}
-		else {
-			paymentFileImpl.setIssueDate(new Date(issueDate));
-		}
 
 		if (checkingDate == Long.MIN_VALUE) {
 			paymentFileImpl.setCheckingDate(null);
@@ -167,12 +210,7 @@ public class PaymentFileCacheModel implements CacheModel<PaymentFile>,
 			paymentFileImpl.setCheckingNote(checkingNote);
 		}
 
-		if (feedbackDate == Long.MIN_VALUE) {
-			paymentFileImpl.setFeedbackDate(null);
-		}
-		else {
-			paymentFileImpl.setFeedbackDate(new Date(feedbackDate));
-		}
+		paymentFileImpl.setEbMessageId(ebMessageId);
 
 		paymentFileImpl.resetOriginalValues();
 
@@ -189,18 +227,22 @@ public class PaymentFileCacheModel implements CacheModel<PaymentFile>,
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
 		organizationId = objectInput.readLong();
+		govAgentId = objectInput.readUTF();
+		govAgentName = objectInput.readUTF();
+		subjectId = objectInput.readUTF();
+		subjectType = objectInput.readUTF();
+		subjectName = objectInput.readUTF();
 		amount = objectInput.readLong();
-		paymentType = objectInput.readInt();
-		detailInfo = objectInput.readUTF();
-		note = objectInput.readUTF();
+		paymentType = objectInput.readUTF();
+		paymentDescription = objectInput.readUTF();
+		transactionInfo = objectInput.readUTF();
 		fileEntryId = objectInput.readLong();
-		issueDate = objectInput.readLong();
 		checkingDate = objectInput.readLong();
 		checkingUserId = objectInput.readLong();
 		checkingUserName = objectInput.readUTF();
 		checkingResult = objectInput.readInt();
 		checkingNote = objectInput.readUTF();
-		feedbackDate = objectInput.readLong();
+		ebMessageId = objectInput.readLong();
 	}
 
 	@Override
@@ -220,25 +262,66 @@ public class PaymentFileCacheModel implements CacheModel<PaymentFile>,
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
 		objectOutput.writeLong(organizationId);
+
+		if (govAgentId == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(govAgentId);
+		}
+
+		if (govAgentName == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(govAgentName);
+		}
+
+		if (subjectId == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(subjectId);
+		}
+
+		if (subjectType == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(subjectType);
+		}
+
+		if (subjectName == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(subjectName);
+		}
+
 		objectOutput.writeLong(amount);
-		objectOutput.writeInt(paymentType);
 
-		if (detailInfo == null) {
+		if (paymentType == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(detailInfo);
+			objectOutput.writeUTF(paymentType);
 		}
 
-		if (note == null) {
+		if (paymentDescription == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(note);
+			objectOutput.writeUTF(paymentDescription);
+		}
+
+		if (transactionInfo == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(transactionInfo);
 		}
 
 		objectOutput.writeLong(fileEntryId);
-		objectOutput.writeLong(issueDate);
 		objectOutput.writeLong(checkingDate);
 		objectOutput.writeLong(checkingUserId);
 
@@ -258,7 +341,7 @@ public class PaymentFileCacheModel implements CacheModel<PaymentFile>,
 			objectOutput.writeUTF(checkingNote);
 		}
 
-		objectOutput.writeLong(feedbackDate);
+		objectOutput.writeLong(ebMessageId);
 	}
 
 	public String uuid;
@@ -269,16 +352,20 @@ public class PaymentFileCacheModel implements CacheModel<PaymentFile>,
 	public long createDate;
 	public long modifiedDate;
 	public long organizationId;
+	public String govAgentId;
+	public String govAgentName;
+	public String subjectId;
+	public String subjectType;
+	public String subjectName;
 	public long amount;
-	public int paymentType;
-	public String detailInfo;
-	public String note;
+	public String paymentType;
+	public String paymentDescription;
+	public String transactionInfo;
 	public long fileEntryId;
-	public long issueDate;
 	public long checkingDate;
 	public long checkingUserId;
 	public String checkingUserName;
 	public int checkingResult;
 	public String checkingNote;
-	public long feedbackDate;
+	public long ebMessageId;
 }

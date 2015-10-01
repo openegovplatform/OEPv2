@@ -53,17 +53,17 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 
 	@Override
 	public long getPrimaryKey() {
-		return _stepTransionId;
+		return _stepTransitionId;
 	}
 
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		setStepTransionId(primaryKey);
+		setStepTransitionId(primaryKey);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _stepTransionId;
+		return _stepTransitionId;
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("stepTransionId", getStepTransionId());
+		attributes.put("stepTransitionId", getStepTransitionId());
 		attributes.put("userId", getUserId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
@@ -89,7 +89,7 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 		attributes.put("daysDuration", getDaysDuration());
 		attributes.put("dossierStatus", getDossierStatus());
 		attributes.put("userAssignment", getUserAssignment());
-		attributes.put("newOrder", getNewOrder());
+		attributes.put("newProcessOrder", getNewProcessOrder());
 		attributes.put("errorMessage", getErrorMessage());
 
 		return attributes;
@@ -97,10 +97,10 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long stepTransionId = (Long)attributes.get("stepTransionId");
+		Long stepTransitionId = (Long)attributes.get("stepTransitionId");
 
-		if (stepTransionId != null) {
-			setStepTransionId(stepTransionId);
+		if (stepTransitionId != null) {
+			setStepTransitionId(stepTransitionId);
 		}
 
 		Long userId = (Long)attributes.get("userId");
@@ -181,10 +181,10 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 			setUserAssignment(userAssignment);
 		}
 
-		Integer newOrder = (Integer)attributes.get("newOrder");
+		Integer newProcessOrder = (Integer)attributes.get("newProcessOrder");
 
-		if (newOrder != null) {
-			setNewOrder(newOrder);
+		if (newProcessOrder != null) {
+			setNewProcessOrder(newProcessOrder);
 		}
 
 		String errorMessage = (String)attributes.get("errorMessage");
@@ -195,21 +195,22 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 	}
 
 	@Override
-	public long getStepTransionId() {
-		return _stepTransionId;
+	public long getStepTransitionId() {
+		return _stepTransitionId;
 	}
 
 	@Override
-	public void setStepTransionId(long stepTransionId) {
-		_stepTransionId = stepTransionId;
+	public void setStepTransitionId(long stepTransitionId) {
+		_stepTransitionId = stepTransitionId;
 
 		if (_stepTransitionRemoteModel != null) {
 			try {
 				Class<?> clazz = _stepTransitionRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setStepTransionId", long.class);
+				Method method = clazz.getMethod("setStepTransitionId",
+						long.class);
 
-				method.invoke(_stepTransitionRemoteModel, stepTransionId);
+				method.invoke(_stepTransitionRemoteModel, stepTransitionId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -531,21 +532,21 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 	}
 
 	@Override
-	public int getNewOrder() {
-		return _newOrder;
+	public int getNewProcessOrder() {
+		return _newProcessOrder;
 	}
 
 	@Override
-	public void setNewOrder(int newOrder) {
-		_newOrder = newOrder;
+	public void setNewProcessOrder(int newProcessOrder) {
+		_newProcessOrder = newProcessOrder;
 
 		if (_stepTransitionRemoteModel != null) {
 			try {
 				Class<?> clazz = _stepTransitionRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setNewOrder", int.class);
+				Method method = clazz.getMethod("setNewProcessOrder", int.class);
 
-				method.invoke(_stepTransitionRemoteModel, newOrder);
+				method.invoke(_stepTransitionRemoteModel, newProcessOrder);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -647,7 +648,7 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 	public Object clone() {
 		StepTransitionClp clone = new StepTransitionClp();
 
-		clone.setStepTransionId(getStepTransionId());
+		clone.setStepTransitionId(getStepTransitionId());
 		clone.setUserId(getUserId());
 		clone.setGroupId(getGroupId());
 		clone.setCompanyId(getCompanyId());
@@ -661,7 +662,7 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 		clone.setDaysDuration(getDaysDuration());
 		clone.setDossierStatus(getDossierStatus());
 		clone.setUserAssignment(getUserAssignment());
-		clone.setNewOrder(getNewOrder());
+		clone.setNewProcessOrder(getNewProcessOrder());
 		clone.setErrorMessage(getErrorMessage());
 
 		return clone;
@@ -717,8 +718,8 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 	public String toString() {
 		StringBundler sb = new StringBundler(33);
 
-		sb.append("{stepTransionId=");
-		sb.append(getStepTransionId());
+		sb.append("{stepTransitionId=");
+		sb.append(getStepTransitionId());
 		sb.append(", userId=");
 		sb.append(getUserId());
 		sb.append(", groupId=");
@@ -745,8 +746,8 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 		sb.append(getDossierStatus());
 		sb.append(", userAssignment=");
 		sb.append(getUserAssignment());
-		sb.append(", newOrder=");
-		sb.append(getNewOrder());
+		sb.append(", newProcessOrder=");
+		sb.append(getNewProcessOrder());
 		sb.append(", errorMessage=");
 		sb.append(getErrorMessage());
 		sb.append("}");
@@ -763,8 +764,8 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 		sb.append("</model-name>");
 
 		sb.append(
-			"<column><column-name>stepTransionId</column-name><column-value><![CDATA[");
-		sb.append(getStepTransionId());
+			"<column><column-name>stepTransitionId</column-name><column-value><![CDATA[");
+		sb.append(getStepTransitionId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>userId</column-name><column-value><![CDATA[");
@@ -819,8 +820,8 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 		sb.append(getUserAssignment());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>newOrder</column-name><column-value><![CDATA[");
-		sb.append(getNewOrder());
+			"<column><column-name>newProcessOrder</column-name><column-value><![CDATA[");
+		sb.append(getNewProcessOrder());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>errorMessage</column-name><column-value><![CDATA[");
@@ -832,7 +833,7 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 		return sb.toString();
 	}
 
-	private long _stepTransionId;
+	private long _stepTransitionId;
 	private long _userId;
 	private String _userUuid;
 	private long _groupId;
@@ -847,7 +848,7 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 	private int _daysDuration;
 	private String _dossierStatus;
 	private int _userAssignment;
-	private int _newOrder;
+	private int _newProcessOrder;
 	private String _errorMessage;
 	private BaseModel<?> _stepTransitionRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.processmgt.service.ClpSerializer.class;

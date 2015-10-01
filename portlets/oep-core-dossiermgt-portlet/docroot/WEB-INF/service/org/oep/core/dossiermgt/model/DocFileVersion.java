@@ -18,7 +18,7 @@ import com.liferay.portal.kernel.util.Accessor;
 import com.liferay.portal.model.PersistedModel;
 
 /**
- * The extended model interface for the DocFileVersion service. Represents a row in the &quot;oep_dossiermgt_DocFileVersion&quot; database table, with each column mapped to a property of this class.
+ * The extended model interface for the DocFileVersion service. Represents a row in the &quot;oep_dossiermgt_docfileversion&quot; database table, with each column mapped to a property of this class.
  *
  * @author trungdk
  * @see DocFileVersionModel

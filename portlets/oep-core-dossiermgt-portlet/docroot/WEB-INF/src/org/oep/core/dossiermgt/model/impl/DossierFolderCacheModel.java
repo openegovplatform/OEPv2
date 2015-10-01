@@ -52,8 +52,8 @@ public class DossierFolderCacheModel implements CacheModel<DossierFolder>,
 		sb.append(modifiedDate);
 		sb.append(", folderName=");
 		sb.append(folderName);
-		sb.append(", parentFolderId=");
-		sb.append(parentFolderId);
+		sb.append(", parentDossierFolderId=");
+		sb.append(parentDossierFolderId);
 		sb.append(", sequenceNo=");
 		sb.append(sequenceNo);
 		sb.append(", procedureFilter=");
@@ -104,7 +104,7 @@ public class DossierFolderCacheModel implements CacheModel<DossierFolder>,
 			dossierFolderImpl.setFolderName(folderName);
 		}
 
-		dossierFolderImpl.setParentFolderId(parentFolderId);
+		dossierFolderImpl.setParentDossierFolderId(parentDossierFolderId);
 		dossierFolderImpl.setSequenceNo(sequenceNo);
 
 		if (procedureFilter == null) {
@@ -137,7 +137,7 @@ public class DossierFolderCacheModel implements CacheModel<DossierFolder>,
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
 		folderName = objectInput.readUTF();
-		parentFolderId = objectInput.readLong();
+		parentDossierFolderId = objectInput.readLong();
 		sequenceNo = objectInput.readInt();
 		procedureFilter = objectInput.readUTF();
 		statusFilter = objectInput.readUTF();
@@ -167,7 +167,7 @@ public class DossierFolderCacheModel implements CacheModel<DossierFolder>,
 			objectOutput.writeUTF(folderName);
 		}
 
-		objectOutput.writeLong(parentFolderId);
+		objectOutput.writeLong(parentDossierFolderId);
 		objectOutput.writeInt(sequenceNo);
 
 		if (procedureFilter == null) {
@@ -194,7 +194,7 @@ public class DossierFolderCacheModel implements CacheModel<DossierFolder>,
 	public long createDate;
 	public long modifiedDate;
 	public String folderName;
-	public long parentFolderId;
+	public long parentDossierFolderId;
 	public int sequenceNo;
 	public String procedureFilter;
 	public String statusFilter;

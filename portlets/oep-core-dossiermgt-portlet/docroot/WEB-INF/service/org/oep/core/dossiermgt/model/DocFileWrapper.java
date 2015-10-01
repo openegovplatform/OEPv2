@@ -62,7 +62,6 @@ public class DocFileWrapper implements DocFile, ModelWrapper<DocFile> {
 		attributes.put("docTemplateId", getDocTemplateId());
 		attributes.put("docFileVersionId", getDocFileVersionId());
 		attributes.put("docName", getDocName());
-		attributes.put("issueDate", getIssueDate());
 		attributes.put("note", getNote());
 
 		return attributes;
@@ -140,12 +139,6 @@ public class DocFileWrapper implements DocFile, ModelWrapper<DocFile> {
 
 		if (docName != null) {
 			setDocName(docName);
-		}
-
-		Date issueDate = (Date)attributes.get("issueDate");
-
-		if (issueDate != null) {
-			setIssueDate(issueDate);
 		}
 
 		String note = (String)attributes.get("note");
@@ -438,26 +431,6 @@ public class DocFileWrapper implements DocFile, ModelWrapper<DocFile> {
 	}
 
 	/**
-	* Returns the issue date of this doc file.
-	*
-	* @return the issue date of this doc file
-	*/
-	@Override
-	public java.util.Date getIssueDate() {
-		return _docFile.getIssueDate();
-	}
-
-	/**
-	* Sets the issue date of this doc file.
-	*
-	* @param issueDate the issue date of this doc file
-	*/
-	@Override
-	public void setIssueDate(java.util.Date issueDate) {
-		_docFile.setIssueDate(issueDate);
-	}
-
-	/**
 	* Returns the note of this doc file.
 	*
 	* @return the note of this doc file
@@ -541,7 +514,7 @@ public class DocFileWrapper implements DocFile, ModelWrapper<DocFile> {
 	}
 
 	@Override
-	public int compareTo(DocFile docFile) {
+	public int compareTo(org.oep.core.dossiermgt.model.DocFile docFile) {
 		return _docFile.compareTo(docFile);
 	}
 
@@ -551,17 +524,17 @@ public class DocFileWrapper implements DocFile, ModelWrapper<DocFile> {
 	}
 
 	@Override
-	public com.liferay.portal.model.CacheModel<DocFile> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<org.oep.core.dossiermgt.model.DocFile> toCacheModel() {
 		return _docFile.toCacheModel();
 	}
 
 	@Override
-	public DocFile toEscapedModel() {
+	public org.oep.core.dossiermgt.model.DocFile toEscapedModel() {
 		return new DocFileWrapper(_docFile.toEscapedModel());
 	}
 
 	@Override
-	public DocFile toUnescapedModel() {
+	public org.oep.core.dossiermgt.model.DocFile toUnescapedModel() {
 		return new DocFileWrapper(_docFile.toUnescapedModel());
 	}
 

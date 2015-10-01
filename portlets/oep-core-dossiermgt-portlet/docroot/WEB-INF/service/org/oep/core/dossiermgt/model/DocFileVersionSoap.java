@@ -40,7 +40,7 @@ public class DocFileVersionSoap implements Serializable {
 		soapModel.setDocFileId(model.getDocFileId());
 		soapModel.setFileEntryId(model.getFileEntryId());
 		soapModel.setXmlContent(model.getXmlContent());
-		soapModel.setIssueDate(model.getIssueDate());
+		soapModel.setEbMessageId(model.getEbMessageId());
 
 		return soapModel;
 	}
@@ -165,12 +165,12 @@ public class DocFileVersionSoap implements Serializable {
 		_xmlContent = xmlContent;
 	}
 
-	public Date getIssueDate() {
-		return _issueDate;
+	public long getEbMessageId() {
+		return _ebMessageId;
 	}
 
-	public void setIssueDate(Date issueDate) {
-		_issueDate = issueDate;
+	public void setEbMessageId(long ebMessageId) {
+		_ebMessageId = ebMessageId;
 	}
 
 	private String _uuid;
@@ -182,5 +182,5 @@ public class DocFileVersionSoap implements Serializable {
 	private long _docFileId;
 	private long _fileEntryId;
 	private String _xmlContent;
-	private Date _issueDate;
+	private long _ebMessageId;
 }

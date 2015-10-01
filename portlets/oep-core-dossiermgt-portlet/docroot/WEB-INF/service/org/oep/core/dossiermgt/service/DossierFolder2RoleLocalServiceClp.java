@@ -34,11 +34,15 @@ public class DossierFolder2RoleLocalServiceClp
 
 		_methodName1 = "createDossierFolder2Role";
 
-		_methodParameterTypes1 = new String[] { "long" };
+		_methodParameterTypes1 = new String[] {
+				"org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK"
+			};
 
 		_methodName2 = "deleteDossierFolder2Role";
 
-		_methodParameterTypes2 = new String[] { "long" };
+		_methodParameterTypes2 = new String[] {
+				"org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK"
+			};
 
 		_methodName3 = "deleteDossierFolder2Role";
 
@@ -84,11 +88,15 @@ public class DossierFolder2RoleLocalServiceClp
 
 		_methodName10 = "fetchDossierFolder2Role";
 
-		_methodParameterTypes10 = new String[] { "long" };
+		_methodParameterTypes10 = new String[] {
+				"org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK"
+			};
 
 		_methodName11 = "getDossierFolder2Role";
 
-		_methodParameterTypes11 = new String[] { "long" };
+		_methodParameterTypes11 = new String[] {
+				"org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK"
+			};
 
 		_methodName12 = "getPersistedModel";
 
@@ -151,12 +159,15 @@ public class DossierFolder2RoleLocalServiceClp
 
 	@Override
 	public org.oep.core.dossiermgt.model.DossierFolder2Role createDossierFolder2Role(
-		long id) {
+		org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK dossierFolder2RolePK) {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName1,
-					_methodParameterTypes1, new Object[] { id });
+					_methodParameterTypes1,
+					new Object[] {
+						ClpSerializer.translateInput(dossierFolder2RolePK)
+					});
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -175,14 +186,17 @@ public class DossierFolder2RoleLocalServiceClp
 
 	@Override
 	public org.oep.core.dossiermgt.model.DossierFolder2Role deleteDossierFolder2Role(
-		long id)
+		org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK dossierFolder2RolePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName2,
-					_methodParameterTypes2, new Object[] { id });
+					_methodParameterTypes2,
+					new Object[] {
+						ClpSerializer.translateInput(dossierFolder2RolePK)
+					});
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -438,12 +452,16 @@ public class DossierFolder2RoleLocalServiceClp
 
 	@Override
 	public org.oep.core.dossiermgt.model.DossierFolder2Role fetchDossierFolder2Role(
-		long id) throws com.liferay.portal.kernel.exception.SystemException {
+		org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK dossierFolder2RolePK)
+		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName10,
-					_methodParameterTypes10, new Object[] { id });
+					_methodParameterTypes10,
+					new Object[] {
+						ClpSerializer.translateInput(dossierFolder2RolePK)
+					});
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -466,14 +484,17 @@ public class DossierFolder2RoleLocalServiceClp
 
 	@Override
 	public org.oep.core.dossiermgt.model.DossierFolder2Role getDossierFolder2Role(
-		long id)
+		org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK dossierFolder2RolePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName11,
-					_methodParameterTypes11, new Object[] { id });
+					_methodParameterTypes11,
+					new Object[] {
+						ClpSerializer.translateInput(dossierFolder2RolePK)
+					});
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);

@@ -59,18 +59,22 @@ public class PaymentFileWrapper implements PaymentFile,
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("organizationId", getOrganizationId());
+		attributes.put("govAgentId", getGovAgentId());
+		attributes.put("govAgentName", getGovAgentName());
+		attributes.put("subjectId", getSubjectId());
+		attributes.put("subjectType", getSubjectType());
+		attributes.put("subjectName", getSubjectName());
 		attributes.put("amount", getAmount());
 		attributes.put("paymentType", getPaymentType());
-		attributes.put("detailInfo", getDetailInfo());
-		attributes.put("note", getNote());
+		attributes.put("paymentDescription", getPaymentDescription());
+		attributes.put("transactionInfo", getTransactionInfo());
 		attributes.put("fileEntryId", getFileEntryId());
-		attributes.put("issueDate", getIssueDate());
 		attributes.put("checkingDate", getCheckingDate());
 		attributes.put("checkingUserId", getCheckingUserId());
 		attributes.put("checkingUserName", getCheckingUserName());
 		attributes.put("checkingResult", getCheckingResult());
 		attributes.put("checkingNote", getCheckingNote());
-		attributes.put("feedbackDate", getFeedbackDate());
+		attributes.put("ebMessageId", getEbMessageId());
 
 		return attributes;
 	}
@@ -125,40 +129,64 @@ public class PaymentFileWrapper implements PaymentFile,
 			setOrganizationId(organizationId);
 		}
 
+		String govAgentId = (String)attributes.get("govAgentId");
+
+		if (govAgentId != null) {
+			setGovAgentId(govAgentId);
+		}
+
+		String govAgentName = (String)attributes.get("govAgentName");
+
+		if (govAgentName != null) {
+			setGovAgentName(govAgentName);
+		}
+
+		String subjectId = (String)attributes.get("subjectId");
+
+		if (subjectId != null) {
+			setSubjectId(subjectId);
+		}
+
+		String subjectType = (String)attributes.get("subjectType");
+
+		if (subjectType != null) {
+			setSubjectType(subjectType);
+		}
+
+		String subjectName = (String)attributes.get("subjectName");
+
+		if (subjectName != null) {
+			setSubjectName(subjectName);
+		}
+
 		Long amount = (Long)attributes.get("amount");
 
 		if (amount != null) {
 			setAmount(amount);
 		}
 
-		Integer paymentType = (Integer)attributes.get("paymentType");
+		String paymentType = (String)attributes.get("paymentType");
 
 		if (paymentType != null) {
 			setPaymentType(paymentType);
 		}
 
-		String detailInfo = (String)attributes.get("detailInfo");
+		String paymentDescription = (String)attributes.get("paymentDescription");
 
-		if (detailInfo != null) {
-			setDetailInfo(detailInfo);
+		if (paymentDescription != null) {
+			setPaymentDescription(paymentDescription);
 		}
 
-		String note = (String)attributes.get("note");
+		String transactionInfo = (String)attributes.get("transactionInfo");
 
-		if (note != null) {
-			setNote(note);
+		if (transactionInfo != null) {
+			setTransactionInfo(transactionInfo);
 		}
 
 		Long fileEntryId = (Long)attributes.get("fileEntryId");
 
 		if (fileEntryId != null) {
 			setFileEntryId(fileEntryId);
-		}
-
-		Date issueDate = (Date)attributes.get("issueDate");
-
-		if (issueDate != null) {
-			setIssueDate(issueDate);
 		}
 
 		Date checkingDate = (Date)attributes.get("checkingDate");
@@ -191,10 +219,10 @@ public class PaymentFileWrapper implements PaymentFile,
 			setCheckingNote(checkingNote);
 		}
 
-		Date feedbackDate = (Date)attributes.get("feedbackDate");
+		Long ebMessageId = (Long)attributes.get("ebMessageId");
 
-		if (feedbackDate != null) {
-			setFeedbackDate(feedbackDate);
+		if (ebMessageId != null) {
+			setEbMessageId(ebMessageId);
 		}
 	}
 
@@ -401,6 +429,106 @@ public class PaymentFileWrapper implements PaymentFile,
 	}
 
 	/**
+	* Returns the gov agent ID of this payment file.
+	*
+	* @return the gov agent ID of this payment file
+	*/
+	@Override
+	public java.lang.String getGovAgentId() {
+		return _paymentFile.getGovAgentId();
+	}
+
+	/**
+	* Sets the gov agent ID of this payment file.
+	*
+	* @param govAgentId the gov agent ID of this payment file
+	*/
+	@Override
+	public void setGovAgentId(java.lang.String govAgentId) {
+		_paymentFile.setGovAgentId(govAgentId);
+	}
+
+	/**
+	* Returns the gov agent name of this payment file.
+	*
+	* @return the gov agent name of this payment file
+	*/
+	@Override
+	public java.lang.String getGovAgentName() {
+		return _paymentFile.getGovAgentName();
+	}
+
+	/**
+	* Sets the gov agent name of this payment file.
+	*
+	* @param govAgentName the gov agent name of this payment file
+	*/
+	@Override
+	public void setGovAgentName(java.lang.String govAgentName) {
+		_paymentFile.setGovAgentName(govAgentName);
+	}
+
+	/**
+	* Returns the subject ID of this payment file.
+	*
+	* @return the subject ID of this payment file
+	*/
+	@Override
+	public java.lang.String getSubjectId() {
+		return _paymentFile.getSubjectId();
+	}
+
+	/**
+	* Sets the subject ID of this payment file.
+	*
+	* @param subjectId the subject ID of this payment file
+	*/
+	@Override
+	public void setSubjectId(java.lang.String subjectId) {
+		_paymentFile.setSubjectId(subjectId);
+	}
+
+	/**
+	* Returns the subject type of this payment file.
+	*
+	* @return the subject type of this payment file
+	*/
+	@Override
+	public java.lang.String getSubjectType() {
+		return _paymentFile.getSubjectType();
+	}
+
+	/**
+	* Sets the subject type of this payment file.
+	*
+	* @param subjectType the subject type of this payment file
+	*/
+	@Override
+	public void setSubjectType(java.lang.String subjectType) {
+		_paymentFile.setSubjectType(subjectType);
+	}
+
+	/**
+	* Returns the subject name of this payment file.
+	*
+	* @return the subject name of this payment file
+	*/
+	@Override
+	public java.lang.String getSubjectName() {
+		return _paymentFile.getSubjectName();
+	}
+
+	/**
+	* Sets the subject name of this payment file.
+	*
+	* @param subjectName the subject name of this payment file
+	*/
+	@Override
+	public void setSubjectName(java.lang.String subjectName) {
+		_paymentFile.setSubjectName(subjectName);
+	}
+
+	/**
 	* Returns the amount of this payment file.
 	*
 	* @return the amount of this payment file
@@ -426,7 +554,7 @@ public class PaymentFileWrapper implements PaymentFile,
 	* @return the payment type of this payment file
 	*/
 	@Override
-	public int getPaymentType() {
+	public java.lang.String getPaymentType() {
 		return _paymentFile.getPaymentType();
 	}
 
@@ -436,48 +564,48 @@ public class PaymentFileWrapper implements PaymentFile,
 	* @param paymentType the payment type of this payment file
 	*/
 	@Override
-	public void setPaymentType(int paymentType) {
+	public void setPaymentType(java.lang.String paymentType) {
 		_paymentFile.setPaymentType(paymentType);
 	}
 
 	/**
-	* Returns the detail info of this payment file.
+	* Returns the payment description of this payment file.
 	*
-	* @return the detail info of this payment file
+	* @return the payment description of this payment file
 	*/
 	@Override
-	public java.lang.String getDetailInfo() {
-		return _paymentFile.getDetailInfo();
+	public java.lang.String getPaymentDescription() {
+		return _paymentFile.getPaymentDescription();
 	}
 
 	/**
-	* Sets the detail info of this payment file.
+	* Sets the payment description of this payment file.
 	*
-	* @param detailInfo the detail info of this payment file
+	* @param paymentDescription the payment description of this payment file
 	*/
 	@Override
-	public void setDetailInfo(java.lang.String detailInfo) {
-		_paymentFile.setDetailInfo(detailInfo);
+	public void setPaymentDescription(java.lang.String paymentDescription) {
+		_paymentFile.setPaymentDescription(paymentDescription);
 	}
 
 	/**
-	* Returns the note of this payment file.
+	* Returns the transaction info of this payment file.
 	*
-	* @return the note of this payment file
+	* @return the transaction info of this payment file
 	*/
 	@Override
-	public java.lang.String getNote() {
-		return _paymentFile.getNote();
+	public java.lang.String getTransactionInfo() {
+		return _paymentFile.getTransactionInfo();
 	}
 
 	/**
-	* Sets the note of this payment file.
+	* Sets the transaction info of this payment file.
 	*
-	* @param note the note of this payment file
+	* @param transactionInfo the transaction info of this payment file
 	*/
 	@Override
-	public void setNote(java.lang.String note) {
-		_paymentFile.setNote(note);
+	public void setTransactionInfo(java.lang.String transactionInfo) {
+		_paymentFile.setTransactionInfo(transactionInfo);
 	}
 
 	/**
@@ -498,26 +626,6 @@ public class PaymentFileWrapper implements PaymentFile,
 	@Override
 	public void setFileEntryId(long fileEntryId) {
 		_paymentFile.setFileEntryId(fileEntryId);
-	}
-
-	/**
-	* Returns the issue date of this payment file.
-	*
-	* @return the issue date of this payment file
-	*/
-	@Override
-	public java.util.Date getIssueDate() {
-		return _paymentFile.getIssueDate();
-	}
-
-	/**
-	* Sets the issue date of this payment file.
-	*
-	* @param issueDate the issue date of this payment file
-	*/
-	@Override
-	public void setIssueDate(java.util.Date issueDate) {
-		_paymentFile.setIssueDate(issueDate);
 	}
 
 	/**
@@ -643,23 +751,23 @@ public class PaymentFileWrapper implements PaymentFile,
 	}
 
 	/**
-	* Returns the feedback date of this payment file.
+	* Returns the eb message ID of this payment file.
 	*
-	* @return the feedback date of this payment file
+	* @return the eb message ID of this payment file
 	*/
 	@Override
-	public java.util.Date getFeedbackDate() {
-		return _paymentFile.getFeedbackDate();
+	public long getEbMessageId() {
+		return _paymentFile.getEbMessageId();
 	}
 
 	/**
-	* Sets the feedback date of this payment file.
+	* Sets the eb message ID of this payment file.
 	*
-	* @param feedbackDate the feedback date of this payment file
+	* @param ebMessageId the eb message ID of this payment file
 	*/
 	@Override
-	public void setFeedbackDate(java.util.Date feedbackDate) {
-		_paymentFile.setFeedbackDate(feedbackDate);
+	public void setEbMessageId(long ebMessageId) {
+		_paymentFile.setEbMessageId(ebMessageId);
 	}
 
 	@Override
@@ -726,7 +834,7 @@ public class PaymentFileWrapper implements PaymentFile,
 	}
 
 	@Override
-	public int compareTo(PaymentFile paymentFile) {
+	public int compareTo(org.oep.core.dossiermgt.model.PaymentFile paymentFile) {
 		return _paymentFile.compareTo(paymentFile);
 	}
 
@@ -736,17 +844,17 @@ public class PaymentFileWrapper implements PaymentFile,
 	}
 
 	@Override
-	public com.liferay.portal.model.CacheModel<PaymentFile> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<org.oep.core.dossiermgt.model.PaymentFile> toCacheModel() {
 		return _paymentFile.toCacheModel();
 	}
 
 	@Override
-	public PaymentFile toEscapedModel() {
+	public org.oep.core.dossiermgt.model.PaymentFile toEscapedModel() {
 		return new PaymentFileWrapper(_paymentFile.toEscapedModel());
 	}
 
 	@Override
-	public PaymentFile toUnescapedModel() {
+	public org.oep.core.dossiermgt.model.PaymentFile toUnescapedModel() {
 		return new PaymentFileWrapper(_paymentFile.toUnescapedModel());
 	}
 

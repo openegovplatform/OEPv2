@@ -275,6 +275,98 @@ public class UserAssignmentLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	/**
+	* Add user assignment
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new user assignment
+	*/
+	public static org.oep.core.processmgt.model.UserAssignment addUserAssignment(
+		long processOrderId, long dossierStepId, long assignToUserId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addUserAssignment(processOrderId, dossierStepId,
+			assignToUserId, serviceContext);
+	}
+
+	public static org.oep.core.processmgt.model.UserAssignment updateUserAssignment(
+		long id, long processOrderId, long dossierStepId, long assignToUserId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .updateUserAssignment(id, processOrderId, dossierStepId,
+			assignToUserId, serviceContext);
+	}
+
+	public static void updateUserAssignmentResources(
+		org.oep.core.processmgt.model.UserAssignment userAssignment,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.updateUserAssignmentResources(userAssignment, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	public static void removeUserAssignment(
+		org.oep.core.processmgt.model.UserAssignment userAssignment)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeUserAssignment(userAssignment);
+	}
+
+	public static void removeUserAssignment(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeUserAssignment(id);
+	}
+
+	public static void addUserAssignmentResources(
+		org.oep.core.processmgt.model.UserAssignment userAssignment,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addUserAssignmentResources(userAssignment, addGroupPermission,
+			addGuestPermission, serviceContext);
+	}
+
+	public static void addUserAssignmentResources(
+		org.oep.core.processmgt.model.UserAssignment userAssignment,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addUserAssignmentResources(userAssignment, groupPermissions,
+			guestPermissions, serviceContext);
+	}
+
+	public static void addUserAssignmentResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addUserAssignmentResources(id, groupPermissions, guestPermissions,
+			serviceContext);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

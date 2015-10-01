@@ -357,6 +357,112 @@ public class PaymentRequestLocalServiceWrapper
 	}
 
 	/**
+	* Add payment request
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new payment request
+	*/
+	@Override
+	public org.oep.core.dossiermgt.model.PaymentRequest addPaymentRequest(
+		long organizationId, long dossierId, java.lang.String govAgentId,
+		java.lang.String govAgentName, java.lang.String subjectId,
+		java.lang.String subjectType, java.lang.String subjectName, int amount,
+		java.lang.String requestNote, long paymentFileId, int confirmOK,
+		long ebMessageId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _paymentRequestLocalService.addPaymentRequest(organizationId,
+			dossierId, govAgentId, govAgentName, subjectId, subjectType,
+			subjectName, amount, requestNote, paymentFileId, confirmOK,
+			ebMessageId, serviceContext);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.PaymentRequest updatePaymentRequest(
+		long id, long organizationId, long dossierId,
+		java.lang.String govAgentId, java.lang.String govAgentName,
+		java.lang.String subjectId, java.lang.String subjectType,
+		java.lang.String subjectName, int amount, java.lang.String requestNote,
+		long paymentFileId, int confirmOK, long ebMessageId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _paymentRequestLocalService.updatePaymentRequest(id,
+			organizationId, dossierId, govAgentId, govAgentName, subjectId,
+			subjectType, subjectName, amount, requestNote, paymentFileId,
+			confirmOK, ebMessageId, serviceContext);
+	}
+
+	@Override
+	public void updatePaymentRequestResources(
+		org.oep.core.dossiermgt.model.PaymentRequest paymentRequest,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentRequestLocalService.updatePaymentRequestResources(paymentRequest,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void removePaymentRequest(
+		org.oep.core.dossiermgt.model.PaymentRequest paymentRequest)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentRequestLocalService.removePaymentRequest(paymentRequest);
+	}
+
+	@Override
+	public void removePaymentRequest(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentRequestLocalService.removePaymentRequest(id);
+	}
+
+	@Override
+	public void addPaymentRequestResources(
+		org.oep.core.dossiermgt.model.PaymentRequest paymentRequest,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentRequestLocalService.addPaymentRequestResources(paymentRequest,
+			addGroupPermission, addGuestPermission, serviceContext);
+	}
+
+	@Override
+	public void addPaymentRequestResources(
+		org.oep.core.dossiermgt.model.PaymentRequest paymentRequest,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentRequestLocalService.addPaymentRequestResources(paymentRequest,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void addPaymentRequestResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_paymentRequestLocalService.addPaymentRequestResources(id,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */
 	public PaymentRequestLocalService getWrappedPaymentRequestLocalService() {

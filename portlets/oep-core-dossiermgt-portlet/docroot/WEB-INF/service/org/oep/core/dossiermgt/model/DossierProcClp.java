@@ -92,6 +92,7 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 		attributes.put("durationDescription", getDurationDescription());
 		attributes.put("actorsDescription", getActorsDescription());
 		attributes.put("resultsDescription", getResultsDescription());
+		attributes.put("recordsDescription", getRecordsDescription());
 		attributes.put("feeDescription", getFeeDescription());
 		attributes.put("instructionsDescription", getInstructionsDescription());
 		attributes.put("administrationNo", getAdministrationNo());
@@ -209,6 +210,12 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 
 		if (resultsDescription != null) {
 			setResultsDescription(resultsDescription);
+		}
+
+		String recordsDescription = (String)attributes.get("recordsDescription");
+
+		if (recordsDescription != null) {
+			setRecordsDescription(recordsDescription);
 		}
 
 		String feeDescription = (String)attributes.get("feeDescription");
@@ -676,6 +683,30 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 	}
 
 	@Override
+	public String getRecordsDescription() {
+		return _recordsDescription;
+	}
+
+	@Override
+	public void setRecordsDescription(String recordsDescription) {
+		_recordsDescription = recordsDescription;
+
+		if (_dossierProcRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierProcRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setRecordsDescription",
+						String.class);
+
+				method.invoke(_dossierProcRemoteModel, recordsDescription);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
 	public String getFeeDescription() {
 		return _feeDescription;
 	}
@@ -972,6 +1003,7 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 		clone.setDurationDescription(getDurationDescription());
 		clone.setActorsDescription(getActorsDescription());
 		clone.setResultsDescription(getResultsDescription());
+		clone.setRecordsDescription(getRecordsDescription());
 		clone.setFeeDescription(getFeeDescription());
 		clone.setInstructionsDescription(getInstructionsDescription());
 		clone.setAdministrationNo(getAdministrationNo());
@@ -1033,7 +1065,7 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(53);
+		StringBundler sb = new StringBundler(55);
 
 		sb.append("{dossierProcId=");
 		sb.append(getDossierProcId());
@@ -1069,6 +1101,8 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 		sb.append(getActorsDescription());
 		sb.append(", resultsDescription=");
 		sb.append(getResultsDescription());
+		sb.append(", recordsDescription=");
+		sb.append(getRecordsDescription());
 		sb.append(", feeDescription=");
 		sb.append(getFeeDescription());
 		sb.append(", instructionsDescription=");
@@ -1094,7 +1128,7 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(82);
+		StringBundler sb = new StringBundler(85);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.DossierProc");
@@ -1169,6 +1203,10 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 		sb.append(getResultsDescription());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>recordsDescription</column-name><column-value><![CDATA[");
+		sb.append(getRecordsDescription());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>feeDescription</column-name><column-value><![CDATA[");
 		sb.append(getFeeDescription());
 		sb.append("]]></column-value></column>");
@@ -1228,6 +1266,7 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 	private String _durationDescription;
 	private String _actorsDescription;
 	private String _resultsDescription;
+	private String _recordsDescription;
 	private String _feeDescription;
 	private String _instructionsDescription;
 	private String _administrationNo;

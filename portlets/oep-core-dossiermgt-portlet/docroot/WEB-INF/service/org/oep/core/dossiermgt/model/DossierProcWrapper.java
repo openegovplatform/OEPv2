@@ -67,6 +67,7 @@ public class DossierProcWrapper implements DossierProc,
 		attributes.put("durationDescription", getDurationDescription());
 		attributes.put("actorsDescription", getActorsDescription());
 		attributes.put("resultsDescription", getResultsDescription());
+		attributes.put("recordsDescription", getRecordsDescription());
 		attributes.put("feeDescription", getFeeDescription());
 		attributes.put("instructionsDescription", getInstructionsDescription());
 		attributes.put("administrationNo", getAdministrationNo());
@@ -184,6 +185,12 @@ public class DossierProcWrapper implements DossierProc,
 
 		if (resultsDescription != null) {
 			setResultsDescription(resultsDescription);
+		}
+
+		String recordsDescription = (String)attributes.get("recordsDescription");
+
+		if (recordsDescription != null) {
+			setRecordsDescription(recordsDescription);
 		}
 
 		String feeDescription = (String)attributes.get("feeDescription");
@@ -625,6 +632,26 @@ public class DossierProcWrapper implements DossierProc,
 	}
 
 	/**
+	* Returns the records description of this dossier proc.
+	*
+	* @return the records description of this dossier proc
+	*/
+	@Override
+	public java.lang.String getRecordsDescription() {
+		return _dossierProc.getRecordsDescription();
+	}
+
+	/**
+	* Sets the records description of this dossier proc.
+	*
+	* @param recordsDescription the records description of this dossier proc
+	*/
+	@Override
+	public void setRecordsDescription(java.lang.String recordsDescription) {
+		_dossierProc.setRecordsDescription(recordsDescription);
+	}
+
+	/**
 	* Returns the fee description of this dossier proc.
 	*
 	* @return the fee description of this dossier proc
@@ -869,7 +896,7 @@ public class DossierProcWrapper implements DossierProc,
 	}
 
 	@Override
-	public int compareTo(DossierProc dossierProc) {
+	public int compareTo(org.oep.core.dossiermgt.model.DossierProc dossierProc) {
 		return _dossierProc.compareTo(dossierProc);
 	}
 
@@ -879,17 +906,17 @@ public class DossierProcWrapper implements DossierProc,
 	}
 
 	@Override
-	public com.liferay.portal.model.CacheModel<DossierProc> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<org.oep.core.dossiermgt.model.DossierProc> toCacheModel() {
 		return _dossierProc.toCacheModel();
 	}
 
 	@Override
-	public DossierProc toEscapedModel() {
+	public org.oep.core.dossiermgt.model.DossierProc toEscapedModel() {
 		return new DossierProcWrapper(_dossierProc.toEscapedModel());
 	}
 
 	@Override
-	public DossierProc toUnescapedModel() {
+	public org.oep.core.dossiermgt.model.DossierProc toUnescapedModel() {
 		return new DossierProcWrapper(_dossierProc.toUnescapedModel());
 	}
 

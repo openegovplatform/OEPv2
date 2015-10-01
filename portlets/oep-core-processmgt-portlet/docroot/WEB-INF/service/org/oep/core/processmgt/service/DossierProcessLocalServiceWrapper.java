@@ -289,6 +289,106 @@ public class DossierProcessLocalServiceWrapper
 	}
 
 	/**
+	* Add dossier process
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param
+	* @return: new dossier process
+	*/
+	@Override
+	public org.oep.core.processmgt.model.DossierProcess addDossierProcess(
+		long dossierProcId, java.lang.String govAgentId,
+		java.lang.String govAgentName, long startDossierStepId,
+		int daysDuration,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierProcessLocalService.addDossierProcess(dossierProcId,
+			govAgentId, govAgentName, startDossierStepId, daysDuration,
+			serviceContext);
+	}
+
+	@Override
+	public org.oep.core.processmgt.model.DossierProcess updateDossierProcess(
+		long id, long dossierProcId, java.lang.String govAgentId,
+		java.lang.String govAgentName, long startDossierStepId,
+		int daysDuration,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierProcessLocalService.updateDossierProcess(id,
+			dossierProcId, govAgentId, govAgentName, startDossierStepId,
+			daysDuration, serviceContext);
+	}
+
+	@Override
+	public void updateDossierProcessResources(
+		org.oep.core.processmgt.model.DossierProcess dossierProcess,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierProcessLocalService.updateDossierProcessResources(dossierProcess,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void removeDossierProcess(
+		org.oep.core.processmgt.model.DossierProcess dossierProcess)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierProcessLocalService.removeDossierProcess(dossierProcess);
+	}
+
+	@Override
+	public void removeDossierProcess(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierProcessLocalService.removeDossierProcess(id);
+	}
+
+	@Override
+	public void addDossierProcessResources(
+		org.oep.core.processmgt.model.DossierProcess dossierProcess,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierProcessLocalService.addDossierProcessResources(dossierProcess,
+			addGroupPermission, addGuestPermission, serviceContext);
+	}
+
+	@Override
+	public void addDossierProcessResources(
+		org.oep.core.processmgt.model.DossierProcess dossierProcess,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierProcessLocalService.addDossierProcessResources(dossierProcess,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public void addDossierProcessResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierProcessLocalService.addDossierProcessResources(id,
+			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */
 	public DossierProcessLocalService getWrappedDossierProcessLocalService() {
