@@ -1,0 +1,480 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.DocFileModelImpl">
+		<attributes>
+			<id name="docFileId" />
+			<basic name="uuid">
+				<column name="UUID_" />
+			</basic>
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="dossierId" />
+			<basic name="dossierDocId" />
+			<basic name="docTemplateId" />
+			<basic name="docFileVersionId" />
+			<basic name="docName" />
+			<basic name="note" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.DocFileVersionModelImpl">
+		<attributes>
+			<id name="docFileVersionId" />
+			<basic name="uuid">
+				<column name="UUID_" />
+			</basic>
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="docFileId" />
+			<basic name="fileEntryId" />
+			<basic name="xmlContent" />
+			<basic name="ebMessageId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.DocTemplateModelImpl">
+		<attributes>
+			<id name="docTemplateId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="templateNo" />
+			<basic name="title" />
+			<basic name="enTitle" />
+			<basic name="fileEntryId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.DossierModelImpl">
+		<attributes>
+			<id name="dossierId" />
+			<basic name="uuid">
+				<column name="UUID_" />
+			</basic>
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="organizationId" />
+			<basic name="dossierProcId" />
+			<basic name="govAgentId" />
+			<basic name="govAgentName" />
+			<basic name="subjectId" />
+			<basic name="subjectType" />
+			<basic name="subjectName" />
+			<basic name="address" />
+			<basic name="cityNo" />
+			<basic name="cityName" />
+			<basic name="districtNo" />
+			<basic name="districtName" />
+			<basic name="wardNo" />
+			<basic name="wardName" />
+			<basic name="telNo" />
+			<basic name="contactPersonName" />
+			<basic name="contactPersonTel" />
+			<basic name="note" />
+			<basic name="resumeDescription" />
+			<basic name="receptionNo" />
+			<basic name="submissionDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="receptionDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="resubmissionDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="appointmentDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="releaseDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="completionDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="status" />
+			<basic name="statusDescription" />
+			<basic name="feedbackNote" />
+			<basic name="dirty" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.DossierDocModelImpl">
+		<attributes>
+			<id name="dossierDocId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="dossierProcId" />
+			<basic name="dossierDocNo" />
+			<basic name="dossierDocName" />
+			<basic name="note" />
+			<basic name="sequenceNo" />
+			<basic name="defaultDocTemplateId" />
+			<basic name="validationType" />
+			<basic name="numberOfFile" />
+			<basic name="onlineForm" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.DossierDoc2TemplateModelImpl">
+		<id-class class="org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePK" />
+		<attributes>
+			<id name="dossierDocId" />
+			<id name="docTemplateId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.DossierFolderModelImpl">
+		<attributes>
+			<id name="dossierFolderId" />
+			<basic name="uuid">
+				<column name="UUID_" />
+			</basic>
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="folderName" />
+			<basic name="parentDossierFolderId" />
+			<basic name="sequenceNo" />
+			<basic name="procedureFilter" />
+			<basic name="statusFilter" />
+			<basic name="filterByOrganization" />
+			<basic name="filterByUser" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.DossierFolder2RoleModelImpl">
+		<id-class class="org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePK" />
+		<attributes>
+			<id name="dossierFolderId" />
+			<id name="roleId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.DossierProcModelImpl">
+		<attributes>
+			<id name="dossierProcId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="dossierProcNo" />
+			<basic name="name" />
+			<basic name="enName" />
+			<basic name="shortName" />
+			<basic name="processDescription" />
+			<basic name="methodDescription" />
+			<basic name="dossierDescription" />
+			<basic name="conditionDescription" />
+			<basic name="durationDescription" />
+			<basic name="actorsDescription" />
+			<basic name="resultsDescription" />
+			<basic name="recordsDescription" />
+			<basic name="feeDescription" />
+			<basic name="instructionsDescription" />
+			<basic name="administrationNo" />
+			<basic name="administrationName" />
+			<basic name="domainNo" />
+			<basic name="domainName" />
+			<basic name="effectDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="expireDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="active">
+				<column name="ACTIVE_" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.DossierProcAgentModelImpl">
+		<attributes>
+			<id name="dossierProcAgentId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="dossierProcId" />
+			<basic name="govAgentId" />
+			<basic name="govAgentName" />
+			<basic name="ebPartnerShipId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.EbMessageModelImpl">
+		<attributes>
+			<id name="ebMessageId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="messageId" />
+			<basic name="cpaId" />
+			<basic name="service" />
+			<basic name="action" />
+			<basic name="conversationId" />
+			<basic name="fromPartyId" />
+			<basic name="fromPartyType" />
+			<basic name="toPartyId" />
+			<basic name="toPartyType" />
+			<basic name="refToMessageId" />
+			<basic name="status" />
+			<basic name="statusDescription" />
+			<basic name="ackMessageId" />
+			<basic name="ackStatus" />
+			<basic name="ackStatusDescription" />
+			<basic name="messageDescription" />
+			<basic name="inbound" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.EbPartnerShipModelImpl">
+		<attributes>
+			<id name="ebPartnerShipId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="name" />
+			<basic name="cpaId" />
+			<basic name="service" />
+			<basic name="action" />
+			<basic name="inbound" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.PaymentConfigModelImpl">
+		<attributes>
+			<id name="paymentConfigId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="govAgentId" />
+			<basic name="govAgentName" />
+			<basic name="bankTransfer" />
+			<basic name="keypay" />
+			<basic name="ebPartnerShipId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.PaymentFileModelImpl">
+		<attributes>
+			<id name="paymentFileId" />
+			<basic name="uuid">
+				<column name="UUID_" />
+			</basic>
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="organizationId" />
+			<basic name="govAgentId" />
+			<basic name="govAgentName" />
+			<basic name="subjectId" />
+			<basic name="subjectType" />
+			<basic name="subjectName" />
+			<basic name="amount" />
+			<basic name="paymentType" />
+			<basic name="paymentDescription" />
+			<basic name="transactionInfo" />
+			<basic name="fileEntryId" />
+			<basic name="checkingDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="checkingUserId" />
+			<basic name="checkingUserName" />
+			<basic name="checkingResult" />
+			<basic name="checkingNote" />
+			<basic name="ebMessageId" />
+			<transient name="checkingUserUuid" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.PaymentRequestModelImpl">
+		<attributes>
+			<id name="paymentRequestId" />
+			<basic name="uuid">
+				<column name="UUID_" />
+			</basic>
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="organizationId" />
+			<basic name="dossierId" />
+			<basic name="govAgentId" />
+			<basic name="govAgentName" />
+			<basic name="subjectId" />
+			<basic name="subjectType" />
+			<basic name="subjectName" />
+			<basic name="amount" />
+			<basic name="requestNote" />
+			<basic name="paymentFileId" />
+			<basic name="confirmOK" />
+			<basic name="ebMessageId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="org.oep.core.dossiermgt.model.impl.DocFileImpl" name="DocFile">
+		<table name="oep_dossiermgt_docfile" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.DocFileVersionImpl" name="DocFileVersion">
+		<table name="oep_dossiermgt_docfileversion" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.DocTemplateImpl" name="DocTemplate">
+		<table name="oep_dossiermgt_doctemplate" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.DossierImpl" name="Dossier">
+		<table name="oep_dossiermgt_dossier" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.DossierDocImpl" name="DossierDoc">
+		<table name="oep_dossiermgt_dossierdoc" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.DossierDoc2TemplateImpl" name="DossierDoc2Template">
+		<table name="oep_dossiermgt_dossierdoc2template" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.DossierFolderImpl" name="DossierFolder">
+		<table name="oep_dossiermgt_dossierfolder" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.DossierFolder2RoleImpl" name="DossierFolder2Role">
+		<table name="oep_dossiermgt_dossierfolder2role" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.DossierProcImpl" name="DossierProc">
+		<table name="oep_dossiermgt_dossierproc" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.DossierProcAgentImpl" name="DossierProcAgent">
+		<table name="oep_dossiermgt_dossierprocagent" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.EbMessageImpl" name="EbMessage">
+		<table name="oep_dossiermgt_ebmessage" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.EbPartnerShipImpl" name="EbPartnerShip">
+		<table name="oep_dossiermgt_ebpartnership" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.PaymentConfigImpl" name="PaymentConfig">
+		<table name="oep_dossiermgt_paymentconfig" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.PaymentFileImpl" name="PaymentFile">
+		<table name="oep_dossiermgt_paymentfile" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.PaymentRequestImpl" name="PaymentRequest">
+		<table name="oep_dossiermgt_paymentrequest" />
+		<attributes />
+	</entity>
+</entity-mappings>
