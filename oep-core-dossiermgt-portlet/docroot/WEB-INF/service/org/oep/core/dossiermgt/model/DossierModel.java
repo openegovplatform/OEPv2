@@ -212,34 +212,34 @@ public interface DossierModel extends BaseModel<Dossier>, StagedModel {
 	public void setDossierProcId(long dossierProcId);
 
 	/**
-	 * Returns the gov agent ID of this dossier.
+	 * Returns the gov agency ID of this dossier.
 	 *
-	 * @return the gov agent ID of this dossier
+	 * @return the gov agency ID of this dossier
 	 */
 	@AutoEscape
-	public String getGovAgentId();
+	public String getGovAgencyId();
 
 	/**
-	 * Sets the gov agent ID of this dossier.
+	 * Sets the gov agency ID of this dossier.
 	 *
-	 * @param govAgentId the gov agent ID of this dossier
+	 * @param govAgencyId the gov agency ID of this dossier
 	 */
-	public void setGovAgentId(String govAgentId);
+	public void setGovAgencyId(String govAgencyId);
 
 	/**
-	 * Returns the gov agent name of this dossier.
+	 * Returns the gov agency name of this dossier.
 	 *
-	 * @return the gov agent name of this dossier
+	 * @return the gov agency name of this dossier
 	 */
 	@AutoEscape
-	public String getGovAgentName();
+	public String getGovAgencyName();
 
 	/**
-	 * Sets the gov agent name of this dossier.
+	 * Sets the gov agency name of this dossier.
 	 *
-	 * @param govAgentName the gov agent name of this dossier
+	 * @param govAgencyName the gov agency name of this dossier
 	 */
-	public void setGovAgentName(String govAgentName);
+	public void setGovAgencyName(String govAgencyName);
 
 	/**
 	 * Returns the subject ID of this dossier.
@@ -482,88 +482,88 @@ public interface DossierModel extends BaseModel<Dossier>, StagedModel {
 	public void setReceptionNo(String receptionNo);
 
 	/**
-	 * Returns the submission date of this dossier.
+	 * Returns the submit date of this dossier.
 	 *
-	 * @return the submission date of this dossier
+	 * @return the submit date of this dossier
 	 */
-	public Date getSubmissionDate();
+	public Date getSubmitDate();
 
 	/**
-	 * Sets the submission date of this dossier.
+	 * Sets the submit date of this dossier.
 	 *
-	 * @param submissionDate the submission date of this dossier
+	 * @param submitDate the submit date of this dossier
 	 */
-	public void setSubmissionDate(Date submissionDate);
+	public void setSubmitDate(Date submitDate);
 
 	/**
-	 * Returns the reception date of this dossier.
+	 * Returns the receive date of this dossier.
 	 *
-	 * @return the reception date of this dossier
+	 * @return the receive date of this dossier
 	 */
-	public Date getReceptionDate();
+	public Date getReceiveDate();
 
 	/**
-	 * Sets the reception date of this dossier.
+	 * Sets the receive date of this dossier.
 	 *
-	 * @param receptionDate the reception date of this dossier
+	 * @param receiveDate the receive date of this dossier
 	 */
-	public void setReceptionDate(Date receptionDate);
+	public void setReceiveDate(Date receiveDate);
 
 	/**
-	 * Returns the resubmission date of this dossier.
+	 * Returns the renew date of this dossier.
 	 *
-	 * @return the resubmission date of this dossier
+	 * @return the renew date of this dossier
 	 */
-	public Date getResubmissionDate();
+	public Date getRenewDate();
 
 	/**
-	 * Sets the resubmission date of this dossier.
+	 * Sets the renew date of this dossier.
 	 *
-	 * @param resubmissionDate the resubmission date of this dossier
+	 * @param renewDate the renew date of this dossier
 	 */
-	public void setResubmissionDate(Date resubmissionDate);
+	public void setRenewDate(Date renewDate);
 
 	/**
-	 * Returns the appointment date of this dossier.
+	 * Returns the estimate date of this dossier.
 	 *
-	 * @return the appointment date of this dossier
+	 * @return the estimate date of this dossier
 	 */
-	public Date getAppointmentDate();
+	public Date getEstimateDate();
 
 	/**
-	 * Sets the appointment date of this dossier.
+	 * Sets the estimate date of this dossier.
 	 *
-	 * @param appointmentDate the appointment date of this dossier
+	 * @param estimateDate the estimate date of this dossier
 	 */
-	public void setAppointmentDate(Date appointmentDate);
+	public void setEstimateDate(Date estimateDate);
 
 	/**
-	 * Returns the release date of this dossier.
+	 * Returns the finish date of this dossier.
 	 *
-	 * @return the release date of this dossier
+	 * @return the finish date of this dossier
 	 */
-	public Date getReleaseDate();
+	public Date getFinishDate();
 
 	/**
-	 * Sets the release date of this dossier.
+	 * Sets the finish date of this dossier.
 	 *
-	 * @param releaseDate the release date of this dossier
+	 * @param finishDate the finish date of this dossier
 	 */
-	public void setReleaseDate(Date releaseDate);
+	public void setFinishDate(Date finishDate);
 
 	/**
-	 * Returns the completion date of this dossier.
+	 * Returns the return date of this dossier.
 	 *
-	 * @return the completion date of this dossier
+	 * @return the return date of this dossier
 	 */
-	public Date getCompletionDate();
+	public Date getReturnDate();
 
 	/**
-	 * Sets the completion date of this dossier.
+	 * Sets the return date of this dossier.
 	 *
-	 * @param completionDate the completion date of this dossier
+	 * @param returnDate the return date of this dossier
 	 */
-	public void setCompletionDate(Date completionDate);
+	public void setReturnDate(Date returnDate);
 
 	/**
 	 * Returns the status of this dossier.
@@ -579,6 +579,20 @@ public interface DossierModel extends BaseModel<Dossier>, StagedModel {
 	 * @param status the status of this dossier
 	 */
 	public void setStatus(String status);
+
+	/**
+	 * Returns the status date of this dossier.
+	 *
+	 * @return the status date of this dossier
+	 */
+	public Date getStatusDate();
+
+	/**
+	 * Sets the status date of this dossier.
+	 *
+	 * @param statusDate the status date of this dossier
+	 */
+	public void setStatusDate(Date statusDate);
 
 	/**
 	 * Returns the status description of this dossier.
@@ -609,6 +623,64 @@ public interface DossierModel extends BaseModel<Dossier>, StagedModel {
 	 * @param feedbackNote the feedback note of this dossier
 	 */
 	public void setFeedbackNote(String feedbackNote);
+
+	/**
+	 * Returns the days delay of this dossier.
+	 *
+	 * @return the days delay of this dossier
+	 */
+	public int getDaysDelay();
+
+	/**
+	 * Sets the days delay of this dossier.
+	 *
+	 * @param daysDelay the days delay of this dossier
+	 */
+	public void setDaysDelay(int daysDelay);
+
+	/**
+	 * Returns the close date of this dossier.
+	 *
+	 * @return the close date of this dossier
+	 */
+	public Date getCloseDate();
+
+	/**
+	 * Sets the close date of this dossier.
+	 *
+	 * @param closeDate the close date of this dossier
+	 */
+	public void setCloseDate(Date closeDate);
+
+	/**
+	 * Returns the error status of this dossier.
+	 *
+	 * @return the error status of this dossier
+	 */
+	@AutoEscape
+	public String getErrorStatus();
+
+	/**
+	 * Sets the error status of this dossier.
+	 *
+	 * @param errorStatus the error status of this dossier
+	 */
+	public void setErrorStatus(String errorStatus);
+
+	/**
+	 * Returns the error code of this dossier.
+	 *
+	 * @return the error code of this dossier
+	 */
+	@AutoEscape
+	public String getErrorCode();
+
+	/**
+	 * Sets the error code of this dossier.
+	 *
+	 * @param errorCode the error code of this dossier
+	 */
+	public void setErrorCode(String errorCode);
 
 	/**
 	 * Returns the dirty of this dossier.

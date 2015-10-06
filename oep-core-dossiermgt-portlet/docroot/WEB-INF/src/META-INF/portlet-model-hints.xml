@@ -60,10 +60,10 @@
 		<field name="modifiedDate" type="Date" />
 		<field name="organizationId" type="long" />
 		<field name="dossierProcId" type="long" />
-		<field name="govAgentId" type="String">
+		<field name="govAgencyId" type="String">
 			<hint name="max-length">30</hint>
 		</field>
-		<field name="govAgentName" type="String">
+		<field name="govAgencyName" type="String">
 			<hint name="max-length">200</hint>
 		</field>
 		<field name="subjectId" type="String">
@@ -114,20 +114,29 @@
 		<field name="receptionNo" type="String">
 			<hint name="max-length">30</hint>
 		</field>
-		<field name="submissionDate" type="Date" />
-		<field name="receptionDate" type="Date" />
-		<field name="resubmissionDate" type="Date" />
-		<field name="appointmentDate" type="Date" />
-		<field name="releaseDate" type="Date" />
-		<field name="completionDate" type="Date" />
+		<field name="submitDate" type="Date" />
+		<field name="receiveDate" type="Date" />
+		<field name="renewDate" type="Date" />
+		<field name="estimateDate" type="Date" />
+		<field name="finishDate" type="Date" />
+		<field name="returnDate" type="Date" />
 		<field name="status" type="String">
 			<hint name="max-length">30</hint>
 		</field>
+		<field name="statusDate" type="Date" />
 		<field name="statusDescription" type="String">
 			<hint name="max-length">100</hint>
 		</field>
 		<field name="feedbackNote" type="String">
 			<hint name="max-length">255</hint>
+		</field>
+		<field name="daysDelay" type="int" />
+		<field name="closeDate" type="Date" />
+		<field name="errorStatus" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="errorCode" type="String">
+			<hint name="max-length">30</hint>
 		</field>
 		<field name="dirty" type="int" />
 	</model>
@@ -239,16 +248,16 @@
 		<field name="expireDate" type="Date" />
 		<field name="active" type="int" />
 	</model>
-	<model name="org.oep.core.dossiermgt.model.DossierProcAgent">
-		<field name="dossierProcAgentId" type="long" />
+	<model name="org.oep.core.dossiermgt.model.DossierProcAgency">
+		<field name="dossierProcAgencyId" type="long" />
 		<field name="companyId" type="long" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
 		<field name="dossierProcId" type="long" />
-		<field name="govAgentId" type="String">
+		<field name="govAgencyId" type="String">
 			<hint name="max-length">30</hint>
 		</field>
-		<field name="govAgentName" type="String">
+		<field name="govAgencyName" type="String">
 			<hint name="max-length">200</hint>
 		</field>
 		<field name="ebPartnerShipId" type="long" />
@@ -330,10 +339,10 @@
 		<field name="companyId" type="long" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
-		<field name="govAgentId" type="String">
+		<field name="govAgencyId" type="String">
 			<hint name="max-length">30</hint>
 		</field>
-		<field name="govAgentName" type="String">
+		<field name="govAgencyName" type="String">
 			<hint name="max-length">200</hint>
 		</field>
 		<field name="bankTransfer" type="String">
@@ -353,10 +362,10 @@
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
 		<field name="organizationId" type="long" />
-		<field name="govAgentId" type="String">
+		<field name="govAgencyId" type="String">
 			<hint name="max-length">30</hint>
 		</field>
-		<field name="govAgentName" type="String">
+		<field name="govAgencyName" type="String">
 			<hint name="max-length">200</hint>
 		</field>
 		<field name="subjectId" type="String">
@@ -400,10 +409,10 @@
 		<field name="modifiedDate" type="Date" />
 		<field name="organizationId" type="long" />
 		<field name="dossierId" type="long" />
-		<field name="govAgentId" type="String">
+		<field name="govAgencyId" type="String">
 			<hint name="max-length">30</hint>
 		</field>
-		<field name="govAgentName" type="String">
+		<field name="govAgencyName" type="String">
 			<hint name="max-length">200</hint>
 		</field>
 		<field name="subjectId" type="String">
@@ -422,5 +431,19 @@
 		<field name="paymentFileId" type="long" />
 		<field name="confirmOK" type="int" />
 		<field name="ebMessageId" type="long" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.ProfileData">
+		<field name="profileDataId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="fieldName" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="fieldValue" type="String">
+			<hint name="max-length">200</hint>
+		</field>
 	</model>
 </model-hints>

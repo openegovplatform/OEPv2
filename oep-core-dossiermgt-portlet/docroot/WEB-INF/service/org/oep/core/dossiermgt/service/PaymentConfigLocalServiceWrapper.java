@@ -303,26 +303,26 @@ public class PaymentConfigLocalServiceWrapper
 	*/
 	@Override
 	public org.oep.core.dossiermgt.model.PaymentConfig addPaymentConfig(
-		java.lang.String govAgentId, java.lang.String govAgentName,
+		java.lang.String govAgencyId, java.lang.String govAgencyName,
 		java.lang.String bankTransfer, java.lang.String keypay,
 		long ebPartnerShipId,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return _paymentConfigLocalService.addPaymentConfig(govAgentId,
-			govAgentName, bankTransfer, keypay, ebPartnerShipId, serviceContext);
+		return _paymentConfigLocalService.addPaymentConfig(govAgencyId,
+			govAgencyName, bankTransfer, keypay, ebPartnerShipId, serviceContext);
 	}
 
 	@Override
 	public org.oep.core.dossiermgt.model.PaymentConfig updatePaymentConfig(
-		long id, java.lang.String govAgentId, java.lang.String govAgentName,
+		long id, java.lang.String govAgencyId, java.lang.String govAgencyName,
 		java.lang.String bankTransfer, java.lang.String keypay,
 		long ebPartnerShipId,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return _paymentConfigLocalService.updatePaymentConfig(id, govAgentId,
-			govAgentName, bankTransfer, keypay, ebPartnerShipId, serviceContext);
+		return _paymentConfigLocalService.updatePaymentConfig(id, govAgencyId,
+			govAgencyName, bankTransfer, keypay, ebPartnerShipId, serviceContext);
 	}
 
 	@Override

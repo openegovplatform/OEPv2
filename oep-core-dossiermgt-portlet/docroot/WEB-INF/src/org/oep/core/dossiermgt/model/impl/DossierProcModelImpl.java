@@ -110,13 +110,14 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.column.bitmask.enabled.org.oep.core.dossiermgt.model.DossierProc"),
 			true);
-	public static long ADMINISTRATIONNO_COLUMN_BITMASK = 1L;
-	public static long COMPANYID_COLUMN_BITMASK = 2L;
-	public static long DOMAINNO_COLUMN_BITMASK = 4L;
-	public static long DOSSIERPROCNO_COLUMN_BITMASK = 8L;
-	public static long GROUPID_COLUMN_BITMASK = 16L;
-	public static long USERID_COLUMN_BITMASK = 32L;
-	public static long DOSSIERPROCID_COLUMN_BITMASK = 64L;
+	public static long ACTIVE_COLUMN_BITMASK = 1L;
+	public static long ADMINISTRATIONNO_COLUMN_BITMASK = 2L;
+	public static long COMPANYID_COLUMN_BITMASK = 4L;
+	public static long DOMAINNO_COLUMN_BITMASK = 8L;
+	public static long DOSSIERPROCNO_COLUMN_BITMASK = 16L;
+	public static long GROUPID_COLUMN_BITMASK = 32L;
+	public static long USERID_COLUMN_BITMASK = 64L;
+	public static long DOSSIERPROCID_COLUMN_BITMASK = 128L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -881,7 +882,19 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 
 	@Override
 	public void setActive(int active) {
+		_columnBitmask |= ACTIVE_COLUMN_BITMASK;
+
+		if (!_setOriginalActive) {
+			_setOriginalActive = true;
+
+			_originalActive = _active;
+		}
+
 		_active = active;
+	}
+
+	public int getOriginalActive() {
+		return _originalActive;
 	}
 
 	public long getColumnBitmask() {
@@ -1011,6 +1024,10 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 		dossierProcModelImpl._originalAdministrationNo = dossierProcModelImpl._administrationNo;
 
 		dossierProcModelImpl._originalDomainNo = dossierProcModelImpl._domainNo;
+
+		dossierProcModelImpl._originalActive = dossierProcModelImpl._active;
+
+		dossierProcModelImpl._setOriginalActive = false;
 
 		dossierProcModelImpl._columnBitmask = 0;
 	}
@@ -1441,6 +1458,8 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 	private Date _effectDate;
 	private Date _expireDate;
 	private int _active;
+	private int _originalActive;
+	private boolean _setOriginalActive;
 	private long _columnBitmask;
 	private DossierProc _escapedModel;
 }

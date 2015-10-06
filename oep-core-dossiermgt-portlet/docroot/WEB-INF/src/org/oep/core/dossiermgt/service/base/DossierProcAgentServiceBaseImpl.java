@@ -26,6 +26,7 @@ import org.oep.core.dossiermgt.model.DossierProcAgent;
 import org.oep.core.dossiermgt.service.DossierProcAgentService;
 import org.oep.core.dossiermgt.service.persistence.DocFilePersistence;
 import org.oep.core.dossiermgt.service.persistence.DocFileVersionPersistence;
+import org.oep.core.dossiermgt.service.persistence.DocTemplateFinder;
 import org.oep.core.dossiermgt.service.persistence.DocTemplatePersistence;
 import org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePersistence;
 import org.oep.core.dossiermgt.service.persistence.DossierDocPersistence;
@@ -33,12 +34,14 @@ import org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePersistence
 import org.oep.core.dossiermgt.service.persistence.DossierFolderPersistence;
 import org.oep.core.dossiermgt.service.persistence.DossierPersistence;
 import org.oep.core.dossiermgt.service.persistence.DossierProcAgentPersistence;
+import org.oep.core.dossiermgt.service.persistence.DossierProcFinder;
 import org.oep.core.dossiermgt.service.persistence.DossierProcPersistence;
 import org.oep.core.dossiermgt.service.persistence.EbMessagePersistence;
 import org.oep.core.dossiermgt.service.persistence.EbPartnerShipPersistence;
 import org.oep.core.dossiermgt.service.persistence.PaymentConfigPersistence;
 import org.oep.core.dossiermgt.service.persistence.PaymentFilePersistence;
 import org.oep.core.dossiermgt.service.persistence.PaymentRequestPersistence;
+import org.oep.core.dossiermgt.service.persistence.ProfileDataPersistence;
 
 import javax.sql.DataSource;
 
@@ -230,6 +233,24 @@ public abstract class DossierProcAgentServiceBaseImpl extends BaseServiceImpl
 	public void setDocTemplatePersistence(
 		DocTemplatePersistence docTemplatePersistence) {
 		this.docTemplatePersistence = docTemplatePersistence;
+	}
+
+	/**
+	 * Returns the doc template finder.
+	 *
+	 * @return the doc template finder
+	 */
+	public DocTemplateFinder getDocTemplateFinder() {
+		return docTemplateFinder;
+	}
+
+	/**
+	 * Sets the doc template finder.
+	 *
+	 * @param docTemplateFinder the doc template finder
+	 */
+	public void setDocTemplateFinder(DocTemplateFinder docTemplateFinder) {
+		this.docTemplateFinder = docTemplateFinder;
 	}
 
 	/**
@@ -571,6 +592,24 @@ public abstract class DossierProcAgentServiceBaseImpl extends BaseServiceImpl
 	public void setDossierProcPersistence(
 		DossierProcPersistence dossierProcPersistence) {
 		this.dossierProcPersistence = dossierProcPersistence;
+	}
+
+	/**
+	 * Returns the dossier proc finder.
+	 *
+	 * @return the dossier proc finder
+	 */
+	public DossierProcFinder getDossierProcFinder() {
+		return dossierProcFinder;
+	}
+
+	/**
+	 * Sets the dossier proc finder.
+	 *
+	 * @param dossierProcFinder the dossier proc finder
+	 */
+	public void setDossierProcFinder(DossierProcFinder dossierProcFinder) {
+		this.dossierProcFinder = dossierProcFinder;
 	}
 
 	/**
@@ -916,6 +955,63 @@ public abstract class DossierProcAgentServiceBaseImpl extends BaseServiceImpl
 	}
 
 	/**
+	 * Returns the profile data local service.
+	 *
+	 * @return the profile data local service
+	 */
+	public org.oep.core.dossiermgt.service.ProfileDataLocalService getProfileDataLocalService() {
+		return profileDataLocalService;
+	}
+
+	/**
+	 * Sets the profile data local service.
+	 *
+	 * @param profileDataLocalService the profile data local service
+	 */
+	public void setProfileDataLocalService(
+		org.oep.core.dossiermgt.service.ProfileDataLocalService profileDataLocalService) {
+		this.profileDataLocalService = profileDataLocalService;
+	}
+
+	/**
+	 * Returns the profile data remote service.
+	 *
+	 * @return the profile data remote service
+	 */
+	public org.oep.core.dossiermgt.service.ProfileDataService getProfileDataService() {
+		return profileDataService;
+	}
+
+	/**
+	 * Sets the profile data remote service.
+	 *
+	 * @param profileDataService the profile data remote service
+	 */
+	public void setProfileDataService(
+		org.oep.core.dossiermgt.service.ProfileDataService profileDataService) {
+		this.profileDataService = profileDataService;
+	}
+
+	/**
+	 * Returns the profile data persistence.
+	 *
+	 * @return the profile data persistence
+	 */
+	public ProfileDataPersistence getProfileDataPersistence() {
+		return profileDataPersistence;
+	}
+
+	/**
+	 * Sets the profile data persistence.
+	 *
+	 * @param profileDataPersistence the profile data persistence
+	 */
+	public void setProfileDataPersistence(
+		ProfileDataPersistence profileDataPersistence) {
+		this.profileDataPersistence = profileDataPersistence;
+	}
+
+	/**
 	 * Returns the counter local service.
 	 *
 	 * @return the counter local service
@@ -1104,6 +1200,8 @@ public abstract class DossierProcAgentServiceBaseImpl extends BaseServiceImpl
 	protected org.oep.core.dossiermgt.service.DocTemplateService docTemplateService;
 	@BeanReference(type = DocTemplatePersistence.class)
 	protected DocTemplatePersistence docTemplatePersistence;
+	@BeanReference(type = DocTemplateFinder.class)
+	protected DocTemplateFinder docTemplateFinder;
 	@BeanReference(type = org.oep.core.dossiermgt.service.DossierLocalService.class)
 	protected org.oep.core.dossiermgt.service.DossierLocalService dossierLocalService;
 	@BeanReference(type = org.oep.core.dossiermgt.service.DossierService.class)
@@ -1140,6 +1238,8 @@ public abstract class DossierProcAgentServiceBaseImpl extends BaseServiceImpl
 	protected org.oep.core.dossiermgt.service.DossierProcService dossierProcService;
 	@BeanReference(type = DossierProcPersistence.class)
 	protected DossierProcPersistence dossierProcPersistence;
+	@BeanReference(type = DossierProcFinder.class)
+	protected DossierProcFinder dossierProcFinder;
 	@BeanReference(type = org.oep.core.dossiermgt.service.DossierProcAgentLocalService.class)
 	protected org.oep.core.dossiermgt.service.DossierProcAgentLocalService dossierProcAgentLocalService;
 	@BeanReference(type = org.oep.core.dossiermgt.service.DossierProcAgentService.class)
@@ -1176,6 +1276,12 @@ public abstract class DossierProcAgentServiceBaseImpl extends BaseServiceImpl
 	protected org.oep.core.dossiermgt.service.PaymentRequestService paymentRequestService;
 	@BeanReference(type = PaymentRequestPersistence.class)
 	protected PaymentRequestPersistence paymentRequestPersistence;
+	@BeanReference(type = org.oep.core.dossiermgt.service.ProfileDataLocalService.class)
+	protected org.oep.core.dossiermgt.service.ProfileDataLocalService profileDataLocalService;
+	@BeanReference(type = org.oep.core.dossiermgt.service.ProfileDataService.class)
+	protected org.oep.core.dossiermgt.service.ProfileDataService profileDataService;
+	@BeanReference(type = ProfileDataPersistence.class)
+	protected ProfileDataPersistence profileDataPersistence;
 	@BeanReference(type = com.liferay.counter.service.CounterLocalService.class)
 	protected com.liferay.counter.service.CounterLocalService counterLocalService;
 	@BeanReference(type = com.liferay.portal.service.ResourceLocalService.class)

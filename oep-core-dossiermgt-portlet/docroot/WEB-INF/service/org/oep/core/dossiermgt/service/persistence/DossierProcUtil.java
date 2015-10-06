@@ -1894,6 +1894,585 @@ public class DossierProcUtil {
 	}
 
 	/**
+	* Returns the dossier proc where dossierProcNo = &#63; or throws a {@link org.oep.core.dossiermgt.NoSuchDossierProcException} if it could not be found.
+	*
+	* @param dossierProcNo the dossier proc no
+	* @return the matching dossier proc
+	* @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc findByDPN(
+		java.lang.String dossierProcNo)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.core.dossiermgt.NoSuchDossierProcException {
+		return getPersistence().findByDPN(dossierProcNo);
+	}
+
+	/**
+	* Returns the dossier proc where dossierProcNo = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	*
+	* @param dossierProcNo the dossier proc no
+	* @return the matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc fetchByDPN(
+		java.lang.String dossierProcNo)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByDPN(dossierProcNo);
+	}
+
+	/**
+	* Returns the dossier proc where dossierProcNo = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	*
+	* @param dossierProcNo the dossier proc no
+	* @param retrieveFromCache whether to use the finder cache
+	* @return the matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc fetchByDPN(
+		java.lang.String dossierProcNo, boolean retrieveFromCache)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByDPN(dossierProcNo, retrieveFromCache);
+	}
+
+	/**
+	* Removes the dossier proc where dossierProcNo = &#63; from the database.
+	*
+	* @param dossierProcNo the dossier proc no
+	* @return the dossier proc that was removed
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc removeByDPN(
+		java.lang.String dossierProcNo)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.core.dossiermgt.NoSuchDossierProcException {
+		return getPersistence().removeByDPN(dossierProcNo);
+	}
+
+	/**
+	* Returns the number of dossier procs where dossierProcNo = &#63;.
+	*
+	* @param dossierProcNo the dossier proc no
+	* @return the number of matching dossier procs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByDPN(java.lang.String dossierProcNo)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByDPN(dossierProcNo);
+	}
+
+	/**
+	* Returns all the dossier procs where groupId = &#63;.
+	*
+	* @param groupId the group ID
+	* @return the matching dossier procs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByGroupId(
+		long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByGroupId(groupId);
+	}
+
+	/**
+	* Returns a range of all the dossier procs where groupId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DossierProcModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param groupId the group ID
+	* @param start the lower bound of the range of dossier procs
+	* @param end the upper bound of the range of dossier procs (not inclusive)
+	* @return the range of matching dossier procs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByGroupId(
+		long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByGroupId(groupId, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the dossier procs where groupId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DossierProcModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param groupId the group ID
+	* @param start the lower bound of the range of dossier procs
+	* @param end the upper bound of the range of dossier procs (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching dossier procs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByGroupId(
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByGroupId(groupId, start, end, orderByComparator);
+	}
+
+	/**
+	* Returns the first dossier proc in the ordered set where groupId = &#63;.
+	*
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching dossier proc
+	* @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc findByGroupId_First(
+		long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.core.dossiermgt.NoSuchDossierProcException {
+		return getPersistence().findByGroupId_First(groupId, orderByComparator);
+	}
+
+	/**
+	* Returns the first dossier proc in the ordered set where groupId = &#63;.
+	*
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc fetchByGroupId_First(
+		long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByGroupId_First(groupId, orderByComparator);
+	}
+
+	/**
+	* Returns the last dossier proc in the ordered set where groupId = &#63;.
+	*
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching dossier proc
+	* @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc findByGroupId_Last(
+		long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.core.dossiermgt.NoSuchDossierProcException {
+		return getPersistence().findByGroupId_Last(groupId, orderByComparator);
+	}
+
+	/**
+	* Returns the last dossier proc in the ordered set where groupId = &#63;.
+	*
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc fetchByGroupId_Last(
+		long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByGroupId_Last(groupId, orderByComparator);
+	}
+
+	/**
+	* Returns the dossier procs before and after the current dossier proc in the ordered set where groupId = &#63;.
+	*
+	* @param dossierProcId the primary key of the current dossier proc
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next dossier proc
+	* @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a dossier proc with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc[] findByGroupId_PrevAndNext(
+		long dossierProcId, long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.core.dossiermgt.NoSuchDossierProcException {
+		return getPersistence()
+				   .findByGroupId_PrevAndNext(dossierProcId, groupId,
+			orderByComparator);
+	}
+
+	/**
+	* Removes all the dossier procs where groupId = &#63; from the database.
+	*
+	* @param groupId the group ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByGroupId(long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().removeByGroupId(groupId);
+	}
+
+	/**
+	* Returns the number of dossier procs where groupId = &#63;.
+	*
+	* @param groupId the group ID
+	* @return the number of matching dossier procs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByGroupId(long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByGroupId(groupId);
+	}
+
+	/**
+	* Returns all the dossier procs where companyId = &#63; and active = &#63;.
+	*
+	* @param companyId the company ID
+	* @param active the active
+	* @return the matching dossier procs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByC_AC(
+		long companyId, int active)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByC_AC(companyId, active);
+	}
+
+	/**
+	* Returns a range of all the dossier procs where companyId = &#63; and active = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DossierProcModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param active the active
+	* @param start the lower bound of the range of dossier procs
+	* @param end the upper bound of the range of dossier procs (not inclusive)
+	* @return the range of matching dossier procs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByC_AC(
+		long companyId, int active, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByC_AC(companyId, active, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the dossier procs where companyId = &#63; and active = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DossierProcModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param active the active
+	* @param start the lower bound of the range of dossier procs
+	* @param end the upper bound of the range of dossier procs (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching dossier procs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByC_AC(
+		long companyId, int active, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByC_AC(companyId, active, start, end, orderByComparator);
+	}
+
+	/**
+	* Returns the first dossier proc in the ordered set where companyId = &#63; and active = &#63;.
+	*
+	* @param companyId the company ID
+	* @param active the active
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching dossier proc
+	* @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc findByC_AC_First(
+		long companyId, int active,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.core.dossiermgt.NoSuchDossierProcException {
+		return getPersistence()
+				   .findByC_AC_First(companyId, active, orderByComparator);
+	}
+
+	/**
+	* Returns the first dossier proc in the ordered set where companyId = &#63; and active = &#63;.
+	*
+	* @param companyId the company ID
+	* @param active the active
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc fetchByC_AC_First(
+		long companyId, int active,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByC_AC_First(companyId, active, orderByComparator);
+	}
+
+	/**
+	* Returns the last dossier proc in the ordered set where companyId = &#63; and active = &#63;.
+	*
+	* @param companyId the company ID
+	* @param active the active
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching dossier proc
+	* @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc findByC_AC_Last(
+		long companyId, int active,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.core.dossiermgt.NoSuchDossierProcException {
+		return getPersistence()
+				   .findByC_AC_Last(companyId, active, orderByComparator);
+	}
+
+	/**
+	* Returns the last dossier proc in the ordered set where companyId = &#63; and active = &#63;.
+	*
+	* @param companyId the company ID
+	* @param active the active
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc fetchByC_AC_Last(
+		long companyId, int active,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByC_AC_Last(companyId, active, orderByComparator);
+	}
+
+	/**
+	* Returns the dossier procs before and after the current dossier proc in the ordered set where companyId = &#63; and active = &#63;.
+	*
+	* @param dossierProcId the primary key of the current dossier proc
+	* @param companyId the company ID
+	* @param active the active
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next dossier proc
+	* @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a dossier proc with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc[] findByC_AC_PrevAndNext(
+		long dossierProcId, long companyId, int active,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.core.dossiermgt.NoSuchDossierProcException {
+		return getPersistence()
+				   .findByC_AC_PrevAndNext(dossierProcId, companyId, active,
+			orderByComparator);
+	}
+
+	/**
+	* Removes all the dossier procs where companyId = &#63; and active = &#63; from the database.
+	*
+	* @param companyId the company ID
+	* @param active the active
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByC_AC(long companyId, int active)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().removeByC_AC(companyId, active);
+	}
+
+	/**
+	* Returns the number of dossier procs where companyId = &#63; and active = &#63;.
+	*
+	* @param companyId the company ID
+	* @param active the active
+	* @return the number of matching dossier procs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByC_AC(long companyId, int active)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByC_AC(companyId, active);
+	}
+
+	/**
+	* Returns all the dossier procs where groupId = &#63; and active = &#63;.
+	*
+	* @param groupId the group ID
+	* @param active the active
+	* @return the matching dossier procs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByG_AC(
+		long groupId, int active)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByG_AC(groupId, active);
+	}
+
+	/**
+	* Returns a range of all the dossier procs where groupId = &#63; and active = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DossierProcModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param groupId the group ID
+	* @param active the active
+	* @param start the lower bound of the range of dossier procs
+	* @param end the upper bound of the range of dossier procs (not inclusive)
+	* @return the range of matching dossier procs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByG_AC(
+		long groupId, int active, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByG_AC(groupId, active, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the dossier procs where groupId = &#63; and active = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DossierProcModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param groupId the group ID
+	* @param active the active
+	* @param start the lower bound of the range of dossier procs
+	* @param end the upper bound of the range of dossier procs (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching dossier procs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByG_AC(
+		long groupId, int active, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByG_AC(groupId, active, start, end, orderByComparator);
+	}
+
+	/**
+	* Returns the first dossier proc in the ordered set where groupId = &#63; and active = &#63;.
+	*
+	* @param groupId the group ID
+	* @param active the active
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching dossier proc
+	* @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc findByG_AC_First(
+		long groupId, int active,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.core.dossiermgt.NoSuchDossierProcException {
+		return getPersistence()
+				   .findByG_AC_First(groupId, active, orderByComparator);
+	}
+
+	/**
+	* Returns the first dossier proc in the ordered set where groupId = &#63; and active = &#63;.
+	*
+	* @param groupId the group ID
+	* @param active the active
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc fetchByG_AC_First(
+		long groupId, int active,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByG_AC_First(groupId, active, orderByComparator);
+	}
+
+	/**
+	* Returns the last dossier proc in the ordered set where groupId = &#63; and active = &#63;.
+	*
+	* @param groupId the group ID
+	* @param active the active
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching dossier proc
+	* @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc findByG_AC_Last(
+		long groupId, int active,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.core.dossiermgt.NoSuchDossierProcException {
+		return getPersistence()
+				   .findByG_AC_Last(groupId, active, orderByComparator);
+	}
+
+	/**
+	* Returns the last dossier proc in the ordered set where groupId = &#63; and active = &#63;.
+	*
+	* @param groupId the group ID
+	* @param active the active
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc fetchByG_AC_Last(
+		long groupId, int active,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByG_AC_Last(groupId, active, orderByComparator);
+	}
+
+	/**
+	* Returns the dossier procs before and after the current dossier proc in the ordered set where groupId = &#63; and active = &#63;.
+	*
+	* @param dossierProcId the primary key of the current dossier proc
+	* @param groupId the group ID
+	* @param active the active
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next dossier proc
+	* @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a dossier proc with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierProc[] findByG_AC_PrevAndNext(
+		long dossierProcId, long groupId, int active,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.core.dossiermgt.NoSuchDossierProcException {
+		return getPersistence()
+				   .findByG_AC_PrevAndNext(dossierProcId, groupId, active,
+			orderByComparator);
+	}
+
+	/**
+	* Removes all the dossier procs where groupId = &#63; and active = &#63; from the database.
+	*
+	* @param groupId the group ID
+	* @param active the active
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByG_AC(long groupId, int active)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().removeByG_AC(groupId, active);
+	}
+
+	/**
+	* Returns the number of dossier procs where groupId = &#63; and active = &#63;.
+	*
+	* @param groupId the group ID
+	* @param active the active
+	* @return the number of matching dossier procs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByG_AC(long groupId, int active)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByG_AC(groupId, active);
+	}
+
+	/**
 	* Caches the dossier proc in the entity cache if it is enabled.
 	*
 	* @param dossierProc the dossier proc

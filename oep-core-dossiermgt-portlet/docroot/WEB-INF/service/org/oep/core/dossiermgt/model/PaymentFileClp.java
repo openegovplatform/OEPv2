@@ -84,8 +84,8 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("organizationId", getOrganizationId());
-		attributes.put("govAgentId", getGovAgentId());
-		attributes.put("govAgentName", getGovAgentName());
+		attributes.put("govAgencyId", getGovAgencyId());
+		attributes.put("govAgencyName", getGovAgencyName());
 		attributes.put("subjectId", getSubjectId());
 		attributes.put("subjectType", getSubjectType());
 		attributes.put("subjectName", getSubjectName());
@@ -154,16 +154,16 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 			setOrganizationId(organizationId);
 		}
 
-		String govAgentId = (String)attributes.get("govAgentId");
+		String govAgencyId = (String)attributes.get("govAgencyId");
 
-		if (govAgentId != null) {
-			setGovAgentId(govAgentId);
+		if (govAgencyId != null) {
+			setGovAgencyId(govAgencyId);
 		}
 
-		String govAgentName = (String)attributes.get("govAgentName");
+		String govAgencyName = (String)attributes.get("govAgencyName");
 
-		if (govAgentName != null) {
-			setGovAgentName(govAgentName);
+		if (govAgencyName != null) {
+			setGovAgencyName(govAgencyName);
 		}
 
 		String subjectId = (String)attributes.get("subjectId");
@@ -446,21 +446,21 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 	}
 
 	@Override
-	public String getGovAgentId() {
-		return _govAgentId;
+	public String getGovAgencyId() {
+		return _govAgencyId;
 	}
 
 	@Override
-	public void setGovAgentId(String govAgentId) {
-		_govAgentId = govAgentId;
+	public void setGovAgencyId(String govAgencyId) {
+		_govAgencyId = govAgencyId;
 
 		if (_paymentFileRemoteModel != null) {
 			try {
 				Class<?> clazz = _paymentFileRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setGovAgentId", String.class);
+				Method method = clazz.getMethod("setGovAgencyId", String.class);
 
-				method.invoke(_paymentFileRemoteModel, govAgentId);
+				method.invoke(_paymentFileRemoteModel, govAgencyId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -469,21 +469,21 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 	}
 
 	@Override
-	public String getGovAgentName() {
-		return _govAgentName;
+	public String getGovAgencyName() {
+		return _govAgencyName;
 	}
 
 	@Override
-	public void setGovAgentName(String govAgentName) {
-		_govAgentName = govAgentName;
+	public void setGovAgencyName(String govAgencyName) {
+		_govAgencyName = govAgencyName;
 
 		if (_paymentFileRemoteModel != null) {
 			try {
 				Class<?> clazz = _paymentFileRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setGovAgentName", String.class);
+				Method method = clazz.getMethod("setGovAgencyName", String.class);
 
-				method.invoke(_paymentFileRemoteModel, govAgentName);
+				method.invoke(_paymentFileRemoteModel, govAgencyName);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -910,8 +910,8 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 		clone.setCreateDate(getCreateDate());
 		clone.setModifiedDate(getModifiedDate());
 		clone.setOrganizationId(getOrganizationId());
-		clone.setGovAgentId(getGovAgentId());
-		clone.setGovAgentName(getGovAgentName());
+		clone.setGovAgencyId(getGovAgencyId());
+		clone.setGovAgencyName(getGovAgencyName());
 		clone.setSubjectId(getSubjectId());
 		clone.setSubjectType(getSubjectType());
 		clone.setSubjectName(getSubjectName());
@@ -996,10 +996,10 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 		sb.append(getModifiedDate());
 		sb.append(", organizationId=");
 		sb.append(getOrganizationId());
-		sb.append(", govAgentId=");
-		sb.append(getGovAgentId());
-		sb.append(", govAgentName=");
-		sb.append(getGovAgentName());
+		sb.append(", govAgencyId=");
+		sb.append(getGovAgencyId());
+		sb.append(", govAgencyName=");
+		sb.append(getGovAgencyName());
 		sb.append(", subjectId=");
 		sb.append(getSubjectId());
 		sb.append(", subjectType=");
@@ -1074,12 +1074,12 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 		sb.append(getOrganizationId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentId</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentId());
+			"<column><column-name>govAgencyId</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentName</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentName());
+			"<column><column-name>govAgencyName</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyName());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>subjectId</column-name><column-value><![CDATA[");
@@ -1152,8 +1152,8 @@ public class PaymentFileClp extends BaseModelImpl<PaymentFile>
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _organizationId;
-	private String _govAgentId;
-	private String _govAgentName;
+	private String _govAgencyId;
+	private String _govAgencyName;
 	private String _subjectId;
 	private String _subjectType;
 	private String _subjectName;

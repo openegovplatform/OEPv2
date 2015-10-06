@@ -85,6 +85,7 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 		attributes.put("title", getTitle());
 		attributes.put("sequenceNo", getSequenceNo());
 		attributes.put("stepType", getStepType());
+		attributes.put("doForm", getDoForm());
 
 		return attributes;
 	}
@@ -149,6 +150,12 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 
 		if (stepType != null) {
 			setStepType(stepType);
+		}
+
+		String doForm = (String)attributes.get("doForm");
+
+		if (doForm != null) {
+			setDoForm(doForm);
 		}
 	}
 
@@ -393,6 +400,29 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 		}
 	}
 
+	@Override
+	public String getDoForm() {
+		return _doForm;
+	}
+
+	@Override
+	public void setDoForm(String doForm) {
+		_doForm = doForm;
+
+		if (_dossierStepRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierStepRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setDoForm", String.class);
+
+				method.invoke(_dossierStepRemoteModel, doForm);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
 	public BaseModel<?> getDossierStepRemoteModel() {
 		return _dossierStepRemoteModel;
 	}
@@ -472,6 +502,7 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 		clone.setTitle(getTitle());
 		clone.setSequenceNo(getSequenceNo());
 		clone.setStepType(getStepType());
+		clone.setDoForm(getDoForm());
 
 		return clone;
 	}
@@ -524,7 +555,7 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{dossierStepId=");
 		sb.append(getDossierStepId());
@@ -546,6 +577,8 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 		sb.append(getSequenceNo());
 		sb.append(", stepType=");
 		sb.append(getStepType());
+		sb.append(", doForm=");
+		sb.append(getDoForm());
 		sb.append("}");
 
 		return sb.toString();
@@ -553,7 +586,7 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(34);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.DossierStep");
@@ -599,6 +632,10 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 			"<column><column-name>stepType</column-name><column-value><![CDATA[");
 		sb.append(getStepType());
 		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>doForm</column-name><column-value><![CDATA[");
+		sb.append(getDoForm());
+		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -616,6 +653,7 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 	private String _title;
 	private int _sequenceNo;
 	private int _stepType;
+	private String _doForm;
 	private BaseModel<?> _dossierStepRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.processmgt.service.ClpSerializer.class;
 }

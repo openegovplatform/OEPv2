@@ -11,12 +11,13 @@
 	<import class="org.oep.core.dossiermgt.model.DossierFolder" />
 	<import class="org.oep.core.dossiermgt.model.DossierFolder2Role" />
 	<import class="org.oep.core.dossiermgt.model.DossierProc" />
-	<import class="org.oep.core.dossiermgt.model.DossierProcAgent" />
+	<import class="org.oep.core.dossiermgt.model.DossierProcAgency" />
 	<import class="org.oep.core.dossiermgt.model.EbMessage" />
 	<import class="org.oep.core.dossiermgt.model.EbPartnerShip" />
 	<import class="org.oep.core.dossiermgt.model.PaymentConfig" />
 	<import class="org.oep.core.dossiermgt.model.PaymentFile" />
 	<import class="org.oep.core.dossiermgt.model.PaymentRequest" />
+	<import class="org.oep.core.dossiermgt.model.ProfileData" />
 	<class name="org.oep.core.dossiermgt.model.impl.DocFileImpl" table="oep_dossiermgt_docfile">
 		<cache usage="read-write" />
 		<id name="docFileId" type="long">
@@ -78,8 +79,8 @@
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
 		<property name="organizationId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="dossierProcId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="govAgentId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="govAgentName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="govAgencyId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="govAgencyName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="subjectId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="subjectType" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="subjectName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
@@ -96,15 +97,20 @@
 		<property name="note" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="resumeDescription" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="receptionNo" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="submissionDate" type="org.hibernate.type.TimestampType" />
-		<property name="receptionDate" type="org.hibernate.type.TimestampType" />
-		<property name="resubmissionDate" type="org.hibernate.type.TimestampType" />
-		<property name="appointmentDate" type="org.hibernate.type.TimestampType" />
-		<property name="releaseDate" type="org.hibernate.type.TimestampType" />
-		<property name="completionDate" type="org.hibernate.type.TimestampType" />
+		<property name="submitDate" type="org.hibernate.type.TimestampType" />
+		<property name="receiveDate" type="org.hibernate.type.TimestampType" />
+		<property name="renewDate" type="org.hibernate.type.TimestampType" />
+		<property name="estimateDate" type="org.hibernate.type.TimestampType" />
+		<property name="finishDate" type="org.hibernate.type.TimestampType" />
+		<property name="returnDate" type="org.hibernate.type.TimestampType" />
 		<property name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="statusDate" type="org.hibernate.type.TimestampType" />
 		<property name="statusDescription" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="feedbackNote" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="daysDelay" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="closeDate" type="org.hibernate.type.TimestampType" />
+		<property name="errorStatus" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="errorCode" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="dirty" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
 	<class name="org.oep.core.dossiermgt.model.impl.DossierDocImpl" table="oep_dossiermgt_dossierdoc">
@@ -190,17 +196,17 @@
 		<property name="expireDate" type="org.hibernate.type.TimestampType" />
 		<property name="active" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="active_" />
 	</class>
-	<class name="org.oep.core.dossiermgt.model.impl.DossierProcAgentImpl" table="oep_dossiermgt_dossierprocagent">
+	<class name="org.oep.core.dossiermgt.model.impl.DossierProcAgencyImpl" table="oep_dossiermgt_dossierprocagent">
 		<cache usage="read-write" />
-		<id name="dossierProcAgentId" type="long">
+		<id name="dossierProcAgencyId" type="long">
 			<generator class="assigned" />
 		</id>
 		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="createDate" type="org.hibernate.type.TimestampType" />
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
 		<property name="dossierProcId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="govAgentId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="govAgentName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="govAgencyId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="govAgencyName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="ebPartnerShipId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 	</class>
 	<class name="org.oep.core.dossiermgt.model.impl.EbMessageImpl" table="oep_dossiermgt_ebmessage">
@@ -249,8 +255,8 @@
 		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="createDate" type="org.hibernate.type.TimestampType" />
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
-		<property name="govAgentId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="govAgentName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="govAgencyId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="govAgencyName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="bankTransfer" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="keypay" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="ebPartnerShipId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
@@ -267,8 +273,8 @@
 		<property name="createDate" type="org.hibernate.type.TimestampType" />
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
 		<property name="organizationId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="govAgentId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="govAgentName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="govAgencyId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="govAgencyName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="subjectId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="subjectType" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="subjectName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
@@ -297,8 +303,8 @@
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
 		<property name="organizationId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="dossierId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="govAgentId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="govAgentName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="govAgencyId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="govAgencyName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="subjectId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="subjectType" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="subjectName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
@@ -307,5 +313,18 @@
 		<property name="paymentFileId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="confirmOK" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="ebMessageId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="org.oep.core.dossiermgt.model.impl.ProfileDataImpl" table="oep_dossiermgt_profiledata">
+		<cache usage="read-write" />
+		<id name="profileDataId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="fieldName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="fieldValue" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
 </hibernate-mapping>

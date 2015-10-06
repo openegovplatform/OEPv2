@@ -68,13 +68,13 @@ public class PaymentConfigModelImpl extends BaseModelImpl<PaymentConfig>
 			{ "companyId", Types.BIGINT },
 			{ "createDate", Types.TIMESTAMP },
 			{ "modifiedDate", Types.TIMESTAMP },
-			{ "govAgentId", Types.VARCHAR },
-			{ "govAgentName", Types.VARCHAR },
+			{ "govAgencyId", Types.VARCHAR },
+			{ "govAgencyName", Types.VARCHAR },
 			{ "bankTransfer", Types.VARCHAR },
 			{ "keypay", Types.VARCHAR },
 			{ "ebPartnerShipId", Types.BIGINT }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_paymentconfig (paymentConfigId LONG not null primary key,companyId LONG,createDate DATE null,modifiedDate DATE null,govAgentId VARCHAR(30) null,govAgentName VARCHAR(200) null,bankTransfer VARCHAR(500) null,keypay VARCHAR(255) null,ebPartnerShipId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_paymentconfig (paymentConfigId LONG not null primary key,companyId LONG,createDate DATE null,modifiedDate DATE null,govAgencyId VARCHAR(30) null,govAgencyName VARCHAR(200) null,bankTransfer VARCHAR(500) null,keypay VARCHAR(255) null,ebPartnerShipId LONG)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_paymentconfig";
 	public static final String ORDER_BY_JPQL = " ORDER BY paymentConfig.paymentConfigId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_paymentconfig.paymentConfigId ASC";
@@ -106,8 +106,8 @@ public class PaymentConfigModelImpl extends BaseModelImpl<PaymentConfig>
 		model.setCompanyId(soapModel.getCompanyId());
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setModifiedDate(soapModel.getModifiedDate());
-		model.setGovAgentId(soapModel.getGovAgentId());
-		model.setGovAgentName(soapModel.getGovAgentName());
+		model.setGovAgencyId(soapModel.getGovAgencyId());
+		model.setGovAgencyName(soapModel.getGovAgencyName());
 		model.setBankTransfer(soapModel.getBankTransfer());
 		model.setKeypay(soapModel.getKeypay());
 		model.setEbPartnerShipId(soapModel.getEbPartnerShipId());
@@ -179,8 +179,8 @@ public class PaymentConfigModelImpl extends BaseModelImpl<PaymentConfig>
 		attributes.put("companyId", getCompanyId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("govAgentId", getGovAgentId());
-		attributes.put("govAgentName", getGovAgentName());
+		attributes.put("govAgencyId", getGovAgencyId());
+		attributes.put("govAgencyName", getGovAgencyName());
 		attributes.put("bankTransfer", getBankTransfer());
 		attributes.put("keypay", getKeypay());
 		attributes.put("ebPartnerShipId", getEbPartnerShipId());
@@ -214,16 +214,16 @@ public class PaymentConfigModelImpl extends BaseModelImpl<PaymentConfig>
 			setModifiedDate(modifiedDate);
 		}
 
-		String govAgentId = (String)attributes.get("govAgentId");
+		String govAgencyId = (String)attributes.get("govAgencyId");
 
-		if (govAgentId != null) {
-			setGovAgentId(govAgentId);
+		if (govAgencyId != null) {
+			setGovAgencyId(govAgencyId);
 		}
 
-		String govAgentName = (String)attributes.get("govAgentName");
+		String govAgencyName = (String)attributes.get("govAgencyName");
 
-		if (govAgentName != null) {
-			setGovAgentName(govAgentName);
+		if (govAgencyName != null) {
+			setGovAgencyName(govAgencyName);
 		}
 
 		String bankTransfer = (String)attributes.get("bankTransfer");
@@ -291,34 +291,34 @@ public class PaymentConfigModelImpl extends BaseModelImpl<PaymentConfig>
 
 	@JSON
 	@Override
-	public String getGovAgentId() {
-		if (_govAgentId == null) {
+	public String getGovAgencyId() {
+		if (_govAgencyId == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _govAgentId;
+			return _govAgencyId;
 		}
 	}
 
 	@Override
-	public void setGovAgentId(String govAgentId) {
-		_govAgentId = govAgentId;
+	public void setGovAgencyId(String govAgencyId) {
+		_govAgencyId = govAgencyId;
 	}
 
 	@JSON
 	@Override
-	public String getGovAgentName() {
-		if (_govAgentName == null) {
+	public String getGovAgencyName() {
+		if (_govAgencyName == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _govAgentName;
+			return _govAgencyName;
 		}
 	}
 
 	@Override
-	public void setGovAgentName(String govAgentName) {
-		_govAgentName = govAgentName;
+	public void setGovAgencyName(String govAgencyName) {
+		_govAgencyName = govAgencyName;
 	}
 
 	@JSON
@@ -395,8 +395,8 @@ public class PaymentConfigModelImpl extends BaseModelImpl<PaymentConfig>
 		paymentConfigImpl.setCompanyId(getCompanyId());
 		paymentConfigImpl.setCreateDate(getCreateDate());
 		paymentConfigImpl.setModifiedDate(getModifiedDate());
-		paymentConfigImpl.setGovAgentId(getGovAgentId());
-		paymentConfigImpl.setGovAgentName(getGovAgentName());
+		paymentConfigImpl.setGovAgencyId(getGovAgencyId());
+		paymentConfigImpl.setGovAgencyName(getGovAgencyName());
 		paymentConfigImpl.setBankTransfer(getBankTransfer());
 		paymentConfigImpl.setKeypay(getKeypay());
 		paymentConfigImpl.setEbPartnerShipId(getEbPartnerShipId());
@@ -478,20 +478,20 @@ public class PaymentConfigModelImpl extends BaseModelImpl<PaymentConfig>
 			paymentConfigCacheModel.modifiedDate = Long.MIN_VALUE;
 		}
 
-		paymentConfigCacheModel.govAgentId = getGovAgentId();
+		paymentConfigCacheModel.govAgencyId = getGovAgencyId();
 
-		String govAgentId = paymentConfigCacheModel.govAgentId;
+		String govAgencyId = paymentConfigCacheModel.govAgencyId;
 
-		if ((govAgentId != null) && (govAgentId.length() == 0)) {
-			paymentConfigCacheModel.govAgentId = null;
+		if ((govAgencyId != null) && (govAgencyId.length() == 0)) {
+			paymentConfigCacheModel.govAgencyId = null;
 		}
 
-		paymentConfigCacheModel.govAgentName = getGovAgentName();
+		paymentConfigCacheModel.govAgencyName = getGovAgencyName();
 
-		String govAgentName = paymentConfigCacheModel.govAgentName;
+		String govAgencyName = paymentConfigCacheModel.govAgencyName;
 
-		if ((govAgentName != null) && (govAgentName.length() == 0)) {
-			paymentConfigCacheModel.govAgentName = null;
+		if ((govAgencyName != null) && (govAgencyName.length() == 0)) {
+			paymentConfigCacheModel.govAgencyName = null;
 		}
 
 		paymentConfigCacheModel.bankTransfer = getBankTransfer();
@@ -527,10 +527,10 @@ public class PaymentConfigModelImpl extends BaseModelImpl<PaymentConfig>
 		sb.append(getCreateDate());
 		sb.append(", modifiedDate=");
 		sb.append(getModifiedDate());
-		sb.append(", govAgentId=");
-		sb.append(getGovAgentId());
-		sb.append(", govAgentName=");
-		sb.append(getGovAgentName());
+		sb.append(", govAgencyId=");
+		sb.append(getGovAgencyId());
+		sb.append(", govAgencyName=");
+		sb.append(getGovAgencyName());
 		sb.append(", bankTransfer=");
 		sb.append(getBankTransfer());
 		sb.append(", keypay=");
@@ -567,12 +567,12 @@ public class PaymentConfigModelImpl extends BaseModelImpl<PaymentConfig>
 		sb.append(getModifiedDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentId</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentId());
+			"<column><column-name>govAgencyId</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentName</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentName());
+			"<column><column-name>govAgencyName</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyName());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>bankTransfer</column-name><column-value><![CDATA[");
@@ -600,8 +600,8 @@ public class PaymentConfigModelImpl extends BaseModelImpl<PaymentConfig>
 	private long _companyId;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private String _govAgentId;
-	private String _govAgentName;
+	private String _govAgencyId;
+	private String _govAgencyName;
 	private String _bankTransfer;
 	private String _keypay;
 	private long _ebPartnerShipId;

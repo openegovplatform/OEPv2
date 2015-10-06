@@ -122,17 +122,17 @@ public class PaymentFileLocalServiceClpInvoker {
 				"org.oep.core.dossiermgt.model.PaymentFile"
 			};
 
-		_methodName122 = "getBeanIdentifier";
+		_methodName132 = "getBeanIdentifier";
 
-		_methodParameterTypes122 = new String[] {  };
+		_methodParameterTypes132 = new String[] {  };
 
-		_methodName123 = "setBeanIdentifier";
+		_methodName133 = "setBeanIdentifier";
 
-		_methodParameterTypes123 = new String[] { "java.lang.String" };
+		_methodParameterTypes133 = new String[] { "java.lang.String" };
 
-		_methodName128 = "addPaymentFile";
+		_methodName138 = "addPaymentFile";
 
-		_methodParameterTypes128 = new String[] {
+		_methodParameterTypes138 = new String[] {
 				"long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"int", "java.lang.String", "java.lang.String",
@@ -141,9 +141,9 @@ public class PaymentFileLocalServiceClpInvoker {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName129 = "updatePaymentFile";
+		_methodName139 = "updatePaymentFile";
 
-		_methodParameterTypes129 = new String[] {
+		_methodParameterTypes139 = new String[] {
 				"long", "long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"int", "java.lang.String", "java.lang.String",
@@ -152,46 +152,46 @@ public class PaymentFileLocalServiceClpInvoker {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName130 = "updatePaymentFileResources";
+		_methodName140 = "updatePaymentFileResources";
 
-		_methodParameterTypes130 = new String[] {
+		_methodParameterTypes140 = new String[] {
 				"org.oep.core.dossiermgt.model.PaymentFile",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName131 = "removePaymentFile";
+		_methodName141 = "removePaymentFile";
 
-		_methodParameterTypes131 = new String[] {
+		_methodParameterTypes141 = new String[] {
 				"org.oep.core.dossiermgt.model.PaymentFile"
 			};
 
-		_methodName132 = "removePaymentFile";
+		_methodName142 = "removePaymentFile";
 
-		_methodParameterTypes132 = new String[] { "long" };
+		_methodParameterTypes142 = new String[] { "long" };
 
-		_methodName133 = "getPaymentFile";
+		_methodName143 = "getPaymentFile";
 
-		_methodParameterTypes133 = new String[] { "long" };
+		_methodParameterTypes143 = new String[] { "long" };
 
-		_methodName134 = "addPaymentFileResources";
+		_methodName144 = "addPaymentFileResources";
 
-		_methodParameterTypes134 = new String[] {
+		_methodParameterTypes144 = new String[] {
 				"org.oep.core.dossiermgt.model.PaymentFile", "boolean",
 				"boolean", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName135 = "addPaymentFileResources";
+		_methodName145 = "addPaymentFileResources";
 
-		_methodParameterTypes135 = new String[] {
+		_methodParameterTypes145 = new String[] {
 				"org.oep.core.dossiermgt.model.PaymentFile",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName136 = "addPaymentFileResources";
+		_methodName146 = "addPaymentFileResources";
 
-		_methodParameterTypes136 = new String[] {
+		_methodParameterTypes146 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -310,20 +310,20 @@ public class PaymentFileLocalServiceClpInvoker {
 			return PaymentFileLocalServiceUtil.updatePaymentFile((org.oep.core.dossiermgt.model.PaymentFile)arguments[0]);
 		}
 
-		if (_methodName122.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes122, parameterTypes)) {
+		if (_methodName132.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes132, parameterTypes)) {
 			return PaymentFileLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName123.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes123, parameterTypes)) {
+		if (_methodName133.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes133, parameterTypes)) {
 			PaymentFileLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName128.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes128, parameterTypes)) {
+		if (_methodName138.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes138, parameterTypes)) {
 			return PaymentFileLocalServiceUtil.addPaymentFile(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				(java.lang.String)arguments[3], (java.lang.String)arguments[4],
@@ -341,8 +341,8 @@ public class PaymentFileLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[17]);
 		}
 
-		if (_methodName129.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes129, parameterTypes)) {
+		if (_methodName139.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes139, parameterTypes)) {
 			return PaymentFileLocalServiceUtil.updatePaymentFile(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				(java.lang.String)arguments[2], (java.lang.String)arguments[3],
@@ -361,8 +361,8 @@ public class PaymentFileLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[18]);
 		}
 
-		if (_methodName130.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes130, parameterTypes)) {
+		if (_methodName140.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes140, parameterTypes)) {
 			PaymentFileLocalServiceUtil.updatePaymentFileResources((org.oep.core.dossiermgt.model.PaymentFile)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -371,27 +371,27 @@ public class PaymentFileLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName131.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes131, parameterTypes)) {
+		if (_methodName141.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes141, parameterTypes)) {
 			PaymentFileLocalServiceUtil.removePaymentFile((org.oep.core.dossiermgt.model.PaymentFile)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName132.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes132, parameterTypes)) {
+		if (_methodName142.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes142, parameterTypes)) {
 			PaymentFileLocalServiceUtil.removePaymentFile(((Long)arguments[0]).longValue());
 
 			return null;
 		}
 
-		if (_methodName133.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes133, parameterTypes)) {
+		if (_methodName143.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes143, parameterTypes)) {
 			return PaymentFileLocalServiceUtil.getPaymentFile(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName134.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes134, parameterTypes)) {
+		if (_methodName144.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes144, parameterTypes)) {
 			PaymentFileLocalServiceUtil.addPaymentFileResources((org.oep.core.dossiermgt.model.PaymentFile)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Boolean)arguments[2]).booleanValue(),
@@ -400,8 +400,8 @@ public class PaymentFileLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName135.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes135, parameterTypes)) {
+		if (_methodName145.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes145, parameterTypes)) {
 			PaymentFileLocalServiceUtil.addPaymentFileResources((org.oep.core.dossiermgt.model.PaymentFile)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -410,8 +410,8 @@ public class PaymentFileLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName136.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes136, parameterTypes)) {
+		if (_methodName146.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes146, parameterTypes)) {
 			PaymentFileLocalServiceUtil.addPaymentFileResources(((Long)arguments[0]).longValue(),
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -463,26 +463,26 @@ public class PaymentFileLocalServiceClpInvoker {
 	private String[] _methodParameterTypes18;
 	private String _methodName19;
 	private String[] _methodParameterTypes19;
-	private String _methodName122;
-	private String[] _methodParameterTypes122;
-	private String _methodName123;
-	private String[] _methodParameterTypes123;
-	private String _methodName128;
-	private String[] _methodParameterTypes128;
-	private String _methodName129;
-	private String[] _methodParameterTypes129;
-	private String _methodName130;
-	private String[] _methodParameterTypes130;
-	private String _methodName131;
-	private String[] _methodParameterTypes131;
 	private String _methodName132;
 	private String[] _methodParameterTypes132;
 	private String _methodName133;
 	private String[] _methodParameterTypes133;
-	private String _methodName134;
-	private String[] _methodParameterTypes134;
-	private String _methodName135;
-	private String[] _methodParameterTypes135;
-	private String _methodName136;
-	private String[] _methodParameterTypes136;
+	private String _methodName138;
+	private String[] _methodParameterTypes138;
+	private String _methodName139;
+	private String[] _methodParameterTypes139;
+	private String _methodName140;
+	private String[] _methodParameterTypes140;
+	private String _methodName141;
+	private String[] _methodParameterTypes141;
+	private String _methodName142;
+	private String[] _methodParameterTypes142;
+	private String _methodName143;
+	private String[] _methodParameterTypes143;
+	private String _methodName144;
+	private String[] _methodParameterTypes144;
+	private String _methodName145;
+	private String[] _methodParameterTypes145;
+	private String _methodName146;
+	private String[] _methodParameterTypes146;
 }

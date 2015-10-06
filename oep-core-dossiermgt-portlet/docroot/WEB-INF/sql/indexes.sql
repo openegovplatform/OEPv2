@@ -19,6 +19,7 @@ create index IX_20720D80 on oep_dossiermgt_dossierfolder (uuid_);
 create index IX_400086A8 on oep_dossiermgt_dossierfolder (uuid_, companyId);
 
 create index IX_BA92D40C on oep_dossiermgt_dossierproc (companyId);
+create index IX_55EC687D on oep_dossiermgt_dossierproc (companyId, active_);
 create index IX_ECD9D8FF on oep_dossiermgt_dossierproc (companyId, administrationNo);
 create index IX_D108E998 on oep_dossiermgt_dossierproc (companyId, administrationNo, domainNo);
 create index IX_A3A13865 on oep_dossiermgt_dossierproc (companyId, domainNo);
@@ -28,6 +29,9 @@ create index IX_7A5B94AA on oep_dossiermgt_dossierproc (companyId, groupId, admi
 create index IX_C33CE3F7 on oep_dossiermgt_dossierproc (companyId, groupId, domainNo);
 create index IX_282710B4 on oep_dossiermgt_dossierproc (companyId, groupId, dossierProcNo);
 create index IX_70C6C858 on oep_dossiermgt_dossierproc (companyId, groupId, userId);
+create unique index IX_DF17C76 on oep_dossiermgt_dossierproc (dossierProcNo);
+create index IX_3698ED8E on oep_dossiermgt_dossierproc (groupId);
+create index IX_39FDE13B on oep_dossiermgt_dossierproc (groupId, active_);
 
 create index IX_FBEFE8D7 on oep_dossiermgt_paymentfile (uuid_);
 create index IX_DA3AFEF1 on oep_dossiermgt_paymentfile (uuid_, companyId);

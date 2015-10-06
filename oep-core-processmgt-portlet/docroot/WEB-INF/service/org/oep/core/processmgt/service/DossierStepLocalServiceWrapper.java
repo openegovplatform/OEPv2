@@ -303,21 +303,23 @@ public class DossierStepLocalServiceWrapper implements DossierStepLocalService,
 	@Override
 	public org.oep.core.processmgt.model.DossierStep addDossierStep(
 		long dossierProcessId, java.lang.String title, int sequenceNo,
-		int stepType, com.liferay.portal.service.ServiceContext serviceContext)
+		int stepType, java.lang.String doForm,
+		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _dossierStepLocalService.addDossierStep(dossierProcessId, title,
-			sequenceNo, stepType, serviceContext);
+			sequenceNo, stepType, doForm, serviceContext);
 	}
 
 	@Override
 	public org.oep.core.processmgt.model.DossierStep updateDossierStep(
 		long id, long dossierProcessId, java.lang.String title, int sequenceNo,
-		int stepType, com.liferay.portal.service.ServiceContext serviceContext)
+		int stepType, java.lang.String doForm,
+		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _dossierStepLocalService.updateDossierStep(id, dossierProcessId,
-			title, sequenceNo, stepType, serviceContext);
+			title, sequenceNo, stepType, doForm, serviceContext);
 	}
 
 	@Override

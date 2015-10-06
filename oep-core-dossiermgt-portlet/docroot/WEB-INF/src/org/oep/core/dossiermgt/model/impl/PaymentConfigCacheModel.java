@@ -48,10 +48,10 @@ public class PaymentConfigCacheModel implements CacheModel<PaymentConfig>,
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
 		sb.append(modifiedDate);
-		sb.append(", govAgentId=");
-		sb.append(govAgentId);
-		sb.append(", govAgentName=");
-		sb.append(govAgentName);
+		sb.append(", govAgencyId=");
+		sb.append(govAgencyId);
+		sb.append(", govAgencyName=");
+		sb.append(govAgencyName);
 		sb.append(", bankTransfer=");
 		sb.append(bankTransfer);
 		sb.append(", keypay=");
@@ -84,18 +84,18 @@ public class PaymentConfigCacheModel implements CacheModel<PaymentConfig>,
 			paymentConfigImpl.setModifiedDate(new Date(modifiedDate));
 		}
 
-		if (govAgentId == null) {
-			paymentConfigImpl.setGovAgentId(StringPool.BLANK);
+		if (govAgencyId == null) {
+			paymentConfigImpl.setGovAgencyId(StringPool.BLANK);
 		}
 		else {
-			paymentConfigImpl.setGovAgentId(govAgentId);
+			paymentConfigImpl.setGovAgencyId(govAgencyId);
 		}
 
-		if (govAgentName == null) {
-			paymentConfigImpl.setGovAgentName(StringPool.BLANK);
+		if (govAgencyName == null) {
+			paymentConfigImpl.setGovAgencyName(StringPool.BLANK);
 		}
 		else {
-			paymentConfigImpl.setGovAgentName(govAgentName);
+			paymentConfigImpl.setGovAgencyName(govAgencyName);
 		}
 
 		if (bankTransfer == null) {
@@ -125,8 +125,8 @@ public class PaymentConfigCacheModel implements CacheModel<PaymentConfig>,
 		companyId = objectInput.readLong();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
-		govAgentId = objectInput.readUTF();
-		govAgentName = objectInput.readUTF();
+		govAgencyId = objectInput.readUTF();
+		govAgencyName = objectInput.readUTF();
 		bankTransfer = objectInput.readUTF();
 		keypay = objectInput.readUTF();
 		ebPartnerShipId = objectInput.readLong();
@@ -140,18 +140,18 @@ public class PaymentConfigCacheModel implements CacheModel<PaymentConfig>,
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
 
-		if (govAgentId == null) {
+		if (govAgencyId == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(govAgentId);
+			objectOutput.writeUTF(govAgencyId);
 		}
 
-		if (govAgentName == null) {
+		if (govAgencyName == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(govAgentName);
+			objectOutput.writeUTF(govAgencyName);
 		}
 
 		if (bankTransfer == null) {
@@ -175,8 +175,8 @@ public class PaymentConfigCacheModel implements CacheModel<PaymentConfig>,
 	public long companyId;
 	public long createDate;
 	public long modifiedDate;
-	public String govAgentId;
-	public String govAgentName;
+	public String govAgencyId;
+	public String govAgencyName;
 	public String bankTransfer;
 	public String keypay;
 	public long ebPartnerShipId;

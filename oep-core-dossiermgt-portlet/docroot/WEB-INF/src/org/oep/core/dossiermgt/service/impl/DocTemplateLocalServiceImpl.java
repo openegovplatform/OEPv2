@@ -15,6 +15,7 @@
 package org.oep.core.dossiermgt.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.oep.core.dossiermgt.TemplateNoException;
 import org.oep.core.dossiermgt.model.DocTemplate;
@@ -179,6 +180,21 @@ public class DocTemplateLocalServiceImpl extends DocTemplateLocalServiceBaseImpl
 		}
 	}
 	
+	public List<DocTemplate> findByLikeTitle(String title, int startIndex, int endIndex, ServiceContext serviceContext) throws SystemException {
+		return docTemplateFinder.findByLikeTitle(title, startIndex, endIndex, serviceContext);
+	}
+	
+	public int countByLikeTitle(String title, ServiceContext serviceContext) throws SystemException {
+		return docTemplateFinder.countByLikeTitle(title, serviceContext);
+	}
+	
+	public List<DocTemplate> findByGroupLikeTitle(String title, int startIndex, int endIndex, ServiceContext serviceContext) throws SystemException {
+		return docTemplateFinder.findByGroupLikeTitle(title, startIndex, endIndex, serviceContext);
+	}
+	
+	public int countByGroupLikeTitle(String title, ServiceContext serviceContext) throws SystemException {
+		return docTemplateFinder.countByGroupLikeTitle(title, serviceContext);
+	}
 	private static Log _log = LogFactoryUtil.getLog(DocTemplateLocalServiceImpl.class);
 	
 }

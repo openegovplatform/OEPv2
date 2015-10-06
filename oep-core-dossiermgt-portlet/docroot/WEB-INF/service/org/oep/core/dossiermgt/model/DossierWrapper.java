@@ -59,8 +59,8 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("organizationId", getOrganizationId());
 		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgentId", getGovAgentId());
-		attributes.put("govAgentName", getGovAgentName());
+		attributes.put("govAgencyId", getGovAgencyId());
+		attributes.put("govAgencyName", getGovAgencyName());
 		attributes.put("subjectId", getSubjectId());
 		attributes.put("subjectType", getSubjectType());
 		attributes.put("subjectName", getSubjectName());
@@ -77,15 +77,20 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 		attributes.put("note", getNote());
 		attributes.put("resumeDescription", getResumeDescription());
 		attributes.put("receptionNo", getReceptionNo());
-		attributes.put("submissionDate", getSubmissionDate());
-		attributes.put("receptionDate", getReceptionDate());
-		attributes.put("resubmissionDate", getResubmissionDate());
-		attributes.put("appointmentDate", getAppointmentDate());
-		attributes.put("releaseDate", getReleaseDate());
-		attributes.put("completionDate", getCompletionDate());
+		attributes.put("submitDate", getSubmitDate());
+		attributes.put("receiveDate", getReceiveDate());
+		attributes.put("renewDate", getRenewDate());
+		attributes.put("estimateDate", getEstimateDate());
+		attributes.put("finishDate", getFinishDate());
+		attributes.put("returnDate", getReturnDate());
 		attributes.put("status", getStatus());
+		attributes.put("statusDate", getStatusDate());
 		attributes.put("statusDescription", getStatusDescription());
 		attributes.put("feedbackNote", getFeedbackNote());
+		attributes.put("daysDelay", getDaysDelay());
+		attributes.put("closeDate", getCloseDate());
+		attributes.put("errorStatus", getErrorStatus());
+		attributes.put("errorCode", getErrorCode());
 		attributes.put("dirty", getDirty());
 
 		return attributes;
@@ -147,16 +152,16 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 			setDossierProcId(dossierProcId);
 		}
 
-		String govAgentId = (String)attributes.get("govAgentId");
+		String govAgencyId = (String)attributes.get("govAgencyId");
 
-		if (govAgentId != null) {
-			setGovAgentId(govAgentId);
+		if (govAgencyId != null) {
+			setGovAgencyId(govAgencyId);
 		}
 
-		String govAgentName = (String)attributes.get("govAgentName");
+		String govAgencyName = (String)attributes.get("govAgencyName");
 
-		if (govAgentName != null) {
-			setGovAgentName(govAgentName);
+		if (govAgencyName != null) {
+			setGovAgencyName(govAgencyName);
 		}
 
 		String subjectId = (String)attributes.get("subjectId");
@@ -255,46 +260,52 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 			setReceptionNo(receptionNo);
 		}
 
-		Date submissionDate = (Date)attributes.get("submissionDate");
+		Date submitDate = (Date)attributes.get("submitDate");
 
-		if (submissionDate != null) {
-			setSubmissionDate(submissionDate);
+		if (submitDate != null) {
+			setSubmitDate(submitDate);
 		}
 
-		Date receptionDate = (Date)attributes.get("receptionDate");
+		Date receiveDate = (Date)attributes.get("receiveDate");
 
-		if (receptionDate != null) {
-			setReceptionDate(receptionDate);
+		if (receiveDate != null) {
+			setReceiveDate(receiveDate);
 		}
 
-		Date resubmissionDate = (Date)attributes.get("resubmissionDate");
+		Date renewDate = (Date)attributes.get("renewDate");
 
-		if (resubmissionDate != null) {
-			setResubmissionDate(resubmissionDate);
+		if (renewDate != null) {
+			setRenewDate(renewDate);
 		}
 
-		Date appointmentDate = (Date)attributes.get("appointmentDate");
+		Date estimateDate = (Date)attributes.get("estimateDate");
 
-		if (appointmentDate != null) {
-			setAppointmentDate(appointmentDate);
+		if (estimateDate != null) {
+			setEstimateDate(estimateDate);
 		}
 
-		Date releaseDate = (Date)attributes.get("releaseDate");
+		Date finishDate = (Date)attributes.get("finishDate");
 
-		if (releaseDate != null) {
-			setReleaseDate(releaseDate);
+		if (finishDate != null) {
+			setFinishDate(finishDate);
 		}
 
-		Date completionDate = (Date)attributes.get("completionDate");
+		Date returnDate = (Date)attributes.get("returnDate");
 
-		if (completionDate != null) {
-			setCompletionDate(completionDate);
+		if (returnDate != null) {
+			setReturnDate(returnDate);
 		}
 
 		String status = (String)attributes.get("status");
 
 		if (status != null) {
 			setStatus(status);
+		}
+
+		Date statusDate = (Date)attributes.get("statusDate");
+
+		if (statusDate != null) {
+			setStatusDate(statusDate);
 		}
 
 		String statusDescription = (String)attributes.get("statusDescription");
@@ -307,6 +318,30 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 
 		if (feedbackNote != null) {
 			setFeedbackNote(feedbackNote);
+		}
+
+		Integer daysDelay = (Integer)attributes.get("daysDelay");
+
+		if (daysDelay != null) {
+			setDaysDelay(daysDelay);
+		}
+
+		Date closeDate = (Date)attributes.get("closeDate");
+
+		if (closeDate != null) {
+			setCloseDate(closeDate);
+		}
+
+		String errorStatus = (String)attributes.get("errorStatus");
+
+		if (errorStatus != null) {
+			setErrorStatus(errorStatus);
+		}
+
+		String errorCode = (String)attributes.get("errorCode");
+
+		if (errorCode != null) {
+			setErrorCode(errorCode);
 		}
 
 		Integer dirty = (Integer)attributes.get("dirty");
@@ -539,43 +574,43 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	}
 
 	/**
-	* Returns the gov agent ID of this dossier.
+	* Returns the gov agency ID of this dossier.
 	*
-	* @return the gov agent ID of this dossier
+	* @return the gov agency ID of this dossier
 	*/
 	@Override
-	public java.lang.String getGovAgentId() {
-		return _dossier.getGovAgentId();
+	public java.lang.String getGovAgencyId() {
+		return _dossier.getGovAgencyId();
 	}
 
 	/**
-	* Sets the gov agent ID of this dossier.
+	* Sets the gov agency ID of this dossier.
 	*
-	* @param govAgentId the gov agent ID of this dossier
+	* @param govAgencyId the gov agency ID of this dossier
 	*/
 	@Override
-	public void setGovAgentId(java.lang.String govAgentId) {
-		_dossier.setGovAgentId(govAgentId);
+	public void setGovAgencyId(java.lang.String govAgencyId) {
+		_dossier.setGovAgencyId(govAgencyId);
 	}
 
 	/**
-	* Returns the gov agent name of this dossier.
+	* Returns the gov agency name of this dossier.
 	*
-	* @return the gov agent name of this dossier
+	* @return the gov agency name of this dossier
 	*/
 	@Override
-	public java.lang.String getGovAgentName() {
-		return _dossier.getGovAgentName();
+	public java.lang.String getGovAgencyName() {
+		return _dossier.getGovAgencyName();
 	}
 
 	/**
-	* Sets the gov agent name of this dossier.
+	* Sets the gov agency name of this dossier.
 	*
-	* @param govAgentName the gov agent name of this dossier
+	* @param govAgencyName the gov agency name of this dossier
 	*/
 	@Override
-	public void setGovAgentName(java.lang.String govAgentName) {
-		_dossier.setGovAgentName(govAgentName);
+	public void setGovAgencyName(java.lang.String govAgencyName) {
+		_dossier.setGovAgencyName(govAgencyName);
 	}
 
 	/**
@@ -899,123 +934,123 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	}
 
 	/**
-	* Returns the submission date of this dossier.
+	* Returns the submit date of this dossier.
 	*
-	* @return the submission date of this dossier
+	* @return the submit date of this dossier
 	*/
 	@Override
-	public java.util.Date getSubmissionDate() {
-		return _dossier.getSubmissionDate();
+	public java.util.Date getSubmitDate() {
+		return _dossier.getSubmitDate();
 	}
 
 	/**
-	* Sets the submission date of this dossier.
+	* Sets the submit date of this dossier.
 	*
-	* @param submissionDate the submission date of this dossier
+	* @param submitDate the submit date of this dossier
 	*/
 	@Override
-	public void setSubmissionDate(java.util.Date submissionDate) {
-		_dossier.setSubmissionDate(submissionDate);
+	public void setSubmitDate(java.util.Date submitDate) {
+		_dossier.setSubmitDate(submitDate);
 	}
 
 	/**
-	* Returns the reception date of this dossier.
+	* Returns the receive date of this dossier.
 	*
-	* @return the reception date of this dossier
+	* @return the receive date of this dossier
 	*/
 	@Override
-	public java.util.Date getReceptionDate() {
-		return _dossier.getReceptionDate();
+	public java.util.Date getReceiveDate() {
+		return _dossier.getReceiveDate();
 	}
 
 	/**
-	* Sets the reception date of this dossier.
+	* Sets the receive date of this dossier.
 	*
-	* @param receptionDate the reception date of this dossier
+	* @param receiveDate the receive date of this dossier
 	*/
 	@Override
-	public void setReceptionDate(java.util.Date receptionDate) {
-		_dossier.setReceptionDate(receptionDate);
+	public void setReceiveDate(java.util.Date receiveDate) {
+		_dossier.setReceiveDate(receiveDate);
 	}
 
 	/**
-	* Returns the resubmission date of this dossier.
+	* Returns the renew date of this dossier.
 	*
-	* @return the resubmission date of this dossier
+	* @return the renew date of this dossier
 	*/
 	@Override
-	public java.util.Date getResubmissionDate() {
-		return _dossier.getResubmissionDate();
+	public java.util.Date getRenewDate() {
+		return _dossier.getRenewDate();
 	}
 
 	/**
-	* Sets the resubmission date of this dossier.
+	* Sets the renew date of this dossier.
 	*
-	* @param resubmissionDate the resubmission date of this dossier
+	* @param renewDate the renew date of this dossier
 	*/
 	@Override
-	public void setResubmissionDate(java.util.Date resubmissionDate) {
-		_dossier.setResubmissionDate(resubmissionDate);
+	public void setRenewDate(java.util.Date renewDate) {
+		_dossier.setRenewDate(renewDate);
 	}
 
 	/**
-	* Returns the appointment date of this dossier.
+	* Returns the estimate date of this dossier.
 	*
-	* @return the appointment date of this dossier
+	* @return the estimate date of this dossier
 	*/
 	@Override
-	public java.util.Date getAppointmentDate() {
-		return _dossier.getAppointmentDate();
+	public java.util.Date getEstimateDate() {
+		return _dossier.getEstimateDate();
 	}
 
 	/**
-	* Sets the appointment date of this dossier.
+	* Sets the estimate date of this dossier.
 	*
-	* @param appointmentDate the appointment date of this dossier
+	* @param estimateDate the estimate date of this dossier
 	*/
 	@Override
-	public void setAppointmentDate(java.util.Date appointmentDate) {
-		_dossier.setAppointmentDate(appointmentDate);
+	public void setEstimateDate(java.util.Date estimateDate) {
+		_dossier.setEstimateDate(estimateDate);
 	}
 
 	/**
-	* Returns the release date of this dossier.
+	* Returns the finish date of this dossier.
 	*
-	* @return the release date of this dossier
+	* @return the finish date of this dossier
 	*/
 	@Override
-	public java.util.Date getReleaseDate() {
-		return _dossier.getReleaseDate();
+	public java.util.Date getFinishDate() {
+		return _dossier.getFinishDate();
 	}
 
 	/**
-	* Sets the release date of this dossier.
+	* Sets the finish date of this dossier.
 	*
-	* @param releaseDate the release date of this dossier
+	* @param finishDate the finish date of this dossier
 	*/
 	@Override
-	public void setReleaseDate(java.util.Date releaseDate) {
-		_dossier.setReleaseDate(releaseDate);
+	public void setFinishDate(java.util.Date finishDate) {
+		_dossier.setFinishDate(finishDate);
 	}
 
 	/**
-	* Returns the completion date of this dossier.
+	* Returns the return date of this dossier.
 	*
-	* @return the completion date of this dossier
+	* @return the return date of this dossier
 	*/
 	@Override
-	public java.util.Date getCompletionDate() {
-		return _dossier.getCompletionDate();
+	public java.util.Date getReturnDate() {
+		return _dossier.getReturnDate();
 	}
 
 	/**
-	* Sets the completion date of this dossier.
+	* Sets the return date of this dossier.
 	*
-	* @param completionDate the completion date of this dossier
+	* @param returnDate the return date of this dossier
 	*/
 	@Override
-	public void setCompletionDate(java.util.Date completionDate) {
-		_dossier.setCompletionDate(completionDate);
+	public void setReturnDate(java.util.Date returnDate) {
+		_dossier.setReturnDate(returnDate);
 	}
 
 	/**
@@ -1036,6 +1071,26 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	@Override
 	public void setStatus(java.lang.String status) {
 		_dossier.setStatus(status);
+	}
+
+	/**
+	* Returns the status date of this dossier.
+	*
+	* @return the status date of this dossier
+	*/
+	@Override
+	public java.util.Date getStatusDate() {
+		return _dossier.getStatusDate();
+	}
+
+	/**
+	* Sets the status date of this dossier.
+	*
+	* @param statusDate the status date of this dossier
+	*/
+	@Override
+	public void setStatusDate(java.util.Date statusDate) {
+		_dossier.setStatusDate(statusDate);
 	}
 
 	/**
@@ -1076,6 +1131,86 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	@Override
 	public void setFeedbackNote(java.lang.String feedbackNote) {
 		_dossier.setFeedbackNote(feedbackNote);
+	}
+
+	/**
+	* Returns the days delay of this dossier.
+	*
+	* @return the days delay of this dossier
+	*/
+	@Override
+	public int getDaysDelay() {
+		return _dossier.getDaysDelay();
+	}
+
+	/**
+	* Sets the days delay of this dossier.
+	*
+	* @param daysDelay the days delay of this dossier
+	*/
+	@Override
+	public void setDaysDelay(int daysDelay) {
+		_dossier.setDaysDelay(daysDelay);
+	}
+
+	/**
+	* Returns the close date of this dossier.
+	*
+	* @return the close date of this dossier
+	*/
+	@Override
+	public java.util.Date getCloseDate() {
+		return _dossier.getCloseDate();
+	}
+
+	/**
+	* Sets the close date of this dossier.
+	*
+	* @param closeDate the close date of this dossier
+	*/
+	@Override
+	public void setCloseDate(java.util.Date closeDate) {
+		_dossier.setCloseDate(closeDate);
+	}
+
+	/**
+	* Returns the error status of this dossier.
+	*
+	* @return the error status of this dossier
+	*/
+	@Override
+	public java.lang.String getErrorStatus() {
+		return _dossier.getErrorStatus();
+	}
+
+	/**
+	* Sets the error status of this dossier.
+	*
+	* @param errorStatus the error status of this dossier
+	*/
+	@Override
+	public void setErrorStatus(java.lang.String errorStatus) {
+		_dossier.setErrorStatus(errorStatus);
+	}
+
+	/**
+	* Returns the error code of this dossier.
+	*
+	* @return the error code of this dossier
+	*/
+	@Override
+	public java.lang.String getErrorCode() {
+		return _dossier.getErrorCode();
+	}
+
+	/**
+	* Sets the error code of this dossier.
+	*
+	* @param errorCode the error code of this dossier
+	*/
+	@Override
+	public void setErrorCode(java.lang.String errorCode) {
+		_dossier.setErrorCode(errorCode);
 	}
 
 	/**

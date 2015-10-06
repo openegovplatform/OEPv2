@@ -325,8 +325,8 @@ public interface PaymentFileLocalService extends BaseLocalService,
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.PaymentFile addPaymentFile(
-		long organizationId, java.lang.String govAgentId,
-		java.lang.String govAgentName, java.lang.String subjectId,
+		long organizationId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, java.lang.String subjectId,
 		java.lang.String subjectType, java.lang.String subjectName, int amount,
 		java.lang.String paymentType, java.lang.String paymentDescription,
 		java.lang.String transactionInfo, long fileEntryId,
@@ -339,8 +339,8 @@ public interface PaymentFileLocalService extends BaseLocalService,
 
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.PaymentFile updatePaymentFile(
-		long id, long organizationId, java.lang.String govAgentId,
-		java.lang.String govAgentName, java.lang.String subjectId,
+		long id, long organizationId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, java.lang.String subjectId,
 		java.lang.String subjectType, java.lang.String subjectName, int amount,
 		java.lang.String paymentType, java.lang.String paymentDescription,
 		java.lang.String transactionInfo, long fileEntryId,

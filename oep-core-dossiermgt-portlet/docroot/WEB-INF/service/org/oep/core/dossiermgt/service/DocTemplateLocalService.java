@@ -321,4 +321,22 @@ public interface DocTemplateLocalService extends BaseLocalService,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<org.oep.core.dossiermgt.model.DocTemplate> findByLikeTitle(
+		java.lang.String title, int startIndex, int endIndex,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByLikeTitle(java.lang.String title,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<org.oep.core.dossiermgt.model.DocTemplate> findByGroupLikeTitle(
+		java.lang.String title, int startIndex, int endIndex,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByGroupLikeTitle(java.lang.String title,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

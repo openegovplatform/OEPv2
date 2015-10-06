@@ -383,6 +383,39 @@ public class DocTemplateLocalServiceWrapper implements DocTemplateLocalService,
 			guestPermissions, serviceContext);
 	}
 
+	@Override
+	public java.util.List<org.oep.core.dossiermgt.model.DocTemplate> findByLikeTitle(
+		java.lang.String title, int startIndex, int endIndex,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _docTemplateLocalService.findByLikeTitle(title, startIndex,
+			endIndex, serviceContext);
+	}
+
+	@Override
+	public int countByLikeTitle(java.lang.String title,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _docTemplateLocalService.countByLikeTitle(title, serviceContext);
+	}
+
+	@Override
+	public java.util.List<org.oep.core.dossiermgt.model.DocTemplate> findByGroupLikeTitle(
+		java.lang.String title, int startIndex, int endIndex,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _docTemplateLocalService.findByGroupLikeTitle(title, startIndex,
+			endIndex, serviceContext);
+	}
+
+	@Override
+	public int countByGroupLikeTitle(java.lang.String title,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _docTemplateLocalService.countByGroupLikeTitle(title,
+			serviceContext);
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */

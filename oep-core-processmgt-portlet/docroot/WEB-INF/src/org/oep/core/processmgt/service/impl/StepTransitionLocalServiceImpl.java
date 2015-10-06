@@ -75,7 +75,7 @@ public class StepTransitionLocalServiceImpl
 			String dossierStatus,
 			int userAssignment,
 			int newProcessOrder,
-			String errorMessage,
+
 			ServiceContext serviceContext) throws SystemException, PortalException {
 		validate();
 		long id = counterLocalService.increment();
@@ -95,7 +95,6 @@ public class StepTransitionLocalServiceImpl
 		stepTransition.setDossierStatus(dossierStatus);
 		stepTransition.setUserAssignment(userAssignment);
 		stepTransition.setNewProcessOrder(newProcessOrder);
-		stepTransition.setErrorMessage(errorMessage);
 		
 		stepTransitionPersistence.update(stepTransition);
 
@@ -124,7 +123,6 @@ public class StepTransitionLocalServiceImpl
 			String dossierStatus,
 			int userAssignment,
 			int newProcessOrder,
-			String errorMessage,
 			ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
@@ -142,7 +140,6 @@ public class StepTransitionLocalServiceImpl
 		stepTransition.setDossierStatus(dossierStatus);
 		stepTransition.setUserAssignment(userAssignment);
 		stepTransition.setNewProcessOrder(newProcessOrder);
-		stepTransition.setErrorMessage(errorMessage);
 		
 		stepTransitionPersistence.update(stepTransition);
 

@@ -1811,8 +1811,8 @@ public class PaymentFilePersistenceImpl extends BasePersistenceImpl<PaymentFile>
 		paymentFileImpl.setCreateDate(paymentFile.getCreateDate());
 		paymentFileImpl.setModifiedDate(paymentFile.getModifiedDate());
 		paymentFileImpl.setOrganizationId(paymentFile.getOrganizationId());
-		paymentFileImpl.setGovAgentId(paymentFile.getGovAgentId());
-		paymentFileImpl.setGovAgentName(paymentFile.getGovAgentName());
+		paymentFileImpl.setGovAgencyId(paymentFile.getGovAgencyId());
+		paymentFileImpl.setGovAgencyName(paymentFile.getGovAgencyName());
 		paymentFileImpl.setSubjectId(paymentFile.getSubjectId());
 		paymentFileImpl.setSubjectType(paymentFile.getSubjectType());
 		paymentFileImpl.setSubjectName(paymentFile.getSubjectName());

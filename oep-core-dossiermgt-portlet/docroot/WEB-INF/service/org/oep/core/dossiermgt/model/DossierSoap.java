@@ -40,8 +40,8 @@ public class DossierSoap implements Serializable {
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setOrganizationId(model.getOrganizationId());
 		soapModel.setDossierProcId(model.getDossierProcId());
-		soapModel.setGovAgentId(model.getGovAgentId());
-		soapModel.setGovAgentName(model.getGovAgentName());
+		soapModel.setGovAgencyId(model.getGovAgencyId());
+		soapModel.setGovAgencyName(model.getGovAgencyName());
 		soapModel.setSubjectId(model.getSubjectId());
 		soapModel.setSubjectType(model.getSubjectType());
 		soapModel.setSubjectName(model.getSubjectName());
@@ -58,15 +58,20 @@ public class DossierSoap implements Serializable {
 		soapModel.setNote(model.getNote());
 		soapModel.setResumeDescription(model.getResumeDescription());
 		soapModel.setReceptionNo(model.getReceptionNo());
-		soapModel.setSubmissionDate(model.getSubmissionDate());
-		soapModel.setReceptionDate(model.getReceptionDate());
-		soapModel.setResubmissionDate(model.getResubmissionDate());
-		soapModel.setAppointmentDate(model.getAppointmentDate());
-		soapModel.setReleaseDate(model.getReleaseDate());
-		soapModel.setCompletionDate(model.getCompletionDate());
+		soapModel.setSubmitDate(model.getSubmitDate());
+		soapModel.setReceiveDate(model.getReceiveDate());
+		soapModel.setRenewDate(model.getRenewDate());
+		soapModel.setEstimateDate(model.getEstimateDate());
+		soapModel.setFinishDate(model.getFinishDate());
+		soapModel.setReturnDate(model.getReturnDate());
 		soapModel.setStatus(model.getStatus());
+		soapModel.setStatusDate(model.getStatusDate());
 		soapModel.setStatusDescription(model.getStatusDescription());
 		soapModel.setFeedbackNote(model.getFeedbackNote());
+		soapModel.setDaysDelay(model.getDaysDelay());
+		soapModel.setCloseDate(model.getCloseDate());
+		soapModel.setErrorStatus(model.getErrorStatus());
+		soapModel.setErrorCode(model.getErrorCode());
 		soapModel.setDirty(model.getDirty());
 
 		return soapModel;
@@ -192,20 +197,20 @@ public class DossierSoap implements Serializable {
 		_dossierProcId = dossierProcId;
 	}
 
-	public String getGovAgentId() {
-		return _govAgentId;
+	public String getGovAgencyId() {
+		return _govAgencyId;
 	}
 
-	public void setGovAgentId(String govAgentId) {
-		_govAgentId = govAgentId;
+	public void setGovAgencyId(String govAgencyId) {
+		_govAgencyId = govAgencyId;
 	}
 
-	public String getGovAgentName() {
-		return _govAgentName;
+	public String getGovAgencyName() {
+		return _govAgencyName;
 	}
 
-	public void setGovAgentName(String govAgentName) {
-		_govAgentName = govAgentName;
+	public void setGovAgencyName(String govAgencyName) {
+		_govAgencyName = govAgencyName;
 	}
 
 	public String getSubjectId() {
@@ -336,52 +341,52 @@ public class DossierSoap implements Serializable {
 		_receptionNo = receptionNo;
 	}
 
-	public Date getSubmissionDate() {
-		return _submissionDate;
+	public Date getSubmitDate() {
+		return _submitDate;
 	}
 
-	public void setSubmissionDate(Date submissionDate) {
-		_submissionDate = submissionDate;
+	public void setSubmitDate(Date submitDate) {
+		_submitDate = submitDate;
 	}
 
-	public Date getReceptionDate() {
-		return _receptionDate;
+	public Date getReceiveDate() {
+		return _receiveDate;
 	}
 
-	public void setReceptionDate(Date receptionDate) {
-		_receptionDate = receptionDate;
+	public void setReceiveDate(Date receiveDate) {
+		_receiveDate = receiveDate;
 	}
 
-	public Date getResubmissionDate() {
-		return _resubmissionDate;
+	public Date getRenewDate() {
+		return _renewDate;
 	}
 
-	public void setResubmissionDate(Date resubmissionDate) {
-		_resubmissionDate = resubmissionDate;
+	public void setRenewDate(Date renewDate) {
+		_renewDate = renewDate;
 	}
 
-	public Date getAppointmentDate() {
-		return _appointmentDate;
+	public Date getEstimateDate() {
+		return _estimateDate;
 	}
 
-	public void setAppointmentDate(Date appointmentDate) {
-		_appointmentDate = appointmentDate;
+	public void setEstimateDate(Date estimateDate) {
+		_estimateDate = estimateDate;
 	}
 
-	public Date getReleaseDate() {
-		return _releaseDate;
+	public Date getFinishDate() {
+		return _finishDate;
 	}
 
-	public void setReleaseDate(Date releaseDate) {
-		_releaseDate = releaseDate;
+	public void setFinishDate(Date finishDate) {
+		_finishDate = finishDate;
 	}
 
-	public Date getCompletionDate() {
-		return _completionDate;
+	public Date getReturnDate() {
+		return _returnDate;
 	}
 
-	public void setCompletionDate(Date completionDate) {
-		_completionDate = completionDate;
+	public void setReturnDate(Date returnDate) {
+		_returnDate = returnDate;
 	}
 
 	public String getStatus() {
@@ -390,6 +395,14 @@ public class DossierSoap implements Serializable {
 
 	public void setStatus(String status) {
 		_status = status;
+	}
+
+	public Date getStatusDate() {
+		return _statusDate;
+	}
+
+	public void setStatusDate(Date statusDate) {
+		_statusDate = statusDate;
 	}
 
 	public String getStatusDescription() {
@@ -406,6 +419,38 @@ public class DossierSoap implements Serializable {
 
 	public void setFeedbackNote(String feedbackNote) {
 		_feedbackNote = feedbackNote;
+	}
+
+	public int getDaysDelay() {
+		return _daysDelay;
+	}
+
+	public void setDaysDelay(int daysDelay) {
+		_daysDelay = daysDelay;
+	}
+
+	public Date getCloseDate() {
+		return _closeDate;
+	}
+
+	public void setCloseDate(Date closeDate) {
+		_closeDate = closeDate;
+	}
+
+	public String getErrorStatus() {
+		return _errorStatus;
+	}
+
+	public void setErrorStatus(String errorStatus) {
+		_errorStatus = errorStatus;
+	}
+
+	public String getErrorCode() {
+		return _errorCode;
+	}
+
+	public void setErrorCode(String errorCode) {
+		_errorCode = errorCode;
 	}
 
 	public int getDirty() {
@@ -425,8 +470,8 @@ public class DossierSoap implements Serializable {
 	private Date _modifiedDate;
 	private long _organizationId;
 	private long _dossierProcId;
-	private String _govAgentId;
-	private String _govAgentName;
+	private String _govAgencyId;
+	private String _govAgencyName;
 	private String _subjectId;
 	private String _subjectType;
 	private String _subjectName;
@@ -443,14 +488,19 @@ public class DossierSoap implements Serializable {
 	private String _note;
 	private String _resumeDescription;
 	private String _receptionNo;
-	private Date _submissionDate;
-	private Date _receptionDate;
-	private Date _resubmissionDate;
-	private Date _appointmentDate;
-	private Date _releaseDate;
-	private Date _completionDate;
+	private Date _submitDate;
+	private Date _receiveDate;
+	private Date _renewDate;
+	private Date _estimateDate;
+	private Date _finishDate;
+	private Date _returnDate;
 	private String _status;
+	private Date _statusDate;
 	private String _statusDescription;
 	private String _feedbackNote;
+	private int _daysDelay;
+	private Date _closeDate;
+	private String _errorStatus;
+	private String _errorCode;
 	private int _dirty;
 }

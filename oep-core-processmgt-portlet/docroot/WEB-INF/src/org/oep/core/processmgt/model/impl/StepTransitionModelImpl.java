@@ -80,10 +80,9 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 			{ "daysDuration", Types.INTEGER },
 			{ "dossierStatus", Types.VARCHAR },
 			{ "userAssignment", Types.INTEGER },
-			{ "newProcessOrder", Types.INTEGER },
-			{ "errorMessage", Types.VARCHAR }
+			{ "newProcessOrder", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_steptransition (stepTransitionId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcessId LONG,preDossierStepId LONG,postDossierStepId LONG,precondition VARCHAR(75) null,transitionName VARCHAR(75) null,daysDuration INTEGER,dossierStatus VARCHAR(75) null,userAssignment INTEGER,newProcessOrder INTEGER,errorMessage VARCHAR(75) null)";
+	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_steptransition (stepTransitionId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcessId LONG,preDossierStepId LONG,postDossierStepId LONG,precondition VARCHAR(75) null,transitionName VARCHAR(75) null,daysDuration INTEGER,dossierStatus VARCHAR(75) null,userAssignment INTEGER,newProcessOrder INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_processmgt_steptransition";
 	public static final String ORDER_BY_JPQL = " ORDER BY stepTransition.stepTransitionId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_processmgt_steptransition.stepTransitionId ASC";
@@ -126,7 +125,6 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 		model.setDossierStatus(soapModel.getDossierStatus());
 		model.setUserAssignment(soapModel.getUserAssignment());
 		model.setNewProcessOrder(soapModel.getNewProcessOrder());
-		model.setErrorMessage(soapModel.getErrorMessage());
 
 		return model;
 	}
@@ -206,7 +204,6 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 		attributes.put("dossierStatus", getDossierStatus());
 		attributes.put("userAssignment", getUserAssignment());
 		attributes.put("newProcessOrder", getNewProcessOrder());
-		attributes.put("errorMessage", getErrorMessage());
 
 		return attributes;
 	}
@@ -301,12 +298,6 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 
 		if (newProcessOrder != null) {
 			setNewProcessOrder(newProcessOrder);
-		}
-
-		String errorMessage = (String)attributes.get("errorMessage");
-
-		if (errorMessage != null) {
-			setErrorMessage(errorMessage);
 		}
 	}
 
@@ -500,22 +491,6 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 		_newProcessOrder = newProcessOrder;
 	}
 
-	@JSON
-	@Override
-	public String getErrorMessage() {
-		if (_errorMessage == null) {
-			return StringPool.BLANK;
-		}
-		else {
-			return _errorMessage;
-		}
-	}
-
-	@Override
-	public void setErrorMessage(String errorMessage) {
-		_errorMessage = errorMessage;
-	}
-
 	@Override
 	public ExpandoBridge getExpandoBridge() {
 		return ExpandoBridgeFactoryUtil.getExpandoBridge(getCompanyId(),
@@ -558,7 +533,6 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 		stepTransitionImpl.setDossierStatus(getDossierStatus());
 		stepTransitionImpl.setUserAssignment(getUserAssignment());
 		stepTransitionImpl.setNewProcessOrder(getNewProcessOrder());
-		stepTransitionImpl.setErrorMessage(getErrorMessage());
 
 		stepTransitionImpl.resetOriginalValues();
 
@@ -677,20 +651,12 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 
 		stepTransitionCacheModel.newProcessOrder = getNewProcessOrder();
 
-		stepTransitionCacheModel.errorMessage = getErrorMessage();
-
-		String errorMessage = stepTransitionCacheModel.errorMessage;
-
-		if ((errorMessage != null) && (errorMessage.length() == 0)) {
-			stepTransitionCacheModel.errorMessage = null;
-		}
-
 		return stepTransitionCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(33);
+		StringBundler sb = new StringBundler(31);
 
 		sb.append("{stepTransitionId=");
 		sb.append(getStepTransitionId());
@@ -722,8 +688,6 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 		sb.append(getUserAssignment());
 		sb.append(", newProcessOrder=");
 		sb.append(getNewProcessOrder());
-		sb.append(", errorMessage=");
-		sb.append(getErrorMessage());
 		sb.append("}");
 
 		return sb.toString();
@@ -731,7 +695,7 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(52);
+		StringBundler sb = new StringBundler(49);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.StepTransition");
@@ -797,10 +761,6 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 			"<column><column-name>newProcessOrder</column-name><column-value><![CDATA[");
 		sb.append(getNewProcessOrder());
 		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>errorMessage</column-name><column-value><![CDATA[");
-		sb.append(getErrorMessage());
-		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -827,6 +787,5 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 	private String _dossierStatus;
 	private int _userAssignment;
 	private int _newProcessOrder;
-	private String _errorMessage;
 	private StepTransition _escapedModel;
 }

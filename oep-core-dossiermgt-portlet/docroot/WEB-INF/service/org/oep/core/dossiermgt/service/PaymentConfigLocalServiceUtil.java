@@ -289,26 +289,26 @@ public class PaymentConfigLocalServiceUtil {
 	* @return: new dossier proc
 	*/
 	public static org.oep.core.dossiermgt.model.PaymentConfig addPaymentConfig(
-		java.lang.String govAgentId, java.lang.String govAgentName,
+		java.lang.String govAgencyId, java.lang.String govAgencyName,
 		java.lang.String bankTransfer, java.lang.String keypay,
 		long ebPartnerShipId,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
-				   .addPaymentConfig(govAgentId, govAgentName, bankTransfer,
+				   .addPaymentConfig(govAgencyId, govAgencyName, bankTransfer,
 			keypay, ebPartnerShipId, serviceContext);
 	}
 
 	public static org.oep.core.dossiermgt.model.PaymentConfig updatePaymentConfig(
-		long id, java.lang.String govAgentId, java.lang.String govAgentName,
+		long id, java.lang.String govAgencyId, java.lang.String govAgencyName,
 		java.lang.String bankTransfer, java.lang.String keypay,
 		long ebPartnerShipId,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
-				   .updatePaymentConfig(id, govAgentId, govAgentName,
+				   .updatePaymentConfig(id, govAgencyId, govAgencyName,
 			bankTransfer, keypay, ebPartnerShipId, serviceContext);
 	}
 

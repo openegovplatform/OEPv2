@@ -321,8 +321,8 @@ public interface DossierLocalService extends BaseLocalService,
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.Dossier addDossier(
-		long organizationId, long dossierProcId, java.lang.String govAgentId,
-		java.lang.String govAgentName, java.lang.String subjectId,
+		long organizationId, long dossierProcId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, java.lang.String subjectId,
 		java.lang.String subjectType, java.lang.String subjectName,
 		java.lang.String address, java.lang.String cityNo,
 		java.lang.String cityName, java.lang.String districtNo,
@@ -330,19 +330,20 @@ public interface DossierLocalService extends BaseLocalService,
 		java.lang.String wardName, java.lang.String telNo,
 		java.lang.String contactPersonName, java.lang.String contactPersonTel,
 		java.lang.String note, java.lang.String resumeDescription,
-		java.lang.String receptionNo, java.util.Date submissionDate,
-		java.util.Date receptionDate, java.util.Date resubmissionDate,
-		java.util.Date appointmentDate, java.util.Date releaseDate,
-		java.util.Date completionDate, java.lang.String status,
-		java.lang.String statusDescription, java.lang.String feedbackNote,
-		int dirty, com.liferay.portal.service.ServiceContext serviceContext)
+		java.lang.String receptionNo, java.util.Date submitDate,
+		java.util.Date receiveDate, java.util.Date renewDate,
+		java.util.Date estimateDate, java.util.Date returnDate,
+		java.util.Date closeDate, java.lang.String status,
+		java.util.Date statusDate, java.lang.String statusDescription,
+		java.lang.String feedbackNote, int dirty,
+		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.Dossier updateDossier(long id,
-		long organizationId, long dossierProcId, java.lang.String govAgentId,
-		java.lang.String govAgentName, java.lang.String subjectId,
+		long organizationId, long dossierProcId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, java.lang.String subjectId,
 		java.lang.String subjectType, java.lang.String subjectName,
 		java.lang.String address, java.lang.String cityNo,
 		java.lang.String cityName, java.lang.String districtNo,
@@ -350,12 +351,13 @@ public interface DossierLocalService extends BaseLocalService,
 		java.lang.String wardName, java.lang.String telNo,
 		java.lang.String contactPersonName, java.lang.String contactPersonTel,
 		java.lang.String note, java.lang.String resumeDescription,
-		java.lang.String receptionNo, java.util.Date submissionDate,
-		java.util.Date receptionDate, java.util.Date resubmissionDate,
-		java.util.Date appointmentDate, java.util.Date releaseDate,
-		java.util.Date completionDate, java.lang.String status,
-		java.lang.String statusDescription, java.lang.String feedbackNote,
-		int dirty, com.liferay.portal.service.ServiceContext serviceContext)
+		java.lang.String receptionNo, java.util.Date submitDate,
+		java.util.Date receiveDate, java.util.Date renewDate,
+		java.util.Date estimateDate, java.util.Date returnDate,
+		java.util.Date closeDate, java.lang.String status,
+		java.util.Date statusDate, java.lang.String statusDescription,
+		java.lang.String feedbackNote, int dirty,
+		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 

@@ -119,7 +119,7 @@ public class StepTransitionLocalServiceClp implements StepTransitionLocalService
 
 		_methodParameterTypes19 = new String[] {
 				"long", "long", "long", "java.lang.String", "java.lang.String",
-				"int", "java.lang.String", "int", "int", "java.lang.String",
+				"int", "java.lang.String", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -128,7 +128,7 @@ public class StepTransitionLocalServiceClp implements StepTransitionLocalService
 		_methodParameterTypes20 = new String[] {
 				"long", "long", "long", "long", "java.lang.String",
 				"java.lang.String", "int", "java.lang.String", "int", "int",
-				"java.lang.String", "com.liferay.portal.service.ServiceContext"
+				"com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName21 = "updateStepTransitionResources";
@@ -727,7 +727,7 @@ public class StepTransitionLocalServiceClp implements StepTransitionLocalService
 		long dossierProcessId, long preDossierStepId, long postDossierStepId,
 		java.lang.String precondition, java.lang.String transitionName,
 		int daysDuration, java.lang.String dossierStatus, int userAssignment,
-		int newProcessOrder, java.lang.String errorMessage,
+		int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -754,8 +754,6 @@ public class StepTransitionLocalServiceClp implements StepTransitionLocalService
 					userAssignment,
 						
 					newProcessOrder,
-						
-					ClpSerializer.translateInput(errorMessage),
 						
 					ClpSerializer.translateInput(serviceContext)
 					});
@@ -789,7 +787,7 @@ public class StepTransitionLocalServiceClp implements StepTransitionLocalService
 		long postDossierStepId, java.lang.String precondition,
 		java.lang.String transitionName, int daysDuration,
 		java.lang.String dossierStatus, int userAssignment,
-		int newProcessOrder, java.lang.String errorMessage,
+		int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -818,8 +816,6 @@ public class StepTransitionLocalServiceClp implements StepTransitionLocalService
 					userAssignment,
 						
 					newProcessOrder,
-						
-					ClpSerializer.translateInput(errorMessage),
 						
 					ClpSerializer.translateInput(serviceContext)
 					});

@@ -60,6 +60,7 @@ public class DossierStepWrapper implements DossierStep,
 		attributes.put("title", getTitle());
 		attributes.put("sequenceNo", getSequenceNo());
 		attributes.put("stepType", getStepType());
+		attributes.put("doForm", getDoForm());
 
 		return attributes;
 	}
@@ -124,6 +125,12 @@ public class DossierStepWrapper implements DossierStep,
 
 		if (stepType != null) {
 			setStepType(stepType);
+		}
+
+		String doForm = (String)attributes.get("doForm");
+
+		if (doForm != null) {
+			setDoForm(doForm);
 		}
 	}
 
@@ -367,6 +374,26 @@ public class DossierStepWrapper implements DossierStep,
 	@Override
 	public void setStepType(int stepType) {
 		_dossierStep.setStepType(stepType);
+	}
+
+	/**
+	* Returns the do form of this dossier step.
+	*
+	* @return the do form of this dossier step
+	*/
+	@Override
+	public java.lang.String getDoForm() {
+		return _dossierStep.getDoForm();
+	}
+
+	/**
+	* Sets the do form of this dossier step.
+	*
+	* @param doForm the do form of this dossier step
+	*/
+	@Override
+	public void setDoForm(java.lang.String doForm) {
+		_dossierStep.setDoForm(doForm);
 	}
 
 	@Override

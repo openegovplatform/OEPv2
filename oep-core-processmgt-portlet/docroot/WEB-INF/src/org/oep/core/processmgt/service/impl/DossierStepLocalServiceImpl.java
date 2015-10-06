@@ -62,7 +62,13 @@ public class DossierStepLocalServiceImpl extends DossierStepLocalServiceBaseImpl
 	 * @return: new dossier process
 	 */
 	@Indexable(type = IndexableType.REINDEX)	
-	public DossierStep addDossierStep(long dossierProcessId, String title, int sequenceNo, int stepType, ServiceContext serviceContext) throws SystemException, PortalException {
+	public DossierStep addDossierStep(
+			long dossierProcessId, 
+			String title, 
+			int sequenceNo, 
+			int stepType, 
+			String doForm,
+			ServiceContext serviceContext) throws SystemException, PortalException {
 		validate(dossierProcessId, title, sequenceNo, stepType);
 		long id = counterLocalService.increment();
 		DossierStep dossierStep = dossierStepPersistence.create(id);
@@ -75,6 +81,7 @@ public class DossierStepLocalServiceImpl extends DossierStepLocalServiceBaseImpl
 		dossierStep.setTitle(title);
 		dossierStep.setSequenceNo(sequenceNo);
 		dossierStep.setStepType(stepType);
+		dossierStep.setDoForm(doForm);
 		dossierStep.setCreateDate(serviceContext.getCreateDate(now));
 		
 		dossierStepPersistence.update(dossierStep);
@@ -94,7 +101,13 @@ public class DossierStepLocalServiceImpl extends DossierStepLocalServiceBaseImpl
 
 	@Indexable(type = IndexableType.REINDEX)
 	public DossierStep updateDossierStep(
-			long id, long dossierProcessId, String title, int sequenceNo, int stepType, ServiceContext serviceContext)
+			long id, 
+			long dossierProcessId, 
+			String title, 
+			int sequenceNo, 
+			int stepType, 
+			String doForm,
+			ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
 		validate(dossierProcessId, title, sequenceNo, stepType);
@@ -106,6 +119,7 @@ public class DossierStepLocalServiceImpl extends DossierStepLocalServiceBaseImpl
 		dossierStep.setTitle(title);
 		dossierStep.setSequenceNo(sequenceNo);
 		dossierStep.setStepType(stepType);
+		dossierStep.setDoForm(doForm);
 		
 		dossierStepPersistence.update(dossierStep);
 

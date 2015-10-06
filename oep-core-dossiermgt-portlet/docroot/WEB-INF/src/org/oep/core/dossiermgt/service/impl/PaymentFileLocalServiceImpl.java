@@ -64,8 +64,8 @@ public class PaymentFileLocalServiceImpl extends PaymentFileLocalServiceBaseImpl
 	@Indexable(type = IndexableType.REINDEX)	
 	public PaymentFile addPaymentFile(
 			long organizationId,
-			String govAgentId,
-			String govAgentName,
+			String govAgencyId,
+			String govAgencyName,
 			String subjectId,
 			String subjectType,
 			String subjectName,
@@ -91,8 +91,8 @@ public class PaymentFileLocalServiceImpl extends PaymentFileLocalServiceBaseImpl
 		paymentFile.setUserId(serviceContext.getUserId());
 		paymentFile.setCreateDate(serviceContext.getCreateDate(now));
 		paymentFile.setOrganizationId(organizationId);
-		paymentFile.setGovAgentId(govAgentId);
-		paymentFile.setGovAgentName(govAgentName);
+		paymentFile.setGovAgencyId(govAgencyId);
+		paymentFile.setGovAgencyName(govAgencyName);
 		paymentFile.setSubjectId(subjectId);
 		paymentFile.setSubjectName(subjectName);
 		paymentFile.setSubjectType(subjectType);
@@ -127,8 +127,8 @@ public class PaymentFileLocalServiceImpl extends PaymentFileLocalServiceBaseImpl
 	public PaymentFile updatePaymentFile(
 			long id, 
 			long organizationId,
-			String govAgentId,
-			String govAgentName,
+			String govAgencyId,
+			String govAgencyName,
 			String subjectId,
 			String subjectType,
 			String subjectName,
@@ -152,8 +152,8 @@ public class PaymentFileLocalServiceImpl extends PaymentFileLocalServiceBaseImpl
 
 		paymentFile.setModifiedDate(serviceContext.getModifiedDate(null));
 		paymentFile.setOrganizationId(organizationId);
-		paymentFile.setGovAgentId(govAgentId);
-		paymentFile.setGovAgentName(govAgentName);
+		paymentFile.setGovAgencyId(govAgencyId);
+		paymentFile.setGovAgencyName(govAgencyName);
 		paymentFile.setSubjectId(subjectId);
 		paymentFile.setSubjectName(subjectName);
 		paymentFile.setSubjectType(subjectType);

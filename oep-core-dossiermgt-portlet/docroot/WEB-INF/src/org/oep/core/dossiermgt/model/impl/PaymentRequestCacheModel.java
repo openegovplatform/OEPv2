@@ -58,10 +58,10 @@ public class PaymentRequestCacheModel implements CacheModel<PaymentRequest>,
 		sb.append(organizationId);
 		sb.append(", dossierId=");
 		sb.append(dossierId);
-		sb.append(", govAgentId=");
-		sb.append(govAgentId);
-		sb.append(", govAgentName=");
-		sb.append(govAgentName);
+		sb.append(", govAgencyId=");
+		sb.append(govAgencyId);
+		sb.append(", govAgencyName=");
+		sb.append(govAgencyName);
 		sb.append(", subjectId=");
 		sb.append(subjectId);
 		sb.append(", subjectType=");
@@ -116,18 +116,18 @@ public class PaymentRequestCacheModel implements CacheModel<PaymentRequest>,
 		paymentRequestImpl.setOrganizationId(organizationId);
 		paymentRequestImpl.setDossierId(dossierId);
 
-		if (govAgentId == null) {
-			paymentRequestImpl.setGovAgentId(StringPool.BLANK);
+		if (govAgencyId == null) {
+			paymentRequestImpl.setGovAgencyId(StringPool.BLANK);
 		}
 		else {
-			paymentRequestImpl.setGovAgentId(govAgentId);
+			paymentRequestImpl.setGovAgencyId(govAgencyId);
 		}
 
-		if (govAgentName == null) {
-			paymentRequestImpl.setGovAgentName(StringPool.BLANK);
+		if (govAgencyName == null) {
+			paymentRequestImpl.setGovAgencyName(StringPool.BLANK);
 		}
 		else {
-			paymentRequestImpl.setGovAgentName(govAgentName);
+			paymentRequestImpl.setGovAgencyName(govAgencyName);
 		}
 
 		if (subjectId == null) {
@@ -180,8 +180,8 @@ public class PaymentRequestCacheModel implements CacheModel<PaymentRequest>,
 		modifiedDate = objectInput.readLong();
 		organizationId = objectInput.readLong();
 		dossierId = objectInput.readLong();
-		govAgentId = objectInput.readUTF();
-		govAgentName = objectInput.readUTF();
+		govAgencyId = objectInput.readUTF();
+		govAgencyName = objectInput.readUTF();
 		subjectId = objectInput.readUTF();
 		subjectType = objectInput.readUTF();
 		subjectName = objectInput.readUTF();
@@ -211,18 +211,18 @@ public class PaymentRequestCacheModel implements CacheModel<PaymentRequest>,
 		objectOutput.writeLong(organizationId);
 		objectOutput.writeLong(dossierId);
 
-		if (govAgentId == null) {
+		if (govAgencyId == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(govAgentId);
+			objectOutput.writeUTF(govAgencyId);
 		}
 
-		if (govAgentName == null) {
+		if (govAgencyName == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(govAgentName);
+			objectOutput.writeUTF(govAgencyName);
 		}
 
 		if (subjectId == null) {
@@ -269,8 +269,8 @@ public class PaymentRequestCacheModel implements CacheModel<PaymentRequest>,
 	public long modifiedDate;
 	public long organizationId;
 	public long dossierId;
-	public String govAgentId;
-	public String govAgentName;
+	public String govAgencyId;
+	public String govAgencyName;
 	public String subjectId;
 	public String subjectType;
 	public String subjectName;

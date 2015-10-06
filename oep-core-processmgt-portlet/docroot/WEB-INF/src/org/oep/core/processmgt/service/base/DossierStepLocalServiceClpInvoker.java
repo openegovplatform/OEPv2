@@ -117,7 +117,7 @@ public class DossierStepLocalServiceClpInvoker {
 		_methodName96 = "addDossierStep";
 
 		_methodParameterTypes96 = new String[] {
-				"long", "java.lang.String", "int", "int",
+				"long", "java.lang.String", "int", "int", "java.lang.String",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -125,7 +125,7 @@ public class DossierStepLocalServiceClpInvoker {
 
 		_methodParameterTypes97 = new String[] {
 				"long", "long", "java.lang.String", "int", "int",
-				"com.liferay.portal.service.ServiceContext"
+				"java.lang.String", "com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName98 = "updateDossierStepResources";
@@ -280,7 +280,8 @@ public class DossierStepLocalServiceClpInvoker {
 				(java.lang.String)arguments[1],
 				((Integer)arguments[2]).intValue(),
 				((Integer)arguments[3]).intValue(),
-				(com.liferay.portal.service.ServiceContext)arguments[4]);
+				(java.lang.String)arguments[4],
+				(com.liferay.portal.service.ServiceContext)arguments[5]);
 		}
 
 		if (_methodName97.equals(name) &&
@@ -290,7 +291,8 @@ public class DossierStepLocalServiceClpInvoker {
 				(java.lang.String)arguments[2],
 				((Integer)arguments[3]).intValue(),
 				((Integer)arguments[4]).intValue(),
-				(com.liferay.portal.service.ServiceContext)arguments[5]);
+				(java.lang.String)arguments[5],
+				(com.liferay.portal.service.ServiceContext)arguments[6]);
 		}
 
 		if (_methodName98.equals(name) &&

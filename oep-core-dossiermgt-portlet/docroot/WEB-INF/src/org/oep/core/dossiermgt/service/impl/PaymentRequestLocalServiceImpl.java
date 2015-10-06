@@ -66,8 +66,8 @@ public class PaymentRequestLocalServiceImpl
 	public PaymentRequest addPaymentRequest(
 			long organizationId,
 			long dossierId,
-			String govAgentId,
-			String govAgentName,
+			String govAgencyId,
+			String govAgencyName,
 			String subjectId,
 			String subjectType,
 			String subjectName,
@@ -88,8 +88,8 @@ public class PaymentRequestLocalServiceImpl
 		paymentRequest.setCreateDate(serviceContext.getCreateDate(now));
 		paymentRequest.setOrganizationId(organizationId);
 		paymentRequest.setDossierId(dossierId);
-		paymentRequest.setGovAgentId(govAgentId);
-		paymentRequest.setGovAgentName(govAgentName);
+		paymentRequest.setGovAgencyId(govAgencyId);
+		paymentRequest.setGovAgencyName(govAgencyName);
 		paymentRequest.setSubjectId(subjectId);
 		paymentRequest.setSubjectName(subjectName);
 		paymentRequest.setSubjectType(subjectType);
@@ -118,8 +118,8 @@ public class PaymentRequestLocalServiceImpl
 			long id, 
 			long organizationId,
 			long dossierId,
-			String govAgentId,
-			String govAgentName,
+			String govAgencyId,
+			String govAgencyName,
 			String subjectId,
 			String subjectType,
 			String subjectName,
@@ -138,8 +138,8 @@ public class PaymentRequestLocalServiceImpl
 		paymentRequest.setModifiedDate(serviceContext.getModifiedDate(null));
 		paymentRequest.setOrganizationId(organizationId);
 		paymentRequest.setDossierId(dossierId);
-		paymentRequest.setGovAgentId(govAgentId);
-		paymentRequest.setGovAgentName(govAgentName);
+		paymentRequest.setGovAgencyId(govAgencyId);
+		paymentRequest.setGovAgencyName(govAgencyName);
 		paymentRequest.setSubjectId(subjectId);
 		paymentRequest.setSubjectName(subjectName);
 		paymentRequest.setSubjectType(subjectType);

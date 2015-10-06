@@ -273,7 +273,7 @@ public interface StepTransitionLocalService extends BaseLocalService,
 		long dossierProcessId, long preDossierStepId, long postDossierStepId,
 		java.lang.String precondition, java.lang.String transitionName,
 		int daysDuration, java.lang.String dossierStatus, int userAssignment,
-		int newProcessOrder, java.lang.String errorMessage,
+		int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
@@ -284,7 +284,7 @@ public interface StepTransitionLocalService extends BaseLocalService,
 		long postDossierStepId, java.lang.String precondition,
 		java.lang.String transitionName, int daysDuration,
 		java.lang.String dossierStatus, int userAssignment,
-		int newProcessOrder, java.lang.String errorMessage,
+		int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;

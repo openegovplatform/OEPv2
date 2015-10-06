@@ -90,7 +90,6 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 		attributes.put("dossierStatus", getDossierStatus());
 		attributes.put("userAssignment", getUserAssignment());
 		attributes.put("newProcessOrder", getNewProcessOrder());
-		attributes.put("errorMessage", getErrorMessage());
 
 		return attributes;
 	}
@@ -185,12 +184,6 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 
 		if (newProcessOrder != null) {
 			setNewProcessOrder(newProcessOrder);
-		}
-
-		String errorMessage = (String)attributes.get("errorMessage");
-
-		if (errorMessage != null) {
-			setErrorMessage(errorMessage);
 		}
 	}
 
@@ -554,29 +547,6 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 		}
 	}
 
-	@Override
-	public String getErrorMessage() {
-		return _errorMessage;
-	}
-
-	@Override
-	public void setErrorMessage(String errorMessage) {
-		_errorMessage = errorMessage;
-
-		if (_stepTransitionRemoteModel != null) {
-			try {
-				Class<?> clazz = _stepTransitionRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setErrorMessage", String.class);
-
-				method.invoke(_stepTransitionRemoteModel, errorMessage);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
 	public BaseModel<?> getStepTransitionRemoteModel() {
 		return _stepTransitionRemoteModel;
 	}
@@ -663,7 +633,6 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 		clone.setDossierStatus(getDossierStatus());
 		clone.setUserAssignment(getUserAssignment());
 		clone.setNewProcessOrder(getNewProcessOrder());
-		clone.setErrorMessage(getErrorMessage());
 
 		return clone;
 	}
@@ -716,7 +685,7 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(33);
+		StringBundler sb = new StringBundler(31);
 
 		sb.append("{stepTransitionId=");
 		sb.append(getStepTransitionId());
@@ -748,8 +717,6 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 		sb.append(getUserAssignment());
 		sb.append(", newProcessOrder=");
 		sb.append(getNewProcessOrder());
-		sb.append(", errorMessage=");
-		sb.append(getErrorMessage());
 		sb.append("}");
 
 		return sb.toString();
@@ -757,7 +724,7 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(52);
+		StringBundler sb = new StringBundler(49);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.StepTransition");
@@ -823,10 +790,6 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 			"<column><column-name>newProcessOrder</column-name><column-value><![CDATA[");
 		sb.append(getNewProcessOrder());
 		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>errorMessage</column-name><column-value><![CDATA[");
-		sb.append(getErrorMessage());
-		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -849,7 +812,6 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 	private String _dossierStatus;
 	private int _userAssignment;
 	private int _newProcessOrder;
-	private String _errorMessage;
 	private BaseModel<?> _stepTransitionRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.processmgt.service.ClpSerializer.class;
 }

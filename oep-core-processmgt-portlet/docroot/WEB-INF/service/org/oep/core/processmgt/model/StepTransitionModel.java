@@ -288,21 +288,6 @@ public interface StepTransitionModel extends BaseModel<StepTransition> {
 	 */
 	public void setNewProcessOrder(int newProcessOrder);
 
-	/**
-	 * Returns the error message of this step transition.
-	 *
-	 * @return the error message of this step transition
-	 */
-	@AutoEscape
-	public String getErrorMessage();
-
-	/**
-	 * Sets the error message of this step transition.
-	 *
-	 * @param errorMessage the error message of this step transition
-	 */
-	public void setErrorMessage(String errorMessage);
-
 	@Override
 	public boolean isNew();
 

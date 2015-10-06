@@ -325,8 +325,8 @@ public interface PaymentRequestLocalService extends BaseLocalService,
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.PaymentRequest addPaymentRequest(
-		long organizationId, long dossierId, java.lang.String govAgentId,
-		java.lang.String govAgentName, java.lang.String subjectId,
+		long organizationId, long dossierId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, java.lang.String subjectId,
 		java.lang.String subjectType, java.lang.String subjectName, int amount,
 		java.lang.String requestNote, long paymentFileId, int confirmOK,
 		long ebMessageId,
@@ -337,7 +337,7 @@ public interface PaymentRequestLocalService extends BaseLocalService,
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.PaymentRequest updatePaymentRequest(
 		long id, long organizationId, long dossierId,
-		java.lang.String govAgentId, java.lang.String govAgentName,
+		java.lang.String govAgencyId, java.lang.String govAgencyName,
 		java.lang.String subjectId, java.lang.String subjectType,
 		java.lang.String subjectName, int amount, java.lang.String requestNote,
 		long paymentFileId, int confirmOK, long ebMessageId,

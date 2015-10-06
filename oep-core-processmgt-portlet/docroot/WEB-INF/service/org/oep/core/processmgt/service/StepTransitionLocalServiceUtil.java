@@ -292,15 +292,14 @@ public class StepTransitionLocalServiceUtil {
 		long dossierProcessId, long preDossierStepId, long postDossierStepId,
 		java.lang.String precondition, java.lang.String transitionName,
 		int daysDuration, java.lang.String dossierStatus, int userAssignment,
-		int newProcessOrder, java.lang.String errorMessage,
+		int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .addStepTransition(dossierProcessId, preDossierStepId,
 			postDossierStepId, precondition, transitionName, daysDuration,
-			dossierStatus, userAssignment, newProcessOrder, errorMessage,
-			serviceContext);
+			dossierStatus, userAssignment, newProcessOrder, serviceContext);
 	}
 
 	public static org.oep.core.processmgt.model.StepTransition updateStepTransition(
@@ -308,7 +307,7 @@ public class StepTransitionLocalServiceUtil {
 		long postDossierStepId, java.lang.String precondition,
 		java.lang.String transitionName, int daysDuration,
 		java.lang.String dossierStatus, int userAssignment,
-		int newProcessOrder, java.lang.String errorMessage,
+		int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -316,7 +315,7 @@ public class StepTransitionLocalServiceUtil {
 				   .updateStepTransition(id, dossierProcessId,
 			preDossierStepId, postDossierStepId, precondition, transitionName,
 			daysDuration, dossierStatus, userAssignment, newProcessOrder,
-			errorMessage, serviceContext);
+			serviceContext);
 	}
 
 	public static void updateStepTransitionResources(

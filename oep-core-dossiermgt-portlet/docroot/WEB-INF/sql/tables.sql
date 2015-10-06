@@ -50,8 +50,8 @@ create table oep_dossiermgt_dossier (
 	modifiedDate DATE null,
 	organizationId LONG,
 	dossierProcId LONG,
-	govAgentId VARCHAR(30) null,
-	govAgentName VARCHAR(200) null,
+	govAgencyId VARCHAR(30) null,
+	govAgencyName VARCHAR(200) null,
 	subjectId VARCHAR(30) null,
 	subjectType VARCHAR(30) null,
 	subjectName VARCHAR(100) null,
@@ -68,15 +68,20 @@ create table oep_dossiermgt_dossier (
 	note VARCHAR(255) null,
 	resumeDescription VARCHAR(255) null,
 	receptionNo VARCHAR(30) null,
-	submissionDate DATE null,
-	receptionDate DATE null,
-	resubmissionDate DATE null,
-	appointmentDate DATE null,
-	releaseDate DATE null,
-	completionDate DATE null,
+	submitDate DATE null,
+	receiveDate DATE null,
+	renewDate DATE null,
+	estimateDate DATE null,
+	finishDate DATE null,
+	returnDate DATE null,
 	status VARCHAR(30) null,
+	statusDate DATE null,
 	statusDescription VARCHAR(100) null,
 	feedbackNote VARCHAR(255) null,
+	daysDelay INTEGER,
+	closeDate DATE null,
+	errorStatus VARCHAR(30) null,
+	errorCode VARCHAR(30) null,
 	dirty INTEGER
 );
 
@@ -156,13 +161,13 @@ create table oep_dossiermgt_dossierproc (
 );
 
 create table oep_dossiermgt_dossierprocagent (
-	dossierProcAgentId LONG not null primary key,
+	dossierProcAgencyId LONG not null primary key,
 	companyId LONG,
 	createDate DATE null,
 	modifiedDate DATE null,
 	dossierProcId LONG,
-	govAgentId VARCHAR(30) null,
-	govAgentName VARCHAR(200) null,
+	govAgencyId VARCHAR(30) null,
+	govAgencyName VARCHAR(200) null,
 	ebPartnerShipId LONG
 );
 
@@ -205,8 +210,8 @@ create table oep_dossiermgt_paymentconfig (
 	companyId LONG,
 	createDate DATE null,
 	modifiedDate DATE null,
-	govAgentId VARCHAR(30) null,
-	govAgentName VARCHAR(200) null,
+	govAgencyId VARCHAR(30) null,
+	govAgencyName VARCHAR(200) null,
 	bankTransfer VARCHAR(500) null,
 	keypay VARCHAR(255) null,
 	ebPartnerShipId LONG
@@ -221,8 +226,8 @@ create table oep_dossiermgt_paymentfile (
 	createDate DATE null,
 	modifiedDate DATE null,
 	organizationId LONG,
-	govAgentId VARCHAR(30) null,
-	govAgentName VARCHAR(200) null,
+	govAgencyId VARCHAR(30) null,
+	govAgencyName VARCHAR(200) null,
 	subjectId VARCHAR(30) null,
 	subjectType VARCHAR(30) null,
 	subjectName VARCHAR(100) null,
@@ -249,8 +254,8 @@ create table oep_dossiermgt_paymentrequest (
 	modifiedDate DATE null,
 	organizationId LONG,
 	dossierId LONG,
-	govAgentId VARCHAR(30) null,
-	govAgentName VARCHAR(200) null,
+	govAgencyId VARCHAR(30) null,
+	govAgencyName VARCHAR(200) null,
 	subjectId VARCHAR(30) null,
 	subjectType VARCHAR(30) null,
 	subjectName VARCHAR(100) null,
@@ -259,4 +264,15 @@ create table oep_dossiermgt_paymentrequest (
 	paymentFileId LONG,
 	confirmOK INTEGER,
 	ebMessageId LONG
+);
+
+create table oep_dossiermgt_profiledata (
+	profileDataId LONG not null primary key,
+	userId LONG,
+	groupId LONG,
+	companyId LONG,
+	createDate DATE null,
+	modifiedDate DATE null,
+	fieldName VARCHAR(30) null,
+	fieldValue VARCHAR(200) null
 );

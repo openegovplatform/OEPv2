@@ -369,6 +369,35 @@ public class DocTemplateLocalServiceUtil {
 			serviceContext);
 	}
 
+	public static java.util.List<org.oep.core.dossiermgt.model.DocTemplate> findByLikeTitle(
+		java.lang.String title, int startIndex, int endIndex,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .findByLikeTitle(title, startIndex, endIndex, serviceContext);
+	}
+
+	public static int countByLikeTitle(java.lang.String title,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByLikeTitle(title, serviceContext);
+	}
+
+	public static java.util.List<org.oep.core.dossiermgt.model.DocTemplate> findByGroupLikeTitle(
+		java.lang.String title, int startIndex, int endIndex,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .findByGroupLikeTitle(title, startIndex, endIndex,
+			serviceContext);
+	}
+
+	public static int countByGroupLikeTitle(java.lang.String title,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByGroupLikeTitle(title, serviceContext);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

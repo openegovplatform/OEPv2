@@ -371,8 +371,8 @@ public class PaymentRequestLocalServiceWrapper
 	*/
 	@Override
 	public org.oep.core.dossiermgt.model.PaymentRequest addPaymentRequest(
-		long organizationId, long dossierId, java.lang.String govAgentId,
-		java.lang.String govAgentName, java.lang.String subjectId,
+		long organizationId, long dossierId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, java.lang.String subjectId,
 		java.lang.String subjectType, java.lang.String subjectName, int amount,
 		java.lang.String requestNote, long paymentFileId, int confirmOK,
 		long ebMessageId,
@@ -380,7 +380,7 @@ public class PaymentRequestLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _paymentRequestLocalService.addPaymentRequest(organizationId,
-			dossierId, govAgentId, govAgentName, subjectId, subjectType,
+			dossierId, govAgencyId, govAgencyName, subjectId, subjectType,
 			subjectName, amount, requestNote, paymentFileId, confirmOK,
 			ebMessageId, serviceContext);
 	}
@@ -388,7 +388,7 @@ public class PaymentRequestLocalServiceWrapper
 	@Override
 	public org.oep.core.dossiermgt.model.PaymentRequest updatePaymentRequest(
 		long id, long organizationId, long dossierId,
-		java.lang.String govAgentId, java.lang.String govAgentName,
+		java.lang.String govAgencyId, java.lang.String govAgencyName,
 		java.lang.String subjectId, java.lang.String subjectType,
 		java.lang.String subjectName, int amount, java.lang.String requestNote,
 		long paymentFileId, int confirmOK, long ebMessageId,
@@ -396,7 +396,7 @@ public class PaymentRequestLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _paymentRequestLocalService.updatePaymentRequest(id,
-			organizationId, dossierId, govAgentId, govAgentName, subjectId,
+			organizationId, dossierId, govAgencyId, govAgencyName, subjectId,
 			subjectType, subjectName, amount, requestNote, paymentFileId,
 			confirmOK, ebMessageId, serviceContext);
 	}

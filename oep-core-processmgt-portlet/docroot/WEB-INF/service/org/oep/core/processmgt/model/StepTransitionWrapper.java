@@ -65,7 +65,6 @@ public class StepTransitionWrapper implements StepTransition,
 		attributes.put("dossierStatus", getDossierStatus());
 		attributes.put("userAssignment", getUserAssignment());
 		attributes.put("newProcessOrder", getNewProcessOrder());
-		attributes.put("errorMessage", getErrorMessage());
 
 		return attributes;
 	}
@@ -160,12 +159,6 @@ public class StepTransitionWrapper implements StepTransition,
 
 		if (newProcessOrder != null) {
 			setNewProcessOrder(newProcessOrder);
-		}
-
-		String errorMessage = (String)attributes.get("errorMessage");
-
-		if (errorMessage != null) {
-			setErrorMessage(errorMessage);
 		}
 	}
 
@@ -509,26 +502,6 @@ public class StepTransitionWrapper implements StepTransition,
 	@Override
 	public void setNewProcessOrder(int newProcessOrder) {
 		_stepTransition.setNewProcessOrder(newProcessOrder);
-	}
-
-	/**
-	* Returns the error message of this step transition.
-	*
-	* @return the error message of this step transition
-	*/
-	@Override
-	public java.lang.String getErrorMessage() {
-		return _stepTransition.getErrorMessage();
-	}
-
-	/**
-	* Sets the error message of this step transition.
-	*
-	* @param errorMessage the error message of this step transition
-	*/
-	@Override
-	public void setErrorMessage(java.lang.String errorMessage) {
-		_stepTransition.setErrorMessage(errorMessage);
 	}
 
 	@Override

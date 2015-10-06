@@ -59,8 +59,8 @@ public class PaymentFileWrapper implements PaymentFile,
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("organizationId", getOrganizationId());
-		attributes.put("govAgentId", getGovAgentId());
-		attributes.put("govAgentName", getGovAgentName());
+		attributes.put("govAgencyId", getGovAgencyId());
+		attributes.put("govAgencyName", getGovAgencyName());
 		attributes.put("subjectId", getSubjectId());
 		attributes.put("subjectType", getSubjectType());
 		attributes.put("subjectName", getSubjectName());
@@ -129,16 +129,16 @@ public class PaymentFileWrapper implements PaymentFile,
 			setOrganizationId(organizationId);
 		}
 
-		String govAgentId = (String)attributes.get("govAgentId");
+		String govAgencyId = (String)attributes.get("govAgencyId");
 
-		if (govAgentId != null) {
-			setGovAgentId(govAgentId);
+		if (govAgencyId != null) {
+			setGovAgencyId(govAgencyId);
 		}
 
-		String govAgentName = (String)attributes.get("govAgentName");
+		String govAgencyName = (String)attributes.get("govAgencyName");
 
-		if (govAgentName != null) {
-			setGovAgentName(govAgentName);
+		if (govAgencyName != null) {
+			setGovAgencyName(govAgencyName);
 		}
 
 		String subjectId = (String)attributes.get("subjectId");
@@ -429,43 +429,43 @@ public class PaymentFileWrapper implements PaymentFile,
 	}
 
 	/**
-	* Returns the gov agent ID of this payment file.
+	* Returns the gov agency ID of this payment file.
 	*
-	* @return the gov agent ID of this payment file
+	* @return the gov agency ID of this payment file
 	*/
 	@Override
-	public java.lang.String getGovAgentId() {
-		return _paymentFile.getGovAgentId();
+	public java.lang.String getGovAgencyId() {
+		return _paymentFile.getGovAgencyId();
 	}
 
 	/**
-	* Sets the gov agent ID of this payment file.
+	* Sets the gov agency ID of this payment file.
 	*
-	* @param govAgentId the gov agent ID of this payment file
+	* @param govAgencyId the gov agency ID of this payment file
 	*/
 	@Override
-	public void setGovAgentId(java.lang.String govAgentId) {
-		_paymentFile.setGovAgentId(govAgentId);
+	public void setGovAgencyId(java.lang.String govAgencyId) {
+		_paymentFile.setGovAgencyId(govAgencyId);
 	}
 
 	/**
-	* Returns the gov agent name of this payment file.
+	* Returns the gov agency name of this payment file.
 	*
-	* @return the gov agent name of this payment file
+	* @return the gov agency name of this payment file
 	*/
 	@Override
-	public java.lang.String getGovAgentName() {
-		return _paymentFile.getGovAgentName();
+	public java.lang.String getGovAgencyName() {
+		return _paymentFile.getGovAgencyName();
 	}
 
 	/**
-	* Sets the gov agent name of this payment file.
+	* Sets the gov agency name of this payment file.
 	*
-	* @param govAgentName the gov agent name of this payment file
+	* @param govAgencyName the gov agency name of this payment file
 	*/
 	@Override
-	public void setGovAgentName(java.lang.String govAgentName) {
-		_paymentFile.setGovAgentName(govAgentName);
+	public void setGovAgencyName(java.lang.String govAgencyName) {
+		_paymentFile.setGovAgencyName(govAgencyName);
 	}
 
 	/**

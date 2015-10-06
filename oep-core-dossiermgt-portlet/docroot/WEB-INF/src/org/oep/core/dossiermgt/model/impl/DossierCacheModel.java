@@ -37,7 +37,7 @@ import java.util.Date;
 public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(75);
+		StringBundler sb = new StringBundler(85);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -57,10 +57,10 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		sb.append(organizationId);
 		sb.append(", dossierProcId=");
 		sb.append(dossierProcId);
-		sb.append(", govAgentId=");
-		sb.append(govAgentId);
-		sb.append(", govAgentName=");
-		sb.append(govAgentName);
+		sb.append(", govAgencyId=");
+		sb.append(govAgencyId);
+		sb.append(", govAgencyName=");
+		sb.append(govAgencyName);
 		sb.append(", subjectId=");
 		sb.append(subjectId);
 		sb.append(", subjectType=");
@@ -93,24 +93,34 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		sb.append(resumeDescription);
 		sb.append(", receptionNo=");
 		sb.append(receptionNo);
-		sb.append(", submissionDate=");
-		sb.append(submissionDate);
-		sb.append(", receptionDate=");
-		sb.append(receptionDate);
-		sb.append(", resubmissionDate=");
-		sb.append(resubmissionDate);
-		sb.append(", appointmentDate=");
-		sb.append(appointmentDate);
-		sb.append(", releaseDate=");
-		sb.append(releaseDate);
-		sb.append(", completionDate=");
-		sb.append(completionDate);
+		sb.append(", submitDate=");
+		sb.append(submitDate);
+		sb.append(", receiveDate=");
+		sb.append(receiveDate);
+		sb.append(", renewDate=");
+		sb.append(renewDate);
+		sb.append(", estimateDate=");
+		sb.append(estimateDate);
+		sb.append(", finishDate=");
+		sb.append(finishDate);
+		sb.append(", returnDate=");
+		sb.append(returnDate);
 		sb.append(", status=");
 		sb.append(status);
+		sb.append(", statusDate=");
+		sb.append(statusDate);
 		sb.append(", statusDescription=");
 		sb.append(statusDescription);
 		sb.append(", feedbackNote=");
 		sb.append(feedbackNote);
+		sb.append(", daysDelay=");
+		sb.append(daysDelay);
+		sb.append(", closeDate=");
+		sb.append(closeDate);
+		sb.append(", errorStatus=");
+		sb.append(errorStatus);
+		sb.append(", errorCode=");
+		sb.append(errorCode);
 		sb.append(", dirty=");
 		sb.append(dirty);
 		sb.append("}");
@@ -151,18 +161,18 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		dossierImpl.setOrganizationId(organizationId);
 		dossierImpl.setDossierProcId(dossierProcId);
 
-		if (govAgentId == null) {
-			dossierImpl.setGovAgentId(StringPool.BLANK);
+		if (govAgencyId == null) {
+			dossierImpl.setGovAgencyId(StringPool.BLANK);
 		}
 		else {
-			dossierImpl.setGovAgentId(govAgentId);
+			dossierImpl.setGovAgencyId(govAgencyId);
 		}
 
-		if (govAgentName == null) {
-			dossierImpl.setGovAgentName(StringPool.BLANK);
+		if (govAgencyName == null) {
+			dossierImpl.setGovAgencyName(StringPool.BLANK);
 		}
 		else {
-			dossierImpl.setGovAgentName(govAgentName);
+			dossierImpl.setGovAgencyName(govAgencyName);
 		}
 
 		if (subjectId == null) {
@@ -277,46 +287,46 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			dossierImpl.setReceptionNo(receptionNo);
 		}
 
-		if (submissionDate == Long.MIN_VALUE) {
-			dossierImpl.setSubmissionDate(null);
+		if (submitDate == Long.MIN_VALUE) {
+			dossierImpl.setSubmitDate(null);
 		}
 		else {
-			dossierImpl.setSubmissionDate(new Date(submissionDate));
+			dossierImpl.setSubmitDate(new Date(submitDate));
 		}
 
-		if (receptionDate == Long.MIN_VALUE) {
-			dossierImpl.setReceptionDate(null);
+		if (receiveDate == Long.MIN_VALUE) {
+			dossierImpl.setReceiveDate(null);
 		}
 		else {
-			dossierImpl.setReceptionDate(new Date(receptionDate));
+			dossierImpl.setReceiveDate(new Date(receiveDate));
 		}
 
-		if (resubmissionDate == Long.MIN_VALUE) {
-			dossierImpl.setResubmissionDate(null);
+		if (renewDate == Long.MIN_VALUE) {
+			dossierImpl.setRenewDate(null);
 		}
 		else {
-			dossierImpl.setResubmissionDate(new Date(resubmissionDate));
+			dossierImpl.setRenewDate(new Date(renewDate));
 		}
 
-		if (appointmentDate == Long.MIN_VALUE) {
-			dossierImpl.setAppointmentDate(null);
+		if (estimateDate == Long.MIN_VALUE) {
+			dossierImpl.setEstimateDate(null);
 		}
 		else {
-			dossierImpl.setAppointmentDate(new Date(appointmentDate));
+			dossierImpl.setEstimateDate(new Date(estimateDate));
 		}
 
-		if (releaseDate == Long.MIN_VALUE) {
-			dossierImpl.setReleaseDate(null);
+		if (finishDate == Long.MIN_VALUE) {
+			dossierImpl.setFinishDate(null);
 		}
 		else {
-			dossierImpl.setReleaseDate(new Date(releaseDate));
+			dossierImpl.setFinishDate(new Date(finishDate));
 		}
 
-		if (completionDate == Long.MIN_VALUE) {
-			dossierImpl.setCompletionDate(null);
+		if (returnDate == Long.MIN_VALUE) {
+			dossierImpl.setReturnDate(null);
 		}
 		else {
-			dossierImpl.setCompletionDate(new Date(completionDate));
+			dossierImpl.setReturnDate(new Date(returnDate));
 		}
 
 		if (status == null) {
@@ -324,6 +334,13 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		}
 		else {
 			dossierImpl.setStatus(status);
+		}
+
+		if (statusDate == Long.MIN_VALUE) {
+			dossierImpl.setStatusDate(null);
+		}
+		else {
+			dossierImpl.setStatusDate(new Date(statusDate));
 		}
 
 		if (statusDescription == null) {
@@ -338,6 +355,29 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		}
 		else {
 			dossierImpl.setFeedbackNote(feedbackNote);
+		}
+
+		dossierImpl.setDaysDelay(daysDelay);
+
+		if (closeDate == Long.MIN_VALUE) {
+			dossierImpl.setCloseDate(null);
+		}
+		else {
+			dossierImpl.setCloseDate(new Date(closeDate));
+		}
+
+		if (errorStatus == null) {
+			dossierImpl.setErrorStatus(StringPool.BLANK);
+		}
+		else {
+			dossierImpl.setErrorStatus(errorStatus);
+		}
+
+		if (errorCode == null) {
+			dossierImpl.setErrorCode(StringPool.BLANK);
+		}
+		else {
+			dossierImpl.setErrorCode(errorCode);
 		}
 
 		dossierImpl.setDirty(dirty);
@@ -358,8 +398,8 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		modifiedDate = objectInput.readLong();
 		organizationId = objectInput.readLong();
 		dossierProcId = objectInput.readLong();
-		govAgentId = objectInput.readUTF();
-		govAgentName = objectInput.readUTF();
+		govAgencyId = objectInput.readUTF();
+		govAgencyName = objectInput.readUTF();
 		subjectId = objectInput.readUTF();
 		subjectType = objectInput.readUTF();
 		subjectName = objectInput.readUTF();
@@ -376,15 +416,20 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		note = objectInput.readUTF();
 		resumeDescription = objectInput.readUTF();
 		receptionNo = objectInput.readUTF();
-		submissionDate = objectInput.readLong();
-		receptionDate = objectInput.readLong();
-		resubmissionDate = objectInput.readLong();
-		appointmentDate = objectInput.readLong();
-		releaseDate = objectInput.readLong();
-		completionDate = objectInput.readLong();
+		submitDate = objectInput.readLong();
+		receiveDate = objectInput.readLong();
+		renewDate = objectInput.readLong();
+		estimateDate = objectInput.readLong();
+		finishDate = objectInput.readLong();
+		returnDate = objectInput.readLong();
 		status = objectInput.readUTF();
+		statusDate = objectInput.readLong();
 		statusDescription = objectInput.readUTF();
 		feedbackNote = objectInput.readUTF();
+		daysDelay = objectInput.readInt();
+		closeDate = objectInput.readLong();
+		errorStatus = objectInput.readUTF();
+		errorCode = objectInput.readUTF();
 		dirty = objectInput.readInt();
 	}
 
@@ -407,18 +452,18 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		objectOutput.writeLong(organizationId);
 		objectOutput.writeLong(dossierProcId);
 
-		if (govAgentId == null) {
+		if (govAgencyId == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(govAgentId);
+			objectOutput.writeUTF(govAgencyId);
 		}
 
-		if (govAgentName == null) {
+		if (govAgencyName == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(govAgentName);
+			objectOutput.writeUTF(govAgencyName);
 		}
 
 		if (subjectId == null) {
@@ -533,12 +578,12 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			objectOutput.writeUTF(receptionNo);
 		}
 
-		objectOutput.writeLong(submissionDate);
-		objectOutput.writeLong(receptionDate);
-		objectOutput.writeLong(resubmissionDate);
-		objectOutput.writeLong(appointmentDate);
-		objectOutput.writeLong(releaseDate);
-		objectOutput.writeLong(completionDate);
+		objectOutput.writeLong(submitDate);
+		objectOutput.writeLong(receiveDate);
+		objectOutput.writeLong(renewDate);
+		objectOutput.writeLong(estimateDate);
+		objectOutput.writeLong(finishDate);
+		objectOutput.writeLong(returnDate);
 
 		if (status == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
@@ -546,6 +591,8 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		else {
 			objectOutput.writeUTF(status);
 		}
+
+		objectOutput.writeLong(statusDate);
 
 		if (statusDescription == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
@@ -561,6 +608,23 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			objectOutput.writeUTF(feedbackNote);
 		}
 
+		objectOutput.writeInt(daysDelay);
+		objectOutput.writeLong(closeDate);
+
+		if (errorStatus == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(errorStatus);
+		}
+
+		if (errorCode == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(errorCode);
+		}
+
 		objectOutput.writeInt(dirty);
 	}
 
@@ -573,8 +637,8 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 	public long modifiedDate;
 	public long organizationId;
 	public long dossierProcId;
-	public String govAgentId;
-	public String govAgentName;
+	public String govAgencyId;
+	public String govAgencyName;
 	public String subjectId;
 	public String subjectType;
 	public String subjectName;
@@ -591,14 +655,19 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 	public String note;
 	public String resumeDescription;
 	public String receptionNo;
-	public long submissionDate;
-	public long receptionDate;
-	public long resubmissionDate;
-	public long appointmentDate;
-	public long releaseDate;
-	public long completionDate;
+	public long submitDate;
+	public long receiveDate;
+	public long renewDate;
+	public long estimateDate;
+	public long finishDate;
+	public long returnDate;
 	public String status;
+	public long statusDate;
 	public String statusDescription;
 	public String feedbackNote;
+	public int daysDelay;
+	public long closeDate;
+	public String errorStatus;
+	public String errorCode;
 	public int dirty;
 }

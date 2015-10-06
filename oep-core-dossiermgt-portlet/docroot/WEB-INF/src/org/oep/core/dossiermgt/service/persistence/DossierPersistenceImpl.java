@@ -1797,8 +1797,8 @@ public class DossierPersistenceImpl extends BasePersistenceImpl<Dossier>
 		dossierImpl.setModifiedDate(dossier.getModifiedDate());
 		dossierImpl.setOrganizationId(dossier.getOrganizationId());
 		dossierImpl.setDossierProcId(dossier.getDossierProcId());
-		dossierImpl.setGovAgentId(dossier.getGovAgentId());
-		dossierImpl.setGovAgentName(dossier.getGovAgentName());
+		dossierImpl.setGovAgencyId(dossier.getGovAgencyId());
+		dossierImpl.setGovAgencyName(dossier.getGovAgencyName());
 		dossierImpl.setSubjectId(dossier.getSubjectId());
 		dossierImpl.setSubjectType(dossier.getSubjectType());
 		dossierImpl.setSubjectName(dossier.getSubjectName());
@@ -1815,15 +1815,20 @@ public class DossierPersistenceImpl extends BasePersistenceImpl<Dossier>
 		dossierImpl.setNote(dossier.getNote());
 		dossierImpl.setResumeDescription(dossier.getResumeDescription());
 		dossierImpl.setReceptionNo(dossier.getReceptionNo());
-		dossierImpl.setSubmissionDate(dossier.getSubmissionDate());
-		dossierImpl.setReceptionDate(dossier.getReceptionDate());
-		dossierImpl.setResubmissionDate(dossier.getResubmissionDate());
-		dossierImpl.setAppointmentDate(dossier.getAppointmentDate());
-		dossierImpl.setReleaseDate(dossier.getReleaseDate());
-		dossierImpl.setCompletionDate(dossier.getCompletionDate());
+		dossierImpl.setSubmitDate(dossier.getSubmitDate());
+		dossierImpl.setReceiveDate(dossier.getReceiveDate());
+		dossierImpl.setRenewDate(dossier.getRenewDate());
+		dossierImpl.setEstimateDate(dossier.getEstimateDate());
+		dossierImpl.setFinishDate(dossier.getFinishDate());
+		dossierImpl.setReturnDate(dossier.getReturnDate());
 		dossierImpl.setStatus(dossier.getStatus());
+		dossierImpl.setStatusDate(dossier.getStatusDate());
 		dossierImpl.setStatusDescription(dossier.getStatusDescription());
 		dossierImpl.setFeedbackNote(dossier.getFeedbackNote());
+		dossierImpl.setDaysDelay(dossier.getDaysDelay());
+		dossierImpl.setCloseDate(dossier.getCloseDate());
+		dossierImpl.setErrorStatus(dossier.getErrorStatus());
+		dossierImpl.setErrorCode(dossier.getErrorCode());
 		dossierImpl.setDirty(dossier.getDirty());
 
 		return dossierImpl;

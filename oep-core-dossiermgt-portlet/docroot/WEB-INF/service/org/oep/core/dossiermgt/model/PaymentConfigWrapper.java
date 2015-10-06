@@ -54,8 +54,8 @@ public class PaymentConfigWrapper implements PaymentConfig,
 		attributes.put("companyId", getCompanyId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("govAgentId", getGovAgentId());
-		attributes.put("govAgentName", getGovAgentName());
+		attributes.put("govAgencyId", getGovAgencyId());
+		attributes.put("govAgencyName", getGovAgencyName());
 		attributes.put("bankTransfer", getBankTransfer());
 		attributes.put("keypay", getKeypay());
 		attributes.put("ebPartnerShipId", getEbPartnerShipId());
@@ -89,16 +89,16 @@ public class PaymentConfigWrapper implements PaymentConfig,
 			setModifiedDate(modifiedDate);
 		}
 
-		String govAgentId = (String)attributes.get("govAgentId");
+		String govAgencyId = (String)attributes.get("govAgencyId");
 
-		if (govAgentId != null) {
-			setGovAgentId(govAgentId);
+		if (govAgencyId != null) {
+			setGovAgencyId(govAgencyId);
 		}
 
-		String govAgentName = (String)attributes.get("govAgentName");
+		String govAgencyName = (String)attributes.get("govAgencyName");
 
-		if (govAgentName != null) {
-			setGovAgentName(govAgentName);
+		if (govAgencyName != null) {
+			setGovAgencyName(govAgencyName);
 		}
 
 		String bankTransfer = (String)attributes.get("bankTransfer");
@@ -221,43 +221,43 @@ public class PaymentConfigWrapper implements PaymentConfig,
 	}
 
 	/**
-	* Returns the gov agent ID of this payment config.
+	* Returns the gov agency ID of this payment config.
 	*
-	* @return the gov agent ID of this payment config
+	* @return the gov agency ID of this payment config
 	*/
 	@Override
-	public java.lang.String getGovAgentId() {
-		return _paymentConfig.getGovAgentId();
+	public java.lang.String getGovAgencyId() {
+		return _paymentConfig.getGovAgencyId();
 	}
 
 	/**
-	* Sets the gov agent ID of this payment config.
+	* Sets the gov agency ID of this payment config.
 	*
-	* @param govAgentId the gov agent ID of this payment config
+	* @param govAgencyId the gov agency ID of this payment config
 	*/
 	@Override
-	public void setGovAgentId(java.lang.String govAgentId) {
-		_paymentConfig.setGovAgentId(govAgentId);
+	public void setGovAgencyId(java.lang.String govAgencyId) {
+		_paymentConfig.setGovAgencyId(govAgencyId);
 	}
 
 	/**
-	* Returns the gov agent name of this payment config.
+	* Returns the gov agency name of this payment config.
 	*
-	* @return the gov agent name of this payment config
+	* @return the gov agency name of this payment config
 	*/
 	@Override
-	public java.lang.String getGovAgentName() {
-		return _paymentConfig.getGovAgentName();
+	public java.lang.String getGovAgencyName() {
+		return _paymentConfig.getGovAgencyName();
 	}
 
 	/**
-	* Sets the gov agent name of this payment config.
+	* Sets the gov agency name of this payment config.
 	*
-	* @param govAgentName the gov agent name of this payment config
+	* @param govAgencyName the gov agency name of this payment config
 	*/
 	@Override
-	public void setGovAgentName(java.lang.String govAgentName) {
-		_paymentConfig.setGovAgentName(govAgentName);
+	public void setGovAgencyName(java.lang.String govAgencyName) {
+		_paymentConfig.setGovAgencyName(govAgencyName);
 	}
 
 	/**

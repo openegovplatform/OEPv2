@@ -10,7 +10,7 @@
 		<field name="modifiedDate" type="Date" />
 		<field name="dossierProcId" type="long" />
 		<field name="govAgentId" type="String">
-			<hint name="max-length">30</hint>			
+			<hint name="max-length">30</hint>
 		</field>
 		<field name="govAgentName" type="String">
 			<hint name="max-length">200</hint>
@@ -29,6 +29,9 @@
 		<field name="title" type="String" />
 		<field name="sequenceNo" type="int" />
 		<field name="stepType" type="int" />
+		<field name="doForm" type="String">
+			<hint name="max-length">100</hint>
+		</field>
 	</model>
 	<model name="org.oep.core.processmgt.model.DossierStep2Role">
 		<field name="dossierStepId" type="long" />
@@ -74,7 +77,6 @@
 		<field name="dossierStatus" type="String" />
 		<field name="userAssignment" type="int" />
 		<field name="newProcessOrder" type="int" />
-		<field name="errorMessage" type="String" />
 	</model>
 	<model name="org.oep.core.processmgt.model.TransitionHistory">
 		<field name="transitionHistoryId" type="long" />

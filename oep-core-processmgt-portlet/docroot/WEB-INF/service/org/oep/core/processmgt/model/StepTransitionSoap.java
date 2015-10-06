@@ -46,7 +46,6 @@ public class StepTransitionSoap implements Serializable {
 		soapModel.setDossierStatus(model.getDossierStatus());
 		soapModel.setUserAssignment(model.getUserAssignment());
 		soapModel.setNewProcessOrder(model.getNewProcessOrder());
-		soapModel.setErrorMessage(model.getErrorMessage());
 
 		return soapModel;
 	}
@@ -219,14 +218,6 @@ public class StepTransitionSoap implements Serializable {
 		_newProcessOrder = newProcessOrder;
 	}
 
-	public String getErrorMessage() {
-		return _errorMessage;
-	}
-
-	public void setErrorMessage(String errorMessage) {
-		_errorMessage = errorMessage;
-	}
-
 	private long _stepTransitionId;
 	private long _userId;
 	private long _groupId;
@@ -242,5 +233,4 @@ public class StepTransitionSoap implements Serializable {
 	private String _dossierStatus;
 	private int _userAssignment;
 	private int _newProcessOrder;
-	private String _errorMessage;
 }

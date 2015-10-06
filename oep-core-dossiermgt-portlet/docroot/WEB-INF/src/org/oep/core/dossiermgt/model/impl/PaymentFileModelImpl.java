@@ -75,8 +75,8 @@ public class PaymentFileModelImpl extends BaseModelImpl<PaymentFile>
 			{ "createDate", Types.TIMESTAMP },
 			{ "modifiedDate", Types.TIMESTAMP },
 			{ "organizationId", Types.BIGINT },
-			{ "govAgentId", Types.VARCHAR },
-			{ "govAgentName", Types.VARCHAR },
+			{ "govAgencyId", Types.VARCHAR },
+			{ "govAgencyName", Types.VARCHAR },
 			{ "subjectId", Types.VARCHAR },
 			{ "subjectType", Types.VARCHAR },
 			{ "subjectName", Types.VARCHAR },
@@ -92,7 +92,7 @@ public class PaymentFileModelImpl extends BaseModelImpl<PaymentFile>
 			{ "checkingNote", Types.VARCHAR },
 			{ "ebMessageId", Types.BIGINT }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_paymentfile (uuid_ VARCHAR(75) null,paymentFileId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,organizationId LONG,govAgentId VARCHAR(30) null,govAgentName VARCHAR(200) null,subjectId VARCHAR(30) null,subjectType VARCHAR(30) null,subjectName VARCHAR(100) null,amount LONG,paymentType VARCHAR(100) null,paymentDescription VARCHAR(200) null,transactionInfo VARCHAR(200) null,fileEntryId LONG,checkingDate DATE null,checkingUserId LONG,checkingUserName VARCHAR(100) null,checkingResult INTEGER,checkingNote VARCHAR(200) null,ebMessageId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_paymentfile (uuid_ VARCHAR(75) null,paymentFileId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,organizationId LONG,govAgencyId VARCHAR(30) null,govAgencyName VARCHAR(200) null,subjectId VARCHAR(30) null,subjectType VARCHAR(30) null,subjectName VARCHAR(100) null,amount LONG,paymentType VARCHAR(100) null,paymentDescription VARCHAR(200) null,transactionInfo VARCHAR(200) null,fileEntryId LONG,checkingDate DATE null,checkingUserId LONG,checkingUserName VARCHAR(100) null,checkingResult INTEGER,checkingNote VARCHAR(200) null,ebMessageId LONG)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_paymentfile";
 	public static final String ORDER_BY_JPQL = " ORDER BY paymentFile.paymentFileId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_paymentfile.paymentFileId ASC";
@@ -134,8 +134,8 @@ public class PaymentFileModelImpl extends BaseModelImpl<PaymentFile>
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setModifiedDate(soapModel.getModifiedDate());
 		model.setOrganizationId(soapModel.getOrganizationId());
-		model.setGovAgentId(soapModel.getGovAgentId());
-		model.setGovAgentName(soapModel.getGovAgentName());
+		model.setGovAgencyId(soapModel.getGovAgencyId());
+		model.setGovAgencyName(soapModel.getGovAgencyName());
 		model.setSubjectId(soapModel.getSubjectId());
 		model.setSubjectType(soapModel.getSubjectType());
 		model.setSubjectName(soapModel.getSubjectName());
@@ -222,8 +222,8 @@ public class PaymentFileModelImpl extends BaseModelImpl<PaymentFile>
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("organizationId", getOrganizationId());
-		attributes.put("govAgentId", getGovAgentId());
-		attributes.put("govAgentName", getGovAgentName());
+		attributes.put("govAgencyId", getGovAgencyId());
+		attributes.put("govAgencyName", getGovAgencyName());
 		attributes.put("subjectId", getSubjectId());
 		attributes.put("subjectType", getSubjectType());
 		attributes.put("subjectName", getSubjectName());
@@ -292,16 +292,16 @@ public class PaymentFileModelImpl extends BaseModelImpl<PaymentFile>
 			setOrganizationId(organizationId);
 		}
 
-		String govAgentId = (String)attributes.get("govAgentId");
+		String govAgencyId = (String)attributes.get("govAgencyId");
 
-		if (govAgentId != null) {
-			setGovAgentId(govAgentId);
+		if (govAgencyId != null) {
+			setGovAgencyId(govAgencyId);
 		}
 
-		String govAgentName = (String)attributes.get("govAgentName");
+		String govAgencyName = (String)attributes.get("govAgencyName");
 
-		if (govAgentName != null) {
-			setGovAgentName(govAgentName);
+		if (govAgencyName != null) {
+			setGovAgencyName(govAgencyName);
 		}
 
 		String subjectId = (String)attributes.get("subjectId");
@@ -526,34 +526,34 @@ public class PaymentFileModelImpl extends BaseModelImpl<PaymentFile>
 
 	@JSON
 	@Override
-	public String getGovAgentId() {
-		if (_govAgentId == null) {
+	public String getGovAgencyId() {
+		if (_govAgencyId == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _govAgentId;
+			return _govAgencyId;
 		}
 	}
 
 	@Override
-	public void setGovAgentId(String govAgentId) {
-		_govAgentId = govAgentId;
+	public void setGovAgencyId(String govAgencyId) {
+		_govAgencyId = govAgencyId;
 	}
 
 	@JSON
 	@Override
-	public String getGovAgentName() {
-		if (_govAgentName == null) {
+	public String getGovAgencyName() {
+		if (_govAgencyName == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _govAgentName;
+			return _govAgencyName;
 		}
 	}
 
 	@Override
-	public void setGovAgentName(String govAgentName) {
-		_govAgentName = govAgentName;
+	public void setGovAgencyName(String govAgencyName) {
+		_govAgencyName = govAgencyName;
 	}
 
 	@JSON
@@ -806,8 +806,8 @@ public class PaymentFileModelImpl extends BaseModelImpl<PaymentFile>
 		paymentFileImpl.setCreateDate(getCreateDate());
 		paymentFileImpl.setModifiedDate(getModifiedDate());
 		paymentFileImpl.setOrganizationId(getOrganizationId());
-		paymentFileImpl.setGovAgentId(getGovAgentId());
-		paymentFileImpl.setGovAgentName(getGovAgentName());
+		paymentFileImpl.setGovAgencyId(getGovAgencyId());
+		paymentFileImpl.setGovAgencyName(getGovAgencyName());
 		paymentFileImpl.setSubjectId(getSubjectId());
 		paymentFileImpl.setSubjectType(getSubjectType());
 		paymentFileImpl.setSubjectName(getSubjectName());
@@ -927,20 +927,20 @@ public class PaymentFileModelImpl extends BaseModelImpl<PaymentFile>
 
 		paymentFileCacheModel.organizationId = getOrganizationId();
 
-		paymentFileCacheModel.govAgentId = getGovAgentId();
+		paymentFileCacheModel.govAgencyId = getGovAgencyId();
 
-		String govAgentId = paymentFileCacheModel.govAgentId;
+		String govAgencyId = paymentFileCacheModel.govAgencyId;
 
-		if ((govAgentId != null) && (govAgentId.length() == 0)) {
-			paymentFileCacheModel.govAgentId = null;
+		if ((govAgencyId != null) && (govAgencyId.length() == 0)) {
+			paymentFileCacheModel.govAgencyId = null;
 		}
 
-		paymentFileCacheModel.govAgentName = getGovAgentName();
+		paymentFileCacheModel.govAgencyName = getGovAgencyName();
 
-		String govAgentName = paymentFileCacheModel.govAgentName;
+		String govAgencyName = paymentFileCacheModel.govAgencyName;
 
-		if ((govAgentName != null) && (govAgentName.length() == 0)) {
-			paymentFileCacheModel.govAgentName = null;
+		if ((govAgencyName != null) && (govAgencyName.length() == 0)) {
+			paymentFileCacheModel.govAgencyName = null;
 		}
 
 		paymentFileCacheModel.subjectId = getSubjectId();
@@ -1049,10 +1049,10 @@ public class PaymentFileModelImpl extends BaseModelImpl<PaymentFile>
 		sb.append(getModifiedDate());
 		sb.append(", organizationId=");
 		sb.append(getOrganizationId());
-		sb.append(", govAgentId=");
-		sb.append(getGovAgentId());
-		sb.append(", govAgentName=");
-		sb.append(getGovAgentName());
+		sb.append(", govAgencyId=");
+		sb.append(getGovAgencyId());
+		sb.append(", govAgencyName=");
+		sb.append(getGovAgencyName());
 		sb.append(", subjectId=");
 		sb.append(getSubjectId());
 		sb.append(", subjectType=");
@@ -1127,12 +1127,12 @@ public class PaymentFileModelImpl extends BaseModelImpl<PaymentFile>
 		sb.append(getOrganizationId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentId</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentId());
+			"<column><column-name>govAgencyId</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentName</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentName());
+			"<column><column-name>govAgencyName</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyName());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>subjectId</column-name><column-value><![CDATA[");
@@ -1214,8 +1214,8 @@ public class PaymentFileModelImpl extends BaseModelImpl<PaymentFile>
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _organizationId;
-	private String _govAgentId;
-	private String _govAgentName;
+	private String _govAgencyId;
+	private String _govAgencyName;
 	private String _subjectId;
 	private String _subjectType;
 	private String _subjectName;

@@ -350,8 +350,8 @@ public class PaymentRequestLocalServiceUtil {
 	* @return: new payment request
 	*/
 	public static org.oep.core.dossiermgt.model.PaymentRequest addPaymentRequest(
-		long organizationId, long dossierId, java.lang.String govAgentId,
-		java.lang.String govAgentName, java.lang.String subjectId,
+		long organizationId, long dossierId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, java.lang.String subjectId,
 		java.lang.String subjectType, java.lang.String subjectName, int amount,
 		java.lang.String requestNote, long paymentFileId, int confirmOK,
 		long ebMessageId,
@@ -359,14 +359,14 @@ public class PaymentRequestLocalServiceUtil {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
-				   .addPaymentRequest(organizationId, dossierId, govAgentId,
-			govAgentName, subjectId, subjectType, subjectName, amount,
+				   .addPaymentRequest(organizationId, dossierId, govAgencyId,
+			govAgencyName, subjectId, subjectType, subjectName, amount,
 			requestNote, paymentFileId, confirmOK, ebMessageId, serviceContext);
 	}
 
 	public static org.oep.core.dossiermgt.model.PaymentRequest updatePaymentRequest(
 		long id, long organizationId, long dossierId,
-		java.lang.String govAgentId, java.lang.String govAgentName,
+		java.lang.String govAgencyId, java.lang.String govAgencyName,
 		java.lang.String subjectId, java.lang.String subjectType,
 		java.lang.String subjectName, int amount, java.lang.String requestNote,
 		long paymentFileId, int confirmOK, long ebMessageId,
@@ -375,7 +375,7 @@ public class PaymentRequestLocalServiceUtil {
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .updatePaymentRequest(id, organizationId, dossierId,
-			govAgentId, govAgentName, subjectId, subjectType, subjectName,
+			govAgencyId, govAgencyName, subjectId, subjectType, subjectName,
 			amount, requestNote, paymentFileId, confirmOK, ebMessageId,
 			serviceContext);
 	}

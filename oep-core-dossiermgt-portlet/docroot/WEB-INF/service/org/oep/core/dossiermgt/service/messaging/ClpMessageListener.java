@@ -33,8 +33,8 @@ import org.oep.core.dossiermgt.service.DossierFolder2RoleServiceUtil;
 import org.oep.core.dossiermgt.service.DossierFolderLocalServiceUtil;
 import org.oep.core.dossiermgt.service.DossierFolderServiceUtil;
 import org.oep.core.dossiermgt.service.DossierLocalServiceUtil;
-import org.oep.core.dossiermgt.service.DossierProcAgentLocalServiceUtil;
-import org.oep.core.dossiermgt.service.DossierProcAgentServiceUtil;
+import org.oep.core.dossiermgt.service.DossierProcAgencyLocalServiceUtil;
+import org.oep.core.dossiermgt.service.DossierProcAgencyServiceUtil;
 import org.oep.core.dossiermgt.service.DossierProcLocalServiceUtil;
 import org.oep.core.dossiermgt.service.DossierProcServiceUtil;
 import org.oep.core.dossiermgt.service.DossierServiceUtil;
@@ -48,6 +48,8 @@ import org.oep.core.dossiermgt.service.PaymentFileLocalServiceUtil;
 import org.oep.core.dossiermgt.service.PaymentFileServiceUtil;
 import org.oep.core.dossiermgt.service.PaymentRequestLocalServiceUtil;
 import org.oep.core.dossiermgt.service.PaymentRequestServiceUtil;
+import org.oep.core.dossiermgt.service.ProfileDataLocalServiceUtil;
+import org.oep.core.dossiermgt.service.ProfileDataServiceUtil;
 
 /**
  * @author trungdk
@@ -91,9 +93,9 @@ public class ClpMessageListener extends BaseMessageListener {
 			DossierProcLocalServiceUtil.clearService();
 
 			DossierProcServiceUtil.clearService();
-			DossierProcAgentLocalServiceUtil.clearService();
+			DossierProcAgencyLocalServiceUtil.clearService();
 
-			DossierProcAgentServiceUtil.clearService();
+			DossierProcAgencyServiceUtil.clearService();
 			EbMessageLocalServiceUtil.clearService();
 
 			EbMessageServiceUtil.clearService();
@@ -109,6 +111,9 @@ public class ClpMessageListener extends BaseMessageListener {
 			PaymentRequestLocalServiceUtil.clearService();
 
 			PaymentRequestServiceUtil.clearService();
+			ProfileDataLocalServiceUtil.clearService();
+
+			ProfileDataServiceUtil.clearService();
 		}
 	}
 }

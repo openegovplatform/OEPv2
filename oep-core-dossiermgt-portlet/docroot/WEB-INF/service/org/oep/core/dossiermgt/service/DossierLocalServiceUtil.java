@@ -349,8 +349,8 @@ public class DossierLocalServiceUtil {
 	* @return: new dossier
 	*/
 	public static org.oep.core.dossiermgt.model.Dossier addDossier(
-		long organizationId, long dossierProcId, java.lang.String govAgentId,
-		java.lang.String govAgentName, java.lang.String subjectId,
+		long organizationId, long dossierProcId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, java.lang.String subjectId,
 		java.lang.String subjectType, java.lang.String subjectName,
 		java.lang.String address, java.lang.String cityNo,
 		java.lang.String cityName, java.lang.String districtNo,
@@ -358,27 +358,28 @@ public class DossierLocalServiceUtil {
 		java.lang.String wardName, java.lang.String telNo,
 		java.lang.String contactPersonName, java.lang.String contactPersonTel,
 		java.lang.String note, java.lang.String resumeDescription,
-		java.lang.String receptionNo, java.util.Date submissionDate,
-		java.util.Date receptionDate, java.util.Date resubmissionDate,
-		java.util.Date appointmentDate, java.util.Date releaseDate,
-		java.util.Date completionDate, java.lang.String status,
-		java.lang.String statusDescription, java.lang.String feedbackNote,
-		int dirty, com.liferay.portal.service.ServiceContext serviceContext)
+		java.lang.String receptionNo, java.util.Date submitDate,
+		java.util.Date receiveDate, java.util.Date renewDate,
+		java.util.Date estimateDate, java.util.Date returnDate,
+		java.util.Date closeDate, java.lang.String status,
+		java.util.Date statusDate, java.lang.String statusDescription,
+		java.lang.String feedbackNote, int dirty,
+		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
-				   .addDossier(organizationId, dossierProcId, govAgentId,
-			govAgentName, subjectId, subjectType, subjectName, address, cityNo,
-			cityName, districtNo, districtName, wardNo, wardName, telNo,
-			contactPersonName, contactPersonTel, note, resumeDescription,
-			receptionNo, submissionDate, receptionDate, resubmissionDate,
-			appointmentDate, releaseDate, completionDate, status,
+				   .addDossier(organizationId, dossierProcId, govAgencyId,
+			govAgencyName, subjectId, subjectType, subjectName, address,
+			cityNo, cityName, districtNo, districtName, wardNo, wardName,
+			telNo, contactPersonName, contactPersonTel, note,
+			resumeDescription, receptionNo, submitDate, receiveDate, renewDate,
+			estimateDate, returnDate, closeDate, status, statusDate,
 			statusDescription, feedbackNote, dirty, serviceContext);
 	}
 
 	public static org.oep.core.dossiermgt.model.Dossier updateDossier(long id,
-		long organizationId, long dossierProcId, java.lang.String govAgentId,
-		java.lang.String govAgentName, java.lang.String subjectId,
+		long organizationId, long dossierProcId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, java.lang.String subjectId,
 		java.lang.String subjectType, java.lang.String subjectName,
 		java.lang.String address, java.lang.String cityNo,
 		java.lang.String cityName, java.lang.String districtNo,
@@ -386,22 +387,23 @@ public class DossierLocalServiceUtil {
 		java.lang.String wardName, java.lang.String telNo,
 		java.lang.String contactPersonName, java.lang.String contactPersonTel,
 		java.lang.String note, java.lang.String resumeDescription,
-		java.lang.String receptionNo, java.util.Date submissionDate,
-		java.util.Date receptionDate, java.util.Date resubmissionDate,
-		java.util.Date appointmentDate, java.util.Date releaseDate,
-		java.util.Date completionDate, java.lang.String status,
-		java.lang.String statusDescription, java.lang.String feedbackNote,
-		int dirty, com.liferay.portal.service.ServiceContext serviceContext)
+		java.lang.String receptionNo, java.util.Date submitDate,
+		java.util.Date receiveDate, java.util.Date renewDate,
+		java.util.Date estimateDate, java.util.Date returnDate,
+		java.util.Date closeDate, java.lang.String status,
+		java.util.Date statusDate, java.lang.String statusDescription,
+		java.lang.String feedbackNote, int dirty,
+		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .updateDossier(id, organizationId, dossierProcId,
-			govAgentId, govAgentName, subjectId, subjectType, subjectName,
+			govAgencyId, govAgencyName, subjectId, subjectType, subjectName,
 			address, cityNo, cityName, districtNo, districtName, wardNo,
 			wardName, telNo, contactPersonName, contactPersonTel, note,
-			resumeDescription, receptionNo, submissionDate, receptionDate,
-			resubmissionDate, appointmentDate, releaseDate, completionDate,
-			status, statusDescription, feedbackNote, dirty, serviceContext);
+			resumeDescription, receptionNo, submitDate, receiveDate, renewDate,
+			estimateDate, returnDate, closeDate, status, statusDate,
+			statusDescription, feedbackNote, dirty, serviceContext);
 	}
 
 	public static void updateDossierResources(

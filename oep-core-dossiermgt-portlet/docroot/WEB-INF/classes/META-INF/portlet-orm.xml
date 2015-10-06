@@ -95,8 +95,8 @@
 			</basic>
 			<basic name="organizationId" />
 			<basic name="dossierProcId" />
-			<basic name="govAgentId" />
-			<basic name="govAgentName" />
+			<basic name="govAgencyId" />
+			<basic name="govAgencyName" />
 			<basic name="subjectId" />
 			<basic name="subjectType" />
 			<basic name="subjectName" />
@@ -113,27 +113,36 @@
 			<basic name="note" />
 			<basic name="resumeDescription" />
 			<basic name="receptionNo" />
-			<basic name="submissionDate">
+			<basic name="submitDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
-			<basic name="receptionDate">
+			<basic name="receiveDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
-			<basic name="resubmissionDate">
+			<basic name="renewDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
-			<basic name="appointmentDate">
+			<basic name="estimateDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
-			<basic name="releaseDate">
+			<basic name="finishDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
-			<basic name="completionDate">
+			<basic name="returnDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
 			<basic name="status" />
+			<basic name="statusDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
 			<basic name="statusDescription" />
 			<basic name="feedbackNote" />
+			<basic name="daysDelay" />
+			<basic name="closeDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="errorStatus" />
+			<basic name="errorCode" />
 			<basic name="dirty" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
@@ -258,9 +267,9 @@
 			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
-	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.DossierProcAgentModelImpl">
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.DossierProcAgencyModelImpl">
 		<attributes>
-			<id name="dossierProcAgentId" />
+			<id name="dossierProcAgencyId" />
 			<basic name="companyId" />
 			<basic name="createDate">
 				<temporal>TIMESTAMP</temporal>
@@ -269,8 +278,8 @@
 				<temporal>TIMESTAMP</temporal>
 			</basic>
 			<basic name="dossierProcId" />
-			<basic name="govAgentId" />
-			<basic name="govAgentName" />
+			<basic name="govAgencyId" />
+			<basic name="govAgencyName" />
 			<basic name="ebPartnerShipId" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
@@ -333,8 +342,8 @@
 			<basic name="modifiedDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
-			<basic name="govAgentId" />
-			<basic name="govAgentName" />
+			<basic name="govAgencyId" />
+			<basic name="govAgencyName" />
 			<basic name="bankTransfer" />
 			<basic name="keypay" />
 			<basic name="ebPartnerShipId" />
@@ -359,8 +368,8 @@
 				<temporal>TIMESTAMP</temporal>
 			</basic>
 			<basic name="organizationId" />
-			<basic name="govAgentId" />
-			<basic name="govAgentName" />
+			<basic name="govAgencyId" />
+			<basic name="govAgencyName" />
 			<basic name="subjectId" />
 			<basic name="subjectType" />
 			<basic name="subjectName" />
@@ -401,8 +410,8 @@
 			</basic>
 			<basic name="organizationId" />
 			<basic name="dossierId" />
-			<basic name="govAgentId" />
-			<basic name="govAgentName" />
+			<basic name="govAgencyId" />
+			<basic name="govAgencyName" />
 			<basic name="subjectId" />
 			<basic name="subjectType" />
 			<basic name="subjectName" />
@@ -411,6 +420,26 @@
 			<basic name="paymentFileId" />
 			<basic name="confirmOK" />
 			<basic name="ebMessageId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.ProfileDataModelImpl">
+		<attributes>
+			<id name="profileDataId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="fieldName" />
+			<basic name="fieldValue" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
@@ -453,7 +482,7 @@
 		<table name="oep_dossiermgt_dossierproc" />
 		<attributes />
 	</entity>
-	<entity class="org.oep.core.dossiermgt.model.impl.DossierProcAgentImpl" name="DossierProcAgent">
+	<entity class="org.oep.core.dossiermgt.model.impl.DossierProcAgencyImpl" name="DossierProcAgency">
 		<table name="oep_dossiermgt_dossierprocagent" />
 		<attributes />
 	</entity>
@@ -475,6 +504,10 @@
 	</entity>
 	<entity class="org.oep.core.dossiermgt.model.impl.PaymentRequestImpl" name="PaymentRequest">
 		<table name="oep_dossiermgt_paymentrequest" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.ProfileDataImpl" name="ProfileData">
+		<table name="oep_dossiermgt_profiledata" />
 		<attributes />
 	</entity>
 </entity-mappings>

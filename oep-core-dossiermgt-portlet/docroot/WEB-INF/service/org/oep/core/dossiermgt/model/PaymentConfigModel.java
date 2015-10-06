@@ -116,34 +116,34 @@ public interface PaymentConfigModel extends BaseModel<PaymentConfig> {
 	public void setModifiedDate(Date modifiedDate);
 
 	/**
-	 * Returns the gov agent ID of this payment config.
+	 * Returns the gov agency ID of this payment config.
 	 *
-	 * @return the gov agent ID of this payment config
+	 * @return the gov agency ID of this payment config
 	 */
 	@AutoEscape
-	public String getGovAgentId();
+	public String getGovAgencyId();
 
 	/**
-	 * Sets the gov agent ID of this payment config.
+	 * Sets the gov agency ID of this payment config.
 	 *
-	 * @param govAgentId the gov agent ID of this payment config
+	 * @param govAgencyId the gov agency ID of this payment config
 	 */
-	public void setGovAgentId(String govAgentId);
+	public void setGovAgencyId(String govAgencyId);
 
 	/**
-	 * Returns the gov agent name of this payment config.
+	 * Returns the gov agency name of this payment config.
 	 *
-	 * @return the gov agent name of this payment config
+	 * @return the gov agency name of this payment config
 	 */
 	@AutoEscape
-	public String getGovAgentName();
+	public String getGovAgencyName();
 
 	/**
-	 * Sets the gov agent name of this payment config.
+	 * Sets the gov agency name of this payment config.
 	 *
-	 * @param govAgentName the gov agent name of this payment config
+	 * @param govAgencyName the gov agency name of this payment config
 	 */
-	public void setGovAgentName(String govAgentName);
+	public void setGovAgencyName(String govAgencyName);
 
 	/**
 	 * Returns the bank transfer of this payment config.

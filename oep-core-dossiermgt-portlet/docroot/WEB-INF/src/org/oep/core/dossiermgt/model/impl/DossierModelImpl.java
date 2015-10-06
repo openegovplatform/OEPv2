@@ -76,8 +76,8 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			{ "modifiedDate", Types.TIMESTAMP },
 			{ "organizationId", Types.BIGINT },
 			{ "dossierProcId", Types.BIGINT },
-			{ "govAgentId", Types.VARCHAR },
-			{ "govAgentName", Types.VARCHAR },
+			{ "govAgencyId", Types.VARCHAR },
+			{ "govAgencyName", Types.VARCHAR },
 			{ "subjectId", Types.VARCHAR },
 			{ "subjectType", Types.VARCHAR },
 			{ "subjectName", Types.VARCHAR },
@@ -94,18 +94,23 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			{ "note", Types.VARCHAR },
 			{ "resumeDescription", Types.VARCHAR },
 			{ "receptionNo", Types.VARCHAR },
-			{ "submissionDate", Types.TIMESTAMP },
-			{ "receptionDate", Types.TIMESTAMP },
-			{ "resubmissionDate", Types.TIMESTAMP },
-			{ "appointmentDate", Types.TIMESTAMP },
-			{ "releaseDate", Types.TIMESTAMP },
-			{ "completionDate", Types.TIMESTAMP },
+			{ "submitDate", Types.TIMESTAMP },
+			{ "receiveDate", Types.TIMESTAMP },
+			{ "renewDate", Types.TIMESTAMP },
+			{ "estimateDate", Types.TIMESTAMP },
+			{ "finishDate", Types.TIMESTAMP },
+			{ "returnDate", Types.TIMESTAMP },
 			{ "status", Types.VARCHAR },
+			{ "statusDate", Types.TIMESTAMP },
 			{ "statusDescription", Types.VARCHAR },
 			{ "feedbackNote", Types.VARCHAR },
+			{ "daysDelay", Types.INTEGER },
+			{ "closeDate", Types.TIMESTAMP },
+			{ "errorStatus", Types.VARCHAR },
+			{ "errorCode", Types.VARCHAR },
 			{ "dirty", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_dossier (uuid_ VARCHAR(75) null,dossierId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,organizationId LONG,dossierProcId LONG,govAgentId VARCHAR(30) null,govAgentName VARCHAR(200) null,subjectId VARCHAR(30) null,subjectType VARCHAR(30) null,subjectName VARCHAR(100) null,address VARCHAR(255) null,cityNo VARCHAR(30) null,cityName VARCHAR(100) null,districtNo VARCHAR(30) null,districtName VARCHAR(100) null,wardNo VARCHAR(30) null,wardName VARCHAR(100) null,telNo VARCHAR(30) null,contactPersonName VARCHAR(100) null,contactPersonTel VARCHAR(30) null,note VARCHAR(255) null,resumeDescription VARCHAR(255) null,receptionNo VARCHAR(30) null,submissionDate DATE null,receptionDate DATE null,resubmissionDate DATE null,appointmentDate DATE null,releaseDate DATE null,completionDate DATE null,status VARCHAR(30) null,statusDescription VARCHAR(100) null,feedbackNote VARCHAR(255) null,dirty INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_dossier (uuid_ VARCHAR(75) null,dossierId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,organizationId LONG,dossierProcId LONG,govAgencyId VARCHAR(30) null,govAgencyName VARCHAR(200) null,subjectId VARCHAR(30) null,subjectType VARCHAR(30) null,subjectName VARCHAR(100) null,address VARCHAR(255) null,cityNo VARCHAR(30) null,cityName VARCHAR(100) null,districtNo VARCHAR(30) null,districtName VARCHAR(100) null,wardNo VARCHAR(30) null,wardName VARCHAR(100) null,telNo VARCHAR(30) null,contactPersonName VARCHAR(100) null,contactPersonTel VARCHAR(30) null,note VARCHAR(255) null,resumeDescription VARCHAR(255) null,receptionNo VARCHAR(30) null,submitDate DATE null,receiveDate DATE null,renewDate DATE null,estimateDate DATE null,finishDate DATE null,returnDate DATE null,status VARCHAR(30) null,statusDate DATE null,statusDescription VARCHAR(100) null,feedbackNote VARCHAR(255) null,daysDelay INTEGER,closeDate DATE null,errorStatus VARCHAR(30) null,errorCode VARCHAR(30) null,dirty INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_dossier";
 	public static final String ORDER_BY_JPQL = " ORDER BY dossier.dossierId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_dossier.dossierId ASC";
@@ -148,8 +153,8 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		model.setModifiedDate(soapModel.getModifiedDate());
 		model.setOrganizationId(soapModel.getOrganizationId());
 		model.setDossierProcId(soapModel.getDossierProcId());
-		model.setGovAgentId(soapModel.getGovAgentId());
-		model.setGovAgentName(soapModel.getGovAgentName());
+		model.setGovAgencyId(soapModel.getGovAgencyId());
+		model.setGovAgencyName(soapModel.getGovAgencyName());
 		model.setSubjectId(soapModel.getSubjectId());
 		model.setSubjectType(soapModel.getSubjectType());
 		model.setSubjectName(soapModel.getSubjectName());
@@ -166,15 +171,20 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		model.setNote(soapModel.getNote());
 		model.setResumeDescription(soapModel.getResumeDescription());
 		model.setReceptionNo(soapModel.getReceptionNo());
-		model.setSubmissionDate(soapModel.getSubmissionDate());
-		model.setReceptionDate(soapModel.getReceptionDate());
-		model.setResubmissionDate(soapModel.getResubmissionDate());
-		model.setAppointmentDate(soapModel.getAppointmentDate());
-		model.setReleaseDate(soapModel.getReleaseDate());
-		model.setCompletionDate(soapModel.getCompletionDate());
+		model.setSubmitDate(soapModel.getSubmitDate());
+		model.setReceiveDate(soapModel.getReceiveDate());
+		model.setRenewDate(soapModel.getRenewDate());
+		model.setEstimateDate(soapModel.getEstimateDate());
+		model.setFinishDate(soapModel.getFinishDate());
+		model.setReturnDate(soapModel.getReturnDate());
 		model.setStatus(soapModel.getStatus());
+		model.setStatusDate(soapModel.getStatusDate());
 		model.setStatusDescription(soapModel.getStatusDescription());
 		model.setFeedbackNote(soapModel.getFeedbackNote());
+		model.setDaysDelay(soapModel.getDaysDelay());
+		model.setCloseDate(soapModel.getCloseDate());
+		model.setErrorStatus(soapModel.getErrorStatus());
+		model.setErrorCode(soapModel.getErrorCode());
 		model.setDirty(soapModel.getDirty());
 
 		return model;
@@ -249,8 +259,8 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("organizationId", getOrganizationId());
 		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgentId", getGovAgentId());
-		attributes.put("govAgentName", getGovAgentName());
+		attributes.put("govAgencyId", getGovAgencyId());
+		attributes.put("govAgencyName", getGovAgencyName());
 		attributes.put("subjectId", getSubjectId());
 		attributes.put("subjectType", getSubjectType());
 		attributes.put("subjectName", getSubjectName());
@@ -267,15 +277,20 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		attributes.put("note", getNote());
 		attributes.put("resumeDescription", getResumeDescription());
 		attributes.put("receptionNo", getReceptionNo());
-		attributes.put("submissionDate", getSubmissionDate());
-		attributes.put("receptionDate", getReceptionDate());
-		attributes.put("resubmissionDate", getResubmissionDate());
-		attributes.put("appointmentDate", getAppointmentDate());
-		attributes.put("releaseDate", getReleaseDate());
-		attributes.put("completionDate", getCompletionDate());
+		attributes.put("submitDate", getSubmitDate());
+		attributes.put("receiveDate", getReceiveDate());
+		attributes.put("renewDate", getRenewDate());
+		attributes.put("estimateDate", getEstimateDate());
+		attributes.put("finishDate", getFinishDate());
+		attributes.put("returnDate", getReturnDate());
 		attributes.put("status", getStatus());
+		attributes.put("statusDate", getStatusDate());
 		attributes.put("statusDescription", getStatusDescription());
 		attributes.put("feedbackNote", getFeedbackNote());
+		attributes.put("daysDelay", getDaysDelay());
+		attributes.put("closeDate", getCloseDate());
+		attributes.put("errorStatus", getErrorStatus());
+		attributes.put("errorCode", getErrorCode());
 		attributes.put("dirty", getDirty());
 
 		return attributes;
@@ -337,16 +352,16 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			setDossierProcId(dossierProcId);
 		}
 
-		String govAgentId = (String)attributes.get("govAgentId");
+		String govAgencyId = (String)attributes.get("govAgencyId");
 
-		if (govAgentId != null) {
-			setGovAgentId(govAgentId);
+		if (govAgencyId != null) {
+			setGovAgencyId(govAgencyId);
 		}
 
-		String govAgentName = (String)attributes.get("govAgentName");
+		String govAgencyName = (String)attributes.get("govAgencyName");
 
-		if (govAgentName != null) {
-			setGovAgentName(govAgentName);
+		if (govAgencyName != null) {
+			setGovAgencyName(govAgencyName);
 		}
 
 		String subjectId = (String)attributes.get("subjectId");
@@ -445,46 +460,52 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			setReceptionNo(receptionNo);
 		}
 
-		Date submissionDate = (Date)attributes.get("submissionDate");
+		Date submitDate = (Date)attributes.get("submitDate");
 
-		if (submissionDate != null) {
-			setSubmissionDate(submissionDate);
+		if (submitDate != null) {
+			setSubmitDate(submitDate);
 		}
 
-		Date receptionDate = (Date)attributes.get("receptionDate");
+		Date receiveDate = (Date)attributes.get("receiveDate");
 
-		if (receptionDate != null) {
-			setReceptionDate(receptionDate);
+		if (receiveDate != null) {
+			setReceiveDate(receiveDate);
 		}
 
-		Date resubmissionDate = (Date)attributes.get("resubmissionDate");
+		Date renewDate = (Date)attributes.get("renewDate");
 
-		if (resubmissionDate != null) {
-			setResubmissionDate(resubmissionDate);
+		if (renewDate != null) {
+			setRenewDate(renewDate);
 		}
 
-		Date appointmentDate = (Date)attributes.get("appointmentDate");
+		Date estimateDate = (Date)attributes.get("estimateDate");
 
-		if (appointmentDate != null) {
-			setAppointmentDate(appointmentDate);
+		if (estimateDate != null) {
+			setEstimateDate(estimateDate);
 		}
 
-		Date releaseDate = (Date)attributes.get("releaseDate");
+		Date finishDate = (Date)attributes.get("finishDate");
 
-		if (releaseDate != null) {
-			setReleaseDate(releaseDate);
+		if (finishDate != null) {
+			setFinishDate(finishDate);
 		}
 
-		Date completionDate = (Date)attributes.get("completionDate");
+		Date returnDate = (Date)attributes.get("returnDate");
 
-		if (completionDate != null) {
-			setCompletionDate(completionDate);
+		if (returnDate != null) {
+			setReturnDate(returnDate);
 		}
 
 		String status = (String)attributes.get("status");
 
 		if (status != null) {
 			setStatus(status);
+		}
+
+		Date statusDate = (Date)attributes.get("statusDate");
+
+		if (statusDate != null) {
+			setStatusDate(statusDate);
 		}
 
 		String statusDescription = (String)attributes.get("statusDescription");
@@ -497,6 +518,30 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 
 		if (feedbackNote != null) {
 			setFeedbackNote(feedbackNote);
+		}
+
+		Integer daysDelay = (Integer)attributes.get("daysDelay");
+
+		if (daysDelay != null) {
+			setDaysDelay(daysDelay);
+		}
+
+		Date closeDate = (Date)attributes.get("closeDate");
+
+		if (closeDate != null) {
+			setCloseDate(closeDate);
+		}
+
+		String errorStatus = (String)attributes.get("errorStatus");
+
+		if (errorStatus != null) {
+			setErrorStatus(errorStatus);
+		}
+
+		String errorCode = (String)attributes.get("errorCode");
+
+		if (errorCode != null) {
+			setErrorCode(errorCode);
 		}
 
 		Integer dirty = (Integer)attributes.get("dirty");
@@ -654,34 +699,34 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 
 	@JSON
 	@Override
-	public String getGovAgentId() {
-		if (_govAgentId == null) {
+	public String getGovAgencyId() {
+		if (_govAgencyId == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _govAgentId;
+			return _govAgencyId;
 		}
 	}
 
 	@Override
-	public void setGovAgentId(String govAgentId) {
-		_govAgentId = govAgentId;
+	public void setGovAgencyId(String govAgencyId) {
+		_govAgencyId = govAgencyId;
 	}
 
 	@JSON
 	@Override
-	public String getGovAgentName() {
-		if (_govAgentName == null) {
+	public String getGovAgencyName() {
+		if (_govAgencyName == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _govAgentName;
+			return _govAgencyName;
 		}
 	}
 
 	@Override
-	public void setGovAgentName(String govAgentName) {
-		_govAgentName = govAgentName;
+	public void setGovAgencyName(String govAgencyName) {
+		_govAgencyName = govAgencyName;
 	}
 
 	@JSON
@@ -942,68 +987,68 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 
 	@JSON
 	@Override
-	public Date getSubmissionDate() {
-		return _submissionDate;
+	public Date getSubmitDate() {
+		return _submitDate;
 	}
 
 	@Override
-	public void setSubmissionDate(Date submissionDate) {
-		_submissionDate = submissionDate;
-	}
-
-	@JSON
-	@Override
-	public Date getReceptionDate() {
-		return _receptionDate;
-	}
-
-	@Override
-	public void setReceptionDate(Date receptionDate) {
-		_receptionDate = receptionDate;
+	public void setSubmitDate(Date submitDate) {
+		_submitDate = submitDate;
 	}
 
 	@JSON
 	@Override
-	public Date getResubmissionDate() {
-		return _resubmissionDate;
+	public Date getReceiveDate() {
+		return _receiveDate;
 	}
 
 	@Override
-	public void setResubmissionDate(Date resubmissionDate) {
-		_resubmissionDate = resubmissionDate;
-	}
-
-	@JSON
-	@Override
-	public Date getAppointmentDate() {
-		return _appointmentDate;
-	}
-
-	@Override
-	public void setAppointmentDate(Date appointmentDate) {
-		_appointmentDate = appointmentDate;
+	public void setReceiveDate(Date receiveDate) {
+		_receiveDate = receiveDate;
 	}
 
 	@JSON
 	@Override
-	public Date getReleaseDate() {
-		return _releaseDate;
+	public Date getRenewDate() {
+		return _renewDate;
 	}
 
 	@Override
-	public void setReleaseDate(Date releaseDate) {
-		_releaseDate = releaseDate;
+	public void setRenewDate(Date renewDate) {
+		_renewDate = renewDate;
 	}
 
 	@JSON
 	@Override
-	public Date getCompletionDate() {
-		return _completionDate;
+	public Date getEstimateDate() {
+		return _estimateDate;
 	}
 
 	@Override
-	public void setCompletionDate(Date completionDate) {
-		_completionDate = completionDate;
+	public void setEstimateDate(Date estimateDate) {
+		_estimateDate = estimateDate;
+	}
+
+	@JSON
+	@Override
+	public Date getFinishDate() {
+		return _finishDate;
+	}
+
+	@Override
+	public void setFinishDate(Date finishDate) {
+		_finishDate = finishDate;
+	}
+
+	@JSON
+	@Override
+	public Date getReturnDate() {
+		return _returnDate;
+	}
+
+	@Override
+	public void setReturnDate(Date returnDate) {
+		_returnDate = returnDate;
 	}
 
 	@JSON
@@ -1020,6 +1065,17 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 	@Override
 	public void setStatus(String status) {
 		_status = status;
+	}
+
+	@JSON
+	@Override
+	public Date getStatusDate() {
+		return _statusDate;
+	}
+
+	@Override
+	public void setStatusDate(Date statusDate) {
+		_statusDate = statusDate;
 	}
 
 	@JSON
@@ -1052,6 +1108,60 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 	@Override
 	public void setFeedbackNote(String feedbackNote) {
 		_feedbackNote = feedbackNote;
+	}
+
+	@JSON
+	@Override
+	public int getDaysDelay() {
+		return _daysDelay;
+	}
+
+	@Override
+	public void setDaysDelay(int daysDelay) {
+		_daysDelay = daysDelay;
+	}
+
+	@JSON
+	@Override
+	public Date getCloseDate() {
+		return _closeDate;
+	}
+
+	@Override
+	public void setCloseDate(Date closeDate) {
+		_closeDate = closeDate;
+	}
+
+	@JSON
+	@Override
+	public String getErrorStatus() {
+		if (_errorStatus == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _errorStatus;
+		}
+	}
+
+	@Override
+	public void setErrorStatus(String errorStatus) {
+		_errorStatus = errorStatus;
+	}
+
+	@JSON
+	@Override
+	public String getErrorCode() {
+		if (_errorCode == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _errorCode;
+		}
+	}
+
+	@Override
+	public void setErrorCode(String errorCode) {
+		_errorCode = errorCode;
 	}
 
 	@JSON
@@ -1111,8 +1221,8 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		dossierImpl.setModifiedDate(getModifiedDate());
 		dossierImpl.setOrganizationId(getOrganizationId());
 		dossierImpl.setDossierProcId(getDossierProcId());
-		dossierImpl.setGovAgentId(getGovAgentId());
-		dossierImpl.setGovAgentName(getGovAgentName());
+		dossierImpl.setGovAgencyId(getGovAgencyId());
+		dossierImpl.setGovAgencyName(getGovAgencyName());
 		dossierImpl.setSubjectId(getSubjectId());
 		dossierImpl.setSubjectType(getSubjectType());
 		dossierImpl.setSubjectName(getSubjectName());
@@ -1129,15 +1239,20 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		dossierImpl.setNote(getNote());
 		dossierImpl.setResumeDescription(getResumeDescription());
 		dossierImpl.setReceptionNo(getReceptionNo());
-		dossierImpl.setSubmissionDate(getSubmissionDate());
-		dossierImpl.setReceptionDate(getReceptionDate());
-		dossierImpl.setResubmissionDate(getResubmissionDate());
-		dossierImpl.setAppointmentDate(getAppointmentDate());
-		dossierImpl.setReleaseDate(getReleaseDate());
-		dossierImpl.setCompletionDate(getCompletionDate());
+		dossierImpl.setSubmitDate(getSubmitDate());
+		dossierImpl.setReceiveDate(getReceiveDate());
+		dossierImpl.setRenewDate(getRenewDate());
+		dossierImpl.setEstimateDate(getEstimateDate());
+		dossierImpl.setFinishDate(getFinishDate());
+		dossierImpl.setReturnDate(getReturnDate());
 		dossierImpl.setStatus(getStatus());
+		dossierImpl.setStatusDate(getStatusDate());
 		dossierImpl.setStatusDescription(getStatusDescription());
 		dossierImpl.setFeedbackNote(getFeedbackNote());
+		dossierImpl.setDaysDelay(getDaysDelay());
+		dossierImpl.setCloseDate(getCloseDate());
+		dossierImpl.setErrorStatus(getErrorStatus());
+		dossierImpl.setErrorCode(getErrorCode());
 		dossierImpl.setDirty(getDirty());
 
 		dossierImpl.resetOriginalValues();
@@ -1246,20 +1361,20 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 
 		dossierCacheModel.dossierProcId = getDossierProcId();
 
-		dossierCacheModel.govAgentId = getGovAgentId();
+		dossierCacheModel.govAgencyId = getGovAgencyId();
 
-		String govAgentId = dossierCacheModel.govAgentId;
+		String govAgencyId = dossierCacheModel.govAgencyId;
 
-		if ((govAgentId != null) && (govAgentId.length() == 0)) {
-			dossierCacheModel.govAgentId = null;
+		if ((govAgencyId != null) && (govAgencyId.length() == 0)) {
+			dossierCacheModel.govAgencyId = null;
 		}
 
-		dossierCacheModel.govAgentName = getGovAgentName();
+		dossierCacheModel.govAgencyName = getGovAgencyName();
 
-		String govAgentName = dossierCacheModel.govAgentName;
+		String govAgencyName = dossierCacheModel.govAgencyName;
 
-		if ((govAgentName != null) && (govAgentName.length() == 0)) {
-			dossierCacheModel.govAgentName = null;
+		if ((govAgencyName != null) && (govAgencyName.length() == 0)) {
+			dossierCacheModel.govAgencyName = null;
 		}
 
 		dossierCacheModel.subjectId = getSubjectId();
@@ -1390,58 +1505,58 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			dossierCacheModel.receptionNo = null;
 		}
 
-		Date submissionDate = getSubmissionDate();
+		Date submitDate = getSubmitDate();
 
-		if (submissionDate != null) {
-			dossierCacheModel.submissionDate = submissionDate.getTime();
+		if (submitDate != null) {
+			dossierCacheModel.submitDate = submitDate.getTime();
 		}
 		else {
-			dossierCacheModel.submissionDate = Long.MIN_VALUE;
+			dossierCacheModel.submitDate = Long.MIN_VALUE;
 		}
 
-		Date receptionDate = getReceptionDate();
+		Date receiveDate = getReceiveDate();
 
-		if (receptionDate != null) {
-			dossierCacheModel.receptionDate = receptionDate.getTime();
-		}
-		else {
-			dossierCacheModel.receptionDate = Long.MIN_VALUE;
-		}
-
-		Date resubmissionDate = getResubmissionDate();
-
-		if (resubmissionDate != null) {
-			dossierCacheModel.resubmissionDate = resubmissionDate.getTime();
+		if (receiveDate != null) {
+			dossierCacheModel.receiveDate = receiveDate.getTime();
 		}
 		else {
-			dossierCacheModel.resubmissionDate = Long.MIN_VALUE;
+			dossierCacheModel.receiveDate = Long.MIN_VALUE;
 		}
 
-		Date appointmentDate = getAppointmentDate();
+		Date renewDate = getRenewDate();
 
-		if (appointmentDate != null) {
-			dossierCacheModel.appointmentDate = appointmentDate.getTime();
-		}
-		else {
-			dossierCacheModel.appointmentDate = Long.MIN_VALUE;
-		}
-
-		Date releaseDate = getReleaseDate();
-
-		if (releaseDate != null) {
-			dossierCacheModel.releaseDate = releaseDate.getTime();
+		if (renewDate != null) {
+			dossierCacheModel.renewDate = renewDate.getTime();
 		}
 		else {
-			dossierCacheModel.releaseDate = Long.MIN_VALUE;
+			dossierCacheModel.renewDate = Long.MIN_VALUE;
 		}
 
-		Date completionDate = getCompletionDate();
+		Date estimateDate = getEstimateDate();
 
-		if (completionDate != null) {
-			dossierCacheModel.completionDate = completionDate.getTime();
+		if (estimateDate != null) {
+			dossierCacheModel.estimateDate = estimateDate.getTime();
 		}
 		else {
-			dossierCacheModel.completionDate = Long.MIN_VALUE;
+			dossierCacheModel.estimateDate = Long.MIN_VALUE;
+		}
+
+		Date finishDate = getFinishDate();
+
+		if (finishDate != null) {
+			dossierCacheModel.finishDate = finishDate.getTime();
+		}
+		else {
+			dossierCacheModel.finishDate = Long.MIN_VALUE;
+		}
+
+		Date returnDate = getReturnDate();
+
+		if (returnDate != null) {
+			dossierCacheModel.returnDate = returnDate.getTime();
+		}
+		else {
+			dossierCacheModel.returnDate = Long.MIN_VALUE;
 		}
 
 		dossierCacheModel.status = getStatus();
@@ -1450,6 +1565,15 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 
 		if ((status != null) && (status.length() == 0)) {
 			dossierCacheModel.status = null;
+		}
+
+		Date statusDate = getStatusDate();
+
+		if (statusDate != null) {
+			dossierCacheModel.statusDate = statusDate.getTime();
+		}
+		else {
+			dossierCacheModel.statusDate = Long.MIN_VALUE;
 		}
 
 		dossierCacheModel.statusDescription = getStatusDescription();
@@ -1468,6 +1592,33 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			dossierCacheModel.feedbackNote = null;
 		}
 
+		dossierCacheModel.daysDelay = getDaysDelay();
+
+		Date closeDate = getCloseDate();
+
+		if (closeDate != null) {
+			dossierCacheModel.closeDate = closeDate.getTime();
+		}
+		else {
+			dossierCacheModel.closeDate = Long.MIN_VALUE;
+		}
+
+		dossierCacheModel.errorStatus = getErrorStatus();
+
+		String errorStatus = dossierCacheModel.errorStatus;
+
+		if ((errorStatus != null) && (errorStatus.length() == 0)) {
+			dossierCacheModel.errorStatus = null;
+		}
+
+		dossierCacheModel.errorCode = getErrorCode();
+
+		String errorCode = dossierCacheModel.errorCode;
+
+		if ((errorCode != null) && (errorCode.length() == 0)) {
+			dossierCacheModel.errorCode = null;
+		}
+
 		dossierCacheModel.dirty = getDirty();
 
 		return dossierCacheModel;
@@ -1475,7 +1626,7 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(75);
+		StringBundler sb = new StringBundler(85);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
@@ -1495,10 +1646,10 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		sb.append(getOrganizationId());
 		sb.append(", dossierProcId=");
 		sb.append(getDossierProcId());
-		sb.append(", govAgentId=");
-		sb.append(getGovAgentId());
-		sb.append(", govAgentName=");
-		sb.append(getGovAgentName());
+		sb.append(", govAgencyId=");
+		sb.append(getGovAgencyId());
+		sb.append(", govAgencyName=");
+		sb.append(getGovAgencyName());
 		sb.append(", subjectId=");
 		sb.append(getSubjectId());
 		sb.append(", subjectType=");
@@ -1531,24 +1682,34 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		sb.append(getResumeDescription());
 		sb.append(", receptionNo=");
 		sb.append(getReceptionNo());
-		sb.append(", submissionDate=");
-		sb.append(getSubmissionDate());
-		sb.append(", receptionDate=");
-		sb.append(getReceptionDate());
-		sb.append(", resubmissionDate=");
-		sb.append(getResubmissionDate());
-		sb.append(", appointmentDate=");
-		sb.append(getAppointmentDate());
-		sb.append(", releaseDate=");
-		sb.append(getReleaseDate());
-		sb.append(", completionDate=");
-		sb.append(getCompletionDate());
+		sb.append(", submitDate=");
+		sb.append(getSubmitDate());
+		sb.append(", receiveDate=");
+		sb.append(getReceiveDate());
+		sb.append(", renewDate=");
+		sb.append(getRenewDate());
+		sb.append(", estimateDate=");
+		sb.append(getEstimateDate());
+		sb.append(", finishDate=");
+		sb.append(getFinishDate());
+		sb.append(", returnDate=");
+		sb.append(getReturnDate());
 		sb.append(", status=");
 		sb.append(getStatus());
+		sb.append(", statusDate=");
+		sb.append(getStatusDate());
 		sb.append(", statusDescription=");
 		sb.append(getStatusDescription());
 		sb.append(", feedbackNote=");
 		sb.append(getFeedbackNote());
+		sb.append(", daysDelay=");
+		sb.append(getDaysDelay());
+		sb.append(", closeDate=");
+		sb.append(getCloseDate());
+		sb.append(", errorStatus=");
+		sb.append(getErrorStatus());
+		sb.append(", errorCode=");
+		sb.append(getErrorCode());
 		sb.append(", dirty=");
 		sb.append(getDirty());
 		sb.append("}");
@@ -1558,7 +1719,7 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(115);
+		StringBundler sb = new StringBundler(130);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.Dossier");
@@ -1601,12 +1762,12 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		sb.append(getDossierProcId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentId</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentId());
+			"<column><column-name>govAgencyId</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentName</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentName());
+			"<column><column-name>govAgencyName</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyName());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>subjectId</column-name><column-value><![CDATA[");
@@ -1673,32 +1834,36 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		sb.append(getReceptionNo());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>submissionDate</column-name><column-value><![CDATA[");
-		sb.append(getSubmissionDate());
+			"<column><column-name>submitDate</column-name><column-value><![CDATA[");
+		sb.append(getSubmitDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>receptionDate</column-name><column-value><![CDATA[");
-		sb.append(getReceptionDate());
+			"<column><column-name>receiveDate</column-name><column-value><![CDATA[");
+		sb.append(getReceiveDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>resubmissionDate</column-name><column-value><![CDATA[");
-		sb.append(getResubmissionDate());
+			"<column><column-name>renewDate</column-name><column-value><![CDATA[");
+		sb.append(getRenewDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>appointmentDate</column-name><column-value><![CDATA[");
-		sb.append(getAppointmentDate());
+			"<column><column-name>estimateDate</column-name><column-value><![CDATA[");
+		sb.append(getEstimateDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>releaseDate</column-name><column-value><![CDATA[");
-		sb.append(getReleaseDate());
+			"<column><column-name>finishDate</column-name><column-value><![CDATA[");
+		sb.append(getFinishDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>completionDate</column-name><column-value><![CDATA[");
-		sb.append(getCompletionDate());
+			"<column><column-name>returnDate</column-name><column-value><![CDATA[");
+		sb.append(getReturnDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>status</column-name><column-value><![CDATA[");
 		sb.append(getStatus());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>statusDate</column-name><column-value><![CDATA[");
+		sb.append(getStatusDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>statusDescription</column-name><column-value><![CDATA[");
@@ -1707,6 +1872,22 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		sb.append(
 			"<column><column-name>feedbackNote</column-name><column-value><![CDATA[");
 		sb.append(getFeedbackNote());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>daysDelay</column-name><column-value><![CDATA[");
+		sb.append(getDaysDelay());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>closeDate</column-name><column-value><![CDATA[");
+		sb.append(getCloseDate());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>errorStatus</column-name><column-value><![CDATA[");
+		sb.append(getErrorStatus());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>errorCode</column-name><column-value><![CDATA[");
+		sb.append(getErrorCode());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>dirty</column-name><column-value><![CDATA[");
@@ -1737,8 +1918,8 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 	private Date _modifiedDate;
 	private long _organizationId;
 	private long _dossierProcId;
-	private String _govAgentId;
-	private String _govAgentName;
+	private String _govAgencyId;
+	private String _govAgencyName;
 	private String _subjectId;
 	private String _subjectType;
 	private String _subjectName;
@@ -1755,15 +1936,20 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 	private String _note;
 	private String _resumeDescription;
 	private String _receptionNo;
-	private Date _submissionDate;
-	private Date _receptionDate;
-	private Date _resubmissionDate;
-	private Date _appointmentDate;
-	private Date _releaseDate;
-	private Date _completionDate;
+	private Date _submitDate;
+	private Date _receiveDate;
+	private Date _renewDate;
+	private Date _estimateDate;
+	private Date _finishDate;
+	private Date _returnDate;
 	private String _status;
+	private Date _statusDate;
 	private String _statusDescription;
 	private String _feedbackNote;
+	private int _daysDelay;
+	private Date _closeDate;
+	private String _errorStatus;
+	private String _errorCode;
 	private int _dirty;
 	private long _columnBitmask;
 	private Dossier _escapedModel;

@@ -42,8 +42,8 @@
         <column name="modifiedDate" type="Date"></column>
         <column name="organizationId" type="long"></column>
         <column name="dossierProcId" type="long"></column>
-        <column name="govAgentId" type="String"></column>
-        <column name="govAgentName" type="String"></column>
+        <column name="govAgencyId" type="String"></column>
+        <column name="govAgencyName" type="String"></column>
         <column name="subjectId" type="String"></column>
         <column name="subjectType" type="String"></column>
         <column name="subjectName" type="String"></column>
@@ -60,15 +60,20 @@
         <column name="note" type="String"></column>
         <column name="resumeDescription" type="String"></column>
         <column name="receptionNo" type="String"></column>
-        <column name="submissionDate" type="Date"></column>
-        <column name="receptionDate" type="Date"></column>
-        <column name="resubmissionDate" type="Date"></column>
-        <column name="appointmentDate" type="Date"></column>
-        <column name="releaseDate" type="Date"></column>
-        <column name="completionDate" type="Date"></column>
+        <column name="submitDate" type="Date"></column>
+        <column name="receiveDate" type="Date"></column>
+        <column name="renewDate" type="Date"></column>
+        <column name="estimateDate" type="Date"></column>
+        <column name="finishDate" type="Date"></column>
+        <column name="returnDate" type="Date"></column>
         <column name="status" type="String"></column>
+        <column name="statusDate" type="Date"></column>
         <column name="statusDescription" type="String"></column>
         <column name="feedbackNote" type="String"></column>
+        <column name="daysDelay" type="int"></column>
+        <column name="closeDate" type="Date"></column>
+		<column name="errorStatus" type="String"></column>
+		<column name="errorCode" type="String"></column>
         <column name="dirty" type="int"></column>
     </entity>
     <entity name="DocFile" table="oep_dossiermgt_docfile" local-service="true" uuid="true" uuid-accessor="true">
@@ -192,15 +197,31 @@
             <finder-column name="administrationNo"></finder-column>
             <finder-column name="domainNo"></finder-column>
         </finder>
+        <finder name="DPN" return-type="DossierProc" unique="true">
+            <finder-column name="dossierProcNo"></finder-column>
+        </finder>
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="C_AC" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="active"></finder-column>
+        </finder>
+        <finder name="G_AC" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="active"></finder-column>
+        </finder>
+        
+        <reference entity="User" package-path="com.liferay.portal"></reference>
     </entity>
-    <entity name="DossierProcAgent" table="oep_dossiermgt_dossierprocagent" local-service="true">
-        <column name="dossierProcAgentId" type="long" primary="true"></column>
+    <entity name="DossierProcAgency" table="oep_dossiermgt_dossierprocagent" local-service="true">
+        <column name="dossierProcAgencyId" type="long" primary="true"></column>
         <column name="companyId" type="long"></column>
         <column name="createDate" type="Date"></column>
         <column name="modifiedDate" type="Date"></column>
         <column name="dossierProcId" type="long"></column>
-        <column name="govAgentId" type="String"></column>
-        <column name="govAgentName" type="String"></column>
+        <column name="govAgencyId" type="String"></column>
+        <column name="govAgencyName" type="String"></column>
         <column name="ebPartnerShipId" type="long"></column>
     </entity>
     <entity name="PaymentFile" local-service="true" uuid="true" uuid-accessor="true" table="oep_dossiermgt_paymentfile">
@@ -211,8 +232,8 @@
         <column name="createDate" type="Date"></column>
         <column name="modifiedDate" type="Date"></column>
         <column name="organizationId" type="long"></column>
-        <column name="govAgentId" type="String"></column>
-        <column name="govAgentName" type="String"></column>
+        <column name="govAgencyId" type="String"></column>
+        <column name="govAgencyName" type="String"></column>
         <column name="subjectId" type="String"></column>
         <column name="subjectType" type="String"></column>
         <column name="subjectName" type="String"></column>
@@ -237,8 +258,8 @@
         <column name="modifiedDate" type="Date"></column>
         <column name="organizationId" type="long"></column>
         <column name="dossierId" type="long"></column>
-        <column name="govAgentId" type="String"></column>
-        <column name="govAgentName" type="String"></column>
+        <column name="govAgencyId" type="String"></column>
+        <column name="govAgencyName" type="String"></column>
         <column name="subjectId" type="String"></column>
         <column name="subjectType" type="String"></column>
         <column name="subjectName" type="String"></column>
@@ -253,8 +274,8 @@
         <column name="companyId" type="long"></column>
         <column name="createDate" type="Date"></column>
         <column name="modifiedDate" type="Date"></column>
-        <column name="govAgentId" type="String"></column>
-        <column name="govAgentName" type="String"></column>
+        <column name="govAgencyId" type="String"></column>
+        <column name="govAgencyName" type="String"></column>
         <column name="bankTransfer" type="String"></column>
         <column name="keypay" type="String"></column>
 		<column name="ebPartnerShipId" type="long"></column>
@@ -308,6 +329,16 @@
 		<column name="action" type="String"></column>
 		<column name="inbound" type="int"></column>
 	</entity>
+	<entity name="ProfileData" table="oep_dossiermgt_profiledata" local-service="true">
+		<column name="profileDataId" type="long" primary="true"></column>
+		<column name="userId" type="long"></column>
+		<column name="groupId" type="long"></column>
+		<column name="companyId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+		<column name="fieldName" type="String"></column>
+		<column name="fieldValue" type="String"></column>
+	</entity>
     <exceptions>
         <exception>DossierProcNo</exception>
         <exception>DupplicateDossier</exception>
@@ -315,5 +346,8 @@
         <exception>TemplateNo</exception>
         <exception>DupplicateDocTemplate</exception>
         <exception>NoSuchDocTemplate</exception>
+        <exception>DossierProcEffectExpireDate</exception>
+        <exception>NoSuchAdministration</exception>
+        <exception>NoSuchDomain</exception>
     </exceptions>
 </service-builder>

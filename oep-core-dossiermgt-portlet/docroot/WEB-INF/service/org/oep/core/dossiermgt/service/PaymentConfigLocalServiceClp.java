@@ -724,7 +724,7 @@ public class PaymentConfigLocalServiceClp implements PaymentConfigLocalService {
 
 	@Override
 	public org.oep.core.dossiermgt.model.PaymentConfig addPaymentConfig(
-		java.lang.String govAgentId, java.lang.String govAgentName,
+		java.lang.String govAgencyId, java.lang.String govAgencyName,
 		java.lang.String bankTransfer, java.lang.String keypay,
 		long ebPartnerShipId,
 		com.liferay.portal.service.ServiceContext serviceContext)
@@ -736,9 +736,9 @@ public class PaymentConfigLocalServiceClp implements PaymentConfigLocalService {
 			returnObj = _invokableLocalService.invokeMethod(_methodName19,
 					_methodParameterTypes19,
 					new Object[] {
-						ClpSerializer.translateInput(govAgentId),
+						ClpSerializer.translateInput(govAgencyId),
 						
-					ClpSerializer.translateInput(govAgentName),
+					ClpSerializer.translateInput(govAgencyName),
 						
 					ClpSerializer.translateInput(bankTransfer),
 						
@@ -774,7 +774,7 @@ public class PaymentConfigLocalServiceClp implements PaymentConfigLocalService {
 
 	@Override
 	public org.oep.core.dossiermgt.model.PaymentConfig updatePaymentConfig(
-		long id, java.lang.String govAgentId, java.lang.String govAgentName,
+		long id, java.lang.String govAgencyId, java.lang.String govAgencyName,
 		java.lang.String bankTransfer, java.lang.String keypay,
 		long ebPartnerShipId,
 		com.liferay.portal.service.ServiceContext serviceContext)
@@ -788,9 +788,9 @@ public class PaymentConfigLocalServiceClp implements PaymentConfigLocalService {
 					new Object[] {
 						id,
 						
-					ClpSerializer.translateInput(govAgentId),
+					ClpSerializer.translateInput(govAgencyId),
 						
-					ClpSerializer.translateInput(govAgentName),
+					ClpSerializer.translateInput(govAgencyName),
 						
 					ClpSerializer.translateInput(bankTransfer),
 						

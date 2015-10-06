@@ -872,8 +872,8 @@ public class PaymentRequestLocalServiceClp implements PaymentRequestLocalService
 
 	@Override
 	public org.oep.core.dossiermgt.model.PaymentRequest addPaymentRequest(
-		long organizationId, long dossierId, java.lang.String govAgentId,
-		java.lang.String govAgentName, java.lang.String subjectId,
+		long organizationId, long dossierId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, java.lang.String subjectId,
 		java.lang.String subjectType, java.lang.String subjectName, int amount,
 		java.lang.String requestNote, long paymentFileId, int confirmOK,
 		long ebMessageId,
@@ -890,9 +890,9 @@ public class PaymentRequestLocalServiceClp implements PaymentRequestLocalService
 						
 					dossierId,
 						
-					ClpSerializer.translateInput(govAgentId),
+					ClpSerializer.translateInput(govAgencyId),
 						
-					ClpSerializer.translateInput(govAgentName),
+					ClpSerializer.translateInput(govAgencyName),
 						
 					ClpSerializer.translateInput(subjectId),
 						
@@ -939,7 +939,7 @@ public class PaymentRequestLocalServiceClp implements PaymentRequestLocalService
 	@Override
 	public org.oep.core.dossiermgt.model.PaymentRequest updatePaymentRequest(
 		long id, long organizationId, long dossierId,
-		java.lang.String govAgentId, java.lang.String govAgentName,
+		java.lang.String govAgencyId, java.lang.String govAgencyName,
 		java.lang.String subjectId, java.lang.String subjectType,
 		java.lang.String subjectName, int amount, java.lang.String requestNote,
 		long paymentFileId, int confirmOK, long ebMessageId,
@@ -958,9 +958,9 @@ public class PaymentRequestLocalServiceClp implements PaymentRequestLocalService
 						
 					dossierId,
 						
-					ClpSerializer.translateInput(govAgentId),
+					ClpSerializer.translateInput(govAgencyId),
 						
-					ClpSerializer.translateInput(govAgentName),
+					ClpSerializer.translateInput(govAgencyName),
 						
 					ClpSerializer.translateInput(subjectId),
 						

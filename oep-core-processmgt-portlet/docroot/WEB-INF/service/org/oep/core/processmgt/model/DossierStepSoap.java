@@ -41,6 +41,7 @@ public class DossierStepSoap implements Serializable {
 		soapModel.setTitle(model.getTitle());
 		soapModel.setSequenceNo(model.getSequenceNo());
 		soapModel.setStepType(model.getStepType());
+		soapModel.setDoForm(model.getDoForm());
 
 		return soapModel;
 	}
@@ -173,6 +174,14 @@ public class DossierStepSoap implements Serializable {
 		_stepType = stepType;
 	}
 
+	public String getDoForm() {
+		return _doForm;
+	}
+
+	public void setDoForm(String doForm) {
+		_doForm = doForm;
+	}
+
 	private long _dossierStepId;
 	private long _userId;
 	private long _groupId;
@@ -183,4 +192,5 @@ public class DossierStepSoap implements Serializable {
 	private String _title;
 	private int _sequenceNo;
 	private int _stepType;
+	private String _doForm;
 }

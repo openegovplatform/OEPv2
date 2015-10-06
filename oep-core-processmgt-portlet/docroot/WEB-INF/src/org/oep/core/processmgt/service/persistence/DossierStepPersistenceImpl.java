@@ -329,6 +329,7 @@ public class DossierStepPersistenceImpl extends BasePersistenceImpl<DossierStep>
 		dossierStepImpl.setTitle(dossierStep.getTitle());
 		dossierStepImpl.setSequenceNo(dossierStep.getSequenceNo());
 		dossierStepImpl.setStepType(dossierStep.getStepType());
+		dossierStepImpl.setDoForm(dossierStep.getDoForm());
 
 		return dossierStepImpl;
 	}

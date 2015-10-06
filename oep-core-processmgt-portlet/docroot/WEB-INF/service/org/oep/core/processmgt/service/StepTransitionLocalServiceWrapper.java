@@ -306,14 +306,14 @@ public class StepTransitionLocalServiceWrapper
 		long dossierProcessId, long preDossierStepId, long postDossierStepId,
 		java.lang.String precondition, java.lang.String transitionName,
 		int daysDuration, java.lang.String dossierStatus, int userAssignment,
-		int newProcessOrder, java.lang.String errorMessage,
+		int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _stepTransitionLocalService.addStepTransition(dossierProcessId,
 			preDossierStepId, postDossierStepId, precondition, transitionName,
 			daysDuration, dossierStatus, userAssignment, newProcessOrder,
-			errorMessage, serviceContext);
+			serviceContext);
 	}
 
 	@Override
@@ -322,14 +322,14 @@ public class StepTransitionLocalServiceWrapper
 		long postDossierStepId, java.lang.String precondition,
 		java.lang.String transitionName, int daysDuration,
 		java.lang.String dossierStatus, int userAssignment,
-		int newProcessOrder, java.lang.String errorMessage,
+		int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _stepTransitionLocalService.updateStepTransition(id,
 			dossierProcessId, preDossierStepId, postDossierStepId,
 			precondition, transitionName, daysDuration, dossierStatus,
-			userAssignment, newProcessOrder, errorMessage, serviceContext);
+			userAssignment, newProcessOrder, serviceContext);
 	}
 
 	@Override

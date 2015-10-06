@@ -46,6 +46,7 @@
 			<basic name="title" />
 			<basic name="sequenceNo" />
 			<basic name="stepType" />
+			<basic name="doForm" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
@@ -127,7 +128,6 @@
 			<basic name="dossierStatus" />
 			<basic name="userAssignment" />
 			<basic name="newProcessOrder" />
-			<basic name="errorMessage" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />

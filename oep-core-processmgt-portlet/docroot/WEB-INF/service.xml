@@ -30,6 +30,7 @@
         <column name="title" type="String"></column>
         <column name="sequenceNo" type="int"></column>
         <column name="stepType" type="int"></column>
+        <column name="doForm" type="String"></column>
         
     	<reference package-path="com.liferay.portal" entity="Role"></reference>
         <reference entity="Group" package-path="com.liferay.portal"></reference>
@@ -51,7 +52,6 @@
         <column name="dossierStatus" type="String"></column>
         <column name="userAssignment" type="int"></column>
         <column name="newProcessOrder" type="int"></column>
-        <column name="errorMessage" type="String"></column>
     </entity>
     <entity name="ProcessOrder" table="oep_processmgt_processorder" local-service="true">
         <column name="processOrderId" type="long" primary="true"></column>

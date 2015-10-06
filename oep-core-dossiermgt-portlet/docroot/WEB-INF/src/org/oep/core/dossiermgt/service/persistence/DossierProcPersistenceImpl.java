@@ -5717,6 +5717,1789 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	private static final String _FINDER_COLUMN_C_G_ANO_DNO_DOMAINNO_1 = "dossierProc.domainNo IS NULL";
 	private static final String _FINDER_COLUMN_C_G_ANO_DNO_DOMAINNO_2 = "dossierProc.domainNo = ?";
 	private static final String _FINDER_COLUMN_C_G_ANO_DNO_DOMAINNO_3 = "(dossierProc.domainNo IS NULL OR dossierProc.domainNo = '')";
+	public static final FinderPath FINDER_PATH_FETCH_BY_DPN = new FinderPath(DossierProcModelImpl.ENTITY_CACHE_ENABLED,
+			DossierProcModelImpl.FINDER_CACHE_ENABLED, DossierProcImpl.class,
+			FINDER_CLASS_NAME_ENTITY, "fetchByDPN",
+			new String[] { String.class.getName() },
+			DossierProcModelImpl.DOSSIERPROCNO_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_DPN = new FinderPath(DossierProcModelImpl.ENTITY_CACHE_ENABLED,
+			DossierProcModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByDPN",
+			new String[] { String.class.getName() });
+
+	/**
+	 * Returns the dossier proc where dossierProcNo = &#63; or throws a {@link org.oep.core.dossiermgt.NoSuchDossierProcException} if it could not be found.
+	 *
+	 * @param dossierProcNo the dossier proc no
+	 * @return the matching dossier proc
+	 * @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc findByDPN(String dossierProcNo)
+		throws NoSuchDossierProcException, SystemException {
+		DossierProc dossierProc = fetchByDPN(dossierProcNo);
+
+		if (dossierProc == null) {
+			StringBundler msg = new StringBundler(4);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("dossierProcNo=");
+			msg.append(dossierProcNo);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			if (_log.isWarnEnabled()) {
+				_log.warn(msg.toString());
+			}
+
+			throw new NoSuchDossierProcException(msg.toString());
+		}
+
+		return dossierProc;
+	}
+
+	/**
+	 * Returns the dossier proc where dossierProcNo = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 *
+	 * @param dossierProcNo the dossier proc no
+	 * @return the matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc fetchByDPN(String dossierProcNo)
+		throws SystemException {
+		return fetchByDPN(dossierProcNo, true);
+	}
+
+	/**
+	 * Returns the dossier proc where dossierProcNo = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param dossierProcNo the dossier proc no
+	 * @param retrieveFromCache whether to use the finder cache
+	 * @return the matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc fetchByDPN(String dossierProcNo,
+		boolean retrieveFromCache) throws SystemException {
+		Object[] finderArgs = new Object[] { dossierProcNo };
+
+		Object result = null;
+
+		if (retrieveFromCache) {
+			result = FinderCacheUtil.getResult(FINDER_PATH_FETCH_BY_DPN,
+					finderArgs, this);
+		}
+
+		if (result instanceof DossierProc) {
+			DossierProc dossierProc = (DossierProc)result;
+
+			if (!Validator.equals(dossierProcNo, dossierProc.getDossierProcNo())) {
+				result = null;
+			}
+		}
+
+		if (result == null) {
+			StringBundler query = new StringBundler(3);
+
+			query.append(_SQL_SELECT_DOSSIERPROC_WHERE);
+
+			boolean bindDossierProcNo = false;
+
+			if (dossierProcNo == null) {
+				query.append(_FINDER_COLUMN_DPN_DOSSIERPROCNO_1);
+			}
+			else if (dossierProcNo.equals(StringPool.BLANK)) {
+				query.append(_FINDER_COLUMN_DPN_DOSSIERPROCNO_3);
+			}
+			else {
+				bindDossierProcNo = true;
+
+				query.append(_FINDER_COLUMN_DPN_DOSSIERPROCNO_2);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				if (bindDossierProcNo) {
+					qPos.add(dossierProcNo);
+				}
+
+				List<DossierProc> list = q.list();
+
+				if (list.isEmpty()) {
+					FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_DPN,
+						finderArgs, list);
+				}
+				else {
+					DossierProc dossierProc = list.get(0);
+
+					result = dossierProc;
+
+					cacheResult(dossierProc);
+
+					if ((dossierProc.getDossierProcNo() == null) ||
+							!dossierProc.getDossierProcNo().equals(dossierProcNo)) {
+						FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_DPN,
+							finderArgs, dossierProc);
+					}
+				}
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_DPN,
+					finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		if (result instanceof List<?>) {
+			return null;
+		}
+		else {
+			return (DossierProc)result;
+		}
+	}
+
+	/**
+	 * Removes the dossier proc where dossierProcNo = &#63; from the database.
+	 *
+	 * @param dossierProcNo the dossier proc no
+	 * @return the dossier proc that was removed
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc removeByDPN(String dossierProcNo)
+		throws NoSuchDossierProcException, SystemException {
+		DossierProc dossierProc = findByDPN(dossierProcNo);
+
+		return remove(dossierProc);
+	}
+
+	/**
+	 * Returns the number of dossier procs where dossierProcNo = &#63;.
+	 *
+	 * @param dossierProcNo the dossier proc no
+	 * @return the number of matching dossier procs
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public int countByDPN(String dossierProcNo) throws SystemException {
+		FinderPath finderPath = FINDER_PATH_COUNT_BY_DPN;
+
+		Object[] finderArgs = new Object[] { dossierProcNo };
+
+		Long count = (Long)FinderCacheUtil.getResult(finderPath, finderArgs,
+				this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(2);
+
+			query.append(_SQL_COUNT_DOSSIERPROC_WHERE);
+
+			boolean bindDossierProcNo = false;
+
+			if (dossierProcNo == null) {
+				query.append(_FINDER_COLUMN_DPN_DOSSIERPROCNO_1);
+			}
+			else if (dossierProcNo.equals(StringPool.BLANK)) {
+				query.append(_FINDER_COLUMN_DPN_DOSSIERPROCNO_3);
+			}
+			else {
+				bindDossierProcNo = true;
+
+				query.append(_FINDER_COLUMN_DPN_DOSSIERPROCNO_2);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				if (bindDossierProcNo) {
+					qPos.add(dossierProcNo);
+				}
+
+				count = (Long)q.uniqueResult();
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_DPN_DOSSIERPROCNO_1 = "dossierProc.dossierProcNo IS NULL";
+	private static final String _FINDER_COLUMN_DPN_DOSSIERPROCNO_2 = "dossierProc.dossierProcNo = ?";
+	private static final String _FINDER_COLUMN_DPN_DOSSIERPROCNO_3 = "(dossierProc.dossierProcNo IS NULL OR dossierProc.dossierProcNo = '')";
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_GROUPID = new FinderPath(DossierProcModelImpl.ENTITY_CACHE_ENABLED,
+			DossierProcModelImpl.FINDER_CACHE_ENABLED, DossierProcImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByGroupId",
+			new String[] {
+				Long.class.getName(),
+				
+			Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_GROUPID =
+		new FinderPath(DossierProcModelImpl.ENTITY_CACHE_ENABLED,
+			DossierProcModelImpl.FINDER_CACHE_ENABLED, DossierProcImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByGroupId",
+			new String[] { Long.class.getName() },
+			DossierProcModelImpl.GROUPID_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_GROUPID = new FinderPath(DossierProcModelImpl.ENTITY_CACHE_ENABLED,
+			DossierProcModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByGroupId",
+			new String[] { Long.class.getName() });
+
+	/**
+	 * Returns all the dossier procs where groupId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @return the matching dossier procs
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<DossierProc> findByGroupId(long groupId)
+		throws SystemException {
+		return findByGroupId(groupId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the dossier procs where groupId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DossierProcModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param start the lower bound of the range of dossier procs
+	 * @param end the upper bound of the range of dossier procs (not inclusive)
+	 * @return the range of matching dossier procs
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<DossierProc> findByGroupId(long groupId, int start, int end)
+		throws SystemException {
+		return findByGroupId(groupId, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the dossier procs where groupId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DossierProcModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param start the lower bound of the range of dossier procs
+	 * @param end the upper bound of the range of dossier procs (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dossier procs
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<DossierProc> findByGroupId(long groupId, int start, int end,
+		OrderByComparator orderByComparator) throws SystemException {
+		boolean pagination = true;
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			pagination = false;
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_GROUPID;
+			finderArgs = new Object[] { groupId };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_GROUPID;
+			finderArgs = new Object[] { groupId, start, end, orderByComparator };
+		}
+
+		List<DossierProc> list = (List<DossierProc>)FinderCacheUtil.getResult(finderPath,
+				finderArgs, this);
+
+		if ((list != null) && !list.isEmpty()) {
+			for (DossierProc dossierProc : list) {
+				if ((groupId != dossierProc.getGroupId())) {
+					list = null;
+
+					break;
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(3 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(3);
+			}
+
+			query.append(_SQL_SELECT_DOSSIERPROC_WHERE);
+
+			query.append(_FINDER_COLUMN_GROUPID_GROUPID_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+			else
+			 if (pagination) {
+				query.append(DossierProcModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(groupId);
+
+				if (!pagination) {
+					list = (List<DossierProc>)QueryUtil.list(q, getDialect(),
+							start, end, false);
+
+					Collections.sort(list);
+
+					list = new UnmodifiableList<DossierProc>(list);
+				}
+				else {
+					list = (List<DossierProc>)QueryUtil.list(q, getDialect(),
+							start, end);
+				}
+
+				cacheResult(list);
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, list);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first dossier proc in the ordered set where groupId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dossier proc
+	 * @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc findByGroupId_First(long groupId,
+		OrderByComparator orderByComparator)
+		throws NoSuchDossierProcException, SystemException {
+		DossierProc dossierProc = fetchByGroupId_First(groupId,
+				orderByComparator);
+
+		if (dossierProc != null) {
+			return dossierProc;
+		}
+
+		StringBundler msg = new StringBundler(4);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("groupId=");
+		msg.append(groupId);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchDossierProcException(msg.toString());
+	}
+
+	/**
+	 * Returns the first dossier proc in the ordered set where groupId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc fetchByGroupId_First(long groupId,
+		OrderByComparator orderByComparator) throws SystemException {
+		List<DossierProc> list = findByGroupId(groupId, 0, 1, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last dossier proc in the ordered set where groupId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dossier proc
+	 * @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc findByGroupId_Last(long groupId,
+		OrderByComparator orderByComparator)
+		throws NoSuchDossierProcException, SystemException {
+		DossierProc dossierProc = fetchByGroupId_Last(groupId, orderByComparator);
+
+		if (dossierProc != null) {
+			return dossierProc;
+		}
+
+		StringBundler msg = new StringBundler(4);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("groupId=");
+		msg.append(groupId);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchDossierProcException(msg.toString());
+	}
+
+	/**
+	 * Returns the last dossier proc in the ordered set where groupId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc fetchByGroupId_Last(long groupId,
+		OrderByComparator orderByComparator) throws SystemException {
+		int count = countByGroupId(groupId);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<DossierProc> list = findByGroupId(groupId, count - 1, count,
+				orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the dossier procs before and after the current dossier proc in the ordered set where groupId = &#63;.
+	 *
+	 * @param dossierProcId the primary key of the current dossier proc
+	 * @param groupId the group ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dossier proc
+	 * @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a dossier proc with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc[] findByGroupId_PrevAndNext(long dossierProcId,
+		long groupId, OrderByComparator orderByComparator)
+		throws NoSuchDossierProcException, SystemException {
+		DossierProc dossierProc = findByPrimaryKey(dossierProcId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			DossierProc[] array = new DossierProcImpl[3];
+
+			array[0] = getByGroupId_PrevAndNext(session, dossierProc, groupId,
+					orderByComparator, true);
+
+			array[1] = dossierProc;
+
+			array[2] = getByGroupId_PrevAndNext(session, dossierProc, groupId,
+					orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected DossierProc getByGroupId_PrevAndNext(Session session,
+		DossierProc dossierProc, long groupId,
+		OrderByComparator orderByComparator, boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_DOSSIERPROC_WHERE);
+
+		query.append(_FINDER_COLUMN_GROUPID_GROUPID_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			query.append(DossierProcModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(groupId);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(dossierProc);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<DossierProc> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the dossier procs where groupId = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public void removeByGroupId(long groupId) throws SystemException {
+		for (DossierProc dossierProc : findByGroupId(groupId,
+				QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+			remove(dossierProc);
+		}
+	}
+
+	/**
+	 * Returns the number of dossier procs where groupId = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @return the number of matching dossier procs
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public int countByGroupId(long groupId) throws SystemException {
+		FinderPath finderPath = FINDER_PATH_COUNT_BY_GROUPID;
+
+		Object[] finderArgs = new Object[] { groupId };
+
+		Long count = (Long)FinderCacheUtil.getResult(finderPath, finderArgs,
+				this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(2);
+
+			query.append(_SQL_COUNT_DOSSIERPROC_WHERE);
+
+			query.append(_FINDER_COLUMN_GROUPID_GROUPID_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(groupId);
+
+				count = (Long)q.uniqueResult();
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_GROUPID_GROUPID_2 = "dossierProc.groupId = ?";
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_C_AC = new FinderPath(DossierProcModelImpl.ENTITY_CACHE_ENABLED,
+			DossierProcModelImpl.FINDER_CACHE_ENABLED, DossierProcImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByC_AC",
+			new String[] {
+				Long.class.getName(), Integer.class.getName(),
+				
+			Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_C_AC = new FinderPath(DossierProcModelImpl.ENTITY_CACHE_ENABLED,
+			DossierProcModelImpl.FINDER_CACHE_ENABLED, DossierProcImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByC_AC",
+			new String[] { Long.class.getName(), Integer.class.getName() },
+			DossierProcModelImpl.COMPANYID_COLUMN_BITMASK |
+			DossierProcModelImpl.ACTIVE_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_C_AC = new FinderPath(DossierProcModelImpl.ENTITY_CACHE_ENABLED,
+			DossierProcModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByC_AC",
+			new String[] { Long.class.getName(), Integer.class.getName() });
+
+	/**
+	 * Returns all the dossier procs where companyId = &#63; and active = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param active the active
+	 * @return the matching dossier procs
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<DossierProc> findByC_AC(long companyId, int active)
+		throws SystemException {
+		return findByC_AC(companyId, active, QueryUtil.ALL_POS,
+			QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the dossier procs where companyId = &#63; and active = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DossierProcModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param active the active
+	 * @param start the lower bound of the range of dossier procs
+	 * @param end the upper bound of the range of dossier procs (not inclusive)
+	 * @return the range of matching dossier procs
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<DossierProc> findByC_AC(long companyId, int active, int start,
+		int end) throws SystemException {
+		return findByC_AC(companyId, active, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the dossier procs where companyId = &#63; and active = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DossierProcModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param active the active
+	 * @param start the lower bound of the range of dossier procs
+	 * @param end the upper bound of the range of dossier procs (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dossier procs
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<DossierProc> findByC_AC(long companyId, int active, int start,
+		int end, OrderByComparator orderByComparator) throws SystemException {
+		boolean pagination = true;
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			pagination = false;
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_C_AC;
+			finderArgs = new Object[] { companyId, active };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_C_AC;
+			finderArgs = new Object[] {
+					companyId, active,
+					
+					start, end, orderByComparator
+				};
+		}
+
+		List<DossierProc> list = (List<DossierProc>)FinderCacheUtil.getResult(finderPath,
+				finderArgs, this);
+
+		if ((list != null) && !list.isEmpty()) {
+			for (DossierProc dossierProc : list) {
+				if ((companyId != dossierProc.getCompanyId()) ||
+						(active != dossierProc.getActive())) {
+					list = null;
+
+					break;
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(4 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(4);
+			}
+
+			query.append(_SQL_SELECT_DOSSIERPROC_WHERE);
+
+			query.append(_FINDER_COLUMN_C_AC_COMPANYID_2);
+
+			query.append(_FINDER_COLUMN_C_AC_ACTIVE_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+			else
+			 if (pagination) {
+				query.append(DossierProcModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(companyId);
+
+				qPos.add(active);
+
+				if (!pagination) {
+					list = (List<DossierProc>)QueryUtil.list(q, getDialect(),
+							start, end, false);
+
+					Collections.sort(list);
+
+					list = new UnmodifiableList<DossierProc>(list);
+				}
+				else {
+					list = (List<DossierProc>)QueryUtil.list(q, getDialect(),
+							start, end);
+				}
+
+				cacheResult(list);
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, list);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first dossier proc in the ordered set where companyId = &#63; and active = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param active the active
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dossier proc
+	 * @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc findByC_AC_First(long companyId, int active,
+		OrderByComparator orderByComparator)
+		throws NoSuchDossierProcException, SystemException {
+		DossierProc dossierProc = fetchByC_AC_First(companyId, active,
+				orderByComparator);
+
+		if (dossierProc != null) {
+			return dossierProc;
+		}
+
+		StringBundler msg = new StringBundler(6);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("companyId=");
+		msg.append(companyId);
+
+		msg.append(", active=");
+		msg.append(active);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchDossierProcException(msg.toString());
+	}
+
+	/**
+	 * Returns the first dossier proc in the ordered set where companyId = &#63; and active = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param active the active
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc fetchByC_AC_First(long companyId, int active,
+		OrderByComparator orderByComparator) throws SystemException {
+		List<DossierProc> list = findByC_AC(companyId, active, 0, 1,
+				orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last dossier proc in the ordered set where companyId = &#63; and active = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param active the active
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dossier proc
+	 * @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc findByC_AC_Last(long companyId, int active,
+		OrderByComparator orderByComparator)
+		throws NoSuchDossierProcException, SystemException {
+		DossierProc dossierProc = fetchByC_AC_Last(companyId, active,
+				orderByComparator);
+
+		if (dossierProc != null) {
+			return dossierProc;
+		}
+
+		StringBundler msg = new StringBundler(6);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("companyId=");
+		msg.append(companyId);
+
+		msg.append(", active=");
+		msg.append(active);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchDossierProcException(msg.toString());
+	}
+
+	/**
+	 * Returns the last dossier proc in the ordered set where companyId = &#63; and active = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param active the active
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc fetchByC_AC_Last(long companyId, int active,
+		OrderByComparator orderByComparator) throws SystemException {
+		int count = countByC_AC(companyId, active);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<DossierProc> list = findByC_AC(companyId, active, count - 1,
+				count, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the dossier procs before and after the current dossier proc in the ordered set where companyId = &#63; and active = &#63;.
+	 *
+	 * @param dossierProcId the primary key of the current dossier proc
+	 * @param companyId the company ID
+	 * @param active the active
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dossier proc
+	 * @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a dossier proc with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc[] findByC_AC_PrevAndNext(long dossierProcId,
+		long companyId, int active, OrderByComparator orderByComparator)
+		throws NoSuchDossierProcException, SystemException {
+		DossierProc dossierProc = findByPrimaryKey(dossierProcId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			DossierProc[] array = new DossierProcImpl[3];
+
+			array[0] = getByC_AC_PrevAndNext(session, dossierProc, companyId,
+					active, orderByComparator, true);
+
+			array[1] = dossierProc;
+
+			array[2] = getByC_AC_PrevAndNext(session, dossierProc, companyId,
+					active, orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected DossierProc getByC_AC_PrevAndNext(Session session,
+		DossierProc dossierProc, long companyId, int active,
+		OrderByComparator orderByComparator, boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_DOSSIERPROC_WHERE);
+
+		query.append(_FINDER_COLUMN_C_AC_COMPANYID_2);
+
+		query.append(_FINDER_COLUMN_C_AC_ACTIVE_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			query.append(DossierProcModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(companyId);
+
+		qPos.add(active);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(dossierProc);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<DossierProc> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the dossier procs where companyId = &#63; and active = &#63; from the database.
+	 *
+	 * @param companyId the company ID
+	 * @param active the active
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public void removeByC_AC(long companyId, int active)
+		throws SystemException {
+		for (DossierProc dossierProc : findByC_AC(companyId, active,
+				QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+			remove(dossierProc);
+		}
+	}
+
+	/**
+	 * Returns the number of dossier procs where companyId = &#63; and active = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param active the active
+	 * @return the number of matching dossier procs
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public int countByC_AC(long companyId, int active)
+		throws SystemException {
+		FinderPath finderPath = FINDER_PATH_COUNT_BY_C_AC;
+
+		Object[] finderArgs = new Object[] { companyId, active };
+
+		Long count = (Long)FinderCacheUtil.getResult(finderPath, finderArgs,
+				this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(3);
+
+			query.append(_SQL_COUNT_DOSSIERPROC_WHERE);
+
+			query.append(_FINDER_COLUMN_C_AC_COMPANYID_2);
+
+			query.append(_FINDER_COLUMN_C_AC_ACTIVE_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(companyId);
+
+				qPos.add(active);
+
+				count = (Long)q.uniqueResult();
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_C_AC_COMPANYID_2 = "dossierProc.companyId = ? AND ";
+	private static final String _FINDER_COLUMN_C_AC_ACTIVE_2 = "dossierProc.active = ?";
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_G_AC = new FinderPath(DossierProcModelImpl.ENTITY_CACHE_ENABLED,
+			DossierProcModelImpl.FINDER_CACHE_ENABLED, DossierProcImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByG_AC",
+			new String[] {
+				Long.class.getName(), Integer.class.getName(),
+				
+			Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_AC = new FinderPath(DossierProcModelImpl.ENTITY_CACHE_ENABLED,
+			DossierProcModelImpl.FINDER_CACHE_ENABLED, DossierProcImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByG_AC",
+			new String[] { Long.class.getName(), Integer.class.getName() },
+			DossierProcModelImpl.GROUPID_COLUMN_BITMASK |
+			DossierProcModelImpl.ACTIVE_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_G_AC = new FinderPath(DossierProcModelImpl.ENTITY_CACHE_ENABLED,
+			DossierProcModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByG_AC",
+			new String[] { Long.class.getName(), Integer.class.getName() });
+
+	/**
+	 * Returns all the dossier procs where groupId = &#63; and active = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param active the active
+	 * @return the matching dossier procs
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<DossierProc> findByG_AC(long groupId, int active)
+		throws SystemException {
+		return findByG_AC(groupId, active, QueryUtil.ALL_POS,
+			QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the dossier procs where groupId = &#63; and active = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DossierProcModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param active the active
+	 * @param start the lower bound of the range of dossier procs
+	 * @param end the upper bound of the range of dossier procs (not inclusive)
+	 * @return the range of matching dossier procs
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<DossierProc> findByG_AC(long groupId, int active, int start,
+		int end) throws SystemException {
+		return findByG_AC(groupId, active, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the dossier procs where groupId = &#63; and active = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DossierProcModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param active the active
+	 * @param start the lower bound of the range of dossier procs
+	 * @param end the upper bound of the range of dossier procs (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dossier procs
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<DossierProc> findByG_AC(long groupId, int active, int start,
+		int end, OrderByComparator orderByComparator) throws SystemException {
+		boolean pagination = true;
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			pagination = false;
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_AC;
+			finderArgs = new Object[] { groupId, active };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_G_AC;
+			finderArgs = new Object[] {
+					groupId, active,
+					
+					start, end, orderByComparator
+				};
+		}
+
+		List<DossierProc> list = (List<DossierProc>)FinderCacheUtil.getResult(finderPath,
+				finderArgs, this);
+
+		if ((list != null) && !list.isEmpty()) {
+			for (DossierProc dossierProc : list) {
+				if ((groupId != dossierProc.getGroupId()) ||
+						(active != dossierProc.getActive())) {
+					list = null;
+
+					break;
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(4 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(4);
+			}
+
+			query.append(_SQL_SELECT_DOSSIERPROC_WHERE);
+
+			query.append(_FINDER_COLUMN_G_AC_GROUPID_2);
+
+			query.append(_FINDER_COLUMN_G_AC_ACTIVE_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+			else
+			 if (pagination) {
+				query.append(DossierProcModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(groupId);
+
+				qPos.add(active);
+
+				if (!pagination) {
+					list = (List<DossierProc>)QueryUtil.list(q, getDialect(),
+							start, end, false);
+
+					Collections.sort(list);
+
+					list = new UnmodifiableList<DossierProc>(list);
+				}
+				else {
+					list = (List<DossierProc>)QueryUtil.list(q, getDialect(),
+							start, end);
+				}
+
+				cacheResult(list);
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, list);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first dossier proc in the ordered set where groupId = &#63; and active = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param active the active
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dossier proc
+	 * @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc findByG_AC_First(long groupId, int active,
+		OrderByComparator orderByComparator)
+		throws NoSuchDossierProcException, SystemException {
+		DossierProc dossierProc = fetchByG_AC_First(groupId, active,
+				orderByComparator);
+
+		if (dossierProc != null) {
+			return dossierProc;
+		}
+
+		StringBundler msg = new StringBundler(6);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("groupId=");
+		msg.append(groupId);
+
+		msg.append(", active=");
+		msg.append(active);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchDossierProcException(msg.toString());
+	}
+
+	/**
+	 * Returns the first dossier proc in the ordered set where groupId = &#63; and active = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param active the active
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc fetchByG_AC_First(long groupId, int active,
+		OrderByComparator orderByComparator) throws SystemException {
+		List<DossierProc> list = findByG_AC(groupId, active, 0, 1,
+				orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last dossier proc in the ordered set where groupId = &#63; and active = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param active the active
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dossier proc
+	 * @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc findByG_AC_Last(long groupId, int active,
+		OrderByComparator orderByComparator)
+		throws NoSuchDossierProcException, SystemException {
+		DossierProc dossierProc = fetchByG_AC_Last(groupId, active,
+				orderByComparator);
+
+		if (dossierProc != null) {
+			return dossierProc;
+		}
+
+		StringBundler msg = new StringBundler(6);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("groupId=");
+		msg.append(groupId);
+
+		msg.append(", active=");
+		msg.append(active);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchDossierProcException(msg.toString());
+	}
+
+	/**
+	 * Returns the last dossier proc in the ordered set where groupId = &#63; and active = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param active the active
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc fetchByG_AC_Last(long groupId, int active,
+		OrderByComparator orderByComparator) throws SystemException {
+		int count = countByG_AC(groupId, active);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<DossierProc> list = findByG_AC(groupId, active, count - 1, count,
+				orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the dossier procs before and after the current dossier proc in the ordered set where groupId = &#63; and active = &#63;.
+	 *
+	 * @param dossierProcId the primary key of the current dossier proc
+	 * @param groupId the group ID
+	 * @param active the active
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dossier proc
+	 * @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a dossier proc with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public DossierProc[] findByG_AC_PrevAndNext(long dossierProcId,
+		long groupId, int active, OrderByComparator orderByComparator)
+		throws NoSuchDossierProcException, SystemException {
+		DossierProc dossierProc = findByPrimaryKey(dossierProcId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			DossierProc[] array = new DossierProcImpl[3];
+
+			array[0] = getByG_AC_PrevAndNext(session, dossierProc, groupId,
+					active, orderByComparator, true);
+
+			array[1] = dossierProc;
+
+			array[2] = getByG_AC_PrevAndNext(session, dossierProc, groupId,
+					active, orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected DossierProc getByG_AC_PrevAndNext(Session session,
+		DossierProc dossierProc, long groupId, int active,
+		OrderByComparator orderByComparator, boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_DOSSIERPROC_WHERE);
+
+		query.append(_FINDER_COLUMN_G_AC_GROUPID_2);
+
+		query.append(_FINDER_COLUMN_G_AC_ACTIVE_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			query.append(DossierProcModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(groupId);
+
+		qPos.add(active);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(dossierProc);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<DossierProc> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the dossier procs where groupId = &#63; and active = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param active the active
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public void removeByG_AC(long groupId, int active)
+		throws SystemException {
+		for (DossierProc dossierProc : findByG_AC(groupId, active,
+				QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+			remove(dossierProc);
+		}
+	}
+
+	/**
+	 * Returns the number of dossier procs where groupId = &#63; and active = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param active the active
+	 * @return the number of matching dossier procs
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public int countByG_AC(long groupId, int active) throws SystemException {
+		FinderPath finderPath = FINDER_PATH_COUNT_BY_G_AC;
+
+		Object[] finderArgs = new Object[] { groupId, active };
+
+		Long count = (Long)FinderCacheUtil.getResult(finderPath, finderArgs,
+				this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(3);
+
+			query.append(_SQL_COUNT_DOSSIERPROC_WHERE);
+
+			query.append(_FINDER_COLUMN_G_AC_GROUPID_2);
+
+			query.append(_FINDER_COLUMN_G_AC_ACTIVE_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(groupId);
+
+				qPos.add(active);
+
+				count = (Long)q.uniqueResult();
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_G_AC_GROUPID_2 = "dossierProc.groupId = ? AND ";
+	private static final String _FINDER_COLUMN_G_AC_ACTIVE_2 = "dossierProc.active = ?";
 
 	public DossierProcPersistenceImpl() {
 		setModelClass(DossierProc.class);
@@ -5737,6 +7520,9 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 				dossierProc.getCompanyId(), dossierProc.getGroupId(),
 				dossierProc.getDossierProcNo()
 			}, dossierProc);
+
+		FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_DPN,
+			new Object[] { dossierProc.getDossierProcNo() }, dossierProc);
 
 		dossierProc.resetOriginalValues();
 	}
@@ -5822,6 +7608,13 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 				Long.valueOf(1));
 			FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_C_G_DPN, args,
 				dossierProc);
+
+			args = new Object[] { dossierProc.getDossierProcNo() };
+
+			FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_DPN, args,
+				Long.valueOf(1));
+			FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_DPN, args,
+				dossierProc);
 		}
 		else {
 			DossierProcModelImpl dossierProcModelImpl = (DossierProcModelImpl)dossierProc;
@@ -5836,6 +7629,16 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_C_G_DPN, args,
 					Long.valueOf(1));
 				FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_C_G_DPN, args,
+					dossierProc);
+			}
+
+			if ((dossierProcModelImpl.getColumnBitmask() &
+					FINDER_PATH_FETCH_BY_DPN.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] { dossierProc.getDossierProcNo() };
+
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_DPN, args,
+					Long.valueOf(1));
+				FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_DPN, args,
 					dossierProc);
 			}
 		}
@@ -5862,6 +7665,19 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 
 			FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_C_G_DPN, args);
 			FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_C_G_DPN, args);
+		}
+
+		args = new Object[] { dossierProc.getDossierProcNo() };
+
+		FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_DPN, args);
+		FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_DPN, args);
+
+		if ((dossierProcModelImpl.getColumnBitmask() &
+				FINDER_PATH_FETCH_BY_DPN.getColumnBitmask()) != 0) {
+			args = new Object[] { dossierProcModelImpl.getOriginalDossierProcNo() };
+
+			FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_DPN, args);
+			FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_DPN, args);
 		}
 	}
 
@@ -6205,6 +8021,65 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_C_G_ANO_DNO,
 					args);
 				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_C_G_ANO_DNO,
+					args);
+			}
+
+			if ((dossierProcModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_GROUPID.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						dossierProcModelImpl.getOriginalGroupId()
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_GROUPID, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_GROUPID,
+					args);
+
+				args = new Object[] { dossierProcModelImpl.getGroupId() };
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_GROUPID, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_GROUPID,
+					args);
+			}
+
+			if ((dossierProcModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_C_AC.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						dossierProcModelImpl.getOriginalCompanyId(),
+						dossierProcModelImpl.getOriginalActive()
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_C_AC, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_C_AC,
+					args);
+
+				args = new Object[] {
+						dossierProcModelImpl.getCompanyId(),
+						dossierProcModelImpl.getActive()
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_C_AC, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_C_AC,
+					args);
+			}
+
+			if ((dossierProcModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_AC.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						dossierProcModelImpl.getOriginalGroupId(),
+						dossierProcModelImpl.getOriginalActive()
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_G_AC, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_AC,
+					args);
+
+				args = new Object[] {
+						dossierProcModelImpl.getGroupId(),
+						dossierProcModelImpl.getActive()
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_G_AC, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_AC,
 					args);
 			}
 		}

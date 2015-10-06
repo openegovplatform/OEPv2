@@ -338,7 +338,6 @@ public class StepTransitionPersistenceImpl extends BasePersistenceImpl<StepTrans
 		stepTransitionImpl.setDossierStatus(stepTransition.getDossierStatus());
 		stepTransitionImpl.setUserAssignment(stepTransition.getUserAssignment());
 		stepTransitionImpl.setNewProcessOrder(stepTransition.getNewProcessOrder());
-		stepTransitionImpl.setErrorMessage(stepTransition.getErrorMessage());
 
 		return stepTransitionImpl;
 	}

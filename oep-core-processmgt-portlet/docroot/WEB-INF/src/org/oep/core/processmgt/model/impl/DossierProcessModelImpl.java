@@ -78,7 +78,7 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 			{ "startDossierStepId", Types.BIGINT },
 			{ "daysDuration", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_dossierprocess (dossierProcessId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcId LONG,govAgentId VARCHAR(75) null,govAgentName VARCHAR(75) null,startDossierStepId LONG,daysDuration INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_dossierprocess (dossierProcessId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcId LONG,govAgentId VARCHAR(30) null,govAgentName VARCHAR(200) null,startDossierStepId LONG,daysDuration INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_processmgt_dossierprocess";
 	public static final String ORDER_BY_JPQL = " ORDER BY dossierProcess.dossierProcessId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_processmgt_dossierprocess.dossierProcessId ASC";

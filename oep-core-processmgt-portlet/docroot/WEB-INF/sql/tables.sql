@@ -6,8 +6,8 @@ create table oep_processmgt_dossierprocess (
 	createDate DATE null,
 	modifiedDate DATE null,
 	dossierProcId LONG,
-	govAgentId VARCHAR(75) null,
-	govAgentName VARCHAR(75) null,
+	govAgentId VARCHAR(30) null,
+	govAgentName VARCHAR(200) null,
 	startDossierStepId LONG,
 	daysDuration INTEGER
 );
@@ -22,7 +22,8 @@ create table oep_processmgt_dossierstep (
 	dossierProcessId LONG,
 	title VARCHAR(75) null,
 	sequenceNo INTEGER,
-	stepType INTEGER
+	stepType INTEGER,
+	doForm VARCHAR(100) null
 );
 
 create table oep_processmgt_dossierstep2role (
@@ -73,8 +74,7 @@ create table oep_processmgt_steptransition (
 	daysDuration INTEGER,
 	dossierStatus VARCHAR(75) null,
 	userAssignment INTEGER,
-	newProcessOrder INTEGER,
-	errorMessage VARCHAR(75) null
+	newProcessOrder INTEGER
 );
 
 create table oep_processmgt_transitionhistory (

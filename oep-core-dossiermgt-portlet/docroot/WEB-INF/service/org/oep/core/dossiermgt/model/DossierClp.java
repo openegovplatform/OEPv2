@@ -84,8 +84,8 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("organizationId", getOrganizationId());
 		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgentId", getGovAgentId());
-		attributes.put("govAgentName", getGovAgentName());
+		attributes.put("govAgencyId", getGovAgencyId());
+		attributes.put("govAgencyName", getGovAgencyName());
 		attributes.put("subjectId", getSubjectId());
 		attributes.put("subjectType", getSubjectType());
 		attributes.put("subjectName", getSubjectName());
@@ -102,15 +102,20 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		attributes.put("note", getNote());
 		attributes.put("resumeDescription", getResumeDescription());
 		attributes.put("receptionNo", getReceptionNo());
-		attributes.put("submissionDate", getSubmissionDate());
-		attributes.put("receptionDate", getReceptionDate());
-		attributes.put("resubmissionDate", getResubmissionDate());
-		attributes.put("appointmentDate", getAppointmentDate());
-		attributes.put("releaseDate", getReleaseDate());
-		attributes.put("completionDate", getCompletionDate());
+		attributes.put("submitDate", getSubmitDate());
+		attributes.put("receiveDate", getReceiveDate());
+		attributes.put("renewDate", getRenewDate());
+		attributes.put("estimateDate", getEstimateDate());
+		attributes.put("finishDate", getFinishDate());
+		attributes.put("returnDate", getReturnDate());
 		attributes.put("status", getStatus());
+		attributes.put("statusDate", getStatusDate());
 		attributes.put("statusDescription", getStatusDescription());
 		attributes.put("feedbackNote", getFeedbackNote());
+		attributes.put("daysDelay", getDaysDelay());
+		attributes.put("closeDate", getCloseDate());
+		attributes.put("errorStatus", getErrorStatus());
+		attributes.put("errorCode", getErrorCode());
 		attributes.put("dirty", getDirty());
 
 		return attributes;
@@ -172,16 +177,16 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 			setDossierProcId(dossierProcId);
 		}
 
-		String govAgentId = (String)attributes.get("govAgentId");
+		String govAgencyId = (String)attributes.get("govAgencyId");
 
-		if (govAgentId != null) {
-			setGovAgentId(govAgentId);
+		if (govAgencyId != null) {
+			setGovAgencyId(govAgencyId);
 		}
 
-		String govAgentName = (String)attributes.get("govAgentName");
+		String govAgencyName = (String)attributes.get("govAgencyName");
 
-		if (govAgentName != null) {
-			setGovAgentName(govAgentName);
+		if (govAgencyName != null) {
+			setGovAgencyName(govAgencyName);
 		}
 
 		String subjectId = (String)attributes.get("subjectId");
@@ -280,46 +285,52 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 			setReceptionNo(receptionNo);
 		}
 
-		Date submissionDate = (Date)attributes.get("submissionDate");
+		Date submitDate = (Date)attributes.get("submitDate");
 
-		if (submissionDate != null) {
-			setSubmissionDate(submissionDate);
+		if (submitDate != null) {
+			setSubmitDate(submitDate);
 		}
 
-		Date receptionDate = (Date)attributes.get("receptionDate");
+		Date receiveDate = (Date)attributes.get("receiveDate");
 
-		if (receptionDate != null) {
-			setReceptionDate(receptionDate);
+		if (receiveDate != null) {
+			setReceiveDate(receiveDate);
 		}
 
-		Date resubmissionDate = (Date)attributes.get("resubmissionDate");
+		Date renewDate = (Date)attributes.get("renewDate");
 
-		if (resubmissionDate != null) {
-			setResubmissionDate(resubmissionDate);
+		if (renewDate != null) {
+			setRenewDate(renewDate);
 		}
 
-		Date appointmentDate = (Date)attributes.get("appointmentDate");
+		Date estimateDate = (Date)attributes.get("estimateDate");
 
-		if (appointmentDate != null) {
-			setAppointmentDate(appointmentDate);
+		if (estimateDate != null) {
+			setEstimateDate(estimateDate);
 		}
 
-		Date releaseDate = (Date)attributes.get("releaseDate");
+		Date finishDate = (Date)attributes.get("finishDate");
 
-		if (releaseDate != null) {
-			setReleaseDate(releaseDate);
+		if (finishDate != null) {
+			setFinishDate(finishDate);
 		}
 
-		Date completionDate = (Date)attributes.get("completionDate");
+		Date returnDate = (Date)attributes.get("returnDate");
 
-		if (completionDate != null) {
-			setCompletionDate(completionDate);
+		if (returnDate != null) {
+			setReturnDate(returnDate);
 		}
 
 		String status = (String)attributes.get("status");
 
 		if (status != null) {
 			setStatus(status);
+		}
+
+		Date statusDate = (Date)attributes.get("statusDate");
+
+		if (statusDate != null) {
+			setStatusDate(statusDate);
 		}
 
 		String statusDescription = (String)attributes.get("statusDescription");
@@ -332,6 +343,30 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 
 		if (feedbackNote != null) {
 			setFeedbackNote(feedbackNote);
+		}
+
+		Integer daysDelay = (Integer)attributes.get("daysDelay");
+
+		if (daysDelay != null) {
+			setDaysDelay(daysDelay);
+		}
+
+		Date closeDate = (Date)attributes.get("closeDate");
+
+		if (closeDate != null) {
+			setCloseDate(closeDate);
+		}
+
+		String errorStatus = (String)attributes.get("errorStatus");
+
+		if (errorStatus != null) {
+			setErrorStatus(errorStatus);
+		}
+
+		String errorCode = (String)attributes.get("errorCode");
+
+		if (errorCode != null) {
+			setErrorCode(errorCode);
 		}
 
 		Integer dirty = (Integer)attributes.get("dirty");
@@ -559,21 +594,21 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public String getGovAgentId() {
-		return _govAgentId;
+	public String getGovAgencyId() {
+		return _govAgencyId;
 	}
 
 	@Override
-	public void setGovAgentId(String govAgentId) {
-		_govAgentId = govAgentId;
+	public void setGovAgencyId(String govAgencyId) {
+		_govAgencyId = govAgencyId;
 
 		if (_dossierRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setGovAgentId", String.class);
+				Method method = clazz.getMethod("setGovAgencyId", String.class);
 
-				method.invoke(_dossierRemoteModel, govAgentId);
+				method.invoke(_dossierRemoteModel, govAgencyId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -582,21 +617,21 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public String getGovAgentName() {
-		return _govAgentName;
+	public String getGovAgencyName() {
+		return _govAgencyName;
 	}
 
 	@Override
-	public void setGovAgentName(String govAgentName) {
-		_govAgentName = govAgentName;
+	public void setGovAgencyName(String govAgencyName) {
+		_govAgencyName = govAgencyName;
 
 		if (_dossierRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setGovAgentName", String.class);
+				Method method = clazz.getMethod("setGovAgencyName", String.class);
 
-				method.invoke(_dossierRemoteModel, govAgentName);
+				method.invoke(_dossierRemoteModel, govAgencyName);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -976,21 +1011,21 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public Date getSubmissionDate() {
-		return _submissionDate;
+	public Date getSubmitDate() {
+		return _submitDate;
 	}
 
 	@Override
-	public void setSubmissionDate(Date submissionDate) {
-		_submissionDate = submissionDate;
+	public void setSubmitDate(Date submitDate) {
+		_submitDate = submitDate;
 
 		if (_dossierRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setSubmissionDate", Date.class);
+				Method method = clazz.getMethod("setSubmitDate", Date.class);
 
-				method.invoke(_dossierRemoteModel, submissionDate);
+				method.invoke(_dossierRemoteModel, submitDate);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -999,21 +1034,21 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public Date getReceptionDate() {
-		return _receptionDate;
+	public Date getReceiveDate() {
+		return _receiveDate;
 	}
 
 	@Override
-	public void setReceptionDate(Date receptionDate) {
-		_receptionDate = receptionDate;
+	public void setReceiveDate(Date receiveDate) {
+		_receiveDate = receiveDate;
 
 		if (_dossierRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setReceptionDate", Date.class);
+				Method method = clazz.getMethod("setReceiveDate", Date.class);
 
-				method.invoke(_dossierRemoteModel, receptionDate);
+				method.invoke(_dossierRemoteModel, receiveDate);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -1022,22 +1057,21 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public Date getResubmissionDate() {
-		return _resubmissionDate;
+	public Date getRenewDate() {
+		return _renewDate;
 	}
 
 	@Override
-	public void setResubmissionDate(Date resubmissionDate) {
-		_resubmissionDate = resubmissionDate;
+	public void setRenewDate(Date renewDate) {
+		_renewDate = renewDate;
 
 		if (_dossierRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setResubmissionDate",
-						Date.class);
+				Method method = clazz.getMethod("setRenewDate", Date.class);
 
-				method.invoke(_dossierRemoteModel, resubmissionDate);
+				method.invoke(_dossierRemoteModel, renewDate);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -1046,21 +1080,21 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public Date getAppointmentDate() {
-		return _appointmentDate;
+	public Date getEstimateDate() {
+		return _estimateDate;
 	}
 
 	@Override
-	public void setAppointmentDate(Date appointmentDate) {
-		_appointmentDate = appointmentDate;
+	public void setEstimateDate(Date estimateDate) {
+		_estimateDate = estimateDate;
 
 		if (_dossierRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setAppointmentDate", Date.class);
+				Method method = clazz.getMethod("setEstimateDate", Date.class);
 
-				method.invoke(_dossierRemoteModel, appointmentDate);
+				method.invoke(_dossierRemoteModel, estimateDate);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -1069,21 +1103,21 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public Date getReleaseDate() {
-		return _releaseDate;
+	public Date getFinishDate() {
+		return _finishDate;
 	}
 
 	@Override
-	public void setReleaseDate(Date releaseDate) {
-		_releaseDate = releaseDate;
+	public void setFinishDate(Date finishDate) {
+		_finishDate = finishDate;
 
 		if (_dossierRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setReleaseDate", Date.class);
+				Method method = clazz.getMethod("setFinishDate", Date.class);
 
-				method.invoke(_dossierRemoteModel, releaseDate);
+				method.invoke(_dossierRemoteModel, finishDate);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -1092,21 +1126,21 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public Date getCompletionDate() {
-		return _completionDate;
+	public Date getReturnDate() {
+		return _returnDate;
 	}
 
 	@Override
-	public void setCompletionDate(Date completionDate) {
-		_completionDate = completionDate;
+	public void setReturnDate(Date returnDate) {
+		_returnDate = returnDate;
 
 		if (_dossierRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setCompletionDate", Date.class);
+				Method method = clazz.getMethod("setReturnDate", Date.class);
 
-				method.invoke(_dossierRemoteModel, completionDate);
+				method.invoke(_dossierRemoteModel, returnDate);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -1130,6 +1164,29 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 				Method method = clazz.getMethod("setStatus", String.class);
 
 				method.invoke(_dossierRemoteModel, status);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public Date getStatusDate() {
+		return _statusDate;
+	}
+
+	@Override
+	public void setStatusDate(Date statusDate) {
+		_statusDate = statusDate;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setStatusDate", Date.class);
+
+				method.invoke(_dossierRemoteModel, statusDate);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -1177,6 +1234,98 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 				Method method = clazz.getMethod("setFeedbackNote", String.class);
 
 				method.invoke(_dossierRemoteModel, feedbackNote);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public int getDaysDelay() {
+		return _daysDelay;
+	}
+
+	@Override
+	public void setDaysDelay(int daysDelay) {
+		_daysDelay = daysDelay;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setDaysDelay", int.class);
+
+				method.invoke(_dossierRemoteModel, daysDelay);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public Date getCloseDate() {
+		return _closeDate;
+	}
+
+	@Override
+	public void setCloseDate(Date closeDate) {
+		_closeDate = closeDate;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setCloseDate", Date.class);
+
+				method.invoke(_dossierRemoteModel, closeDate);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getErrorStatus() {
+		return _errorStatus;
+	}
+
+	@Override
+	public void setErrorStatus(String errorStatus) {
+		_errorStatus = errorStatus;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setErrorStatus", String.class);
+
+				method.invoke(_dossierRemoteModel, errorStatus);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getErrorCode() {
+		return _errorCode;
+	}
+
+	@Override
+	public void setErrorCode(String errorCode) {
+		_errorCode = errorCode;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setErrorCode", String.class);
+
+				method.invoke(_dossierRemoteModel, errorCode);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -1291,8 +1440,8 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		clone.setModifiedDate(getModifiedDate());
 		clone.setOrganizationId(getOrganizationId());
 		clone.setDossierProcId(getDossierProcId());
-		clone.setGovAgentId(getGovAgentId());
-		clone.setGovAgentName(getGovAgentName());
+		clone.setGovAgencyId(getGovAgencyId());
+		clone.setGovAgencyName(getGovAgencyName());
 		clone.setSubjectId(getSubjectId());
 		clone.setSubjectType(getSubjectType());
 		clone.setSubjectName(getSubjectName());
@@ -1309,15 +1458,20 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		clone.setNote(getNote());
 		clone.setResumeDescription(getResumeDescription());
 		clone.setReceptionNo(getReceptionNo());
-		clone.setSubmissionDate(getSubmissionDate());
-		clone.setReceptionDate(getReceptionDate());
-		clone.setResubmissionDate(getResubmissionDate());
-		clone.setAppointmentDate(getAppointmentDate());
-		clone.setReleaseDate(getReleaseDate());
-		clone.setCompletionDate(getCompletionDate());
+		clone.setSubmitDate(getSubmitDate());
+		clone.setReceiveDate(getReceiveDate());
+		clone.setRenewDate(getRenewDate());
+		clone.setEstimateDate(getEstimateDate());
+		clone.setFinishDate(getFinishDate());
+		clone.setReturnDate(getReturnDate());
 		clone.setStatus(getStatus());
+		clone.setStatusDate(getStatusDate());
 		clone.setStatusDescription(getStatusDescription());
 		clone.setFeedbackNote(getFeedbackNote());
+		clone.setDaysDelay(getDaysDelay());
+		clone.setCloseDate(getCloseDate());
+		clone.setErrorStatus(getErrorStatus());
+		clone.setErrorCode(getErrorCode());
 		clone.setDirty(getDirty());
 
 		return clone;
@@ -1371,7 +1525,7 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(75);
+		StringBundler sb = new StringBundler(85);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
@@ -1391,10 +1545,10 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getOrganizationId());
 		sb.append(", dossierProcId=");
 		sb.append(getDossierProcId());
-		sb.append(", govAgentId=");
-		sb.append(getGovAgentId());
-		sb.append(", govAgentName=");
-		sb.append(getGovAgentName());
+		sb.append(", govAgencyId=");
+		sb.append(getGovAgencyId());
+		sb.append(", govAgencyName=");
+		sb.append(getGovAgencyName());
 		sb.append(", subjectId=");
 		sb.append(getSubjectId());
 		sb.append(", subjectType=");
@@ -1427,24 +1581,34 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getResumeDescription());
 		sb.append(", receptionNo=");
 		sb.append(getReceptionNo());
-		sb.append(", submissionDate=");
-		sb.append(getSubmissionDate());
-		sb.append(", receptionDate=");
-		sb.append(getReceptionDate());
-		sb.append(", resubmissionDate=");
-		sb.append(getResubmissionDate());
-		sb.append(", appointmentDate=");
-		sb.append(getAppointmentDate());
-		sb.append(", releaseDate=");
-		sb.append(getReleaseDate());
-		sb.append(", completionDate=");
-		sb.append(getCompletionDate());
+		sb.append(", submitDate=");
+		sb.append(getSubmitDate());
+		sb.append(", receiveDate=");
+		sb.append(getReceiveDate());
+		sb.append(", renewDate=");
+		sb.append(getRenewDate());
+		sb.append(", estimateDate=");
+		sb.append(getEstimateDate());
+		sb.append(", finishDate=");
+		sb.append(getFinishDate());
+		sb.append(", returnDate=");
+		sb.append(getReturnDate());
 		sb.append(", status=");
 		sb.append(getStatus());
+		sb.append(", statusDate=");
+		sb.append(getStatusDate());
 		sb.append(", statusDescription=");
 		sb.append(getStatusDescription());
 		sb.append(", feedbackNote=");
 		sb.append(getFeedbackNote());
+		sb.append(", daysDelay=");
+		sb.append(getDaysDelay());
+		sb.append(", closeDate=");
+		sb.append(getCloseDate());
+		sb.append(", errorStatus=");
+		sb.append(getErrorStatus());
+		sb.append(", errorCode=");
+		sb.append(getErrorCode());
 		sb.append(", dirty=");
 		sb.append(getDirty());
 		sb.append("}");
@@ -1454,7 +1618,7 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(115);
+		StringBundler sb = new StringBundler(130);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.Dossier");
@@ -1497,12 +1661,12 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getDossierProcId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentId</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentId());
+			"<column><column-name>govAgencyId</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentName</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentName());
+			"<column><column-name>govAgencyName</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyName());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>subjectId</column-name><column-value><![CDATA[");
@@ -1569,32 +1733,36 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getReceptionNo());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>submissionDate</column-name><column-value><![CDATA[");
-		sb.append(getSubmissionDate());
+			"<column><column-name>submitDate</column-name><column-value><![CDATA[");
+		sb.append(getSubmitDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>receptionDate</column-name><column-value><![CDATA[");
-		sb.append(getReceptionDate());
+			"<column><column-name>receiveDate</column-name><column-value><![CDATA[");
+		sb.append(getReceiveDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>resubmissionDate</column-name><column-value><![CDATA[");
-		sb.append(getResubmissionDate());
+			"<column><column-name>renewDate</column-name><column-value><![CDATA[");
+		sb.append(getRenewDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>appointmentDate</column-name><column-value><![CDATA[");
-		sb.append(getAppointmentDate());
+			"<column><column-name>estimateDate</column-name><column-value><![CDATA[");
+		sb.append(getEstimateDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>releaseDate</column-name><column-value><![CDATA[");
-		sb.append(getReleaseDate());
+			"<column><column-name>finishDate</column-name><column-value><![CDATA[");
+		sb.append(getFinishDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>completionDate</column-name><column-value><![CDATA[");
-		sb.append(getCompletionDate());
+			"<column><column-name>returnDate</column-name><column-value><![CDATA[");
+		sb.append(getReturnDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>status</column-name><column-value><![CDATA[");
 		sb.append(getStatus());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>statusDate</column-name><column-value><![CDATA[");
+		sb.append(getStatusDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>statusDescription</column-name><column-value><![CDATA[");
@@ -1603,6 +1771,22 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(
 			"<column><column-name>feedbackNote</column-name><column-value><![CDATA[");
 		sb.append(getFeedbackNote());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>daysDelay</column-name><column-value><![CDATA[");
+		sb.append(getDaysDelay());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>closeDate</column-name><column-value><![CDATA[");
+		sb.append(getCloseDate());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>errorStatus</column-name><column-value><![CDATA[");
+		sb.append(getErrorStatus());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>errorCode</column-name><column-value><![CDATA[");
+		sb.append(getErrorCode());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>dirty</column-name><column-value><![CDATA[");
@@ -1624,8 +1808,8 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	private Date _modifiedDate;
 	private long _organizationId;
 	private long _dossierProcId;
-	private String _govAgentId;
-	private String _govAgentName;
+	private String _govAgencyId;
+	private String _govAgencyName;
 	private String _subjectId;
 	private String _subjectType;
 	private String _subjectName;
@@ -1642,15 +1826,20 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	private String _note;
 	private String _resumeDescription;
 	private String _receptionNo;
-	private Date _submissionDate;
-	private Date _receptionDate;
-	private Date _resubmissionDate;
-	private Date _appointmentDate;
-	private Date _releaseDate;
-	private Date _completionDate;
+	private Date _submitDate;
+	private Date _receiveDate;
+	private Date _renewDate;
+	private Date _estimateDate;
+	private Date _finishDate;
+	private Date _returnDate;
 	private String _status;
+	private Date _statusDate;
 	private String _statusDescription;
 	private String _feedbackNote;
+	private int _daysDelay;
+	private Date _closeDate;
+	private String _errorStatus;
+	private String _errorCode;
 	private int _dirty;
 	private BaseModel<?> _dossierRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.dossiermgt.service.ClpSerializer.class;

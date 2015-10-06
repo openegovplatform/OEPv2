@@ -40,6 +40,7 @@
 		<property name="title" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="sequenceNo" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="stepType" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="doForm" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
 	<class name="org.oep.core.processmgt.model.impl.DossierStep2RoleImpl" table="oep_processmgt_dossierstep2role">
 		<cache usage="read-write" />
@@ -97,7 +98,6 @@
 		<property name="dossierStatus" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="userAssignment" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="newProcessOrder" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
-		<property name="errorMessage" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
 	<class name="org.oep.core.processmgt.model.impl.TransitionHistoryImpl" table="oep_processmgt_transitionhistory">
 		<cache usage="read-write" />

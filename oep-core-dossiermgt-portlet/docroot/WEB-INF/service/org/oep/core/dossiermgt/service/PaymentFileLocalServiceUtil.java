@@ -349,8 +349,8 @@ public class PaymentFileLocalServiceUtil {
 	* @return: new payment file
 	*/
 	public static org.oep.core.dossiermgt.model.PaymentFile addPaymentFile(
-		long organizationId, java.lang.String govAgentId,
-		java.lang.String govAgentName, java.lang.String subjectId,
+		long organizationId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, java.lang.String subjectId,
 		java.lang.String subjectType, java.lang.String subjectName, int amount,
 		java.lang.String paymentType, java.lang.String paymentDescription,
 		java.lang.String transactionInfo, long fileEntryId,
@@ -361,7 +361,7 @@ public class PaymentFileLocalServiceUtil {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
-				   .addPaymentFile(organizationId, govAgentId, govAgentName,
+				   .addPaymentFile(organizationId, govAgencyId, govAgencyName,
 			subjectId, subjectType, subjectName, amount, paymentType,
 			paymentDescription, transactionInfo, fileEntryId, checkingDate,
 			checkingUserId, checkingUserName, checkingResult, checkingNote,
@@ -369,8 +369,8 @@ public class PaymentFileLocalServiceUtil {
 	}
 
 	public static org.oep.core.dossiermgt.model.PaymentFile updatePaymentFile(
-		long id, long organizationId, java.lang.String govAgentId,
-		java.lang.String govAgentName, java.lang.String subjectId,
+		long id, long organizationId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, java.lang.String subjectId,
 		java.lang.String subjectType, java.lang.String subjectName, int amount,
 		java.lang.String paymentType, java.lang.String paymentDescription,
 		java.lang.String transactionInfo, long fileEntryId,
@@ -381,8 +381,8 @@ public class PaymentFileLocalServiceUtil {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
-				   .updatePaymentFile(id, organizationId, govAgentId,
-			govAgentName, subjectId, subjectType, subjectName, amount,
+				   .updatePaymentFile(id, organizationId, govAgencyId,
+			govAgencyName, subjectId, subjectType, subjectName, amount,
 			paymentType, paymentDescription, transactionInfo, fileEntryId,
 			checkingDate, checkingUserId, checkingUserName, checkingResult,
 			checkingNote, ebMessageId, serviceContext);

@@ -114,70 +114,70 @@ public class DossierFolderLocalServiceClpInvoker {
 				"org.oep.core.dossiermgt.model.DossierFolder"
 			};
 
-		_methodName120 = "getBeanIdentifier";
+		_methodName130 = "getBeanIdentifier";
 
-		_methodParameterTypes120 = new String[] {  };
+		_methodParameterTypes130 = new String[] {  };
 
-		_methodName121 = "setBeanIdentifier";
+		_methodName131 = "setBeanIdentifier";
 
-		_methodParameterTypes121 = new String[] { "java.lang.String" };
+		_methodParameterTypes131 = new String[] { "java.lang.String" };
 
-		_methodName126 = "addDossierFolder";
+		_methodName136 = "addDossierFolder";
 
-		_methodParameterTypes126 = new String[] {
+		_methodParameterTypes136 = new String[] {
 				"java.lang.String", "long", "int", "java.lang.String",
 				"java.lang.String", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName127 = "updateDossierFolder";
+		_methodName137 = "updateDossierFolder";
 
-		_methodParameterTypes127 = new String[] {
+		_methodParameterTypes137 = new String[] {
 				"long", "java.lang.String", "long", "int", "java.lang.String",
 				"java.lang.String", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName128 = "updateDossierFolderResources";
+		_methodName138 = "updateDossierFolderResources";
 
-		_methodParameterTypes128 = new String[] {
+		_methodParameterTypes138 = new String[] {
 				"org.oep.core.dossiermgt.model.DossierFolder",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName129 = "removeDossierFolder";
+		_methodName139 = "removeDossierFolder";
 
-		_methodParameterTypes129 = new String[] {
+		_methodParameterTypes139 = new String[] {
 				"org.oep.core.dossiermgt.model.DossierFolder"
 			};
 
-		_methodName130 = "removeDossierFolder";
+		_methodName140 = "removeDossierFolder";
 
-		_methodParameterTypes130 = new String[] { "long" };
+		_methodParameterTypes140 = new String[] { "long" };
 
-		_methodName131 = "getDossierFolder";
+		_methodName141 = "getDossierFolder";
 
-		_methodParameterTypes131 = new String[] { "long" };
+		_methodParameterTypes141 = new String[] { "long" };
 
-		_methodName132 = "addDossierFolderResources";
+		_methodName142 = "addDossierFolderResources";
 
-		_methodParameterTypes132 = new String[] {
+		_methodParameterTypes142 = new String[] {
 				"org.oep.core.dossiermgt.model.DossierFolder", "boolean",
 				"boolean", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName133 = "addDossierFolderResources";
+		_methodName143 = "addDossierFolderResources";
 
-		_methodParameterTypes133 = new String[] {
+		_methodParameterTypes143 = new String[] {
 				"org.oep.core.dossiermgt.model.DossierFolder",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName134 = "addDossierFolderResources";
+		_methodName144 = "addDossierFolderResources";
 
-		_methodParameterTypes134 = new String[] {
+		_methodParameterTypes144 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -284,20 +284,20 @@ public class DossierFolderLocalServiceClpInvoker {
 			return DossierFolderLocalServiceUtil.updateDossierFolder((org.oep.core.dossiermgt.model.DossierFolder)arguments[0]);
 		}
 
-		if (_methodName120.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes120, parameterTypes)) {
+		if (_methodName130.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes130, parameterTypes)) {
 			return DossierFolderLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName121.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes121, parameterTypes)) {
+		if (_methodName131.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes131, parameterTypes)) {
 			DossierFolderLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName126.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes126, parameterTypes)) {
+		if (_methodName136.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes136, parameterTypes)) {
 			return DossierFolderLocalServiceUtil.addDossierFolder((java.lang.String)arguments[0],
 				((Long)arguments[1]).longValue(),
 				((Integer)arguments[2]).intValue(),
@@ -307,8 +307,8 @@ public class DossierFolderLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[7]);
 		}
 
-		if (_methodName127.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes127, parameterTypes)) {
+		if (_methodName137.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes137, parameterTypes)) {
 			return DossierFolderLocalServiceUtil.updateDossierFolder(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1],
 				((Long)arguments[2]).longValue(),
@@ -319,8 +319,8 @@ public class DossierFolderLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[8]);
 		}
 
-		if (_methodName128.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes128, parameterTypes)) {
+		if (_methodName138.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes138, parameterTypes)) {
 			DossierFolderLocalServiceUtil.updateDossierFolderResources((org.oep.core.dossiermgt.model.DossierFolder)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -329,27 +329,27 @@ public class DossierFolderLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName129.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes129, parameterTypes)) {
+		if (_methodName139.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes139, parameterTypes)) {
 			DossierFolderLocalServiceUtil.removeDossierFolder((org.oep.core.dossiermgt.model.DossierFolder)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName130.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes130, parameterTypes)) {
+		if (_methodName140.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes140, parameterTypes)) {
 			DossierFolderLocalServiceUtil.removeDossierFolder(((Long)arguments[0]).longValue());
 
 			return null;
 		}
 
-		if (_methodName131.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes131, parameterTypes)) {
+		if (_methodName141.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes141, parameterTypes)) {
 			return DossierFolderLocalServiceUtil.getDossierFolder(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName132.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes132, parameterTypes)) {
+		if (_methodName142.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes142, parameterTypes)) {
 			DossierFolderLocalServiceUtil.addDossierFolderResources((org.oep.core.dossiermgt.model.DossierFolder)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Boolean)arguments[2]).booleanValue(),
@@ -358,8 +358,8 @@ public class DossierFolderLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName133.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes133, parameterTypes)) {
+		if (_methodName143.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes143, parameterTypes)) {
 			DossierFolderLocalServiceUtil.addDossierFolderResources((org.oep.core.dossiermgt.model.DossierFolder)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -368,8 +368,8 @@ public class DossierFolderLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName134.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes134, parameterTypes)) {
+		if (_methodName144.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes144, parameterTypes)) {
 			DossierFolderLocalServiceUtil.addDossierFolderResources(((Long)arguments[0]).longValue(),
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -417,26 +417,26 @@ public class DossierFolderLocalServiceClpInvoker {
 	private String[] _methodParameterTypes16;
 	private String _methodName17;
 	private String[] _methodParameterTypes17;
-	private String _methodName120;
-	private String[] _methodParameterTypes120;
-	private String _methodName121;
-	private String[] _methodParameterTypes121;
-	private String _methodName126;
-	private String[] _methodParameterTypes126;
-	private String _methodName127;
-	private String[] _methodParameterTypes127;
-	private String _methodName128;
-	private String[] _methodParameterTypes128;
-	private String _methodName129;
-	private String[] _methodParameterTypes129;
 	private String _methodName130;
 	private String[] _methodParameterTypes130;
 	private String _methodName131;
 	private String[] _methodParameterTypes131;
-	private String _methodName132;
-	private String[] _methodParameterTypes132;
-	private String _methodName133;
-	private String[] _methodParameterTypes133;
-	private String _methodName134;
-	private String[] _methodParameterTypes134;
+	private String _methodName136;
+	private String[] _methodParameterTypes136;
+	private String _methodName137;
+	private String[] _methodParameterTypes137;
+	private String _methodName138;
+	private String[] _methodParameterTypes138;
+	private String _methodName139;
+	private String[] _methodParameterTypes139;
+	private String _methodName140;
+	private String[] _methodParameterTypes140;
+	private String _methodName141;
+	private String[] _methodParameterTypes141;
+	private String _methodName142;
+	private String[] _methodParameterTypes142;
+	private String _methodName143;
+	private String[] _methodParameterTypes143;
+	private String _methodName144;
+	private String[] _methodParameterTypes144;
 }

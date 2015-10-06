@@ -31,6 +31,19 @@ public class DossierProcServiceClp implements DossierProcService {
 		_methodName1 = "setBeanIdentifier";
 
 		_methodParameterTypes1 = new String[] { "java.lang.String" };
+
+		_methodName3 = "addDossierProc";
+
+		_methodParameterTypes3 = new String[] {
+				"long", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.util.Date",
+				"java.util.Date", "int",
+				"com.liferay.portal.service.ServiceContext"
+			};
 	}
 
 	@Override
@@ -83,9 +96,101 @@ public class DossierProcServiceClp implements DossierProcService {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public org.oep.core.dossiermgt.model.DossierProc addDossierProc(
+		long userId, java.lang.String dossierProcNo, java.lang.String name,
+		java.lang.String enName, java.lang.String shortName,
+		java.lang.String processDescription,
+		java.lang.String methodDescription,
+		java.lang.String dossierDescription,
+		java.lang.String conditionDescription,
+		java.lang.String durationDescription,
+		java.lang.String actorsDescription,
+		java.lang.String resultsDescription,
+		java.lang.String recordsDescription, java.lang.String feeDescription,
+		java.lang.String instructionsDescription,
+		java.lang.String administrationNo, java.lang.String domainNo,
+		java.util.Date effectDate, java.util.Date expireDate, int active,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableService.invokeMethod(_methodName3,
+					_methodParameterTypes3,
+					new Object[] {
+						userId,
+						
+					ClpSerializer.translateInput(dossierProcNo),
+						
+					ClpSerializer.translateInput(name),
+						
+					ClpSerializer.translateInput(enName),
+						
+					ClpSerializer.translateInput(shortName),
+						
+					ClpSerializer.translateInput(processDescription),
+						
+					ClpSerializer.translateInput(methodDescription),
+						
+					ClpSerializer.translateInput(dossierDescription),
+						
+					ClpSerializer.translateInput(conditionDescription),
+						
+					ClpSerializer.translateInput(durationDescription),
+						
+					ClpSerializer.translateInput(actorsDescription),
+						
+					ClpSerializer.translateInput(resultsDescription),
+						
+					ClpSerializer.translateInput(recordsDescription),
+						
+					ClpSerializer.translateInput(feeDescription),
+						
+					ClpSerializer.translateInput(instructionsDescription),
+						
+					ClpSerializer.translateInput(administrationNo),
+						
+					ClpSerializer.translateInput(domainNo),
+						
+					ClpSerializer.translateInput(effectDate),
+						
+					ClpSerializer.translateInput(expireDate),
+						
+					active,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.dossiermgt.model.DossierProc)ClpSerializer.translateOutput(returnObj);
+	}
+
 	private InvokableService _invokableService;
 	private String _methodName0;
 	private String[] _methodParameterTypes0;
 	private String _methodName1;
 	private String[] _methodParameterTypes1;
+	private String _methodName3;
+	private String[] _methodParameterTypes3;
 }

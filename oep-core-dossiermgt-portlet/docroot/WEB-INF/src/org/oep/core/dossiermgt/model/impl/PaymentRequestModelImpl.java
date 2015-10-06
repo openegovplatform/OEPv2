@@ -76,8 +76,8 @@ public class PaymentRequestModelImpl extends BaseModelImpl<PaymentRequest>
 			{ "modifiedDate", Types.TIMESTAMP },
 			{ "organizationId", Types.BIGINT },
 			{ "dossierId", Types.BIGINT },
-			{ "govAgentId", Types.VARCHAR },
-			{ "govAgentName", Types.VARCHAR },
+			{ "govAgencyId", Types.VARCHAR },
+			{ "govAgencyName", Types.VARCHAR },
 			{ "subjectId", Types.VARCHAR },
 			{ "subjectType", Types.VARCHAR },
 			{ "subjectName", Types.VARCHAR },
@@ -87,7 +87,7 @@ public class PaymentRequestModelImpl extends BaseModelImpl<PaymentRequest>
 			{ "confirmOK", Types.INTEGER },
 			{ "ebMessageId", Types.BIGINT }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_paymentrequest (uuid_ VARCHAR(75) null,paymentRequestId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,organizationId LONG,dossierId LONG,govAgentId VARCHAR(30) null,govAgentName VARCHAR(200) null,subjectId VARCHAR(30) null,subjectType VARCHAR(30) null,subjectName VARCHAR(100) null,amount LONG,requestNote VARCHAR(200) null,paymentFileId LONG,confirmOK INTEGER,ebMessageId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_paymentrequest (uuid_ VARCHAR(75) null,paymentRequestId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,organizationId LONG,dossierId LONG,govAgencyId VARCHAR(30) null,govAgencyName VARCHAR(200) null,subjectId VARCHAR(30) null,subjectType VARCHAR(30) null,subjectName VARCHAR(100) null,amount LONG,requestNote VARCHAR(200) null,paymentFileId LONG,confirmOK INTEGER,ebMessageId LONG)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_paymentrequest";
 	public static final String ORDER_BY_JPQL = " ORDER BY paymentRequest.paymentRequestId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_paymentrequest.paymentRequestId ASC";
@@ -130,8 +130,8 @@ public class PaymentRequestModelImpl extends BaseModelImpl<PaymentRequest>
 		model.setModifiedDate(soapModel.getModifiedDate());
 		model.setOrganizationId(soapModel.getOrganizationId());
 		model.setDossierId(soapModel.getDossierId());
-		model.setGovAgentId(soapModel.getGovAgentId());
-		model.setGovAgentName(soapModel.getGovAgentName());
+		model.setGovAgencyId(soapModel.getGovAgencyId());
+		model.setGovAgencyName(soapModel.getGovAgencyName());
 		model.setSubjectId(soapModel.getSubjectId());
 		model.setSubjectType(soapModel.getSubjectType());
 		model.setSubjectName(soapModel.getSubjectName());
@@ -213,8 +213,8 @@ public class PaymentRequestModelImpl extends BaseModelImpl<PaymentRequest>
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("organizationId", getOrganizationId());
 		attributes.put("dossierId", getDossierId());
-		attributes.put("govAgentId", getGovAgentId());
-		attributes.put("govAgentName", getGovAgentName());
+		attributes.put("govAgencyId", getGovAgencyId());
+		attributes.put("govAgencyName", getGovAgencyName());
 		attributes.put("subjectId", getSubjectId());
 		attributes.put("subjectType", getSubjectType());
 		attributes.put("subjectName", getSubjectName());
@@ -283,16 +283,16 @@ public class PaymentRequestModelImpl extends BaseModelImpl<PaymentRequest>
 			setDossierId(dossierId);
 		}
 
-		String govAgentId = (String)attributes.get("govAgentId");
+		String govAgencyId = (String)attributes.get("govAgencyId");
 
-		if (govAgentId != null) {
-			setGovAgentId(govAgentId);
+		if (govAgencyId != null) {
+			setGovAgencyId(govAgencyId);
 		}
 
-		String govAgentName = (String)attributes.get("govAgentName");
+		String govAgencyName = (String)attributes.get("govAgencyName");
 
-		if (govAgentName != null) {
-			setGovAgentName(govAgentName);
+		if (govAgencyName != null) {
+			setGovAgencyName(govAgencyName);
 		}
 
 		String subjectId = (String)attributes.get("subjectId");
@@ -492,34 +492,34 @@ public class PaymentRequestModelImpl extends BaseModelImpl<PaymentRequest>
 
 	@JSON
 	@Override
-	public String getGovAgentId() {
-		if (_govAgentId == null) {
+	public String getGovAgencyId() {
+		if (_govAgencyId == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _govAgentId;
+			return _govAgencyId;
 		}
 	}
 
 	@Override
-	public void setGovAgentId(String govAgentId) {
-		_govAgentId = govAgentId;
+	public void setGovAgencyId(String govAgencyId) {
+		_govAgencyId = govAgencyId;
 	}
 
 	@JSON
 	@Override
-	public String getGovAgentName() {
-		if (_govAgentName == null) {
+	public String getGovAgencyName() {
+		if (_govAgencyName == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _govAgentName;
+			return _govAgencyName;
 		}
 	}
 
 	@Override
-	public void setGovAgentName(String govAgentName) {
-		_govAgentName = govAgentName;
+	public void setGovAgencyName(String govAgencyName) {
+		_govAgencyName = govAgencyName;
 	}
 
 	@JSON
@@ -676,8 +676,8 @@ public class PaymentRequestModelImpl extends BaseModelImpl<PaymentRequest>
 		paymentRequestImpl.setModifiedDate(getModifiedDate());
 		paymentRequestImpl.setOrganizationId(getOrganizationId());
 		paymentRequestImpl.setDossierId(getDossierId());
-		paymentRequestImpl.setGovAgentId(getGovAgentId());
-		paymentRequestImpl.setGovAgentName(getGovAgentName());
+		paymentRequestImpl.setGovAgencyId(getGovAgencyId());
+		paymentRequestImpl.setGovAgencyName(getGovAgencyName());
 		paymentRequestImpl.setSubjectId(getSubjectId());
 		paymentRequestImpl.setSubjectType(getSubjectType());
 		paymentRequestImpl.setSubjectName(getSubjectName());
@@ -793,20 +793,20 @@ public class PaymentRequestModelImpl extends BaseModelImpl<PaymentRequest>
 
 		paymentRequestCacheModel.dossierId = getDossierId();
 
-		paymentRequestCacheModel.govAgentId = getGovAgentId();
+		paymentRequestCacheModel.govAgencyId = getGovAgencyId();
 
-		String govAgentId = paymentRequestCacheModel.govAgentId;
+		String govAgencyId = paymentRequestCacheModel.govAgencyId;
 
-		if ((govAgentId != null) && (govAgentId.length() == 0)) {
-			paymentRequestCacheModel.govAgentId = null;
+		if ((govAgencyId != null) && (govAgencyId.length() == 0)) {
+			paymentRequestCacheModel.govAgencyId = null;
 		}
 
-		paymentRequestCacheModel.govAgentName = getGovAgentName();
+		paymentRequestCacheModel.govAgencyName = getGovAgencyName();
 
-		String govAgentName = paymentRequestCacheModel.govAgentName;
+		String govAgencyName = paymentRequestCacheModel.govAgencyName;
 
-		if ((govAgentName != null) && (govAgentName.length() == 0)) {
-			paymentRequestCacheModel.govAgentName = null;
+		if ((govAgencyName != null) && (govAgencyName.length() == 0)) {
+			paymentRequestCacheModel.govAgencyName = null;
 		}
 
 		paymentRequestCacheModel.subjectId = getSubjectId();
@@ -874,10 +874,10 @@ public class PaymentRequestModelImpl extends BaseModelImpl<PaymentRequest>
 		sb.append(getOrganizationId());
 		sb.append(", dossierId=");
 		sb.append(getDossierId());
-		sb.append(", govAgentId=");
-		sb.append(getGovAgentId());
-		sb.append(", govAgentName=");
-		sb.append(getGovAgentName());
+		sb.append(", govAgencyId=");
+		sb.append(getGovAgencyId());
+		sb.append(", govAgencyName=");
+		sb.append(getGovAgencyName());
 		sb.append(", subjectId=");
 		sb.append(getSubjectId());
 		sb.append(", subjectType=");
@@ -944,12 +944,12 @@ public class PaymentRequestModelImpl extends BaseModelImpl<PaymentRequest>
 		sb.append(getDossierId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentId</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentId());
+			"<column><column-name>govAgencyId</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentName</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentName());
+			"<column><column-name>govAgencyName</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyName());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>subjectId</column-name><column-value><![CDATA[");
@@ -1008,8 +1008,8 @@ public class PaymentRequestModelImpl extends BaseModelImpl<PaymentRequest>
 	private Date _modifiedDate;
 	private long _organizationId;
 	private long _dossierId;
-	private String _govAgentId;
-	private String _govAgentName;
+	private String _govAgencyId;
+	private String _govAgencyName;
 	private String _subjectId;
 	private String _subjectType;
 	private String _subjectName;

@@ -78,8 +78,8 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 		attributes.put("companyId", getCompanyId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("govAgentId", getGovAgentId());
-		attributes.put("govAgentName", getGovAgentName());
+		attributes.put("govAgencyId", getGovAgencyId());
+		attributes.put("govAgencyName", getGovAgencyName());
 		attributes.put("bankTransfer", getBankTransfer());
 		attributes.put("keypay", getKeypay());
 		attributes.put("ebPartnerShipId", getEbPartnerShipId());
@@ -113,16 +113,16 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 			setModifiedDate(modifiedDate);
 		}
 
-		String govAgentId = (String)attributes.get("govAgentId");
+		String govAgencyId = (String)attributes.get("govAgencyId");
 
-		if (govAgentId != null) {
-			setGovAgentId(govAgentId);
+		if (govAgencyId != null) {
+			setGovAgencyId(govAgencyId);
 		}
 
-		String govAgentName = (String)attributes.get("govAgentName");
+		String govAgencyName = (String)attributes.get("govAgencyName");
 
-		if (govAgentName != null) {
-			setGovAgentName(govAgentName);
+		if (govAgencyName != null) {
+			setGovAgencyName(govAgencyName);
 		}
 
 		String bankTransfer = (String)attributes.get("bankTransfer");
@@ -237,21 +237,21 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 	}
 
 	@Override
-	public String getGovAgentId() {
-		return _govAgentId;
+	public String getGovAgencyId() {
+		return _govAgencyId;
 	}
 
 	@Override
-	public void setGovAgentId(String govAgentId) {
-		_govAgentId = govAgentId;
+	public void setGovAgencyId(String govAgencyId) {
+		_govAgencyId = govAgencyId;
 
 		if (_paymentConfigRemoteModel != null) {
 			try {
 				Class<?> clazz = _paymentConfigRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setGovAgentId", String.class);
+				Method method = clazz.getMethod("setGovAgencyId", String.class);
 
-				method.invoke(_paymentConfigRemoteModel, govAgentId);
+				method.invoke(_paymentConfigRemoteModel, govAgencyId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -260,21 +260,21 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 	}
 
 	@Override
-	public String getGovAgentName() {
-		return _govAgentName;
+	public String getGovAgencyName() {
+		return _govAgencyName;
 	}
 
 	@Override
-	public void setGovAgentName(String govAgentName) {
-		_govAgentName = govAgentName;
+	public void setGovAgencyName(String govAgencyName) {
+		_govAgencyName = govAgencyName;
 
 		if (_paymentConfigRemoteModel != null) {
 			try {
 				Class<?> clazz = _paymentConfigRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setGovAgentName", String.class);
+				Method method = clazz.getMethod("setGovAgencyName", String.class);
 
-				method.invoke(_paymentConfigRemoteModel, govAgentName);
+				method.invoke(_paymentConfigRemoteModel, govAgencyName);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -425,8 +425,8 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 		clone.setCompanyId(getCompanyId());
 		clone.setCreateDate(getCreateDate());
 		clone.setModifiedDate(getModifiedDate());
-		clone.setGovAgentId(getGovAgentId());
-		clone.setGovAgentName(getGovAgentName());
+		clone.setGovAgencyId(getGovAgencyId());
+		clone.setGovAgencyName(getGovAgencyName());
 		clone.setBankTransfer(getBankTransfer());
 		clone.setKeypay(getKeypay());
 		clone.setEbPartnerShipId(getEbPartnerShipId());
@@ -492,10 +492,10 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 		sb.append(getCreateDate());
 		sb.append(", modifiedDate=");
 		sb.append(getModifiedDate());
-		sb.append(", govAgentId=");
-		sb.append(getGovAgentId());
-		sb.append(", govAgentName=");
-		sb.append(getGovAgentName());
+		sb.append(", govAgencyId=");
+		sb.append(getGovAgencyId());
+		sb.append(", govAgencyName=");
+		sb.append(getGovAgencyName());
 		sb.append(", bankTransfer=");
 		sb.append(getBankTransfer());
 		sb.append(", keypay=");
@@ -532,12 +532,12 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 		sb.append(getModifiedDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentId</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentId());
+			"<column><column-name>govAgencyId</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentName</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentName());
+			"<column><column-name>govAgencyName</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyName());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>bankTransfer</column-name><column-value><![CDATA[");
@@ -561,8 +561,8 @@ public class PaymentConfigClp extends BaseModelImpl<PaymentConfig>
 	private long _companyId;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private String _govAgentId;
-	private String _govAgentName;
+	private String _govAgencyId;
+	private String _govAgencyName;
 	private String _bankTransfer;
 	private String _keypay;
 	private long _ebPartnerShipId;

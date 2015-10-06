@@ -38,7 +38,7 @@ public class DossierStepCacheModel implements CacheModel<DossierStep>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{dossierStepId=");
 		sb.append(dossierStepId);
@@ -60,6 +60,8 @@ public class DossierStepCacheModel implements CacheModel<DossierStep>,
 		sb.append(sequenceNo);
 		sb.append(", stepType=");
 		sb.append(stepType);
+		sb.append(", doForm=");
+		sb.append(doForm);
 		sb.append("}");
 
 		return sb.toString();
@@ -100,6 +102,13 @@ public class DossierStepCacheModel implements CacheModel<DossierStep>,
 		dossierStepImpl.setSequenceNo(sequenceNo);
 		dossierStepImpl.setStepType(stepType);
 
+		if (doForm == null) {
+			dossierStepImpl.setDoForm(StringPool.BLANK);
+		}
+		else {
+			dossierStepImpl.setDoForm(doForm);
+		}
+
 		dossierStepImpl.resetOriginalValues();
 
 		return dossierStepImpl;
@@ -117,6 +126,7 @@ public class DossierStepCacheModel implements CacheModel<DossierStep>,
 		title = objectInput.readUTF();
 		sequenceNo = objectInput.readInt();
 		stepType = objectInput.readInt();
+		doForm = objectInput.readUTF();
 	}
 
 	@Override
@@ -139,6 +149,13 @@ public class DossierStepCacheModel implements CacheModel<DossierStep>,
 
 		objectOutput.writeInt(sequenceNo);
 		objectOutput.writeInt(stepType);
+
+		if (doForm == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(doForm);
+		}
 	}
 
 	public long dossierStepId;
@@ -151,4 +168,5 @@ public class DossierStepCacheModel implements CacheModel<DossierStep>,
 	public String title;
 	public int sequenceNo;
 	public int stepType;
+	public String doForm;
 }

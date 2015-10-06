@@ -65,8 +65,8 @@ public class DossierLocalServiceImpl extends DossierLocalServiceBaseImpl {
 	public Dossier addDossier(
 			long organizationId,
 			long dossierProcId,
-			String govAgentId,
-			String govAgentName,
+			String govAgencyId,
+			String govAgencyName,
 			String subjectId,
 			String subjectType,
 			String subjectName,
@@ -83,13 +83,14 @@ public class DossierLocalServiceImpl extends DossierLocalServiceBaseImpl {
 			String note,
 			String resumeDescription,
 			String receptionNo,
-			Date submissionDate,
-			Date receptionDate,
-			Date resubmissionDate,
-			Date appointmentDate,
-			Date releaseDate,
-			Date completionDate,
+			Date submitDate,
+			Date receiveDate,
+			Date renewDate,
+			Date estimateDate,
+			Date returnDate,
+			Date closeDate,
 			String status,
+			Date statusDate,
 			String statusDescription,
 			String feedbackNote,
 			int dirty,
@@ -105,8 +106,8 @@ public class DossierLocalServiceImpl extends DossierLocalServiceBaseImpl {
 		dossier.setCreateDate(serviceContext.getCreateDate(now));
 		dossier.setOrganizationId(organizationId);
 		dossier.setDossierProcId(dossierProcId);
-		dossier.setGovAgentId(govAgentId);
-		dossier.setGovAgentName(govAgentName);
+		dossier.setGovAgencyId(govAgencyId);
+		dossier.setGovAgencyName(govAgencyName);
 		dossier.setSubjectId(subjectId);
 		dossier.setSubjectType(subjectType);
 		dossier.setSubjectName(subjectName);
@@ -123,12 +124,13 @@ public class DossierLocalServiceImpl extends DossierLocalServiceBaseImpl {
 		dossier.setNote(note);
 		dossier.setResumeDescription(resumeDescription);
 		dossier.setReceptionNo(receptionNo);
-		dossier.setSubmissionDate(resubmissionDate);
-		dossier.setReceptionDate(receptionDate);
-		dossier.setResubmissionDate(resubmissionDate);
-		dossier.setAppointmentDate(appointmentDate);
-		dossier.setReleaseDate(releaseDate);
-		dossier.setCompletionDate(completionDate);
+		dossier.setSubmitDate(submitDate);
+		dossier.setReceiveDate(receiveDate);
+		dossier.setRenewDate(renewDate);
+		dossier.setEstimateDate(estimateDate);
+		dossier.setReturnDate(returnDate);
+		dossier.setCloseDate(closeDate);
+		dossier.setStatusDate(statusDate);
 		dossier.setStatus(status);
 		dossier.setStatusDescription(statusDescription);
 		dossier.setFeedbackNote(feedbackNote);
@@ -154,8 +156,8 @@ public class DossierLocalServiceImpl extends DossierLocalServiceBaseImpl {
 			long id, 
 			long organizationId,
 			long dossierProcId,
-			String govAgentId,
-			String govAgentName,
+			String govAgencyId,
+			String govAgencyName,
 			String subjectId,
 			String subjectType,
 			String subjectName,
@@ -172,13 +174,14 @@ public class DossierLocalServiceImpl extends DossierLocalServiceBaseImpl {
 			String note,
 			String resumeDescription,
 			String receptionNo,
-			Date submissionDate,
-			Date receptionDate,
-			Date resubmissionDate,
-			Date appointmentDate,
-			Date releaseDate,
-			Date completionDate,
+			Date submitDate,
+			Date receiveDate,
+			Date renewDate,
+			Date estimateDate,
+			Date returnDate,
+			Date closeDate,
 			String status,
+			Date statusDate,
 			String statusDescription,
 			String feedbackNote,
 			int dirty,
@@ -195,8 +198,8 @@ public class DossierLocalServiceImpl extends DossierLocalServiceBaseImpl {
 		dossier.setUserId(serviceContext.getUserId());
 		dossier.setOrganizationId(organizationId);
 		dossier.setDossierProcId(dossierProcId);
-		dossier.setGovAgentId(govAgentId);
-		dossier.setGovAgentName(govAgentName);
+		dossier.setGovAgencyId(govAgencyId);
+		dossier.setGovAgencyName(govAgencyName);
 		dossier.setSubjectId(subjectId);
 		dossier.setSubjectType(subjectType);
 		dossier.setSubjectName(subjectName);
@@ -213,12 +216,13 @@ public class DossierLocalServiceImpl extends DossierLocalServiceBaseImpl {
 		dossier.setNote(note);
 		dossier.setResumeDescription(resumeDescription);
 		dossier.setReceptionNo(receptionNo);
-		dossier.setSubmissionDate(resubmissionDate);
-		dossier.setReceptionDate(receptionDate);
-		dossier.setResubmissionDate(resubmissionDate);
-		dossier.setAppointmentDate(appointmentDate);
-		dossier.setReleaseDate(releaseDate);
-		dossier.setCompletionDate(completionDate);
+		dossier.setSubmitDate(submitDate);
+		dossier.setReceiveDate(receiveDate);
+		dossier.setRenewDate(renewDate);
+		dossier.setEstimateDate(estimateDate);
+		dossier.setReturnDate(returnDate);
+		dossier.setCloseDate(closeDate);
+		dossier.setStatusDate(statusDate);
 		dossier.setStatus(status);
 		dossier.setStatusDescription(statusDescription);
 		dossier.setFeedbackNote(feedbackNote);

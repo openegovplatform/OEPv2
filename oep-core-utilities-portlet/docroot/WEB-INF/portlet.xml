@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" version="2.0">
+	
+	<portlet>
+		<portlet-name>dossier-proc</portlet-name>
+		<display-name>Dossier Procedure</display-name>
+		<portlet-class>
+			org.oep.core.utilities.dossiermgt.action.DossierProcPortlet
+		</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>/html/dossiermgt/portlet/dossierproc/list_dossierproc.jsp</value>
+		</init-param>
+		<init-param>
+		    <name>add-process-action-success-action</name>
+		    <value>false</value>
+		</init-param>				
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<resource-bundle>content.Language</resource-bundle>
+		<portlet-info>
+			<title>Dossier Procedure</title>
+			<short-title>Dossier Proc</short-title>
+			<keywords></keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+	<portlet>
+		<portlet-name>doc-template</portlet-name>
+		<display-name>Document Template</display-name>
+		<portlet-class>
+			org.oep.core.utilities.dossiermgt.action.DocTemplatePortlet
+		</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>/html/dossiermgt/portlet/doctemplate/list_doctemplate.jsp</value>
+		</init-param>
+		<init-param>
+		    <name>add-process-action-success-action</name>
+		    <value>false</value>
+		</init-param>				
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<resource-bundle>content.Language</resource-bundle>
+		<portlet-info>
+			<title>Document Template</title>
+			<short-title>Doc Template</short-title>
+			<keywords></keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+	<portlet>
+		<portlet-name>eb-partner-ship</portlet-name>
+		<display-name>Eb Partner Ship</display-name>
+		<portlet-class>
+			org.oep.core.utilities.dossiermgt.action.EbPartnerShipPortlet
+		</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>
+				/html/dossiermgt/portlet/ebpartnership/list_ebpartnership.jsp
+			</value>
+		</init-param>
+		<init-param>
+		    <name>add-process-action-success-action</name>
+		    <value>false</value>
+		</init-param>				
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<resource-bundle>content.Language</resource-bundle>
+		<portlet-info>
+			<title>Eb Partner Ship</title>
+			<short-title>Eb Partner Ship</short-title>
+			<keywords></keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+</portlet-app>

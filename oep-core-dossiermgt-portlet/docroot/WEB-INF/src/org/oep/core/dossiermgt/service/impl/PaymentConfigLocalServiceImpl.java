@@ -64,8 +64,8 @@ public class PaymentConfigLocalServiceImpl
 	 */
 	@Indexable(type = IndexableType.REINDEX)	
 	public PaymentConfig addPaymentConfig(
-			String govAgentId,
-			String govAgentName,
+			String govAgencyId,
+			String govAgencyName,
 			String bankTransfer,
 			String keypay,
 			long ebPartnerShipId,
@@ -76,8 +76,8 @@ public class PaymentConfigLocalServiceImpl
 		Date now = new Date();
 				
 		paymentConfig.setCompanyId(serviceContext.getCompanyId());
-		paymentConfig.setGovAgentId(govAgentId);
-		paymentConfig.setGovAgentName(govAgentName);
+		paymentConfig.setGovAgencyId(govAgencyId);
+		paymentConfig.setGovAgencyName(govAgencyName);
 		paymentConfig.setBankTransfer(bankTransfer);
 		paymentConfig.setKeypay(keypay);
 		paymentConfig.setEbPartnerShipId(ebPartnerShipId);
@@ -102,8 +102,8 @@ public class PaymentConfigLocalServiceImpl
 	@Indexable(type = IndexableType.REINDEX)
 	public PaymentConfig updatePaymentConfig(
 			long id, 
-			String govAgentId,
-			String govAgentName,
+			String govAgencyId,
+			String govAgencyName,
 			String bankTransfer,
 			String keypay,
 			long ebPartnerShipId,
@@ -115,8 +115,8 @@ public class PaymentConfigLocalServiceImpl
 		PaymentConfig paymentConfig = paymentConfigPersistence.findByPrimaryKey(id);
 
 		paymentConfig.setModifiedDate(serviceContext.getModifiedDate(null));
-		paymentConfig.setGovAgentId(govAgentId);
-		paymentConfig.setGovAgentName(govAgentName);
+		paymentConfig.setGovAgencyId(govAgencyId);
+		paymentConfig.setGovAgencyName(govAgencyName);
 		paymentConfig.setBankTransfer(bankTransfer);
 		paymentConfig.setKeypay(keypay);
 		paymentConfig.setEbPartnerShipId(ebPartnerShipId);

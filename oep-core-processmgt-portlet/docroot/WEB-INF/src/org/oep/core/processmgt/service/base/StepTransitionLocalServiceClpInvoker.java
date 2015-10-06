@@ -118,7 +118,7 @@ public class StepTransitionLocalServiceClpInvoker {
 
 		_methodParameterTypes78 = new String[] {
 				"long", "long", "long", "java.lang.String", "java.lang.String",
-				"int", "java.lang.String", "int", "int", "java.lang.String",
+				"int", "java.lang.String", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -127,7 +127,7 @@ public class StepTransitionLocalServiceClpInvoker {
 		_methodParameterTypes79 = new String[] {
 				"long", "long", "long", "long", "java.lang.String",
 				"java.lang.String", "int", "java.lang.String", "int", "int",
-				"java.lang.String", "com.liferay.portal.service.ServiceContext"
+				"com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName80 = "updateStepTransitionResources";
@@ -286,8 +286,7 @@ public class StepTransitionLocalServiceClpInvoker {
 				(java.lang.String)arguments[6],
 				((Integer)arguments[7]).intValue(),
 				((Integer)arguments[8]).intValue(),
-				(java.lang.String)arguments[9],
-				(com.liferay.portal.service.ServiceContext)arguments[10]);
+				(com.liferay.portal.service.ServiceContext)arguments[9]);
 		}
 
 		if (_methodName79.equals(name) &&
@@ -301,8 +300,7 @@ public class StepTransitionLocalServiceClpInvoker {
 				(java.lang.String)arguments[7],
 				((Integer)arguments[8]).intValue(),
 				((Integer)arguments[9]).intValue(),
-				(java.lang.String)arguments[10],
-				(com.liferay.portal.service.ServiceContext)arguments[11]);
+				(com.liferay.portal.service.ServiceContext)arguments[10]);
 		}
 
 		if (_methodName80.equals(name) &&

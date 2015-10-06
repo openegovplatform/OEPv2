@@ -216,6 +216,21 @@ public interface DossierStepModel extends BaseModel<DossierStep> {
 	 */
 	public void setStepType(int stepType);
 
+	/**
+	 * Returns the do form of this dossier step.
+	 *
+	 * @return the do form of this dossier step
+	 */
+	@AutoEscape
+	public String getDoForm();
+
+	/**
+	 * Sets the do form of this dossier step.
+	 *
+	 * @param doForm the do form of this dossier step
+	 */
+	public void setDoForm(String doForm);
+
 	@Override
 	public boolean isNew();
 

@@ -40,8 +40,8 @@ public class PaymentRequestSoap implements Serializable {
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setOrganizationId(model.getOrganizationId());
 		soapModel.setDossierId(model.getDossierId());
-		soapModel.setGovAgentId(model.getGovAgentId());
-		soapModel.setGovAgentName(model.getGovAgentName());
+		soapModel.setGovAgencyId(model.getGovAgencyId());
+		soapModel.setGovAgencyName(model.getGovAgencyName());
 		soapModel.setSubjectId(model.getSubjectId());
 		soapModel.setSubjectType(model.getSubjectType());
 		soapModel.setSubjectName(model.getSubjectName());
@@ -174,20 +174,20 @@ public class PaymentRequestSoap implements Serializable {
 		_dossierId = dossierId;
 	}
 
-	public String getGovAgentId() {
-		return _govAgentId;
+	public String getGovAgencyId() {
+		return _govAgencyId;
 	}
 
-	public void setGovAgentId(String govAgentId) {
-		_govAgentId = govAgentId;
+	public void setGovAgencyId(String govAgencyId) {
+		_govAgencyId = govAgencyId;
 	}
 
-	public String getGovAgentName() {
-		return _govAgentName;
+	public String getGovAgencyName() {
+		return _govAgencyName;
 	}
 
-	public void setGovAgentName(String govAgentName) {
-		_govAgentName = govAgentName;
+	public void setGovAgencyName(String govAgencyName) {
+		_govAgencyName = govAgencyName;
 	}
 
 	public String getSubjectId() {
@@ -263,8 +263,8 @@ public class PaymentRequestSoap implements Serializable {
 	private Date _modifiedDate;
 	private long _organizationId;
 	private long _dossierId;
-	private String _govAgentId;
-	private String _govAgentName;
+	private String _govAgencyId;
+	private String _govAgencyName;
 	private String _subjectId;
 	private String _subjectType;
 	private String _subjectName;

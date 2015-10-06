@@ -10,6 +10,7 @@
 	<bean id="org.oep.core.dossiermgt.service.DocTemplateLocalService" class="org.oep.core.dossiermgt.service.impl.DocTemplateLocalServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.DocTemplateService" class="org.oep.core.dossiermgt.service.impl.DocTemplateServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.persistence.DocTemplatePersistence" class="org.oep.core.dossiermgt.service.persistence.DocTemplatePersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.dossiermgt.service.persistence.DocTemplateFinder" class="org.oep.core.dossiermgt.service.persistence.DocTemplateFinderImpl" parent="basePersistence" />
 	<bean id="org.oep.core.dossiermgt.service.DossierLocalService" class="org.oep.core.dossiermgt.service.impl.DossierLocalServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.DossierService" class="org.oep.core.dossiermgt.service.impl.DossierServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.persistence.DossierPersistence" class="org.oep.core.dossiermgt.service.persistence.DossierPersistenceImpl" parent="basePersistence" />
@@ -28,9 +29,10 @@
 	<bean id="org.oep.core.dossiermgt.service.DossierProcLocalService" class="org.oep.core.dossiermgt.service.impl.DossierProcLocalServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.DossierProcService" class="org.oep.core.dossiermgt.service.impl.DossierProcServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.persistence.DossierProcPersistence" class="org.oep.core.dossiermgt.service.persistence.DossierProcPersistenceImpl" parent="basePersistence" />
-	<bean id="org.oep.core.dossiermgt.service.DossierProcAgentLocalService" class="org.oep.core.dossiermgt.service.impl.DossierProcAgentLocalServiceImpl" />
-	<bean id="org.oep.core.dossiermgt.service.DossierProcAgentService" class="org.oep.core.dossiermgt.service.impl.DossierProcAgentServiceImpl" />
-	<bean id="org.oep.core.dossiermgt.service.persistence.DossierProcAgentPersistence" class="org.oep.core.dossiermgt.service.persistence.DossierProcAgentPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.dossiermgt.service.persistence.DossierProcFinder" class="org.oep.core.dossiermgt.service.persistence.DossierProcFinderImpl" parent="basePersistence" />
+	<bean id="org.oep.core.dossiermgt.service.DossierProcAgencyLocalService" class="org.oep.core.dossiermgt.service.impl.DossierProcAgencyLocalServiceImpl" />
+	<bean id="org.oep.core.dossiermgt.service.DossierProcAgencyService" class="org.oep.core.dossiermgt.service.impl.DossierProcAgencyServiceImpl" />
+	<bean id="org.oep.core.dossiermgt.service.persistence.DossierProcAgencyPersistence" class="org.oep.core.dossiermgt.service.persistence.DossierProcAgencyPersistenceImpl" parent="basePersistence" />
 	<bean id="org.oep.core.dossiermgt.service.EbMessageLocalService" class="org.oep.core.dossiermgt.service.impl.EbMessageLocalServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.EbMessageService" class="org.oep.core.dossiermgt.service.impl.EbMessageServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.persistence.EbMessagePersistence" class="org.oep.core.dossiermgt.service.persistence.EbMessagePersistenceImpl" parent="basePersistence" />
@@ -46,4 +48,7 @@
 	<bean id="org.oep.core.dossiermgt.service.PaymentRequestLocalService" class="org.oep.core.dossiermgt.service.impl.PaymentRequestLocalServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.PaymentRequestService" class="org.oep.core.dossiermgt.service.impl.PaymentRequestServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.persistence.PaymentRequestPersistence" class="org.oep.core.dossiermgt.service.persistence.PaymentRequestPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.dossiermgt.service.ProfileDataLocalService" class="org.oep.core.dossiermgt.service.impl.ProfileDataLocalServiceImpl" />
+	<bean id="org.oep.core.dossiermgt.service.ProfileDataService" class="org.oep.core.dossiermgt.service.impl.ProfileDataServiceImpl" />
+	<bean id="org.oep.core.dossiermgt.service.persistence.ProfileDataPersistence" class="org.oep.core.dossiermgt.service.persistence.ProfileDataPersistenceImpl" parent="basePersistence" />
 </beans>

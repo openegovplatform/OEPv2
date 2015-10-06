@@ -213,34 +213,34 @@ public interface PaymentRequestModel extends BaseModel<PaymentRequest>,
 	public void setDossierId(long dossierId);
 
 	/**
-	 * Returns the gov agent ID of this payment request.
+	 * Returns the gov agency ID of this payment request.
 	 *
-	 * @return the gov agent ID of this payment request
+	 * @return the gov agency ID of this payment request
 	 */
 	@AutoEscape
-	public String getGovAgentId();
+	public String getGovAgencyId();
 
 	/**
-	 * Sets the gov agent ID of this payment request.
+	 * Sets the gov agency ID of this payment request.
 	 *
-	 * @param govAgentId the gov agent ID of this payment request
+	 * @param govAgencyId the gov agency ID of this payment request
 	 */
-	public void setGovAgentId(String govAgentId);
+	public void setGovAgencyId(String govAgencyId);
 
 	/**
-	 * Returns the gov agent name of this payment request.
+	 * Returns the gov agency name of this payment request.
 	 *
-	 * @return the gov agent name of this payment request
+	 * @return the gov agency name of this payment request
 	 */
 	@AutoEscape
-	public String getGovAgentName();
+	public String getGovAgencyName();
 
 	/**
-	 * Sets the gov agent name of this payment request.
+	 * Sets the gov agency name of this payment request.
 	 *
-	 * @param govAgentName the gov agent name of this payment request
+	 * @param govAgencyName the gov agency name of this payment request
 	 */
-	public void setGovAgentName(String govAgentName);
+	public void setGovAgencyName(String govAgencyName);
 
 	/**
 	 * Returns the subject ID of this payment request.

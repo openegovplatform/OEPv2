@@ -56,10 +56,10 @@ public class PaymentFileCacheModel implements CacheModel<PaymentFile>,
 		sb.append(modifiedDate);
 		sb.append(", organizationId=");
 		sb.append(organizationId);
-		sb.append(", govAgentId=");
-		sb.append(govAgentId);
-		sb.append(", govAgentName=");
-		sb.append(govAgentName);
+		sb.append(", govAgencyId=");
+		sb.append(govAgencyId);
+		sb.append(", govAgencyName=");
+		sb.append(govAgencyName);
 		sb.append(", subjectId=");
 		sb.append(subjectId);
 		sb.append(", subjectType=");
@@ -125,18 +125,18 @@ public class PaymentFileCacheModel implements CacheModel<PaymentFile>,
 
 		paymentFileImpl.setOrganizationId(organizationId);
 
-		if (govAgentId == null) {
-			paymentFileImpl.setGovAgentId(StringPool.BLANK);
+		if (govAgencyId == null) {
+			paymentFileImpl.setGovAgencyId(StringPool.BLANK);
 		}
 		else {
-			paymentFileImpl.setGovAgentId(govAgentId);
+			paymentFileImpl.setGovAgencyId(govAgencyId);
 		}
 
-		if (govAgentName == null) {
-			paymentFileImpl.setGovAgentName(StringPool.BLANK);
+		if (govAgencyName == null) {
+			paymentFileImpl.setGovAgencyName(StringPool.BLANK);
 		}
 		else {
-			paymentFileImpl.setGovAgentName(govAgentName);
+			paymentFileImpl.setGovAgencyName(govAgencyName);
 		}
 
 		if (subjectId == null) {
@@ -227,8 +227,8 @@ public class PaymentFileCacheModel implements CacheModel<PaymentFile>,
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
 		organizationId = objectInput.readLong();
-		govAgentId = objectInput.readUTF();
-		govAgentName = objectInput.readUTF();
+		govAgencyId = objectInput.readUTF();
+		govAgencyName = objectInput.readUTF();
 		subjectId = objectInput.readUTF();
 		subjectType = objectInput.readUTF();
 		subjectName = objectInput.readUTF();
@@ -263,18 +263,18 @@ public class PaymentFileCacheModel implements CacheModel<PaymentFile>,
 		objectOutput.writeLong(modifiedDate);
 		objectOutput.writeLong(organizationId);
 
-		if (govAgentId == null) {
+		if (govAgencyId == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(govAgentId);
+			objectOutput.writeUTF(govAgencyId);
 		}
 
-		if (govAgentName == null) {
+		if (govAgencyName == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(govAgentName);
+			objectOutput.writeUTF(govAgencyName);
 		}
 
 		if (subjectId == null) {
@@ -352,8 +352,8 @@ public class PaymentFileCacheModel implements CacheModel<PaymentFile>,
 	public long createDate;
 	public long modifiedDate;
 	public long organizationId;
-	public String govAgentId;
-	public String govAgentName;
+	public String govAgencyId;
+	public String govAgencyName;
 	public String subjectId;
 	public String subjectType;
 	public String subjectName;

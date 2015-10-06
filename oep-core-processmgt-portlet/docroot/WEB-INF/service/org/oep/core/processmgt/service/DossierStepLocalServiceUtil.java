@@ -290,22 +290,24 @@ public class DossierStepLocalServiceUtil {
 	*/
 	public static org.oep.core.processmgt.model.DossierStep addDossierStep(
 		long dossierProcessId, java.lang.String title, int sequenceNo,
-		int stepType, com.liferay.portal.service.ServiceContext serviceContext)
+		int stepType, java.lang.String doForm,
+		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .addDossierStep(dossierProcessId, title, sequenceNo,
-			stepType, serviceContext);
+			stepType, doForm, serviceContext);
 	}
 
 	public static org.oep.core.processmgt.model.DossierStep updateDossierStep(
 		long id, long dossierProcessId, java.lang.String title, int sequenceNo,
-		int stepType, com.liferay.portal.service.ServiceContext serviceContext)
+		int stepType, java.lang.String doForm,
+		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .updateDossierStep(id, dossierProcessId, title, sequenceNo,
-			stepType, serviceContext);
+			stepType, doForm, serviceContext);
 	}
 
 	public static void updateDossierStepResources(

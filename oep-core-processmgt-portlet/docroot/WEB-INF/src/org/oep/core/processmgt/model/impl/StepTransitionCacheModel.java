@@ -38,7 +38,7 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(33);
+		StringBundler sb = new StringBundler(31);
 
 		sb.append("{stepTransitionId=");
 		sb.append(stepTransitionId);
@@ -70,8 +70,6 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 		sb.append(userAssignment);
 		sb.append(", newProcessOrder=");
 		sb.append(newProcessOrder);
-		sb.append(", errorMessage=");
-		sb.append(errorMessage);
 		sb.append("}");
 
 		return sb.toString();
@@ -130,13 +128,6 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 		stepTransitionImpl.setUserAssignment(userAssignment);
 		stepTransitionImpl.setNewProcessOrder(newProcessOrder);
 
-		if (errorMessage == null) {
-			stepTransitionImpl.setErrorMessage(StringPool.BLANK);
-		}
-		else {
-			stepTransitionImpl.setErrorMessage(errorMessage);
-		}
-
 		stepTransitionImpl.resetOriginalValues();
 
 		return stepTransitionImpl;
@@ -159,7 +150,6 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 		dossierStatus = objectInput.readUTF();
 		userAssignment = objectInput.readInt();
 		newProcessOrder = objectInput.readInt();
-		errorMessage = objectInput.readUTF();
 	}
 
 	@Override
@@ -200,13 +190,6 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 
 		objectOutput.writeInt(userAssignment);
 		objectOutput.writeInt(newProcessOrder);
-
-		if (errorMessage == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(errorMessage);
-		}
 	}
 
 	public long stepTransitionId;
@@ -224,5 +207,4 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 	public String dossierStatus;
 	public int userAssignment;
 	public int newProcessOrder;
-	public String errorMessage;
 }

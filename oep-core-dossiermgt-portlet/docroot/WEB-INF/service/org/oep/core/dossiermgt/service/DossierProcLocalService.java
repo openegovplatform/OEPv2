@@ -255,21 +255,40 @@ public interface DossierProcLocalService extends BaseLocalService,
 		throws java.lang.Throwable;
 
 	/**
-	* Add dossier proc
+	* ThÃªm má»›i má»™t thá»§ tá»¥c hÃ nh chÃ­nh cÃ´ng
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    Táº¡o má»›i thá»§ tá»¥c hÃ nh chÃ­nh
 	*
-	* @param
-	* @return: new dossier proc
+	* @param dossierProcNo mÃ£ thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param name tÃªn thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param enName tÃªn Tiáº¿ng Anh cá»§a thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param shortName tÃªn viáº¿t táº¯t
+	* @param processDescription TrÃ¬nh tá»± thá»±c hiá»‡n thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param methodDescription CÃ¡ch thá»©c thá»±c hiá»‡n
+	* @param dossierDescription ThÃ nh pháº§n há»“ sÆ¡
+	* @param conditionDescription Ä�iá»�u kiá»‡n thá»±c hiá»‡n
+	* @param durationDescription Thá»�i háº¡n giáº£i quyáº¿t
+	* @param actorsDescription Ä�á»‘i tÆ°á»£ng thá»±c hiá»‡n thá»§ tá»¥c
+	* @param resultsDescription MÃ´ táº£ káº¿t quáº£ thá»§ tá»¥c
+	* @param recordsDescription MÃ´ táº£ cÄƒn cá»© phÃ¡p lÃ½ HTML
+	* @param feeDescription MÃ´ táº£ phÃ­ vÃ  lá»‡ phÃ­ thá»±c hiá»‡n
+	* @param instructionsDescription MÃ´ táº£ hÆ°á»›ng dáº«n dáº¡ng HTML
+	* @param administrationNo Cáº¥p quáº£n lÃ½
+	* @param domainNo Ä�Æ¡n vá»‹ quáº£n lÃ½
+	* @param effectDate NgÃ y báº¯t Ä‘áº§u cÃ³ hiá»‡u lá»±c
+	* @param expireDate NgÃ y háº¿t hiá»‡u lá»±c
+	* @param active Tráº¡ng thÃ¡i hoáº¡t Ä‘á»™ng cá»§a thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return: Ä‘á»‘i tÆ°á»£ng thá»§ tá»¥c hÃ nh chÃ­nh má»›i Ä‘Æ°á»£c thÃªm vÃ o
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.DossierProc addDossierProc(
-		java.lang.String dossierProcNo, java.lang.String name,
+		long userId, java.lang.String dossierProcNo, java.lang.String name,
 		java.lang.String enName, java.lang.String shortName,
 		java.lang.String processDescription,
 		java.lang.String methodDescription,
@@ -280,13 +299,70 @@ public interface DossierProcLocalService extends BaseLocalService,
 		java.lang.String resultsDescription,
 		java.lang.String recordsDescription, java.lang.String feeDescription,
 		java.lang.String instructionsDescription,
-		java.lang.String administrationNo, java.lang.String administrationName,
-		java.lang.String domainNo, java.lang.String domainName,
+		java.lang.String administrationNo, java.lang.String domainNo,
 		java.util.Date effectDate, java.util.Date expireDate, int active,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* ThÃªm má»›i má»™t thá»§ tá»¥c hÃ nh chÃ­nh cÃ´ng
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i thá»§ tá»¥c hÃ nh chÃ­nh
+	*
+	* @param dossierProcNo mÃ£ thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param name tÃªn thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param administrationNo Cáº¥p quáº£n lÃ½
+	* @param domainNo Ä�Æ¡n vá»‹ quáº£n lÃ½
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return: Ä‘á»‘i tÆ°á»£ng thá»§ tá»¥c hÃ nh chÃ­nh má»›i Ä‘Æ°á»£c thÃªm vÃ o
+	*/
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.dossiermgt.model.DossierProc addDossierProc(
+		long userId, java.lang.String dossierProcNo, java.lang.String name,
+		java.lang.String administrationNo, java.lang.String domainNo,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Cáº­p nháº­t thÃ´ng tin má»™t thá»§ tá»¥c hÃ nh chÃ­nh cÃ´ng
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Cáº­p nháº­t thÃ´ng tin thá»§ tá»¥c hÃ nh chÃ­nh
+	*
+	* @param id mÃ£ phÃ¢n biá»‡t cá»§a thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param dossierProcNo mÃ£ thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param name tÃªn thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param enName tÃªn Tiáº¿ng Anh cá»§a thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param shortName tÃªn viáº¿t táº¯t
+	* @param processDescription TrÃ¬nh tá»± thá»±c hiá»‡n thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param methodDescription CÃ¡ch thá»©c thá»±c hiá»‡n
+	* @param dossierDescription ThÃ nh pháº§n há»“ sÆ¡
+	* @param conditionDescription Ä�iá»�u kiá»‡n thá»±c hiá»‡n
+	* @param durationDescription Thá»�i háº¡n giáº£i quyáº¿t
+	* @param actorsDescription Ä�á»‘i tÆ°á»£ng thá»±c hiá»‡n thá»§ tá»¥c
+	* @param resultsDescription MÃ´ táº£ káº¿t quáº£ thá»§ tá»¥c
+	* @param recordsDescription MÃ´ táº£ cÄƒn cá»© phÃ¡p lÃ½ HTML
+	* @param feeDescription MÃ´ táº£ phÃ­ vÃ  lá»‡ phÃ­ thá»±c hiá»‡n
+	* @param instructionsDescription MÃ´ táº£ hÆ°á»›ng dáº«n dáº¡ng HTML
+	* @param administrationNo Cáº¥p quáº£n lÃ½
+	* @param domainNo Ä�Æ¡n vá»‹ quáº£n lÃ½
+	* @param effectDate NgÃ y báº¯t Ä‘áº§u cÃ³ hiá»‡u lá»±c
+	* @param expireDate NgÃ y háº¿t hiá»‡u lá»±c
+	* @param active Tráº¡ng thÃ¡i hoáº¡t Ä‘á»™ng cá»§a thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return: Ä‘á»‘i tÆ°á»£ng thá»§ tá»¥c hÃ nh chÃ­nh má»›i Ä‘Æ°á»£c cáº­p nháº­t thÃ´ng tin
+	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.DossierProc updateDossierProc(
 		long id, java.lang.String dossierProcNo, java.lang.String name,
@@ -300,52 +376,99 @@ public interface DossierProcLocalService extends BaseLocalService,
 		java.lang.String resultsDescription,
 		java.lang.String recordsDescription, java.lang.String feeDescription,
 		java.lang.String instructionsDescription,
-		java.lang.String administrationNo, java.lang.String administrationName,
-		java.lang.String domainNo, java.lang.String domainName,
+		java.lang.String administrationNo, java.lang.String domainNo,
 		java.util.Date effectDate, java.util.Date expireDate, int active,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
-	public void updateDossierProcResources(
+	/**
+	* Cáº­p nháº­t thÃ´ng tin má»™t thá»§ tá»¥c hÃ nh chÃ­nh cÃ´ng
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Cáº­p nháº­t thÃ´ng tin thá»§ tá»¥c hÃ nh chÃ­nh
+	*
+	* @param dossierProc Thá»§ tá»¥c hÃ nh chÃ­nh cáº§n cáº­p nháº­t thÃ´ng tin
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return: Ä‘á»‘i tÆ°á»£ng thá»§ tá»¥c hÃ nh chÃ­nh má»›i Ä‘Æ°á»£c cáº­p nháº­t thÃ´ng tin
+	*/
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.dossiermgt.model.DossierProc updateDossierProc(
 		org.oep.core.dossiermgt.model.DossierProc dossierProc,
-		java.lang.String[] groupPermissions,
-		java.lang.String[] guestPermissions,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* XÃ³a bá»� thÃ´ng tin má»™t thá»§ tá»¥c hÃ nh chÃ­nh cÃ´ng
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    XÃ³a bá»� thÃ´ng tin thá»§ tá»¥c hÃ nh chÃ­nh
+	*
+	* @param dossierProc Thá»§ tá»¥c hÃ nh chÃ­nh sáº½ bá»‹ xÃ³a
+	* @return
+	*/
 	public void removeDossierProc(
 		org.oep.core.dossiermgt.model.DossierProc dossierProc)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* XÃ³a bá»� thÃ´ng tin má»™t thá»§ tá»¥c hÃ nh chÃ­nh cÃ´ng
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    XÃ³a bá»� thÃ´ng tin thá»§ tá»¥c hÃ nh chÃ­nh
+	*
+	* @param id mÃ£ phÃ¢n biá»‡t thá»§ tá»¥c hÃ nh chÃ­nh
+	* @return
+	*/
 	public void removeDossierProc(long id)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
-	public void addDossierProcResources(
-		org.oep.core.dossiermgt.model.DossierProc dossierProc,
-		boolean addGroupPermission, boolean addGuestPermission,
-		com.liferay.portal.service.ServiceContext serviceContext)
+	/**
+	* XÃ³a bá»� thÃ´ng tin táº¥t cáº£ thá»§ tá»¥c hÃ nh chÃ­nh cÃ´ng thuá»™c má»™t nhÃ³m
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    XÃ³a bá»� thÃ´ng tin thá»§ tá»¥c hÃ nh chÃ­nh cÃ´ng thuá»™c má»™t nhÃ³m
+	*
+	* @param groupId mÃ£ nhÃ³m quáº£n lÃ½ thá»§ tá»¥c hÃ nh chÃ­nh
+	* @return
+	*/
+	public void deleteDossierProcs(long groupId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
-	public void addDossierProcResources(
-		org.oep.core.dossiermgt.model.DossierProc dossierProc,
-		java.lang.String[] groupPermissions,
-		java.lang.String[] guestPermissions,
-		com.liferay.portal.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException;
-
-	public void addDossierProcResources(long id,
-		java.lang.String[] groupPermissions,
-		java.lang.String[] guestPermissions,
-		com.liferay.portal.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException;
-
+	/**
+	* Láº¥y thÃ´ng tin má»™t thá»§ tá»¥c hÃ nh chÃ­nh cÃ´ng dá»±a vÃ o mÃ£ thá»§ tá»¥c hÃ nh chÃ­nh
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Láº¥y thÃ´ng tin thá»§ tá»¥c hÃ nh chÃ­nh
+	*
+	* @param dossierProcNo mÃ£ thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return thá»§ tá»¥c hÃ nh chÃ­nh
+	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public org.oep.core.dossiermgt.model.DossierProc getByDossierProcNo(
 		java.lang.String dossierProcNo,
@@ -353,27 +476,134 @@ public interface DossierProcLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* TÃ¬m kiáº¿m táº¥t cáº£ thá»§ tá»¥c hÃ nh chÃ­nh cá»§a má»™t cáº¥p quáº£n lÃ½
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¬m kiáº¿m thá»§ tá»¥c hÃ nh chÃ­nh cá»§a má»™t cáº¥p
+	*
+	* @param dossierProcNo mÃ£ thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return danh sÃ¡ch thá»§ tá»¥c hÃ nh chÃ­nh cá»§a má»™t cáº¥p quáº£n lÃ½
+	*/
 	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findAllByAdministrationNo(
 		java.lang.String administrationNo,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* TÃ¬m kiáº¿m táº¥t cáº£ thá»§ tá»¥c hÃ nh chÃ­nh cá»§a thuá»™c má»™t lÄ©nh vá»±c
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¬m kiáº¿m thá»§ tá»¥c hÃ nh chÃ­nh thuá»™c má»™t lÄ©nh vá»±c
+	*
+	* @param dossierProcNo mÃ£ thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return danh sÃ¡ch thá»§ tá»¥c hÃ nh chÃ­nh cá»§a má»™t lÄ©nh vá»±c
+	*/
 	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findAllByDomainNo(
 		java.lang.String domainNo,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* TÃ¬m kiáº¿m táº¥t cáº£ thá»§ tá»¥c hÃ nh chÃ­nh cá»§a thuá»™c má»™t lÄ©nh vá»±c vÃ  cáº¥p quáº£n lÃ½ nÃ o Ä‘Ã³
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¬m kiáº¿m thá»§ tá»¥c hÃ nh chÃ­nh thuá»™c má»™t lÄ©nh vá»±c vÃ  cáº¥p quáº£n lÃ½
+	*
+	* @param dossierProcNo mÃ£ thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return danh sÃ¡ch thá»§ tá»¥c hÃ nh chÃ­nh cá»§a má»™t lÄ©nh vá»±c vÃ  cáº¥p quáº£n lÃ½
+	*/
 	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findAllByAdministrationAndDomain(
 		java.lang.String administrationNo, java.lang.String domainNo,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* TÃ¬m kiáº¿m táº¥t cáº£ thá»§ tá»¥c hÃ nh chÃ­nh cá»§a thuá»™c má»™t lÄ©nh vá»±c vÃ  cáº¥p quáº£n lÃ½ cá»§a má»™t Ä‘Æ¡n vá»‹
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¬m kiáº¿m thá»§ tá»¥c hÃ nh chÃ­nh thuá»™c má»™t lÄ©nh vá»±c vÃ  cáº¥p quáº£n lÃ½ cá»§a má»™t Ä‘Æ¡n vá»‹
+	*
+	* @param dossierProcNo mÃ£ thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return danh sÃ¡ch thá»§ tá»¥c hÃ nh chÃ­nh cá»§a má»™t lÄ©nh vá»±c vÃ  cáº¥p quáº£n lÃ½ cá»§a má»™t Ä‘Æ¡n vá»‹
+	*/
 	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByGroupAdministrationAndDomain(
 		java.lang.String administrationNo, java.lang.String domainNo,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> getCompanyDossierProcs(
+		long companyId,
+		com.liferay.portal.kernel.dao.orm.QueryDefinition queryDefinition)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public int getCompanyDossierProcsCount(long companyId,
+		com.liferay.portal.kernel.dao.orm.QueryDefinition queryDefinition)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByGroupLikeName(
+		java.lang.String name, int startIndex, int endIndex,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByGroupLikeName(java.lang.String name,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByLikeName(
+		java.lang.String name, int startIndex, int endIndex,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByLikeName(java.lang.String name,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByCustomCondition(
+		java.lang.String name, java.util.Date effectDate,
+		java.util.Date expireDate, int active, int startIndex, int endIndex,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByCustomCondition(java.lang.String name,
+		java.util.Date effectDate, java.util.Date expireDate, int active,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByGroupCustomCondition(
+		java.lang.String name, java.util.Date effectDate,
+		java.util.Date expireDate, int active, int startIndex, int endIndex,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByGroupCustomCondition(java.lang.String name,
+		java.util.Date effectDate, java.util.Date expireDate, int active,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }
