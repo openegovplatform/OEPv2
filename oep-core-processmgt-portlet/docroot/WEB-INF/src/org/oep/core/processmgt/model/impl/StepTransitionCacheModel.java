@@ -38,7 +38,7 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(31);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("{stepTransitionId=");
 		sb.append(stepTransitionId);
@@ -60,12 +60,18 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 		sb.append(postDossierStepId);
 		sb.append(", precondition=");
 		sb.append(precondition);
+		sb.append(", autoCondition=");
+		sb.append(autoCondition);
 		sb.append(", transitionName=");
 		sb.append(transitionName);
-		sb.append(", daysDuration=");
-		sb.append(daysDuration);
 		sb.append(", dossierStatus=");
 		sb.append(dossierStatus);
+		sb.append(", notifyStatus=");
+		sb.append(notifyStatus);
+		sb.append(", sendResults=");
+		sb.append(sendResults);
+		sb.append(", requestPayment=");
+		sb.append(requestPayment);
 		sb.append(", userAssignment=");
 		sb.append(userAssignment);
 		sb.append(", newProcessOrder=");
@@ -109,14 +115,19 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 			stepTransitionImpl.setPrecondition(precondition);
 		}
 
+		if (autoCondition == null) {
+			stepTransitionImpl.setAutoCondition(StringPool.BLANK);
+		}
+		else {
+			stepTransitionImpl.setAutoCondition(autoCondition);
+		}
+
 		if (transitionName == null) {
 			stepTransitionImpl.setTransitionName(StringPool.BLANK);
 		}
 		else {
 			stepTransitionImpl.setTransitionName(transitionName);
 		}
-
-		stepTransitionImpl.setDaysDuration(daysDuration);
 
 		if (dossierStatus == null) {
 			stepTransitionImpl.setDossierStatus(StringPool.BLANK);
@@ -125,6 +136,9 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 			stepTransitionImpl.setDossierStatus(dossierStatus);
 		}
 
+		stepTransitionImpl.setNotifyStatus(notifyStatus);
+		stepTransitionImpl.setSendResults(sendResults);
+		stepTransitionImpl.setRequestPayment(requestPayment);
 		stepTransitionImpl.setUserAssignment(userAssignment);
 		stepTransitionImpl.setNewProcessOrder(newProcessOrder);
 
@@ -145,9 +159,12 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 		preDossierStepId = objectInput.readLong();
 		postDossierStepId = objectInput.readLong();
 		precondition = objectInput.readUTF();
+		autoCondition = objectInput.readUTF();
 		transitionName = objectInput.readUTF();
-		daysDuration = objectInput.readInt();
 		dossierStatus = objectInput.readUTF();
+		notifyStatus = objectInput.readInt();
+		sendResults = objectInput.readInt();
+		requestPayment = objectInput.readInt();
 		userAssignment = objectInput.readInt();
 		newProcessOrder = objectInput.readInt();
 	}
@@ -172,14 +189,19 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 			objectOutput.writeUTF(precondition);
 		}
 
+		if (autoCondition == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(autoCondition);
+		}
+
 		if (transitionName == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
 			objectOutput.writeUTF(transitionName);
 		}
-
-		objectOutput.writeInt(daysDuration);
 
 		if (dossierStatus == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
@@ -188,6 +210,9 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 			objectOutput.writeUTF(dossierStatus);
 		}
 
+		objectOutput.writeInt(notifyStatus);
+		objectOutput.writeInt(sendResults);
+		objectOutput.writeInt(requestPayment);
 		objectOutput.writeInt(userAssignment);
 		objectOutput.writeInt(newProcessOrder);
 	}
@@ -202,9 +227,12 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 	public long preDossierStepId;
 	public long postDossierStepId;
 	public String precondition;
+	public String autoCondition;
 	public String transitionName;
-	public int daysDuration;
 	public String dossierStatus;
+	public int notifyStatus;
+	public int sendResults;
+	public int requestPayment;
 	public int userAssignment;
 	public int newProcessOrder;
 }

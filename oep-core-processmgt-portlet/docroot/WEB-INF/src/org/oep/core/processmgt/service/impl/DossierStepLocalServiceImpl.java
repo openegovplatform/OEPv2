@@ -65,11 +65,13 @@ public class DossierStepLocalServiceImpl extends DossierStepLocalServiceBaseImpl
 	public DossierStep addDossierStep(
 			long dossierProcessId, 
 			String title, 
-			int sequenceNo, 
-			int stepType, 
+			int sequenceNo,
+			int daysDuration,
 			String doForm,
+			String formLabel,
+			int rollback,
 			ServiceContext serviceContext) throws SystemException, PortalException {
-		validate(dossierProcessId, title, sequenceNo, stepType);
+		validate(dossierProcessId, title, sequenceNo);
 		long id = counterLocalService.increment();
 		DossierStep dossierStep = dossierStepPersistence.create(id);
 		Date now = new Date();
@@ -80,8 +82,10 @@ public class DossierStepLocalServiceImpl extends DossierStepLocalServiceBaseImpl
 		dossierStep.setDossierProcessId(dossierProcessId);
 		dossierStep.setTitle(title);
 		dossierStep.setSequenceNo(sequenceNo);
-		dossierStep.setStepType(stepType);
+		dossierStep.setDaysDuration(daysDuration);
 		dossierStep.setDoForm(doForm);
+		dossierStep.setFormLabel(formLabel);
+		dossierStep.setRollback(rollback);
 		dossierStep.setCreateDate(serviceContext.getCreateDate(now));
 		
 		dossierStepPersistence.update(dossierStep);
@@ -105,12 +109,14 @@ public class DossierStepLocalServiceImpl extends DossierStepLocalServiceBaseImpl
 			long dossierProcessId, 
 			String title, 
 			int sequenceNo, 
-			int stepType, 
+			int daysDuration, 
 			String doForm,
+			String formLabel,
+			int rollback,
 			ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
-		validate(dossierProcessId, title, sequenceNo, stepType);
+		validate(dossierProcessId, title, sequenceNo);
 
 		DossierStep dossierStep = dossierStepPersistence.findByPrimaryKey(id);
 
@@ -118,8 +124,10 @@ public class DossierStepLocalServiceImpl extends DossierStepLocalServiceBaseImpl
 		dossierStep.setDossierProcessId(dossierProcessId);
 		dossierStep.setTitle(title);
 		dossierStep.setSequenceNo(sequenceNo);
-		dossierStep.setStepType(stepType);
+		dossierStep.setDaysDuration(daysDuration);
 		dossierStep.setDoForm(doForm);
+		dossierStep.setFormLabel(formLabel);
+		dossierStep.setRollback(rollback);
 		
 		dossierStepPersistence.update(dossierStep);
 
@@ -172,7 +180,7 @@ public class DossierStepLocalServiceImpl extends DossierStepLocalServiceBaseImpl
 		addDossierStepResources(dossierStep, groupPermissions, guestPermissions, serviceContext);
 	}
 	
-	protected void validate(long dossierProcessid, String title, int sequenceNo, int stepType) throws PortalException {
+	protected void validate(long dossierProcessid, String title, int sequenceNo) throws PortalException {
 	}
 	
 	private static Log _log = LogFactoryUtil.getLog(DossierStepLocalServiceImpl.class);

@@ -304,32 +304,33 @@ public class StepTransitionLocalServiceWrapper
 	@Override
 	public org.oep.core.processmgt.model.StepTransition addStepTransition(
 		long dossierProcessId, long preDossierStepId, long postDossierStepId,
-		java.lang.String precondition, java.lang.String transitionName,
-		int daysDuration, java.lang.String dossierStatus, int userAssignment,
-		int newProcessOrder,
+		java.lang.String autoCondition, java.lang.String transitionName,
+		java.lang.String dossierStatus, int notifyStatus, int sendResults,
+		int requestPayment, int userAssignment, int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _stepTransitionLocalService.addStepTransition(dossierProcessId,
-			preDossierStepId, postDossierStepId, precondition, transitionName,
-			daysDuration, dossierStatus, userAssignment, newProcessOrder,
-			serviceContext);
+			preDossierStepId, postDossierStepId, autoCondition, transitionName,
+			dossierStatus, notifyStatus, sendResults, requestPayment,
+			userAssignment, newProcessOrder, serviceContext);
 	}
 
 	@Override
 	public org.oep.core.processmgt.model.StepTransition updateStepTransition(
 		long id, long dossierProcessId, long preDossierStepId,
-		long postDossierStepId, java.lang.String precondition,
-		java.lang.String transitionName, int daysDuration,
-		java.lang.String dossierStatus, int userAssignment,
-		int newProcessOrder,
+		long postDossierStepId, java.lang.String autoCondition,
+		java.lang.String transitionName, java.lang.String dossierStatus,
+		int notifyStatus, int sendResults, int requestPayment,
+		int userAssignment, int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _stepTransitionLocalService.updateStepTransition(id,
 			dossierProcessId, preDossierStepId, postDossierStepId,
-			precondition, transitionName, daysDuration, dossierStatus,
-			userAssignment, newProcessOrder, serviceContext);
+			autoCondition, transitionName, dossierStatus, notifyStatus,
+			sendResults, requestPayment, userAssignment, newProcessOrder,
+			serviceContext);
 	}
 
 	@Override

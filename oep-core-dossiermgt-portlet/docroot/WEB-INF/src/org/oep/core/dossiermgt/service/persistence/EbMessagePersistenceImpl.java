@@ -321,6 +321,8 @@ public class EbMessagePersistenceImpl extends BasePersistenceImpl<EbMessage>
 
 		ebMessageImpl.setEbMessageId(ebMessage.getEbMessageId());
 		ebMessageImpl.setCompanyId(ebMessage.getCompanyId());
+		ebMessageImpl.setUserId(ebMessage.getUserId());
+		ebMessageImpl.setGroupId(ebMessage.getGroupId());
 		ebMessageImpl.setCreateDate(ebMessage.getCreateDate());
 		ebMessageImpl.setMessageId(ebMessage.getMessageId());
 		ebMessageImpl.setCpaId(ebMessage.getCpaId());

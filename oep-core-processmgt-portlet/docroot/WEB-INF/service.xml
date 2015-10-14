@@ -11,10 +11,19 @@
         <column name="createDate" type="Date"></column>
         <column name="modifiedDate" type="Date"></column>
         <column name="dossierProcId" type="long"></column>
-        <column name="govAgentId" type="String"></column>
-        <column name="govAgentName" type="String"></column>
-        <column name="startDossierStepId" type="long"></column>
+        <column name="govAgencyId" type="String"></column>
+        <column name="govAgencyName" type="String"></column>
+        <column name="startStepTransitionId" type="long"></column>
         <column name="daysDuration" type="int"></column>
+        <column name="fee" type="int"></column>
+        <finder name="C" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+        </finder>
+        <finder name="C_G" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        
         <reference entity="User" package-path="com.liferay.portal"></reference>
         <reference entity="Group" package-path="com.liferay.portal"></reference>
         <reference entity="Company" package-path="com.liferay.portal"></reference>
@@ -29,9 +38,11 @@
         <column name="dossierProcessId" type="long"></column>
         <column name="title" type="String"></column>
         <column name="sequenceNo" type="int"></column>
-        <column name="stepType" type="int"></column>
+        <column name="daysDuration" type="int"></column>
         <column name="doForm" type="String"></column>
-        
+		<column name="formLabel" type="String"></column>        
+    	<column name="rollback" type="int"></column>
+    	
     	<reference package-path="com.liferay.portal" entity="Role"></reference>
         <reference entity="Group" package-path="com.liferay.portal"></reference>
         <reference entity="Company" package-path="com.liferay.portal"></reference>
@@ -47,13 +58,16 @@
         <column name="preDossierStepId" type="long"></column>
         <column name="postDossierStepId" type="long"></column>
         <column name="precondition" type="String"></column>
+        <column name="autoCondition" type="String"></column>
         <column name="transitionName" type="String"></column>
-        <column name="daysDuration" type="int"></column>
         <column name="dossierStatus" type="String"></column>
+		<column name="notifyStatus" type="int"></column>
+ 		<column name="sendResults" type="int"></column>
+ 		<column name="requestPayment" type="int"></column>
         <column name="userAssignment" type="int"></column>
         <column name="newProcessOrder" type="int"></column>
     </entity>
-    <entity name="ProcessOrder" table="oep_processmgt_processorder" local-service="true">
+    <entity name="ProcessOrder" table="oep_processmgt_processorder" local-service="true" uuid="true" uuid-accessor="true">
         <column name="processOrderId" type="long" primary="true"></column>
         <column name="userId" type="long"></column>
         <column name="groupId" type="long"></column>
@@ -65,14 +79,16 @@
         <column name="dossierId" type="long"></column>
         <column name="dossierProcessId" type="long"></column>
         <column name="dossierStepId" type="long"></column>
-        <column name="dossierStatus" type="String"></column>
-        <column name="dossierResume" type="String"></column>
+        <column name="orderStatus" type="String"></column>
+        <column name="orderResume" type="String"></column>
         <column name="stepDate" type="Date"></column>
         <column name="stepNote" type="String"></column>
         <column name="assignToUserId" type="long"></column>
         <column name="currentCondition" type="String"></column>
-        <column name="endState" type="int"></column>
-    
+        <column name="lastStepTransitionId" type="long"></column>
+    	<column name="stopRollback" type="int"></column>
+		<column name="ebPartnerShipId" type="long"></column>
+		    	
     	<reference package-path="com.liferay.portal" entity="User"></reference>
     </entity>
     <entity name="TransitionHistory" table="oep_processmgt_transitionhistory" local-service="true">
@@ -86,11 +102,14 @@
         <column name="daysDoing" type="int"></column>
         <column name="daysDelay" type="int"></column>
         <column name="startDate" type="Date"></column>
+        <column name="preDossierStatus" type="String"></column>
+        <column name="postDossierStatus" type="String"></column>
         <column name="stepTransitionId" type="long"></column>
         <column name="preDossierStepId" type="long"></column>
         <column name="postDossierStepId" type="long"></column>
         <column name="transitionName" type="String"></column>
         <column name="note" type="String"></column>
+        
         <reference entity="User" package-path="com.liferay.portal"></reference>
     </entity>
     <entity name="UserAssignment" table="oep_processmgt_userassignment" local-service="true">
@@ -102,6 +121,22 @@
         <column name="processOrderId" type="long"></column>
         <column name="dossierStepId" type="long"></column>
         <column name="assignToUserId" type="long"></column>
+    </entity>
+    <entity name="StatisticByUser" table="oep_processmgt_statisticbyuser">
+    	<column name="statisticByUserId" type="long" primary="true"></column>
+    	<column name="userId" type="long"></column>
+    	<column name="groupId" type="long"></column>
+    	<column name="companyId" type="long"></column>
+    	<column name="createDate" type="Date"></column>
+    	<column name="month" type="int"></column>
+    	<column name="year" type="int"></column>
+    	<column name="dossierStatus" type="String"></column>
+    	<column name="totalNumber" type="int"></column>
+    	<column name="delayedNumber" type="int"></column>
+    	<column name="ontimeNumber" type="int"></column>
+    	<column name="ontimeRatio" type="double"></column>
+    	<column name="delayDaysAvg" type="double"></column>
+    	<column name="furtherDaysAvg" type="double"></column>
     </entity>
     <entity name="DossierStep2Role" local-service="true" remote-service="false" table="oep_processmgt_dossierstep2role">
         <column name="dossierStepId" type="long" primary="true"></column>

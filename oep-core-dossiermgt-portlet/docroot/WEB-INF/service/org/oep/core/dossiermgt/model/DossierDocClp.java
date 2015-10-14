@@ -88,7 +88,9 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 		attributes.put("sequenceNo", getSequenceNo());
 		attributes.put("defaultDocTemplateId", getDefaultDocTemplateId());
 		attributes.put("validationType", getValidationType());
+		attributes.put("requirementType", getRequirementType());
 		attributes.put("numberOfFile", getNumberOfFile());
+		attributes.put("splitSubDossier", getSplitSubDossier());
 		attributes.put("onlineForm", getOnlineForm());
 
 		return attributes;
@@ -174,10 +176,22 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 			setValidationType(validationType);
 		}
 
+		Integer requirementType = (Integer)attributes.get("requirementType");
+
+		if (requirementType != null) {
+			setRequirementType(requirementType);
+		}
+
 		Integer numberOfFile = (Integer)attributes.get("numberOfFile");
 
 		if (numberOfFile != null) {
 			setNumberOfFile(numberOfFile);
+		}
+
+		Integer splitSubDossier = (Integer)attributes.get("splitSubDossier");
+
+		if (splitSubDossier != null) {
+			setSplitSubDossier(splitSubDossier);
 		}
 
 		String onlineForm = (String)attributes.get("onlineForm");
@@ -499,6 +513,29 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 	}
 
 	@Override
+	public int getRequirementType() {
+		return _requirementType;
+	}
+
+	@Override
+	public void setRequirementType(int requirementType) {
+		_requirementType = requirementType;
+
+		if (_dossierDocRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierDocRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setRequirementType", int.class);
+
+				method.invoke(_dossierDocRemoteModel, requirementType);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
 	public int getNumberOfFile() {
 		return _numberOfFile;
 	}
@@ -514,6 +551,29 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 				Method method = clazz.getMethod("setNumberOfFile", int.class);
 
 				method.invoke(_dossierDocRemoteModel, numberOfFile);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public int getSplitSubDossier() {
+		return _splitSubDossier;
+	}
+
+	@Override
+	public void setSplitSubDossier(int splitSubDossier) {
+		_splitSubDossier = splitSubDossier;
+
+		if (_dossierDocRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierDocRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setSplitSubDossier", int.class);
+
+				method.invoke(_dossierDocRemoteModel, splitSubDossier);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -626,7 +686,9 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 		clone.setSequenceNo(getSequenceNo());
 		clone.setDefaultDocTemplateId(getDefaultDocTemplateId());
 		clone.setValidationType(getValidationType());
+		clone.setRequirementType(getRequirementType());
 		clone.setNumberOfFile(getNumberOfFile());
+		clone.setSplitSubDossier(getSplitSubDossier());
 		clone.setOnlineForm(getOnlineForm());
 
 		return clone;
@@ -680,7 +742,7 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(31);
+		StringBundler sb = new StringBundler(35);
 
 		sb.append("{dossierDocId=");
 		sb.append(getDossierDocId());
@@ -708,8 +770,12 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 		sb.append(getDefaultDocTemplateId());
 		sb.append(", validationType=");
 		sb.append(getValidationType());
+		sb.append(", requirementType=");
+		sb.append(getRequirementType());
 		sb.append(", numberOfFile=");
 		sb.append(getNumberOfFile());
+		sb.append(", splitSubDossier=");
+		sb.append(getSplitSubDossier());
 		sb.append(", onlineForm=");
 		sb.append(getOnlineForm());
 		sb.append("}");
@@ -719,7 +785,7 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(49);
+		StringBundler sb = new StringBundler(55);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.DossierDoc");
@@ -778,8 +844,16 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 		sb.append(getValidationType());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>requirementType</column-name><column-value><![CDATA[");
+		sb.append(getRequirementType());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>numberOfFile</column-name><column-value><![CDATA[");
 		sb.append(getNumberOfFile());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>splitSubDossier</column-name><column-value><![CDATA[");
+		sb.append(getSplitSubDossier());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>onlineForm</column-name><column-value><![CDATA[");
@@ -805,7 +879,9 @@ public class DossierDocClp extends BaseModelImpl<DossierDoc>
 	private int _sequenceNo;
 	private long _defaultDocTemplateId;
 	private int _validationType;
+	private int _requirementType;
 	private int _numberOfFile;
+	private int _splitSubDossier;
 	private String _onlineForm;
 	private BaseModel<?> _dossierDocRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.dossiermgt.service.ClpSerializer.class;

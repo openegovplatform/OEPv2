@@ -18,6 +18,7 @@ import com.liferay.portal.kernel.bean.AutoEscape;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.CacheModel;
+import com.liferay.portal.model.StagedModel;
 import com.liferay.portal.service.ServiceContext;
 
 import com.liferay.portlet.expando.model.ExpandoBridge;
@@ -39,7 +40,7 @@ import java.util.Date;
  * @see org.oep.core.processmgt.model.impl.ProcessOrderModelImpl
  * @generated
  */
-public interface ProcessOrderModel extends BaseModel<ProcessOrder> {
+public interface ProcessOrderModel extends BaseModel<ProcessOrder>, StagedModel {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
@@ -59,6 +60,23 @@ public interface ProcessOrderModel extends BaseModel<ProcessOrder> {
 	 * @param primaryKey the primary key of this process order
 	 */
 	public void setPrimaryKey(long primaryKey);
+
+	/**
+	 * Returns the uuid of this process order.
+	 *
+	 * @return the uuid of this process order
+	 */
+	@AutoEscape
+	@Override
+	public String getUuid();
+
+	/**
+	 * Sets the uuid of this process order.
+	 *
+	 * @param uuid the uuid of this process order
+	 */
+	@Override
+	public void setUuid(String uuid);
 
 	/**
 	 * Returns the process order ID of this process order.
@@ -122,6 +140,7 @@ public interface ProcessOrderModel extends BaseModel<ProcessOrder> {
 	 *
 	 * @return the company ID of this process order
 	 */
+	@Override
 	public long getCompanyId();
 
 	/**
@@ -129,6 +148,7 @@ public interface ProcessOrderModel extends BaseModel<ProcessOrder> {
 	 *
 	 * @param companyId the company ID of this process order
 	 */
+	@Override
 	public void setCompanyId(long companyId);
 
 	/**
@@ -136,6 +156,7 @@ public interface ProcessOrderModel extends BaseModel<ProcessOrder> {
 	 *
 	 * @return the create date of this process order
 	 */
+	@Override
 	public Date getCreateDate();
 
 	/**
@@ -143,6 +164,7 @@ public interface ProcessOrderModel extends BaseModel<ProcessOrder> {
 	 *
 	 * @param createDate the create date of this process order
 	 */
+	@Override
 	public void setCreateDate(Date createDate);
 
 	/**
@@ -150,6 +172,7 @@ public interface ProcessOrderModel extends BaseModel<ProcessOrder> {
 	 *
 	 * @return the modified date of this process order
 	 */
+	@Override
 	public Date getModifiedDate();
 
 	/**
@@ -157,6 +180,7 @@ public interface ProcessOrderModel extends BaseModel<ProcessOrder> {
 	 *
 	 * @param modifiedDate the modified date of this process order
 	 */
+	@Override
 	public void setModifiedDate(Date modifiedDate);
 
 	/**
@@ -230,34 +254,34 @@ public interface ProcessOrderModel extends BaseModel<ProcessOrder> {
 	public void setDossierStepId(long dossierStepId);
 
 	/**
-	 * Returns the dossier status of this process order.
+	 * Returns the order status of this process order.
 	 *
-	 * @return the dossier status of this process order
+	 * @return the order status of this process order
 	 */
 	@AutoEscape
-	public String getDossierStatus();
+	public String getOrderStatus();
 
 	/**
-	 * Sets the dossier status of this process order.
+	 * Sets the order status of this process order.
 	 *
-	 * @param dossierStatus the dossier status of this process order
+	 * @param orderStatus the order status of this process order
 	 */
-	public void setDossierStatus(String dossierStatus);
+	public void setOrderStatus(String orderStatus);
 
 	/**
-	 * Returns the dossier resume of this process order.
+	 * Returns the order resume of this process order.
 	 *
-	 * @return the dossier resume of this process order
+	 * @return the order resume of this process order
 	 */
 	@AutoEscape
-	public String getDossierResume();
+	public String getOrderResume();
 
 	/**
-	 * Sets the dossier resume of this process order.
+	 * Sets the order resume of this process order.
 	 *
-	 * @param dossierResume the dossier resume of this process order
+	 * @param orderResume the order resume of this process order
 	 */
-	public void setDossierResume(String dossierResume);
+	public void setOrderResume(String orderResume);
 
 	/**
 	 * Returns the step date of this process order.
@@ -333,18 +357,46 @@ public interface ProcessOrderModel extends BaseModel<ProcessOrder> {
 	public void setCurrentCondition(String currentCondition);
 
 	/**
-	 * Returns the end state of this process order.
+	 * Returns the last step transition ID of this process order.
 	 *
-	 * @return the end state of this process order
+	 * @return the last step transition ID of this process order
 	 */
-	public int getEndState();
+	public long getLastStepTransitionId();
 
 	/**
-	 * Sets the end state of this process order.
+	 * Sets the last step transition ID of this process order.
 	 *
-	 * @param endState the end state of this process order
+	 * @param lastStepTransitionId the last step transition ID of this process order
 	 */
-	public void setEndState(int endState);
+	public void setLastStepTransitionId(long lastStepTransitionId);
+
+	/**
+	 * Returns the stop rollback of this process order.
+	 *
+	 * @return the stop rollback of this process order
+	 */
+	public int getStopRollback();
+
+	/**
+	 * Sets the stop rollback of this process order.
+	 *
+	 * @param stopRollback the stop rollback of this process order
+	 */
+	public void setStopRollback(int stopRollback);
+
+	/**
+	 * Returns the eb partner ship ID of this process order.
+	 *
+	 * @return the eb partner ship ID of this process order
+	 */
+	public long getEbPartnerShipId();
+
+	/**
+	 * Sets the eb partner ship ID of this process order.
+	 *
+	 * @param ebPartnerShipId the eb partner ship ID of this process order
+	 */
+	public void setEbPartnerShipId(long ebPartnerShipId);
 
 	@Override
 	public boolean isNew();

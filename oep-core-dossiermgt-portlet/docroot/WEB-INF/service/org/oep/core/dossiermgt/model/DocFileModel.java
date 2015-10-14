@@ -269,6 +269,20 @@ public interface DocFileModel extends BaseModel<DocFile>, StagedModel {
 	 */
 	public void setNote(String note);
 
+	/**
+	 * Returns the premier of this doc file.
+	 *
+	 * @return the premier of this doc file
+	 */
+	public int getPremier();
+
+	/**
+	 * Sets the premier of this doc file.
+	 *
+	 * @param premier the premier of this doc file
+	 */
+	public void setPremier(int premier);
+
 	@Override
 	public boolean isNew();
 

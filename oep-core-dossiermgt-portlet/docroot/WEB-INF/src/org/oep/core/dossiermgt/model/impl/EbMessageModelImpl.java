@@ -15,6 +15,7 @@
 package org.oep.core.dossiermgt.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
@@ -23,6 +24,7 @@ import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
 import com.liferay.portal.service.ServiceContext;
+import com.liferay.portal.util.PortalUtil;
 
 import com.liferay.portlet.expando.model.ExpandoBridge;
 import com.liferay.portlet.expando.util.ExpandoBridgeFactoryUtil;
@@ -66,6 +68,8 @@ public class EbMessageModelImpl extends BaseModelImpl<EbMessage>
 	public static final Object[][] TABLE_COLUMNS = {
 			{ "ebMessageId", Types.BIGINT },
 			{ "companyId", Types.BIGINT },
+			{ "userId", Types.BIGINT },
+			{ "groupId", Types.BIGINT },
 			{ "createDate", Types.TIMESTAMP },
 			{ "messageId", Types.VARCHAR },
 			{ "cpaId", Types.VARCHAR },
@@ -85,7 +89,7 @@ public class EbMessageModelImpl extends BaseModelImpl<EbMessage>
 			{ "messageDescription", Types.VARCHAR },
 			{ "inbound", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_ebmessage (ebMessageId LONG not null primary key,companyId LONG,createDate DATE null,messageId VARCHAR(100) null,cpaId VARCHAR(100) null,service VARCHAR(100) null,action VARCHAR(100) null,conversationId VARCHAR(100) null,fromPartyId VARCHAR(100) null,fromPartyType VARCHAR(100) null,toPartyId VARCHAR(100) null,toPartyType VARCHAR(100) null,refToMessageId VARCHAR(100) null,status VARCHAR(100) null,statusDescription VARCHAR(100) null,ackMessageId VARCHAR(100) null,ackStatus VARCHAR(100) null,ackStatusDescription VARCHAR(100) null,messageDescription VARCHAR(200) null,inbound INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_ebmessage (ebMessageId LONG not null primary key,companyId LONG,userId LONG,groupId LONG,createDate DATE null,messageId VARCHAR(100) null,cpaId VARCHAR(100) null,service VARCHAR(100) null,action VARCHAR(100) null,conversationId VARCHAR(100) null,fromPartyId VARCHAR(100) null,fromPartyType VARCHAR(100) null,toPartyId VARCHAR(100) null,toPartyType VARCHAR(100) null,refToMessageId VARCHAR(100) null,status VARCHAR(100) null,statusDescription VARCHAR(100) null,ackMessageId VARCHAR(100) null,ackStatus VARCHAR(100) null,ackStatusDescription VARCHAR(100) null,messageDescription VARCHAR(200) null,inbound INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_ebmessage";
 	public static final String ORDER_BY_JPQL = " ORDER BY ebMessage.ebMessageId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_ebmessage.ebMessageId ASC";
@@ -115,6 +119,8 @@ public class EbMessageModelImpl extends BaseModelImpl<EbMessage>
 
 		model.setEbMessageId(soapModel.getEbMessageId());
 		model.setCompanyId(soapModel.getCompanyId());
+		model.setUserId(soapModel.getUserId());
+		model.setGroupId(soapModel.getGroupId());
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setMessageId(soapModel.getMessageId());
 		model.setCpaId(soapModel.getCpaId());
@@ -199,6 +205,8 @@ public class EbMessageModelImpl extends BaseModelImpl<EbMessage>
 
 		attributes.put("ebMessageId", getEbMessageId());
 		attributes.put("companyId", getCompanyId());
+		attributes.put("userId", getUserId());
+		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("messageId", getMessageId());
 		attributes.put("cpaId", getCpaId());
@@ -233,6 +241,18 @@ public class EbMessageModelImpl extends BaseModelImpl<EbMessage>
 
 		if (companyId != null) {
 			setCompanyId(companyId);
+		}
+
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
+		Long groupId = (Long)attributes.get("groupId");
+
+		if (groupId != null) {
+			setGroupId(groupId);
 		}
 
 		Date createDate = (Date)attributes.get("createDate");
@@ -365,6 +385,38 @@ public class EbMessageModelImpl extends BaseModelImpl<EbMessage>
 	@Override
 	public void setCompanyId(long companyId) {
 		_companyId = companyId;
+	}
+
+	@JSON
+	@Override
+	public long getUserId() {
+		return _userId;
+	}
+
+	@Override
+	public void setUserId(long userId) {
+		_userId = userId;
+	}
+
+	@Override
+	public String getUserUuid() throws SystemException {
+		return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
+	}
+
+	@Override
+	public void setUserUuid(String userUuid) {
+		_userUuid = userUuid;
+	}
+
+	@JSON
+	@Override
+	public long getGroupId() {
+		return _groupId;
+	}
+
+	@Override
+	public void setGroupId(long groupId) {
+		_groupId = groupId;
 	}
 
 	@JSON
@@ -674,6 +726,8 @@ public class EbMessageModelImpl extends BaseModelImpl<EbMessage>
 
 		ebMessageImpl.setEbMessageId(getEbMessageId());
 		ebMessageImpl.setCompanyId(getCompanyId());
+		ebMessageImpl.setUserId(getUserId());
+		ebMessageImpl.setGroupId(getGroupId());
 		ebMessageImpl.setCreateDate(getCreateDate());
 		ebMessageImpl.setMessageId(getMessageId());
 		ebMessageImpl.setCpaId(getCpaId());
@@ -751,6 +805,10 @@ public class EbMessageModelImpl extends BaseModelImpl<EbMessage>
 		ebMessageCacheModel.ebMessageId = getEbMessageId();
 
 		ebMessageCacheModel.companyId = getCompanyId();
+
+		ebMessageCacheModel.userId = getUserId();
+
+		ebMessageCacheModel.groupId = getGroupId();
 
 		Date createDate = getCreateDate();
 
@@ -897,12 +955,16 @@ public class EbMessageModelImpl extends BaseModelImpl<EbMessage>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(41);
+		StringBundler sb = new StringBundler(45);
 
 		sb.append("{ebMessageId=");
 		sb.append(getEbMessageId());
 		sb.append(", companyId=");
 		sb.append(getCompanyId());
+		sb.append(", userId=");
+		sb.append(getUserId());
+		sb.append(", groupId=");
+		sb.append(getGroupId());
 		sb.append(", createDate=");
 		sb.append(getCreateDate());
 		sb.append(", messageId=");
@@ -946,7 +1008,7 @@ public class EbMessageModelImpl extends BaseModelImpl<EbMessage>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(64);
+		StringBundler sb = new StringBundler(70);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.EbMessage");
@@ -959,6 +1021,14 @@ public class EbMessageModelImpl extends BaseModelImpl<EbMessage>
 		sb.append(
 			"<column><column-name>companyId</column-name><column-value><![CDATA[");
 		sb.append(getCompanyId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>userId</column-name><column-value><![CDATA[");
+		sb.append(getUserId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>groupId</column-name><column-value><![CDATA[");
+		sb.append(getGroupId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>createDate</column-name><column-value><![CDATA[");
@@ -1044,6 +1114,9 @@ public class EbMessageModelImpl extends BaseModelImpl<EbMessage>
 		};
 	private long _ebMessageId;
 	private long _companyId;
+	private long _userId;
+	private String _userUuid;
+	private long _groupId;
 	private Date _createDate;
 	private String _messageId;
 	private String _cpaId;

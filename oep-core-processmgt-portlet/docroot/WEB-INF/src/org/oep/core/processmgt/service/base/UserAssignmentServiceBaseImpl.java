@@ -29,6 +29,7 @@ import org.oep.core.processmgt.service.persistence.DossierStep2RolePersistence;
 import org.oep.core.processmgt.service.persistence.DossierStepPersistence;
 import org.oep.core.processmgt.service.persistence.ProcessOrder2UserPersistence;
 import org.oep.core.processmgt.service.persistence.ProcessOrderPersistence;
+import org.oep.core.processmgt.service.persistence.StatisticByUserPersistence;
 import org.oep.core.processmgt.service.persistence.StepTransitionPersistence;
 import org.oep.core.processmgt.service.persistence.TransitionHistoryPersistence;
 import org.oep.core.processmgt.service.persistence.UserAssignmentPersistence;
@@ -300,6 +301,44 @@ public abstract class UserAssignmentServiceBaseImpl extends BaseServiceImpl
 	public void setProcessOrder2UserPersistence(
 		ProcessOrder2UserPersistence processOrder2UserPersistence) {
 		this.processOrder2UserPersistence = processOrder2UserPersistence;
+	}
+
+	/**
+	 * Returns the statistic by user remote service.
+	 *
+	 * @return the statistic by user remote service
+	 */
+	public org.oep.core.processmgt.service.StatisticByUserService getStatisticByUserService() {
+		return statisticByUserService;
+	}
+
+	/**
+	 * Sets the statistic by user remote service.
+	 *
+	 * @param statisticByUserService the statistic by user remote service
+	 */
+	public void setStatisticByUserService(
+		org.oep.core.processmgt.service.StatisticByUserService statisticByUserService) {
+		this.statisticByUserService = statisticByUserService;
+	}
+
+	/**
+	 * Returns the statistic by user persistence.
+	 *
+	 * @return the statistic by user persistence
+	 */
+	public StatisticByUserPersistence getStatisticByUserPersistence() {
+		return statisticByUserPersistence;
+	}
+
+	/**
+	 * Sets the statistic by user persistence.
+	 *
+	 * @param statisticByUserPersistence the statistic by user persistence
+	 */
+	public void setStatisticByUserPersistence(
+		StatisticByUserPersistence statisticByUserPersistence) {
+		this.statisticByUserPersistence = statisticByUserPersistence;
 	}
 
 	/**
@@ -670,6 +709,10 @@ public abstract class UserAssignmentServiceBaseImpl extends BaseServiceImpl
 	protected org.oep.core.processmgt.service.ProcessOrder2UserLocalService processOrder2UserLocalService;
 	@BeanReference(type = ProcessOrder2UserPersistence.class)
 	protected ProcessOrder2UserPersistence processOrder2UserPersistence;
+	@BeanReference(type = org.oep.core.processmgt.service.StatisticByUserService.class)
+	protected org.oep.core.processmgt.service.StatisticByUserService statisticByUserService;
+	@BeanReference(type = StatisticByUserPersistence.class)
+	protected StatisticByUserPersistence statisticByUserPersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.StepTransitionLocalService.class)
 	protected org.oep.core.processmgt.service.StepTransitionLocalService stepTransitionLocalService;
 	@BeanReference(type = org.oep.core.processmgt.service.StepTransitionService.class)

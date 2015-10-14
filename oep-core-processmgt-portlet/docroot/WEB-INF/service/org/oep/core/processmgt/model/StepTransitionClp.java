@@ -85,9 +85,12 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 		attributes.put("preDossierStepId", getPreDossierStepId());
 		attributes.put("postDossierStepId", getPostDossierStepId());
 		attributes.put("precondition", getPrecondition());
+		attributes.put("autoCondition", getAutoCondition());
 		attributes.put("transitionName", getTransitionName());
-		attributes.put("daysDuration", getDaysDuration());
 		attributes.put("dossierStatus", getDossierStatus());
+		attributes.put("notifyStatus", getNotifyStatus());
+		attributes.put("sendResults", getSendResults());
+		attributes.put("requestPayment", getRequestPayment());
 		attributes.put("userAssignment", getUserAssignment());
 		attributes.put("newProcessOrder", getNewProcessOrder());
 
@@ -156,22 +159,40 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 			setPrecondition(precondition);
 		}
 
+		String autoCondition = (String)attributes.get("autoCondition");
+
+		if (autoCondition != null) {
+			setAutoCondition(autoCondition);
+		}
+
 		String transitionName = (String)attributes.get("transitionName");
 
 		if (transitionName != null) {
 			setTransitionName(transitionName);
 		}
 
-		Integer daysDuration = (Integer)attributes.get("daysDuration");
-
-		if (daysDuration != null) {
-			setDaysDuration(daysDuration);
-		}
-
 		String dossierStatus = (String)attributes.get("dossierStatus");
 
 		if (dossierStatus != null) {
 			setDossierStatus(dossierStatus);
+		}
+
+		Integer notifyStatus = (Integer)attributes.get("notifyStatus");
+
+		if (notifyStatus != null) {
+			setNotifyStatus(notifyStatus);
+		}
+
+		Integer sendResults = (Integer)attributes.get("sendResults");
+
+		if (sendResults != null) {
+			setSendResults(sendResults);
+		}
+
+		Integer requestPayment = (Integer)attributes.get("requestPayment");
+
+		if (requestPayment != null) {
+			setRequestPayment(requestPayment);
 		}
 
 		Integer userAssignment = (Integer)attributes.get("userAssignment");
@@ -432,6 +453,29 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 	}
 
 	@Override
+	public String getAutoCondition() {
+		return _autoCondition;
+	}
+
+	@Override
+	public void setAutoCondition(String autoCondition) {
+		_autoCondition = autoCondition;
+
+		if (_stepTransitionRemoteModel != null) {
+			try {
+				Class<?> clazz = _stepTransitionRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setAutoCondition", String.class);
+
+				method.invoke(_stepTransitionRemoteModel, autoCondition);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
 	public String getTransitionName() {
 		return _transitionName;
 	}
@@ -456,29 +500,6 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 	}
 
 	@Override
-	public int getDaysDuration() {
-		return _daysDuration;
-	}
-
-	@Override
-	public void setDaysDuration(int daysDuration) {
-		_daysDuration = daysDuration;
-
-		if (_stepTransitionRemoteModel != null) {
-			try {
-				Class<?> clazz = _stepTransitionRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setDaysDuration", int.class);
-
-				method.invoke(_stepTransitionRemoteModel, daysDuration);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
 	public String getDossierStatus() {
 		return _dossierStatus;
 	}
@@ -494,6 +515,75 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 				Method method = clazz.getMethod("setDossierStatus", String.class);
 
 				method.invoke(_stepTransitionRemoteModel, dossierStatus);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public int getNotifyStatus() {
+		return _notifyStatus;
+	}
+
+	@Override
+	public void setNotifyStatus(int notifyStatus) {
+		_notifyStatus = notifyStatus;
+
+		if (_stepTransitionRemoteModel != null) {
+			try {
+				Class<?> clazz = _stepTransitionRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setNotifyStatus", int.class);
+
+				method.invoke(_stepTransitionRemoteModel, notifyStatus);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public int getSendResults() {
+		return _sendResults;
+	}
+
+	@Override
+	public void setSendResults(int sendResults) {
+		_sendResults = sendResults;
+
+		if (_stepTransitionRemoteModel != null) {
+			try {
+				Class<?> clazz = _stepTransitionRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setSendResults", int.class);
+
+				method.invoke(_stepTransitionRemoteModel, sendResults);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public int getRequestPayment() {
+		return _requestPayment;
+	}
+
+	@Override
+	public void setRequestPayment(int requestPayment) {
+		_requestPayment = requestPayment;
+
+		if (_stepTransitionRemoteModel != null) {
+			try {
+				Class<?> clazz = _stepTransitionRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setRequestPayment", int.class);
+
+				method.invoke(_stepTransitionRemoteModel, requestPayment);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -628,9 +718,12 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 		clone.setPreDossierStepId(getPreDossierStepId());
 		clone.setPostDossierStepId(getPostDossierStepId());
 		clone.setPrecondition(getPrecondition());
+		clone.setAutoCondition(getAutoCondition());
 		clone.setTransitionName(getTransitionName());
-		clone.setDaysDuration(getDaysDuration());
 		clone.setDossierStatus(getDossierStatus());
+		clone.setNotifyStatus(getNotifyStatus());
+		clone.setSendResults(getSendResults());
+		clone.setRequestPayment(getRequestPayment());
 		clone.setUserAssignment(getUserAssignment());
 		clone.setNewProcessOrder(getNewProcessOrder());
 
@@ -685,7 +778,7 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(31);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("{stepTransitionId=");
 		sb.append(getStepTransitionId());
@@ -707,12 +800,18 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 		sb.append(getPostDossierStepId());
 		sb.append(", precondition=");
 		sb.append(getPrecondition());
+		sb.append(", autoCondition=");
+		sb.append(getAutoCondition());
 		sb.append(", transitionName=");
 		sb.append(getTransitionName());
-		sb.append(", daysDuration=");
-		sb.append(getDaysDuration());
 		sb.append(", dossierStatus=");
 		sb.append(getDossierStatus());
+		sb.append(", notifyStatus=");
+		sb.append(getNotifyStatus());
+		sb.append(", sendResults=");
+		sb.append(getSendResults());
+		sb.append(", requestPayment=");
+		sb.append(getRequestPayment());
 		sb.append(", userAssignment=");
 		sb.append(getUserAssignment());
 		sb.append(", newProcessOrder=");
@@ -724,7 +823,7 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(49);
+		StringBundler sb = new StringBundler(58);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.StepTransition");
@@ -771,16 +870,28 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 		sb.append(getPrecondition());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>autoCondition</column-name><column-value><![CDATA[");
+		sb.append(getAutoCondition());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>transitionName</column-name><column-value><![CDATA[");
 		sb.append(getTransitionName());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>daysDuration</column-name><column-value><![CDATA[");
-		sb.append(getDaysDuration());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>dossierStatus</column-name><column-value><![CDATA[");
 		sb.append(getDossierStatus());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>notifyStatus</column-name><column-value><![CDATA[");
+		sb.append(getNotifyStatus());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>sendResults</column-name><column-value><![CDATA[");
+		sb.append(getSendResults());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>requestPayment</column-name><column-value><![CDATA[");
+		sb.append(getRequestPayment());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>userAssignment</column-name><column-value><![CDATA[");
@@ -807,9 +918,12 @@ public class StepTransitionClp extends BaseModelImpl<StepTransition>
 	private long _preDossierStepId;
 	private long _postDossierStepId;
 	private String _precondition;
+	private String _autoCondition;
 	private String _transitionName;
-	private int _daysDuration;
 	private String _dossierStatus;
+	private int _notifyStatus;
+	private int _sendResults;
+	private int _requestPayment;
 	private int _userAssignment;
 	private int _newProcessOrder;
 	private BaseModel<?> _stepTransitionRemoteModel;

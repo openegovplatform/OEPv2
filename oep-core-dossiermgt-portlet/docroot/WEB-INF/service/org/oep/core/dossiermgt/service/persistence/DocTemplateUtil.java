@@ -751,6 +751,231 @@ public class DocTemplateUtil {
 		return getPersistence().countAll();
 	}
 
+	/**
+	* Returns all the dossier docs associated with the doc template.
+	*
+	* @param pk the primary key of the doc template
+	* @return the dossier docs associated with the doc template
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierDoc> getDossierDocs(
+		long pk) throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().getDossierDocs(pk);
+	}
+
+	/**
+	* Returns a range of all the dossier docs associated with the doc template.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DocTemplateModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param pk the primary key of the doc template
+	* @param start the lower bound of the range of doc templates
+	* @param end the upper bound of the range of doc templates (not inclusive)
+	* @return the range of dossier docs associated with the doc template
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierDoc> getDossierDocs(
+		long pk, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().getDossierDocs(pk, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the dossier docs associated with the doc template.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DocTemplateModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param pk the primary key of the doc template
+	* @param start the lower bound of the range of doc templates
+	* @param end the upper bound of the range of doc templates (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of dossier docs associated with the doc template
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierDoc> getDossierDocs(
+		long pk, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().getDossierDocs(pk, start, end, orderByComparator);
+	}
+
+	/**
+	* Returns the number of dossier docs associated with the doc template.
+	*
+	* @param pk the primary key of the doc template
+	* @return the number of dossier docs associated with the doc template
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int getDossierDocsSize(long pk)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().getDossierDocsSize(pk);
+	}
+
+	/**
+	* Returns <code>true</code> if the dossier doc is associated with the doc template.
+	*
+	* @param pk the primary key of the doc template
+	* @param dossierDocPK the primary key of the dossier doc
+	* @return <code>true</code> if the dossier doc is associated with the doc template; <code>false</code> otherwise
+	* @throws SystemException if a system exception occurred
+	*/
+	public static boolean containsDossierDoc(long pk, long dossierDocPK)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().containsDossierDoc(pk, dossierDocPK);
+	}
+
+	/**
+	* Returns <code>true</code> if the doc template has any dossier docs associated with it.
+	*
+	* @param pk the primary key of the doc template to check for associations with dossier docs
+	* @return <code>true</code> if the doc template has any dossier docs associated with it; <code>false</code> otherwise
+	* @throws SystemException if a system exception occurred
+	*/
+	public static boolean containsDossierDocs(long pk)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().containsDossierDocs(pk);
+	}
+
+	/**
+	* Adds an association between the doc template and the dossier doc. Also notifies the appropriate model listeners and clears the mapping table finder cache.
+	*
+	* @param pk the primary key of the doc template
+	* @param dossierDocPK the primary key of the dossier doc
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void addDossierDoc(long pk, long dossierDocPK)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().addDossierDoc(pk, dossierDocPK);
+	}
+
+	/**
+	* Adds an association between the doc template and the dossier doc. Also notifies the appropriate model listeners and clears the mapping table finder cache.
+	*
+	* @param pk the primary key of the doc template
+	* @param dossierDoc the dossier doc
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void addDossierDoc(long pk,
+		org.oep.core.dossiermgt.model.DossierDoc dossierDoc)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().addDossierDoc(pk, dossierDoc);
+	}
+
+	/**
+	* Adds an association between the doc template and the dossier docs. Also notifies the appropriate model listeners and clears the mapping table finder cache.
+	*
+	* @param pk the primary key of the doc template
+	* @param dossierDocPKs the primary keys of the dossier docs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void addDossierDocs(long pk, long[] dossierDocPKs)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().addDossierDocs(pk, dossierDocPKs);
+	}
+
+	/**
+	* Adds an association between the doc template and the dossier docs. Also notifies the appropriate model listeners and clears the mapping table finder cache.
+	*
+	* @param pk the primary key of the doc template
+	* @param dossierDocs the dossier docs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void addDossierDocs(long pk,
+		java.util.List<org.oep.core.dossiermgt.model.DossierDoc> dossierDocs)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().addDossierDocs(pk, dossierDocs);
+	}
+
+	/**
+	* Clears all associations between the doc template and its dossier docs. Also notifies the appropriate model listeners and clears the mapping table finder cache.
+	*
+	* @param pk the primary key of the doc template to clear the associated dossier docs from
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void clearDossierDocs(long pk)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().clearDossierDocs(pk);
+	}
+
+	/**
+	* Removes the association between the doc template and the dossier doc. Also notifies the appropriate model listeners and clears the mapping table finder cache.
+	*
+	* @param pk the primary key of the doc template
+	* @param dossierDocPK the primary key of the dossier doc
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeDossierDoc(long pk, long dossierDocPK)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().removeDossierDoc(pk, dossierDocPK);
+	}
+
+	/**
+	* Removes the association between the doc template and the dossier doc. Also notifies the appropriate model listeners and clears the mapping table finder cache.
+	*
+	* @param pk the primary key of the doc template
+	* @param dossierDoc the dossier doc
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeDossierDoc(long pk,
+		org.oep.core.dossiermgt.model.DossierDoc dossierDoc)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().removeDossierDoc(pk, dossierDoc);
+	}
+
+	/**
+	* Removes the association between the doc template and the dossier docs. Also notifies the appropriate model listeners and clears the mapping table finder cache.
+	*
+	* @param pk the primary key of the doc template
+	* @param dossierDocPKs the primary keys of the dossier docs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeDossierDocs(long pk, long[] dossierDocPKs)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().removeDossierDocs(pk, dossierDocPKs);
+	}
+
+	/**
+	* Removes the association between the doc template and the dossier docs. Also notifies the appropriate model listeners and clears the mapping table finder cache.
+	*
+	* @param pk the primary key of the doc template
+	* @param dossierDocs the dossier docs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeDossierDocs(long pk,
+		java.util.List<org.oep.core.dossiermgt.model.DossierDoc> dossierDocs)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().removeDossierDocs(pk, dossierDocs);
+	}
+
+	/**
+	* Sets the dossier docs associated with the doc template, removing and adding associations as necessary. Also notifies the appropriate model listeners and clears the mapping table finder cache.
+	*
+	* @param pk the primary key of the doc template
+	* @param dossierDocPKs the primary keys of the dossier docs to be associated with the doc template
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void setDossierDocs(long pk, long[] dossierDocPKs)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().setDossierDocs(pk, dossierDocPKs);
+	}
+
+	/**
+	* Sets the dossier docs associated with the doc template, removing and adding associations as necessary. Also notifies the appropriate model listeners and clears the mapping table finder cache.
+	*
+	* @param pk the primary key of the doc template
+	* @param dossierDocs the dossier docs to be associated with the doc template
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void setDossierDocs(long pk,
+		java.util.List<org.oep.core.dossiermgt.model.DossierDoc> dossierDocs)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().setDossierDocs(pk, dossierDocs);
+	}
+
 	public static DocTemplatePersistence getPersistence() {
 		if (_persistence == null) {
 			_persistence = (DocTemplatePersistence)PortletBeanLocatorUtil.locate(org.oep.core.dossiermgt.service.ClpSerializer.getServletContextName(),

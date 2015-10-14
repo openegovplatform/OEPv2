@@ -17,7 +17,7 @@ package org.oep.core.datamgt.parameter.model;
 import com.liferay.portal.model.PersistedModel;
 
 /**
- * The extended model interface for the DefaultParameter service. Represents a row in the &quot;oep_datamgt_DefaultParameter&quot; database table, with each column mapped to a property of this class.
+ * The extended model interface for the DefaultParameter service. Represents a row in the &quot;oep_datamgt_defaultparameter&quot; database table, with each column mapped to a property of this class.
  *
  * @author TrungDK
  * @see DefaultParameterModel

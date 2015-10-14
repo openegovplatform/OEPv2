@@ -29,11 +29,10 @@ import org.oep.core.dossiermgt.model.DocFileClp;
 import org.oep.core.dossiermgt.model.DocFileVersionClp;
 import org.oep.core.dossiermgt.model.DocTemplateClp;
 import org.oep.core.dossiermgt.model.DossierClp;
-import org.oep.core.dossiermgt.model.DossierDoc2TemplateClp;
 import org.oep.core.dossiermgt.model.DossierDocClp;
 import org.oep.core.dossiermgt.model.DossierFolder2RoleClp;
 import org.oep.core.dossiermgt.model.DossierFolderClp;
-import org.oep.core.dossiermgt.model.DossierProcAgencyClp;
+import org.oep.core.dossiermgt.model.DossierProcAgentClp;
 import org.oep.core.dossiermgt.model.DossierProcClp;
 import org.oep.core.dossiermgt.model.EbMessageClp;
 import org.oep.core.dossiermgt.model.EbPartnerShipClp;
@@ -41,6 +40,8 @@ import org.oep.core.dossiermgt.model.PaymentConfigClp;
 import org.oep.core.dossiermgt.model.PaymentFileClp;
 import org.oep.core.dossiermgt.model.PaymentRequestClp;
 import org.oep.core.dossiermgt.model.ProfileDataClp;
+import org.oep.core.dossiermgt.model.StatisticByAgencyClp;
+import org.oep.core.dossiermgt.model.StatisticByDayClp;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -137,10 +138,6 @@ public class ClpSerializer {
 			return translateInputDossierDoc(oldModel);
 		}
 
-		if (oldModelClassName.equals(DossierDoc2TemplateClp.class.getName())) {
-			return translateInputDossierDoc2Template(oldModel);
-		}
-
 		if (oldModelClassName.equals(DossierFolderClp.class.getName())) {
 			return translateInputDossierFolder(oldModel);
 		}
@@ -153,8 +150,8 @@ public class ClpSerializer {
 			return translateInputDossierProc(oldModel);
 		}
 
-		if (oldModelClassName.equals(DossierProcAgencyClp.class.getName())) {
-			return translateInputDossierProcAgency(oldModel);
+		if (oldModelClassName.equals(DossierProcAgentClp.class.getName())) {
+			return translateInputDossierProcAgent(oldModel);
 		}
 
 		if (oldModelClassName.equals(EbMessageClp.class.getName())) {
@@ -179,6 +176,14 @@ public class ClpSerializer {
 
 		if (oldModelClassName.equals(ProfileDataClp.class.getName())) {
 			return translateInputProfileData(oldModel);
+		}
+
+		if (oldModelClassName.equals(StatisticByAgencyClp.class.getName())) {
+			return translateInputStatisticByAgency(oldModel);
+		}
+
+		if (oldModelClassName.equals(StatisticByDayClp.class.getName())) {
+			return translateInputStatisticByDay(oldModel);
 		}
 
 		return oldModel;
@@ -246,17 +251,6 @@ public class ClpSerializer {
 		return newModel;
 	}
 
-	public static Object translateInputDossierDoc2Template(
-		BaseModel<?> oldModel) {
-		DossierDoc2TemplateClp oldClpModel = (DossierDoc2TemplateClp)oldModel;
-
-		BaseModel<?> newModel = oldClpModel.getDossierDoc2TemplateRemoteModel();
-
-		newModel.setModelAttributes(oldClpModel.getModelAttributes());
-
-		return newModel;
-	}
-
 	public static Object translateInputDossierFolder(BaseModel<?> oldModel) {
 		DossierFolderClp oldClpModel = (DossierFolderClp)oldModel;
 
@@ -287,10 +281,10 @@ public class ClpSerializer {
 		return newModel;
 	}
 
-	public static Object translateInputDossierProcAgency(BaseModel<?> oldModel) {
-		DossierProcAgencyClp oldClpModel = (DossierProcAgencyClp)oldModel;
+	public static Object translateInputDossierProcAgent(BaseModel<?> oldModel) {
+		DossierProcAgentClp oldClpModel = (DossierProcAgentClp)oldModel;
 
-		BaseModel<?> newModel = oldClpModel.getDossierProcAgencyRemoteModel();
+		BaseModel<?> newModel = oldClpModel.getDossierProcAgentRemoteModel();
 
 		newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -351,6 +345,26 @@ public class ClpSerializer {
 		ProfileDataClp oldClpModel = (ProfileDataClp)oldModel;
 
 		BaseModel<?> newModel = oldClpModel.getProfileDataRemoteModel();
+
+		newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+		return newModel;
+	}
+
+	public static Object translateInputStatisticByAgency(BaseModel<?> oldModel) {
+		StatisticByAgencyClp oldClpModel = (StatisticByAgencyClp)oldModel;
+
+		BaseModel<?> newModel = oldClpModel.getStatisticByAgencyRemoteModel();
+
+		newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+		return newModel;
+	}
+
+	public static Object translateInputStatisticByDay(BaseModel<?> oldModel) {
+		StatisticByDayClp oldClpModel = (StatisticByDayClp)oldModel;
+
+		BaseModel<?> newModel = oldClpModel.getStatisticByDayRemoteModel();
 
 		newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -560,43 +574,6 @@ public class ClpSerializer {
 		}
 
 		if (oldModelClassName.equals(
-					"org.oep.core.dossiermgt.model.impl.DossierDoc2TemplateImpl")) {
-			return translateOutputDossierDoc2Template(oldModel);
-		}
-		else if (oldModelClassName.endsWith("Clp")) {
-			try {
-				ClassLoader classLoader = ClpSerializer.class.getClassLoader();
-
-				Method getClpSerializerClassMethod = oldModelClass.getMethod(
-						"getClpSerializerClass");
-
-				Class<?> oldClpSerializerClass = (Class<?>)getClpSerializerClassMethod.invoke(oldModel);
-
-				Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
-
-				Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
-						BaseModel.class);
-
-				Class<?> oldModelModelClass = oldModel.getModelClass();
-
-				Method getRemoteModelMethod = oldModelClass.getMethod("get" +
-						oldModelModelClass.getSimpleName() + "RemoteModel");
-
-				Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
-
-				BaseModel<?> newModel = (BaseModel<?>)translateOutputMethod.invoke(null,
-						oldRemoteModel);
-
-				return newModel;
-			}
-			catch (Throwable t) {
-				if (_log.isInfoEnabled()) {
-					_log.info("Unable to translate " + oldModelClassName, t);
-				}
-			}
-		}
-
-		if (oldModelClassName.equals(
 					"org.oep.core.dossiermgt.model.impl.DossierFolderImpl")) {
 			return translateOutputDossierFolder(oldModel);
 		}
@@ -708,8 +685,8 @@ public class ClpSerializer {
 		}
 
 		if (oldModelClassName.equals(
-					"org.oep.core.dossiermgt.model.impl.DossierProcAgencyImpl")) {
-			return translateOutputDossierProcAgency(oldModel);
+					"org.oep.core.dossiermgt.model.impl.DossierProcAgentImpl")) {
+			return translateOutputDossierProcAgent(oldModel);
 		}
 		else if (oldModelClassName.endsWith("Clp")) {
 			try {
@@ -966,6 +943,80 @@ public class ClpSerializer {
 			}
 		}
 
+		if (oldModelClassName.equals(
+					"org.oep.core.dossiermgt.model.impl.StatisticByAgencyImpl")) {
+			return translateOutputStatisticByAgency(oldModel);
+		}
+		else if (oldModelClassName.endsWith("Clp")) {
+			try {
+				ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+				Method getClpSerializerClassMethod = oldModelClass.getMethod(
+						"getClpSerializerClass");
+
+				Class<?> oldClpSerializerClass = (Class<?>)getClpSerializerClassMethod.invoke(oldModel);
+
+				Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+				Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+						BaseModel.class);
+
+				Class<?> oldModelModelClass = oldModel.getModelClass();
+
+				Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+						oldModelModelClass.getSimpleName() + "RemoteModel");
+
+				Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+				BaseModel<?> newModel = (BaseModel<?>)translateOutputMethod.invoke(null,
+						oldRemoteModel);
+
+				return newModel;
+			}
+			catch (Throwable t) {
+				if (_log.isInfoEnabled()) {
+					_log.info("Unable to translate " + oldModelClassName, t);
+				}
+			}
+		}
+
+		if (oldModelClassName.equals(
+					"org.oep.core.dossiermgt.model.impl.StatisticByDayImpl")) {
+			return translateOutputStatisticByDay(oldModel);
+		}
+		else if (oldModelClassName.endsWith("Clp")) {
+			try {
+				ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+				Method getClpSerializerClassMethod = oldModelClass.getMethod(
+						"getClpSerializerClass");
+
+				Class<?> oldClpSerializerClass = (Class<?>)getClpSerializerClassMethod.invoke(oldModel);
+
+				Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+				Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+						BaseModel.class);
+
+				Class<?> oldModelModelClass = oldModel.getModelClass();
+
+				Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+						oldModelModelClass.getSimpleName() + "RemoteModel");
+
+				Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+				BaseModel<?> newModel = (BaseModel<?>)translateOutputMethod.invoke(null,
+						oldRemoteModel);
+
+				return newModel;
+			}
+			catch (Throwable t) {
+				if (_log.isInfoEnabled()) {
+					_log.info("Unable to translate " + oldModelClassName, t);
+				}
+			}
+		}
+
 		return oldModel;
 	}
 
@@ -1111,11 +1162,6 @@ public class ClpSerializer {
 		}
 
 		if (className.equals(
-					"org.oep.core.dossiermgt.NoSuchDossierDoc2TemplateException")) {
-			return new org.oep.core.dossiermgt.NoSuchDossierDoc2TemplateException();
-		}
-
-		if (className.equals(
 					"org.oep.core.dossiermgt.NoSuchDossierFolderException")) {
 			return new org.oep.core.dossiermgt.NoSuchDossierFolderException();
 		}
@@ -1131,8 +1177,8 @@ public class ClpSerializer {
 		}
 
 		if (className.equals(
-					"org.oep.core.dossiermgt.NoSuchDossierProcAgencyException")) {
-			return new org.oep.core.dossiermgt.NoSuchDossierProcAgencyException();
+					"org.oep.core.dossiermgt.NoSuchDossierProcAgentException")) {
+			return new org.oep.core.dossiermgt.NoSuchDossierProcAgentException();
 		}
 
 		if (className.equals("org.oep.core.dossiermgt.NoSuchEbMessageException")) {
@@ -1162,6 +1208,16 @@ public class ClpSerializer {
 		if (className.equals(
 					"org.oep.core.dossiermgt.NoSuchProfileDataException")) {
 			return new org.oep.core.dossiermgt.NoSuchProfileDataException();
+		}
+
+		if (className.equals(
+					"org.oep.core.dossiermgt.NoSuchStatisticByAgencyException")) {
+			return new org.oep.core.dossiermgt.NoSuchStatisticByAgencyException();
+		}
+
+		if (className.equals(
+					"org.oep.core.dossiermgt.NoSuchStatisticByDayException")) {
+			return new org.oep.core.dossiermgt.NoSuchStatisticByDayException();
 		}
 
 		return throwable;
@@ -1217,17 +1273,6 @@ public class ClpSerializer {
 		return newModel;
 	}
 
-	public static Object translateOutputDossierDoc2Template(
-		BaseModel<?> oldModel) {
-		DossierDoc2TemplateClp newModel = new DossierDoc2TemplateClp();
-
-		newModel.setModelAttributes(oldModel.getModelAttributes());
-
-		newModel.setDossierDoc2TemplateRemoteModel(oldModel);
-
-		return newModel;
-	}
-
 	public static Object translateOutputDossierFolder(BaseModel<?> oldModel) {
 		DossierFolderClp newModel = new DossierFolderClp();
 
@@ -1259,12 +1304,12 @@ public class ClpSerializer {
 		return newModel;
 	}
 
-	public static Object translateOutputDossierProcAgency(BaseModel<?> oldModel) {
-		DossierProcAgencyClp newModel = new DossierProcAgencyClp();
+	public static Object translateOutputDossierProcAgent(BaseModel<?> oldModel) {
+		DossierProcAgentClp newModel = new DossierProcAgentClp();
 
 		newModel.setModelAttributes(oldModel.getModelAttributes());
 
-		newModel.setDossierProcAgencyRemoteModel(oldModel);
+		newModel.setDossierProcAgentRemoteModel(oldModel);
 
 		return newModel;
 	}
@@ -1325,6 +1370,26 @@ public class ClpSerializer {
 		newModel.setModelAttributes(oldModel.getModelAttributes());
 
 		newModel.setProfileDataRemoteModel(oldModel);
+
+		return newModel;
+	}
+
+	public static Object translateOutputStatisticByAgency(BaseModel<?> oldModel) {
+		StatisticByAgencyClp newModel = new StatisticByAgencyClp();
+
+		newModel.setModelAttributes(oldModel.getModelAttributes());
+
+		newModel.setStatisticByAgencyRemoteModel(oldModel);
+
+		return newModel;
+	}
+
+	public static Object translateOutputStatisticByDay(BaseModel<?> oldModel) {
+		StatisticByDayClp newModel = new StatisticByDayClp();
+
+		newModel.setModelAttributes(oldModel.getModelAttributes());
+
+		newModel.setStatisticByDayRemoteModel(oldModel);
 
 		return newModel;
 	}

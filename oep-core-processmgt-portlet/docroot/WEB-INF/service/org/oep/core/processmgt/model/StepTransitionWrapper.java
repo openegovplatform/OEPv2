@@ -60,9 +60,12 @@ public class StepTransitionWrapper implements StepTransition,
 		attributes.put("preDossierStepId", getPreDossierStepId());
 		attributes.put("postDossierStepId", getPostDossierStepId());
 		attributes.put("precondition", getPrecondition());
+		attributes.put("autoCondition", getAutoCondition());
 		attributes.put("transitionName", getTransitionName());
-		attributes.put("daysDuration", getDaysDuration());
 		attributes.put("dossierStatus", getDossierStatus());
+		attributes.put("notifyStatus", getNotifyStatus());
+		attributes.put("sendResults", getSendResults());
+		attributes.put("requestPayment", getRequestPayment());
 		attributes.put("userAssignment", getUserAssignment());
 		attributes.put("newProcessOrder", getNewProcessOrder());
 
@@ -131,22 +134,40 @@ public class StepTransitionWrapper implements StepTransition,
 			setPrecondition(precondition);
 		}
 
+		String autoCondition = (String)attributes.get("autoCondition");
+
+		if (autoCondition != null) {
+			setAutoCondition(autoCondition);
+		}
+
 		String transitionName = (String)attributes.get("transitionName");
 
 		if (transitionName != null) {
 			setTransitionName(transitionName);
 		}
 
-		Integer daysDuration = (Integer)attributes.get("daysDuration");
-
-		if (daysDuration != null) {
-			setDaysDuration(daysDuration);
-		}
-
 		String dossierStatus = (String)attributes.get("dossierStatus");
 
 		if (dossierStatus != null) {
 			setDossierStatus(dossierStatus);
+		}
+
+		Integer notifyStatus = (Integer)attributes.get("notifyStatus");
+
+		if (notifyStatus != null) {
+			setNotifyStatus(notifyStatus);
+		}
+
+		Integer sendResults = (Integer)attributes.get("sendResults");
+
+		if (sendResults != null) {
+			setSendResults(sendResults);
+		}
+
+		Integer requestPayment = (Integer)attributes.get("requestPayment");
+
+		if (requestPayment != null) {
+			setRequestPayment(requestPayment);
 		}
 
 		Integer userAssignment = (Integer)attributes.get("userAssignment");
@@ -405,6 +426,26 @@ public class StepTransitionWrapper implements StepTransition,
 	}
 
 	/**
+	* Returns the auto condition of this step transition.
+	*
+	* @return the auto condition of this step transition
+	*/
+	@Override
+	public java.lang.String getAutoCondition() {
+		return _stepTransition.getAutoCondition();
+	}
+
+	/**
+	* Sets the auto condition of this step transition.
+	*
+	* @param autoCondition the auto condition of this step transition
+	*/
+	@Override
+	public void setAutoCondition(java.lang.String autoCondition) {
+		_stepTransition.setAutoCondition(autoCondition);
+	}
+
+	/**
 	* Returns the transition name of this step transition.
 	*
 	* @return the transition name of this step transition
@@ -425,26 +466,6 @@ public class StepTransitionWrapper implements StepTransition,
 	}
 
 	/**
-	* Returns the days duration of this step transition.
-	*
-	* @return the days duration of this step transition
-	*/
-	@Override
-	public int getDaysDuration() {
-		return _stepTransition.getDaysDuration();
-	}
-
-	/**
-	* Sets the days duration of this step transition.
-	*
-	* @param daysDuration the days duration of this step transition
-	*/
-	@Override
-	public void setDaysDuration(int daysDuration) {
-		_stepTransition.setDaysDuration(daysDuration);
-	}
-
-	/**
 	* Returns the dossier status of this step transition.
 	*
 	* @return the dossier status of this step transition
@@ -462,6 +483,66 @@ public class StepTransitionWrapper implements StepTransition,
 	@Override
 	public void setDossierStatus(java.lang.String dossierStatus) {
 		_stepTransition.setDossierStatus(dossierStatus);
+	}
+
+	/**
+	* Returns the notify status of this step transition.
+	*
+	* @return the notify status of this step transition
+	*/
+	@Override
+	public int getNotifyStatus() {
+		return _stepTransition.getNotifyStatus();
+	}
+
+	/**
+	* Sets the notify status of this step transition.
+	*
+	* @param notifyStatus the notify status of this step transition
+	*/
+	@Override
+	public void setNotifyStatus(int notifyStatus) {
+		_stepTransition.setNotifyStatus(notifyStatus);
+	}
+
+	/**
+	* Returns the send results of this step transition.
+	*
+	* @return the send results of this step transition
+	*/
+	@Override
+	public int getSendResults() {
+		return _stepTransition.getSendResults();
+	}
+
+	/**
+	* Sets the send results of this step transition.
+	*
+	* @param sendResults the send results of this step transition
+	*/
+	@Override
+	public void setSendResults(int sendResults) {
+		_stepTransition.setSendResults(sendResults);
+	}
+
+	/**
+	* Returns the request payment of this step transition.
+	*
+	* @return the request payment of this step transition
+	*/
+	@Override
+	public int getRequestPayment() {
+		return _stepTransition.getRequestPayment();
+	}
+
+	/**
+	* Sets the request payment of this step transition.
+	*
+	* @param requestPayment the request payment of this step transition
+	*/
+	@Override
+	public void setRequestPayment(int requestPayment) {
+		_stepTransition.setRequestPayment(requestPayment);
 	}
 
 	/**

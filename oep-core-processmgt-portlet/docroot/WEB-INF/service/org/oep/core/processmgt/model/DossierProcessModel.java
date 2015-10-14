@@ -174,48 +174,48 @@ public interface DossierProcessModel extends BaseModel<DossierProcess> {
 	public void setDossierProcId(long dossierProcId);
 
 	/**
-	 * Returns the gov agent ID of this dossier process.
+	 * Returns the gov agency ID of this dossier process.
 	 *
-	 * @return the gov agent ID of this dossier process
+	 * @return the gov agency ID of this dossier process
 	 */
 	@AutoEscape
-	public String getGovAgentId();
+	public String getGovAgencyId();
 
 	/**
-	 * Sets the gov agent ID of this dossier process.
+	 * Sets the gov agency ID of this dossier process.
 	 *
-	 * @param govAgentId the gov agent ID of this dossier process
+	 * @param govAgencyId the gov agency ID of this dossier process
 	 */
-	public void setGovAgentId(String govAgentId);
+	public void setGovAgencyId(String govAgencyId);
 
 	/**
-	 * Returns the gov agent name of this dossier process.
+	 * Returns the gov agency name of this dossier process.
 	 *
-	 * @return the gov agent name of this dossier process
+	 * @return the gov agency name of this dossier process
 	 */
 	@AutoEscape
-	public String getGovAgentName();
+	public String getGovAgencyName();
 
 	/**
-	 * Sets the gov agent name of this dossier process.
+	 * Sets the gov agency name of this dossier process.
 	 *
-	 * @param govAgentName the gov agent name of this dossier process
+	 * @param govAgencyName the gov agency name of this dossier process
 	 */
-	public void setGovAgentName(String govAgentName);
+	public void setGovAgencyName(String govAgencyName);
 
 	/**
-	 * Returns the start dossier step ID of this dossier process.
+	 * Returns the start step transition ID of this dossier process.
 	 *
-	 * @return the start dossier step ID of this dossier process
+	 * @return the start step transition ID of this dossier process
 	 */
-	public long getStartDossierStepId();
+	public long getStartStepTransitionId();
 
 	/**
-	 * Sets the start dossier step ID of this dossier process.
+	 * Sets the start step transition ID of this dossier process.
 	 *
-	 * @param startDossierStepId the start dossier step ID of this dossier process
+	 * @param startStepTransitionId the start step transition ID of this dossier process
 	 */
-	public void setStartDossierStepId(long startDossierStepId);
+	public void setStartStepTransitionId(long startStepTransitionId);
 
 	/**
 	 * Returns the days duration of this dossier process.
@@ -230,6 +230,20 @@ public interface DossierProcessModel extends BaseModel<DossierProcess> {
 	 * @param daysDuration the days duration of this dossier process
 	 */
 	public void setDaysDuration(int daysDuration);
+
+	/**
+	 * Returns the fee of this dossier process.
+	 *
+	 * @return the fee of this dossier process
+	 */
+	public int getFee();
+
+	/**
+	 * Sets the fee of this dossier process.
+	 *
+	 * @param fee the fee of this dossier process
+	 */
+	public void setFee(int fee);
 
 	@Override
 	public boolean isNew();

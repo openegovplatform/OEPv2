@@ -6,6 +6,8 @@
     <entity name="DictCollection" table="oep_datamgt_dictcollection" local-service="true" human-name="dictionary collection">
         <column name="dictCollectionId" db-name="dictCollectionId" type="long" primary="true"></column>
         <column name="companyId" db-name="companyId" type="long"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
         <column name="createDate" db-name="createDate" type="Date"></column>
         <column name="modifiedDate" db-name="modifiedDate" type="Date"></column>
         <column name="name" db-name="name" type="String"></column>
@@ -45,6 +47,8 @@
     <entity name="DictData" table="oep_datamgt_dictdata" local-service="true" human-name="dictionary data">
         <column name="dictDataId" db-name="dictDataId" type="long" primary="true"></column>
         <column name="companyId" db-name="companyId" type="long"></column>
+      	<column name="userId" type="long"></column>
+      	<column name="groupId" type="long"></column>
         <column name="createDate" db-name="createDate" type="Date"></column>
         <column name="modifiedDate" db-name="modifiedDate" type="Date"></column>
         <column name="collectionName" db-name="collectionName" type="String"></column>
@@ -93,6 +97,8 @@
     <entity name="DictAttribute" table="oep_datamgt_dictattribute" local-service="true" human-name="dictionary attribute">
         <column name="dictAttributeId" db-name="dictAttributeId" type="long" primary="true"></column>
         <column name="companyId" db-name="companyId" type="long"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
         <column name="createDate" db-name="createDate" type="Date"></column>
         <column name="modifiedDate" db-name="modifiedDate" type="Date"></column>
         <column name="collectionName" db-name="collectionName" type="String"></column>
@@ -119,6 +125,8 @@
     <entity name="DictMetaData" table="oep_datamgt_dictmetadata" local-service="true" human-name="dictionary meta data">
         <column name="dictMetaDataId" db-name="dictMetaDataId" type="long" primary="true"></column>
         <column name="companyId" db-name="companyId" type="long"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
         <column name="createDate" db-name="createDate" type="Date"></column>
         <column name="modifiedDate" db-name="modifiedDate" type="Date"></column>
         <column name="dictDataId" db-name="dictDataId" type="long"></column>

@@ -38,7 +38,7 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(23);
+		StringBundler sb = new StringBundler(25);
 
 		sb.append("{dossierProcessId=");
 		sb.append(dossierProcessId);
@@ -54,14 +54,16 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 		sb.append(modifiedDate);
 		sb.append(", dossierProcId=");
 		sb.append(dossierProcId);
-		sb.append(", govAgentId=");
-		sb.append(govAgentId);
-		sb.append(", govAgentName=");
-		sb.append(govAgentName);
-		sb.append(", startDossierStepId=");
-		sb.append(startDossierStepId);
+		sb.append(", govAgencyId=");
+		sb.append(govAgencyId);
+		sb.append(", govAgencyName=");
+		sb.append(govAgencyName);
+		sb.append(", startStepTransitionId=");
+		sb.append(startStepTransitionId);
 		sb.append(", daysDuration=");
 		sb.append(daysDuration);
+		sb.append(", fee=");
+		sb.append(fee);
 		sb.append("}");
 
 		return sb.toString();
@@ -92,22 +94,23 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 
 		dossierProcessImpl.setDossierProcId(dossierProcId);
 
-		if (govAgentId == null) {
-			dossierProcessImpl.setGovAgentId(StringPool.BLANK);
+		if (govAgencyId == null) {
+			dossierProcessImpl.setGovAgencyId(StringPool.BLANK);
 		}
 		else {
-			dossierProcessImpl.setGovAgentId(govAgentId);
+			dossierProcessImpl.setGovAgencyId(govAgencyId);
 		}
 
-		if (govAgentName == null) {
-			dossierProcessImpl.setGovAgentName(StringPool.BLANK);
+		if (govAgencyName == null) {
+			dossierProcessImpl.setGovAgencyName(StringPool.BLANK);
 		}
 		else {
-			dossierProcessImpl.setGovAgentName(govAgentName);
+			dossierProcessImpl.setGovAgencyName(govAgencyName);
 		}
 
-		dossierProcessImpl.setStartDossierStepId(startDossierStepId);
+		dossierProcessImpl.setStartStepTransitionId(startStepTransitionId);
 		dossierProcessImpl.setDaysDuration(daysDuration);
+		dossierProcessImpl.setFee(fee);
 
 		dossierProcessImpl.resetOriginalValues();
 
@@ -123,10 +126,11 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
 		dossierProcId = objectInput.readLong();
-		govAgentId = objectInput.readUTF();
-		govAgentName = objectInput.readUTF();
-		startDossierStepId = objectInput.readLong();
+		govAgencyId = objectInput.readUTF();
+		govAgencyName = objectInput.readUTF();
+		startStepTransitionId = objectInput.readLong();
 		daysDuration = objectInput.readInt();
+		fee = objectInput.readInt();
 	}
 
 	@Override
@@ -140,22 +144,23 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 		objectOutput.writeLong(modifiedDate);
 		objectOutput.writeLong(dossierProcId);
 
-		if (govAgentId == null) {
+		if (govAgencyId == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(govAgentId);
+			objectOutput.writeUTF(govAgencyId);
 		}
 
-		if (govAgentName == null) {
+		if (govAgencyName == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(govAgentName);
+			objectOutput.writeUTF(govAgencyName);
 		}
 
-		objectOutput.writeLong(startDossierStepId);
+		objectOutput.writeLong(startStepTransitionId);
 		objectOutput.writeInt(daysDuration);
+		objectOutput.writeInt(fee);
 	}
 
 	public long dossierProcessId;
@@ -165,8 +170,9 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 	public long createDate;
 	public long modifiedDate;
 	public long dossierProcId;
-	public String govAgentId;
-	public String govAgentName;
-	public long startDossierStepId;
+	public String govAgencyId;
+	public String govAgencyName;
+	public long startStepTransitionId;
 	public int daysDuration;
+	public int fee;
 }

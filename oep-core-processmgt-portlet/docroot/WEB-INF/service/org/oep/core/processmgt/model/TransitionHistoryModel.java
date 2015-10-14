@@ -216,6 +216,36 @@ public interface TransitionHistoryModel extends BaseModel<TransitionHistory> {
 	public void setStartDate(Date startDate);
 
 	/**
+	 * Returns the pre dossier status of this transition history.
+	 *
+	 * @return the pre dossier status of this transition history
+	 */
+	@AutoEscape
+	public String getPreDossierStatus();
+
+	/**
+	 * Sets the pre dossier status of this transition history.
+	 *
+	 * @param preDossierStatus the pre dossier status of this transition history
+	 */
+	public void setPreDossierStatus(String preDossierStatus);
+
+	/**
+	 * Returns the post dossier status of this transition history.
+	 *
+	 * @return the post dossier status of this transition history
+	 */
+	@AutoEscape
+	public String getPostDossierStatus();
+
+	/**
+	 * Sets the post dossier status of this transition history.
+	 *
+	 * @param postDossierStatus the post dossier status of this transition history
+	 */
+	public void setPostDossierStatus(String postDossierStatus);
+
+	/**
 	 * Returns the step transition ID of this transition history.
 	 *
 	 * @return the step transition ID of this transition history

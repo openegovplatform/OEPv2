@@ -1248,6 +1248,8 @@ public class DictMetaDataPersistenceImpl extends BasePersistenceImpl<DictMetaDat
 
 		dictMetaDataImpl.setDictMetaDataId(dictMetaData.getDictMetaDataId());
 		dictMetaDataImpl.setCompanyId(dictMetaData.getCompanyId());
+		dictMetaDataImpl.setUserId(dictMetaData.getUserId());
+		dictMetaDataImpl.setGroupId(dictMetaData.getGroupId());
 		dictMetaDataImpl.setCreateDate(dictMetaData.getCreateDate());
 		dictMetaDataImpl.setModifiedDate(dictMetaData.getModifiedDate());
 		dictMetaDataImpl.setDictDataId(dictMetaData.getDictDataId());

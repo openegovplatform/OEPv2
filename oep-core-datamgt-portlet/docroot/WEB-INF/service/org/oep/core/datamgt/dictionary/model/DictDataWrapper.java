@@ -51,6 +51,8 @@ public class DictDataWrapper implements DictData, ModelWrapper<DictData> {
 
 		attributes.put("dictDataId", getDictDataId());
 		attributes.put("companyId", getCompanyId());
+		attributes.put("userId", getUserId());
+		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("collectionName", getCollectionName());
@@ -82,6 +84,18 @@ public class DictDataWrapper implements DictData, ModelWrapper<DictData> {
 
 		if (companyId != null) {
 			setCompanyId(companyId);
+		}
+
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
+		Long groupId = (Long)attributes.get("groupId");
+
+		if (groupId != null) {
+			setGroupId(groupId);
 		}
 
 		Date createDate = (Date)attributes.get("createDate");
@@ -233,6 +247,68 @@ public class DictDataWrapper implements DictData, ModelWrapper<DictData> {
 	@Override
 	public void setCompanyId(long companyId) {
 		_dictData.setCompanyId(companyId);
+	}
+
+	/**
+	* Returns the user ID of this dictionary data.
+	*
+	* @return the user ID of this dictionary data
+	*/
+	@Override
+	public long getUserId() {
+		return _dictData.getUserId();
+	}
+
+	/**
+	* Sets the user ID of this dictionary data.
+	*
+	* @param userId the user ID of this dictionary data
+	*/
+	@Override
+	public void setUserId(long userId) {
+		_dictData.setUserId(userId);
+	}
+
+	/**
+	* Returns the user uuid of this dictionary data.
+	*
+	* @return the user uuid of this dictionary data
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public java.lang.String getUserUuid()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dictData.getUserUuid();
+	}
+
+	/**
+	* Sets the user uuid of this dictionary data.
+	*
+	* @param userUuid the user uuid of this dictionary data
+	*/
+	@Override
+	public void setUserUuid(java.lang.String userUuid) {
+		_dictData.setUserUuid(userUuid);
+	}
+
+	/**
+	* Returns the group ID of this dictionary data.
+	*
+	* @return the group ID of this dictionary data
+	*/
+	@Override
+	public long getGroupId() {
+		return _dictData.getGroupId();
+	}
+
+	/**
+	* Sets the group ID of this dictionary data.
+	*
+	* @param groupId the group ID of this dictionary data
+	*/
+	@Override
+	public void setGroupId(long groupId) {
+		_dictData.setGroupId(groupId);
 	}
 
 	/**

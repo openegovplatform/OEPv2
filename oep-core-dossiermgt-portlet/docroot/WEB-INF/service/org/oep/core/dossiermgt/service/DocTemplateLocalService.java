@@ -236,6 +236,121 @@ public interface DocTemplateLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public void addDossierDocDocTemplate(long dossierDocId, long docTemplateId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public void addDossierDocDocTemplate(long dossierDocId,
+		org.oep.core.dossiermgt.model.DocTemplate docTemplate)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public void addDossierDocDocTemplates(long dossierDocId,
+		long[] docTemplateIds)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public void addDossierDocDocTemplates(long dossierDocId,
+		java.util.List<org.oep.core.dossiermgt.model.DocTemplate> DocTemplates)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public void clearDossierDocDocTemplates(long dossierDocId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public void deleteDossierDocDocTemplate(long dossierDocId,
+		long docTemplateId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public void deleteDossierDocDocTemplate(long dossierDocId,
+		org.oep.core.dossiermgt.model.DocTemplate docTemplate)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public void deleteDossierDocDocTemplates(long dossierDocId,
+		long[] docTemplateIds)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public void deleteDossierDocDocTemplates(long dossierDocId,
+		java.util.List<org.oep.core.dossiermgt.model.DocTemplate> DocTemplates)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<org.oep.core.dossiermgt.model.DocTemplate> getDossierDocDocTemplates(
+		long dossierDocId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<org.oep.core.dossiermgt.model.DocTemplate> getDossierDocDocTemplates(
+		long dossierDocId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<org.oep.core.dossiermgt.model.DocTemplate> getDossierDocDocTemplates(
+		long dossierDocId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public int getDossierDocDocTemplatesCount(long dossierDocId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public boolean hasDossierDocDocTemplate(long dossierDocId,
+		long docTemplateId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public boolean hasDossierDocDocTemplates(long dossierDocId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public void setDossierDocDocTemplates(long dossierDocId,
+		long[] docTemplateIds)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
 	* Returns the Spring bean ID for this bean.
 	*
 	* @return the Spring bean ID for this bean
@@ -255,17 +370,20 @@ public interface DocTemplateLocalService extends BaseLocalService,
 		throws java.lang.Throwable;
 
 	/**
-	* Add doc template
+	* ThÃªm má»™t biá»ƒu máº«u tÃ i liá»‡u
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    Táº¡o má»›i
 	*
-	* @param
-	* @return: new doc template
+	* @param templateNo mÃ£ biá»ƒu máº«u
+	* @param title TiÃªu Ä‘á»� biá»ƒu máº«u
+	* @param enTitle TiÃªu Ä‘á»� Tiáº¿ng Anh cá»§a biá»ƒu máº«u
+	* @param fileEntryId MÃ£ tÃ i liá»‡u máº«u báº±ng module quáº£n lÃ½ phÆ°Æ¡ng tiá»‡n
+	* @return: biá»ƒu máº«u tÃ i liá»‡u má»›i táº¡o
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.DocTemplate addDocTemplate(
@@ -275,6 +393,23 @@ public interface DocTemplateLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Sá»­a thÃ´ng tin má»™t biá»ƒu máº«u tÃ i liá»‡u
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param id mÃ£ tá»± tÄƒng biá»ƒu máº«u
+	* @param templateNo mÃ£ biá»ƒu máº«u
+	* @param title TiÃªu Ä‘á»� biá»ƒu máº«u
+	* @param enTitle TiÃªu Ä‘á»� Tiáº¿ng Anh cá»§a biá»ƒu máº«u
+	* @param fileEntryId MÃ£ tÃ i liá»‡u máº«u báº±ng module quáº£n lÃ½ phÆ°Æ¡ng tiá»‡n
+	* @return: biá»ƒu máº«u tÃ i liá»‡u Ä‘Æ°á»£c sá»­a
+	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.DocTemplate updateDocTemplate(
 		long id, java.lang.String templateNo, java.lang.String title,
@@ -291,11 +426,37 @@ public interface DocTemplateLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* XÃ³a thÃ´ng tin biá»ƒu máº«u tÃ i liá»‡u
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param docTemplate Ä‘á»‘i tÆ°á»£ng biá»ƒu máº«u cáº§n xÃ³a
+	* @return
+	*/
 	public void removeDocTemplate(
 		org.oep.core.dossiermgt.model.DocTemplate docTemplate)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* XÃ³a thÃ´ng tin biá»ƒu máº«u tÃ i liá»‡u
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param id mÃ£ tá»± tÄƒng biá»ƒu máº«u cáº§n xÃ³a
+	* @return
+	*/
 	public void removeDocTemplate(long id)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;

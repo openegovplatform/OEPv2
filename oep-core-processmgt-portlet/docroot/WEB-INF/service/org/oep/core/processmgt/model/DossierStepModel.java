@@ -203,18 +203,18 @@ public interface DossierStepModel extends BaseModel<DossierStep> {
 	public void setSequenceNo(int sequenceNo);
 
 	/**
-	 * Returns the step type of this dossier step.
+	 * Returns the days duration of this dossier step.
 	 *
-	 * @return the step type of this dossier step
+	 * @return the days duration of this dossier step
 	 */
-	public int getStepType();
+	public int getDaysDuration();
 
 	/**
-	 * Sets the step type of this dossier step.
+	 * Sets the days duration of this dossier step.
 	 *
-	 * @param stepType the step type of this dossier step
+	 * @param daysDuration the days duration of this dossier step
 	 */
-	public void setStepType(int stepType);
+	public void setDaysDuration(int daysDuration);
 
 	/**
 	 * Returns the do form of this dossier step.
@@ -230,6 +230,35 @@ public interface DossierStepModel extends BaseModel<DossierStep> {
 	 * @param doForm the do form of this dossier step
 	 */
 	public void setDoForm(String doForm);
+
+	/**
+	 * Returns the form label of this dossier step.
+	 *
+	 * @return the form label of this dossier step
+	 */
+	@AutoEscape
+	public String getFormLabel();
+
+	/**
+	 * Sets the form label of this dossier step.
+	 *
+	 * @param formLabel the form label of this dossier step
+	 */
+	public void setFormLabel(String formLabel);
+
+	/**
+	 * Returns the rollback of this dossier step.
+	 *
+	 * @return the rollback of this dossier step
+	 */
+	public int getRollback();
+
+	/**
+	 * Sets the rollback of this dossier step.
+	 *
+	 * @param rollback the rollback of this dossier step
+	 */
+	public void setRollback(int rollback);
 
 	@Override
 	public boolean isNew();

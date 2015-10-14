@@ -69,11 +69,11 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 			{ "createDate", Types.TIMESTAMP },
 			{ "modifiedDate", Types.TIMESTAMP },
 			{ "dossierProcId", Types.BIGINT },
-			{ "govAgentId", Types.VARCHAR },
-			{ "govAgentName", Types.VARCHAR },
+			{ "govAgencyId", Types.VARCHAR },
+			{ "govAgencyName", Types.VARCHAR },
 			{ "ebPartnerShipId", Types.BIGINT }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_dossierprocagent (dossierProcAgentId LONG not null primary key,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcId LONG,govAgentId VARCHAR(30) null,govAgentName VARCHAR(200) null,ebPartnerShipId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_dossierprocagent (dossierProcAgentId LONG not null primary key,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcId LONG,govAgencyId VARCHAR(30) null,govAgencyName VARCHAR(200) null,ebPartnerShipId LONG)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_dossierprocagent";
 	public static final String ORDER_BY_JPQL = " ORDER BY dossierProcAgent.dossierProcAgentId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_dossierprocagent.dossierProcAgentId ASC";
@@ -106,8 +106,8 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setModifiedDate(soapModel.getModifiedDate());
 		model.setDossierProcId(soapModel.getDossierProcId());
-		model.setGovAgentId(soapModel.getGovAgentId());
-		model.setGovAgentName(soapModel.getGovAgentName());
+		model.setGovAgencyId(soapModel.getGovAgencyId());
+		model.setGovAgencyName(soapModel.getGovAgencyName());
 		model.setEbPartnerShipId(soapModel.getEbPartnerShipId());
 
 		return model;
@@ -179,8 +179,8 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgentId", getGovAgentId());
-		attributes.put("govAgentName", getGovAgentName());
+		attributes.put("govAgencyId", getGovAgencyId());
+		attributes.put("govAgencyName", getGovAgencyName());
 		attributes.put("ebPartnerShipId", getEbPartnerShipId());
 
 		return attributes;
@@ -218,16 +218,16 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 			setDossierProcId(dossierProcId);
 		}
 
-		String govAgentId = (String)attributes.get("govAgentId");
+		String govAgencyId = (String)attributes.get("govAgencyId");
 
-		if (govAgentId != null) {
-			setGovAgentId(govAgentId);
+		if (govAgencyId != null) {
+			setGovAgencyId(govAgencyId);
 		}
 
-		String govAgentName = (String)attributes.get("govAgentName");
+		String govAgencyName = (String)attributes.get("govAgencyName");
 
-		if (govAgentName != null) {
-			setGovAgentName(govAgentName);
+		if (govAgencyName != null) {
+			setGovAgencyName(govAgencyName);
 		}
 
 		Long ebPartnerShipId = (Long)attributes.get("ebPartnerShipId");
@@ -294,34 +294,34 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 
 	@JSON
 	@Override
-	public String getGovAgentId() {
-		if (_govAgentId == null) {
+	public String getGovAgencyId() {
+		if (_govAgencyId == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _govAgentId;
+			return _govAgencyId;
 		}
 	}
 
 	@Override
-	public void setGovAgentId(String govAgentId) {
-		_govAgentId = govAgentId;
+	public void setGovAgencyId(String govAgencyId) {
+		_govAgencyId = govAgencyId;
 	}
 
 	@JSON
 	@Override
-	public String getGovAgentName() {
-		if (_govAgentName == null) {
+	public String getGovAgencyName() {
+		if (_govAgencyName == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _govAgentName;
+			return _govAgencyName;
 		}
 	}
 
 	@Override
-	public void setGovAgentName(String govAgentName) {
-		_govAgentName = govAgentName;
+	public void setGovAgencyName(String govAgencyName) {
+		_govAgencyName = govAgencyName;
 	}
 
 	@JSON
@@ -367,8 +367,8 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 		dossierProcAgentImpl.setCreateDate(getCreateDate());
 		dossierProcAgentImpl.setModifiedDate(getModifiedDate());
 		dossierProcAgentImpl.setDossierProcId(getDossierProcId());
-		dossierProcAgentImpl.setGovAgentId(getGovAgentId());
-		dossierProcAgentImpl.setGovAgentName(getGovAgentName());
+		dossierProcAgentImpl.setGovAgencyId(getGovAgencyId());
+		dossierProcAgentImpl.setGovAgencyName(getGovAgencyName());
 		dossierProcAgentImpl.setEbPartnerShipId(getEbPartnerShipId());
 
 		dossierProcAgentImpl.resetOriginalValues();
@@ -450,20 +450,20 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 
 		dossierProcAgentCacheModel.dossierProcId = getDossierProcId();
 
-		dossierProcAgentCacheModel.govAgentId = getGovAgentId();
+		dossierProcAgentCacheModel.govAgencyId = getGovAgencyId();
 
-		String govAgentId = dossierProcAgentCacheModel.govAgentId;
+		String govAgencyId = dossierProcAgentCacheModel.govAgencyId;
 
-		if ((govAgentId != null) && (govAgentId.length() == 0)) {
-			dossierProcAgentCacheModel.govAgentId = null;
+		if ((govAgencyId != null) && (govAgencyId.length() == 0)) {
+			dossierProcAgentCacheModel.govAgencyId = null;
 		}
 
-		dossierProcAgentCacheModel.govAgentName = getGovAgentName();
+		dossierProcAgentCacheModel.govAgencyName = getGovAgencyName();
 
-		String govAgentName = dossierProcAgentCacheModel.govAgentName;
+		String govAgencyName = dossierProcAgentCacheModel.govAgencyName;
 
-		if ((govAgentName != null) && (govAgentName.length() == 0)) {
-			dossierProcAgentCacheModel.govAgentName = null;
+		if ((govAgencyName != null) && (govAgencyName.length() == 0)) {
+			dossierProcAgentCacheModel.govAgencyName = null;
 		}
 
 		dossierProcAgentCacheModel.ebPartnerShipId = getEbPartnerShipId();
@@ -485,10 +485,10 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 		sb.append(getModifiedDate());
 		sb.append(", dossierProcId=");
 		sb.append(getDossierProcId());
-		sb.append(", govAgentId=");
-		sb.append(getGovAgentId());
-		sb.append(", govAgentName=");
-		sb.append(getGovAgentName());
+		sb.append(", govAgencyId=");
+		sb.append(getGovAgencyId());
+		sb.append(", govAgencyName=");
+		sb.append(getGovAgencyName());
 		sb.append(", ebPartnerShipId=");
 		sb.append(getEbPartnerShipId());
 		sb.append("}");
@@ -525,12 +525,12 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 		sb.append(getDossierProcId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentId</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentId());
+			"<column><column-name>govAgencyId</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentName</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentName());
+			"<column><column-name>govAgencyName</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyName());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>ebPartnerShipId</column-name><column-value><![CDATA[");
@@ -551,8 +551,8 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _dossierProcId;
-	private String _govAgentId;
-	private String _govAgentName;
+	private String _govAgencyId;
+	private String _govAgencyName;
 	private long _ebPartnerShipId;
 	private DossierProcAgent _escapedModel;
 }

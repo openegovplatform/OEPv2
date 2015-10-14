@@ -16,6 +16,8 @@
 			<generator class="assigned" />
 		</id>
 		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="createDate" type="org.hibernate.type.TimestampType" />
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
 		<property name="collectionName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
@@ -29,6 +31,8 @@
 			<generator class="assigned" />
 		</id>
 		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="createDate" type="org.hibernate.type.TimestampType" />
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
 		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
@@ -44,6 +48,8 @@
 			<generator class="assigned" />
 		</id>
 		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="createDate" type="org.hibernate.type.TimestampType" />
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
 		<property name="collectionName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
@@ -66,13 +72,15 @@
 			<generator class="assigned" />
 		</id>
 		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="createDate" type="org.hibernate.type.TimestampType" />
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
 		<property name="dictDataId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="attributeName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="attributeValue" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
-	<class name="org.oep.core.datamgt.parameter.model.impl.DefaultParameterImpl" table="oep_datamgt_DefaultParameter">
+	<class name="org.oep.core.datamgt.parameter.model.impl.DefaultParameterImpl" table="oep_datamgt_defaultparameter">
 		<cache usage="read-write" />
 		<id name="defaultParameterId" type="long">
 			<generator class="assigned" />
@@ -86,7 +94,7 @@
 		<property name="parameterValue" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="changeable" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
-	<class name="org.oep.core.datamgt.parameter.model.impl.UserParameterImpl" table="oep_datamgt_UserParameter">
+	<class name="org.oep.core.datamgt.parameter.model.impl.UserParameterImpl" table="oep_datamgt_userparameter">
 		<cache usage="read-write" />
 		<id name="userParameterId" type="long">
 			<generator class="assigned" />

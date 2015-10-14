@@ -2721,6 +2721,8 @@ public class DictAttributePersistenceImpl extends BasePersistenceImpl<DictAttrib
 
 		dictAttributeImpl.setDictAttributeId(dictAttribute.getDictAttributeId());
 		dictAttributeImpl.setCompanyId(dictAttribute.getCompanyId());
+		dictAttributeImpl.setUserId(dictAttribute.getUserId());
+		dictAttributeImpl.setGroupId(dictAttribute.getGroupId());
 		dictAttributeImpl.setCreateDate(dictAttribute.getCreateDate());
 		dictAttributeImpl.setModifiedDate(dictAttribute.getModifiedDate());
 		dictAttributeImpl.setCollectionName(dictAttribute.getCollectionName());

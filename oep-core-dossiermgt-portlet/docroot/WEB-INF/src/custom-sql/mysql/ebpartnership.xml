@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<custom-sql>
+	<sql id="mysql.org.oep.core.dossiermgt.service.persistence.EbPartnerShipFinder.countByLikeName">
+		<![CDATA[
+			SELECT COUNT(*) total
+			FROM OEP_DOSSIERMGT_EBPARTNERSHIP
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$NAME_FILTER$]
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.core.dossiermgt.service.persistence.EbPartnerShipFinder.findByLikeName">
+		<![CDATA[
+			SELECT *
+			FROM OEP_DOSSIERMGT_EBPARTNERSHIP
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$NAME_FILTER$]
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.core.dossiermgt.service.persistence.EbPartnerShipFinder.countByGroupLikeName">
+		<![CDATA[
+			SELECT COUNT(*) total
+			FROM OEP_DOSSIERMGT_EBPARTNERSHIP
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$NAME_FILTER$]
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.core.dossiermgt.service.persistence.EbPartnerShipFinder.findByGroupLikeName">
+		<![CDATA[
+			SELECT *
+			FROM OEP_DOSSIERMGT_EBPARTNERSHIP
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$NAME_FILTER$]
+		]]>
+	</sql>
+</custom-sql>

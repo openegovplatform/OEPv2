@@ -668,6 +668,20 @@ public interface DossierModel extends BaseModel<Dossier>, StagedModel {
 	public void setErrorStatus(String errorStatus);
 
 	/**
+	 * Returns the pending status of this dossier.
+	 *
+	 * @return the pending status of this dossier
+	 */
+	public int getPendingStatus();
+
+	/**
+	 * Sets the pending status of this dossier.
+	 *
+	 * @param pendingStatus the pending status of this dossier
+	 */
+	public void setPendingStatus(int pendingStatus);
+
+	/**
 	 * Returns the error code of this dossier.
 	 *
 	 * @return the error code of this dossier

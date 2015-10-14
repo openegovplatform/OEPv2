@@ -62,7 +62,9 @@ public class DossierDocWrapper implements DossierDoc, ModelWrapper<DossierDoc> {
 		attributes.put("sequenceNo", getSequenceNo());
 		attributes.put("defaultDocTemplateId", getDefaultDocTemplateId());
 		attributes.put("validationType", getValidationType());
+		attributes.put("requirementType", getRequirementType());
 		attributes.put("numberOfFile", getNumberOfFile());
+		attributes.put("splitSubDossier", getSplitSubDossier());
 		attributes.put("onlineForm", getOnlineForm());
 
 		return attributes;
@@ -148,10 +150,22 @@ public class DossierDocWrapper implements DossierDoc, ModelWrapper<DossierDoc> {
 			setValidationType(validationType);
 		}
 
+		Integer requirementType = (Integer)attributes.get("requirementType");
+
+		if (requirementType != null) {
+			setRequirementType(requirementType);
+		}
+
 		Integer numberOfFile = (Integer)attributes.get("numberOfFile");
 
 		if (numberOfFile != null) {
 			setNumberOfFile(numberOfFile);
+		}
+
+		Integer splitSubDossier = (Integer)attributes.get("splitSubDossier");
+
+		if (splitSubDossier != null) {
+			setSplitSubDossier(splitSubDossier);
 		}
 
 		String onlineForm = (String)attributes.get("onlineForm");
@@ -464,6 +478,26 @@ public class DossierDocWrapper implements DossierDoc, ModelWrapper<DossierDoc> {
 	}
 
 	/**
+	* Returns the requirement type of this dossier doc.
+	*
+	* @return the requirement type of this dossier doc
+	*/
+	@Override
+	public int getRequirementType() {
+		return _dossierDoc.getRequirementType();
+	}
+
+	/**
+	* Sets the requirement type of this dossier doc.
+	*
+	* @param requirementType the requirement type of this dossier doc
+	*/
+	@Override
+	public void setRequirementType(int requirementType) {
+		_dossierDoc.setRequirementType(requirementType);
+	}
+
+	/**
 	* Returns the number of file of this dossier doc.
 	*
 	* @return the number of file of this dossier doc
@@ -481,6 +515,26 @@ public class DossierDocWrapper implements DossierDoc, ModelWrapper<DossierDoc> {
 	@Override
 	public void setNumberOfFile(int numberOfFile) {
 		_dossierDoc.setNumberOfFile(numberOfFile);
+	}
+
+	/**
+	* Returns the split sub dossier of this dossier doc.
+	*
+	* @return the split sub dossier of this dossier doc
+	*/
+	@Override
+	public int getSplitSubDossier() {
+		return _dossierDoc.getSplitSubDossier();
+	}
+
+	/**
+	* Sets the split sub dossier of this dossier doc.
+	*
+	* @param splitSubDossier the split sub dossier of this dossier doc
+	*/
+	@Override
+	public void setSplitSubDossier(int splitSubDossier) {
+		_dossierDoc.setSplitSubDossier(splitSubDossier);
 	}
 
 	/**

@@ -145,6 +145,19 @@ public class DocTemplateModelImpl extends BaseModelImpl<DocTemplate>
 		return models;
 	}
 
+	public static final String MAPPING_TABLE_OEP_DOSSIERMGT_OEP_DOSSIERMGT_DOSSIERDOC2TEMPLATE_NAME =
+		"oep_dossiermgt_oep_dossiermgt_dossierdoc2template";
+	public static final Object[][] MAPPING_TABLE_OEP_DOSSIERMGT_OEP_DOSSIERMGT_DOSSIERDOC2TEMPLATE_COLUMNS =
+		{
+			{ "docTemplateId", Types.BIGINT },
+			{ "dossierDocId", Types.BIGINT }
+		};
+	public static final String MAPPING_TABLE_OEP_DOSSIERMGT_OEP_DOSSIERMGT_DOSSIERDOC2TEMPLATE_SQL_CREATE =
+		"create table oep_dossiermgt_oep_dossiermgt_dossierdoc2template (docTemplateId LONG not null,dossierDocId LONG not null,primary key (docTemplateId, dossierDocId))";
+	public static final boolean FINDER_CACHE_ENABLED_OEP_DOSSIERMGT_OEP_DOSSIERMGT_DOSSIERDOC2TEMPLATE =
+		GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+				"value.object.finder.cache.enabled.oep_dossiermgt_oep_dossiermgt_dossierdoc2template"),
+			true);
 	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
 				"lock.expiration.time.org.oep.core.dossiermgt.model.DocTemplate"));
 

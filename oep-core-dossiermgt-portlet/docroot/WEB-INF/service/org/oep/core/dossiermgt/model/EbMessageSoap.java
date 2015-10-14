@@ -33,6 +33,8 @@ public class EbMessageSoap implements Serializable {
 
 		soapModel.setEbMessageId(model.getEbMessageId());
 		soapModel.setCompanyId(model.getCompanyId());
+		soapModel.setUserId(model.getUserId());
+		soapModel.setGroupId(model.getGroupId());
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setMessageId(model.getMessageId());
 		soapModel.setCpaId(model.getCpaId());
@@ -117,6 +119,22 @@ public class EbMessageSoap implements Serializable {
 
 	public void setCompanyId(long companyId) {
 		_companyId = companyId;
+	}
+
+	public long getUserId() {
+		return _userId;
+	}
+
+	public void setUserId(long userId) {
+		_userId = userId;
+	}
+
+	public long getGroupId() {
+		return _groupId;
+	}
+
+	public void setGroupId(long groupId) {
+		_groupId = groupId;
 	}
 
 	public Date getCreateDate() {
@@ -265,6 +283,8 @@ public class EbMessageSoap implements Serializable {
 
 	private long _ebMessageId;
 	private long _companyId;
+	private long _userId;
+	private long _groupId;
 	private Date _createDate;
 	private String _messageId;
 	private String _cpaId;

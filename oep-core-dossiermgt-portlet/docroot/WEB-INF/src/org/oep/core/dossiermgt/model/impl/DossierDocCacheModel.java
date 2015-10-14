@@ -38,7 +38,7 @@ public class DossierDocCacheModel implements CacheModel<DossierDoc>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(31);
+		StringBundler sb = new StringBundler(35);
 
 		sb.append("{dossierDocId=");
 		sb.append(dossierDocId);
@@ -66,8 +66,12 @@ public class DossierDocCacheModel implements CacheModel<DossierDoc>,
 		sb.append(defaultDocTemplateId);
 		sb.append(", validationType=");
 		sb.append(validationType);
+		sb.append(", requirementType=");
+		sb.append(requirementType);
 		sb.append(", numberOfFile=");
 		sb.append(numberOfFile);
+		sb.append(", splitSubDossier=");
+		sb.append(splitSubDossier);
 		sb.append(", onlineForm=");
 		sb.append(onlineForm);
 		sb.append("}");
@@ -124,7 +128,9 @@ public class DossierDocCacheModel implements CacheModel<DossierDoc>,
 		dossierDocImpl.setSequenceNo(sequenceNo);
 		dossierDocImpl.setDefaultDocTemplateId(defaultDocTemplateId);
 		dossierDocImpl.setValidationType(validationType);
+		dossierDocImpl.setRequirementType(requirementType);
 		dossierDocImpl.setNumberOfFile(numberOfFile);
+		dossierDocImpl.setSplitSubDossier(splitSubDossier);
 
 		if (onlineForm == null) {
 			dossierDocImpl.setOnlineForm(StringPool.BLANK);
@@ -153,7 +159,9 @@ public class DossierDocCacheModel implements CacheModel<DossierDoc>,
 		sequenceNo = objectInput.readInt();
 		defaultDocTemplateId = objectInput.readLong();
 		validationType = objectInput.readInt();
+		requirementType = objectInput.readInt();
 		numberOfFile = objectInput.readInt();
+		splitSubDossier = objectInput.readInt();
 		onlineForm = objectInput.readUTF();
 	}
 
@@ -192,7 +200,9 @@ public class DossierDocCacheModel implements CacheModel<DossierDoc>,
 		objectOutput.writeInt(sequenceNo);
 		objectOutput.writeLong(defaultDocTemplateId);
 		objectOutput.writeInt(validationType);
+		objectOutput.writeInt(requirementType);
 		objectOutput.writeInt(numberOfFile);
+		objectOutput.writeInt(splitSubDossier);
 
 		if (onlineForm == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
@@ -215,6 +225,8 @@ public class DossierDocCacheModel implements CacheModel<DossierDoc>,
 	public int sequenceNo;
 	public long defaultDocTemplateId;
 	public int validationType;
+	public int requirementType;
 	public int numberOfFile;
+	public int splitSubDossier;
 	public String onlineForm;
 }

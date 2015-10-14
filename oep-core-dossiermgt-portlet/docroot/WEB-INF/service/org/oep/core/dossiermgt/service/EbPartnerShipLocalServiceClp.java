@@ -119,7 +119,6 @@ public class EbPartnerShipLocalServiceClp implements EbPartnerShipLocalService {
 
 		_methodParameterTypes19 = new String[] {
 				"java.lang.String", "java.lang.String", "java.lang.String",
-				"java.lang.String", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -127,8 +126,7 @@ public class EbPartnerShipLocalServiceClp implements EbPartnerShipLocalService {
 
 		_methodParameterTypes20 = new String[] {
 				"long", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String", "int",
-				"com.liferay.portal.service.ServiceContext"
+				"java.lang.String", "com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName21 = "updateEbPartnerShipResources";
@@ -169,6 +167,32 @@ public class EbPartnerShipLocalServiceClp implements EbPartnerShipLocalService {
 		_methodParameterTypes26 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName27 = "findByLikeName";
+
+		_methodParameterTypes27 = new String[] {
+				"java.lang.String", "int", "int",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName28 = "countByLikeName";
+
+		_methodParameterTypes28 = new String[] {
+				"java.lang.String", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName29 = "findByGroupLikeName";
+
+		_methodParameterTypes29 = new String[] {
+				"java.lang.String", "int", "int",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName30 = "countByGroupLikeName";
+
+		_methodParameterTypes30 = new String[] {
+				"java.lang.String", "com.liferay.portal.service.ServiceContext"
 			};
 	}
 
@@ -725,7 +749,7 @@ public class EbPartnerShipLocalServiceClp implements EbPartnerShipLocalService {
 	@Override
 	public org.oep.core.dossiermgt.model.EbPartnerShip addEbPartnerShip(
 		java.lang.String name, java.lang.String cpaId,
-		java.lang.String service, java.lang.String action, int inbound,
+		java.lang.String service,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -740,10 +764,6 @@ public class EbPartnerShipLocalServiceClp implements EbPartnerShipLocalService {
 					ClpSerializer.translateInput(cpaId),
 						
 					ClpSerializer.translateInput(service),
-						
-					ClpSerializer.translateInput(action),
-						
-					inbound,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});
@@ -774,7 +794,7 @@ public class EbPartnerShipLocalServiceClp implements EbPartnerShipLocalService {
 	@Override
 	public org.oep.core.dossiermgt.model.EbPartnerShip updateEbPartnerShip(
 		long id, java.lang.String name, java.lang.String cpaId,
-		java.lang.String service, java.lang.String action, int inbound,
+		java.lang.String service,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -791,10 +811,6 @@ public class EbPartnerShipLocalServiceClp implements EbPartnerShipLocalService {
 					ClpSerializer.translateInput(cpaId),
 						
 					ClpSerializer.translateInput(service),
-						
-					ClpSerializer.translateInput(action),
-						
-					inbound,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});
@@ -1048,6 +1064,152 @@ public class EbPartnerShipLocalServiceClp implements EbPartnerShipLocalService {
 		}
 	}
 
+	@Override
+	public java.util.List<org.oep.core.dossiermgt.model.EbPartnerShip> findByLikeName(
+		java.lang.String name, int startIndex, int endIndex,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName27,
+					_methodParameterTypes27,
+					new Object[] {
+						ClpSerializer.translateInput(name),
+						
+					startIndex,
+						
+					endIndex,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<org.oep.core.dossiermgt.model.EbPartnerShip>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public int countByLikeName(java.lang.String name,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName28,
+					_methodParameterTypes28,
+					new Object[] {
+						ClpSerializer.translateInput(name),
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	@Override
+	public java.util.List<org.oep.core.dossiermgt.model.EbPartnerShip> findByGroupLikeName(
+		java.lang.String name, int startIndex, int endIndex,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName29,
+					_methodParameterTypes29,
+					new Object[] {
+						ClpSerializer.translateInput(name),
+						
+					startIndex,
+						
+					endIndex,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<org.oep.core.dossiermgt.model.EbPartnerShip>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public int countByGroupLikeName(java.lang.String name,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName30,
+					_methodParameterTypes30,
+					new Object[] {
+						ClpSerializer.translateInput(name),
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
 	private InvokableLocalService _invokableLocalService;
 	private String _methodName0;
 	private String[] _methodParameterTypes0;
@@ -1101,4 +1263,12 @@ public class EbPartnerShipLocalServiceClp implements EbPartnerShipLocalService {
 	private String[] _methodParameterTypes25;
 	private String _methodName26;
 	private String[] _methodParameterTypes26;
+	private String _methodName27;
+	private String[] _methodParameterTypes27;
+	private String _methodName28;
+	private String[] _methodParameterTypes28;
+	private String _methodName29;
+	private String[] _methodParameterTypes29;
+	private String _methodName30;
+	private String[] _methodParameterTypes30;
 }

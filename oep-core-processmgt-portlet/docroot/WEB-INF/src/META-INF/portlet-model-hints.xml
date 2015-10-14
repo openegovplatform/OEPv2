@@ -9,14 +9,15 @@
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
 		<field name="dossierProcId" type="long" />
-		<field name="govAgentId" type="String">
+		<field name="govAgencyId" type="String">
 			<hint name="max-length">30</hint>
 		</field>
-		<field name="govAgentName" type="String">
+		<field name="govAgencyName" type="String">
 			<hint name="max-length">200</hint>
 		</field>
-		<field name="startDossierStepId" type="long" />
+		<field name="startStepTransitionId" type="long" />
 		<field name="daysDuration" type="int" />
+		<field name="fee" type="int" />
 	</model>
 	<model name="org.oep.core.processmgt.model.DossierStep">
 		<field name="dossierStepId" type="long" />
@@ -28,16 +29,21 @@
 		<field name="dossierProcessId" type="long" />
 		<field name="title" type="String" />
 		<field name="sequenceNo" type="int" />
-		<field name="stepType" type="int" />
+		<field name="daysDuration" type="int" />
 		<field name="doForm" type="String">
 			<hint name="max-length">100</hint>
 		</field>
+		<field name="formLabel" type="String">
+			<hint name="max-length">100</hint>
+		</field>
+		<field name="rollback" type="int" />
 	</model>
 	<model name="org.oep.core.processmgt.model.DossierStep2Role">
 		<field name="dossierStepId" type="long" />
 		<field name="roleId" type="long" />
 	</model>
 	<model name="org.oep.core.processmgt.model.ProcessOrder">
+		<field name="uuid" type="String" />
 		<field name="processOrderId" type="long" />
 		<field name="userId" type="long" />
 		<field name="groupId" type="long" />
@@ -49,17 +55,35 @@
 		<field name="dossierId" type="long" />
 		<field name="dossierProcessId" type="long" />
 		<field name="dossierStepId" type="long" />
-		<field name="dossierStatus" type="String" />
-		<field name="dossierResume" type="String" />
+		<field name="orderStatus" type="String" />
+		<field name="orderResume" type="String" />
 		<field name="stepDate" type="Date" />
 		<field name="stepNote" type="String" />
 		<field name="assignToUserId" type="long" />
 		<field name="currentCondition" type="String" />
-		<field name="endState" type="int" />
+		<field name="lastStepTransitionId" type="long" />
+		<field name="stopRollback" type="int" />
+		<field name="ebPartnerShipId" type="long" />
 	</model>
 	<model name="org.oep.core.processmgt.model.ProcessOrder2User">
 		<field name="processOrderId" type="long" />
 		<field name="userId" type="long" />
+	</model>
+	<model name="org.oep.core.processmgt.model.StatisticByUser">
+		<field name="statisticByUserId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="month" type="int" />
+		<field name="year" type="int" />
+		<field name="dossierStatus" type="String" />
+		<field name="totalNumber" type="int" />
+		<field name="delayedNumber" type="int" />
+		<field name="ontimeNumber" type="int" />
+		<field name="ontimeRatio" type="double" />
+		<field name="delayDaysAvg" type="double" />
+		<field name="furtherDaysAvg" type="double" />
 	</model>
 	<model name="org.oep.core.processmgt.model.StepTransition">
 		<field name="stepTransitionId" type="long" />
@@ -72,9 +96,16 @@
 		<field name="preDossierStepId" type="long" />
 		<field name="postDossierStepId" type="long" />
 		<field name="precondition" type="String" />
-		<field name="transitionName" type="String" />
-		<field name="daysDuration" type="int" />
+		<field name="autoCondition" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="transitionName" type="String">
+			<hint name="max-length">100</hint>
+		</field>
 		<field name="dossierStatus" type="String" />
+		<field name="notifyStatus" type="int" />
+		<field name="sendResults" type="int" />
+		<field name="requestPayment" type="int" />
 		<field name="userAssignment" type="int" />
 		<field name="newProcessOrder" type="int" />
 	</model>
@@ -89,6 +120,8 @@
 		<field name="daysDoing" type="int" />
 		<field name="daysDelay" type="int" />
 		<field name="startDate" type="Date" />
+		<field name="preDossierStatus" type="String" />
+		<field name="postDossierStatus" type="String" />
 		<field name="stepTransitionId" type="long" />
 		<field name="preDossierStepId" type="long" />
 		<field name="postDossierStepId" type="long" />

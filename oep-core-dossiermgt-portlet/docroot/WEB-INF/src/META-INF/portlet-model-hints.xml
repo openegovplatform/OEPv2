@@ -19,6 +19,7 @@
 		<field name="note" type="String">
 			<hint name="max-length">200</hint>
 		</field>
+		<field name="premier" type="int" />
 	</model>
 	<model name="org.oep.core.dossiermgt.model.DocFileVersion">
 		<field name="uuid" type="String" />
@@ -135,6 +136,7 @@
 		<field name="errorStatus" type="String">
 			<hint name="max-length">30</hint>
 		</field>
+		<field name="pendingStatus" type="int" />
 		<field name="errorCode" type="String">
 			<hint name="max-length">30</hint>
 		</field>
@@ -160,14 +162,12 @@
 		<field name="sequenceNo" type="int" />
 		<field name="defaultDocTemplateId" type="long" />
 		<field name="validationType" type="int" />
+		<field name="requirementType" type="int" />
 		<field name="numberOfFile" type="int" />
+		<field name="splitSubDossier" type="int" />
 		<field name="onlineForm" type="String">
 			<hint name="max-length">30</hint>
 		</field>
-	</model>
-	<model name="org.oep.core.dossiermgt.model.DossierDoc2Template">
-		<field name="dossierDocId" type="long" />
-		<field name="docTemplateId" type="long" />
 	</model>
 	<model name="org.oep.core.dossiermgt.model.DossierFolder">
 		<field name="uuid" type="String" />
@@ -248,8 +248,8 @@
 		<field name="expireDate" type="Date" />
 		<field name="active" type="int" />
 	</model>
-	<model name="org.oep.core.dossiermgt.model.DossierProcAgency">
-		<field name="dossierProcAgencyId" type="long" />
+	<model name="org.oep.core.dossiermgt.model.DossierProcAgent">
+		<field name="dossierProcAgentId" type="long" />
 		<field name="companyId" type="long" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
@@ -265,6 +265,8 @@
 	<model name="org.oep.core.dossiermgt.model.EbMessage">
 		<field name="ebMessageId" type="long" />
 		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
 		<field name="createDate" type="Date" />
 		<field name="messageId" type="String">
 			<hint name="max-length">100</hint>
@@ -319,6 +321,8 @@
 	<model name="org.oep.core.dossiermgt.model.EbPartnerShip">
 		<field name="ebPartnerShipId" type="long" />
 		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
 		<field name="createDate" type="Date" />
 		<field name="name" type="String">
 			<hint name="max-length">100</hint>
@@ -329,10 +333,6 @@
 		<field name="service" type="String">
 			<hint name="max-length">100</hint>
 		</field>
-		<field name="action" type="String">
-			<hint name="max-length">100</hint>
-		</field>
-		<field name="inbound" type="int" />
 	</model>
 	<model name="org.oep.core.dossiermgt.model.PaymentConfig">
 		<field name="paymentConfigId" type="long" />
@@ -445,5 +445,46 @@
 		<field name="fieldValue" type="String">
 			<hint name="max-length">200</hint>
 		</field>
+	</model>
+	<model name="org.oep.core.dossiermgt.model.StatisticByAgency">
+		<field name="statisticByAgencyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="month" type="int" />
+		<field name="year" type="int" />
+		<field name="govAgencyId" type="String" />
+		<field name="submittedNumber" type="int" />
+		<field name="acceptedNumber" type="int" />
+		<field name="deniedNumber" type="int" />
+		<field name="acceptedRatio" type="double" />
+		<field name="finishedNumber" type="int" />
+		<field name="ontimeNumber" type="int" />
+		<field name="delayedNumber" type="int" />
+		<field name="ontimeRatio" type="double" />
+		<field name="doneNumber" type="int" />
+		<field name="doneRatio" type="double" />
+		<field name="delayDaysAvg" type="double" />
+		<field name="furtherDaysAvg" type="double" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.StatisticByDay">
+		<field name="statisticByDayId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="statisticDate" type="Date" />
+		<field name="statisticWeek" type="int" />
+		<field name="submittedNumber" type="int" />
+		<field name="acceptedNumber" type="int" />
+		<field name="deniedNumber" type="int" />
+		<field name="acceptedRatio" type="double" />
+		<field name="finishedNumber" type="int" />
+		<field name="ontimeNumber" type="int" />
+		<field name="delayedNumber" type="int" />
+		<field name="ontimeRatio" type="double" />
+		<field name="doneNumber" type="int" />
+		<field name="doneRatio" type="double" />
+		<field name="delayDaysAvg" type="double" />
+		<field name="furtherDaysAvg" type="double" />
 	</model>
 </model-hints>

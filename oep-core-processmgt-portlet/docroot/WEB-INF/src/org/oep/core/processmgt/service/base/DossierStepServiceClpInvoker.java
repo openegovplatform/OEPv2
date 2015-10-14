@@ -24,24 +24,24 @@ import java.util.Arrays;
  */
 public class DossierStepServiceClpInvoker {
 	public DossierStepServiceClpInvoker() {
-		_methodName74 = "getBeanIdentifier";
+		_methodName78 = "getBeanIdentifier";
 
-		_methodParameterTypes74 = new String[] {  };
+		_methodParameterTypes78 = new String[] {  };
 
-		_methodName75 = "setBeanIdentifier";
+		_methodName79 = "setBeanIdentifier";
 
-		_methodParameterTypes75 = new String[] { "java.lang.String" };
+		_methodParameterTypes79 = new String[] { "java.lang.String" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
 		Object[] arguments) throws Throwable {
-		if (_methodName74.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes74, parameterTypes)) {
+		if (_methodName78.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes78, parameterTypes)) {
 			return DossierStepServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName75.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes75, parameterTypes)) {
+		if (_methodName79.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes79, parameterTypes)) {
 			DossierStepServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
@@ -50,8 +50,8 @@ public class DossierStepServiceClpInvoker {
 		throw new UnsupportedOperationException();
 	}
 
-	private String _methodName74;
-	private String[] _methodParameterTypes74;
-	private String _methodName75;
-	private String[] _methodParameterTypes75;
+	private String _methodName78;
+	private String[] _methodParameterTypes78;
+	private String _methodName79;
+	private String[] _methodParameterTypes79;
 }

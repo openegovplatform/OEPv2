@@ -20,6 +20,7 @@ import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
+import com.liferay.portal.util.PortalUtil;
 
 import org.oep.core.datamgt.dictionary.service.ClpSerializer;
 import org.oep.core.datamgt.dictionary.service.DictCollectionLocalServiceUtil;
@@ -76,6 +77,8 @@ public class DictCollectionClp extends BaseModelImpl<DictCollection>
 
 		attributes.put("dictCollectionId", getDictCollectionId());
 		attributes.put("companyId", getCompanyId());
+		attributes.put("userId", getUserId());
+		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("name", getName());
@@ -100,6 +103,18 @@ public class DictCollectionClp extends BaseModelImpl<DictCollection>
 
 		if (companyId != null) {
 			setCompanyId(companyId);
+		}
+
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
+		Long groupId = (Long)attributes.get("groupId");
+
+		if (groupId != null) {
+			setGroupId(groupId);
 		}
 
 		Date createDate = (Date)attributes.get("createDate");
@@ -191,6 +206,62 @@ public class DictCollectionClp extends BaseModelImpl<DictCollection>
 				Method method = clazz.getMethod("setCompanyId", long.class);
 
 				method.invoke(_dictCollectionRemoteModel, companyId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public long getUserId() {
+		return _userId;
+	}
+
+	@Override
+	public void setUserId(long userId) {
+		_userId = userId;
+
+		if (_dictCollectionRemoteModel != null) {
+			try {
+				Class<?> clazz = _dictCollectionRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setUserId", long.class);
+
+				method.invoke(_dictCollectionRemoteModel, userId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getUserUuid() throws SystemException {
+		return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
+	}
+
+	@Override
+	public void setUserUuid(String userUuid) {
+		_userUuid = userUuid;
+	}
+
+	@Override
+	public long getGroupId() {
+		return _groupId;
+	}
+
+	@Override
+	public void setGroupId(long groupId) {
+		_groupId = groupId;
+
+		if (_dictCollectionRemoteModel != null) {
+			try {
+				Class<?> clazz = _dictCollectionRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setGroupId", long.class);
+
+				method.invoke(_dictCollectionRemoteModel, groupId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -455,6 +526,8 @@ public class DictCollectionClp extends BaseModelImpl<DictCollection>
 
 		clone.setDictCollectionId(getDictCollectionId());
 		clone.setCompanyId(getCompanyId());
+		clone.setUserId(getUserId());
+		clone.setGroupId(getGroupId());
 		clone.setCreateDate(getCreateDate());
 		clone.setModifiedDate(getModifiedDate());
 		clone.setName(getName());
@@ -515,12 +588,16 @@ public class DictCollectionClp extends BaseModelImpl<DictCollection>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(25);
 
 		sb.append("{dictCollectionId=");
 		sb.append(getDictCollectionId());
 		sb.append(", companyId=");
 		sb.append(getCompanyId());
+		sb.append(", userId=");
+		sb.append(getUserId());
+		sb.append(", groupId=");
+		sb.append(getGroupId());
 		sb.append(", createDate=");
 		sb.append(getCreateDate());
 		sb.append(", modifiedDate=");
@@ -544,7 +621,7 @@ public class DictCollectionClp extends BaseModelImpl<DictCollection>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(34);
+		StringBundler sb = new StringBundler(40);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.datamgt.dictionary.model.DictCollection");
@@ -557,6 +634,14 @@ public class DictCollectionClp extends BaseModelImpl<DictCollection>
 		sb.append(
 			"<column><column-name>companyId</column-name><column-value><![CDATA[");
 		sb.append(getCompanyId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>userId</column-name><column-value><![CDATA[");
+		sb.append(getUserId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>groupId</column-name><column-value><![CDATA[");
+		sb.append(getGroupId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>createDate</column-name><column-value><![CDATA[");
@@ -598,6 +683,9 @@ public class DictCollectionClp extends BaseModelImpl<DictCollection>
 
 	private long _dictCollectionId;
 	private long _companyId;
+	private long _userId;
+	private String _userUuid;
+	private long _groupId;
 	private Date _createDate;
 	private Date _modifiedDate;
 	private String _name;

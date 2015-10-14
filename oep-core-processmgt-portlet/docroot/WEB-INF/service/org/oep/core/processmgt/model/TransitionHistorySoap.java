@@ -41,6 +41,8 @@ public class TransitionHistorySoap implements Serializable {
 		soapModel.setDaysDoing(model.getDaysDoing());
 		soapModel.setDaysDelay(model.getDaysDelay());
 		soapModel.setStartDate(model.getStartDate());
+		soapModel.setPreDossierStatus(model.getPreDossierStatus());
+		soapModel.setPostDossierStatus(model.getPostDossierStatus());
 		soapModel.setStepTransitionId(model.getStepTransitionId());
 		soapModel.setPreDossierStepId(model.getPreDossierStepId());
 		soapModel.setPostDossierStepId(model.getPostDossierStepId());
@@ -181,6 +183,22 @@ public class TransitionHistorySoap implements Serializable {
 		_startDate = startDate;
 	}
 
+	public String getPreDossierStatus() {
+		return _preDossierStatus;
+	}
+
+	public void setPreDossierStatus(String preDossierStatus) {
+		_preDossierStatus = preDossierStatus;
+	}
+
+	public String getPostDossierStatus() {
+		return _postDossierStatus;
+	}
+
+	public void setPostDossierStatus(String postDossierStatus) {
+		_postDossierStatus = postDossierStatus;
+	}
+
 	public long getStepTransitionId() {
 		return _stepTransitionId;
 	}
@@ -231,6 +249,8 @@ public class TransitionHistorySoap implements Serializable {
 	private int _daysDoing;
 	private int _daysDelay;
 	private Date _startDate;
+	private String _preDossierStatus;
+	private String _postDossierStatus;
 	private long _stepTransitionId;
 	private long _preDossierStepId;
 	private long _postDossierStepId;

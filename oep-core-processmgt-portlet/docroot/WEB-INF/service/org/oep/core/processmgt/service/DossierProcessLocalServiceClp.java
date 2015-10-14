@@ -119,14 +119,14 @@ public class DossierProcessLocalServiceClp implements DossierProcessLocalService
 
 		_methodParameterTypes19 = new String[] {
 				"long", "java.lang.String", "java.lang.String", "long", "int",
-				"com.liferay.portal.service.ServiceContext"
+				"int", "com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName20 = "updateDossierProcess";
 
 		_methodParameterTypes20 = new String[] {
 				"long", "long", "java.lang.String", "java.lang.String", "long",
-				"int", "com.liferay.portal.service.ServiceContext"
+				"int", "int", "com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName21 = "updateDossierProcessResources";
@@ -166,6 +166,26 @@ public class DossierProcessLocalServiceClp implements DossierProcessLocalService
 
 		_methodParameterTypes26 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName27 = "getByCompany";
+
+		_methodParameterTypes27 = new String[] { "long", "int", "int" };
+
+		_methodName28 = "getByCompany";
+
+		_methodParameterTypes28 = new String[] {
+				"int", "int", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName29 = "countByCompany";
+
+		_methodParameterTypes29 = new String[] { "long" };
+
+		_methodName30 = "countByCompany";
+
+		_methodParameterTypes30 = new String[] {
 				"com.liferay.portal.service.ServiceContext"
 			};
 	}
@@ -722,9 +742,9 @@ public class DossierProcessLocalServiceClp implements DossierProcessLocalService
 
 	@Override
 	public org.oep.core.processmgt.model.DossierProcess addDossierProcess(
-		long dossierProcId, java.lang.String govAgentId,
-		java.lang.String govAgentName, long startDossierStepId,
-		int daysDuration,
+		long dossierProcId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, long startStepTransitionId,
+		int daysDuration, int fee,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -736,13 +756,15 @@ public class DossierProcessLocalServiceClp implements DossierProcessLocalService
 					new Object[] {
 						dossierProcId,
 						
-					ClpSerializer.translateInput(govAgentId),
+					ClpSerializer.translateInput(govAgencyId),
 						
-					ClpSerializer.translateInput(govAgentName),
+					ClpSerializer.translateInput(govAgencyName),
 						
-					startDossierStepId,
+					startStepTransitionId,
 						
 					daysDuration,
+						
+					fee,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});
@@ -772,9 +794,9 @@ public class DossierProcessLocalServiceClp implements DossierProcessLocalService
 
 	@Override
 	public org.oep.core.processmgt.model.DossierProcess updateDossierProcess(
-		long id, long dossierProcId, java.lang.String govAgentId,
-		java.lang.String govAgentName, long startDossierStepId,
-		int daysDuration,
+		long id, long dossierProcId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, long startStepTransitionId,
+		int daysDuration, int fee,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -788,13 +810,15 @@ public class DossierProcessLocalServiceClp implements DossierProcessLocalService
 						
 					dossierProcId,
 						
-					ClpSerializer.translateInput(govAgentId),
+					ClpSerializer.translateInput(govAgencyId),
 						
-					ClpSerializer.translateInput(govAgentName),
+					ClpSerializer.translateInput(govAgencyName),
 						
-					startDossierStepId,
+					startStepTransitionId,
 						
 					daysDuration,
+						
+					fee,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});
@@ -1048,6 +1072,131 @@ public class DossierProcessLocalServiceClp implements DossierProcessLocalService
 		}
 	}
 
+	@Override
+	public java.util.List<org.oep.core.processmgt.model.DossierProcess> getByCompany(
+		long companyId, int startIndex, int endIndex)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName27,
+					_methodParameterTypes27,
+					new Object[] { companyId, startIndex, endIndex });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<org.oep.core.processmgt.model.DossierProcess>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public java.util.List<org.oep.core.processmgt.model.DossierProcess> getByCompany(
+		int startIndex, int endIndex,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName28,
+					_methodParameterTypes28,
+					new Object[] {
+						startIndex,
+						
+					endIndex,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<org.oep.core.processmgt.model.DossierProcess>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public int countByCompany(long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName29,
+					_methodParameterTypes29, new Object[] { companyId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	@Override
+	public int countByCompany(
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName30,
+					_methodParameterTypes30,
+					new Object[] { ClpSerializer.translateInput(serviceContext) });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
 	private InvokableLocalService _invokableLocalService;
 	private String _methodName0;
 	private String[] _methodParameterTypes0;
@@ -1101,4 +1250,12 @@ public class DossierProcessLocalServiceClp implements DossierProcessLocalService
 	private String[] _methodParameterTypes25;
 	private String _methodName26;
 	private String[] _methodParameterTypes26;
+	private String _methodName27;
+	private String[] _methodParameterTypes27;
+	private String _methodName28;
+	private String[] _methodParameterTypes28;
+	private String _methodName29;
+	private String[] _methodParameterTypes29;
+	private String _methodName30;
+	private String[] _methodParameterTypes30;
 }

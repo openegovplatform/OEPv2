@@ -15,6 +15,7 @@
 package org.oep.core.datamgt.dictionary.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.service.ServiceContext;
@@ -86,6 +87,49 @@ public interface DictCollectionModel extends BaseModel<DictCollection> {
 	 * @param companyId the company ID of this dictionary collection
 	 */
 	public void setCompanyId(long companyId);
+
+	/**
+	 * Returns the user ID of this dictionary collection.
+	 *
+	 * @return the user ID of this dictionary collection
+	 */
+	public long getUserId();
+
+	/**
+	 * Sets the user ID of this dictionary collection.
+	 *
+	 * @param userId the user ID of this dictionary collection
+	 */
+	public void setUserId(long userId);
+
+	/**
+	 * Returns the user uuid of this dictionary collection.
+	 *
+	 * @return the user uuid of this dictionary collection
+	 * @throws SystemException if a system exception occurred
+	 */
+	public String getUserUuid() throws SystemException;
+
+	/**
+	 * Sets the user uuid of this dictionary collection.
+	 *
+	 * @param userUuid the user uuid of this dictionary collection
+	 */
+	public void setUserUuid(String userUuid);
+
+	/**
+	 * Returns the group ID of this dictionary collection.
+	 *
+	 * @return the group ID of this dictionary collection
+	 */
+	public long getGroupId();
+
+	/**
+	 * Sets the group ID of this dictionary collection.
+	 *
+	 * @param groupId the group ID of this dictionary collection
+	 */
+	public void setGroupId(long groupId);
 
 	/**
 	 * Returns the create date of this dictionary collection.

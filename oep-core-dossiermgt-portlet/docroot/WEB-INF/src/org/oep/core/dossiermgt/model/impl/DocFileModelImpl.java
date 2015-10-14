@@ -79,9 +79,10 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 			{ "docTemplateId", Types.BIGINT },
 			{ "docFileVersionId", Types.BIGINT },
 			{ "docName", Types.VARCHAR },
-			{ "note", Types.VARCHAR }
+			{ "note", Types.VARCHAR },
+			{ "premier", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_docfile (uuid_ VARCHAR(75) null,docFileId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierId LONG,dossierDocId LONG,docTemplateId LONG,docFileVersionId LONG,docName VARCHAR(200) null,note VARCHAR(200) null)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_docfile (uuid_ VARCHAR(75) null,docFileId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierId LONG,dossierDocId LONG,docTemplateId LONG,docFileVersionId LONG,docName VARCHAR(200) null,note VARCHAR(200) null,premier INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_docfile";
 	public static final String ORDER_BY_JPQL = " ORDER BY docFile.docFileId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_docfile.docFileId ASC";
@@ -128,6 +129,7 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 		model.setDocFileVersionId(soapModel.getDocFileVersionId());
 		model.setDocName(soapModel.getDocName());
 		model.setNote(soapModel.getNote());
+		model.setPremier(soapModel.getPremier());
 
 		return model;
 	}
@@ -205,6 +207,7 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 		attributes.put("docFileVersionId", getDocFileVersionId());
 		attributes.put("docName", getDocName());
 		attributes.put("note", getNote());
+		attributes.put("premier", getPremier());
 
 		return attributes;
 	}
@@ -287,6 +290,12 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 
 		if (note != null) {
 			setNote(note);
+		}
+
+		Integer premier = (Integer)attributes.get("premier");
+
+		if (premier != null) {
+			setPremier(premier);
 		}
 	}
 
@@ -490,6 +499,17 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 		_note = note;
 	}
 
+	@JSON
+	@Override
+	public int getPremier() {
+		return _premier;
+	}
+
+	@Override
+	public void setPremier(int premier) {
+		_premier = premier;
+	}
+
 	@Override
 	public StagedModelType getStagedModelType() {
 		return new StagedModelType(PortalUtil.getClassNameId(
@@ -540,6 +560,7 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 		docFileImpl.setDocFileVersionId(getDocFileVersionId());
 		docFileImpl.setDocName(getDocName());
 		docFileImpl.setNote(getNote());
+		docFileImpl.setPremier(getPremier());
 
 		docFileImpl.resetOriginalValues();
 
@@ -667,12 +688,14 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 			docFileCacheModel.note = null;
 		}
 
+		docFileCacheModel.premier = getPremier();
+
 		return docFileCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(27);
+		StringBundler sb = new StringBundler(29);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
@@ -700,6 +723,8 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 		sb.append(getDocName());
 		sb.append(", note=");
 		sb.append(getNote());
+		sb.append(", premier=");
+		sb.append(getPremier());
 		sb.append("}");
 
 		return sb.toString();
@@ -707,7 +732,7 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(43);
+		StringBundler sb = new StringBundler(46);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.DocFile");
@@ -765,6 +790,10 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 			"<column><column-name>note</column-name><column-value><![CDATA[");
 		sb.append(getNote());
 		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>premier</column-name><column-value><![CDATA[");
+		sb.append(getPremier());
+		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -794,6 +823,7 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 	private long _docFileVersionId;
 	private String _docName;
 	private String _note;
+	private int _premier;
 	private long _columnBitmask;
 	private DocFile _escapedModel;
 }

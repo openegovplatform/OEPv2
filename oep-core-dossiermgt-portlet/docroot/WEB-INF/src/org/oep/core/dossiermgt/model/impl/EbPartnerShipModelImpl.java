@@ -15,6 +15,7 @@
 package org.oep.core.dossiermgt.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
@@ -23,6 +24,7 @@ import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
 import com.liferay.portal.service.ServiceContext;
+import com.liferay.portal.util.PortalUtil;
 
 import com.liferay.portlet.expando.model.ExpandoBridge;
 import com.liferay.portlet.expando.util.ExpandoBridgeFactoryUtil;
@@ -66,14 +68,14 @@ public class EbPartnerShipModelImpl extends BaseModelImpl<EbPartnerShip>
 	public static final Object[][] TABLE_COLUMNS = {
 			{ "ebPartnerShipId", Types.BIGINT },
 			{ "companyId", Types.BIGINT },
+			{ "userId", Types.BIGINT },
+			{ "groupId", Types.BIGINT },
 			{ "createDate", Types.TIMESTAMP },
 			{ "name", Types.VARCHAR },
 			{ "cpaId", Types.VARCHAR },
-			{ "service", Types.VARCHAR },
-			{ "action", Types.VARCHAR },
-			{ "inbound", Types.INTEGER }
+			{ "service", Types.VARCHAR }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_ebpartnership (ebPartnerShipId LONG not null primary key,companyId LONG,createDate DATE null,name VARCHAR(100) null,cpaId VARCHAR(100) null,service VARCHAR(100) null,action VARCHAR(100) null,inbound INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_ebpartnership (ebPartnerShipId LONG not null primary key,companyId LONG,userId LONG,groupId LONG,createDate DATE null,name VARCHAR(100) null,cpaId VARCHAR(100) null,service VARCHAR(100) null)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_ebpartnership";
 	public static final String ORDER_BY_JPQL = " ORDER BY ebPartnerShip.ebPartnerShipId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_ebpartnership.ebPartnerShipId ASC";
@@ -103,12 +105,12 @@ public class EbPartnerShipModelImpl extends BaseModelImpl<EbPartnerShip>
 
 		model.setEbPartnerShipId(soapModel.getEbPartnerShipId());
 		model.setCompanyId(soapModel.getCompanyId());
+		model.setUserId(soapModel.getUserId());
+		model.setGroupId(soapModel.getGroupId());
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setName(soapModel.getName());
 		model.setCpaId(soapModel.getCpaId());
 		model.setService(soapModel.getService());
-		model.setAction(soapModel.getAction());
-		model.setInbound(soapModel.getInbound());
 
 		return model;
 	}
@@ -175,12 +177,12 @@ public class EbPartnerShipModelImpl extends BaseModelImpl<EbPartnerShip>
 
 		attributes.put("ebPartnerShipId", getEbPartnerShipId());
 		attributes.put("companyId", getCompanyId());
+		attributes.put("userId", getUserId());
+		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("name", getName());
 		attributes.put("cpaId", getCpaId());
 		attributes.put("service", getService());
-		attributes.put("action", getAction());
-		attributes.put("inbound", getInbound());
 
 		return attributes;
 	}
@@ -197,6 +199,18 @@ public class EbPartnerShipModelImpl extends BaseModelImpl<EbPartnerShip>
 
 		if (companyId != null) {
 			setCompanyId(companyId);
+		}
+
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
+		Long groupId = (Long)attributes.get("groupId");
+
+		if (groupId != null) {
+			setGroupId(groupId);
 		}
 
 		Date createDate = (Date)attributes.get("createDate");
@@ -222,18 +236,6 @@ public class EbPartnerShipModelImpl extends BaseModelImpl<EbPartnerShip>
 		if (service != null) {
 			setService(service);
 		}
-
-		String action = (String)attributes.get("action");
-
-		if (action != null) {
-			setAction(action);
-		}
-
-		Integer inbound = (Integer)attributes.get("inbound");
-
-		if (inbound != null) {
-			setInbound(inbound);
-		}
 	}
 
 	@JSON
@@ -256,6 +258,38 @@ public class EbPartnerShipModelImpl extends BaseModelImpl<EbPartnerShip>
 	@Override
 	public void setCompanyId(long companyId) {
 		_companyId = companyId;
+	}
+
+	@JSON
+	@Override
+	public long getUserId() {
+		return _userId;
+	}
+
+	@Override
+	public void setUserId(long userId) {
+		_userId = userId;
+	}
+
+	@Override
+	public String getUserUuid() throws SystemException {
+		return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
+	}
+
+	@Override
+	public void setUserUuid(String userUuid) {
+		_userUuid = userUuid;
+	}
+
+	@JSON
+	@Override
+	public long getGroupId() {
+		return _groupId;
+	}
+
+	@Override
+	public void setGroupId(long groupId) {
+		_groupId = groupId;
 	}
 
 	@JSON
@@ -317,33 +351,6 @@ public class EbPartnerShipModelImpl extends BaseModelImpl<EbPartnerShip>
 		_service = service;
 	}
 
-	@JSON
-	@Override
-	public String getAction() {
-		if (_action == null) {
-			return StringPool.BLANK;
-		}
-		else {
-			return _action;
-		}
-	}
-
-	@Override
-	public void setAction(String action) {
-		_action = action;
-	}
-
-	@JSON
-	@Override
-	public int getInbound() {
-		return _inbound;
-	}
-
-	@Override
-	public void setInbound(int inbound) {
-		_inbound = inbound;
-	}
-
 	@Override
 	public ExpandoBridge getExpandoBridge() {
 		return ExpandoBridgeFactoryUtil.getExpandoBridge(getCompanyId(),
@@ -373,12 +380,12 @@ public class EbPartnerShipModelImpl extends BaseModelImpl<EbPartnerShip>
 
 		ebPartnerShipImpl.setEbPartnerShipId(getEbPartnerShipId());
 		ebPartnerShipImpl.setCompanyId(getCompanyId());
+		ebPartnerShipImpl.setUserId(getUserId());
+		ebPartnerShipImpl.setGroupId(getGroupId());
 		ebPartnerShipImpl.setCreateDate(getCreateDate());
 		ebPartnerShipImpl.setName(getName());
 		ebPartnerShipImpl.setCpaId(getCpaId());
 		ebPartnerShipImpl.setService(getService());
-		ebPartnerShipImpl.setAction(getAction());
-		ebPartnerShipImpl.setInbound(getInbound());
 
 		ebPartnerShipImpl.resetOriginalValues();
 
@@ -439,6 +446,10 @@ public class EbPartnerShipModelImpl extends BaseModelImpl<EbPartnerShip>
 
 		ebPartnerShipCacheModel.companyId = getCompanyId();
 
+		ebPartnerShipCacheModel.userId = getUserId();
+
+		ebPartnerShipCacheModel.groupId = getGroupId();
+
 		Date createDate = getCreateDate();
 
 		if (createDate != null) {
@@ -472,16 +483,6 @@ public class EbPartnerShipModelImpl extends BaseModelImpl<EbPartnerShip>
 			ebPartnerShipCacheModel.service = null;
 		}
 
-		ebPartnerShipCacheModel.action = getAction();
-
-		String action = ebPartnerShipCacheModel.action;
-
-		if ((action != null) && (action.length() == 0)) {
-			ebPartnerShipCacheModel.action = null;
-		}
-
-		ebPartnerShipCacheModel.inbound = getInbound();
-
 		return ebPartnerShipCacheModel;
 	}
 
@@ -493,6 +494,10 @@ public class EbPartnerShipModelImpl extends BaseModelImpl<EbPartnerShip>
 		sb.append(getEbPartnerShipId());
 		sb.append(", companyId=");
 		sb.append(getCompanyId());
+		sb.append(", userId=");
+		sb.append(getUserId());
+		sb.append(", groupId=");
+		sb.append(getGroupId());
 		sb.append(", createDate=");
 		sb.append(getCreateDate());
 		sb.append(", name=");
@@ -501,10 +506,6 @@ public class EbPartnerShipModelImpl extends BaseModelImpl<EbPartnerShip>
 		sb.append(getCpaId());
 		sb.append(", service=");
 		sb.append(getService());
-		sb.append(", action=");
-		sb.append(getAction());
-		sb.append(", inbound=");
-		sb.append(getInbound());
 		sb.append("}");
 
 		return sb.toString();
@@ -527,6 +528,14 @@ public class EbPartnerShipModelImpl extends BaseModelImpl<EbPartnerShip>
 		sb.append(getCompanyId());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>userId</column-name><column-value><![CDATA[");
+		sb.append(getUserId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>groupId</column-name><column-value><![CDATA[");
+		sb.append(getGroupId());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>createDate</column-name><column-value><![CDATA[");
 		sb.append(getCreateDate());
 		sb.append("]]></column-value></column>");
@@ -542,14 +551,6 @@ public class EbPartnerShipModelImpl extends BaseModelImpl<EbPartnerShip>
 			"<column><column-name>service</column-name><column-value><![CDATA[");
 		sb.append(getService());
 		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>action</column-name><column-value><![CDATA[");
-		sb.append(getAction());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>inbound</column-name><column-value><![CDATA[");
-		sb.append(getInbound());
-		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -562,11 +563,12 @@ public class EbPartnerShipModelImpl extends BaseModelImpl<EbPartnerShip>
 		};
 	private long _ebPartnerShipId;
 	private long _companyId;
+	private long _userId;
+	private String _userUuid;
+	private long _groupId;
 	private Date _createDate;
 	private String _name;
 	private String _cpaId;
 	private String _service;
-	private String _action;
-	private int _inbound;
 	private EbPartnerShip _escapedModel;
 }

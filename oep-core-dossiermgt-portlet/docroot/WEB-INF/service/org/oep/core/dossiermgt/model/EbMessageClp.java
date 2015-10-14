@@ -20,6 +20,7 @@ import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
+import com.liferay.portal.util.PortalUtil;
 
 import org.oep.core.dossiermgt.service.ClpSerializer;
 import org.oep.core.dossiermgt.service.EbMessageLocalServiceUtil;
@@ -75,6 +76,8 @@ public class EbMessageClp extends BaseModelImpl<EbMessage> implements EbMessage 
 
 		attributes.put("ebMessageId", getEbMessageId());
 		attributes.put("companyId", getCompanyId());
+		attributes.put("userId", getUserId());
+		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("messageId", getMessageId());
 		attributes.put("cpaId", getCpaId());
@@ -109,6 +112,18 @@ public class EbMessageClp extends BaseModelImpl<EbMessage> implements EbMessage 
 
 		if (companyId != null) {
 			setCompanyId(companyId);
+		}
+
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
+		Long groupId = (Long)attributes.get("groupId");
+
+		if (groupId != null) {
+			setGroupId(groupId);
 		}
 
 		Date createDate = (Date)attributes.get("createDate");
@@ -260,6 +275,62 @@ public class EbMessageClp extends BaseModelImpl<EbMessage> implements EbMessage 
 				Method method = clazz.getMethod("setCompanyId", long.class);
 
 				method.invoke(_ebMessageRemoteModel, companyId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public long getUserId() {
+		return _userId;
+	}
+
+	@Override
+	public void setUserId(long userId) {
+		_userId = userId;
+
+		if (_ebMessageRemoteModel != null) {
+			try {
+				Class<?> clazz = _ebMessageRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setUserId", long.class);
+
+				method.invoke(_ebMessageRemoteModel, userId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getUserUuid() throws SystemException {
+		return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
+	}
+
+	@Override
+	public void setUserUuid(String userUuid) {
+		_userUuid = userUuid;
+	}
+
+	@Override
+	public long getGroupId() {
+		return _groupId;
+	}
+
+	@Override
+	public void setGroupId(long groupId) {
+		_groupId = groupId;
+
+		if (_ebMessageRemoteModel != null) {
+			try {
+				Class<?> clazz = _ebMessageRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setGroupId", long.class);
+
+				method.invoke(_ebMessageRemoteModel, groupId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -757,6 +828,8 @@ public class EbMessageClp extends BaseModelImpl<EbMessage> implements EbMessage 
 
 		clone.setEbMessageId(getEbMessageId());
 		clone.setCompanyId(getCompanyId());
+		clone.setUserId(getUserId());
+		clone.setGroupId(getGroupId());
 		clone.setCreateDate(getCreateDate());
 		clone.setMessageId(getMessageId());
 		clone.setCpaId(getCpaId());
@@ -827,12 +900,16 @@ public class EbMessageClp extends BaseModelImpl<EbMessage> implements EbMessage 
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(41);
+		StringBundler sb = new StringBundler(45);
 
 		sb.append("{ebMessageId=");
 		sb.append(getEbMessageId());
 		sb.append(", companyId=");
 		sb.append(getCompanyId());
+		sb.append(", userId=");
+		sb.append(getUserId());
+		sb.append(", groupId=");
+		sb.append(getGroupId());
 		sb.append(", createDate=");
 		sb.append(getCreateDate());
 		sb.append(", messageId=");
@@ -876,7 +953,7 @@ public class EbMessageClp extends BaseModelImpl<EbMessage> implements EbMessage 
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(64);
+		StringBundler sb = new StringBundler(70);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.EbMessage");
@@ -889,6 +966,14 @@ public class EbMessageClp extends BaseModelImpl<EbMessage> implements EbMessage 
 		sb.append(
 			"<column><column-name>companyId</column-name><column-value><![CDATA[");
 		sb.append(getCompanyId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>userId</column-name><column-value><![CDATA[");
+		sb.append(getUserId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>groupId</column-name><column-value><![CDATA[");
+		sb.append(getGroupId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>createDate</column-name><column-value><![CDATA[");
@@ -970,6 +1055,9 @@ public class EbMessageClp extends BaseModelImpl<EbMessage> implements EbMessage 
 
 	private long _ebMessageId;
 	private long _companyId;
+	private long _userId;
+	private String _userUuid;
+	private long _groupId;
 	private Date _createDate;
 	private String _messageId;
 	private String _cpaId;

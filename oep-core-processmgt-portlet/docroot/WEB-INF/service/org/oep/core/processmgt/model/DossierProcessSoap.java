@@ -38,10 +38,11 @@ public class DossierProcessSoap implements Serializable {
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setDossierProcId(model.getDossierProcId());
-		soapModel.setGovAgentId(model.getGovAgentId());
-		soapModel.setGovAgentName(model.getGovAgentName());
-		soapModel.setStartDossierStepId(model.getStartDossierStepId());
+		soapModel.setGovAgencyId(model.getGovAgencyId());
+		soapModel.setGovAgencyName(model.getGovAgencyName());
+		soapModel.setStartStepTransitionId(model.getStartStepTransitionId());
 		soapModel.setDaysDuration(model.getDaysDuration());
+		soapModel.setFee(model.getFee());
 
 		return soapModel;
 	}
@@ -150,28 +151,28 @@ public class DossierProcessSoap implements Serializable {
 		_dossierProcId = dossierProcId;
 	}
 
-	public String getGovAgentId() {
-		return _govAgentId;
+	public String getGovAgencyId() {
+		return _govAgencyId;
 	}
 
-	public void setGovAgentId(String govAgentId) {
-		_govAgentId = govAgentId;
+	public void setGovAgencyId(String govAgencyId) {
+		_govAgencyId = govAgencyId;
 	}
 
-	public String getGovAgentName() {
-		return _govAgentName;
+	public String getGovAgencyName() {
+		return _govAgencyName;
 	}
 
-	public void setGovAgentName(String govAgentName) {
-		_govAgentName = govAgentName;
+	public void setGovAgencyName(String govAgencyName) {
+		_govAgencyName = govAgencyName;
 	}
 
-	public long getStartDossierStepId() {
-		return _startDossierStepId;
+	public long getStartStepTransitionId() {
+		return _startStepTransitionId;
 	}
 
-	public void setStartDossierStepId(long startDossierStepId) {
-		_startDossierStepId = startDossierStepId;
+	public void setStartStepTransitionId(long startStepTransitionId) {
+		_startStepTransitionId = startStepTransitionId;
 	}
 
 	public int getDaysDuration() {
@@ -182,6 +183,14 @@ public class DossierProcessSoap implements Serializable {
 		_daysDuration = daysDuration;
 	}
 
+	public int getFee() {
+		return _fee;
+	}
+
+	public void setFee(int fee) {
+		_fee = fee;
+	}
+
 	private long _dossierProcessId;
 	private long _userId;
 	private long _groupId;
@@ -189,8 +198,9 @@ public class DossierProcessSoap implements Serializable {
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _dossierProcId;
-	private String _govAgentId;
-	private String _govAgentName;
-	private long _startDossierStepId;
+	private String _govAgencyId;
+	private String _govAgencyName;
+	private long _startStepTransitionId;
 	private int _daysDuration;
+	private int _fee;
 }

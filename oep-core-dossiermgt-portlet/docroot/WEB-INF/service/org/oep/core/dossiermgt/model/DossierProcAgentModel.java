@@ -130,34 +130,34 @@ public interface DossierProcAgentModel extends BaseModel<DossierProcAgent> {
 	public void setDossierProcId(long dossierProcId);
 
 	/**
-	 * Returns the gov agent ID of this dossier proc agent.
+	 * Returns the gov agency ID of this dossier proc agent.
 	 *
-	 * @return the gov agent ID of this dossier proc agent
+	 * @return the gov agency ID of this dossier proc agent
 	 */
 	@AutoEscape
-	public String getGovAgentId();
+	public String getGovAgencyId();
 
 	/**
-	 * Sets the gov agent ID of this dossier proc agent.
+	 * Sets the gov agency ID of this dossier proc agent.
 	 *
-	 * @param govAgentId the gov agent ID of this dossier proc agent
+	 * @param govAgencyId the gov agency ID of this dossier proc agent
 	 */
-	public void setGovAgentId(String govAgentId);
+	public void setGovAgencyId(String govAgencyId);
 
 	/**
-	 * Returns the gov agent name of this dossier proc agent.
+	 * Returns the gov agency name of this dossier proc agent.
 	 *
-	 * @return the gov agent name of this dossier proc agent
+	 * @return the gov agency name of this dossier proc agent
 	 */
 	@AutoEscape
-	public String getGovAgentName();
+	public String getGovAgencyName();
 
 	/**
-	 * Sets the gov agent name of this dossier proc agent.
+	 * Sets the gov agency name of this dossier proc agent.
 	 *
-	 * @param govAgentName the gov agent name of this dossier proc agent
+	 * @param govAgencyName the gov agency name of this dossier proc agent
 	 */
-	public void setGovAgentName(String govAgentName);
+	public void setGovAgencyName(String govAgencyName);
 
 	/**
 	 * Returns the eb partner ship ID of this dossier proc agent.

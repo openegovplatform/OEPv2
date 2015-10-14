@@ -51,6 +51,8 @@ public class EbMessageWrapper implements EbMessage, ModelWrapper<EbMessage> {
 
 		attributes.put("ebMessageId", getEbMessageId());
 		attributes.put("companyId", getCompanyId());
+		attributes.put("userId", getUserId());
+		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("messageId", getMessageId());
 		attributes.put("cpaId", getCpaId());
@@ -85,6 +87,18 @@ public class EbMessageWrapper implements EbMessage, ModelWrapper<EbMessage> {
 
 		if (companyId != null) {
 			setCompanyId(companyId);
+		}
+
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
+		Long groupId = (Long)attributes.get("groupId");
+
+		if (groupId != null) {
+			setGroupId(groupId);
 		}
 
 		Date createDate = (Date)attributes.get("createDate");
@@ -255,6 +269,68 @@ public class EbMessageWrapper implements EbMessage, ModelWrapper<EbMessage> {
 	@Override
 	public void setCompanyId(long companyId) {
 		_ebMessage.setCompanyId(companyId);
+	}
+
+	/**
+	* Returns the user ID of this eb message.
+	*
+	* @return the user ID of this eb message
+	*/
+	@Override
+	public long getUserId() {
+		return _ebMessage.getUserId();
+	}
+
+	/**
+	* Sets the user ID of this eb message.
+	*
+	* @param userId the user ID of this eb message
+	*/
+	@Override
+	public void setUserId(long userId) {
+		_ebMessage.setUserId(userId);
+	}
+
+	/**
+	* Returns the user uuid of this eb message.
+	*
+	* @return the user uuid of this eb message
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public java.lang.String getUserUuid()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ebMessage.getUserUuid();
+	}
+
+	/**
+	* Sets the user uuid of this eb message.
+	*
+	* @param userUuid the user uuid of this eb message
+	*/
+	@Override
+	public void setUserUuid(java.lang.String userUuid) {
+		_ebMessage.setUserUuid(userUuid);
+	}
+
+	/**
+	* Returns the group ID of this eb message.
+	*
+	* @return the group ID of this eb message
+	*/
+	@Override
+	public long getGroupId() {
+		return _ebMessage.getGroupId();
+	}
+
+	/**
+	* Sets the group ID of this eb message.
+	*
+	* @param groupId the group ID of this eb message
+	*/
+	@Override
+	public void setGroupId(long groupId) {
+		_ebMessage.setGroupId(groupId);
 	}
 
 	/**

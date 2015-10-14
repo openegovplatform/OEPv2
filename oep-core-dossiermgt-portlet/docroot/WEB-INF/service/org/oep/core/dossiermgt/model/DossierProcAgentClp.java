@@ -79,8 +79,8 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgentId", getGovAgentId());
-		attributes.put("govAgentName", getGovAgentName());
+		attributes.put("govAgencyId", getGovAgencyId());
+		attributes.put("govAgencyName", getGovAgencyName());
 		attributes.put("ebPartnerShipId", getEbPartnerShipId());
 
 		return attributes;
@@ -118,16 +118,16 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 			setDossierProcId(dossierProcId);
 		}
 
-		String govAgentId = (String)attributes.get("govAgentId");
+		String govAgencyId = (String)attributes.get("govAgencyId");
 
-		if (govAgentId != null) {
-			setGovAgentId(govAgentId);
+		if (govAgencyId != null) {
+			setGovAgencyId(govAgencyId);
 		}
 
-		String govAgentName = (String)attributes.get("govAgentName");
+		String govAgencyName = (String)attributes.get("govAgencyName");
 
-		if (govAgentName != null) {
-			setGovAgentName(govAgentName);
+		if (govAgencyName != null) {
+			setGovAgencyName(govAgencyName);
 		}
 
 		Long ebPartnerShipId = (Long)attributes.get("ebPartnerShipId");
@@ -254,21 +254,21 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 	}
 
 	@Override
-	public String getGovAgentId() {
-		return _govAgentId;
+	public String getGovAgencyId() {
+		return _govAgencyId;
 	}
 
 	@Override
-	public void setGovAgentId(String govAgentId) {
-		_govAgentId = govAgentId;
+	public void setGovAgencyId(String govAgencyId) {
+		_govAgencyId = govAgencyId;
 
 		if (_dossierProcAgentRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierProcAgentRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setGovAgentId", String.class);
+				Method method = clazz.getMethod("setGovAgencyId", String.class);
 
-				method.invoke(_dossierProcAgentRemoteModel, govAgentId);
+				method.invoke(_dossierProcAgentRemoteModel, govAgencyId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -277,21 +277,21 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 	}
 
 	@Override
-	public String getGovAgentName() {
-		return _govAgentName;
+	public String getGovAgencyName() {
+		return _govAgencyName;
 	}
 
 	@Override
-	public void setGovAgentName(String govAgentName) {
-		_govAgentName = govAgentName;
+	public void setGovAgencyName(String govAgencyName) {
+		_govAgencyName = govAgencyName;
 
 		if (_dossierProcAgentRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierProcAgentRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setGovAgentName", String.class);
+				Method method = clazz.getMethod("setGovAgencyName", String.class);
 
-				method.invoke(_dossierProcAgentRemoteModel, govAgentName);
+				method.invoke(_dossierProcAgentRemoteModel, govAgencyName);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -398,8 +398,8 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 		clone.setCreateDate(getCreateDate());
 		clone.setModifiedDate(getModifiedDate());
 		clone.setDossierProcId(getDossierProcId());
-		clone.setGovAgentId(getGovAgentId());
-		clone.setGovAgentName(getGovAgentName());
+		clone.setGovAgencyId(getGovAgencyId());
+		clone.setGovAgencyName(getGovAgencyName());
 		clone.setEbPartnerShipId(getEbPartnerShipId());
 
 		return clone;
@@ -465,10 +465,10 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 		sb.append(getModifiedDate());
 		sb.append(", dossierProcId=");
 		sb.append(getDossierProcId());
-		sb.append(", govAgentId=");
-		sb.append(getGovAgentId());
-		sb.append(", govAgentName=");
-		sb.append(getGovAgentName());
+		sb.append(", govAgencyId=");
+		sb.append(getGovAgencyId());
+		sb.append(", govAgencyName=");
+		sb.append(getGovAgencyName());
 		sb.append(", ebPartnerShipId=");
 		sb.append(getEbPartnerShipId());
 		sb.append("}");
@@ -505,12 +505,12 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 		sb.append(getDossierProcId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentId</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentId());
+			"<column><column-name>govAgencyId</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentName</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentName());
+			"<column><column-name>govAgencyName</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyName());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>ebPartnerShipId</column-name><column-value><![CDATA[");
@@ -527,8 +527,8 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _dossierProcId;
-	private String _govAgentId;
-	private String _govAgentName;
+	private String _govAgencyId;
+	private String _govAgencyName;
 	private long _ebPartnerShipId;
 	private BaseModel<?> _dossierProcAgentRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.dossiermgt.service.ClpSerializer.class;

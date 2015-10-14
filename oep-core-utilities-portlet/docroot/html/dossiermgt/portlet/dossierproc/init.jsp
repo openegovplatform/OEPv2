@@ -38,3 +38,8 @@
 <%@page import="com.liferay.portal.kernel.util.TreeNode"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.Map"%>
+
+<%
+	String currentURL = PortalUtil.getCurrentURL(request);
+	String redirect = PortalUtil.getCurrentURL(renderRequest);
+%>

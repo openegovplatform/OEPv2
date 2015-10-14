@@ -271,9 +271,9 @@ public interface StepTransitionLocalService extends BaseLocalService,
 	@com.liferay.portal.kernel.transaction.Transactional
 	public org.oep.core.processmgt.model.StepTransition addStepTransition(
 		long dossierProcessId, long preDossierStepId, long postDossierStepId,
-		java.lang.String precondition, java.lang.String transitionName,
-		int daysDuration, java.lang.String dossierStatus, int userAssignment,
-		int newProcessOrder,
+		java.lang.String autoCondition, java.lang.String transitionName,
+		java.lang.String dossierStatus, int notifyStatus, int sendResults,
+		int requestPayment, int userAssignment, int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
@@ -281,10 +281,10 @@ public interface StepTransitionLocalService extends BaseLocalService,
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.processmgt.model.StepTransition updateStepTransition(
 		long id, long dossierProcessId, long preDossierStepId,
-		long postDossierStepId, java.lang.String precondition,
-		java.lang.String transitionName, int daysDuration,
-		java.lang.String dossierStatus, int userAssignment,
-		int newProcessOrder,
+		long postDossierStepId, java.lang.String autoCondition,
+		java.lang.String transitionName, java.lang.String dossierStatus,
+		int notifyStatus, int sendResults, int requestPayment,
+		int userAssignment, int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;

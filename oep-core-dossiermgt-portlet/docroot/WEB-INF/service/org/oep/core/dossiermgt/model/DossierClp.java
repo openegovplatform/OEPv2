@@ -115,6 +115,7 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		attributes.put("daysDelay", getDaysDelay());
 		attributes.put("closeDate", getCloseDate());
 		attributes.put("errorStatus", getErrorStatus());
+		attributes.put("pendingStatus", getPendingStatus());
 		attributes.put("errorCode", getErrorCode());
 		attributes.put("dirty", getDirty());
 
@@ -361,6 +362,12 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 
 		if (errorStatus != null) {
 			setErrorStatus(errorStatus);
+		}
+
+		Integer pendingStatus = (Integer)attributes.get("pendingStatus");
+
+		if (pendingStatus != null) {
+			setPendingStatus(pendingStatus);
 		}
 
 		String errorCode = (String)attributes.get("errorCode");
@@ -1311,6 +1318,29 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
+	public int getPendingStatus() {
+		return _pendingStatus;
+	}
+
+	@Override
+	public void setPendingStatus(int pendingStatus) {
+		_pendingStatus = pendingStatus;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setPendingStatus", int.class);
+
+				method.invoke(_dossierRemoteModel, pendingStatus);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
 	public String getErrorCode() {
 		return _errorCode;
 	}
@@ -1471,6 +1501,7 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		clone.setDaysDelay(getDaysDelay());
 		clone.setCloseDate(getCloseDate());
 		clone.setErrorStatus(getErrorStatus());
+		clone.setPendingStatus(getPendingStatus());
 		clone.setErrorCode(getErrorCode());
 		clone.setDirty(getDirty());
 
@@ -1525,7 +1556,7 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(85);
+		StringBundler sb = new StringBundler(87);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
@@ -1607,6 +1638,8 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getCloseDate());
 		sb.append(", errorStatus=");
 		sb.append(getErrorStatus());
+		sb.append(", pendingStatus=");
+		sb.append(getPendingStatus());
 		sb.append(", errorCode=");
 		sb.append(getErrorCode());
 		sb.append(", dirty=");
@@ -1618,7 +1651,7 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(130);
+		StringBundler sb = new StringBundler(133);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.Dossier");
@@ -1785,6 +1818,10 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getErrorStatus());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>pendingStatus</column-name><column-value><![CDATA[");
+		sb.append(getPendingStatus());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>errorCode</column-name><column-value><![CDATA[");
 		sb.append(getErrorCode());
 		sb.append("]]></column-value></column>");
@@ -1839,6 +1876,7 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	private int _daysDelay;
 	private Date _closeDate;
 	private String _errorStatus;
+	private int _pendingStatus;
 	private String _errorCode;
 	private int _dirty;
 	private BaseModel<?> _dossierRemoteModel;

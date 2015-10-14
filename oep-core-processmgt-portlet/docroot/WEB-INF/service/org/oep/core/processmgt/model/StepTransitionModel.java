@@ -217,6 +217,21 @@ public interface StepTransitionModel extends BaseModel<StepTransition> {
 	public void setPrecondition(String precondition);
 
 	/**
+	 * Returns the auto condition of this step transition.
+	 *
+	 * @return the auto condition of this step transition
+	 */
+	@AutoEscape
+	public String getAutoCondition();
+
+	/**
+	 * Sets the auto condition of this step transition.
+	 *
+	 * @param autoCondition the auto condition of this step transition
+	 */
+	public void setAutoCondition(String autoCondition);
+
+	/**
 	 * Returns the transition name of this step transition.
 	 *
 	 * @return the transition name of this step transition
@@ -232,20 +247,6 @@ public interface StepTransitionModel extends BaseModel<StepTransition> {
 	public void setTransitionName(String transitionName);
 
 	/**
-	 * Returns the days duration of this step transition.
-	 *
-	 * @return the days duration of this step transition
-	 */
-	public int getDaysDuration();
-
-	/**
-	 * Sets the days duration of this step transition.
-	 *
-	 * @param daysDuration the days duration of this step transition
-	 */
-	public void setDaysDuration(int daysDuration);
-
-	/**
 	 * Returns the dossier status of this step transition.
 	 *
 	 * @return the dossier status of this step transition
@@ -259,6 +260,48 @@ public interface StepTransitionModel extends BaseModel<StepTransition> {
 	 * @param dossierStatus the dossier status of this step transition
 	 */
 	public void setDossierStatus(String dossierStatus);
+
+	/**
+	 * Returns the notify status of this step transition.
+	 *
+	 * @return the notify status of this step transition
+	 */
+	public int getNotifyStatus();
+
+	/**
+	 * Sets the notify status of this step transition.
+	 *
+	 * @param notifyStatus the notify status of this step transition
+	 */
+	public void setNotifyStatus(int notifyStatus);
+
+	/**
+	 * Returns the send results of this step transition.
+	 *
+	 * @return the send results of this step transition
+	 */
+	public int getSendResults();
+
+	/**
+	 * Sets the send results of this step transition.
+	 *
+	 * @param sendResults the send results of this step transition
+	 */
+	public void setSendResults(int sendResults);
+
+	/**
+	 * Returns the request payment of this step transition.
+	 *
+	 * @return the request payment of this step transition
+	 */
+	public int getRequestPayment();
+
+	/**
+	 * Sets the request payment of this step transition.
+	 *
+	 * @param requestPayment the request payment of this step transition
+	 */
+	public void setRequestPayment(int requestPayment);
 
 	/**
 	 * Returns the user assignment of this step transition.

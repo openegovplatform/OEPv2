@@ -14,6 +14,7 @@
 
 package org.oep.core.processmgt.model;
 
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
@@ -50,6 +51,7 @@ public class ProcessOrderWrapper implements ProcessOrder,
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
+		attributes.put("uuid", getUuid());
 		attributes.put("processOrderId", getProcessOrderId());
 		attributes.put("userId", getUserId());
 		attributes.put("groupId", getGroupId());
@@ -61,19 +63,27 @@ public class ProcessOrderWrapper implements ProcessOrder,
 		attributes.put("dossierId", getDossierId());
 		attributes.put("dossierProcessId", getDossierProcessId());
 		attributes.put("dossierStepId", getDossierStepId());
-		attributes.put("dossierStatus", getDossierStatus());
-		attributes.put("dossierResume", getDossierResume());
+		attributes.put("orderStatus", getOrderStatus());
+		attributes.put("orderResume", getOrderResume());
 		attributes.put("stepDate", getStepDate());
 		attributes.put("stepNote", getStepNote());
 		attributes.put("assignToUserId", getAssignToUserId());
 		attributes.put("currentCondition", getCurrentCondition());
-		attributes.put("endState", getEndState());
+		attributes.put("lastStepTransitionId", getLastStepTransitionId());
+		attributes.put("stopRollback", getStopRollback());
+		attributes.put("ebPartnerShipId", getEbPartnerShipId());
 
 		return attributes;
 	}
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
+		String uuid = (String)attributes.get("uuid");
+
+		if (uuid != null) {
+			setUuid(uuid);
+		}
+
 		Long processOrderId = (Long)attributes.get("processOrderId");
 
 		if (processOrderId != null) {
@@ -140,16 +150,16 @@ public class ProcessOrderWrapper implements ProcessOrder,
 			setDossierStepId(dossierStepId);
 		}
 
-		String dossierStatus = (String)attributes.get("dossierStatus");
+		String orderStatus = (String)attributes.get("orderStatus");
 
-		if (dossierStatus != null) {
-			setDossierStatus(dossierStatus);
+		if (orderStatus != null) {
+			setOrderStatus(orderStatus);
 		}
 
-		String dossierResume = (String)attributes.get("dossierResume");
+		String orderResume = (String)attributes.get("orderResume");
 
-		if (dossierResume != null) {
-			setDossierResume(dossierResume);
+		if (orderResume != null) {
+			setOrderResume(orderResume);
 		}
 
 		Date stepDate = (Date)attributes.get("stepDate");
@@ -176,10 +186,22 @@ public class ProcessOrderWrapper implements ProcessOrder,
 			setCurrentCondition(currentCondition);
 		}
 
-		Integer endState = (Integer)attributes.get("endState");
+		Long lastStepTransitionId = (Long)attributes.get("lastStepTransitionId");
 
-		if (endState != null) {
-			setEndState(endState);
+		if (lastStepTransitionId != null) {
+			setLastStepTransitionId(lastStepTransitionId);
+		}
+
+		Integer stopRollback = (Integer)attributes.get("stopRollback");
+
+		if (stopRollback != null) {
+			setStopRollback(stopRollback);
+		}
+
+		Long ebPartnerShipId = (Long)attributes.get("ebPartnerShipId");
+
+		if (ebPartnerShipId != null) {
+			setEbPartnerShipId(ebPartnerShipId);
 		}
 	}
 
@@ -201,6 +223,26 @@ public class ProcessOrderWrapper implements ProcessOrder,
 	@Override
 	public void setPrimaryKey(long primaryKey) {
 		_processOrder.setPrimaryKey(primaryKey);
+	}
+
+	/**
+	* Returns the uuid of this process order.
+	*
+	* @return the uuid of this process order
+	*/
+	@Override
+	public java.lang.String getUuid() {
+		return _processOrder.getUuid();
+	}
+
+	/**
+	* Sets the uuid of this process order.
+	*
+	* @param uuid the uuid of this process order
+	*/
+	@Override
+	public void setUuid(java.lang.String uuid) {
+		_processOrder.setUuid(uuid);
 	}
 
 	/**
@@ -446,43 +488,43 @@ public class ProcessOrderWrapper implements ProcessOrder,
 	}
 
 	/**
-	* Returns the dossier status of this process order.
+	* Returns the order status of this process order.
 	*
-	* @return the dossier status of this process order
+	* @return the order status of this process order
 	*/
 	@Override
-	public java.lang.String getDossierStatus() {
-		return _processOrder.getDossierStatus();
+	public java.lang.String getOrderStatus() {
+		return _processOrder.getOrderStatus();
 	}
 
 	/**
-	* Sets the dossier status of this process order.
+	* Sets the order status of this process order.
 	*
-	* @param dossierStatus the dossier status of this process order
+	* @param orderStatus the order status of this process order
 	*/
 	@Override
-	public void setDossierStatus(java.lang.String dossierStatus) {
-		_processOrder.setDossierStatus(dossierStatus);
+	public void setOrderStatus(java.lang.String orderStatus) {
+		_processOrder.setOrderStatus(orderStatus);
 	}
 
 	/**
-	* Returns the dossier resume of this process order.
+	* Returns the order resume of this process order.
 	*
-	* @return the dossier resume of this process order
+	* @return the order resume of this process order
 	*/
 	@Override
-	public java.lang.String getDossierResume() {
-		return _processOrder.getDossierResume();
+	public java.lang.String getOrderResume() {
+		return _processOrder.getOrderResume();
 	}
 
 	/**
-	* Sets the dossier resume of this process order.
+	* Sets the order resume of this process order.
 	*
-	* @param dossierResume the dossier resume of this process order
+	* @param orderResume the order resume of this process order
 	*/
 	@Override
-	public void setDossierResume(java.lang.String dossierResume) {
-		_processOrder.setDossierResume(dossierResume);
+	public void setOrderResume(java.lang.String orderResume) {
+		_processOrder.setOrderResume(orderResume);
 	}
 
 	/**
@@ -588,23 +630,63 @@ public class ProcessOrderWrapper implements ProcessOrder,
 	}
 
 	/**
-	* Returns the end state of this process order.
+	* Returns the last step transition ID of this process order.
 	*
-	* @return the end state of this process order
+	* @return the last step transition ID of this process order
 	*/
 	@Override
-	public int getEndState() {
-		return _processOrder.getEndState();
+	public long getLastStepTransitionId() {
+		return _processOrder.getLastStepTransitionId();
 	}
 
 	/**
-	* Sets the end state of this process order.
+	* Sets the last step transition ID of this process order.
 	*
-	* @param endState the end state of this process order
+	* @param lastStepTransitionId the last step transition ID of this process order
 	*/
 	@Override
-	public void setEndState(int endState) {
-		_processOrder.setEndState(endState);
+	public void setLastStepTransitionId(long lastStepTransitionId) {
+		_processOrder.setLastStepTransitionId(lastStepTransitionId);
+	}
+
+	/**
+	* Returns the stop rollback of this process order.
+	*
+	* @return the stop rollback of this process order
+	*/
+	@Override
+	public int getStopRollback() {
+		return _processOrder.getStopRollback();
+	}
+
+	/**
+	* Sets the stop rollback of this process order.
+	*
+	* @param stopRollback the stop rollback of this process order
+	*/
+	@Override
+	public void setStopRollback(int stopRollback) {
+		_processOrder.setStopRollback(stopRollback);
+	}
+
+	/**
+	* Returns the eb partner ship ID of this process order.
+	*
+	* @return the eb partner ship ID of this process order
+	*/
+	@Override
+	public long getEbPartnerShipId() {
+		return _processOrder.getEbPartnerShipId();
+	}
+
+	/**
+	* Sets the eb partner ship ID of this process order.
+	*
+	* @param ebPartnerShipId the eb partner ship ID of this process order
+	*/
+	@Override
+	public void setEbPartnerShipId(long ebPartnerShipId) {
+		_processOrder.setEbPartnerShipId(ebPartnerShipId);
 	}
 
 	@Override
@@ -729,6 +811,11 @@ public class ProcessOrderWrapper implements ProcessOrder,
 		}
 
 		return false;
+	}
+
+	@Override
+	public StagedModelType getStagedModelType() {
+		return _processOrder.getStagedModelType();
 	}
 
 	/**

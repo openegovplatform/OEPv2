@@ -52,6 +52,8 @@ public class DictCollectionWrapper implements DictCollection,
 
 		attributes.put("dictCollectionId", getDictCollectionId());
 		attributes.put("companyId", getCompanyId());
+		attributes.put("userId", getUserId());
+		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("name", getName());
@@ -76,6 +78,18 @@ public class DictCollectionWrapper implements DictCollection,
 
 		if (companyId != null) {
 			setCompanyId(companyId);
+		}
+
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
+		Long groupId = (Long)attributes.get("groupId");
+
+		if (groupId != null) {
+			setGroupId(groupId);
 		}
 
 		Date createDate = (Date)attributes.get("createDate");
@@ -185,6 +199,68 @@ public class DictCollectionWrapper implements DictCollection,
 	@Override
 	public void setCompanyId(long companyId) {
 		_dictCollection.setCompanyId(companyId);
+	}
+
+	/**
+	* Returns the user ID of this dictionary collection.
+	*
+	* @return the user ID of this dictionary collection
+	*/
+	@Override
+	public long getUserId() {
+		return _dictCollection.getUserId();
+	}
+
+	/**
+	* Sets the user ID of this dictionary collection.
+	*
+	* @param userId the user ID of this dictionary collection
+	*/
+	@Override
+	public void setUserId(long userId) {
+		_dictCollection.setUserId(userId);
+	}
+
+	/**
+	* Returns the user uuid of this dictionary collection.
+	*
+	* @return the user uuid of this dictionary collection
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public java.lang.String getUserUuid()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dictCollection.getUserUuid();
+	}
+
+	/**
+	* Sets the user uuid of this dictionary collection.
+	*
+	* @param userUuid the user uuid of this dictionary collection
+	*/
+	@Override
+	public void setUserUuid(java.lang.String userUuid) {
+		_dictCollection.setUserUuid(userUuid);
+	}
+
+	/**
+	* Returns the group ID of this dictionary collection.
+	*
+	* @return the group ID of this dictionary collection
+	*/
+	@Override
+	public long getGroupId() {
+		return _dictCollection.getGroupId();
+	}
+
+	/**
+	* Sets the group ID of this dictionary collection.
+	*
+	* @param groupId the group ID of this dictionary collection
+	*/
+	@Override
+	public void setGroupId(long groupId) {
+		_dictCollection.setGroupId(groupId);
 	}
 
 	/**

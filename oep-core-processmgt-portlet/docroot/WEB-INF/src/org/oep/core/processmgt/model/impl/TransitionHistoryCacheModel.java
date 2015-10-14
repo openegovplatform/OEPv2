@@ -38,7 +38,7 @@ public class TransitionHistoryCacheModel implements CacheModel<TransitionHistory
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(31);
+		StringBundler sb = new StringBundler(35);
 
 		sb.append("{transitionHistoryId=");
 		sb.append(transitionHistoryId);
@@ -60,6 +60,10 @@ public class TransitionHistoryCacheModel implements CacheModel<TransitionHistory
 		sb.append(daysDelay);
 		sb.append(", startDate=");
 		sb.append(startDate);
+		sb.append(", preDossierStatus=");
+		sb.append(preDossierStatus);
+		sb.append(", postDossierStatus=");
+		sb.append(postDossierStatus);
 		sb.append(", stepTransitionId=");
 		sb.append(stepTransitionId);
 		sb.append(", preDossierStepId=");
@@ -103,6 +107,20 @@ public class TransitionHistoryCacheModel implements CacheModel<TransitionHistory
 			transitionHistoryImpl.setStartDate(new Date(startDate));
 		}
 
+		if (preDossierStatus == null) {
+			transitionHistoryImpl.setPreDossierStatus(StringPool.BLANK);
+		}
+		else {
+			transitionHistoryImpl.setPreDossierStatus(preDossierStatus);
+		}
+
+		if (postDossierStatus == null) {
+			transitionHistoryImpl.setPostDossierStatus(StringPool.BLANK);
+		}
+		else {
+			transitionHistoryImpl.setPostDossierStatus(postDossierStatus);
+		}
+
 		transitionHistoryImpl.setStepTransitionId(stepTransitionId);
 		transitionHistoryImpl.setPreDossierStepId(preDossierStepId);
 		transitionHistoryImpl.setPostDossierStepId(postDossierStepId);
@@ -138,6 +156,8 @@ public class TransitionHistoryCacheModel implements CacheModel<TransitionHistory
 		daysDoing = objectInput.readInt();
 		daysDelay = objectInput.readInt();
 		startDate = objectInput.readLong();
+		preDossierStatus = objectInput.readUTF();
+		postDossierStatus = objectInput.readUTF();
 		stepTransitionId = objectInput.readLong();
 		preDossierStepId = objectInput.readLong();
 		postDossierStepId = objectInput.readLong();
@@ -158,6 +178,21 @@ public class TransitionHistoryCacheModel implements CacheModel<TransitionHistory
 		objectOutput.writeInt(daysDoing);
 		objectOutput.writeInt(daysDelay);
 		objectOutput.writeLong(startDate);
+
+		if (preDossierStatus == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(preDossierStatus);
+		}
+
+		if (postDossierStatus == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(postDossierStatus);
+		}
+
 		objectOutput.writeLong(stepTransitionId);
 		objectOutput.writeLong(preDossierStepId);
 		objectOutput.writeLong(postDossierStepId);
@@ -187,6 +222,8 @@ public class TransitionHistoryCacheModel implements CacheModel<TransitionHistory
 	public int daysDoing;
 	public int daysDelay;
 	public long startDate;
+	public String preDossierStatus;
+	public String postDossierStatus;
 	public long stepTransitionId;
 	public long preDossierStepId;
 	public long postDossierStepId;

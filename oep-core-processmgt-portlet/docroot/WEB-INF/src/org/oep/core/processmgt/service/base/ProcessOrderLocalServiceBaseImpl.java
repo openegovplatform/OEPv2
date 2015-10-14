@@ -38,6 +38,7 @@ import org.oep.core.processmgt.service.persistence.DossierStep2RolePersistence;
 import org.oep.core.processmgt.service.persistence.DossierStepPersistence;
 import org.oep.core.processmgt.service.persistence.ProcessOrder2UserPersistence;
 import org.oep.core.processmgt.service.persistence.ProcessOrderPersistence;
+import org.oep.core.processmgt.service.persistence.StatisticByUserPersistence;
 import org.oep.core.processmgt.service.persistence.StepTransitionPersistence;
 import org.oep.core.processmgt.service.persistence.TransitionHistoryPersistence;
 import org.oep.core.processmgt.service.persistence.UserAssignmentPersistence;
@@ -225,6 +226,34 @@ public abstract class ProcessOrderLocalServiceBaseImpl
 	}
 
 	/**
+	 * Returns the process order with the matching UUID and company.
+	 *
+	 * @param uuid the process order's UUID
+	 * @param  companyId the primary key of the company
+	 * @return the matching process order, or <code>null</code> if a matching process order could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public ProcessOrder fetchProcessOrderByUuidAndCompanyId(String uuid,
+		long companyId) throws SystemException {
+		return processOrderPersistence.fetchByUuid_C_First(uuid, companyId, null);
+	}
+
+	/**
+	 * Returns the process order matching the UUID and group.
+	 *
+	 * @param uuid the process order's UUID
+	 * @param groupId the primary key of the group
+	 * @return the matching process order, or <code>null</code> if a matching process order could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public ProcessOrder fetchProcessOrderByUuidAndGroupId(String uuid,
+		long groupId) throws SystemException {
+		return processOrderPersistence.fetchByUUID_G(uuid, groupId);
+	}
+
+	/**
 	 * Returns the process order with the primary key.
 	 *
 	 * @param processOrderId the primary key of the process order
@@ -242,6 +271,36 @@ public abstract class ProcessOrderLocalServiceBaseImpl
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
 		throws PortalException, SystemException {
 		return processOrderPersistence.findByPrimaryKey(primaryKeyObj);
+	}
+
+	/**
+	 * Returns the process order with the matching UUID and company.
+	 *
+	 * @param uuid the process order's UUID
+	 * @param  companyId the primary key of the company
+	 * @return the matching process order
+	 * @throws PortalException if a matching process order could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public ProcessOrder getProcessOrderByUuidAndCompanyId(String uuid,
+		long companyId) throws PortalException, SystemException {
+		return processOrderPersistence.findByUuid_C_First(uuid, companyId, null);
+	}
+
+	/**
+	 * Returns the process order matching the UUID and group.
+	 *
+	 * @param uuid the process order's UUID
+	 * @param groupId the primary key of the group
+	 * @return the matching process order
+	 * @throws PortalException if a matching process order could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public ProcessOrder getProcessOrderByUuidAndGroupId(String uuid,
+		long groupId) throws PortalException, SystemException {
+		return processOrderPersistence.findByUUID_G(uuid, groupId);
 	}
 
 	/**
@@ -532,6 +591,44 @@ public abstract class ProcessOrderLocalServiceBaseImpl
 	public void setProcessOrder2UserPersistence(
 		ProcessOrder2UserPersistence processOrder2UserPersistence) {
 		this.processOrder2UserPersistence = processOrder2UserPersistence;
+	}
+
+	/**
+	 * Returns the statistic by user remote service.
+	 *
+	 * @return the statistic by user remote service
+	 */
+	public org.oep.core.processmgt.service.StatisticByUserService getStatisticByUserService() {
+		return statisticByUserService;
+	}
+
+	/**
+	 * Sets the statistic by user remote service.
+	 *
+	 * @param statisticByUserService the statistic by user remote service
+	 */
+	public void setStatisticByUserService(
+		org.oep.core.processmgt.service.StatisticByUserService statisticByUserService) {
+		this.statisticByUserService = statisticByUserService;
+	}
+
+	/**
+	 * Returns the statistic by user persistence.
+	 *
+	 * @return the statistic by user persistence
+	 */
+	public StatisticByUserPersistence getStatisticByUserPersistence() {
+		return statisticByUserPersistence;
+	}
+
+	/**
+	 * Sets the statistic by user persistence.
+	 *
+	 * @param statisticByUserPersistence the statistic by user persistence
+	 */
+	public void setStatisticByUserPersistence(
+		StatisticByUserPersistence statisticByUserPersistence) {
+		this.statisticByUserPersistence = statisticByUserPersistence;
 	}
 
 	/**
@@ -907,6 +1004,10 @@ public abstract class ProcessOrderLocalServiceBaseImpl
 	protected org.oep.core.processmgt.service.ProcessOrder2UserLocalService processOrder2UserLocalService;
 	@BeanReference(type = ProcessOrder2UserPersistence.class)
 	protected ProcessOrder2UserPersistence processOrder2UserPersistence;
+	@BeanReference(type = org.oep.core.processmgt.service.StatisticByUserService.class)
+	protected org.oep.core.processmgt.service.StatisticByUserService statisticByUserService;
+	@BeanReference(type = StatisticByUserPersistence.class)
+	protected StatisticByUserPersistence statisticByUserPersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.StepTransitionLocalService.class)
 	protected org.oep.core.processmgt.service.StepTransitionLocalService stepTransitionLocalService;
 	@BeanReference(type = org.oep.core.processmgt.service.StepTransitionService.class)

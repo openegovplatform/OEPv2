@@ -335,6 +335,8 @@ public class TransitionHistoryPersistenceImpl extends BasePersistenceImpl<Transi
 		transitionHistoryImpl.setDaysDoing(transitionHistory.getDaysDoing());
 		transitionHistoryImpl.setDaysDelay(transitionHistory.getDaysDelay());
 		transitionHistoryImpl.setStartDate(transitionHistory.getStartDate());
+		transitionHistoryImpl.setPreDossierStatus(transitionHistory.getPreDossierStatus());
+		transitionHistoryImpl.setPostDossierStatus(transitionHistory.getPostDossierStatus());
 		transitionHistoryImpl.setStepTransitionId(transitionHistory.getStepTransitionId());
 		transitionHistoryImpl.setPreDossierStepId(transitionHistory.getPreDossierStepId());
 		transitionHistoryImpl.setPostDossierStepId(transitionHistory.getPostDossierStepId());

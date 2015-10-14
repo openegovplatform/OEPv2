@@ -44,6 +44,10 @@ public class EbPartnerShipCacheModel implements CacheModel<EbPartnerShip>,
 		sb.append(ebPartnerShipId);
 		sb.append(", companyId=");
 		sb.append(companyId);
+		sb.append(", userId=");
+		sb.append(userId);
+		sb.append(", groupId=");
+		sb.append(groupId);
 		sb.append(", createDate=");
 		sb.append(createDate);
 		sb.append(", name=");
@@ -52,10 +56,6 @@ public class EbPartnerShipCacheModel implements CacheModel<EbPartnerShip>,
 		sb.append(cpaId);
 		sb.append(", service=");
 		sb.append(service);
-		sb.append(", action=");
-		sb.append(action);
-		sb.append(", inbound=");
-		sb.append(inbound);
 		sb.append("}");
 
 		return sb.toString();
@@ -67,6 +67,8 @@ public class EbPartnerShipCacheModel implements CacheModel<EbPartnerShip>,
 
 		ebPartnerShipImpl.setEbPartnerShipId(ebPartnerShipId);
 		ebPartnerShipImpl.setCompanyId(companyId);
+		ebPartnerShipImpl.setUserId(userId);
+		ebPartnerShipImpl.setGroupId(groupId);
 
 		if (createDate == Long.MIN_VALUE) {
 			ebPartnerShipImpl.setCreateDate(null);
@@ -96,15 +98,6 @@ public class EbPartnerShipCacheModel implements CacheModel<EbPartnerShip>,
 			ebPartnerShipImpl.setService(service);
 		}
 
-		if (action == null) {
-			ebPartnerShipImpl.setAction(StringPool.BLANK);
-		}
-		else {
-			ebPartnerShipImpl.setAction(action);
-		}
-
-		ebPartnerShipImpl.setInbound(inbound);
-
 		ebPartnerShipImpl.resetOriginalValues();
 
 		return ebPartnerShipImpl;
@@ -114,12 +107,12 @@ public class EbPartnerShipCacheModel implements CacheModel<EbPartnerShip>,
 	public void readExternal(ObjectInput objectInput) throws IOException {
 		ebPartnerShipId = objectInput.readLong();
 		companyId = objectInput.readLong();
+		userId = objectInput.readLong();
+		groupId = objectInput.readLong();
 		createDate = objectInput.readLong();
 		name = objectInput.readUTF();
 		cpaId = objectInput.readUTF();
 		service = objectInput.readUTF();
-		action = objectInput.readUTF();
-		inbound = objectInput.readInt();
 	}
 
 	@Override
@@ -127,6 +120,8 @@ public class EbPartnerShipCacheModel implements CacheModel<EbPartnerShip>,
 		throws IOException {
 		objectOutput.writeLong(ebPartnerShipId);
 		objectOutput.writeLong(companyId);
+		objectOutput.writeLong(userId);
+		objectOutput.writeLong(groupId);
 		objectOutput.writeLong(createDate);
 
 		if (name == null) {
@@ -149,23 +144,14 @@ public class EbPartnerShipCacheModel implements CacheModel<EbPartnerShip>,
 		else {
 			objectOutput.writeUTF(service);
 		}
-
-		if (action == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(action);
-		}
-
-		objectOutput.writeInt(inbound);
 	}
 
 	public long ebPartnerShipId;
 	public long companyId;
+	public long userId;
+	public long groupId;
 	public long createDate;
 	public String name;
 	public String cpaId;
 	public String service;
-	public String action;
-	public int inbound;
 }

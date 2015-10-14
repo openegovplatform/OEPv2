@@ -55,8 +55,8 @@ public class DossierProcAgentWrapper implements DossierProcAgent,
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgentId", getGovAgentId());
-		attributes.put("govAgentName", getGovAgentName());
+		attributes.put("govAgencyId", getGovAgencyId());
+		attributes.put("govAgencyName", getGovAgencyName());
 		attributes.put("ebPartnerShipId", getEbPartnerShipId());
 
 		return attributes;
@@ -94,16 +94,16 @@ public class DossierProcAgentWrapper implements DossierProcAgent,
 			setDossierProcId(dossierProcId);
 		}
 
-		String govAgentId = (String)attributes.get("govAgentId");
+		String govAgencyId = (String)attributes.get("govAgencyId");
 
-		if (govAgentId != null) {
-			setGovAgentId(govAgentId);
+		if (govAgencyId != null) {
+			setGovAgencyId(govAgencyId);
 		}
 
-		String govAgentName = (String)attributes.get("govAgentName");
+		String govAgencyName = (String)attributes.get("govAgencyName");
 
-		if (govAgentName != null) {
-			setGovAgentName(govAgentName);
+		if (govAgencyName != null) {
+			setGovAgencyName(govAgencyName);
 		}
 
 		Long ebPartnerShipId = (Long)attributes.get("ebPartnerShipId");
@@ -234,43 +234,43 @@ public class DossierProcAgentWrapper implements DossierProcAgent,
 	}
 
 	/**
-	* Returns the gov agent ID of this dossier proc agent.
+	* Returns the gov agency ID of this dossier proc agent.
 	*
-	* @return the gov agent ID of this dossier proc agent
+	* @return the gov agency ID of this dossier proc agent
 	*/
 	@Override
-	public java.lang.String getGovAgentId() {
-		return _dossierProcAgent.getGovAgentId();
+	public java.lang.String getGovAgencyId() {
+		return _dossierProcAgent.getGovAgencyId();
 	}
 
 	/**
-	* Sets the gov agent ID of this dossier proc agent.
+	* Sets the gov agency ID of this dossier proc agent.
 	*
-	* @param govAgentId the gov agent ID of this dossier proc agent
+	* @param govAgencyId the gov agency ID of this dossier proc agent
 	*/
 	@Override
-	public void setGovAgentId(java.lang.String govAgentId) {
-		_dossierProcAgent.setGovAgentId(govAgentId);
+	public void setGovAgencyId(java.lang.String govAgencyId) {
+		_dossierProcAgent.setGovAgencyId(govAgencyId);
 	}
 
 	/**
-	* Returns the gov agent name of this dossier proc agent.
+	* Returns the gov agency name of this dossier proc agent.
 	*
-	* @return the gov agent name of this dossier proc agent
+	* @return the gov agency name of this dossier proc agent
 	*/
 	@Override
-	public java.lang.String getGovAgentName() {
-		return _dossierProcAgent.getGovAgentName();
+	public java.lang.String getGovAgencyName() {
+		return _dossierProcAgent.getGovAgencyName();
 	}
 
 	/**
-	* Sets the gov agent name of this dossier proc agent.
+	* Sets the gov agency name of this dossier proc agent.
 	*
-	* @param govAgentName the gov agent name of this dossier proc agent
+	* @param govAgencyName the gov agency name of this dossier proc agent
 	*/
 	@Override
-	public void setGovAgentName(java.lang.String govAgentName) {
-		_dossierProcAgent.setGovAgentName(govAgentName);
+	public void setGovAgencyName(java.lang.String govAgencyName) {
+		_dossierProcAgent.setGovAgencyName(govAgencyName);
 	}
 
 	/**

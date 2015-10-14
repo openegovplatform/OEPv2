@@ -149,10 +149,12 @@ public class DossierProcLocalServiceImpl extends DossierProcLocalServiceBaseImpl
 		dossierProc.setFeeDescription(feeDescription);
 		dossierProc.setInstructionsDescription(instructionsDescription);
 		dossierProc.setAdministrationNo(administrationNo);
-		String administrationName = DictionaryAppLocalServiceUtil.getDictDataByCode("OEP_CAPQUANLY", administrationNo, serviceContext).getTitle();
+		//String administrationName = DictionaryAppLocalServiceUtil.getDictDataByCode("OEP_CAPQUANLY", administrationNo, serviceContext).getTitle();
+		String administrationName = administrationNo;
 		dossierProc.setAdministrationName(administrationName);
 		dossierProc.setDomainNo(domainNo);
-		String domainName = DictionaryAppLocalServiceUtil.getDictDataByCode("OEP_LINHVUCTHUTUC", domainNo, serviceContext).getTitle();
+		//String domainName = DictionaryAppLocalServiceUtil.getDictDataByCode("OEP_LINHVUCTHUTUC", domainNo, serviceContext).getTitle();
+		String domainName = domainNo;
 		dossierProc.setDomainName(domainName);
 		dossierProc.setEffectDate(effectDate);
 		dossierProc.setExpireDate(expireDate);
@@ -281,10 +283,12 @@ public class DossierProcLocalServiceImpl extends DossierProcLocalServiceBaseImpl
 		dossierProc.setFeeDescription(feeDescription);
 		dossierProc.setInstructionsDescription(instructionsDescription);
 		dossierProc.setAdministrationNo(administrationNo);
-		String administrationName = DictionaryAppLocalServiceUtil.getDictDataByCode("OEP_CAPQUANLY", administrationNo, serviceContext).getTitle();
+		//String administrationName = DictionaryAppLocalServiceUtil.getDictDataByCode("OEP_CAPQUANLY", administrationNo, serviceContext).getTitle();
+		String administrationName = administrationNo;
 		dossierProc.setAdministrationName(administrationName);
 		dossierProc.setDomainNo(domainNo);
-		String domainName = DictionaryAppLocalServiceUtil.getDictDataByCode("OEP_LINHVUCTHUTUC", domainNo, serviceContext).getTitle();
+		//String domainName = DictionaryAppLocalServiceUtil.getDictDataByCode("OEP_LINHVUCTHUTUC", domainNo, serviceContext).getTitle();
+		String domainName = domainNo;
 		dossierProc.setDomainName(domainName);
 		dossierProc.setEffectDate(effectDate);
 		dossierProc.setExpireDate(expireDate);
@@ -437,7 +441,7 @@ public class DossierProcLocalServiceImpl extends DossierProcLocalServiceBaseImpl
 		if (administration == null)
 			checkAdministrationNo = true;
 		if (checkAdministrationNo) {
-			throw new NoSuchAdministrationException();
+			//throw new NoSuchAdministrationException();
 		}
 		
 		//Kiểm tra lĩnh vực thủ tục có tồn tại hay không
@@ -446,7 +450,7 @@ public class DossierProcLocalServiceImpl extends DossierProcLocalServiceBaseImpl
 		if (domain == null)
 			checkDomainNo = true;
 		if (checkDomainNo) {
-			throw new NoSuchDomainException();
+			//throw new NoSuchDomainException();
 		}
 	}
 	
@@ -573,6 +577,14 @@ public class DossierProcLocalServiceImpl extends DossierProcLocalServiceBaseImpl
 	
 	public int countByGroupCustomCondition(String name, Date effectDate, Date expireDate, int active, ServiceContext serviceContext) throws SystemException {
 		return dossierProcFinder.countByGroupCustomCondition(name, effectDate, expireDate, active, serviceContext);
+	}
+	
+	public List<DossierProc> findByCompany(long companyId) throws SystemException {
+		return dossierProcPersistence.findByC(companyId);
+	}
+	
+	public List<DossierProc> findByCompany(ServiceContext serviceContext) throws SystemException {
+		return dossierProcPersistence.findByC(serviceContext.getCompanyId());
 	}
 	
 	private static Log _log = LogFactoryUtil.getLog(DossierProcLocalServiceImpl.class);

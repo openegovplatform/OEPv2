@@ -3383,6 +3383,8 @@ public class DictCollectionPersistenceImpl extends BasePersistenceImpl<DictColle
 
 		dictCollectionImpl.setDictCollectionId(dictCollection.getDictCollectionId());
 		dictCollectionImpl.setCompanyId(dictCollection.getCompanyId());
+		dictCollectionImpl.setUserId(dictCollection.getUserId());
+		dictCollectionImpl.setGroupId(dictCollection.getGroupId());
 		dictCollectionImpl.setCreateDate(dictCollection.getCreateDate());
 		dictCollectionImpl.setModifiedDate(dictCollection.getModifiedDate());
 		dictCollectionImpl.setName(dictCollection.getName());

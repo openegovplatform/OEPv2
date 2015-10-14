@@ -107,92 +107,163 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 				"org.oep.core.dossiermgt.model.DocTemplate"
 			};
 
-		_methodName16 = "getBeanIdentifier";
+		_methodName16 = "addDossierDocDocTemplate";
 
-		_methodParameterTypes16 = new String[] {  };
+		_methodParameterTypes16 = new String[] { "long", "long" };
 
-		_methodName17 = "setBeanIdentifier";
+		_methodName17 = "addDossierDocDocTemplate";
 
-		_methodParameterTypes17 = new String[] { "java.lang.String" };
+		_methodParameterTypes17 = new String[] {
+				"long", "org.oep.core.dossiermgt.model.DocTemplate"
+			};
 
-		_methodName19 = "addDocTemplate";
+		_methodName18 = "addDossierDocDocTemplates";
 
-		_methodParameterTypes19 = new String[] {
+		_methodParameterTypes18 = new String[] { "long", "long[][]" };
+
+		_methodName19 = "addDossierDocDocTemplates";
+
+		_methodParameterTypes19 = new String[] { "long", "java.util.List" };
+
+		_methodName20 = "clearDossierDocDocTemplates";
+
+		_methodParameterTypes20 = new String[] { "long" };
+
+		_methodName21 = "deleteDossierDocDocTemplate";
+
+		_methodParameterTypes21 = new String[] { "long", "long" };
+
+		_methodName22 = "deleteDossierDocDocTemplate";
+
+		_methodParameterTypes22 = new String[] {
+				"long", "org.oep.core.dossiermgt.model.DocTemplate"
+			};
+
+		_methodName23 = "deleteDossierDocDocTemplates";
+
+		_methodParameterTypes23 = new String[] { "long", "long[][]" };
+
+		_methodName24 = "deleteDossierDocDocTemplates";
+
+		_methodParameterTypes24 = new String[] { "long", "java.util.List" };
+
+		_methodName25 = "getDossierDocDocTemplates";
+
+		_methodParameterTypes25 = new String[] { "long" };
+
+		_methodName26 = "getDossierDocDocTemplates";
+
+		_methodParameterTypes26 = new String[] { "long", "int", "int" };
+
+		_methodName27 = "getDossierDocDocTemplates";
+
+		_methodParameterTypes27 = new String[] {
+				"long", "int", "int",
+				"com.liferay.portal.kernel.util.OrderByComparator"
+			};
+
+		_methodName28 = "getDossierDocDocTemplatesCount";
+
+		_methodParameterTypes28 = new String[] { "long" };
+
+		_methodName29 = "hasDossierDocDocTemplate";
+
+		_methodParameterTypes29 = new String[] { "long", "long" };
+
+		_methodName30 = "hasDossierDocDocTemplates";
+
+		_methodParameterTypes30 = new String[] { "long" };
+
+		_methodName31 = "setDossierDocDocTemplates";
+
+		_methodParameterTypes31 = new String[] { "long", "long[][]" };
+
+		_methodName32 = "getBeanIdentifier";
+
+		_methodParameterTypes32 = new String[] {  };
+
+		_methodName33 = "setBeanIdentifier";
+
+		_methodParameterTypes33 = new String[] { "java.lang.String" };
+
+		_methodName35 = "addDocTemplate";
+
+		_methodParameterTypes35 = new String[] {
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"long", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName20 = "updateDocTemplate";
+		_methodName36 = "updateDocTemplate";
 
-		_methodParameterTypes20 = new String[] {
+		_methodParameterTypes36 = new String[] {
 				"long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName21 = "updateDocTemplateResources";
+		_methodName37 = "updateDocTemplateResources";
 
-		_methodParameterTypes21 = new String[] {
+		_methodParameterTypes37 = new String[] {
 				"org.oep.core.dossiermgt.model.DocTemplate",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName22 = "removeDocTemplate";
+		_methodName38 = "removeDocTemplate";
 
-		_methodParameterTypes22 = new String[] {
+		_methodParameterTypes38 = new String[] {
 				"org.oep.core.dossiermgt.model.DocTemplate"
 			};
 
-		_methodName23 = "removeDocTemplate";
+		_methodName39 = "removeDocTemplate";
 
-		_methodParameterTypes23 = new String[] { "long" };
+		_methodParameterTypes39 = new String[] { "long" };
 
-		_methodName24 = "addDocTemplateResources";
+		_methodName40 = "addDocTemplateResources";
 
-		_methodParameterTypes24 = new String[] {
+		_methodParameterTypes40 = new String[] {
 				"org.oep.core.dossiermgt.model.DocTemplate", "boolean",
 				"boolean", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName25 = "addDocTemplateResources";
+		_methodName41 = "addDocTemplateResources";
 
-		_methodParameterTypes25 = new String[] {
+		_methodParameterTypes41 = new String[] {
 				"org.oep.core.dossiermgt.model.DocTemplate",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName26 = "addDocTemplateResources";
+		_methodName42 = "addDocTemplateResources";
 
-		_methodParameterTypes26 = new String[] {
+		_methodParameterTypes42 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName27 = "findByLikeTitle";
+		_methodName43 = "findByLikeTitle";
 
-		_methodParameterTypes27 = new String[] {
+		_methodParameterTypes43 = new String[] {
 				"java.lang.String", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName28 = "countByLikeTitle";
+		_methodName44 = "countByLikeTitle";
 
-		_methodParameterTypes28 = new String[] {
+		_methodParameterTypes44 = new String[] {
 				"java.lang.String", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName29 = "findByGroupLikeTitle";
+		_methodName45 = "findByGroupLikeTitle";
 
-		_methodParameterTypes29 = new String[] {
+		_methodParameterTypes45 = new String[] {
 				"java.lang.String", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName30 = "countByGroupLikeTitle";
+		_methodName46 = "countByGroupLikeTitle";
 
-		_methodParameterTypes30 = new String[] {
+		_methodParameterTypes46 = new String[] {
 				"java.lang.String", "com.liferay.portal.service.ServiceContext"
 			};
 	}
@@ -698,12 +769,481 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 	}
 
 	@Override
+	public void addDossierDocDocTemplate(long dossierDocId, long docTemplateId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName16,
+				_methodParameterTypes16,
+				new Object[] { dossierDocId, docTemplateId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void addDossierDocDocTemplate(long dossierDocId,
+		org.oep.core.dossiermgt.model.DocTemplate docTemplate)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName17,
+				_methodParameterTypes17,
+				new Object[] {
+					dossierDocId,
+					
+				ClpSerializer.translateInput(docTemplate)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void addDossierDocDocTemplates(long dossierDocId,
+		long[] docTemplateIds)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName18,
+				_methodParameterTypes18,
+				new Object[] {
+					dossierDocId,
+					
+				ClpSerializer.translateInput(docTemplateIds)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void addDossierDocDocTemplates(long dossierDocId,
+		java.util.List<org.oep.core.dossiermgt.model.DocTemplate> DocTemplates)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName19,
+				_methodParameterTypes19,
+				new Object[] {
+					dossierDocId,
+					
+				ClpSerializer.translateInput(DocTemplates)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void clearDossierDocDocTemplates(long dossierDocId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName20,
+				_methodParameterTypes20, new Object[] { dossierDocId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void deleteDossierDocDocTemplate(long dossierDocId,
+		long docTemplateId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName21,
+				_methodParameterTypes21,
+				new Object[] { dossierDocId, docTemplateId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void deleteDossierDocDocTemplate(long dossierDocId,
+		org.oep.core.dossiermgt.model.DocTemplate docTemplate)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName22,
+				_methodParameterTypes22,
+				new Object[] {
+					dossierDocId,
+					
+				ClpSerializer.translateInput(docTemplate)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void deleteDossierDocDocTemplates(long dossierDocId,
+		long[] docTemplateIds)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName23,
+				_methodParameterTypes23,
+				new Object[] {
+					dossierDocId,
+					
+				ClpSerializer.translateInput(docTemplateIds)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void deleteDossierDocDocTemplates(long dossierDocId,
+		java.util.List<org.oep.core.dossiermgt.model.DocTemplate> DocTemplates)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName24,
+				_methodParameterTypes24,
+				new Object[] {
+					dossierDocId,
+					
+				ClpSerializer.translateInput(DocTemplates)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public java.util.List<org.oep.core.dossiermgt.model.DocTemplate> getDossierDocDocTemplates(
+		long dossierDocId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName25,
+					_methodParameterTypes25, new Object[] { dossierDocId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<org.oep.core.dossiermgt.model.DocTemplate>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public java.util.List<org.oep.core.dossiermgt.model.DocTemplate> getDossierDocDocTemplates(
+		long dossierDocId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName26,
+					_methodParameterTypes26,
+					new Object[] { dossierDocId, start, end });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<org.oep.core.dossiermgt.model.DocTemplate>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public java.util.List<org.oep.core.dossiermgt.model.DocTemplate> getDossierDocDocTemplates(
+		long dossierDocId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName27,
+					_methodParameterTypes27,
+					new Object[] {
+						dossierDocId,
+						
+					start,
+						
+					end,
+						
+					ClpSerializer.translateInput(orderByComparator)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<org.oep.core.dossiermgt.model.DocTemplate>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public int getDossierDocDocTemplatesCount(long dossierDocId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName28,
+					_methodParameterTypes28, new Object[] { dossierDocId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	@Override
+	public boolean hasDossierDocDocTemplate(long dossierDocId,
+		long docTemplateId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName29,
+					_methodParameterTypes29,
+					new Object[] { dossierDocId, docTemplateId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Boolean)returnObj).booleanValue();
+	}
+
+	@Override
+	public boolean hasDossierDocDocTemplates(long dossierDocId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName30,
+					_methodParameterTypes30, new Object[] { dossierDocId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Boolean)returnObj).booleanValue();
+	}
+
+	@Override
+	public void setDossierDocDocTemplates(long dossierDocId,
+		long[] docTemplateIds)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName31,
+				_methodParameterTypes31,
+				new Object[] {
+					dossierDocId,
+					
+				ClpSerializer.translateInput(docTemplateIds)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
 	public java.lang.String getBeanIdentifier() {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName16,
-					_methodParameterTypes16, new Object[] {  });
+			returnObj = _invokableLocalService.invokeMethod(_methodName32,
+					_methodParameterTypes32, new Object[] {  });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -723,8 +1263,8 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 	@Override
 	public void setBeanIdentifier(java.lang.String beanIdentifier) {
 		try {
-			_invokableLocalService.invokeMethod(_methodName17,
-				_methodParameterTypes17,
+			_invokableLocalService.invokeMethod(_methodName33,
+				_methodParameterTypes33,
 				new Object[] { ClpSerializer.translateInput(beanIdentifier) });
 		}
 		catch (Throwable t) {
@@ -757,8 +1297,8 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName19,
-					_methodParameterTypes19,
+			returnObj = _invokableLocalService.invokeMethod(_methodName35,
+					_methodParameterTypes35,
 					new Object[] {
 						ClpSerializer.translateInput(templateNo),
 						
@@ -804,8 +1344,8 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName20,
-					_methodParameterTypes20,
+			returnObj = _invokableLocalService.invokeMethod(_methodName36,
+					_methodParameterTypes36,
 					new Object[] {
 						id,
 						
@@ -852,8 +1392,8 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName21,
-				_methodParameterTypes21,
+			_invokableLocalService.invokeMethod(_methodName37,
+				_methodParameterTypes37,
 				new Object[] {
 					ClpSerializer.translateInput(docTemplate),
 					
@@ -891,8 +1431,8 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName22,
-				_methodParameterTypes22,
+			_invokableLocalService.invokeMethod(_methodName38,
+				_methodParameterTypes38,
 				new Object[] { ClpSerializer.translateInput(docTemplate) });
 		}
 		catch (Throwable t) {
@@ -921,8 +1461,8 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName23,
-				_methodParameterTypes23, new Object[] { id });
+			_invokableLocalService.invokeMethod(_methodName39,
+				_methodParameterTypes39, new Object[] { id });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -953,8 +1493,8 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName24,
-				_methodParameterTypes24,
+			_invokableLocalService.invokeMethod(_methodName40,
+				_methodParameterTypes40,
 				new Object[] {
 					ClpSerializer.translateInput(docTemplate),
 					
@@ -995,8 +1535,8 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName25,
-				_methodParameterTypes25,
+			_invokableLocalService.invokeMethod(_methodName41,
+				_methodParameterTypes41,
 				new Object[] {
 					ClpSerializer.translateInput(docTemplate),
 					
@@ -1036,8 +1576,8 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName26,
-				_methodParameterTypes26,
+			_invokableLocalService.invokeMethod(_methodName42,
+				_methodParameterTypes42,
 				new Object[] {
 					id,
 					
@@ -1077,8 +1617,8 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName27,
-					_methodParameterTypes27,
+			returnObj = _invokableLocalService.invokeMethod(_methodName43,
+					_methodParameterTypes43,
 					new Object[] {
 						ClpSerializer.translateInput(title),
 						
@@ -1115,8 +1655,8 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName28,
-					_methodParameterTypes28,
+			returnObj = _invokableLocalService.invokeMethod(_methodName44,
+					_methodParameterTypes44,
 					new Object[] {
 						ClpSerializer.translateInput(title),
 						
@@ -1150,8 +1690,8 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName29,
-					_methodParameterTypes29,
+			returnObj = _invokableLocalService.invokeMethod(_methodName45,
+					_methodParameterTypes45,
 					new Object[] {
 						ClpSerializer.translateInput(title),
 						
@@ -1188,8 +1728,8 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName30,
-					_methodParameterTypes30,
+			returnObj = _invokableLocalService.invokeMethod(_methodName46,
+					_methodParameterTypes46,
 					new Object[] {
 						ClpSerializer.translateInput(title),
 						
@@ -1252,6 +1792,8 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 	private String[] _methodParameterTypes16;
 	private String _methodName17;
 	private String[] _methodParameterTypes17;
+	private String _methodName18;
+	private String[] _methodParameterTypes18;
 	private String _methodName19;
 	private String[] _methodParameterTypes19;
 	private String _methodName20;
@@ -1276,4 +1818,34 @@ public class DocTemplateLocalServiceClp implements DocTemplateLocalService {
 	private String[] _methodParameterTypes29;
 	private String _methodName30;
 	private String[] _methodParameterTypes30;
+	private String _methodName31;
+	private String[] _methodParameterTypes31;
+	private String _methodName32;
+	private String[] _methodParameterTypes32;
+	private String _methodName33;
+	private String[] _methodParameterTypes33;
+	private String _methodName35;
+	private String[] _methodParameterTypes35;
+	private String _methodName36;
+	private String[] _methodParameterTypes36;
+	private String _methodName37;
+	private String[] _methodParameterTypes37;
+	private String _methodName38;
+	private String[] _methodParameterTypes38;
+	private String _methodName39;
+	private String[] _methodParameterTypes39;
+	private String _methodName40;
+	private String[] _methodParameterTypes40;
+	private String _methodName41;
+	private String[] _methodParameterTypes41;
+	private String _methodName42;
+	private String[] _methodParameterTypes42;
+	private String _methodName43;
+	private String[] _methodParameterTypes43;
+	private String _methodName44;
+	private String[] _methodParameterTypes44;
+	private String _methodName45;
+	private String[] _methodParameterTypes45;
+	private String _methodName46;
+	private String[] _methodParameterTypes46;
 }

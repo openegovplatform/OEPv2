@@ -188,6 +188,34 @@ public class ProcessOrderLocalServiceUtil {
 	}
 
 	/**
+	* Returns the process order with the matching UUID and company.
+	*
+	* @param uuid the process order's UUID
+	* @param companyId the primary key of the company
+	* @return the matching process order, or <code>null</code> if a matching process order could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.processmgt.model.ProcessOrder fetchProcessOrderByUuidAndCompanyId(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().fetchProcessOrderByUuidAndCompanyId(uuid, companyId);
+	}
+
+	/**
+	* Returns the process order matching the UUID and group.
+	*
+	* @param uuid the process order's UUID
+	* @param groupId the primary key of the group
+	* @return the matching process order, or <code>null</code> if a matching process order could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.processmgt.model.ProcessOrder fetchProcessOrderByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().fetchProcessOrderByUuidAndGroupId(uuid, groupId);
+	}
+
+	/**
 	* Returns the process order with the primary key.
 	*
 	* @param processOrderId the primary key of the process order
@@ -207,6 +235,38 @@ public class ProcessOrderLocalServiceUtil {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService().getPersistedModel(primaryKeyObj);
+	}
+
+	/**
+	* Returns the process order with the matching UUID and company.
+	*
+	* @param uuid the process order's UUID
+	* @param companyId the primary key of the company
+	* @return the matching process order
+	* @throws PortalException if a matching process order could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.processmgt.model.ProcessOrder getProcessOrderByUuidAndCompanyId(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().getProcessOrderByUuidAndCompanyId(uuid, companyId);
+	}
+
+	/**
+	* Returns the process order matching the UUID and group.
+	*
+	* @param uuid the process order's UUID
+	* @param groupId the primary key of the group
+	* @return the matching process order
+	* @throws PortalException if a matching process order could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.processmgt.model.ProcessOrder getProcessOrderByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().getProcessOrderByUuidAndGroupId(uuid, groupId);
 	}
 
 	/**
@@ -291,33 +351,35 @@ public class ProcessOrderLocalServiceUtil {
 	public static org.oep.core.processmgt.model.ProcessOrder addProcessOrder(
 		long organizationId, long parentProcessOrderId, long dossierId,
 		long dossierProcessId, long dossierStepId,
-		java.lang.String dossierStatus, java.lang.String dossierResume,
+		java.lang.String orderStatus, java.lang.String orderResume,
 		java.util.Date stepDate, java.lang.String stepNote,
-		long assignToUserId, java.lang.String currentCondition, int endState,
+		long assignToUserId, java.lang.String currentCondition,
+		long lastStepTransitionId, int stopRollback,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .addProcessOrder(organizationId, parentProcessOrderId,
-			dossierId, dossierProcessId, dossierStepId, dossierStatus,
-			dossierResume, stepDate, stepNote, assignToUserId,
-			currentCondition, endState, serviceContext);
+			dossierId, dossierProcessId, dossierStepId, orderStatus,
+			orderResume, stepDate, stepNote, assignToUserId, currentCondition,
+			lastStepTransitionId, stopRollback, serviceContext);
 	}
 
 	public static org.oep.core.processmgt.model.ProcessOrder updateProcessOrder(
 		long id, long organizationId, long parentProcessOrderId,
 		long dossierId, long dossierProcessId, long dossierStepId,
-		java.lang.String dossierStatus, java.lang.String dossierResume,
+		java.lang.String orderStatus, java.lang.String orderResume,
 		java.util.Date stepDate, java.lang.String stepNote,
-		long assignToUserId, java.lang.String currentCondition, int endState,
+		long assignToUserId, java.lang.String currentCondition,
+		long lastStepTransitionId, int stopRollback,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .updateProcessOrder(id, organizationId,
 			parentProcessOrderId, dossierId, dossierProcessId, dossierStepId,
-			dossierStatus, dossierResume, stepDate, stepNote, assignToUserId,
-			currentCondition, endState, serviceContext);
+			orderStatus, orderResume, stepDate, stepNote, assignToUserId,
+			currentCondition, lastStepTransitionId, stopRollback, serviceContext);
 	}
 
 	public static void updateProcessOrderResources(

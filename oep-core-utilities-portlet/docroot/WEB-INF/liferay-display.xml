@@ -4,10 +4,18 @@
 <display>
 	
 	<category name="OEP">
+		<category name="datamgt">
+			<portlet id="dict-collection"></portlet>
+		</category>
 		<category name="dossiermgt">
 			<portlet id="dossier-proc"></portlet>
 			<portlet id="doc-template"></portlet>
 			<portlet id="eb-partner-ship"></portlet>
+			<portlet id="dossier-proc-agent"></portlet>
+		</category>
+		<category name="processmgt">
+			<portlet id="dossier-process"></portlet>
+			<portlet id="process-designer"></portlet>
 		</category>
 	</category>
 </display>

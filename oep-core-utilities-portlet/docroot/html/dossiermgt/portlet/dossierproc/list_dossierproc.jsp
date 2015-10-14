@@ -48,8 +48,6 @@
 	ServiceContext serviceContext = ServiceContextThreadLocal.getServiceContext();	
 	
 	DossierProcLocalServiceUtil.countByCustomCondition(name, effectDate, expireDate, active, serviceContext);
-	String currentURL = PortalUtil.getCurrentURL(request);
-	String redirect = PortalUtil.getCurrentURL(renderRequest);
 %>
 <portlet:renderURL var="addDossierProc">
 	<portlet:param name="mvcPath" value="/html/dossiermgt/portlet/dossierproc/edit_dossierproc.jsp"/>
@@ -73,8 +71,8 @@
 		<portlet:param name="mvcPath" value="/html/dossiermgt/portlet/dossierproc/list_dossierproc.jsp" />
 	</liferay-portlet:renderURL>
 	<liferay-ui:search-container displayTerms="<%= new DisplayTerms(renderRequest) %>"
-		emptyResultsMessage="org.oep.core.utilities.dossiermgt.portlet.doctemplate.table.warning.empty"
-		headerNames="<%= LanguageUtil.get(pageContext, \"org.oep.core.utilities.dossiermgt.portlet.doctemplate.table.header.title\") %>"
+		emptyResultsMessage="org.oep.core.utilities.dossiermgt.portlet.dossierproc.table.warning.empty"
+		headerNames="<%= LanguageUtil.get(pageContext, \"org.oep.core.utilities.dossiermgt.portlet.dossierproc.table.header.name\") %>"
 		iteratorURL="<%= iteratorURL %>"
 	>
 		<liferay-ui:search-form
@@ -101,8 +99,18 @@
 			</liferay-portlet:renderURL>
 <liferay-ui:search-container-column-text
 	href="<%= rowURL %>"
-	name="name"
+	name="<%= LanguageUtil.get(pageContext, \"org.oep.core.utilities.dossiermgt.portlet.dossierproc.table.header.name\") %>"
 	property="name"
+/>
+
+<liferay-ui:search-container-column-text
+	href="<%= rowURL %>"
+	name="<%= LanguageUtil.get(pageContext, \"org.oep.core.utilities.dossiermgt.portlet.dossierproc.table.header.resultsdescription\") %>"
+	property="resultsDescription"
+/>
+<liferay-ui:search-container-column-jsp
+    align="right"
+    path="/html/dossiermgt/portlet/dossierproc/dossierproc_actions.jsp"
 />
 
 	</liferay-ui:search-container-row>	

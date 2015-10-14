@@ -303,28 +303,28 @@ public class DossierProcessLocalServiceWrapper
 	*/
 	@Override
 	public org.oep.core.processmgt.model.DossierProcess addDossierProcess(
-		long dossierProcId, java.lang.String govAgentId,
-		java.lang.String govAgentName, long startDossierStepId,
-		int daysDuration,
+		long dossierProcId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, long startStepTransitionId,
+		int daysDuration, int fee,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _dossierProcessLocalService.addDossierProcess(dossierProcId,
-			govAgentId, govAgentName, startDossierStepId, daysDuration,
-			serviceContext);
+			govAgencyId, govAgencyName, startStepTransitionId, daysDuration,
+			fee, serviceContext);
 	}
 
 	@Override
 	public org.oep.core.processmgt.model.DossierProcess updateDossierProcess(
-		long id, long dossierProcId, java.lang.String govAgentId,
-		java.lang.String govAgentName, long startDossierStepId,
-		int daysDuration,
+		long id, long dossierProcId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, long startStepTransitionId,
+		int daysDuration, int fee,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _dossierProcessLocalService.updateDossierProcess(id,
-			dossierProcId, govAgentId, govAgentName, startDossierStepId,
-			daysDuration, serviceContext);
+			dossierProcId, govAgencyId, govAgencyName, startStepTransitionId,
+			daysDuration, fee, serviceContext);
 	}
 
 	@Override
@@ -386,6 +386,36 @@ public class DossierProcessLocalServiceWrapper
 			com.liferay.portal.kernel.exception.SystemException {
 		_dossierProcessLocalService.addDossierProcessResources(id,
 			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public java.util.List<org.oep.core.processmgt.model.DossierProcess> getByCompany(
+		long companyId, int startIndex, int endIndex)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dossierProcessLocalService.getByCompany(companyId, startIndex,
+			endIndex);
+	}
+
+	@Override
+	public java.util.List<org.oep.core.processmgt.model.DossierProcess> getByCompany(
+		int startIndex, int endIndex,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dossierProcessLocalService.getByCompany(startIndex, endIndex,
+			serviceContext);
+	}
+
+	@Override
+	public int countByCompany(long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dossierProcessLocalService.countByCompany(companyId);
+	}
+
+	@Override
+	public int countByCompany(
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dossierProcessLocalService.countByCompany(serviceContext);
 	}
 
 	/**

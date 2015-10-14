@@ -33,12 +33,12 @@ public class EbPartnerShipSoap implements Serializable {
 
 		soapModel.setEbPartnerShipId(model.getEbPartnerShipId());
 		soapModel.setCompanyId(model.getCompanyId());
+		soapModel.setUserId(model.getUserId());
+		soapModel.setGroupId(model.getGroupId());
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setName(model.getName());
 		soapModel.setCpaId(model.getCpaId());
 		soapModel.setService(model.getService());
-		soapModel.setAction(model.getAction());
-		soapModel.setInbound(model.getInbound());
 
 		return soapModel;
 	}
@@ -107,6 +107,22 @@ public class EbPartnerShipSoap implements Serializable {
 		_companyId = companyId;
 	}
 
+	public long getUserId() {
+		return _userId;
+	}
+
+	public void setUserId(long userId) {
+		_userId = userId;
+	}
+
+	public long getGroupId() {
+		return _groupId;
+	}
+
+	public void setGroupId(long groupId) {
+		_groupId = groupId;
+	}
+
 	public Date getCreateDate() {
 		return _createDate;
 	}
@@ -139,28 +155,12 @@ public class EbPartnerShipSoap implements Serializable {
 		_service = service;
 	}
 
-	public String getAction() {
-		return _action;
-	}
-
-	public void setAction(String action) {
-		_action = action;
-	}
-
-	public int getInbound() {
-		return _inbound;
-	}
-
-	public void setInbound(int inbound) {
-		_inbound = inbound;
-	}
-
 	private long _ebPartnerShipId;
 	private long _companyId;
+	private long _userId;
+	private long _groupId;
 	private Date _createDate;
 	private String _name;
 	private String _cpaId;
 	private String _service;
-	private String _action;
-	private int _inbound;
 }

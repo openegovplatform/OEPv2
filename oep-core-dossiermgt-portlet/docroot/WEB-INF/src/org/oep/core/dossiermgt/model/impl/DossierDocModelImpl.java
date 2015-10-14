@@ -79,10 +79,12 @@ public class DossierDocModelImpl extends BaseModelImpl<DossierDoc>
 			{ "sequenceNo", Types.INTEGER },
 			{ "defaultDocTemplateId", Types.BIGINT },
 			{ "validationType", Types.INTEGER },
+			{ "requirementType", Types.INTEGER },
 			{ "numberOfFile", Types.INTEGER },
+			{ "splitSubDossier", Types.INTEGER },
 			{ "onlineForm", Types.VARCHAR }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_dossierdoc (dossierDocId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcId LONG,dossierDocNo VARCHAR(30) null,dossierDocName VARCHAR(100) null,note VARCHAR(255) null,sequenceNo INTEGER,defaultDocTemplateId LONG,validationType INTEGER,numberOfFile INTEGER,onlineForm VARCHAR(30) null)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_dossierdoc (dossierDocId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcId LONG,dossierDocNo VARCHAR(30) null,dossierDocName VARCHAR(100) null,note VARCHAR(255) null,sequenceNo INTEGER,defaultDocTemplateId LONG,validationType INTEGER,requirementType INTEGER,numberOfFile INTEGER,splitSubDossier INTEGER,onlineForm VARCHAR(30) null)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_dossierdoc";
 	public static final String ORDER_BY_JPQL = " ORDER BY dossierDoc.dossierDocId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_dossierdoc.dossierDocId ASC";
@@ -123,7 +125,9 @@ public class DossierDocModelImpl extends BaseModelImpl<DossierDoc>
 		model.setSequenceNo(soapModel.getSequenceNo());
 		model.setDefaultDocTemplateId(soapModel.getDefaultDocTemplateId());
 		model.setValidationType(soapModel.getValidationType());
+		model.setRequirementType(soapModel.getRequirementType());
 		model.setNumberOfFile(soapModel.getNumberOfFile());
+		model.setSplitSubDossier(soapModel.getSplitSubDossier());
 		model.setOnlineForm(soapModel.getOnlineForm());
 
 		return model;
@@ -149,6 +153,19 @@ public class DossierDocModelImpl extends BaseModelImpl<DossierDoc>
 		return models;
 	}
 
+	public static final String MAPPING_TABLE_OEP_DOSSIERMGT_OEP_DOSSIERMGT_DOSSIERDOC2TEMPLATE_NAME =
+		"oep_dossiermgt_oep_dossiermgt_dossierdoc2template";
+	public static final Object[][] MAPPING_TABLE_OEP_DOSSIERMGT_OEP_DOSSIERMGT_DOSSIERDOC2TEMPLATE_COLUMNS =
+		{
+			{ "docTemplateId", Types.BIGINT },
+			{ "dossierDocId", Types.BIGINT }
+		};
+	public static final String MAPPING_TABLE_OEP_DOSSIERMGT_OEP_DOSSIERMGT_DOSSIERDOC2TEMPLATE_SQL_CREATE =
+		"create table oep_dossiermgt_oep_dossiermgt_dossierdoc2template (docTemplateId LONG not null,dossierDocId LONG not null,primary key (docTemplateId, dossierDocId))";
+	public static final boolean FINDER_CACHE_ENABLED_OEP_DOSSIERMGT_OEP_DOSSIERMGT_DOSSIERDOC2TEMPLATE =
+		GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+				"value.object.finder.cache.enabled.oep_dossiermgt_oep_dossiermgt_dossierdoc2template"),
+			true);
 	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
 				"lock.expiration.time.org.oep.core.dossiermgt.model.DossierDoc"));
 
@@ -202,7 +219,9 @@ public class DossierDocModelImpl extends BaseModelImpl<DossierDoc>
 		attributes.put("sequenceNo", getSequenceNo());
 		attributes.put("defaultDocTemplateId", getDefaultDocTemplateId());
 		attributes.put("validationType", getValidationType());
+		attributes.put("requirementType", getRequirementType());
 		attributes.put("numberOfFile", getNumberOfFile());
+		attributes.put("splitSubDossier", getSplitSubDossier());
 		attributes.put("onlineForm", getOnlineForm());
 
 		return attributes;
@@ -288,10 +307,22 @@ public class DossierDocModelImpl extends BaseModelImpl<DossierDoc>
 			setValidationType(validationType);
 		}
 
+		Integer requirementType = (Integer)attributes.get("requirementType");
+
+		if (requirementType != null) {
+			setRequirementType(requirementType);
+		}
+
 		Integer numberOfFile = (Integer)attributes.get("numberOfFile");
 
 		if (numberOfFile != null) {
 			setNumberOfFile(numberOfFile);
+		}
+
+		Integer splitSubDossier = (Integer)attributes.get("splitSubDossier");
+
+		if (splitSubDossier != null) {
+			setSplitSubDossier(splitSubDossier);
 		}
 
 		String onlineForm = (String)attributes.get("onlineForm");
@@ -471,6 +502,17 @@ public class DossierDocModelImpl extends BaseModelImpl<DossierDoc>
 
 	@JSON
 	@Override
+	public int getRequirementType() {
+		return _requirementType;
+	}
+
+	@Override
+	public void setRequirementType(int requirementType) {
+		_requirementType = requirementType;
+	}
+
+	@JSON
+	@Override
 	public int getNumberOfFile() {
 		return _numberOfFile;
 	}
@@ -478,6 +520,17 @@ public class DossierDocModelImpl extends BaseModelImpl<DossierDoc>
 	@Override
 	public void setNumberOfFile(int numberOfFile) {
 		_numberOfFile = numberOfFile;
+	}
+
+	@JSON
+	@Override
+	public int getSplitSubDossier() {
+		return _splitSubDossier;
+	}
+
+	@Override
+	public void setSplitSubDossier(int splitSubDossier) {
+		_splitSubDossier = splitSubDossier;
 	}
 
 	@JSON
@@ -536,7 +589,9 @@ public class DossierDocModelImpl extends BaseModelImpl<DossierDoc>
 		dossierDocImpl.setSequenceNo(getSequenceNo());
 		dossierDocImpl.setDefaultDocTemplateId(getDefaultDocTemplateId());
 		dossierDocImpl.setValidationType(getValidationType());
+		dossierDocImpl.setRequirementType(getRequirementType());
 		dossierDocImpl.setNumberOfFile(getNumberOfFile());
+		dossierDocImpl.setSplitSubDossier(getSplitSubDossier());
 		dossierDocImpl.setOnlineForm(getOnlineForm());
 
 		dossierDocImpl.resetOriginalValues();
@@ -652,7 +707,11 @@ public class DossierDocModelImpl extends BaseModelImpl<DossierDoc>
 
 		dossierDocCacheModel.validationType = getValidationType();
 
+		dossierDocCacheModel.requirementType = getRequirementType();
+
 		dossierDocCacheModel.numberOfFile = getNumberOfFile();
+
+		dossierDocCacheModel.splitSubDossier = getSplitSubDossier();
 
 		dossierDocCacheModel.onlineForm = getOnlineForm();
 
@@ -667,7 +726,7 @@ public class DossierDocModelImpl extends BaseModelImpl<DossierDoc>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(31);
+		StringBundler sb = new StringBundler(35);
 
 		sb.append("{dossierDocId=");
 		sb.append(getDossierDocId());
@@ -695,8 +754,12 @@ public class DossierDocModelImpl extends BaseModelImpl<DossierDoc>
 		sb.append(getDefaultDocTemplateId());
 		sb.append(", validationType=");
 		sb.append(getValidationType());
+		sb.append(", requirementType=");
+		sb.append(getRequirementType());
 		sb.append(", numberOfFile=");
 		sb.append(getNumberOfFile());
+		sb.append(", splitSubDossier=");
+		sb.append(getSplitSubDossier());
 		sb.append(", onlineForm=");
 		sb.append(getOnlineForm());
 		sb.append("}");
@@ -706,7 +769,7 @@ public class DossierDocModelImpl extends BaseModelImpl<DossierDoc>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(49);
+		StringBundler sb = new StringBundler(55);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.DossierDoc");
@@ -765,8 +828,16 @@ public class DossierDocModelImpl extends BaseModelImpl<DossierDoc>
 		sb.append(getValidationType());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>requirementType</column-name><column-value><![CDATA[");
+		sb.append(getRequirementType());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>numberOfFile</column-name><column-value><![CDATA[");
 		sb.append(getNumberOfFile());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>splitSubDossier</column-name><column-value><![CDATA[");
+		sb.append(getSplitSubDossier());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>onlineForm</column-name><column-value><![CDATA[");
@@ -796,7 +867,9 @@ public class DossierDocModelImpl extends BaseModelImpl<DossierDoc>
 	private int _sequenceNo;
 	private long _defaultDocTemplateId;
 	private int _validationType;
+	private int _requirementType;
 	private int _numberOfFile;
+	private int _splitSubDossier;
 	private String _onlineForm;
 	private DossierDoc _escapedModel;
 }

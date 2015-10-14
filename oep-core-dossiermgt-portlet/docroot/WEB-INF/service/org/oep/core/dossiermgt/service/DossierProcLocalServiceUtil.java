@@ -696,6 +696,18 @@ public class DossierProcLocalServiceUtil {
 			active, serviceContext);
 	}
 
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByCompany(
+		long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByCompany(companyId);
+	}
+
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByCompany(
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByCompany(serviceContext);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

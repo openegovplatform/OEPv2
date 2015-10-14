@@ -14,6 +14,8 @@
 	<bean id="org.oep.core.processmgt.service.persistence.ProcessOrderPersistence" class="org.oep.core.processmgt.service.persistence.ProcessOrderPersistenceImpl" parent="basePersistence" />
 	<bean id="org.oep.core.processmgt.service.ProcessOrder2UserLocalService" class="org.oep.core.processmgt.service.impl.ProcessOrder2UserLocalServiceImpl" />
 	<bean id="org.oep.core.processmgt.service.persistence.ProcessOrder2UserPersistence" class="org.oep.core.processmgt.service.persistence.ProcessOrder2UserPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.processmgt.service.StatisticByUserService" class="org.oep.core.processmgt.service.impl.StatisticByUserServiceImpl" />
+	<bean id="org.oep.core.processmgt.service.persistence.StatisticByUserPersistence" class="org.oep.core.processmgt.service.persistence.StatisticByUserPersistenceImpl" parent="basePersistence" />
 	<bean id="org.oep.core.processmgt.service.StepTransitionLocalService" class="org.oep.core.processmgt.service.impl.StepTransitionLocalServiceImpl" />
 	<bean id="org.oep.core.processmgt.service.StepTransitionService" class="org.oep.core.processmgt.service.impl.StepTransitionServiceImpl" />
 	<bean id="org.oep.core.processmgt.service.persistence.StepTransitionPersistence" class="org.oep.core.processmgt.service.persistence.StepTransitionPersistenceImpl" parent="basePersistence" />

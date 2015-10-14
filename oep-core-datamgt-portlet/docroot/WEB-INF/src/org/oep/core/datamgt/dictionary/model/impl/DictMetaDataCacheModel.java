@@ -38,12 +38,16 @@ public class DictMetaDataCacheModel implements CacheModel<DictMetaData>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(15);
+		StringBundler sb = new StringBundler(19);
 
 		sb.append("{dictMetaDataId=");
 		sb.append(dictMetaDataId);
 		sb.append(", companyId=");
 		sb.append(companyId);
+		sb.append(", userId=");
+		sb.append(userId);
+		sb.append(", groupId=");
+		sb.append(groupId);
 		sb.append(", createDate=");
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
@@ -65,6 +69,8 @@ public class DictMetaDataCacheModel implements CacheModel<DictMetaData>,
 
 		dictMetaDataImpl.setDictMetaDataId(dictMetaDataId);
 		dictMetaDataImpl.setCompanyId(companyId);
+		dictMetaDataImpl.setUserId(userId);
+		dictMetaDataImpl.setGroupId(groupId);
 
 		if (createDate == Long.MIN_VALUE) {
 			dictMetaDataImpl.setCreateDate(null);
@@ -105,6 +111,8 @@ public class DictMetaDataCacheModel implements CacheModel<DictMetaData>,
 	public void readExternal(ObjectInput objectInput) throws IOException {
 		dictMetaDataId = objectInput.readLong();
 		companyId = objectInput.readLong();
+		userId = objectInput.readLong();
+		groupId = objectInput.readLong();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
 		dictDataId = objectInput.readLong();
@@ -117,6 +125,8 @@ public class DictMetaDataCacheModel implements CacheModel<DictMetaData>,
 		throws IOException {
 		objectOutput.writeLong(dictMetaDataId);
 		objectOutput.writeLong(companyId);
+		objectOutput.writeLong(userId);
+		objectOutput.writeLong(groupId);
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
 		objectOutput.writeLong(dictDataId);
@@ -138,6 +148,8 @@ public class DictMetaDataCacheModel implements CacheModel<DictMetaData>,
 
 	public long dictMetaDataId;
 	public long companyId;
+	public long userId;
+	public long groupId;
 	public long createDate;
 	public long modifiedDate;
 	public long dictDataId;

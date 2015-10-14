@@ -325,12 +325,12 @@ public class EbPartnerShipPersistenceImpl extends BasePersistenceImpl<EbPartnerS
 
 		ebPartnerShipImpl.setEbPartnerShipId(ebPartnerShip.getEbPartnerShipId());
 		ebPartnerShipImpl.setCompanyId(ebPartnerShip.getCompanyId());
+		ebPartnerShipImpl.setUserId(ebPartnerShip.getUserId());
+		ebPartnerShipImpl.setGroupId(ebPartnerShip.getGroupId());
 		ebPartnerShipImpl.setCreateDate(ebPartnerShip.getCreateDate());
 		ebPartnerShipImpl.setName(ebPartnerShip.getName());
 		ebPartnerShipImpl.setCpaId(ebPartnerShip.getCpaId());
 		ebPartnerShipImpl.setService(ebPartnerShip.getService());
-		ebPartnerShipImpl.setAction(ebPartnerShip.getAction());
-		ebPartnerShipImpl.setInbound(ebPartnerShip.getInbound());
 
 		return ebPartnerShipImpl;
 	}

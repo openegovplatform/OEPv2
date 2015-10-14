@@ -15,6 +15,7 @@
 package org.oep.core.datamgt.dictionary.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
@@ -23,6 +24,7 @@ import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
 import com.liferay.portal.service.ServiceContext;
+import com.liferay.portal.util.PortalUtil;
 
 import com.liferay.portlet.expando.model.ExpandoBridge;
 import com.liferay.portlet.expando.util.ExpandoBridgeFactoryUtil;
@@ -66,6 +68,8 @@ public class DictCollectionModelImpl extends BaseModelImpl<DictCollection>
 	public static final Object[][] TABLE_COLUMNS = {
 			{ "dictCollectionId", Types.BIGINT },
 			{ "companyId", Types.BIGINT },
+			{ "userId", Types.BIGINT },
+			{ "groupId", Types.BIGINT },
 			{ "createDate", Types.TIMESTAMP },
 			{ "modifiedDate", Types.TIMESTAMP },
 			{ "name", Types.VARCHAR },
@@ -75,7 +79,7 @@ public class DictCollectionModelImpl extends BaseModelImpl<DictCollection>
 			{ "validatedTo", Types.TIMESTAMP },
 			{ "status", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_datamgt_dictcollection (dictCollectionId LONG not null primary key,companyId LONG,createDate DATE null,modifiedDate DATE null,name VARCHAR(75) null,version VARCHAR(75) null,title VARCHAR(75) null,validatedFrom DATE null,validatedTo DATE null,status INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table oep_datamgt_dictcollection (dictCollectionId LONG not null primary key,companyId LONG,userId LONG,groupId LONG,createDate DATE null,modifiedDate DATE null,name VARCHAR(30) null,version VARCHAR(30) null,title VARCHAR(255) null,validatedFrom DATE null,validatedTo DATE null,status INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_datamgt_dictcollection";
 	public static final String ORDER_BY_JPQL = " ORDER BY dictCollection.dictCollectionId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_datamgt_dictcollection.dictCollectionId ASC";
@@ -112,6 +116,8 @@ public class DictCollectionModelImpl extends BaseModelImpl<DictCollection>
 
 		model.setDictCollectionId(soapModel.getDictCollectionId());
 		model.setCompanyId(soapModel.getCompanyId());
+		model.setUserId(soapModel.getUserId());
+		model.setGroupId(soapModel.getGroupId());
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setModifiedDate(soapModel.getModifiedDate());
 		model.setName(soapModel.getName());
@@ -199,6 +205,8 @@ public class DictCollectionModelImpl extends BaseModelImpl<DictCollection>
 
 		attributes.put("dictCollectionId", getDictCollectionId());
 		attributes.put("companyId", getCompanyId());
+		attributes.put("userId", getUserId());
+		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("name", getName());
@@ -223,6 +231,18 @@ public class DictCollectionModelImpl extends BaseModelImpl<DictCollection>
 
 		if (companyId != null) {
 			setCompanyId(companyId);
+		}
+
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
+		Long groupId = (Long)attributes.get("groupId");
+
+		if (groupId != null) {
+			setGroupId(groupId);
 		}
 
 		Date createDate = (Date)attributes.get("createDate");
@@ -306,6 +326,38 @@ public class DictCollectionModelImpl extends BaseModelImpl<DictCollection>
 
 	public long getOriginalCompanyId() {
 		return _originalCompanyId;
+	}
+
+	@JSON
+	@Override
+	public long getUserId() {
+		return _userId;
+	}
+
+	@Override
+	public void setUserId(long userId) {
+		_userId = userId;
+	}
+
+	@Override
+	public String getUserUuid() throws SystemException {
+		return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
+	}
+
+	@Override
+	public void setUserUuid(String userUuid) {
+		_userUuid = userUuid;
+	}
+
+	@JSON
+	@Override
+	public long getGroupId() {
+		return _groupId;
+	}
+
+	@Override
+	public void setGroupId(long groupId) {
+		_groupId = groupId;
 	}
 
 	@JSON
@@ -476,6 +528,8 @@ public class DictCollectionModelImpl extends BaseModelImpl<DictCollection>
 
 		dictCollectionImpl.setDictCollectionId(getDictCollectionId());
 		dictCollectionImpl.setCompanyId(getCompanyId());
+		dictCollectionImpl.setUserId(getUserId());
+		dictCollectionImpl.setGroupId(getGroupId());
 		dictCollectionImpl.setCreateDate(getCreateDate());
 		dictCollectionImpl.setModifiedDate(getModifiedDate());
 		dictCollectionImpl.setName(getName());
@@ -559,6 +613,10 @@ public class DictCollectionModelImpl extends BaseModelImpl<DictCollection>
 
 		dictCollectionCacheModel.companyId = getCompanyId();
 
+		dictCollectionCacheModel.userId = getUserId();
+
+		dictCollectionCacheModel.groupId = getGroupId();
+
 		Date createDate = getCreateDate();
 
 		if (createDate != null) {
@@ -626,12 +684,16 @@ public class DictCollectionModelImpl extends BaseModelImpl<DictCollection>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(25);
 
 		sb.append("{dictCollectionId=");
 		sb.append(getDictCollectionId());
 		sb.append(", companyId=");
 		sb.append(getCompanyId());
+		sb.append(", userId=");
+		sb.append(getUserId());
+		sb.append(", groupId=");
+		sb.append(getGroupId());
 		sb.append(", createDate=");
 		sb.append(getCreateDate());
 		sb.append(", modifiedDate=");
@@ -655,7 +717,7 @@ public class DictCollectionModelImpl extends BaseModelImpl<DictCollection>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(34);
+		StringBundler sb = new StringBundler(40);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.datamgt.dictionary.model.DictCollection");
@@ -668,6 +730,14 @@ public class DictCollectionModelImpl extends BaseModelImpl<DictCollection>
 		sb.append(
 			"<column><column-name>companyId</column-name><column-value><![CDATA[");
 		sb.append(getCompanyId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>userId</column-name><column-value><![CDATA[");
+		sb.append(getUserId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>groupId</column-name><column-value><![CDATA[");
+		sb.append(getGroupId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>createDate</column-name><column-value><![CDATA[");
@@ -715,6 +785,9 @@ public class DictCollectionModelImpl extends BaseModelImpl<DictCollection>
 	private long _companyId;
 	private long _originalCompanyId;
 	private boolean _setOriginalCompanyId;
+	private long _userId;
+	private String _userUuid;
+	private long _groupId;
 	private Date _createDate;
 	private Date _modifiedDate;
 	private String _name;

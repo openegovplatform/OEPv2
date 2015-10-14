@@ -52,12 +52,12 @@ public class EbPartnerShipWrapper implements EbPartnerShip,
 
 		attributes.put("ebPartnerShipId", getEbPartnerShipId());
 		attributes.put("companyId", getCompanyId());
+		attributes.put("userId", getUserId());
+		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("name", getName());
 		attributes.put("cpaId", getCpaId());
 		attributes.put("service", getService());
-		attributes.put("action", getAction());
-		attributes.put("inbound", getInbound());
 
 		return attributes;
 	}
@@ -74,6 +74,18 @@ public class EbPartnerShipWrapper implements EbPartnerShip,
 
 		if (companyId != null) {
 			setCompanyId(companyId);
+		}
+
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
+		Long groupId = (Long)attributes.get("groupId");
+
+		if (groupId != null) {
+			setGroupId(groupId);
 		}
 
 		Date createDate = (Date)attributes.get("createDate");
@@ -98,18 +110,6 @@ public class EbPartnerShipWrapper implements EbPartnerShip,
 
 		if (service != null) {
 			setService(service);
-		}
-
-		String action = (String)attributes.get("action");
-
-		if (action != null) {
-			setAction(action);
-		}
-
-		Integer inbound = (Integer)attributes.get("inbound");
-
-		if (inbound != null) {
-			setInbound(inbound);
 		}
 	}
 
@@ -171,6 +171,68 @@ public class EbPartnerShipWrapper implements EbPartnerShip,
 	@Override
 	public void setCompanyId(long companyId) {
 		_ebPartnerShip.setCompanyId(companyId);
+	}
+
+	/**
+	* Returns the user ID of this eb partner ship.
+	*
+	* @return the user ID of this eb partner ship
+	*/
+	@Override
+	public long getUserId() {
+		return _ebPartnerShip.getUserId();
+	}
+
+	/**
+	* Sets the user ID of this eb partner ship.
+	*
+	* @param userId the user ID of this eb partner ship
+	*/
+	@Override
+	public void setUserId(long userId) {
+		_ebPartnerShip.setUserId(userId);
+	}
+
+	/**
+	* Returns the user uuid of this eb partner ship.
+	*
+	* @return the user uuid of this eb partner ship
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public java.lang.String getUserUuid()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ebPartnerShip.getUserUuid();
+	}
+
+	/**
+	* Sets the user uuid of this eb partner ship.
+	*
+	* @param userUuid the user uuid of this eb partner ship
+	*/
+	@Override
+	public void setUserUuid(java.lang.String userUuid) {
+		_ebPartnerShip.setUserUuid(userUuid);
+	}
+
+	/**
+	* Returns the group ID of this eb partner ship.
+	*
+	* @return the group ID of this eb partner ship
+	*/
+	@Override
+	public long getGroupId() {
+		return _ebPartnerShip.getGroupId();
+	}
+
+	/**
+	* Sets the group ID of this eb partner ship.
+	*
+	* @param groupId the group ID of this eb partner ship
+	*/
+	@Override
+	public void setGroupId(long groupId) {
+		_ebPartnerShip.setGroupId(groupId);
 	}
 
 	/**
@@ -251,46 +313,6 @@ public class EbPartnerShipWrapper implements EbPartnerShip,
 	@Override
 	public void setService(java.lang.String service) {
 		_ebPartnerShip.setService(service);
-	}
-
-	/**
-	* Returns the action of this eb partner ship.
-	*
-	* @return the action of this eb partner ship
-	*/
-	@Override
-	public java.lang.String getAction() {
-		return _ebPartnerShip.getAction();
-	}
-
-	/**
-	* Sets the action of this eb partner ship.
-	*
-	* @param action the action of this eb partner ship
-	*/
-	@Override
-	public void setAction(java.lang.String action) {
-		_ebPartnerShip.setAction(action);
-	}
-
-	/**
-	* Returns the inbound of this eb partner ship.
-	*
-	* @return the inbound of this eb partner ship
-	*/
-	@Override
-	public int getInbound() {
-		return _ebPartnerShip.getInbound();
-	}
-
-	/**
-	* Sets the inbound of this eb partner ship.
-	*
-	* @param inbound the inbound of this eb partner ship
-	*/
-	@Override
-	public void setInbound(int inbound) {
-		_ebPartnerShip.setInbound(inbound);
 	}
 
 	@Override

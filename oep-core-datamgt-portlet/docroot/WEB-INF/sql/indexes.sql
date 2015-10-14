@@ -11,7 +11,6 @@ create index IX_7E61158F on oep_datamgt_dictcollection (companyId, name, version
 create index IX_29CA28CB on oep_datamgt_dictdata (companyId, collectionName);
 create index IX_3757017F on oep_datamgt_dictdata (companyId, collectionName, dataLevel);
 create index IX_2DFD9F36 on oep_datamgt_dictdata (companyId, dataCode, collectionName);
-create index IX_8C5AB59F on oep_datamgt_dictdata (companyId, dataCode, status);
 create index IX_2114891C on oep_datamgt_dictdata (companyId, dataCode, status, collectionName);
 create index IX_4896F71C on oep_datamgt_dictdata (companyId, dataLevel);
 create index IX_19B61503 on oep_datamgt_dictdata (dataCode, companyId);

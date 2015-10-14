@@ -71,6 +71,7 @@ public class DossierSoap implements Serializable {
 		soapModel.setDaysDelay(model.getDaysDelay());
 		soapModel.setCloseDate(model.getCloseDate());
 		soapModel.setErrorStatus(model.getErrorStatus());
+		soapModel.setPendingStatus(model.getPendingStatus());
 		soapModel.setErrorCode(model.getErrorCode());
 		soapModel.setDirty(model.getDirty());
 
@@ -445,6 +446,14 @@ public class DossierSoap implements Serializable {
 		_errorStatus = errorStatus;
 	}
 
+	public int getPendingStatus() {
+		return _pendingStatus;
+	}
+
+	public void setPendingStatus(int pendingStatus) {
+		_pendingStatus = pendingStatus;
+	}
+
 	public String getErrorCode() {
 		return _errorCode;
 	}
@@ -501,6 +510,7 @@ public class DossierSoap implements Serializable {
 	private int _daysDelay;
 	private Date _closeDate;
 	private String _errorStatus;
+	private int _pendingStatus;
 	private String _errorCode;
 	private int _dirty;
 }

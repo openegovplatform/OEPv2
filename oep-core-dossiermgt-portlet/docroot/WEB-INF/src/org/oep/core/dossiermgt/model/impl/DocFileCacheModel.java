@@ -37,7 +37,7 @@ import java.util.Date;
 public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(27);
+		StringBundler sb = new StringBundler(29);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -65,6 +65,8 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 		sb.append(docName);
 		sb.append(", note=");
 		sb.append(note);
+		sb.append(", premier=");
+		sb.append(premier);
 		sb.append("}");
 
 		return sb.toString();
@@ -119,6 +121,8 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 			docFileImpl.setNote(note);
 		}
 
+		docFileImpl.setPremier(premier);
+
 		docFileImpl.resetOriginalValues();
 
 		return docFileImpl;
@@ -139,6 +143,7 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 		docFileVersionId = objectInput.readLong();
 		docName = objectInput.readUTF();
 		note = objectInput.readUTF();
+		premier = objectInput.readInt();
 	}
 
 	@Override
@@ -175,6 +180,8 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 		else {
 			objectOutput.writeUTF(note);
 		}
+
+		objectOutput.writeInt(premier);
 	}
 
 	public String uuid;
@@ -190,4 +197,5 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 	public long docFileVersionId;
 	public String docName;
 	public String note;
+	public int premier;
 }

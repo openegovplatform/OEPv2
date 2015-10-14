@@ -52,6 +52,8 @@ public class DictMetaDataWrapper implements DictMetaData,
 
 		attributes.put("dictMetaDataId", getDictMetaDataId());
 		attributes.put("companyId", getCompanyId());
+		attributes.put("userId", getUserId());
+		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("dictDataId", getDictDataId());
@@ -73,6 +75,18 @@ public class DictMetaDataWrapper implements DictMetaData,
 
 		if (companyId != null) {
 			setCompanyId(companyId);
+		}
+
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
+		Long groupId = (Long)attributes.get("groupId");
+
+		if (groupId != null) {
+			setGroupId(groupId);
 		}
 
 		Date createDate = (Date)attributes.get("createDate");
@@ -164,6 +178,68 @@ public class DictMetaDataWrapper implements DictMetaData,
 	@Override
 	public void setCompanyId(long companyId) {
 		_dictMetaData.setCompanyId(companyId);
+	}
+
+	/**
+	* Returns the user ID of this dictionary meta data.
+	*
+	* @return the user ID of this dictionary meta data
+	*/
+	@Override
+	public long getUserId() {
+		return _dictMetaData.getUserId();
+	}
+
+	/**
+	* Sets the user ID of this dictionary meta data.
+	*
+	* @param userId the user ID of this dictionary meta data
+	*/
+	@Override
+	public void setUserId(long userId) {
+		_dictMetaData.setUserId(userId);
+	}
+
+	/**
+	* Returns the user uuid of this dictionary meta data.
+	*
+	* @return the user uuid of this dictionary meta data
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public java.lang.String getUserUuid()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dictMetaData.getUserUuid();
+	}
+
+	/**
+	* Sets the user uuid of this dictionary meta data.
+	*
+	* @param userUuid the user uuid of this dictionary meta data
+	*/
+	@Override
+	public void setUserUuid(java.lang.String userUuid) {
+		_dictMetaData.setUserUuid(userUuid);
+	}
+
+	/**
+	* Returns the group ID of this dictionary meta data.
+	*
+	* @return the group ID of this dictionary meta data
+	*/
+	@Override
+	public long getGroupId() {
+		return _dictMetaData.getGroupId();
+	}
+
+	/**
+	* Sets the group ID of this dictionary meta data.
+	*
+	* @param groupId the group ID of this dictionary meta data
+	*/
+	@Override
+	public void setGroupId(long groupId) {
+		_dictMetaData.setGroupId(groupId);
 	}
 
 	/**

@@ -38,12 +38,16 @@ public class DictAttributeCacheModel implements CacheModel<DictAttribute>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(17);
+		StringBundler sb = new StringBundler(21);
 
 		sb.append("{dictAttributeId=");
 		sb.append(dictAttributeId);
 		sb.append(", companyId=");
 		sb.append(companyId);
+		sb.append(", userId=");
+		sb.append(userId);
+		sb.append(", groupId=");
+		sb.append(groupId);
 		sb.append(", createDate=");
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
@@ -67,6 +71,8 @@ public class DictAttributeCacheModel implements CacheModel<DictAttribute>,
 
 		dictAttributeImpl.setDictAttributeId(dictAttributeId);
 		dictAttributeImpl.setCompanyId(companyId);
+		dictAttributeImpl.setUserId(userId);
+		dictAttributeImpl.setGroupId(groupId);
 
 		if (createDate == Long.MIN_VALUE) {
 			dictAttributeImpl.setCreateDate(null);
@@ -119,6 +125,8 @@ public class DictAttributeCacheModel implements CacheModel<DictAttribute>,
 	public void readExternal(ObjectInput objectInput) throws IOException {
 		dictAttributeId = objectInput.readLong();
 		companyId = objectInput.readLong();
+		userId = objectInput.readLong();
+		groupId = objectInput.readLong();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
 		collectionName = objectInput.readUTF();
@@ -132,6 +140,8 @@ public class DictAttributeCacheModel implements CacheModel<DictAttribute>,
 		throws IOException {
 		objectOutput.writeLong(dictAttributeId);
 		objectOutput.writeLong(companyId);
+		objectOutput.writeLong(userId);
+		objectOutput.writeLong(groupId);
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
 
@@ -166,6 +176,8 @@ public class DictAttributeCacheModel implements CacheModel<DictAttribute>,
 
 	public long dictAttributeId;
 	public long companyId;
+	public long userId;
+	public long groupId;
 	public long createDate;
 	public long modifiedDate;
 	public String collectionName;

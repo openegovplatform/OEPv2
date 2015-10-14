@@ -69,10 +69,12 @@ public class StepTransitionLocalServiceImpl
 			long dossierProcessId,
 			long preDossierStepId,
 			long postDossierStepId,
-			String precondition,
+			String autoCondition,
 			String transitionName,
-			int daysDuration,
 			String dossierStatus,
+			int notifyStatus,
+			int sendResults,
+			int requestPayment,
 			int userAssignment,
 			int newProcessOrder,
 
@@ -89,10 +91,12 @@ public class StepTransitionLocalServiceImpl
 		stepTransition.setDossierProcessId(dossierProcessId);
 		stepTransition.setPreDossierStepId(preDossierStepId);
 		stepTransition.setPostDossierStepId(postDossierStepId);
-		stepTransition.setPrecondition(precondition);
+		stepTransition.setAutoCondition(autoCondition);;
 		stepTransition.setTransitionName(transitionName);
-		stepTransition.setDaysDuration(daysDuration);
 		stepTransition.setDossierStatus(dossierStatus);
+		stepTransition.setNotifyStatus(notifyStatus);
+		stepTransition.setSendResults(sendResults);
+		stepTransition.setRequestPayment(requestPayment);
 		stepTransition.setUserAssignment(userAssignment);
 		stepTransition.setNewProcessOrder(newProcessOrder);
 		
@@ -117,12 +121,15 @@ public class StepTransitionLocalServiceImpl
 			long dossierProcessId,
 			long preDossierStepId,
 			long postDossierStepId,
-			String precondition,
+			String autoCondition,
 			String transitionName,
-			int daysDuration,
 			String dossierStatus,
+			int notifyStatus,
+			int sendResults,
+			int requestPayment,
 			int userAssignment,
 			int newProcessOrder,
+
 			ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
@@ -134,10 +141,12 @@ public class StepTransitionLocalServiceImpl
 		stepTransition.setDossierProcessId(dossierProcessId);
 		stepTransition.setPreDossierStepId(preDossierStepId);
 		stepTransition.setPostDossierStepId(postDossierStepId);
-		stepTransition.setPrecondition(precondition);
+		stepTransition.setAutoCondition(autoCondition);;
 		stepTransition.setTransitionName(transitionName);
-		stepTransition.setDaysDuration(daysDuration);
 		stepTransition.setDossierStatus(dossierStatus);
+		stepTransition.setNotifyStatus(notifyStatus);
+		stepTransition.setSendResults(sendResults);
+		stepTransition.setRequestPayment(requestPayment);
 		stepTransition.setUserAssignment(userAssignment);
 		stepTransition.setNewProcessOrder(newProcessOrder);
 		

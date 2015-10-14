@@ -14,6 +14,7 @@
 
 package org.oep.core.processmgt.model;
 
+import com.liferay.portal.kernel.util.Accessor;
 import com.liferay.portal.model.PersistedModel;
 
 /**
@@ -31,4 +32,10 @@ public interface ProcessOrder extends ProcessOrderModel, PersistedModel {
 	 *
 	 * Never modify this interface directly. Add methods to {@link org.oep.core.processmgt.model.impl.ProcessOrderImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
+	public static final Accessor<ProcessOrder, String> UUID_ACCESSOR = new Accessor<ProcessOrder, String>() {
+			@Override
+			public String get(ProcessOrder processOrder) {
+				return processOrder.getUuid();
+			}
+		};
 }

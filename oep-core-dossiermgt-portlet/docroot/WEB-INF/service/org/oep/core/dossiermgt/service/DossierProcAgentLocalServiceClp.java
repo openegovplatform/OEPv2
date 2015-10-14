@@ -726,8 +726,8 @@ public class DossierProcAgentLocalServiceClp
 
 	@Override
 	public org.oep.core.dossiermgt.model.DossierProcAgent addDossierProcAgent(
-		long dossierProcId, java.lang.String govAgentId,
-		java.lang.String govAgentName, long ebPartnerShipId,
+		long dossierProcId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, long ebPartnerShipId,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -739,9 +739,9 @@ public class DossierProcAgentLocalServiceClp
 					new Object[] {
 						dossierProcId,
 						
-					ClpSerializer.translateInput(govAgentId),
+					ClpSerializer.translateInput(govAgencyId),
 						
-					ClpSerializer.translateInput(govAgentName),
+					ClpSerializer.translateInput(govAgencyName),
 						
 					ebPartnerShipId,
 						
@@ -773,8 +773,8 @@ public class DossierProcAgentLocalServiceClp
 
 	@Override
 	public org.oep.core.dossiermgt.model.DossierProcAgent updateDossierProcAgent(
-		long id, long dossierProcId, java.lang.String govAgentId,
-		java.lang.String govAgentName, long ebPartnerShipId,
+		long id, long dossierProcId, java.lang.String govAgencyId,
+		java.lang.String govAgencyName, long ebPartnerShipId,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -788,9 +788,9 @@ public class DossierProcAgentLocalServiceClp
 						
 					dossierProcId,
 						
-					ClpSerializer.translateInput(govAgentId),
+					ClpSerializer.translateInput(govAgencyId),
 						
-					ClpSerializer.translateInput(govAgentName),
+					ClpSerializer.translateInput(govAgencyName),
 						
 					ebPartnerShipId,
 						

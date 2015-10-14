@@ -15,6 +15,7 @@
 package org.oep.core.dossiermgt.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.oep.core.dossiermgt.model.EbPartnerShip;
 import org.oep.core.dossiermgt.service.base.EbPartnerShipLocalServiceBaseImpl;
@@ -67,8 +68,6 @@ public class EbPartnerShipLocalServiceImpl
 			String name,
 			String cpaId,
 			String service,
-			String action,
-			int inbound,
 			ServiceContext serviceContext) throws SystemException, PortalException {
 		validate();
 		long id = counterLocalService.increment();
@@ -76,12 +75,11 @@ public class EbPartnerShipLocalServiceImpl
 		Date now = new Date();
 				
 		ebPartnerShip.setCompanyId(serviceContext.getCompanyId());
+		ebPartnerShip.setGroupId(serviceContext.getScopeGroupId());
 		ebPartnerShip.setCreateDate(serviceContext.getCreateDate(now));
 		ebPartnerShip.setName(name);
 		ebPartnerShip.setCpaId(cpaId);
 		ebPartnerShip.setService(service);
-		ebPartnerShip.setAction(action);
-		ebPartnerShip.setInbound(inbound);
 		
 		ebPartnerShipPersistence.update(ebPartnerShip);
 
@@ -104,8 +102,6 @@ public class EbPartnerShipLocalServiceImpl
 			String name,
 			String cpaId,
 			String service,
-			String action,
-			int inbound,
 			ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
@@ -116,8 +112,6 @@ public class EbPartnerShipLocalServiceImpl
 		ebPartnerShip.setName(name);
 		ebPartnerShip.setCpaId(cpaId);
 		ebPartnerShip.setService(service);
-		ebPartnerShip.setAction(action);
-		ebPartnerShip.setInbound(inbound);
 
 		ebPartnerShipPersistence.update(ebPartnerShip);
 
@@ -171,6 +165,22 @@ public class EbPartnerShipLocalServiceImpl
 	}
 	
 	protected void validate() throws PortalException {
+	}
+	
+	public List<EbPartnerShip> findByLikeName(String name, int startIndex, int endIndex, ServiceContext serviceContext) throws SystemException {
+		return ebPartnerShipFinder.findByLikeName(name, startIndex, endIndex, serviceContext);
+	}
+	
+	public int countByLikeName(String name, ServiceContext serviceContext) throws SystemException {
+		return ebPartnerShipFinder.countByLikeName(name, serviceContext);
+	}
+	
+	public List<EbPartnerShip> findByGroupLikeName(String name, int startIndex, int endIndex, ServiceContext serviceContext) throws SystemException {
+		return ebPartnerShipFinder.findByGroupLikeName(name, startIndex, endIndex, serviceContext);
+	}
+	
+	public int countByGroupLikeName(String name, ServiceContext serviceContext) throws SystemException {
+		return ebPartnerShipFinder.countByGroupLikeName(name, serviceContext);
 	}
 	
 	private static Log _log = LogFactoryUtil.getLog(EbPartnerShipLocalServiceImpl.class);

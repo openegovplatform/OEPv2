@@ -33,6 +33,8 @@ public class DictCollectionSoap implements Serializable {
 
 		soapModel.setDictCollectionId(model.getDictCollectionId());
 		soapModel.setCompanyId(model.getCompanyId());
+		soapModel.setUserId(model.getUserId());
+		soapModel.setGroupId(model.getGroupId());
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setName(model.getName());
@@ -109,6 +111,22 @@ public class DictCollectionSoap implements Serializable {
 		_companyId = companyId;
 	}
 
+	public long getUserId() {
+		return _userId;
+	}
+
+	public void setUserId(long userId) {
+		_userId = userId;
+	}
+
+	public long getGroupId() {
+		return _groupId;
+	}
+
+	public void setGroupId(long groupId) {
+		_groupId = groupId;
+	}
+
 	public Date getCreateDate() {
 		return _createDate;
 	}
@@ -175,6 +193,8 @@ public class DictCollectionSoap implements Serializable {
 
 	private long _dictCollectionId;
 	private long _companyId;
+	private long _userId;
+	private long _groupId;
 	private Date _createDate;
 	private Date _modifiedDate;
 	private String _name;

@@ -38,12 +38,16 @@ public class EbMessageCacheModel implements CacheModel<EbMessage>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(41);
+		StringBundler sb = new StringBundler(45);
 
 		sb.append("{ebMessageId=");
 		sb.append(ebMessageId);
 		sb.append(", companyId=");
 		sb.append(companyId);
+		sb.append(", userId=");
+		sb.append(userId);
+		sb.append(", groupId=");
+		sb.append(groupId);
 		sb.append(", createDate=");
 		sb.append(createDate);
 		sb.append(", messageId=");
@@ -91,6 +95,8 @@ public class EbMessageCacheModel implements CacheModel<EbMessage>,
 
 		ebMessageImpl.setEbMessageId(ebMessageId);
 		ebMessageImpl.setCompanyId(companyId);
+		ebMessageImpl.setUserId(userId);
+		ebMessageImpl.setGroupId(groupId);
 
 		if (createDate == Long.MIN_VALUE) {
 			ebMessageImpl.setCreateDate(null);
@@ -222,6 +228,8 @@ public class EbMessageCacheModel implements CacheModel<EbMessage>,
 	public void readExternal(ObjectInput objectInput) throws IOException {
 		ebMessageId = objectInput.readLong();
 		companyId = objectInput.readLong();
+		userId = objectInput.readLong();
+		groupId = objectInput.readLong();
 		createDate = objectInput.readLong();
 		messageId = objectInput.readUTF();
 		cpaId = objectInput.readUTF();
@@ -247,6 +255,8 @@ public class EbMessageCacheModel implements CacheModel<EbMessage>,
 		throws IOException {
 		objectOutput.writeLong(ebMessageId);
 		objectOutput.writeLong(companyId);
+		objectOutput.writeLong(userId);
+		objectOutput.writeLong(groupId);
 		objectOutput.writeLong(createDate);
 
 		if (messageId == null) {
@@ -366,6 +376,8 @@ public class EbMessageCacheModel implements CacheModel<EbMessage>,
 
 	public long ebMessageId;
 	public long companyId;
+	public long userId;
+	public long groupId;
 	public long createDate;
 	public String messageId;
 	public String cpaId;

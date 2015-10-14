@@ -75,10 +75,12 @@ public class DossierStepModelImpl extends BaseModelImpl<DossierStep>
 			{ "dossierProcessId", Types.BIGINT },
 			{ "title", Types.VARCHAR },
 			{ "sequenceNo", Types.INTEGER },
-			{ "stepType", Types.INTEGER },
-			{ "doForm", Types.VARCHAR }
+			{ "daysDuration", Types.INTEGER },
+			{ "doForm", Types.VARCHAR },
+			{ "formLabel", Types.VARCHAR },
+			{ "rollback", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_dossierstep (dossierStepId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcessId LONG,title VARCHAR(75) null,sequenceNo INTEGER,stepType INTEGER,doForm VARCHAR(100) null)";
+	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_dossierstep (dossierStepId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcessId LONG,title VARCHAR(75) null,sequenceNo INTEGER,daysDuration INTEGER,doForm VARCHAR(100) null,formLabel VARCHAR(100) null,rollback INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_processmgt_dossierstep";
 	public static final String ORDER_BY_JPQL = " ORDER BY dossierStep.dossierStepId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_processmgt_dossierstep.dossierStepId ASC";
@@ -115,8 +117,10 @@ public class DossierStepModelImpl extends BaseModelImpl<DossierStep>
 		model.setDossierProcessId(soapModel.getDossierProcessId());
 		model.setTitle(soapModel.getTitle());
 		model.setSequenceNo(soapModel.getSequenceNo());
-		model.setStepType(soapModel.getStepType());
+		model.setDaysDuration(soapModel.getDaysDuration());
 		model.setDoForm(soapModel.getDoForm());
+		model.setFormLabel(soapModel.getFormLabel());
+		model.setRollback(soapModel.getRollback());
 
 		return model;
 	}
@@ -190,8 +194,10 @@ public class DossierStepModelImpl extends BaseModelImpl<DossierStep>
 		attributes.put("dossierProcessId", getDossierProcessId());
 		attributes.put("title", getTitle());
 		attributes.put("sequenceNo", getSequenceNo());
-		attributes.put("stepType", getStepType());
+		attributes.put("daysDuration", getDaysDuration());
 		attributes.put("doForm", getDoForm());
+		attributes.put("formLabel", getFormLabel());
+		attributes.put("rollback", getRollback());
 
 		return attributes;
 	}
@@ -252,16 +258,28 @@ public class DossierStepModelImpl extends BaseModelImpl<DossierStep>
 			setSequenceNo(sequenceNo);
 		}
 
-		Integer stepType = (Integer)attributes.get("stepType");
+		Integer daysDuration = (Integer)attributes.get("daysDuration");
 
-		if (stepType != null) {
-			setStepType(stepType);
+		if (daysDuration != null) {
+			setDaysDuration(daysDuration);
 		}
 
 		String doForm = (String)attributes.get("doForm");
 
 		if (doForm != null) {
 			setDoForm(doForm);
+		}
+
+		String formLabel = (String)attributes.get("formLabel");
+
+		if (formLabel != null) {
+			setFormLabel(formLabel);
+		}
+
+		Integer rollback = (Integer)attributes.get("rollback");
+
+		if (rollback != null) {
+			setRollback(rollback);
 		}
 	}
 
@@ -381,13 +399,13 @@ public class DossierStepModelImpl extends BaseModelImpl<DossierStep>
 
 	@JSON
 	@Override
-	public int getStepType() {
-		return _stepType;
+	public int getDaysDuration() {
+		return _daysDuration;
 	}
 
 	@Override
-	public void setStepType(int stepType) {
-		_stepType = stepType;
+	public void setDaysDuration(int daysDuration) {
+		_daysDuration = daysDuration;
 	}
 
 	@JSON
@@ -404,6 +422,33 @@ public class DossierStepModelImpl extends BaseModelImpl<DossierStep>
 	@Override
 	public void setDoForm(String doForm) {
 		_doForm = doForm;
+	}
+
+	@JSON
+	@Override
+	public String getFormLabel() {
+		if (_formLabel == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _formLabel;
+		}
+	}
+
+	@Override
+	public void setFormLabel(String formLabel) {
+		_formLabel = formLabel;
+	}
+
+	@JSON
+	@Override
+	public int getRollback() {
+		return _rollback;
+	}
+
+	@Override
+	public void setRollback(int rollback) {
+		_rollback = rollback;
 	}
 
 	@Override
@@ -442,8 +487,10 @@ public class DossierStepModelImpl extends BaseModelImpl<DossierStep>
 		dossierStepImpl.setDossierProcessId(getDossierProcessId());
 		dossierStepImpl.setTitle(getTitle());
 		dossierStepImpl.setSequenceNo(getSequenceNo());
-		dossierStepImpl.setStepType(getStepType());
+		dossierStepImpl.setDaysDuration(getDaysDuration());
 		dossierStepImpl.setDoForm(getDoForm());
+		dossierStepImpl.setFormLabel(getFormLabel());
+		dossierStepImpl.setRollback(getRollback());
 
 		dossierStepImpl.resetOriginalValues();
 
@@ -538,7 +585,7 @@ public class DossierStepModelImpl extends BaseModelImpl<DossierStep>
 
 		dossierStepCacheModel.sequenceNo = getSequenceNo();
 
-		dossierStepCacheModel.stepType = getStepType();
+		dossierStepCacheModel.daysDuration = getDaysDuration();
 
 		dossierStepCacheModel.doForm = getDoForm();
 
@@ -548,12 +595,22 @@ public class DossierStepModelImpl extends BaseModelImpl<DossierStep>
 			dossierStepCacheModel.doForm = null;
 		}
 
+		dossierStepCacheModel.formLabel = getFormLabel();
+
+		String formLabel = dossierStepCacheModel.formLabel;
+
+		if ((formLabel != null) && (formLabel.length() == 0)) {
+			dossierStepCacheModel.formLabel = null;
+		}
+
+		dossierStepCacheModel.rollback = getRollback();
+
 		return dossierStepCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(23);
+		StringBundler sb = new StringBundler(27);
 
 		sb.append("{dossierStepId=");
 		sb.append(getDossierStepId());
@@ -573,10 +630,14 @@ public class DossierStepModelImpl extends BaseModelImpl<DossierStep>
 		sb.append(getTitle());
 		sb.append(", sequenceNo=");
 		sb.append(getSequenceNo());
-		sb.append(", stepType=");
-		sb.append(getStepType());
+		sb.append(", daysDuration=");
+		sb.append(getDaysDuration());
 		sb.append(", doForm=");
 		sb.append(getDoForm());
+		sb.append(", formLabel=");
+		sb.append(getFormLabel());
+		sb.append(", rollback=");
+		sb.append(getRollback());
 		sb.append("}");
 
 		return sb.toString();
@@ -584,7 +645,7 @@ public class DossierStepModelImpl extends BaseModelImpl<DossierStep>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(43);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.DossierStep");
@@ -627,12 +688,20 @@ public class DossierStepModelImpl extends BaseModelImpl<DossierStep>
 		sb.append(getSequenceNo());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>stepType</column-name><column-value><![CDATA[");
-		sb.append(getStepType());
+			"<column><column-name>daysDuration</column-name><column-value><![CDATA[");
+		sb.append(getDaysDuration());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>doForm</column-name><column-value><![CDATA[");
 		sb.append(getDoForm());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>formLabel</column-name><column-value><![CDATA[");
+		sb.append(getFormLabel());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>rollback</column-name><column-value><![CDATA[");
+		sb.append(getRollback());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -654,7 +723,9 @@ public class DossierStepModelImpl extends BaseModelImpl<DossierStep>
 	private long _dossierProcessId;
 	private String _title;
 	private int _sequenceNo;
-	private int _stepType;
+	private int _daysDuration;
 	private String _doForm;
+	private String _formLabel;
+	private int _rollback;
 	private DossierStep _escapedModel;
 }

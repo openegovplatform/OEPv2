@@ -38,7 +38,7 @@ public class DossierStepCacheModel implements CacheModel<DossierStep>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(23);
+		StringBundler sb = new StringBundler(27);
 
 		sb.append("{dossierStepId=");
 		sb.append(dossierStepId);
@@ -58,10 +58,14 @@ public class DossierStepCacheModel implements CacheModel<DossierStep>,
 		sb.append(title);
 		sb.append(", sequenceNo=");
 		sb.append(sequenceNo);
-		sb.append(", stepType=");
-		sb.append(stepType);
+		sb.append(", daysDuration=");
+		sb.append(daysDuration);
 		sb.append(", doForm=");
 		sb.append(doForm);
+		sb.append(", formLabel=");
+		sb.append(formLabel);
+		sb.append(", rollback=");
+		sb.append(rollback);
 		sb.append("}");
 
 		return sb.toString();
@@ -100,7 +104,7 @@ public class DossierStepCacheModel implements CacheModel<DossierStep>,
 		}
 
 		dossierStepImpl.setSequenceNo(sequenceNo);
-		dossierStepImpl.setStepType(stepType);
+		dossierStepImpl.setDaysDuration(daysDuration);
 
 		if (doForm == null) {
 			dossierStepImpl.setDoForm(StringPool.BLANK);
@@ -108,6 +112,15 @@ public class DossierStepCacheModel implements CacheModel<DossierStep>,
 		else {
 			dossierStepImpl.setDoForm(doForm);
 		}
+
+		if (formLabel == null) {
+			dossierStepImpl.setFormLabel(StringPool.BLANK);
+		}
+		else {
+			dossierStepImpl.setFormLabel(formLabel);
+		}
+
+		dossierStepImpl.setRollback(rollback);
 
 		dossierStepImpl.resetOriginalValues();
 
@@ -125,8 +138,10 @@ public class DossierStepCacheModel implements CacheModel<DossierStep>,
 		dossierProcessId = objectInput.readLong();
 		title = objectInput.readUTF();
 		sequenceNo = objectInput.readInt();
-		stepType = objectInput.readInt();
+		daysDuration = objectInput.readInt();
 		doForm = objectInput.readUTF();
+		formLabel = objectInput.readUTF();
+		rollback = objectInput.readInt();
 	}
 
 	@Override
@@ -148,7 +163,7 @@ public class DossierStepCacheModel implements CacheModel<DossierStep>,
 		}
 
 		objectOutput.writeInt(sequenceNo);
-		objectOutput.writeInt(stepType);
+		objectOutput.writeInt(daysDuration);
 
 		if (doForm == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
@@ -156,6 +171,15 @@ public class DossierStepCacheModel implements CacheModel<DossierStep>,
 		else {
 			objectOutput.writeUTF(doForm);
 		}
+
+		if (formLabel == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(formLabel);
+		}
+
+		objectOutput.writeInt(rollback);
 	}
 
 	public long dossierStepId;
@@ -167,6 +191,8 @@ public class DossierStepCacheModel implements CacheModel<DossierStep>,
 	public long dossierProcessId;
 	public String title;
 	public int sequenceNo;
-	public int stepType;
+	public int daysDuration;
 	public String doForm;
+	public String formLabel;
+	public int rollback;
 }

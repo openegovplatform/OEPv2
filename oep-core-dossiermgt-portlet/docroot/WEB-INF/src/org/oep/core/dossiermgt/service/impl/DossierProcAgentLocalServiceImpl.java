@@ -65,8 +65,8 @@ public class DossierProcAgentLocalServiceImpl
 	@Indexable(type = IndexableType.REINDEX)	
 	public DossierProcAgent addDossierProcAgent(
 			long dossierProcId,
-			String govAgentId,
-			String govAgentName,
+			String govAgencyId,
+			String govAgencyName,
 			long ebPartnerShipId,
 			ServiceContext serviceContext) throws SystemException, PortalException {
 		validate();
@@ -76,8 +76,8 @@ public class DossierProcAgentLocalServiceImpl
 				
 		dossierProcAgent.setCompanyId(serviceContext.getCompanyId());
 		dossierProcAgent.setDossierProcId(dossierProcId);
-		dossierProcAgent.setGovAgentId(govAgentId);
-		dossierProcAgent.setGovAgentName(govAgentName);
+		dossierProcAgent.setGovAgencyId(govAgencyId);
+		dossierProcAgent.setGovAgencyName(govAgencyName);
 		dossierProcAgent.setEbPartnerShipId(ebPartnerShipId);
 		
 		dossierProcAgent.setCreateDate(serviceContext.getCreateDate(now));
@@ -101,8 +101,8 @@ public class DossierProcAgentLocalServiceImpl
 	public DossierProcAgent updateDossierProcAgent(
 			long id, 
 			long dossierProcId,
-			String govAgentId,
-			String govAgentName,
+			String govAgencyId,
+			String govAgencyName,
 			long ebPartnerShipId,
 			ServiceContext serviceContext)
 		throws PortalException, SystemException {
@@ -113,8 +113,8 @@ public class DossierProcAgentLocalServiceImpl
 
 		dossierProcAgent.setModifiedDate(serviceContext.getModifiedDate(null));
 		dossierProcAgent.setDossierProcId(dossierProcId);
-		dossierProcAgent.setGovAgentId(govAgentId);
-		dossierProcAgent.setGovAgentName(govAgentName);
+		dossierProcAgent.setGovAgencyId(govAgencyId);
+		dossierProcAgent.setGovAgencyName(govAgencyName);
 		dossierProcAgent.setEbPartnerShipId(ebPartnerShipId);
 
 		dossierProcAgentPersistence.update(dossierProcAgent);

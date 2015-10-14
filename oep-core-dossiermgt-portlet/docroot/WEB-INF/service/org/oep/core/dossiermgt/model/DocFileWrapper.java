@@ -63,6 +63,7 @@ public class DocFileWrapper implements DocFile, ModelWrapper<DocFile> {
 		attributes.put("docFileVersionId", getDocFileVersionId());
 		attributes.put("docName", getDocName());
 		attributes.put("note", getNote());
+		attributes.put("premier", getPremier());
 
 		return attributes;
 	}
@@ -145,6 +146,12 @@ public class DocFileWrapper implements DocFile, ModelWrapper<DocFile> {
 
 		if (note != null) {
 			setNote(note);
+		}
+
+		Integer premier = (Integer)attributes.get("premier");
+
+		if (premier != null) {
+			setPremier(premier);
 		}
 	}
 
@@ -448,6 +455,26 @@ public class DocFileWrapper implements DocFile, ModelWrapper<DocFile> {
 	@Override
 	public void setNote(java.lang.String note) {
 		_docFile.setNote(note);
+	}
+
+	/**
+	* Returns the premier of this doc file.
+	*
+	* @return the premier of this doc file
+	*/
+	@Override
+	public int getPremier() {
+		return _docFile.getPremier();
+	}
+
+	/**
+	* Sets the premier of this doc file.
+	*
+	* @param premier the premier of this doc file
+	*/
+	@Override
+	public void setPremier(int premier) {
+		_docFile.setPremier(premier);
 	}
 
 	@Override

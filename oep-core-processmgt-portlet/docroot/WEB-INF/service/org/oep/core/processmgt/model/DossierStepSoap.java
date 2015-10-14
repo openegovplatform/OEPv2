@@ -40,8 +40,10 @@ public class DossierStepSoap implements Serializable {
 		soapModel.setDossierProcessId(model.getDossierProcessId());
 		soapModel.setTitle(model.getTitle());
 		soapModel.setSequenceNo(model.getSequenceNo());
-		soapModel.setStepType(model.getStepType());
+		soapModel.setDaysDuration(model.getDaysDuration());
 		soapModel.setDoForm(model.getDoForm());
+		soapModel.setFormLabel(model.getFormLabel());
+		soapModel.setRollback(model.getRollback());
 
 		return soapModel;
 	}
@@ -166,12 +168,12 @@ public class DossierStepSoap implements Serializable {
 		_sequenceNo = sequenceNo;
 	}
 
-	public int getStepType() {
-		return _stepType;
+	public int getDaysDuration() {
+		return _daysDuration;
 	}
 
-	public void setStepType(int stepType) {
-		_stepType = stepType;
+	public void setDaysDuration(int daysDuration) {
+		_daysDuration = daysDuration;
 	}
 
 	public String getDoForm() {
@@ -180,6 +182,22 @@ public class DossierStepSoap implements Serializable {
 
 	public void setDoForm(String doForm) {
 		_doForm = doForm;
+	}
+
+	public String getFormLabel() {
+		return _formLabel;
+	}
+
+	public void setFormLabel(String formLabel) {
+		_formLabel = formLabel;
+	}
+
+	public int getRollback() {
+		return _rollback;
+	}
+
+	public void setRollback(int rollback) {
+		_rollback = rollback;
 	}
 
 	private long _dossierStepId;
@@ -191,6 +209,8 @@ public class DossierStepSoap implements Serializable {
 	private long _dossierProcessId;
 	private String _title;
 	private int _sequenceNo;
-	private int _stepType;
+	private int _daysDuration;
 	private String _doForm;
+	private String _formLabel;
+	private int _rollback;
 }

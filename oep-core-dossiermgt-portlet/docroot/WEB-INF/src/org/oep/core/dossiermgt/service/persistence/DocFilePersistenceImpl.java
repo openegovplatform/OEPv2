@@ -1801,6 +1801,7 @@ public class DocFilePersistenceImpl extends BasePersistenceImpl<DocFile>
 		docFileImpl.setDocFileVersionId(docFile.getDocFileVersionId());
 		docFileImpl.setDocName(docFile.getDocName());
 		docFileImpl.setNote(docFile.getNote());
+		docFileImpl.setPremier(docFile.getPremier());
 
 		return docFileImpl;
 	}

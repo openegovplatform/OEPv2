@@ -16,6 +16,7 @@
  */
  --%>
  
+<%@page import="org.oep.core.utilities.dossiermgt.EbPartnerShipKeys"%>
 <%@ include file="/html/dossiermgt/portlet/init.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://liferay.com/tld/ddm" prefix="liferay-ddm" %>
@@ -45,4 +46,5 @@
 <%
 	String currentURL = PortalUtil.getCurrentURL(request);
 	String redirect = PortalUtil.getCurrentURL(renderRequest);
+	String name = ParamUtil.getString(request, EbPartnerShipKeys.SearchAttributes.NAME);
 %>

@@ -3,7 +3,7 @@
 <service-builder package-path="org.oep.core.datamgt.parameter">
 	<author>TrungDK</author>
 	<namespace>oep_datamgt</namespace>
-    <entity name="UserParameter" local-service="true">
+    <entity name="UserParameter" local-service="true" table="oep_datamgt_userparameter">
         <column name="userParameterId" type="long" primary="true"></column>
         <column name="userId" type="long"></column>
         <column name="groupId" type="long"></column>
@@ -15,7 +15,7 @@
         <column name="title" type="String"></column>
         <column name="parameterValue" type="String"></column>
     </entity>
-    <entity name="DefaultParameter" local-service="true">
+    <entity name="DefaultParameter" local-service="true" table="oep_datamgt_defaultparameter">
         <column name="defaultParameterId" type="long" primary="true"></column>
         <column name="companyId" type="long"></column>
         <column name="createDate" type="Date"></column>

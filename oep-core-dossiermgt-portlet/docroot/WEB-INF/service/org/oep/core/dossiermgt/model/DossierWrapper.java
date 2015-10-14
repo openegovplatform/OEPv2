@@ -90,6 +90,7 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 		attributes.put("daysDelay", getDaysDelay());
 		attributes.put("closeDate", getCloseDate());
 		attributes.put("errorStatus", getErrorStatus());
+		attributes.put("pendingStatus", getPendingStatus());
 		attributes.put("errorCode", getErrorCode());
 		attributes.put("dirty", getDirty());
 
@@ -336,6 +337,12 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 
 		if (errorStatus != null) {
 			setErrorStatus(errorStatus);
+		}
+
+		Integer pendingStatus = (Integer)attributes.get("pendingStatus");
+
+		if (pendingStatus != null) {
+			setPendingStatus(pendingStatus);
 		}
 
 		String errorCode = (String)attributes.get("errorCode");
@@ -1191,6 +1198,26 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	@Override
 	public void setErrorStatus(java.lang.String errorStatus) {
 		_dossier.setErrorStatus(errorStatus);
+	}
+
+	/**
+	* Returns the pending status of this dossier.
+	*
+	* @return the pending status of this dossier
+	*/
+	@Override
+	public int getPendingStatus() {
+		return _dossier.getPendingStatus();
+	}
+
+	/**
+	* Sets the pending status of this dossier.
+	*
+	* @param pendingStatus the pending status of this dossier
+	*/
+	@Override
+	public void setPendingStatus(int pendingStatus) {
+		_dossier.setPendingStatus(pendingStatus);
 	}
 
 	/**

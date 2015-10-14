@@ -290,32 +290,33 @@ public class StepTransitionLocalServiceUtil {
 	*/
 	public static org.oep.core.processmgt.model.StepTransition addStepTransition(
 		long dossierProcessId, long preDossierStepId, long postDossierStepId,
-		java.lang.String precondition, java.lang.String transitionName,
-		int daysDuration, java.lang.String dossierStatus, int userAssignment,
-		int newProcessOrder,
+		java.lang.String autoCondition, java.lang.String transitionName,
+		java.lang.String dossierStatus, int notifyStatus, int sendResults,
+		int requestPayment, int userAssignment, int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .addStepTransition(dossierProcessId, preDossierStepId,
-			postDossierStepId, precondition, transitionName, daysDuration,
-			dossierStatus, userAssignment, newProcessOrder, serviceContext);
+			postDossierStepId, autoCondition, transitionName, dossierStatus,
+			notifyStatus, sendResults, requestPayment, userAssignment,
+			newProcessOrder, serviceContext);
 	}
 
 	public static org.oep.core.processmgt.model.StepTransition updateStepTransition(
 		long id, long dossierProcessId, long preDossierStepId,
-		long postDossierStepId, java.lang.String precondition,
-		java.lang.String transitionName, int daysDuration,
-		java.lang.String dossierStatus, int userAssignment,
-		int newProcessOrder,
+		long postDossierStepId, java.lang.String autoCondition,
+		java.lang.String transitionName, java.lang.String dossierStatus,
+		int notifyStatus, int sendResults, int requestPayment,
+		int userAssignment, int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .updateStepTransition(id, dossierProcessId,
-			preDossierStepId, postDossierStepId, precondition, transitionName,
-			daysDuration, dossierStatus, userAssignment, newProcessOrder,
-			serviceContext);
+			preDossierStepId, postDossierStepId, autoCondition, transitionName,
+			dossierStatus, notifyStatus, sendResults, requestPayment,
+			userAssignment, newProcessOrder, serviceContext);
 	}
 
 	public static void updateStepTransitionResources(

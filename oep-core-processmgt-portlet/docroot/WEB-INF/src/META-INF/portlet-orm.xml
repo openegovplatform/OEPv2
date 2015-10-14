@@ -20,10 +20,11 @@
 				<temporal>TIMESTAMP</temporal>
 			</basic>
 			<basic name="dossierProcId" />
-			<basic name="govAgentId" />
-			<basic name="govAgentName" />
-			<basic name="startDossierStepId" />
+			<basic name="govAgencyId" />
+			<basic name="govAgencyName" />
+			<basic name="startStepTransitionId" />
 			<basic name="daysDuration" />
+			<basic name="fee" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
@@ -45,8 +46,10 @@
 			<basic name="dossierProcessId" />
 			<basic name="title" />
 			<basic name="sequenceNo" />
-			<basic name="stepType" />
+			<basic name="daysDuration" />
 			<basic name="doForm" />
+			<basic name="formLabel" />
+			<basic name="rollback" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
@@ -66,6 +69,9 @@
 	<mapped-superclass class="org.oep.core.processmgt.model.impl.ProcessOrderModelImpl">
 		<attributes>
 			<id name="processOrderId" />
+			<basic name="uuid">
+				<column name="UUID_" />
+			</basic>
 			<basic name="userId" />
 			<basic name="groupId" />
 			<basic name="companyId" />
@@ -80,15 +86,17 @@
 			<basic name="dossierId" />
 			<basic name="dossierProcessId" />
 			<basic name="dossierStepId" />
-			<basic name="dossierStatus" />
-			<basic name="dossierResume" />
+			<basic name="orderStatus" />
+			<basic name="orderResume" />
 			<basic name="stepDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
 			<basic name="stepNote" />
 			<basic name="assignToUserId" />
 			<basic name="currentCondition" />
-			<basic name="endState" />
+			<basic name="lastStepTransitionId" />
+			<basic name="stopRollback" />
+			<basic name="ebPartnerShipId" />
 			<transient name="assignToUserUuid" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
@@ -104,6 +112,31 @@
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.processmgt.model.impl.StatisticByUserModelImpl">
+		<attributes>
+			<id name="statisticByUserId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="month" />
+			<basic name="year" />
+			<basic name="dossierStatus" />
+			<basic name="totalNumber" />
+			<basic name="delayedNumber" />
+			<basic name="ontimeNumber" />
+			<basic name="ontimeRatio" />
+			<basic name="delayDaysAvg" />
+			<basic name="furtherDaysAvg" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="statisticByUserUuid" />
 			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
@@ -123,9 +156,12 @@
 			<basic name="preDossierStepId" />
 			<basic name="postDossierStepId" />
 			<basic name="precondition" />
+			<basic name="autoCondition" />
 			<basic name="transitionName" />
-			<basic name="daysDuration" />
 			<basic name="dossierStatus" />
+			<basic name="notifyStatus" />
+			<basic name="sendResults" />
+			<basic name="requestPayment" />
 			<basic name="userAssignment" />
 			<basic name="newProcessOrder" />
 			<transient name="modelAttributes" />
@@ -150,6 +186,8 @@
 			<basic name="startDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
+			<basic name="preDossierStatus" />
+			<basic name="postDossierStatus" />
 			<basic name="stepTransitionId" />
 			<basic name="preDossierStepId" />
 			<basic name="postDossierStepId" />
@@ -198,6 +236,10 @@
 	</entity>
 	<entity class="org.oep.core.processmgt.model.impl.ProcessOrder2UserImpl" name="ProcessOrder2User">
 		<table name="oep_processmgt_processorder2user" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.processmgt.model.impl.StatisticByUserImpl" name="StatisticByUser">
+		<table name="oep_processmgt_statisticbyuser" />
 		<attributes />
 	</entity>
 	<entity class="org.oep.core.processmgt.model.impl.StepTransitionImpl" name="StepTransition">

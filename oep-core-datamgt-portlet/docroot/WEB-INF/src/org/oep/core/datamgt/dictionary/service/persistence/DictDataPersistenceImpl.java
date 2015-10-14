@@ -3819,6 +3819,8 @@ public class DictDataPersistenceImpl extends BasePersistenceImpl<DictData>
 
 		dictDataImpl.setDictDataId(dictData.getDictDataId());
 		dictDataImpl.setCompanyId(dictData.getCompanyId());
+		dictDataImpl.setUserId(dictData.getUserId());
+		dictDataImpl.setGroupId(dictData.getGroupId());
 		dictDataImpl.setCreateDate(dictData.getCreateDate());
 		dictDataImpl.setModifiedDate(dictData.getModifiedDate());
 		dictDataImpl.setCollectionName(dictData.getCollectionName());

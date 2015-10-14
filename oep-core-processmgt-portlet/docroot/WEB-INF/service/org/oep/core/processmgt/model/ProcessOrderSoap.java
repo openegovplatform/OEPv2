@@ -31,6 +31,7 @@ public class ProcessOrderSoap implements Serializable {
 	public static ProcessOrderSoap toSoapModel(ProcessOrder model) {
 		ProcessOrderSoap soapModel = new ProcessOrderSoap();
 
+		soapModel.setUuid(model.getUuid());
 		soapModel.setProcessOrderId(model.getProcessOrderId());
 		soapModel.setUserId(model.getUserId());
 		soapModel.setGroupId(model.getGroupId());
@@ -42,13 +43,15 @@ public class ProcessOrderSoap implements Serializable {
 		soapModel.setDossierId(model.getDossierId());
 		soapModel.setDossierProcessId(model.getDossierProcessId());
 		soapModel.setDossierStepId(model.getDossierStepId());
-		soapModel.setDossierStatus(model.getDossierStatus());
-		soapModel.setDossierResume(model.getDossierResume());
+		soapModel.setOrderStatus(model.getOrderStatus());
+		soapModel.setOrderResume(model.getOrderResume());
 		soapModel.setStepDate(model.getStepDate());
 		soapModel.setStepNote(model.getStepNote());
 		soapModel.setAssignToUserId(model.getAssignToUserId());
 		soapModel.setCurrentCondition(model.getCurrentCondition());
-		soapModel.setEndState(model.getEndState());
+		soapModel.setLastStepTransitionId(model.getLastStepTransitionId());
+		soapModel.setStopRollback(model.getStopRollback());
+		soapModel.setEbPartnerShipId(model.getEbPartnerShipId());
 
 		return soapModel;
 	}
@@ -99,6 +102,14 @@ public class ProcessOrderSoap implements Serializable {
 
 	public void setPrimaryKey(long pk) {
 		setProcessOrderId(pk);
+	}
+
+	public String getUuid() {
+		return _uuid;
+	}
+
+	public void setUuid(String uuid) {
+		_uuid = uuid;
 	}
 
 	public long getProcessOrderId() {
@@ -189,20 +200,20 @@ public class ProcessOrderSoap implements Serializable {
 		_dossierStepId = dossierStepId;
 	}
 
-	public String getDossierStatus() {
-		return _dossierStatus;
+	public String getOrderStatus() {
+		return _orderStatus;
 	}
 
-	public void setDossierStatus(String dossierStatus) {
-		_dossierStatus = dossierStatus;
+	public void setOrderStatus(String orderStatus) {
+		_orderStatus = orderStatus;
 	}
 
-	public String getDossierResume() {
-		return _dossierResume;
+	public String getOrderResume() {
+		return _orderResume;
 	}
 
-	public void setDossierResume(String dossierResume) {
-		_dossierResume = dossierResume;
+	public void setOrderResume(String orderResume) {
+		_orderResume = orderResume;
 	}
 
 	public Date getStepDate() {
@@ -237,14 +248,31 @@ public class ProcessOrderSoap implements Serializable {
 		_currentCondition = currentCondition;
 	}
 
-	public int getEndState() {
-		return _endState;
+	public long getLastStepTransitionId() {
+		return _lastStepTransitionId;
 	}
 
-	public void setEndState(int endState) {
-		_endState = endState;
+	public void setLastStepTransitionId(long lastStepTransitionId) {
+		_lastStepTransitionId = lastStepTransitionId;
 	}
 
+	public int getStopRollback() {
+		return _stopRollback;
+	}
+
+	public void setStopRollback(int stopRollback) {
+		_stopRollback = stopRollback;
+	}
+
+	public long getEbPartnerShipId() {
+		return _ebPartnerShipId;
+	}
+
+	public void setEbPartnerShipId(long ebPartnerShipId) {
+		_ebPartnerShipId = ebPartnerShipId;
+	}
+
+	private String _uuid;
 	private long _processOrderId;
 	private long _userId;
 	private long _groupId;
@@ -256,11 +284,13 @@ public class ProcessOrderSoap implements Serializable {
 	private long _dossierId;
 	private long _dossierProcessId;
 	private long _dossierStepId;
-	private String _dossierStatus;
-	private String _dossierResume;
+	private String _orderStatus;
+	private String _orderResume;
 	private Date _stepDate;
 	private String _stepNote;
 	private long _assignToUserId;
 	private String _currentCondition;
-	private int _endState;
+	private long _lastStepTransitionId;
+	private int _stopRollback;
+	private long _ebPartnerShipId;
 }

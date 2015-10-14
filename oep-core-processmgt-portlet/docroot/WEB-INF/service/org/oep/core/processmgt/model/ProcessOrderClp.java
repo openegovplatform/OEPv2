@@ -16,6 +16,7 @@ package org.oep.core.processmgt.model;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.BaseModel;
@@ -75,6 +76,7 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
+		attributes.put("uuid", getUuid());
 		attributes.put("processOrderId", getProcessOrderId());
 		attributes.put("userId", getUserId());
 		attributes.put("groupId", getGroupId());
@@ -86,19 +88,27 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 		attributes.put("dossierId", getDossierId());
 		attributes.put("dossierProcessId", getDossierProcessId());
 		attributes.put("dossierStepId", getDossierStepId());
-		attributes.put("dossierStatus", getDossierStatus());
-		attributes.put("dossierResume", getDossierResume());
+		attributes.put("orderStatus", getOrderStatus());
+		attributes.put("orderResume", getOrderResume());
 		attributes.put("stepDate", getStepDate());
 		attributes.put("stepNote", getStepNote());
 		attributes.put("assignToUserId", getAssignToUserId());
 		attributes.put("currentCondition", getCurrentCondition());
-		attributes.put("endState", getEndState());
+		attributes.put("lastStepTransitionId", getLastStepTransitionId());
+		attributes.put("stopRollback", getStopRollback());
+		attributes.put("ebPartnerShipId", getEbPartnerShipId());
 
 		return attributes;
 	}
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
+		String uuid = (String)attributes.get("uuid");
+
+		if (uuid != null) {
+			setUuid(uuid);
+		}
+
 		Long processOrderId = (Long)attributes.get("processOrderId");
 
 		if (processOrderId != null) {
@@ -165,16 +175,16 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 			setDossierStepId(dossierStepId);
 		}
 
-		String dossierStatus = (String)attributes.get("dossierStatus");
+		String orderStatus = (String)attributes.get("orderStatus");
 
-		if (dossierStatus != null) {
-			setDossierStatus(dossierStatus);
+		if (orderStatus != null) {
+			setOrderStatus(orderStatus);
 		}
 
-		String dossierResume = (String)attributes.get("dossierResume");
+		String orderResume = (String)attributes.get("orderResume");
 
-		if (dossierResume != null) {
-			setDossierResume(dossierResume);
+		if (orderResume != null) {
+			setOrderResume(orderResume);
 		}
 
 		Date stepDate = (Date)attributes.get("stepDate");
@@ -201,10 +211,45 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 			setCurrentCondition(currentCondition);
 		}
 
-		Integer endState = (Integer)attributes.get("endState");
+		Long lastStepTransitionId = (Long)attributes.get("lastStepTransitionId");
 
-		if (endState != null) {
-			setEndState(endState);
+		if (lastStepTransitionId != null) {
+			setLastStepTransitionId(lastStepTransitionId);
+		}
+
+		Integer stopRollback = (Integer)attributes.get("stopRollback");
+
+		if (stopRollback != null) {
+			setStopRollback(stopRollback);
+		}
+
+		Long ebPartnerShipId = (Long)attributes.get("ebPartnerShipId");
+
+		if (ebPartnerShipId != null) {
+			setEbPartnerShipId(ebPartnerShipId);
+		}
+	}
+
+	@Override
+	public String getUuid() {
+		return _uuid;
+	}
+
+	@Override
+	public void setUuid(String uuid) {
+		_uuid = uuid;
+
+		if (_processOrderRemoteModel != null) {
+			try {
+				Class<?> clazz = _processOrderRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setUuid", String.class);
+
+				method.invoke(_processOrderRemoteModel, uuid);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
 		}
 	}
 
@@ -474,21 +519,21 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 	}
 
 	@Override
-	public String getDossierStatus() {
-		return _dossierStatus;
+	public String getOrderStatus() {
+		return _orderStatus;
 	}
 
 	@Override
-	public void setDossierStatus(String dossierStatus) {
-		_dossierStatus = dossierStatus;
+	public void setOrderStatus(String orderStatus) {
+		_orderStatus = orderStatus;
 
 		if (_processOrderRemoteModel != null) {
 			try {
 				Class<?> clazz = _processOrderRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setDossierStatus", String.class);
+				Method method = clazz.getMethod("setOrderStatus", String.class);
 
-				method.invoke(_processOrderRemoteModel, dossierStatus);
+				method.invoke(_processOrderRemoteModel, orderStatus);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -497,21 +542,21 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 	}
 
 	@Override
-	public String getDossierResume() {
-		return _dossierResume;
+	public String getOrderResume() {
+		return _orderResume;
 	}
 
 	@Override
-	public void setDossierResume(String dossierResume) {
-		_dossierResume = dossierResume;
+	public void setOrderResume(String orderResume) {
+		_orderResume = orderResume;
 
 		if (_processOrderRemoteModel != null) {
 			try {
 				Class<?> clazz = _processOrderRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setDossierResume", String.class);
+				Method method = clazz.getMethod("setOrderResume", String.class);
 
-				method.invoke(_processOrderRemoteModel, dossierResume);
+				method.invoke(_processOrderRemoteModel, orderResume);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -624,26 +669,79 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 	}
 
 	@Override
-	public int getEndState() {
-		return _endState;
+	public long getLastStepTransitionId() {
+		return _lastStepTransitionId;
 	}
 
 	@Override
-	public void setEndState(int endState) {
-		_endState = endState;
+	public void setLastStepTransitionId(long lastStepTransitionId) {
+		_lastStepTransitionId = lastStepTransitionId;
 
 		if (_processOrderRemoteModel != null) {
 			try {
 				Class<?> clazz = _processOrderRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setEndState", int.class);
+				Method method = clazz.getMethod("setLastStepTransitionId",
+						long.class);
 
-				method.invoke(_processOrderRemoteModel, endState);
+				method.invoke(_processOrderRemoteModel, lastStepTransitionId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
 			}
 		}
+	}
+
+	@Override
+	public int getStopRollback() {
+		return _stopRollback;
+	}
+
+	@Override
+	public void setStopRollback(int stopRollback) {
+		_stopRollback = stopRollback;
+
+		if (_processOrderRemoteModel != null) {
+			try {
+				Class<?> clazz = _processOrderRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setStopRollback", int.class);
+
+				method.invoke(_processOrderRemoteModel, stopRollback);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public long getEbPartnerShipId() {
+		return _ebPartnerShipId;
+	}
+
+	@Override
+	public void setEbPartnerShipId(long ebPartnerShipId) {
+		_ebPartnerShipId = ebPartnerShipId;
+
+		if (_processOrderRemoteModel != null) {
+			try {
+				Class<?> clazz = _processOrderRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setEbPartnerShipId", long.class);
+
+				method.invoke(_processOrderRemoteModel, ebPartnerShipId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public StagedModelType getStagedModelType() {
+		return new StagedModelType(PortalUtil.getClassNameId(
+				ProcessOrder.class.getName()));
 	}
 
 	public BaseModel<?> getProcessOrderRemoteModel() {
@@ -715,6 +813,7 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 	public Object clone() {
 		ProcessOrderClp clone = new ProcessOrderClp();
 
+		clone.setUuid(getUuid());
 		clone.setProcessOrderId(getProcessOrderId());
 		clone.setUserId(getUserId());
 		clone.setGroupId(getGroupId());
@@ -726,13 +825,15 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 		clone.setDossierId(getDossierId());
 		clone.setDossierProcessId(getDossierProcessId());
 		clone.setDossierStepId(getDossierStepId());
-		clone.setDossierStatus(getDossierStatus());
-		clone.setDossierResume(getDossierResume());
+		clone.setOrderStatus(getOrderStatus());
+		clone.setOrderResume(getOrderResume());
 		clone.setStepDate(getStepDate());
 		clone.setStepNote(getStepNote());
 		clone.setAssignToUserId(getAssignToUserId());
 		clone.setCurrentCondition(getCurrentCondition());
-		clone.setEndState(getEndState());
+		clone.setLastStepTransitionId(getLastStepTransitionId());
+		clone.setStopRollback(getStopRollback());
+		clone.setEbPartnerShipId(getEbPartnerShipId());
 
 		return clone;
 	}
@@ -785,9 +886,11 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(43);
 
-		sb.append("{processOrderId=");
+		sb.append("{uuid=");
+		sb.append(getUuid());
+		sb.append(", processOrderId=");
 		sb.append(getProcessOrderId());
 		sb.append(", userId=");
 		sb.append(getUserId());
@@ -809,10 +912,10 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 		sb.append(getDossierProcessId());
 		sb.append(", dossierStepId=");
 		sb.append(getDossierStepId());
-		sb.append(", dossierStatus=");
-		sb.append(getDossierStatus());
-		sb.append(", dossierResume=");
-		sb.append(getDossierResume());
+		sb.append(", orderStatus=");
+		sb.append(getOrderStatus());
+		sb.append(", orderResume=");
+		sb.append(getOrderResume());
 		sb.append(", stepDate=");
 		sb.append(getStepDate());
 		sb.append(", stepNote=");
@@ -821,8 +924,12 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 		sb.append(getAssignToUserId());
 		sb.append(", currentCondition=");
 		sb.append(getCurrentCondition());
-		sb.append(", endState=");
-		sb.append(getEndState());
+		sb.append(", lastStepTransitionId=");
+		sb.append(getLastStepTransitionId());
+		sb.append(", stopRollback=");
+		sb.append(getStopRollback());
+		sb.append(", ebPartnerShipId=");
+		sb.append(getEbPartnerShipId());
 		sb.append("}");
 
 		return sb.toString();
@@ -830,12 +937,16 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(58);
+		StringBundler sb = new StringBundler(67);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.ProcessOrder");
 		sb.append("</model-name>");
 
+		sb.append(
+			"<column><column-name>uuid</column-name><column-value><![CDATA[");
+		sb.append(getUuid());
+		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>processOrderId</column-name><column-value><![CDATA[");
 		sb.append(getProcessOrderId());
@@ -881,12 +992,12 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 		sb.append(getDossierStepId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>dossierStatus</column-name><column-value><![CDATA[");
-		sb.append(getDossierStatus());
+			"<column><column-name>orderStatus</column-name><column-value><![CDATA[");
+		sb.append(getOrderStatus());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>dossierResume</column-name><column-value><![CDATA[");
-		sb.append(getDossierResume());
+			"<column><column-name>orderResume</column-name><column-value><![CDATA[");
+		sb.append(getOrderResume());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>stepDate</column-name><column-value><![CDATA[");
@@ -905,8 +1016,16 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 		sb.append(getCurrentCondition());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>endState</column-name><column-value><![CDATA[");
-		sb.append(getEndState());
+			"<column><column-name>lastStepTransitionId</column-name><column-value><![CDATA[");
+		sb.append(getLastStepTransitionId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>stopRollback</column-name><column-value><![CDATA[");
+		sb.append(getStopRollback());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>ebPartnerShipId</column-name><column-value><![CDATA[");
+		sb.append(getEbPartnerShipId());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -914,6 +1033,7 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 		return sb.toString();
 	}
 
+	private String _uuid;
 	private long _processOrderId;
 	private long _userId;
 	private String _userUuid;
@@ -926,14 +1046,16 @@ public class ProcessOrderClp extends BaseModelImpl<ProcessOrder>
 	private long _dossierId;
 	private long _dossierProcessId;
 	private long _dossierStepId;
-	private String _dossierStatus;
-	private String _dossierResume;
+	private String _orderStatus;
+	private String _orderResume;
 	private Date _stepDate;
 	private String _stepNote;
 	private long _assignToUserId;
 	private String _assignToUserUuid;
 	private String _currentCondition;
-	private int _endState;
+	private long _lastStepTransitionId;
+	private int _stopRollback;
+	private long _ebPartnerShipId;
 	private BaseModel<?> _processOrderRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.processmgt.service.ClpSerializer.class;
 }

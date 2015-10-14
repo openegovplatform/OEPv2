@@ -106,96 +106,167 @@ public class DocTemplateLocalServiceClpInvoker {
 				"org.oep.core.dossiermgt.model.DocTemplate"
 			};
 
-		_methodName134 = "getBeanIdentifier";
+		_methodName16 = "addDossierDocDocTemplate";
 
-		_methodParameterTypes134 = new String[] {  };
+		_methodParameterTypes16 = new String[] { "long", "long" };
 
-		_methodName135 = "setBeanIdentifier";
+		_methodName17 = "addDossierDocDocTemplate";
 
-		_methodParameterTypes135 = new String[] { "java.lang.String" };
+		_methodParameterTypes17 = new String[] {
+				"long", "org.oep.core.dossiermgt.model.DocTemplate"
+			};
 
-		_methodName140 = "addDocTemplate";
+		_methodName18 = "addDossierDocDocTemplates";
 
-		_methodParameterTypes140 = new String[] {
+		_methodParameterTypes18 = new String[] { "long", "long[][]" };
+
+		_methodName19 = "addDossierDocDocTemplates";
+
+		_methodParameterTypes19 = new String[] { "long", "java.util.List" };
+
+		_methodName20 = "clearDossierDocDocTemplates";
+
+		_methodParameterTypes20 = new String[] { "long" };
+
+		_methodName21 = "deleteDossierDocDocTemplate";
+
+		_methodParameterTypes21 = new String[] { "long", "long" };
+
+		_methodName22 = "deleteDossierDocDocTemplate";
+
+		_methodParameterTypes22 = new String[] {
+				"long", "org.oep.core.dossiermgt.model.DocTemplate"
+			};
+
+		_methodName23 = "deleteDossierDocDocTemplates";
+
+		_methodParameterTypes23 = new String[] { "long", "long[][]" };
+
+		_methodName24 = "deleteDossierDocDocTemplates";
+
+		_methodParameterTypes24 = new String[] { "long", "java.util.List" };
+
+		_methodName25 = "getDossierDocDocTemplates";
+
+		_methodParameterTypes25 = new String[] { "long" };
+
+		_methodName26 = "getDossierDocDocTemplates";
+
+		_methodParameterTypes26 = new String[] { "long", "int", "int" };
+
+		_methodName27 = "getDossierDocDocTemplates";
+
+		_methodParameterTypes27 = new String[] {
+				"long", "int", "int",
+				"com.liferay.portal.kernel.util.OrderByComparator"
+			};
+
+		_methodName28 = "getDossierDocDocTemplatesCount";
+
+		_methodParameterTypes28 = new String[] { "long" };
+
+		_methodName29 = "hasDossierDocDocTemplate";
+
+		_methodParameterTypes29 = new String[] { "long", "long" };
+
+		_methodName30 = "hasDossierDocDocTemplates";
+
+		_methodParameterTypes30 = new String[] { "long" };
+
+		_methodName31 = "setDossierDocDocTemplates";
+
+		_methodParameterTypes31 = new String[] { "long", "long[][]" };
+
+		_methodName158 = "getBeanIdentifier";
+
+		_methodParameterTypes158 = new String[] {  };
+
+		_methodName159 = "setBeanIdentifier";
+
+		_methodParameterTypes159 = new String[] { "java.lang.String" };
+
+		_methodName164 = "addDocTemplate";
+
+		_methodParameterTypes164 = new String[] {
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"long", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName141 = "updateDocTemplate";
+		_methodName165 = "updateDocTemplate";
 
-		_methodParameterTypes141 = new String[] {
+		_methodParameterTypes165 = new String[] {
 				"long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName142 = "updateDocTemplateResources";
+		_methodName166 = "updateDocTemplateResources";
 
-		_methodParameterTypes142 = new String[] {
+		_methodParameterTypes166 = new String[] {
 				"org.oep.core.dossiermgt.model.DocTemplate",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName143 = "removeDocTemplate";
+		_methodName167 = "removeDocTemplate";
 
-		_methodParameterTypes143 = new String[] {
+		_methodParameterTypes167 = new String[] {
 				"org.oep.core.dossiermgt.model.DocTemplate"
 			};
 
-		_methodName144 = "removeDocTemplate";
+		_methodName168 = "removeDocTemplate";
 
-		_methodParameterTypes144 = new String[] { "long" };
+		_methodParameterTypes168 = new String[] { "long" };
 
-		_methodName145 = "getDocTemplate";
+		_methodName169 = "getDocTemplate";
 
-		_methodParameterTypes145 = new String[] { "long" };
+		_methodParameterTypes169 = new String[] { "long" };
 
-		_methodName146 = "addDocTemplateResources";
+		_methodName170 = "addDocTemplateResources";
 
-		_methodParameterTypes146 = new String[] {
+		_methodParameterTypes170 = new String[] {
 				"org.oep.core.dossiermgt.model.DocTemplate", "boolean",
 				"boolean", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName147 = "addDocTemplateResources";
+		_methodName171 = "addDocTemplateResources";
 
-		_methodParameterTypes147 = new String[] {
+		_methodParameterTypes171 = new String[] {
 				"org.oep.core.dossiermgt.model.DocTemplate",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName148 = "addDocTemplateResources";
+		_methodName172 = "addDocTemplateResources";
 
-		_methodParameterTypes148 = new String[] {
+		_methodParameterTypes172 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName150 = "findByLikeTitle";
+		_methodName174 = "findByLikeTitle";
 
-		_methodParameterTypes150 = new String[] {
+		_methodParameterTypes174 = new String[] {
 				"java.lang.String", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName151 = "countByLikeTitle";
+		_methodName175 = "countByLikeTitle";
 
-		_methodParameterTypes151 = new String[] {
+		_methodParameterTypes175 = new String[] {
 				"java.lang.String", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName152 = "findByGroupLikeTitle";
+		_methodName176 = "findByGroupLikeTitle";
 
-		_methodParameterTypes152 = new String[] {
+		_methodParameterTypes176 = new String[] {
 				"java.lang.String", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName153 = "countByGroupLikeTitle";
+		_methodName177 = "countByGroupLikeTitle";
 
-		_methodParameterTypes153 = new String[] {
+		_methodParameterTypes177 = new String[] {
 				"java.lang.String", "com.liferay.portal.service.ServiceContext"
 			};
 	}
@@ -289,28 +360,143 @@ public class DocTemplateLocalServiceClpInvoker {
 			return DocTemplateLocalServiceUtil.updateDocTemplate((org.oep.core.dossiermgt.model.DocTemplate)arguments[0]);
 		}
 
-		if (_methodName134.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes134, parameterTypes)) {
+		if (_methodName16.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes16, parameterTypes)) {
+			DocTemplateLocalServiceUtil.addDossierDocDocTemplate(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
+
+			return null;
+		}
+
+		if (_methodName17.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes17, parameterTypes)) {
+			DocTemplateLocalServiceUtil.addDossierDocDocTemplate(((Long)arguments[0]).longValue(),
+				(org.oep.core.dossiermgt.model.DocTemplate)arguments[1]);
+
+			return null;
+		}
+
+		if (_methodName18.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes18, parameterTypes)) {
+			DocTemplateLocalServiceUtil.addDossierDocDocTemplates(((Long)arguments[0]).longValue(),
+				(long[])arguments[1]);
+
+			return null;
+		}
+
+		if (_methodName19.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes19, parameterTypes)) {
+			DocTemplateLocalServiceUtil.addDossierDocDocTemplates(((Long)arguments[0]).longValue(),
+				(java.util.List<org.oep.core.dossiermgt.model.DocTemplate>)arguments[1]);
+
+			return null;
+		}
+
+		if (_methodName20.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes20, parameterTypes)) {
+			DocTemplateLocalServiceUtil.clearDossierDocDocTemplates(((Long)arguments[0]).longValue());
+
+			return null;
+		}
+
+		if (_methodName21.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes21, parameterTypes)) {
+			DocTemplateLocalServiceUtil.deleteDossierDocDocTemplate(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
+
+			return null;
+		}
+
+		if (_methodName22.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes22, parameterTypes)) {
+			DocTemplateLocalServiceUtil.deleteDossierDocDocTemplate(((Long)arguments[0]).longValue(),
+				(org.oep.core.dossiermgt.model.DocTemplate)arguments[1]);
+
+			return null;
+		}
+
+		if (_methodName23.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes23, parameterTypes)) {
+			DocTemplateLocalServiceUtil.deleteDossierDocDocTemplates(((Long)arguments[0]).longValue(),
+				(long[])arguments[1]);
+
+			return null;
+		}
+
+		if (_methodName24.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes24, parameterTypes)) {
+			DocTemplateLocalServiceUtil.deleteDossierDocDocTemplates(((Long)arguments[0]).longValue(),
+				(java.util.List<org.oep.core.dossiermgt.model.DocTemplate>)arguments[1]);
+
+			return null;
+		}
+
+		if (_methodName25.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes25, parameterTypes)) {
+			return DocTemplateLocalServiceUtil.getDossierDocDocTemplates(((Long)arguments[0]).longValue());
+		}
+
+		if (_methodName26.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes26, parameterTypes)) {
+			return DocTemplateLocalServiceUtil.getDossierDocDocTemplates(((Long)arguments[0]).longValue(),
+				((Integer)arguments[1]).intValue(),
+				((Integer)arguments[2]).intValue());
+		}
+
+		if (_methodName27.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes27, parameterTypes)) {
+			return DocTemplateLocalServiceUtil.getDossierDocDocTemplates(((Long)arguments[0]).longValue(),
+				((Integer)arguments[1]).intValue(),
+				((Integer)arguments[2]).intValue(),
+				(com.liferay.portal.kernel.util.OrderByComparator)arguments[3]);
+		}
+
+		if (_methodName28.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes28, parameterTypes)) {
+			return DocTemplateLocalServiceUtil.getDossierDocDocTemplatesCount(((Long)arguments[0]).longValue());
+		}
+
+		if (_methodName29.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes29, parameterTypes)) {
+			return DocTemplateLocalServiceUtil.hasDossierDocDocTemplate(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
+		}
+
+		if (_methodName30.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes30, parameterTypes)) {
+			return DocTemplateLocalServiceUtil.hasDossierDocDocTemplates(((Long)arguments[0]).longValue());
+		}
+
+		if (_methodName31.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes31, parameterTypes)) {
+			DocTemplateLocalServiceUtil.setDossierDocDocTemplates(((Long)arguments[0]).longValue(),
+				(long[])arguments[1]);
+
+			return null;
+		}
+
+		if (_methodName158.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes158, parameterTypes)) {
 			return DocTemplateLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName135.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes135, parameterTypes)) {
+		if (_methodName159.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes159, parameterTypes)) {
 			DocTemplateLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName140.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes140, parameterTypes)) {
+		if (_methodName164.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes164, parameterTypes)) {
 			return DocTemplateLocalServiceUtil.addDocTemplate((java.lang.String)arguments[0],
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				((Long)arguments[3]).longValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[4]);
 		}
 
-		if (_methodName141.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes141, parameterTypes)) {
+		if (_methodName165.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes165, parameterTypes)) {
 			return DocTemplateLocalServiceUtil.updateDocTemplate(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				(java.lang.String)arguments[3],
@@ -318,8 +504,8 @@ public class DocTemplateLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[5]);
 		}
 
-		if (_methodName142.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes142, parameterTypes)) {
+		if (_methodName166.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes166, parameterTypes)) {
 			DocTemplateLocalServiceUtil.updateDocTemplateResources((org.oep.core.dossiermgt.model.DocTemplate)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -328,27 +514,27 @@ public class DocTemplateLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName143.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes143, parameterTypes)) {
+		if (_methodName167.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes167, parameterTypes)) {
 			DocTemplateLocalServiceUtil.removeDocTemplate((org.oep.core.dossiermgt.model.DocTemplate)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName144.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes144, parameterTypes)) {
+		if (_methodName168.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes168, parameterTypes)) {
 			DocTemplateLocalServiceUtil.removeDocTemplate(((Long)arguments[0]).longValue());
 
 			return null;
 		}
 
-		if (_methodName145.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes145, parameterTypes)) {
+		if (_methodName169.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes169, parameterTypes)) {
 			return DocTemplateLocalServiceUtil.getDocTemplate(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName146.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes146, parameterTypes)) {
+		if (_methodName170.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes170, parameterTypes)) {
 			DocTemplateLocalServiceUtil.addDocTemplateResources((org.oep.core.dossiermgt.model.DocTemplate)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Boolean)arguments[2]).booleanValue(),
@@ -357,8 +543,8 @@ public class DocTemplateLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName147.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes147, parameterTypes)) {
+		if (_methodName171.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes171, parameterTypes)) {
 			DocTemplateLocalServiceUtil.addDocTemplateResources((org.oep.core.dossiermgt.model.DocTemplate)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -367,8 +553,8 @@ public class DocTemplateLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName148.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes148, parameterTypes)) {
+		if (_methodName172.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes172, parameterTypes)) {
 			DocTemplateLocalServiceUtil.addDocTemplateResources(((Long)arguments[0]).longValue(),
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -377,30 +563,30 @@ public class DocTemplateLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName150.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes150, parameterTypes)) {
+		if (_methodName174.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes174, parameterTypes)) {
 			return DocTemplateLocalServiceUtil.findByLikeTitle((java.lang.String)arguments[0],
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[3]);
 		}
 
-		if (_methodName151.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes151, parameterTypes)) {
+		if (_methodName175.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes175, parameterTypes)) {
 			return DocTemplateLocalServiceUtil.countByLikeTitle((java.lang.String)arguments[0],
 				(com.liferay.portal.service.ServiceContext)arguments[1]);
 		}
 
-		if (_methodName152.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes152, parameterTypes)) {
+		if (_methodName176.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes176, parameterTypes)) {
 			return DocTemplateLocalServiceUtil.findByGroupLikeTitle((java.lang.String)arguments[0],
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[3]);
 		}
 
-		if (_methodName153.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes153, parameterTypes)) {
+		if (_methodName177.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes177, parameterTypes)) {
 			return DocTemplateLocalServiceUtil.countByGroupLikeTitle((java.lang.String)arguments[0],
 				(com.liferay.portal.service.ServiceContext)arguments[1]);
 		}
@@ -440,34 +626,66 @@ public class DocTemplateLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName134;
-	private String[] _methodParameterTypes134;
-	private String _methodName135;
-	private String[] _methodParameterTypes135;
-	private String _methodName140;
-	private String[] _methodParameterTypes140;
-	private String _methodName141;
-	private String[] _methodParameterTypes141;
-	private String _methodName142;
-	private String[] _methodParameterTypes142;
-	private String _methodName143;
-	private String[] _methodParameterTypes143;
-	private String _methodName144;
-	private String[] _methodParameterTypes144;
-	private String _methodName145;
-	private String[] _methodParameterTypes145;
-	private String _methodName146;
-	private String[] _methodParameterTypes146;
-	private String _methodName147;
-	private String[] _methodParameterTypes147;
-	private String _methodName148;
-	private String[] _methodParameterTypes148;
-	private String _methodName150;
-	private String[] _methodParameterTypes150;
-	private String _methodName151;
-	private String[] _methodParameterTypes151;
-	private String _methodName152;
-	private String[] _methodParameterTypes152;
-	private String _methodName153;
-	private String[] _methodParameterTypes153;
+	private String _methodName16;
+	private String[] _methodParameterTypes16;
+	private String _methodName17;
+	private String[] _methodParameterTypes17;
+	private String _methodName18;
+	private String[] _methodParameterTypes18;
+	private String _methodName19;
+	private String[] _methodParameterTypes19;
+	private String _methodName20;
+	private String[] _methodParameterTypes20;
+	private String _methodName21;
+	private String[] _methodParameterTypes21;
+	private String _methodName22;
+	private String[] _methodParameterTypes22;
+	private String _methodName23;
+	private String[] _methodParameterTypes23;
+	private String _methodName24;
+	private String[] _methodParameterTypes24;
+	private String _methodName25;
+	private String[] _methodParameterTypes25;
+	private String _methodName26;
+	private String[] _methodParameterTypes26;
+	private String _methodName27;
+	private String[] _methodParameterTypes27;
+	private String _methodName28;
+	private String[] _methodParameterTypes28;
+	private String _methodName29;
+	private String[] _methodParameterTypes29;
+	private String _methodName30;
+	private String[] _methodParameterTypes30;
+	private String _methodName31;
+	private String[] _methodParameterTypes31;
+	private String _methodName158;
+	private String[] _methodParameterTypes158;
+	private String _methodName159;
+	private String[] _methodParameterTypes159;
+	private String _methodName164;
+	private String[] _methodParameterTypes164;
+	private String _methodName165;
+	private String[] _methodParameterTypes165;
+	private String _methodName166;
+	private String[] _methodParameterTypes166;
+	private String _methodName167;
+	private String[] _methodParameterTypes167;
+	private String _methodName168;
+	private String[] _methodParameterTypes168;
+	private String _methodName169;
+	private String[] _methodParameterTypes169;
+	private String _methodName170;
+	private String[] _methodParameterTypes170;
+	private String _methodName171;
+	private String[] _methodParameterTypes171;
+	private String _methodName172;
+	private String[] _methodParameterTypes172;
+	private String _methodName174;
+	private String[] _methodParameterTypes174;
+	private String _methodName175;
+	private String[] _methodParameterTypes175;
+	private String _methodName176;
+	private String[] _methodParameterTypes176;
+	private String _methodName177;
+	private String[] _methodParameterTypes177;
 }

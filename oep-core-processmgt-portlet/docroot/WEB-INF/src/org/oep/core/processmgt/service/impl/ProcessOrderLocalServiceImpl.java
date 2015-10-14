@@ -71,13 +71,14 @@ public class ProcessOrderLocalServiceImpl
 			long dossierId,
 			long dossierProcessId,
 			long dossierStepId,
-			String dossierStatus,
-			String dossierResume,
+			String orderStatus,
+			String orderResume,
 			Date stepDate,
 			String stepNote,
 			long assignToUserId,
 			String currentCondition,
-			int endState,
+			long lastStepTransitionId,
+			int stopRollback,
 			ServiceContext serviceContext) throws SystemException, PortalException {
 		validate();
 		long id = counterLocalService.increment();
@@ -93,13 +94,14 @@ public class ProcessOrderLocalServiceImpl
 		processOrder.setDossierId(dossierId);
 		processOrder.setDossierProcessId(dossierProcessId);
 		processOrder.setDossierStepId(dossierStepId);
-		processOrder.setDossierStatus(dossierStatus);
-		processOrder.setDossierResume(dossierResume);
+		processOrder.setOrderStatus(orderStatus);
+		processOrder.setOrderResume(orderResume);
 		processOrder.setStepDate(stepDate);
 		processOrder.setStepNote(stepNote);
 		processOrder.setAssignToUserId(assignToUserId);
 		processOrder.setCurrentCondition(currentCondition);
-		processOrder.setEndState(endState);
+		processOrder.setLastStepTransitionId(lastStepTransitionId);
+		processOrder.setStopRollback(stopRollback);
 		
 		processOrderPersistence.update(processOrder);
 
@@ -124,13 +126,14 @@ public class ProcessOrderLocalServiceImpl
 			long dossierId,
 			long dossierProcessId,
 			long dossierStepId,
-			String dossierStatus,
-			String dossierResume,
+			String orderStatus,
+			String orderResume,
 			Date stepDate,
 			String stepNote,
 			long assignToUserId,
 			String currentCondition,
-			int endState,
+			long lastStepTransitionId,
+			int stopRollback,
 			ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
@@ -144,13 +147,14 @@ public class ProcessOrderLocalServiceImpl
 		processOrder.setDossierId(dossierId);
 		processOrder.setDossierProcessId(dossierProcessId);
 		processOrder.setDossierStepId(dossierStepId);
-		processOrder.setDossierStatus(dossierStatus);
-		processOrder.setDossierResume(dossierResume);
+		processOrder.setOrderStatus(orderStatus);
+		processOrder.setOrderResume(orderResume);
 		processOrder.setStepDate(stepDate);
 		processOrder.setStepNote(stepNote);
 		processOrder.setAssignToUserId(assignToUserId);
 		processOrder.setCurrentCondition(currentCondition);
-		processOrder.setEndState(endState);
+		processOrder.setLastStepTransitionId(lastStepTransitionId);
+		processOrder.setStopRollback(stopRollback);
 		
 		processOrderPersistence.update(processOrder);
 

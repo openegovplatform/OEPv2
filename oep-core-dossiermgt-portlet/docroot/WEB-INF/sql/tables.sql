@@ -11,7 +11,8 @@ create table oep_dossiermgt_docfile (
 	docTemplateId LONG,
 	docFileVersionId LONG,
 	docName VARCHAR(200) null,
-	note VARCHAR(200) null
+	note VARCHAR(200) null,
+	premier INTEGER
 );
 
 create table oep_dossiermgt_docfileversion (
@@ -81,6 +82,7 @@ create table oep_dossiermgt_dossier (
 	daysDelay INTEGER,
 	closeDate DATE null,
 	errorStatus VARCHAR(30) null,
+	pendingStatus INTEGER,
 	errorCode VARCHAR(30) null,
 	dirty INTEGER
 );
@@ -99,7 +101,9 @@ create table oep_dossiermgt_dossierdoc (
 	sequenceNo INTEGER,
 	defaultDocTemplateId LONG,
 	validationType INTEGER,
+	requirementType INTEGER,
 	numberOfFile INTEGER,
+	splitSubDossier INTEGER,
 	onlineForm VARCHAR(30) null
 );
 
@@ -161,7 +165,7 @@ create table oep_dossiermgt_dossierproc (
 );
 
 create table oep_dossiermgt_dossierprocagent (
-	dossierProcAgencyId LONG not null primary key,
+	dossierProcAgentId LONG not null primary key,
 	companyId LONG,
 	createDate DATE null,
 	modifiedDate DATE null,
@@ -174,6 +178,8 @@ create table oep_dossiermgt_dossierprocagent (
 create table oep_dossiermgt_ebmessage (
 	ebMessageId LONG not null primary key,
 	companyId LONG,
+	userId LONG,
+	groupId LONG,
 	createDate DATE null,
 	messageId VARCHAR(100) null,
 	cpaId VARCHAR(100) null,
@@ -197,12 +203,24 @@ create table oep_dossiermgt_ebmessage (
 create table oep_dossiermgt_ebpartnership (
 	ebPartnerShipId LONG not null primary key,
 	companyId LONG,
+	userId LONG,
+	groupId LONG,
 	createDate DATE null,
 	name VARCHAR(100) null,
 	cpaId VARCHAR(100) null,
-	service VARCHAR(100) null,
-	action VARCHAR(100) null,
-	inbound INTEGER
+	service VARCHAR(100) null
+);
+
+create table oep_dossiermgt_oep_dossiermgt_dossier2dossierdoc (
+	dossierId LONG not null,
+	dossierDocId LONG not null,
+	primary key (dossierId, dossierDocId)
+);
+
+create table oep_dossiermgt_oep_dossiermgt_dossierdoc2template (
+	docTemplateId LONG not null,
+	dossierDocId LONG not null,
+	primary key (docTemplateId, dossierDocId)
 );
 
 create table oep_dossiermgt_paymentconfig (
@@ -275,4 +293,47 @@ create table oep_dossiermgt_profiledata (
 	modifiedDate DATE null,
 	fieldName VARCHAR(30) null,
 	fieldValue VARCHAR(200) null
+);
+
+create table oep_dossiermgt_statisticbyagency (
+	statisticByAgencyId LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	createDate DATE null,
+	month INTEGER,
+	year INTEGER,
+	govAgencyId VARCHAR(75) null,
+	submittedNumber INTEGER,
+	acceptedNumber INTEGER,
+	deniedNumber INTEGER,
+	acceptedRatio DOUBLE,
+	finishedNumber INTEGER,
+	ontimeNumber INTEGER,
+	delayedNumber INTEGER,
+	ontimeRatio DOUBLE,
+	doneNumber INTEGER,
+	doneRatio DOUBLE,
+	delayDaysAvg DOUBLE,
+	furtherDaysAvg DOUBLE
+);
+
+create table oep_dossiermgt_statisticbyday (
+	statisticByDayId LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	createDate DATE null,
+	statisticDate DATE null,
+	statisticWeek INTEGER,
+	submittedNumber INTEGER,
+	acceptedNumber INTEGER,
+	deniedNumber INTEGER,
+	acceptedRatio DOUBLE,
+	finishedNumber INTEGER,
+	ontimeNumber INTEGER,
+	delayedNumber INTEGER,
+	ontimeRatio DOUBLE,
+	doneNumber INTEGER,
+	doneRatio DOUBLE,
+	delayDaysAvg DOUBLE,
+	furtherDaysAvg DOUBLE
 );

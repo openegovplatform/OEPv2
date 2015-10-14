@@ -15,6 +15,7 @@
 package org.oep.core.datamgt.dictionary.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.service.ServiceContext;
@@ -86,6 +87,49 @@ public interface DictMetaDataModel extends BaseModel<DictMetaData> {
 	 * @param companyId the company ID of this dictionary meta data
 	 */
 	public void setCompanyId(long companyId);
+
+	/**
+	 * Returns the user ID of this dictionary meta data.
+	 *
+	 * @return the user ID of this dictionary meta data
+	 */
+	public long getUserId();
+
+	/**
+	 * Sets the user ID of this dictionary meta data.
+	 *
+	 * @param userId the user ID of this dictionary meta data
+	 */
+	public void setUserId(long userId);
+
+	/**
+	 * Returns the user uuid of this dictionary meta data.
+	 *
+	 * @return the user uuid of this dictionary meta data
+	 * @throws SystemException if a system exception occurred
+	 */
+	public String getUserUuid() throws SystemException;
+
+	/**
+	 * Sets the user uuid of this dictionary meta data.
+	 *
+	 * @param userUuid the user uuid of this dictionary meta data
+	 */
+	public void setUserUuid(String userUuid);
+
+	/**
+	 * Returns the group ID of this dictionary meta data.
+	 *
+	 * @return the group ID of this dictionary meta data
+	 */
+	public long getGroupId();
+
+	/**
+	 * Sets the group ID of this dictionary meta data.
+	 *
+	 * @param groupId the group ID of this dictionary meta data
+	 */
+	public void setGroupId(long groupId);
 
 	/**
 	 * Returns the create date of this dictionary meta data.

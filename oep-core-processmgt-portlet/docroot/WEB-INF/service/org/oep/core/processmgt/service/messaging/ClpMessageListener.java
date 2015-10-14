@@ -26,6 +26,7 @@ import org.oep.core.processmgt.service.DossierStepServiceUtil;
 import org.oep.core.processmgt.service.ProcessOrder2UserLocalServiceUtil;
 import org.oep.core.processmgt.service.ProcessOrderLocalServiceUtil;
 import org.oep.core.processmgt.service.ProcessOrderServiceUtil;
+import org.oep.core.processmgt.service.StatisticByUserServiceUtil;
 import org.oep.core.processmgt.service.StepTransitionLocalServiceUtil;
 import org.oep.core.processmgt.service.StepTransitionServiceUtil;
 import org.oep.core.processmgt.service.TransitionHistoryLocalServiceUtil;
@@ -61,6 +62,7 @@ public class ClpMessageListener extends BaseMessageListener {
 			ProcessOrderServiceUtil.clearService();
 			ProcessOrder2UserLocalServiceUtil.clearService();
 
+			StatisticByUserServiceUtil.clearService();
 			StepTransitionLocalServiceUtil.clearService();
 
 			StepTransitionServiceUtil.clearService();

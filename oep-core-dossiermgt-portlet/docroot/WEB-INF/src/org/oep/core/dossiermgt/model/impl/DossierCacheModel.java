@@ -37,7 +37,7 @@ import java.util.Date;
 public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(85);
+		StringBundler sb = new StringBundler(87);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -119,6 +119,8 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		sb.append(closeDate);
 		sb.append(", errorStatus=");
 		sb.append(errorStatus);
+		sb.append(", pendingStatus=");
+		sb.append(pendingStatus);
 		sb.append(", errorCode=");
 		sb.append(errorCode);
 		sb.append(", dirty=");
@@ -373,6 +375,8 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			dossierImpl.setErrorStatus(errorStatus);
 		}
 
+		dossierImpl.setPendingStatus(pendingStatus);
+
 		if (errorCode == null) {
 			dossierImpl.setErrorCode(StringPool.BLANK);
 		}
@@ -429,6 +433,7 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		daysDelay = objectInput.readInt();
 		closeDate = objectInput.readLong();
 		errorStatus = objectInput.readUTF();
+		pendingStatus = objectInput.readInt();
 		errorCode = objectInput.readUTF();
 		dirty = objectInput.readInt();
 	}
@@ -618,6 +623,8 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			objectOutput.writeUTF(errorStatus);
 		}
 
+		objectOutput.writeInt(pendingStatus);
+
 		if (errorCode == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
@@ -668,6 +675,7 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 	public int daysDelay;
 	public long closeDate;
 	public String errorStatus;
+	public int pendingStatus;
 	public String errorCode;
 	public int dirty;
 }

@@ -725,6 +725,20 @@ public class DossierProcLocalServiceWrapper implements DossierProcLocalService,
 			effectDate, expireDate, active, serviceContext);
 	}
 
+	@Override
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByCompany(
+		long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dossierProcLocalService.findByCompany(companyId);
+	}
+
+	@Override
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByCompany(
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dossierProcLocalService.findByCompany(serviceContext);
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */

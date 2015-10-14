@@ -15,6 +15,7 @@
 package org.oep.core.dossiermgt.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.service.ServiceContext;
@@ -88,6 +89,49 @@ public interface EbPartnerShipModel extends BaseModel<EbPartnerShip> {
 	public void setCompanyId(long companyId);
 
 	/**
+	 * Returns the user ID of this eb partner ship.
+	 *
+	 * @return the user ID of this eb partner ship
+	 */
+	public long getUserId();
+
+	/**
+	 * Sets the user ID of this eb partner ship.
+	 *
+	 * @param userId the user ID of this eb partner ship
+	 */
+	public void setUserId(long userId);
+
+	/**
+	 * Returns the user uuid of this eb partner ship.
+	 *
+	 * @return the user uuid of this eb partner ship
+	 * @throws SystemException if a system exception occurred
+	 */
+	public String getUserUuid() throws SystemException;
+
+	/**
+	 * Sets the user uuid of this eb partner ship.
+	 *
+	 * @param userUuid the user uuid of this eb partner ship
+	 */
+	public void setUserUuid(String userUuid);
+
+	/**
+	 * Returns the group ID of this eb partner ship.
+	 *
+	 * @return the group ID of this eb partner ship
+	 */
+	public long getGroupId();
+
+	/**
+	 * Sets the group ID of this eb partner ship.
+	 *
+	 * @param groupId the group ID of this eb partner ship
+	 */
+	public void setGroupId(long groupId);
+
+	/**
 	 * Returns the create date of this eb partner ship.
 	 *
 	 * @return the create date of this eb partner ship
@@ -145,35 +189,6 @@ public interface EbPartnerShipModel extends BaseModel<EbPartnerShip> {
 	 * @param service the service of this eb partner ship
 	 */
 	public void setService(String service);
-
-	/**
-	 * Returns the action of this eb partner ship.
-	 *
-	 * @return the action of this eb partner ship
-	 */
-	@AutoEscape
-	public String getAction();
-
-	/**
-	 * Sets the action of this eb partner ship.
-	 *
-	 * @param action the action of this eb partner ship
-	 */
-	public void setAction(String action);
-
-	/**
-	 * Returns the inbound of this eb partner ship.
-	 *
-	 * @return the inbound of this eb partner ship
-	 */
-	public int getInbound();
-
-	/**
-	 * Sets the inbound of this eb partner ship.
-	 *
-	 * @param inbound the inbound of this eb partner ship
-	 */
-	public void setInbound(int inbound);
 
 	@Override
 	public boolean isNew();

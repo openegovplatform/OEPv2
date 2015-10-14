@@ -15,6 +15,7 @@
 package org.oep.core.processmgt.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.oep.core.processmgt.model.DossierProcess;
 import org.oep.core.processmgt.service.base.DossierProcessLocalServiceBaseImpl;
@@ -65,18 +66,27 @@ public class DossierProcessLocalServiceImpl
 	 */
 	@Indexable(type = IndexableType.REINDEX)	
 	@Transactional
-	public DossierProcess addDossierProcess(long dossierProcId, String govAgentId, String govAgentName, long startDossierStepId, int daysDuration, ServiceContext serviceContext) throws SystemException, PortalException {
-		validate(dossierProcId, govAgentId, govAgentName, startDossierStepId, daysDuration);
+	public DossierProcess addDossierProcess(
+			long dossierProcId, 
+			String govAgencyId, 
+			String govAgencyName, 
+			long startStepTransitionId, 
+			int daysDuration, 
+			int fee,
+			ServiceContext serviceContext) throws SystemException, PortalException {
+		validate(dossierProcId, govAgencyId, govAgencyName, startStepTransitionId, daysDuration);
 		long id = counterLocalService.increment();
 		DossierProcess dossierProcess = dossierProcessPersistence.create(id);
 		Date now = new Date();
 		
 		dossierProcess.setUserId(serviceContext.getUserId());
 		dossierProcess.setGroupId(serviceContext.getScopeGroupId());
-		dossierProcess.setGovAgentId(govAgentId);
-		dossierProcess.setGovAgentName(govAgentName);
-		dossierProcess.setStartDossierStepId(startDossierStepId);
+		dossierProcess.setGovAgencyId(govAgencyId);
+		dossierProcess.setGovAgencyName(govAgencyName);
+		dossierProcess.setStartStepTransitionId(startStepTransitionId);
 		dossierProcess.setDaysDuration(daysDuration);
+		dossierProcess.setFee(fee);
+		
 		dossierProcess.setCompanyId(serviceContext.getCompanyId());
 		dossierProcess.setCreateDate(serviceContext.getCreateDate(now));
 		dossierProcess.setDossierProcId(dossierProcId);
@@ -98,19 +108,27 @@ public class DossierProcessLocalServiceImpl
 
 	@Indexable(type = IndexableType.REINDEX)
 	public DossierProcess updateDossierProcess(
-			long id, long dossierProcId, String govAgentId, String govAgentName, long startDossierStepId, int daysDuration, ServiceContext serviceContext)
+			long id, 
+			long dossierProcId, 
+			String govAgencyId, 
+			String govAgencyName, 
+			long startStepTransitionId, 
+			int daysDuration, 
+			int fee,
+			ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
-		validate(dossierProcId, govAgentId, govAgentName, startDossierStepId, daysDuration);
+		validate(dossierProcId, govAgencyId, govAgencyName, startStepTransitionId, daysDuration);
 
 		DossierProcess dossierProcess = dossierProcessPersistence.findByPrimaryKey(id);
 
 		dossierProcess.setModifiedDate(serviceContext.getModifiedDate(null));
 		dossierProcess.setDossierProcId(dossierProcId);
-		dossierProcess.setGovAgentId(govAgentId);
-		dossierProcess.setGovAgentName(govAgentName);
-		dossierProcess.setStartDossierStepId(startDossierStepId);
+		dossierProcess.setGovAgencyId(govAgencyId);
+		dossierProcess.setGovAgencyName(govAgencyName);
+		dossierProcess.setStartStepTransitionId(startStepTransitionId);
 		dossierProcess.setDaysDuration(daysDuration);
+		dossierProcess.setFee(fee);
 		
 		dossierProcessPersistence.update(dossierProcess);
 
@@ -163,9 +181,24 @@ public class DossierProcessLocalServiceImpl
 		addDossierProcessResources(dossierProcess, groupPermissions, guestPermissions, serviceContext);
 	}
 	
-	protected void validate(long dossierProcId, String govAgentId, String govAgentName, long startDossierStepId, int daysDuration) throws PortalException {
+	protected void validate(long dossierProcId, String govAgencyId, String govAgencyName, long startDossierStepId, int daysDuration) throws PortalException {
 	}
 	
+	public List<DossierProcess> getByCompany(long companyId, int startIndex, int endIndex) throws SystemException {
+		return dossierProcessPersistence.findByC(companyId, startIndex, endIndex);
+	}
+	
+	public List<DossierProcess> getByCompany(int startIndex, int endIndex, ServiceContext serviceContext) throws SystemException {
+		return dossierProcessPersistence.findByC(serviceContext.getCompanyId(), startIndex, endIndex);
+	}
+	
+	public int countByCompany(long companyId) throws SystemException {
+		return dossierProcessPersistence.countByC(companyId);
+	}
+	
+	public int countByCompany(ServiceContext serviceContext) throws SystemException {
+		return dossierProcessPersistence.countByC(serviceContext.getCompanyId());
+	}
 	private static Log _log = LogFactoryUtil.getLog(DossierProcessLocalServiceImpl.class);
 	
 }

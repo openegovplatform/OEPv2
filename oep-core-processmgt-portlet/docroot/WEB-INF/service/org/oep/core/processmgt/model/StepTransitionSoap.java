@@ -41,9 +41,12 @@ public class StepTransitionSoap implements Serializable {
 		soapModel.setPreDossierStepId(model.getPreDossierStepId());
 		soapModel.setPostDossierStepId(model.getPostDossierStepId());
 		soapModel.setPrecondition(model.getPrecondition());
+		soapModel.setAutoCondition(model.getAutoCondition());
 		soapModel.setTransitionName(model.getTransitionName());
-		soapModel.setDaysDuration(model.getDaysDuration());
 		soapModel.setDossierStatus(model.getDossierStatus());
+		soapModel.setNotifyStatus(model.getNotifyStatus());
+		soapModel.setSendResults(model.getSendResults());
+		soapModel.setRequestPayment(model.getRequestPayment());
 		soapModel.setUserAssignment(model.getUserAssignment());
 		soapModel.setNewProcessOrder(model.getNewProcessOrder());
 
@@ -178,6 +181,14 @@ public class StepTransitionSoap implements Serializable {
 		_precondition = precondition;
 	}
 
+	public String getAutoCondition() {
+		return _autoCondition;
+	}
+
+	public void setAutoCondition(String autoCondition) {
+		_autoCondition = autoCondition;
+	}
+
 	public String getTransitionName() {
 		return _transitionName;
 	}
@@ -186,20 +197,36 @@ public class StepTransitionSoap implements Serializable {
 		_transitionName = transitionName;
 	}
 
-	public int getDaysDuration() {
-		return _daysDuration;
-	}
-
-	public void setDaysDuration(int daysDuration) {
-		_daysDuration = daysDuration;
-	}
-
 	public String getDossierStatus() {
 		return _dossierStatus;
 	}
 
 	public void setDossierStatus(String dossierStatus) {
 		_dossierStatus = dossierStatus;
+	}
+
+	public int getNotifyStatus() {
+		return _notifyStatus;
+	}
+
+	public void setNotifyStatus(int notifyStatus) {
+		_notifyStatus = notifyStatus;
+	}
+
+	public int getSendResults() {
+		return _sendResults;
+	}
+
+	public void setSendResults(int sendResults) {
+		_sendResults = sendResults;
+	}
+
+	public int getRequestPayment() {
+		return _requestPayment;
+	}
+
+	public void setRequestPayment(int requestPayment) {
+		_requestPayment = requestPayment;
 	}
 
 	public int getUserAssignment() {
@@ -228,9 +255,12 @@ public class StepTransitionSoap implements Serializable {
 	private long _preDossierStepId;
 	private long _postDossierStepId;
 	private String _precondition;
+	private String _autoCondition;
 	private String _transitionName;
-	private int _daysDuration;
 	private String _dossierStatus;
+	private int _notifyStatus;
+	private int _sendResults;
+	private int _requestPayment;
 	private int _userAssignment;
 	private int _newProcessOrder;
 }

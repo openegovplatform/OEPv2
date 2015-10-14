@@ -261,6 +261,20 @@ public interface DossierDocModel extends BaseModel<DossierDoc> {
 	public void setValidationType(int validationType);
 
 	/**
+	 * Returns the requirement type of this dossier doc.
+	 *
+	 * @return the requirement type of this dossier doc
+	 */
+	public int getRequirementType();
+
+	/**
+	 * Sets the requirement type of this dossier doc.
+	 *
+	 * @param requirementType the requirement type of this dossier doc
+	 */
+	public void setRequirementType(int requirementType);
+
+	/**
 	 * Returns the number of file of this dossier doc.
 	 *
 	 * @return the number of file of this dossier doc
@@ -273,6 +287,20 @@ public interface DossierDocModel extends BaseModel<DossierDoc> {
 	 * @param numberOfFile the number of file of this dossier doc
 	 */
 	public void setNumberOfFile(int numberOfFile);
+
+	/**
+	 * Returns the split sub dossier of this dossier doc.
+	 *
+	 * @return the split sub dossier of this dossier doc
+	 */
+	public int getSplitSubDossier();
+
+	/**
+	 * Sets the split sub dossier of this dossier doc.
+	 *
+	 * @param splitSubDossier the split sub dossier of this dossier doc
+	 */
+	public void setSplitSubDossier(int splitSubDossier);
 
 	/**
 	 * Returns the online form of this dossier doc.

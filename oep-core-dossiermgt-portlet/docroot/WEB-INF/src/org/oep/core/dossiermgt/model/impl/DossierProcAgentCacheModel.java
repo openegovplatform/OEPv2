@@ -50,10 +50,10 @@ public class DossierProcAgentCacheModel implements CacheModel<DossierProcAgent>,
 		sb.append(modifiedDate);
 		sb.append(", dossierProcId=");
 		sb.append(dossierProcId);
-		sb.append(", govAgentId=");
-		sb.append(govAgentId);
-		sb.append(", govAgentName=");
-		sb.append(govAgentName);
+		sb.append(", govAgencyId=");
+		sb.append(govAgencyId);
+		sb.append(", govAgencyName=");
+		sb.append(govAgencyName);
 		sb.append(", ebPartnerShipId=");
 		sb.append(ebPartnerShipId);
 		sb.append("}");
@@ -84,18 +84,18 @@ public class DossierProcAgentCacheModel implements CacheModel<DossierProcAgent>,
 
 		dossierProcAgentImpl.setDossierProcId(dossierProcId);
 
-		if (govAgentId == null) {
-			dossierProcAgentImpl.setGovAgentId(StringPool.BLANK);
+		if (govAgencyId == null) {
+			dossierProcAgentImpl.setGovAgencyId(StringPool.BLANK);
 		}
 		else {
-			dossierProcAgentImpl.setGovAgentId(govAgentId);
+			dossierProcAgentImpl.setGovAgencyId(govAgencyId);
 		}
 
-		if (govAgentName == null) {
-			dossierProcAgentImpl.setGovAgentName(StringPool.BLANK);
+		if (govAgencyName == null) {
+			dossierProcAgentImpl.setGovAgencyName(StringPool.BLANK);
 		}
 		else {
-			dossierProcAgentImpl.setGovAgentName(govAgentName);
+			dossierProcAgentImpl.setGovAgencyName(govAgencyName);
 		}
 
 		dossierProcAgentImpl.setEbPartnerShipId(ebPartnerShipId);
@@ -112,8 +112,8 @@ public class DossierProcAgentCacheModel implements CacheModel<DossierProcAgent>,
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
 		dossierProcId = objectInput.readLong();
-		govAgentId = objectInput.readUTF();
-		govAgentName = objectInput.readUTF();
+		govAgencyId = objectInput.readUTF();
+		govAgencyName = objectInput.readUTF();
 		ebPartnerShipId = objectInput.readLong();
 	}
 
@@ -126,18 +126,18 @@ public class DossierProcAgentCacheModel implements CacheModel<DossierProcAgent>,
 		objectOutput.writeLong(modifiedDate);
 		objectOutput.writeLong(dossierProcId);
 
-		if (govAgentId == null) {
+		if (govAgencyId == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(govAgentId);
+			objectOutput.writeUTF(govAgencyId);
 		}
 
-		if (govAgentName == null) {
+		if (govAgencyName == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(govAgentName);
+			objectOutput.writeUTF(govAgencyName);
 		}
 
 		objectOutput.writeLong(ebPartnerShipId);
@@ -148,7 +148,7 @@ public class DossierProcAgentCacheModel implements CacheModel<DossierProcAgent>,
 	public long createDate;
 	public long modifiedDate;
 	public long dossierProcId;
-	public String govAgentId;
-	public String govAgentName;
+	public String govAgencyId;
+	public String govAgencyName;
 	public long ebPartnerShipId;
 }

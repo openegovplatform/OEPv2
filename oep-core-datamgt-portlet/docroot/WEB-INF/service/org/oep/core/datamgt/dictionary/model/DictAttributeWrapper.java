@@ -52,6 +52,8 @@ public class DictAttributeWrapper implements DictAttribute,
 
 		attributes.put("dictAttributeId", getDictAttributeId());
 		attributes.put("companyId", getCompanyId());
+		attributes.put("userId", getUserId());
+		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("collectionName", getCollectionName());
@@ -74,6 +76,18 @@ public class DictAttributeWrapper implements DictAttribute,
 
 		if (companyId != null) {
 			setCompanyId(companyId);
+		}
+
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
+		Long groupId = (Long)attributes.get("groupId");
+
+		if (groupId != null) {
+			setGroupId(groupId);
 		}
 
 		Date createDate = (Date)attributes.get("createDate");
@@ -171,6 +185,68 @@ public class DictAttributeWrapper implements DictAttribute,
 	@Override
 	public void setCompanyId(long companyId) {
 		_dictAttribute.setCompanyId(companyId);
+	}
+
+	/**
+	* Returns the user ID of this dictionary attribute.
+	*
+	* @return the user ID of this dictionary attribute
+	*/
+	@Override
+	public long getUserId() {
+		return _dictAttribute.getUserId();
+	}
+
+	/**
+	* Sets the user ID of this dictionary attribute.
+	*
+	* @param userId the user ID of this dictionary attribute
+	*/
+	@Override
+	public void setUserId(long userId) {
+		_dictAttribute.setUserId(userId);
+	}
+
+	/**
+	* Returns the user uuid of this dictionary attribute.
+	*
+	* @return the user uuid of this dictionary attribute
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public java.lang.String getUserUuid()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dictAttribute.getUserUuid();
+	}
+
+	/**
+	* Sets the user uuid of this dictionary attribute.
+	*
+	* @param userUuid the user uuid of this dictionary attribute
+	*/
+	@Override
+	public void setUserUuid(java.lang.String userUuid) {
+		_dictAttribute.setUserUuid(userUuid);
+	}
+
+	/**
+	* Returns the group ID of this dictionary attribute.
+	*
+	* @return the group ID of this dictionary attribute
+	*/
+	@Override
+	public long getGroupId() {
+		return _dictAttribute.getGroupId();
+	}
+
+	/**
+	* Sets the group ID of this dictionary attribute.
+	*
+	* @param groupId the group ID of this dictionary attribute
+	*/
+	@Override
+	public void setGroupId(long groupId) {
+		_dictAttribute.setGroupId(groupId);
 	}
 
 	/**

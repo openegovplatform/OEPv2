@@ -84,8 +84,10 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 		attributes.put("dossierProcessId", getDossierProcessId());
 		attributes.put("title", getTitle());
 		attributes.put("sequenceNo", getSequenceNo());
-		attributes.put("stepType", getStepType());
+		attributes.put("daysDuration", getDaysDuration());
 		attributes.put("doForm", getDoForm());
+		attributes.put("formLabel", getFormLabel());
+		attributes.put("rollback", getRollback());
 
 		return attributes;
 	}
@@ -146,16 +148,28 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 			setSequenceNo(sequenceNo);
 		}
 
-		Integer stepType = (Integer)attributes.get("stepType");
+		Integer daysDuration = (Integer)attributes.get("daysDuration");
 
-		if (stepType != null) {
-			setStepType(stepType);
+		if (daysDuration != null) {
+			setDaysDuration(daysDuration);
 		}
 
 		String doForm = (String)attributes.get("doForm");
 
 		if (doForm != null) {
 			setDoForm(doForm);
+		}
+
+		String formLabel = (String)attributes.get("formLabel");
+
+		if (formLabel != null) {
+			setFormLabel(formLabel);
+		}
+
+		Integer rollback = (Integer)attributes.get("rollback");
+
+		if (rollback != null) {
+			setRollback(rollback);
 		}
 	}
 
@@ -378,21 +392,21 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 	}
 
 	@Override
-	public int getStepType() {
-		return _stepType;
+	public int getDaysDuration() {
+		return _daysDuration;
 	}
 
 	@Override
-	public void setStepType(int stepType) {
-		_stepType = stepType;
+	public void setDaysDuration(int daysDuration) {
+		_daysDuration = daysDuration;
 
 		if (_dossierStepRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierStepRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setStepType", int.class);
+				Method method = clazz.getMethod("setDaysDuration", int.class);
 
-				method.invoke(_dossierStepRemoteModel, stepType);
+				method.invoke(_dossierStepRemoteModel, daysDuration);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -416,6 +430,52 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 				Method method = clazz.getMethod("setDoForm", String.class);
 
 				method.invoke(_dossierStepRemoteModel, doForm);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getFormLabel() {
+		return _formLabel;
+	}
+
+	@Override
+	public void setFormLabel(String formLabel) {
+		_formLabel = formLabel;
+
+		if (_dossierStepRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierStepRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setFormLabel", String.class);
+
+				method.invoke(_dossierStepRemoteModel, formLabel);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public int getRollback() {
+		return _rollback;
+	}
+
+	@Override
+	public void setRollback(int rollback) {
+		_rollback = rollback;
+
+		if (_dossierStepRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierStepRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setRollback", int.class);
+
+				method.invoke(_dossierStepRemoteModel, rollback);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -501,8 +561,10 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 		clone.setDossierProcessId(getDossierProcessId());
 		clone.setTitle(getTitle());
 		clone.setSequenceNo(getSequenceNo());
-		clone.setStepType(getStepType());
+		clone.setDaysDuration(getDaysDuration());
 		clone.setDoForm(getDoForm());
+		clone.setFormLabel(getFormLabel());
+		clone.setRollback(getRollback());
 
 		return clone;
 	}
@@ -555,7 +617,7 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(23);
+		StringBundler sb = new StringBundler(27);
 
 		sb.append("{dossierStepId=");
 		sb.append(getDossierStepId());
@@ -575,10 +637,14 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 		sb.append(getTitle());
 		sb.append(", sequenceNo=");
 		sb.append(getSequenceNo());
-		sb.append(", stepType=");
-		sb.append(getStepType());
+		sb.append(", daysDuration=");
+		sb.append(getDaysDuration());
 		sb.append(", doForm=");
 		sb.append(getDoForm());
+		sb.append(", formLabel=");
+		sb.append(getFormLabel());
+		sb.append(", rollback=");
+		sb.append(getRollback());
 		sb.append("}");
 
 		return sb.toString();
@@ -586,7 +652,7 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(43);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.DossierStep");
@@ -629,12 +695,20 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 		sb.append(getSequenceNo());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>stepType</column-name><column-value><![CDATA[");
-		sb.append(getStepType());
+			"<column><column-name>daysDuration</column-name><column-value><![CDATA[");
+		sb.append(getDaysDuration());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>doForm</column-name><column-value><![CDATA[");
 		sb.append(getDoForm());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>formLabel</column-name><column-value><![CDATA[");
+		sb.append(getFormLabel());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>rollback</column-name><column-value><![CDATA[");
+		sb.append(getRollback());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -652,8 +726,10 @@ public class DossierStepClp extends BaseModelImpl<DossierStep>
 	private long _dossierProcessId;
 	private String _title;
 	private int _sequenceNo;
-	private int _stepType;
+	private int _daysDuration;
 	private String _doForm;
+	private String _formLabel;
+	private int _rollback;
 	private BaseModel<?> _dossierStepRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.processmgt.service.ClpSerializer.class;
 }

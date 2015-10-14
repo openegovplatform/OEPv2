@@ -119,6 +119,7 @@ public class DossierStepLocalServiceClp implements DossierStepLocalService {
 
 		_methodParameterTypes19 = new String[] {
 				"long", "java.lang.String", "int", "int", "java.lang.String",
+				"java.lang.String", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -126,7 +127,8 @@ public class DossierStepLocalServiceClp implements DossierStepLocalService {
 
 		_methodParameterTypes20 = new String[] {
 				"long", "long", "java.lang.String", "int", "int",
-				"java.lang.String", "com.liferay.portal.service.ServiceContext"
+				"java.lang.String", "java.lang.String", "int",
+				"com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName21 = "updateDossierStepResources";
@@ -723,8 +725,8 @@ public class DossierStepLocalServiceClp implements DossierStepLocalService {
 	@Override
 	public org.oep.core.processmgt.model.DossierStep addDossierStep(
 		long dossierProcessId, java.lang.String title, int sequenceNo,
-		int stepType, java.lang.String doForm,
-		com.liferay.portal.service.ServiceContext serviceContext)
+		int daysDuration, java.lang.String doForm, java.lang.String formLabel,
+		int rollback, com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
@@ -739,9 +741,13 @@ public class DossierStepLocalServiceClp implements DossierStepLocalService {
 						
 					sequenceNo,
 						
-					stepType,
+					daysDuration,
 						
 					ClpSerializer.translateInput(doForm),
+						
+					ClpSerializer.translateInput(formLabel),
+						
+					rollback,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});
@@ -772,8 +778,8 @@ public class DossierStepLocalServiceClp implements DossierStepLocalService {
 	@Override
 	public org.oep.core.processmgt.model.DossierStep updateDossierStep(
 		long id, long dossierProcessId, java.lang.String title, int sequenceNo,
-		int stepType, java.lang.String doForm,
-		com.liferay.portal.service.ServiceContext serviceContext)
+		int daysDuration, java.lang.String doForm, java.lang.String formLabel,
+		int rollback, com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
@@ -790,9 +796,13 @@ public class DossierStepLocalServiceClp implements DossierStepLocalService {
 						
 					sequenceNo,
 						
-					stepType,
+					daysDuration,
 						
 					ClpSerializer.translateInput(doForm),
+						
+					ClpSerializer.translateInput(formLabel),
+						
+					rollback,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});

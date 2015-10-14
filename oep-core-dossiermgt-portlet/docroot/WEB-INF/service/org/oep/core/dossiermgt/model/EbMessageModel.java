@@ -15,6 +15,7 @@
 package org.oep.core.dossiermgt.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.service.ServiceContext;
@@ -86,6 +87,49 @@ public interface EbMessageModel extends BaseModel<EbMessage> {
 	 * @param companyId the company ID of this eb message
 	 */
 	public void setCompanyId(long companyId);
+
+	/**
+	 * Returns the user ID of this eb message.
+	 *
+	 * @return the user ID of this eb message
+	 */
+	public long getUserId();
+
+	/**
+	 * Sets the user ID of this eb message.
+	 *
+	 * @param userId the user ID of this eb message
+	 */
+	public void setUserId(long userId);
+
+	/**
+	 * Returns the user uuid of this eb message.
+	 *
+	 * @return the user uuid of this eb message
+	 * @throws SystemException if a system exception occurred
+	 */
+	public String getUserUuid() throws SystemException;
+
+	/**
+	 * Sets the user uuid of this eb message.
+	 *
+	 * @param userUuid the user uuid of this eb message
+	 */
+	public void setUserUuid(String userUuid);
+
+	/**
+	 * Returns the group ID of this eb message.
+	 *
+	 * @return the group ID of this eb message
+	 */
+	public long getGroupId();
+
+	/**
+	 * Sets the group ID of this eb message.
+	 *
+	 * @param groupId the group ID of this eb message
+	 */
+	public void setGroupId(long groupId);
 
 	/**
 	 * Returns the create date of this eb message.

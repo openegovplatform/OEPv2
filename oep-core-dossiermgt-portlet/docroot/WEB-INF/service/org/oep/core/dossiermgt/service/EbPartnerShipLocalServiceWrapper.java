@@ -304,23 +304,23 @@ public class EbPartnerShipLocalServiceWrapper
 	@Override
 	public org.oep.core.dossiermgt.model.EbPartnerShip addEbPartnerShip(
 		java.lang.String name, java.lang.String cpaId,
-		java.lang.String service, java.lang.String action, int inbound,
+		java.lang.String service,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _ebPartnerShipLocalService.addEbPartnerShip(name, cpaId,
-			service, action, inbound, serviceContext);
+			service, serviceContext);
 	}
 
 	@Override
 	public org.oep.core.dossiermgt.model.EbPartnerShip updateEbPartnerShip(
 		long id, java.lang.String name, java.lang.String cpaId,
-		java.lang.String service, java.lang.String action, int inbound,
+		java.lang.String service,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _ebPartnerShipLocalService.updateEbPartnerShip(id, name, cpaId,
-			service, action, inbound, serviceContext);
+			service, serviceContext);
 	}
 
 	@Override
@@ -382,6 +382,39 @@ public class EbPartnerShipLocalServiceWrapper
 			com.liferay.portal.kernel.exception.SystemException {
 		_ebPartnerShipLocalService.addEbPartnerShipResources(id,
 			groupPermissions, guestPermissions, serviceContext);
+	}
+
+	@Override
+	public java.util.List<org.oep.core.dossiermgt.model.EbPartnerShip> findByLikeName(
+		java.lang.String name, int startIndex, int endIndex,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ebPartnerShipLocalService.findByLikeName(name, startIndex,
+			endIndex, serviceContext);
+	}
+
+	@Override
+	public int countByLikeName(java.lang.String name,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ebPartnerShipLocalService.countByLikeName(name, serviceContext);
+	}
+
+	@Override
+	public java.util.List<org.oep.core.dossiermgt.model.EbPartnerShip> findByGroupLikeName(
+		java.lang.String name, int startIndex, int endIndex,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ebPartnerShipLocalService.findByGroupLikeName(name, startIndex,
+			endIndex, serviceContext);
+	}
+
+	@Override
+	public int countByGroupLikeName(java.lang.String name,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ebPartnerShipLocalService.countByGroupLikeName(name,
+			serviceContext);
 	}
 
 	/**

@@ -59,8 +59,10 @@ public class DossierStepWrapper implements DossierStep,
 		attributes.put("dossierProcessId", getDossierProcessId());
 		attributes.put("title", getTitle());
 		attributes.put("sequenceNo", getSequenceNo());
-		attributes.put("stepType", getStepType());
+		attributes.put("daysDuration", getDaysDuration());
 		attributes.put("doForm", getDoForm());
+		attributes.put("formLabel", getFormLabel());
+		attributes.put("rollback", getRollback());
 
 		return attributes;
 	}
@@ -121,16 +123,28 @@ public class DossierStepWrapper implements DossierStep,
 			setSequenceNo(sequenceNo);
 		}
 
-		Integer stepType = (Integer)attributes.get("stepType");
+		Integer daysDuration = (Integer)attributes.get("daysDuration");
 
-		if (stepType != null) {
-			setStepType(stepType);
+		if (daysDuration != null) {
+			setDaysDuration(daysDuration);
 		}
 
 		String doForm = (String)attributes.get("doForm");
 
 		if (doForm != null) {
 			setDoForm(doForm);
+		}
+
+		String formLabel = (String)attributes.get("formLabel");
+
+		if (formLabel != null) {
+			setFormLabel(formLabel);
+		}
+
+		Integer rollback = (Integer)attributes.get("rollback");
+
+		if (rollback != null) {
+			setRollback(rollback);
 		}
 	}
 
@@ -357,23 +371,23 @@ public class DossierStepWrapper implements DossierStep,
 	}
 
 	/**
-	* Returns the step type of this dossier step.
+	* Returns the days duration of this dossier step.
 	*
-	* @return the step type of this dossier step
+	* @return the days duration of this dossier step
 	*/
 	@Override
-	public int getStepType() {
-		return _dossierStep.getStepType();
+	public int getDaysDuration() {
+		return _dossierStep.getDaysDuration();
 	}
 
 	/**
-	* Sets the step type of this dossier step.
+	* Sets the days duration of this dossier step.
 	*
-	* @param stepType the step type of this dossier step
+	* @param daysDuration the days duration of this dossier step
 	*/
 	@Override
-	public void setStepType(int stepType) {
-		_dossierStep.setStepType(stepType);
+	public void setDaysDuration(int daysDuration) {
+		_dossierStep.setDaysDuration(daysDuration);
 	}
 
 	/**
@@ -394,6 +408,46 @@ public class DossierStepWrapper implements DossierStep,
 	@Override
 	public void setDoForm(java.lang.String doForm) {
 		_dossierStep.setDoForm(doForm);
+	}
+
+	/**
+	* Returns the form label of this dossier step.
+	*
+	* @return the form label of this dossier step
+	*/
+	@Override
+	public java.lang.String getFormLabel() {
+		return _dossierStep.getFormLabel();
+	}
+
+	/**
+	* Sets the form label of this dossier step.
+	*
+	* @param formLabel the form label of this dossier step
+	*/
+	@Override
+	public void setFormLabel(java.lang.String formLabel) {
+		_dossierStep.setFormLabel(formLabel);
+	}
+
+	/**
+	* Returns the rollback of this dossier step.
+	*
+	* @return the rollback of this dossier step
+	*/
+	@Override
+	public int getRollback() {
+		return _dossierStep.getRollback();
+	}
+
+	/**
+	* Sets the rollback of this dossier step.
+	*
+	* @param rollback the rollback of this dossier step
+	*/
+	@Override
+	public void setRollback(int rollback) {
+		_dossierStep.setRollback(rollback);
 	}
 
 	@Override

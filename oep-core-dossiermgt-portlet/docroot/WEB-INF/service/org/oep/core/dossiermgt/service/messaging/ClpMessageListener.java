@@ -24,8 +24,6 @@ import org.oep.core.dossiermgt.service.DocFileVersionLocalServiceUtil;
 import org.oep.core.dossiermgt.service.DocFileVersionServiceUtil;
 import org.oep.core.dossiermgt.service.DocTemplateLocalServiceUtil;
 import org.oep.core.dossiermgt.service.DocTemplateServiceUtil;
-import org.oep.core.dossiermgt.service.DossierDoc2TemplateLocalServiceUtil;
-import org.oep.core.dossiermgt.service.DossierDoc2TemplateServiceUtil;
 import org.oep.core.dossiermgt.service.DossierDocLocalServiceUtil;
 import org.oep.core.dossiermgt.service.DossierDocServiceUtil;
 import org.oep.core.dossiermgt.service.DossierFolder2RoleLocalServiceUtil;
@@ -33,8 +31,8 @@ import org.oep.core.dossiermgt.service.DossierFolder2RoleServiceUtil;
 import org.oep.core.dossiermgt.service.DossierFolderLocalServiceUtil;
 import org.oep.core.dossiermgt.service.DossierFolderServiceUtil;
 import org.oep.core.dossiermgt.service.DossierLocalServiceUtil;
-import org.oep.core.dossiermgt.service.DossierProcAgencyLocalServiceUtil;
-import org.oep.core.dossiermgt.service.DossierProcAgencyServiceUtil;
+import org.oep.core.dossiermgt.service.DossierProcAgentLocalServiceUtil;
+import org.oep.core.dossiermgt.service.DossierProcAgentServiceUtil;
 import org.oep.core.dossiermgt.service.DossierProcLocalServiceUtil;
 import org.oep.core.dossiermgt.service.DossierProcServiceUtil;
 import org.oep.core.dossiermgt.service.DossierServiceUtil;
@@ -50,6 +48,10 @@ import org.oep.core.dossiermgt.service.PaymentRequestLocalServiceUtil;
 import org.oep.core.dossiermgt.service.PaymentRequestServiceUtil;
 import org.oep.core.dossiermgt.service.ProfileDataLocalServiceUtil;
 import org.oep.core.dossiermgt.service.ProfileDataServiceUtil;
+import org.oep.core.dossiermgt.service.StatisticByAgencyLocalServiceUtil;
+import org.oep.core.dossiermgt.service.StatisticByAgencyServiceUtil;
+import org.oep.core.dossiermgt.service.StatisticByDayLocalServiceUtil;
+import org.oep.core.dossiermgt.service.StatisticByDayServiceUtil;
 
 /**
  * @author trungdk
@@ -81,9 +83,6 @@ public class ClpMessageListener extends BaseMessageListener {
 			DossierDocLocalServiceUtil.clearService();
 
 			DossierDocServiceUtil.clearService();
-			DossierDoc2TemplateLocalServiceUtil.clearService();
-
-			DossierDoc2TemplateServiceUtil.clearService();
 			DossierFolderLocalServiceUtil.clearService();
 
 			DossierFolderServiceUtil.clearService();
@@ -93,9 +92,9 @@ public class ClpMessageListener extends BaseMessageListener {
 			DossierProcLocalServiceUtil.clearService();
 
 			DossierProcServiceUtil.clearService();
-			DossierProcAgencyLocalServiceUtil.clearService();
+			DossierProcAgentLocalServiceUtil.clearService();
 
-			DossierProcAgencyServiceUtil.clearService();
+			DossierProcAgentServiceUtil.clearService();
 			EbMessageLocalServiceUtil.clearService();
 
 			EbMessageServiceUtil.clearService();
@@ -114,6 +113,12 @@ public class ClpMessageListener extends BaseMessageListener {
 			ProfileDataLocalServiceUtil.clearService();
 
 			ProfileDataServiceUtil.clearService();
+			StatisticByAgencyLocalServiceUtil.clearService();
+
+			StatisticByAgencyServiceUtil.clearService();
+			StatisticByDayLocalServiceUtil.clearService();
+
+			StatisticByDayServiceUtil.clearService();
 		}
 	}
 }

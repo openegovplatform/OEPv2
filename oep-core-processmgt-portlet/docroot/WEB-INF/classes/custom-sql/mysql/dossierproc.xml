@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<custom-sql>
+	<sql id="mysql.org.oep.core.dossiermgt.service.persistence.DossierProcFinder.countByLikeName">
+		<![CDATA[
+			SELECT COUNT(*) total
+			FROM OEP_DOSSIERMGT_DOSSIERPROC
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$NAME_FILTER$]
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.core.dossiermgt.service.persistence.DossierProcFinder.findByLikeName">
+		<![CDATA[
+			SELECT *
+			FROM OEP_DOSSIERMGT_DOSSIERPROC
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$NAME_FILTER$]
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.core.dossiermgt.service.persistence.DossierProcFinder.countByGroupLikeName">
+		<![CDATA[
+			SELECT COUNT(*) total
+			FROM OEP_DOSSIERMGT_DOSSIERPROC
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$NAME_FILTER$]
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.core.dossiermgt.service.persistence.DossierProcFinder.findByGroupLikeName">
+		<![CDATA[
+			SELECT *
+			FROM OEP_DOSSIERMGT_DOSSIERPROC
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$NAME_FILTER$]
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.core.dossiermgt.service.persistence.DossierProcFinder.countByCustomCondition">
+		<![CDATA[
+			SELECT COUNT(*) total
+			FROM OEP_DOSSIERMGT_DOSSIERPROC
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$NAME_FILTER$]
+			[$EFFECTDATE_FILTER$]
+			[$EXPIREDATE_FILTER$]
+			[$ACTIVE_FILTER$]
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.core.dossiermgt.service.persistence.DossierProcFinder.findByCustomCondition">
+		<![CDATA[
+			SELECT *
+			FROM OEP_DOSSIERMGT_DOSSIERPROC
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$NAME_FILTER$]
+			[$EFFECTDATE_FILTER$]
+			[$EXPIREDATE_FILTER$]
+			[$ACTIVE_FILTER$]
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.core.dossiermgt.service.persistence.DossierProcFinder.countByGroupCustomCondition">
+		<![CDATA[
+			SELECT COUNT(*) total
+			FROM OEP_DOSSIERMGT_DOSSIERPROC
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$NAME_FILTER$]
+			[$EFFECTDATE_FILTER$]
+			[$EXPIREDATE_FILTER$]
+			[$ACTIVE_FILTER$]
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.core.dossiermgt.service.persistence.DossierProcFinder.findByGroupCustomCondition">
+		<![CDATA[
+			SELECT *
+			FROM OEP_DOSSIERMGT_DOSSIERPROC
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$NAME_FILTER$]
+			[$EFFECTDATE_FILTER$]
+			[$EXPIREDATE_FILTER$]
+			[$ACTIVE_FILTER$]
+		]]>
+	</sql>	
+</custom-sql>

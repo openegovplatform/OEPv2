@@ -11,6 +11,8 @@
 		<attributes>
 			<id name="dictAttributeId" />
 			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="groupId" />
 			<basic name="createDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
@@ -24,12 +26,15 @@
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
 	<mapped-superclass class="org.oep.core.datamgt.dictionary.model.impl.DictCollectionModelImpl">
 		<attributes>
 			<id name="dictCollectionId" />
 			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="groupId" />
 			<basic name="createDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
@@ -49,12 +54,15 @@
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
 	<mapped-superclass class="org.oep.core.datamgt.dictionary.model.impl.DictDataModelImpl">
 		<attributes>
 			<id name="dictDataId" />
 			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="groupId" />
 			<basic name="createDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
@@ -81,12 +89,15 @@
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
 	<mapped-superclass class="org.oep.core.datamgt.dictionary.model.impl.DictMetaDataModelImpl">
 		<attributes>
 			<id name="dictMetaDataId" />
 			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="groupId" />
 			<basic name="createDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
@@ -99,6 +110,7 @@
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
 	<mapped-superclass class="org.oep.core.datamgt.parameter.model.impl.DefaultParameterModelImpl">
@@ -160,11 +172,11 @@
 		<attributes />
 	</entity>
 	<entity class="org.oep.core.datamgt.parameter.model.impl.DefaultParameterImpl" name="DefaultParameter">
-		<table name="oep_datamgt_DefaultParameter" />
+		<table name="oep_datamgt_defaultparameter" />
 		<attributes />
 	</entity>
 	<entity class="org.oep.core.datamgt.parameter.model.impl.UserParameterImpl" name="UserParameter">
-		<table name="oep_datamgt_UserParameter" />
+		<table name="oep_datamgt_userparameter" />
 		<attributes />
 	</entity>
 </entity-mappings>

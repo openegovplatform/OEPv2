@@ -44,6 +44,7 @@ public class DocFileSoap implements Serializable {
 		soapModel.setDocFileVersionId(model.getDocFileVersionId());
 		soapModel.setDocName(model.getDocName());
 		soapModel.setNote(model.getNote());
+		soapModel.setPremier(model.getPremier());
 
 		return soapModel;
 	}
@@ -200,6 +201,14 @@ public class DocFileSoap implements Serializable {
 		_note = note;
 	}
 
+	public int getPremier() {
+		return _premier;
+	}
+
+	public void setPremier(int premier) {
+		_premier = premier;
+	}
+
 	private String _uuid;
 	private long _docFileId;
 	private long _userId;
@@ -213,4 +222,5 @@ public class DocFileSoap implements Serializable {
 	private long _docFileVersionId;
 	private String _docName;
 	private String _note;
+	private int _premier;
 }

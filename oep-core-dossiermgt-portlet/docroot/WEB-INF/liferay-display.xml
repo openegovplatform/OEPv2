@@ -3,4 +3,9 @@
 
 <display>
 	
+	<category name="OEP">
+		<category name="dossiermgt">
+			<portlet id="dossier-proc"></portlet>
+		</category>
+	</category>
 </display>

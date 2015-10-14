@@ -4,21 +4,39 @@
 	<model name="org.oep.core.datamgt.dictionary.model.DictAttribute">
 		<field name="dictAttributeId" type="long" />
 		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
-		<field name="collectionName" type="String" />
-		<field name="name" type="String" />
-		<field name="title" type="String" />
-		<field name="dataType" type="String" />
+		<field name="collectionName" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="name" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="title" type="String">
+			<hint name="max-length">255</hint>
+		</field>
+		<field name="dataType" type="String">
+			<hint name="max-length">80</hint>
+		</field>
 	</model>
 	<model name="org.oep.core.datamgt.dictionary.model.DictCollection">
 		<field name="dictCollectionId" type="long" />
 		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
-		<field name="name" type="String" />
-		<field name="version" type="String" />
-		<field name="title" type="String" />
+		<field name="name" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="version" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="title" type="String">
+			<hint name="max-length">255</hint>
+		</field>
 		<field name="validatedFrom" type="Date" />
 		<field name="validatedTo" type="Date" />
 		<field name="status" type="int" />
@@ -26,18 +44,38 @@
 	<model name="org.oep.core.datamgt.dictionary.model.DictData">
 		<field name="dictDataId" type="long" />
 		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
-		<field name="collectionName" type="String" />
-		<field name="dataCode" type="String" />
-		<field name="node_1" type="String" />
-		<field name="node_2" type="String" />
-		<field name="node_3" type="String" />
-		<field name="node_4" type="String" />
-		<field name="node_5" type="String" />
+		<field name="collectionName" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="dataCode" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="node_1" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="node_2" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="node_3" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="node_4" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="node_5" type="String">
+			<hint name="max-length">30</hint>
+		</field>
 		<field name="dataLevel" type="int" />
-		<field name="title" type="String" />
-		<field name="description" type="String" />
+		<field name="title" type="String">
+			<hint name="max-length">255</hint>
+		</field>
+		<field name="description" type="String">
+			<hint name="max-length">500</hint>
+		</field>
 		<field name="validatedFrom" type="Date" />
 		<field name="validatedTo" type="Date" />
 		<field name="status" type="int" />
@@ -45,11 +83,17 @@
 	<model name="org.oep.core.datamgt.dictionary.model.DictMetaData">
 		<field name="dictMetaDataId" type="long" />
 		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
 		<field name="dictDataId" type="long" />
-		<field name="attributeName" type="String" />
-		<field name="attributeValue" type="String" />
+		<field name="attributeName" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="attributeValue" type="String">
+			<hint name="max-length">500</hint>
+		</field>
 	</model>
 	<model name="org.oep.core.datamgt.parameter.model.DefaultParameter">
 		<field name="defaultParameterId" type="long" />

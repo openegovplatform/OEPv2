@@ -73,12 +73,13 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 			{ "createDate", Types.TIMESTAMP },
 			{ "modifiedDate", Types.TIMESTAMP },
 			{ "dossierProcId", Types.BIGINT },
-			{ "govAgentId", Types.VARCHAR },
-			{ "govAgentName", Types.VARCHAR },
-			{ "startDossierStepId", Types.BIGINT },
-			{ "daysDuration", Types.INTEGER }
+			{ "govAgencyId", Types.VARCHAR },
+			{ "govAgencyName", Types.VARCHAR },
+			{ "startStepTransitionId", Types.BIGINT },
+			{ "daysDuration", Types.INTEGER },
+			{ "fee", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_dossierprocess (dossierProcessId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcId LONG,govAgentId VARCHAR(30) null,govAgentName VARCHAR(200) null,startDossierStepId LONG,daysDuration INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_dossierprocess (dossierProcessId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcId LONG,govAgencyId VARCHAR(30) null,govAgencyName VARCHAR(200) null,startStepTransitionId LONG,daysDuration INTEGER,fee INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_processmgt_dossierprocess";
 	public static final String ORDER_BY_JPQL = " ORDER BY dossierProcess.dossierProcessId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_processmgt_dossierprocess.dossierProcessId ASC";
@@ -91,7 +92,12 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.finder.cache.enabled.org.oep.core.processmgt.model.DossierProcess"),
 			true);
-	public static final boolean COLUMN_BITMASK_ENABLED = false;
+	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+				"value.object.column.bitmask.enabled.org.oep.core.processmgt.model.DossierProcess"),
+			true);
+	public static long COMPANYID_COLUMN_BITMASK = 1L;
+	public static long GROUPID_COLUMN_BITMASK = 2L;
+	public static long DOSSIERPROCESSID_COLUMN_BITMASK = 4L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -113,10 +119,11 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setModifiedDate(soapModel.getModifiedDate());
 		model.setDossierProcId(soapModel.getDossierProcId());
-		model.setGovAgentId(soapModel.getGovAgentId());
-		model.setGovAgentName(soapModel.getGovAgentName());
-		model.setStartDossierStepId(soapModel.getStartDossierStepId());
+		model.setGovAgencyId(soapModel.getGovAgencyId());
+		model.setGovAgencyName(soapModel.getGovAgencyName());
+		model.setStartStepTransitionId(soapModel.getStartStepTransitionId());
 		model.setDaysDuration(soapModel.getDaysDuration());
+		model.setFee(soapModel.getFee());
 
 		return model;
 	}
@@ -188,10 +195,11 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgentId", getGovAgentId());
-		attributes.put("govAgentName", getGovAgentName());
-		attributes.put("startDossierStepId", getStartDossierStepId());
+		attributes.put("govAgencyId", getGovAgencyId());
+		attributes.put("govAgencyName", getGovAgencyName());
+		attributes.put("startStepTransitionId", getStartStepTransitionId());
 		attributes.put("daysDuration", getDaysDuration());
+		attributes.put("fee", getFee());
 
 		return attributes;
 	}
@@ -240,28 +248,35 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 			setDossierProcId(dossierProcId);
 		}
 
-		String govAgentId = (String)attributes.get("govAgentId");
+		String govAgencyId = (String)attributes.get("govAgencyId");
 
-		if (govAgentId != null) {
-			setGovAgentId(govAgentId);
+		if (govAgencyId != null) {
+			setGovAgencyId(govAgencyId);
 		}
 
-		String govAgentName = (String)attributes.get("govAgentName");
+		String govAgencyName = (String)attributes.get("govAgencyName");
 
-		if (govAgentName != null) {
-			setGovAgentName(govAgentName);
+		if (govAgencyName != null) {
+			setGovAgencyName(govAgencyName);
 		}
 
-		Long startDossierStepId = (Long)attributes.get("startDossierStepId");
+		Long startStepTransitionId = (Long)attributes.get(
+				"startStepTransitionId");
 
-		if (startDossierStepId != null) {
-			setStartDossierStepId(startDossierStepId);
+		if (startStepTransitionId != null) {
+			setStartStepTransitionId(startStepTransitionId);
 		}
 
 		Integer daysDuration = (Integer)attributes.get("daysDuration");
 
 		if (daysDuration != null) {
 			setDaysDuration(daysDuration);
+		}
+
+		Integer fee = (Integer)attributes.get("fee");
+
+		if (fee != null) {
+			setFee(fee);
 		}
 	}
 
@@ -305,7 +320,19 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 
 	@Override
 	public void setGroupId(long groupId) {
+		_columnBitmask |= GROUPID_COLUMN_BITMASK;
+
+		if (!_setOriginalGroupId) {
+			_setOriginalGroupId = true;
+
+			_originalGroupId = _groupId;
+		}
+
 		_groupId = groupId;
+	}
+
+	public long getOriginalGroupId() {
+		return _originalGroupId;
 	}
 
 	@JSON
@@ -316,7 +343,19 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 
 	@Override
 	public void setCompanyId(long companyId) {
+		_columnBitmask |= COMPANYID_COLUMN_BITMASK;
+
+		if (!_setOriginalCompanyId) {
+			_setOriginalCompanyId = true;
+
+			_originalCompanyId = _companyId;
+		}
+
 		_companyId = companyId;
+	}
+
+	public long getOriginalCompanyId() {
+		return _originalCompanyId;
 	}
 
 	@JSON
@@ -354,45 +393,45 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 
 	@JSON
 	@Override
-	public String getGovAgentId() {
-		if (_govAgentId == null) {
+	public String getGovAgencyId() {
+		if (_govAgencyId == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _govAgentId;
+			return _govAgencyId;
 		}
 	}
 
 	@Override
-	public void setGovAgentId(String govAgentId) {
-		_govAgentId = govAgentId;
+	public void setGovAgencyId(String govAgencyId) {
+		_govAgencyId = govAgencyId;
 	}
 
 	@JSON
 	@Override
-	public String getGovAgentName() {
-		if (_govAgentName == null) {
+	public String getGovAgencyName() {
+		if (_govAgencyName == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _govAgentName;
+			return _govAgencyName;
 		}
 	}
 
 	@Override
-	public void setGovAgentName(String govAgentName) {
-		_govAgentName = govAgentName;
+	public void setGovAgencyName(String govAgencyName) {
+		_govAgencyName = govAgencyName;
 	}
 
 	@JSON
 	@Override
-	public long getStartDossierStepId() {
-		return _startDossierStepId;
+	public long getStartStepTransitionId() {
+		return _startStepTransitionId;
 	}
 
 	@Override
-	public void setStartDossierStepId(long startDossierStepId) {
-		_startDossierStepId = startDossierStepId;
+	public void setStartStepTransitionId(long startStepTransitionId) {
+		_startStepTransitionId = startStepTransitionId;
 	}
 
 	@JSON
@@ -404,6 +443,21 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 	@Override
 	public void setDaysDuration(int daysDuration) {
 		_daysDuration = daysDuration;
+	}
+
+	@JSON
+	@Override
+	public int getFee() {
+		return _fee;
+	}
+
+	@Override
+	public void setFee(int fee) {
+		_fee = fee;
+	}
+
+	public long getColumnBitmask() {
+		return _columnBitmask;
 	}
 
 	@Override
@@ -440,10 +494,11 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 		dossierProcessImpl.setCreateDate(getCreateDate());
 		dossierProcessImpl.setModifiedDate(getModifiedDate());
 		dossierProcessImpl.setDossierProcId(getDossierProcId());
-		dossierProcessImpl.setGovAgentId(getGovAgentId());
-		dossierProcessImpl.setGovAgentName(getGovAgentName());
-		dossierProcessImpl.setStartDossierStepId(getStartDossierStepId());
+		dossierProcessImpl.setGovAgencyId(getGovAgencyId());
+		dossierProcessImpl.setGovAgencyName(getGovAgencyName());
+		dossierProcessImpl.setStartStepTransitionId(getStartStepTransitionId());
 		dossierProcessImpl.setDaysDuration(getDaysDuration());
+		dossierProcessImpl.setFee(getFee());
 
 		dossierProcessImpl.resetOriginalValues();
 
@@ -494,6 +549,17 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 
 	@Override
 	public void resetOriginalValues() {
+		DossierProcessModelImpl dossierProcessModelImpl = this;
+
+		dossierProcessModelImpl._originalGroupId = dossierProcessModelImpl._groupId;
+
+		dossierProcessModelImpl._setOriginalGroupId = false;
+
+		dossierProcessModelImpl._originalCompanyId = dossierProcessModelImpl._companyId;
+
+		dossierProcessModelImpl._setOriginalCompanyId = false;
+
+		dossierProcessModelImpl._columnBitmask = 0;
 	}
 
 	@Override
@@ -528,32 +594,34 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 
 		dossierProcessCacheModel.dossierProcId = getDossierProcId();
 
-		dossierProcessCacheModel.govAgentId = getGovAgentId();
+		dossierProcessCacheModel.govAgencyId = getGovAgencyId();
 
-		String govAgentId = dossierProcessCacheModel.govAgentId;
+		String govAgencyId = dossierProcessCacheModel.govAgencyId;
 
-		if ((govAgentId != null) && (govAgentId.length() == 0)) {
-			dossierProcessCacheModel.govAgentId = null;
+		if ((govAgencyId != null) && (govAgencyId.length() == 0)) {
+			dossierProcessCacheModel.govAgencyId = null;
 		}
 
-		dossierProcessCacheModel.govAgentName = getGovAgentName();
+		dossierProcessCacheModel.govAgencyName = getGovAgencyName();
 
-		String govAgentName = dossierProcessCacheModel.govAgentName;
+		String govAgencyName = dossierProcessCacheModel.govAgencyName;
 
-		if ((govAgentName != null) && (govAgentName.length() == 0)) {
-			dossierProcessCacheModel.govAgentName = null;
+		if ((govAgencyName != null) && (govAgencyName.length() == 0)) {
+			dossierProcessCacheModel.govAgencyName = null;
 		}
 
-		dossierProcessCacheModel.startDossierStepId = getStartDossierStepId();
+		dossierProcessCacheModel.startStepTransitionId = getStartStepTransitionId();
 
 		dossierProcessCacheModel.daysDuration = getDaysDuration();
+
+		dossierProcessCacheModel.fee = getFee();
 
 		return dossierProcessCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(23);
+		StringBundler sb = new StringBundler(25);
 
 		sb.append("{dossierProcessId=");
 		sb.append(getDossierProcessId());
@@ -569,14 +637,16 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 		sb.append(getModifiedDate());
 		sb.append(", dossierProcId=");
 		sb.append(getDossierProcId());
-		sb.append(", govAgentId=");
-		sb.append(getGovAgentId());
-		sb.append(", govAgentName=");
-		sb.append(getGovAgentName());
-		sb.append(", startDossierStepId=");
-		sb.append(getStartDossierStepId());
+		sb.append(", govAgencyId=");
+		sb.append(getGovAgencyId());
+		sb.append(", govAgencyName=");
+		sb.append(getGovAgencyName());
+		sb.append(", startStepTransitionId=");
+		sb.append(getStartStepTransitionId());
 		sb.append(", daysDuration=");
 		sb.append(getDaysDuration());
+		sb.append(", fee=");
+		sb.append(getFee());
 		sb.append("}");
 
 		return sb.toString();
@@ -584,7 +654,7 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(40);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.DossierProcess");
@@ -619,20 +689,24 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 		sb.append(getDossierProcId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentId</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentId());
+			"<column><column-name>govAgencyId</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>govAgentName</column-name><column-value><![CDATA[");
-		sb.append(getGovAgentName());
+			"<column><column-name>govAgencyName</column-name><column-value><![CDATA[");
+		sb.append(getGovAgencyName());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>startDossierStepId</column-name><column-value><![CDATA[");
-		sb.append(getStartDossierStepId());
+			"<column><column-name>startStepTransitionId</column-name><column-value><![CDATA[");
+		sb.append(getStartStepTransitionId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>daysDuration</column-name><column-value><![CDATA[");
 		sb.append(getDaysDuration());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>fee</column-name><column-value><![CDATA[");
+		sb.append(getFee());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -648,13 +722,19 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 	private long _userId;
 	private String _userUuid;
 	private long _groupId;
+	private long _originalGroupId;
+	private boolean _setOriginalGroupId;
 	private long _companyId;
+	private long _originalCompanyId;
+	private boolean _setOriginalCompanyId;
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _dossierProcId;
-	private String _govAgentId;
-	private String _govAgentName;
-	private long _startDossierStepId;
+	private String _govAgencyId;
+	private String _govAgencyName;
+	private long _startStepTransitionId;
 	private int _daysDuration;
+	private int _fee;
+	private long _columnBitmask;
 	private DossierProcess _escapedModel;
 }

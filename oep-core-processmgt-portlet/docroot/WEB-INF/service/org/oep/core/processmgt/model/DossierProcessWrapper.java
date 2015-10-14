@@ -57,10 +57,11 @@ public class DossierProcessWrapper implements DossierProcess,
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgentId", getGovAgentId());
-		attributes.put("govAgentName", getGovAgentName());
-		attributes.put("startDossierStepId", getStartDossierStepId());
+		attributes.put("govAgencyId", getGovAgencyId());
+		attributes.put("govAgencyName", getGovAgencyName());
+		attributes.put("startStepTransitionId", getStartStepTransitionId());
 		attributes.put("daysDuration", getDaysDuration());
+		attributes.put("fee", getFee());
 
 		return attributes;
 	}
@@ -109,28 +110,35 @@ public class DossierProcessWrapper implements DossierProcess,
 			setDossierProcId(dossierProcId);
 		}
 
-		String govAgentId = (String)attributes.get("govAgentId");
+		String govAgencyId = (String)attributes.get("govAgencyId");
 
-		if (govAgentId != null) {
-			setGovAgentId(govAgentId);
+		if (govAgencyId != null) {
+			setGovAgencyId(govAgencyId);
 		}
 
-		String govAgentName = (String)attributes.get("govAgentName");
+		String govAgencyName = (String)attributes.get("govAgencyName");
 
-		if (govAgentName != null) {
-			setGovAgentName(govAgentName);
+		if (govAgencyName != null) {
+			setGovAgencyName(govAgencyName);
 		}
 
-		Long startDossierStepId = (Long)attributes.get("startDossierStepId");
+		Long startStepTransitionId = (Long)attributes.get(
+				"startStepTransitionId");
 
-		if (startDossierStepId != null) {
-			setStartDossierStepId(startDossierStepId);
+		if (startStepTransitionId != null) {
+			setStartStepTransitionId(startStepTransitionId);
 		}
 
 		Integer daysDuration = (Integer)attributes.get("daysDuration");
 
 		if (daysDuration != null) {
 			setDaysDuration(daysDuration);
+		}
+
+		Integer fee = (Integer)attributes.get("fee");
+
+		if (fee != null) {
+			setFee(fee);
 		}
 	}
 
@@ -317,63 +325,63 @@ public class DossierProcessWrapper implements DossierProcess,
 	}
 
 	/**
-	* Returns the gov agent ID of this dossier process.
+	* Returns the gov agency ID of this dossier process.
 	*
-	* @return the gov agent ID of this dossier process
+	* @return the gov agency ID of this dossier process
 	*/
 	@Override
-	public java.lang.String getGovAgentId() {
-		return _dossierProcess.getGovAgentId();
+	public java.lang.String getGovAgencyId() {
+		return _dossierProcess.getGovAgencyId();
 	}
 
 	/**
-	* Sets the gov agent ID of this dossier process.
+	* Sets the gov agency ID of this dossier process.
 	*
-	* @param govAgentId the gov agent ID of this dossier process
+	* @param govAgencyId the gov agency ID of this dossier process
 	*/
 	@Override
-	public void setGovAgentId(java.lang.String govAgentId) {
-		_dossierProcess.setGovAgentId(govAgentId);
+	public void setGovAgencyId(java.lang.String govAgencyId) {
+		_dossierProcess.setGovAgencyId(govAgencyId);
 	}
 
 	/**
-	* Returns the gov agent name of this dossier process.
+	* Returns the gov agency name of this dossier process.
 	*
-	* @return the gov agent name of this dossier process
+	* @return the gov agency name of this dossier process
 	*/
 	@Override
-	public java.lang.String getGovAgentName() {
-		return _dossierProcess.getGovAgentName();
+	public java.lang.String getGovAgencyName() {
+		return _dossierProcess.getGovAgencyName();
 	}
 
 	/**
-	* Sets the gov agent name of this dossier process.
+	* Sets the gov agency name of this dossier process.
 	*
-	* @param govAgentName the gov agent name of this dossier process
+	* @param govAgencyName the gov agency name of this dossier process
 	*/
 	@Override
-	public void setGovAgentName(java.lang.String govAgentName) {
-		_dossierProcess.setGovAgentName(govAgentName);
+	public void setGovAgencyName(java.lang.String govAgencyName) {
+		_dossierProcess.setGovAgencyName(govAgencyName);
 	}
 
 	/**
-	* Returns the start dossier step ID of this dossier process.
+	* Returns the start step transition ID of this dossier process.
 	*
-	* @return the start dossier step ID of this dossier process
+	* @return the start step transition ID of this dossier process
 	*/
 	@Override
-	public long getStartDossierStepId() {
-		return _dossierProcess.getStartDossierStepId();
+	public long getStartStepTransitionId() {
+		return _dossierProcess.getStartStepTransitionId();
 	}
 
 	/**
-	* Sets the start dossier step ID of this dossier process.
+	* Sets the start step transition ID of this dossier process.
 	*
-	* @param startDossierStepId the start dossier step ID of this dossier process
+	* @param startStepTransitionId the start step transition ID of this dossier process
 	*/
 	@Override
-	public void setStartDossierStepId(long startDossierStepId) {
-		_dossierProcess.setStartDossierStepId(startDossierStepId);
+	public void setStartStepTransitionId(long startStepTransitionId) {
+		_dossierProcess.setStartStepTransitionId(startStepTransitionId);
 	}
 
 	/**
@@ -394,6 +402,26 @@ public class DossierProcessWrapper implements DossierProcess,
 	@Override
 	public void setDaysDuration(int daysDuration) {
 		_dossierProcess.setDaysDuration(daysDuration);
+	}
+
+	/**
+	* Returns the fee of this dossier process.
+	*
+	* @return the fee of this dossier process
+	*/
+	@Override
+	public int getFee() {
+		return _dossierProcess.getFee();
+	}
+
+	/**
+	* Sets the fee of this dossier process.
+	*
+	* @param fee the fee of this dossier process
+	*/
+	@Override
+	public void setFee(int fee) {
+		_dossierProcess.setFee(fee);
 	}
 
 	@Override

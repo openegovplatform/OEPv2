@@ -107,10 +107,11 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			{ "daysDelay", Types.INTEGER },
 			{ "closeDate", Types.TIMESTAMP },
 			{ "errorStatus", Types.VARCHAR },
+			{ "pendingStatus", Types.INTEGER },
 			{ "errorCode", Types.VARCHAR },
 			{ "dirty", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_dossier (uuid_ VARCHAR(75) null,dossierId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,organizationId LONG,dossierProcId LONG,govAgencyId VARCHAR(30) null,govAgencyName VARCHAR(200) null,subjectId VARCHAR(30) null,subjectType VARCHAR(30) null,subjectName VARCHAR(100) null,address VARCHAR(255) null,cityNo VARCHAR(30) null,cityName VARCHAR(100) null,districtNo VARCHAR(30) null,districtName VARCHAR(100) null,wardNo VARCHAR(30) null,wardName VARCHAR(100) null,telNo VARCHAR(30) null,contactPersonName VARCHAR(100) null,contactPersonTel VARCHAR(30) null,note VARCHAR(255) null,resumeDescription VARCHAR(255) null,receptionNo VARCHAR(30) null,submitDate DATE null,receiveDate DATE null,renewDate DATE null,estimateDate DATE null,finishDate DATE null,returnDate DATE null,status VARCHAR(30) null,statusDate DATE null,statusDescription VARCHAR(100) null,feedbackNote VARCHAR(255) null,daysDelay INTEGER,closeDate DATE null,errorStatus VARCHAR(30) null,errorCode VARCHAR(30) null,dirty INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_dossier (uuid_ VARCHAR(75) null,dossierId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,organizationId LONG,dossierProcId LONG,govAgencyId VARCHAR(30) null,govAgencyName VARCHAR(200) null,subjectId VARCHAR(30) null,subjectType VARCHAR(30) null,subjectName VARCHAR(100) null,address VARCHAR(255) null,cityNo VARCHAR(30) null,cityName VARCHAR(100) null,districtNo VARCHAR(30) null,districtName VARCHAR(100) null,wardNo VARCHAR(30) null,wardName VARCHAR(100) null,telNo VARCHAR(30) null,contactPersonName VARCHAR(100) null,contactPersonTel VARCHAR(30) null,note VARCHAR(255) null,resumeDescription VARCHAR(255) null,receptionNo VARCHAR(30) null,submitDate DATE null,receiveDate DATE null,renewDate DATE null,estimateDate DATE null,finishDate DATE null,returnDate DATE null,status VARCHAR(30) null,statusDate DATE null,statusDescription VARCHAR(100) null,feedbackNote VARCHAR(255) null,daysDelay INTEGER,closeDate DATE null,errorStatus VARCHAR(30) null,pendingStatus INTEGER,errorCode VARCHAR(30) null,dirty INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_dossier";
 	public static final String ORDER_BY_JPQL = " ORDER BY dossier.dossierId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_dossier.dossierId ASC";
@@ -184,6 +185,7 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		model.setDaysDelay(soapModel.getDaysDelay());
 		model.setCloseDate(soapModel.getCloseDate());
 		model.setErrorStatus(soapModel.getErrorStatus());
+		model.setPendingStatus(soapModel.getPendingStatus());
 		model.setErrorCode(soapModel.getErrorCode());
 		model.setDirty(soapModel.getDirty());
 
@@ -290,6 +292,7 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		attributes.put("daysDelay", getDaysDelay());
 		attributes.put("closeDate", getCloseDate());
 		attributes.put("errorStatus", getErrorStatus());
+		attributes.put("pendingStatus", getPendingStatus());
 		attributes.put("errorCode", getErrorCode());
 		attributes.put("dirty", getDirty());
 
@@ -536,6 +539,12 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 
 		if (errorStatus != null) {
 			setErrorStatus(errorStatus);
+		}
+
+		Integer pendingStatus = (Integer)attributes.get("pendingStatus");
+
+		if (pendingStatus != null) {
+			setPendingStatus(pendingStatus);
 		}
 
 		String errorCode = (String)attributes.get("errorCode");
@@ -1150,6 +1159,17 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 
 	@JSON
 	@Override
+	public int getPendingStatus() {
+		return _pendingStatus;
+	}
+
+	@Override
+	public void setPendingStatus(int pendingStatus) {
+		_pendingStatus = pendingStatus;
+	}
+
+	@JSON
+	@Override
 	public String getErrorCode() {
 		if (_errorCode == null) {
 			return StringPool.BLANK;
@@ -1252,6 +1272,7 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		dossierImpl.setDaysDelay(getDaysDelay());
 		dossierImpl.setCloseDate(getCloseDate());
 		dossierImpl.setErrorStatus(getErrorStatus());
+		dossierImpl.setPendingStatus(getPendingStatus());
 		dossierImpl.setErrorCode(getErrorCode());
 		dossierImpl.setDirty(getDirty());
 
@@ -1611,6 +1632,8 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			dossierCacheModel.errorStatus = null;
 		}
 
+		dossierCacheModel.pendingStatus = getPendingStatus();
+
 		dossierCacheModel.errorCode = getErrorCode();
 
 		String errorCode = dossierCacheModel.errorCode;
@@ -1626,7 +1649,7 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(85);
+		StringBundler sb = new StringBundler(87);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
@@ -1708,6 +1731,8 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		sb.append(getCloseDate());
 		sb.append(", errorStatus=");
 		sb.append(getErrorStatus());
+		sb.append(", pendingStatus=");
+		sb.append(getPendingStatus());
 		sb.append(", errorCode=");
 		sb.append(getErrorCode());
 		sb.append(", dirty=");
@@ -1719,7 +1744,7 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(130);
+		StringBundler sb = new StringBundler(133);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.Dossier");
@@ -1886,6 +1911,10 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		sb.append(getErrorStatus());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>pendingStatus</column-name><column-value><![CDATA[");
+		sb.append(getPendingStatus());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>errorCode</column-name><column-value><![CDATA[");
 		sb.append(getErrorCode());
 		sb.append("]]></column-value></column>");
@@ -1949,6 +1978,7 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 	private int _daysDelay;
 	private Date _closeDate;
 	private String _errorStatus;
+	private int _pendingStatus;
 	private String _errorCode;
 	private int _dirty;
 	private long _columnBitmask;

@@ -85,6 +85,8 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 		attributes.put("daysDoing", getDaysDoing());
 		attributes.put("daysDelay", getDaysDelay());
 		attributes.put("startDate", getStartDate());
+		attributes.put("preDossierStatus", getPreDossierStatus());
+		attributes.put("postDossierStatus", getPostDossierStatus());
 		attributes.put("stepTransitionId", getStepTransitionId());
 		attributes.put("preDossierStepId", getPreDossierStepId());
 		attributes.put("postDossierStepId", getPostDossierStepId());
@@ -154,6 +156,18 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 
 		if (startDate != null) {
 			setStartDate(startDate);
+		}
+
+		String preDossierStatus = (String)attributes.get("preDossierStatus");
+
+		if (preDossierStatus != null) {
+			setPreDossierStatus(preDossierStatus);
+		}
+
+		String postDossierStatus = (String)attributes.get("postDossierStatus");
+
+		if (postDossierStatus != null) {
+			setPostDossierStatus(postDossierStatus);
 		}
 
 		Long stepTransitionId = (Long)attributes.get("stepTransitionId");
@@ -429,6 +443,54 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 	}
 
 	@Override
+	public String getPreDossierStatus() {
+		return _preDossierStatus;
+	}
+
+	@Override
+	public void setPreDossierStatus(String preDossierStatus) {
+		_preDossierStatus = preDossierStatus;
+
+		if (_transitionHistoryRemoteModel != null) {
+			try {
+				Class<?> clazz = _transitionHistoryRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setPreDossierStatus",
+						String.class);
+
+				method.invoke(_transitionHistoryRemoteModel, preDossierStatus);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getPostDossierStatus() {
+		return _postDossierStatus;
+	}
+
+	@Override
+	public void setPostDossierStatus(String postDossierStatus) {
+		_postDossierStatus = postDossierStatus;
+
+		if (_transitionHistoryRemoteModel != null) {
+			try {
+				Class<?> clazz = _transitionHistoryRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setPostDossierStatus",
+						String.class);
+
+				method.invoke(_transitionHistoryRemoteModel, postDossierStatus);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
 	public long getStepTransitionId() {
 		return _stepTransitionId;
 	}
@@ -628,6 +690,8 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 		clone.setDaysDoing(getDaysDoing());
 		clone.setDaysDelay(getDaysDelay());
 		clone.setStartDate(getStartDate());
+		clone.setPreDossierStatus(getPreDossierStatus());
+		clone.setPostDossierStatus(getPostDossierStatus());
 		clone.setStepTransitionId(getStepTransitionId());
 		clone.setPreDossierStepId(getPreDossierStepId());
 		clone.setPostDossierStepId(getPostDossierStepId());
@@ -685,7 +749,7 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(31);
+		StringBundler sb = new StringBundler(35);
 
 		sb.append("{transitionHistoryId=");
 		sb.append(getTransitionHistoryId());
@@ -707,6 +771,10 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 		sb.append(getDaysDelay());
 		sb.append(", startDate=");
 		sb.append(getStartDate());
+		sb.append(", preDossierStatus=");
+		sb.append(getPreDossierStatus());
+		sb.append(", postDossierStatus=");
+		sb.append(getPostDossierStatus());
 		sb.append(", stepTransitionId=");
 		sb.append(getStepTransitionId());
 		sb.append(", preDossierStepId=");
@@ -724,7 +792,7 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(49);
+		StringBundler sb = new StringBundler(55);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.TransitionHistory");
@@ -771,6 +839,14 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 		sb.append(getStartDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>preDossierStatus</column-name><column-value><![CDATA[");
+		sb.append(getPreDossierStatus());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>postDossierStatus</column-name><column-value><![CDATA[");
+		sb.append(getPostDossierStatus());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>stepTransitionId</column-name><column-value><![CDATA[");
 		sb.append(getStepTransitionId());
 		sb.append("]]></column-value></column>");
@@ -807,6 +883,8 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 	private int _daysDoing;
 	private int _daysDelay;
 	private Date _startDate;
+	private String _preDossierStatus;
+	private String _postDossierStatus;
 	private long _stepTransitionId;
 	private long _preDossierStepId;
 	private long _postDossierStepId;

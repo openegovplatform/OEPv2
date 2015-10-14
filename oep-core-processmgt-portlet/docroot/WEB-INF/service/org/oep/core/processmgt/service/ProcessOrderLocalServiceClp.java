@@ -85,80 +85,71 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 
 		_methodParameterTypes10 = new String[] { "long" };
 
-		_methodName11 = "getProcessOrder";
+		_methodName11 = "fetchProcessOrderByUuidAndCompanyId";
 
-		_methodParameterTypes11 = new String[] { "long" };
+		_methodParameterTypes11 = new String[] { "java.lang.String", "long" };
 
-		_methodName12 = "getPersistedModel";
+		_methodName12 = "fetchProcessOrderByUuidAndGroupId";
 
-		_methodParameterTypes12 = new String[] { "java.io.Serializable" };
+		_methodParameterTypes12 = new String[] { "java.lang.String", "long" };
 
-		_methodName13 = "getProcessOrders";
+		_methodName13 = "getProcessOrder";
 
-		_methodParameterTypes13 = new String[] { "int", "int" };
+		_methodParameterTypes13 = new String[] { "long" };
 
-		_methodName14 = "getProcessOrdersCount";
+		_methodName14 = "getPersistedModel";
 
-		_methodParameterTypes14 = new String[] {  };
+		_methodParameterTypes14 = new String[] { "java.io.Serializable" };
 
-		_methodName15 = "updateProcessOrder";
+		_methodName15 = "getProcessOrderByUuidAndCompanyId";
 
-		_methodParameterTypes15 = new String[] {
-				"org.oep.core.processmgt.model.ProcessOrder"
-			};
+		_methodParameterTypes15 = new String[] { "java.lang.String", "long" };
 
-		_methodName16 = "getBeanIdentifier";
+		_methodName16 = "getProcessOrderByUuidAndGroupId";
 
-		_methodParameterTypes16 = new String[] {  };
+		_methodParameterTypes16 = new String[] { "java.lang.String", "long" };
 
-		_methodName17 = "setBeanIdentifier";
+		_methodName17 = "getProcessOrders";
 
-		_methodParameterTypes17 = new String[] { "java.lang.String" };
+		_methodParameterTypes17 = new String[] { "int", "int" };
 
-		_methodName19 = "addProcessOrder";
+		_methodName18 = "getProcessOrdersCount";
+
+		_methodParameterTypes18 = new String[] {  };
+
+		_methodName19 = "updateProcessOrder";
 
 		_methodParameterTypes19 = new String[] {
-				"long", "long", "long", "long", "long", "java.lang.String",
-				"java.lang.String", "java.util.Date", "java.lang.String", "long",
-				"java.lang.String", "int",
-				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName20 = "updateProcessOrder";
-
-		_methodParameterTypes20 = new String[] {
-				"long", "long", "long", "long", "long", "long",
-				"java.lang.String", "java.lang.String", "java.util.Date",
-				"java.lang.String", "long", "java.lang.String", "int",
-				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName21 = "updateProcessOrderResources";
-
-		_methodParameterTypes21 = new String[] {
-				"org.oep.core.processmgt.model.ProcessOrder",
-				"java.lang.String[][]", "java.lang.String[][]",
-				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName22 = "removeProcessOrder";
-
-		_methodParameterTypes22 = new String[] {
 				"org.oep.core.processmgt.model.ProcessOrder"
 			};
 
-		_methodName23 = "removeProcessOrder";
+		_methodName20 = "getBeanIdentifier";
 
-		_methodParameterTypes23 = new String[] { "long" };
+		_methodParameterTypes20 = new String[] {  };
 
-		_methodName24 = "addProcessOrderResources";
+		_methodName21 = "setBeanIdentifier";
 
-		_methodParameterTypes24 = new String[] {
-				"org.oep.core.processmgt.model.ProcessOrder", "boolean",
-				"boolean", "com.liferay.portal.service.ServiceContext"
+		_methodParameterTypes21 = new String[] { "java.lang.String" };
+
+		_methodName23 = "addProcessOrder";
+
+		_methodParameterTypes23 = new String[] {
+				"long", "long", "long", "long", "long", "java.lang.String",
+				"java.lang.String", "java.util.Date", "java.lang.String", "long",
+				"java.lang.String", "long", "int",
+				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName25 = "addProcessOrderResources";
+		_methodName24 = "updateProcessOrder";
+
+		_methodParameterTypes24 = new String[] {
+				"long", "long", "long", "long", "long", "long",
+				"java.lang.String", "java.lang.String", "java.util.Date",
+				"java.lang.String", "long", "java.lang.String", "long", "int",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName25 = "updateProcessOrderResources";
 
 		_methodParameterTypes25 = new String[] {
 				"org.oep.core.processmgt.model.ProcessOrder",
@@ -166,9 +157,34 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName26 = "addProcessOrderResources";
+		_methodName26 = "removeProcessOrder";
 
 		_methodParameterTypes26 = new String[] {
+				"org.oep.core.processmgt.model.ProcessOrder"
+			};
+
+		_methodName27 = "removeProcessOrder";
+
+		_methodParameterTypes27 = new String[] { "long" };
+
+		_methodName28 = "addProcessOrderResources";
+
+		_methodParameterTypes28 = new String[] {
+				"org.oep.core.processmgt.model.ProcessOrder", "boolean",
+				"boolean", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName29 = "addProcessOrderResources";
+
+		_methodParameterTypes29 = new String[] {
+				"org.oep.core.processmgt.model.ProcessOrder",
+				"java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName30 = "addProcessOrderResources";
+
+		_methodParameterTypes30 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -519,6 +535,66 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 	}
 
 	@Override
+	public org.oep.core.processmgt.model.ProcessOrder fetchProcessOrderByUuidAndCompanyId(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName11,
+					_methodParameterTypes11,
+					new Object[] { ClpSerializer.translateInput(uuid), companyId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.processmgt.model.ProcessOrder)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public org.oep.core.processmgt.model.ProcessOrder fetchProcessOrderByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName12,
+					_methodParameterTypes12,
+					new Object[] { ClpSerializer.translateInput(uuid), groupId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.processmgt.model.ProcessOrder)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
 	public org.oep.core.processmgt.model.ProcessOrder getProcessOrder(
 		long processOrderId)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -526,8 +602,8 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName11,
-					_methodParameterTypes11, new Object[] { processOrderId });
+			returnObj = _invokableLocalService.invokeMethod(_methodName13,
+					_methodParameterTypes13, new Object[] { processOrderId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -560,8 +636,8 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName12,
-					_methodParameterTypes12,
+			returnObj = _invokableLocalService.invokeMethod(_methodName14,
+					_methodParameterTypes14,
 					new Object[] { ClpSerializer.translateInput(primaryKeyObj) });
 		}
 		catch (Throwable t) {
@@ -588,14 +664,84 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 	}
 
 	@Override
+	public org.oep.core.processmgt.model.ProcessOrder getProcessOrderByUuidAndCompanyId(
+		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName15,
+					_methodParameterTypes15,
+					new Object[] { ClpSerializer.translateInput(uuid), companyId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.processmgt.model.ProcessOrder)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public org.oep.core.processmgt.model.ProcessOrder getProcessOrderByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName16,
+					_methodParameterTypes16,
+					new Object[] { ClpSerializer.translateInput(uuid), groupId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.processmgt.model.ProcessOrder)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
 	public java.util.List<org.oep.core.processmgt.model.ProcessOrder> getProcessOrders(
 		int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName13,
-					_methodParameterTypes13, new Object[] { start, end });
+			returnObj = _invokableLocalService.invokeMethod(_methodName17,
+					_methodParameterTypes17, new Object[] { start, end });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -622,8 +768,8 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName14,
-					_methodParameterTypes14, new Object[] {  });
+			returnObj = _invokableLocalService.invokeMethod(_methodName18,
+					_methodParameterTypes18, new Object[] {  });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -651,8 +797,8 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName15,
-					_methodParameterTypes15,
+			returnObj = _invokableLocalService.invokeMethod(_methodName19,
+					_methodParameterTypes19,
 					new Object[] { ClpSerializer.translateInput(processOrder) });
 		}
 		catch (Throwable t) {
@@ -679,8 +825,8 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName16,
-					_methodParameterTypes16, new Object[] {  });
+			returnObj = _invokableLocalService.invokeMethod(_methodName20,
+					_methodParameterTypes20, new Object[] {  });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -700,8 +846,8 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 	@Override
 	public void setBeanIdentifier(java.lang.String beanIdentifier) {
 		try {
-			_invokableLocalService.invokeMethod(_methodName17,
-				_methodParameterTypes17,
+			_invokableLocalService.invokeMethod(_methodName21,
+				_methodParameterTypes21,
 				new Object[] { ClpSerializer.translateInput(beanIdentifier) });
 		}
 		catch (Throwable t) {
@@ -728,17 +874,18 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 	public org.oep.core.processmgt.model.ProcessOrder addProcessOrder(
 		long organizationId, long parentProcessOrderId, long dossierId,
 		long dossierProcessId, long dossierStepId,
-		java.lang.String dossierStatus, java.lang.String dossierResume,
+		java.lang.String orderStatus, java.lang.String orderResume,
 		java.util.Date stepDate, java.lang.String stepNote,
-		long assignToUserId, java.lang.String currentCondition, int endState,
+		long assignToUserId, java.lang.String currentCondition,
+		long lastStepTransitionId, int stopRollback,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName19,
-					_methodParameterTypes19,
+			returnObj = _invokableLocalService.invokeMethod(_methodName23,
+					_methodParameterTypes23,
 					new Object[] {
 						organizationId,
 						
@@ -750,9 +897,9 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 						
 					dossierStepId,
 						
-					ClpSerializer.translateInput(dossierStatus),
+					ClpSerializer.translateInput(orderStatus),
 						
-					ClpSerializer.translateInput(dossierResume),
+					ClpSerializer.translateInput(orderResume),
 						
 					ClpSerializer.translateInput(stepDate),
 						
@@ -762,7 +909,9 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 						
 					ClpSerializer.translateInput(currentCondition),
 						
-					endState,
+					lastStepTransitionId,
+						
+					stopRollback,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});
@@ -794,17 +943,18 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 	public org.oep.core.processmgt.model.ProcessOrder updateProcessOrder(
 		long id, long organizationId, long parentProcessOrderId,
 		long dossierId, long dossierProcessId, long dossierStepId,
-		java.lang.String dossierStatus, java.lang.String dossierResume,
+		java.lang.String orderStatus, java.lang.String orderResume,
 		java.util.Date stepDate, java.lang.String stepNote,
-		long assignToUserId, java.lang.String currentCondition, int endState,
+		long assignToUserId, java.lang.String currentCondition,
+		long lastStepTransitionId, int stopRollback,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName20,
-					_methodParameterTypes20,
+			returnObj = _invokableLocalService.invokeMethod(_methodName24,
+					_methodParameterTypes24,
 					new Object[] {
 						id,
 						
@@ -818,9 +968,9 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 						
 					dossierStepId,
 						
-					ClpSerializer.translateInput(dossierStatus),
+					ClpSerializer.translateInput(orderStatus),
 						
-					ClpSerializer.translateInput(dossierResume),
+					ClpSerializer.translateInput(orderResume),
 						
 					ClpSerializer.translateInput(stepDate),
 						
@@ -830,7 +980,9 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 						
 					ClpSerializer.translateInput(currentCondition),
 						
-					endState,
+					lastStepTransitionId,
+						
+					stopRollback,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});
@@ -860,149 +1012,6 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 
 	@Override
 	public void updateProcessOrderResources(
-		org.oep.core.processmgt.model.ProcessOrder processOrder,
-		java.lang.String[] groupPermissions,
-		java.lang.String[] guestPermissions,
-		com.liferay.portal.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		try {
-			_invokableLocalService.invokeMethod(_methodName21,
-				_methodParameterTypes21,
-				new Object[] {
-					ClpSerializer.translateInput(processOrder),
-					
-				ClpSerializer.translateInput(groupPermissions),
-					
-				ClpSerializer.translateInput(guestPermissions),
-					
-				ClpSerializer.translateInput(serviceContext)
-				});
-		}
-		catch (Throwable t) {
-			t = ClpSerializer.translateThrowable(t);
-
-			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
-				throw (com.liferay.portal.kernel.exception.PortalException)t;
-			}
-
-			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-				throw (com.liferay.portal.kernel.exception.SystemException)t;
-			}
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-	}
-
-	@Override
-	public void removeProcessOrder(
-		org.oep.core.processmgt.model.ProcessOrder processOrder)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		try {
-			_invokableLocalService.invokeMethod(_methodName22,
-				_methodParameterTypes22,
-				new Object[] { ClpSerializer.translateInput(processOrder) });
-		}
-		catch (Throwable t) {
-			t = ClpSerializer.translateThrowable(t);
-
-			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
-				throw (com.liferay.portal.kernel.exception.PortalException)t;
-			}
-
-			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-				throw (com.liferay.portal.kernel.exception.SystemException)t;
-			}
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-	}
-
-	@Override
-	public void removeProcessOrder(long id)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		try {
-			_invokableLocalService.invokeMethod(_methodName23,
-				_methodParameterTypes23, new Object[] { id });
-		}
-		catch (Throwable t) {
-			t = ClpSerializer.translateThrowable(t);
-
-			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
-				throw (com.liferay.portal.kernel.exception.PortalException)t;
-			}
-
-			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-				throw (com.liferay.portal.kernel.exception.SystemException)t;
-			}
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-	}
-
-	@Override
-	public void addProcessOrderResources(
-		org.oep.core.processmgt.model.ProcessOrder processOrder,
-		boolean addGroupPermission, boolean addGuestPermission,
-		com.liferay.portal.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		try {
-			_invokableLocalService.invokeMethod(_methodName24,
-				_methodParameterTypes24,
-				new Object[] {
-					ClpSerializer.translateInput(processOrder),
-					
-				addGroupPermission,
-					
-				addGuestPermission,
-					
-				ClpSerializer.translateInput(serviceContext)
-				});
-		}
-		catch (Throwable t) {
-			t = ClpSerializer.translateThrowable(t);
-
-			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
-				throw (com.liferay.portal.kernel.exception.PortalException)t;
-			}
-
-			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-				throw (com.liferay.portal.kernel.exception.SystemException)t;
-			}
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-	}
-
-	@Override
-	public void addProcessOrderResources(
 		org.oep.core.processmgt.model.ProcessOrder processOrder,
 		java.lang.String[] groupPermissions,
 		java.lang.String[] guestPermissions,
@@ -1044,6 +1053,149 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 	}
 
 	@Override
+	public void removeProcessOrder(
+		org.oep.core.processmgt.model.ProcessOrder processOrder)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName26,
+				_methodParameterTypes26,
+				new Object[] { ClpSerializer.translateInput(processOrder) });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void removeProcessOrder(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName27,
+				_methodParameterTypes27, new Object[] { id });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void addProcessOrderResources(
+		org.oep.core.processmgt.model.ProcessOrder processOrder,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName28,
+				_methodParameterTypes28,
+				new Object[] {
+					ClpSerializer.translateInput(processOrder),
+					
+				addGroupPermission,
+					
+				addGuestPermission,
+					
+				ClpSerializer.translateInput(serviceContext)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void addProcessOrderResources(
+		org.oep.core.processmgt.model.ProcessOrder processOrder,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName29,
+				_methodParameterTypes29,
+				new Object[] {
+					ClpSerializer.translateInput(processOrder),
+					
+				ClpSerializer.translateInput(groupPermissions),
+					
+				ClpSerializer.translateInput(guestPermissions),
+					
+				ClpSerializer.translateInput(serviceContext)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
 	public void addProcessOrderResources(long id,
 		java.lang.String[] groupPermissions,
 		java.lang.String[] guestPermissions,
@@ -1051,8 +1203,8 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName26,
-				_methodParameterTypes26,
+			_invokableLocalService.invokeMethod(_methodName30,
+				_methodParameterTypes30,
 				new Object[] {
 					id,
 					
@@ -1121,14 +1273,14 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 	private String[] _methodParameterTypes16;
 	private String _methodName17;
 	private String[] _methodParameterTypes17;
+	private String _methodName18;
+	private String[] _methodParameterTypes18;
 	private String _methodName19;
 	private String[] _methodParameterTypes19;
 	private String _methodName20;
 	private String[] _methodParameterTypes20;
 	private String _methodName21;
 	private String[] _methodParameterTypes21;
-	private String _methodName22;
-	private String[] _methodParameterTypes22;
 	private String _methodName23;
 	private String[] _methodParameterTypes23;
 	private String _methodName24;
@@ -1137,4 +1289,12 @@ public class ProcessOrderLocalServiceClp implements ProcessOrderLocalService {
 	private String[] _methodParameterTypes25;
 	private String _methodName26;
 	private String[] _methodParameterTypes26;
+	private String _methodName27;
+	private String[] _methodParameterTypes27;
+	private String _methodName28;
+	private String[] _methodParameterTypes28;
+	private String _methodName29;
+	private String[] _methodParameterTypes29;
+	private String _methodName30;
+	private String[] _methodParameterTypes30;
 }

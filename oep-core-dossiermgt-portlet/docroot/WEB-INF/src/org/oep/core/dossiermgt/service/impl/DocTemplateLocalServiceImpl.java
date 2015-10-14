@@ -32,14 +32,7 @@ import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.service.ServiceContext;
 
 /**
- * The implementation of the doc template local service.
- *
- * <p>
- * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link org.oep.core.dossiermgt.service.DocTemplateLocalService} interface.
- *
- * <p>
- * This is a local service. Methods of this service will not have security checks based on the propagated JAAS credentials because this service can only be accessed from within the same VM.
- * </p>
+ * API dịch vụ cục bộ quản lý biểu mẫu của mỗi tài liệu.
  *
  * @author trungdk
  * @see org.oep.core.dossiermgt.service.base.DocTemplateLocalServiceBaseImpl
@@ -53,16 +46,19 @@ public class DocTemplateLocalServiceImpl extends DocTemplateLocalServiceBaseImpl
 	 */
 	
 	/** 
-	 * Add doc template
+	 * Thêm một biểu mẫu tài liệu
 	 * 
 	 * Version: OEP 2.0
 	 *  
 	 * History: 
 	 *   DATE        AUTHOR      DESCRIPTION 
 	 *  ------------------------------------------------- 
-	 *  21-September-2015  trungdk    Create new
-	 * @param
-	 * @return: new doc template
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param templateNo mã biểu mẫu
+	 * @param title Tiêu đề biểu mẫu
+	 * @param enTitle Tiêu đề Tiếng Anh của biểu mẫu
+	 * @param fileEntryId Mã tài liệu mẫu bằng module quản lý phương tiện
+	 * @return: biểu mẫu tài liệu mới tạo
 	 */
 	@Indexable(type = IndexableType.REINDEX)	
 	public DocTemplate addDocTemplate(
@@ -88,7 +84,7 @@ public class DocTemplateLocalServiceImpl extends DocTemplateLocalServiceBaseImpl
 		docTemplatePersistence.update(docTemplate);
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Create new dossier proc " + id);
+			_log.info("Tạo mới biểu mẫu với mã " + id);
 		}
 		
 		if (serviceContext.isAddGroupPermissions() || serviceContext.isAddGuestPermissions()) {
@@ -100,6 +96,22 @@ public class DocTemplateLocalServiceImpl extends DocTemplateLocalServiceBaseImpl
 		return getDocTemplate(id);
 	}
 
+	/** 
+	 * Sửa thông tin một biểu mẫu tài liệu
+	 * 
+	 * Version: OEP 2.0
+	 *  
+	 * History: 
+	 *   DATE        AUTHOR      DESCRIPTION 
+	 *  ------------------------------------------------- 
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param id mã tự tăng biểu mẫu
+	 * @param templateNo mã biểu mẫu
+	 * @param title Tiêu đề biểu mẫu
+	 * @param enTitle Tiêu đề Tiếng Anh của biểu mẫu
+	 * @param fileEntryId Mã tài liệu mẫu bằng module quản lý phương tiện
+	 * @return: biểu mẫu tài liệu được sửa
+	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public DocTemplate updateDocTemplate(
 			long id, 
@@ -147,16 +159,53 @@ public class DocTemplateLocalServiceImpl extends DocTemplateLocalServiceBaseImpl
 			guestPermissions);
 	}
 	
+
+	/** 
+	 * Xóa thông tin biểu mẫu tài liệu
+	 * 
+	 * Version: OEP 2.0
+	 *  
+	 * History: 
+	 *   DATE        AUTHOR      DESCRIPTION 
+	 *  ------------------------------------------------- 
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param docTemplate đối tượng biểu mẫu cần xóa
+	 * @return
+	 */
 	public void removeDocTemplate(DocTemplate docTemplate) throws PortalException, SystemException {
 		docTemplatePersistence.remove(docTemplate);
 		resourceLocalService.deleteResource(docTemplate.getCompanyId(), DocTemplate.class.getName(), ResourceConstants.SCOPE_INDIVIDUAL, docTemplate.getDocTemplateId());
 	}
 	
+	/** 
+	 * Xóa thông tin biểu mẫu tài liệu
+	 * 
+	 * Version: OEP 2.0
+	 *  
+	 * History: 
+	 *   DATE        AUTHOR      DESCRIPTION 
+	 *  ------------------------------------------------- 
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param id mã tự tăng biểu mẫu cần xóa
+	 * @return
+	 */
 	public void removeDocTemplate(long id) throws PortalException, SystemException {
 		DocTemplate docTemplate = docTemplatePersistence.findByPrimaryKey(id);
 		removeDocTemplate(docTemplate);
 	}
 	
+	/** 
+	 * Thông tin biểu mẫu tài liệu
+	 * 
+	 * Version: OEP 2.0
+	 *  
+	 * History: 
+	 *   DATE        AUTHOR      DESCRIPTION 
+	 *  ------------------------------------------------- 
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param id mã biểu mẫu tài liệu
+	 * @return
+	 */
 	public DocTemplate getDocTemplate(long id) throws PortalException, SystemException {
 		return docTemplatePersistence.findByPrimaryKey(id);
 	}

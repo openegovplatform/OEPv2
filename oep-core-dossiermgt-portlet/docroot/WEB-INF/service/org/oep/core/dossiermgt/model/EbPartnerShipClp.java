@@ -20,6 +20,7 @@ import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
+import com.liferay.portal.util.PortalUtil;
 
 import org.oep.core.dossiermgt.service.ClpSerializer;
 import org.oep.core.dossiermgt.service.EbPartnerShipLocalServiceUtil;
@@ -76,12 +77,12 @@ public class EbPartnerShipClp extends BaseModelImpl<EbPartnerShip>
 
 		attributes.put("ebPartnerShipId", getEbPartnerShipId());
 		attributes.put("companyId", getCompanyId());
+		attributes.put("userId", getUserId());
+		attributes.put("groupId", getGroupId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("name", getName());
 		attributes.put("cpaId", getCpaId());
 		attributes.put("service", getService());
-		attributes.put("action", getAction());
-		attributes.put("inbound", getInbound());
 
 		return attributes;
 	}
@@ -98,6 +99,18 @@ public class EbPartnerShipClp extends BaseModelImpl<EbPartnerShip>
 
 		if (companyId != null) {
 			setCompanyId(companyId);
+		}
+
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
+		Long groupId = (Long)attributes.get("groupId");
+
+		if (groupId != null) {
+			setGroupId(groupId);
 		}
 
 		Date createDate = (Date)attributes.get("createDate");
@@ -122,18 +135,6 @@ public class EbPartnerShipClp extends BaseModelImpl<EbPartnerShip>
 
 		if (service != null) {
 			setService(service);
-		}
-
-		String action = (String)attributes.get("action");
-
-		if (action != null) {
-			setAction(action);
-		}
-
-		Integer inbound = (Integer)attributes.get("inbound");
-
-		if (inbound != null) {
-			setInbound(inbound);
 		}
 	}
 
@@ -176,6 +177,62 @@ public class EbPartnerShipClp extends BaseModelImpl<EbPartnerShip>
 				Method method = clazz.getMethod("setCompanyId", long.class);
 
 				method.invoke(_ebPartnerShipRemoteModel, companyId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public long getUserId() {
+		return _userId;
+	}
+
+	@Override
+	public void setUserId(long userId) {
+		_userId = userId;
+
+		if (_ebPartnerShipRemoteModel != null) {
+			try {
+				Class<?> clazz = _ebPartnerShipRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setUserId", long.class);
+
+				method.invoke(_ebPartnerShipRemoteModel, userId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getUserUuid() throws SystemException {
+		return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
+	}
+
+	@Override
+	public void setUserUuid(String userUuid) {
+		_userUuid = userUuid;
+	}
+
+	@Override
+	public long getGroupId() {
+		return _groupId;
+	}
+
+	@Override
+	public void setGroupId(long groupId) {
+		_groupId = groupId;
+
+		if (_ebPartnerShipRemoteModel != null) {
+			try {
+				Class<?> clazz = _ebPartnerShipRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setGroupId", long.class);
+
+				method.invoke(_ebPartnerShipRemoteModel, groupId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -275,52 +332,6 @@ public class EbPartnerShipClp extends BaseModelImpl<EbPartnerShip>
 		}
 	}
 
-	@Override
-	public String getAction() {
-		return _action;
-	}
-
-	@Override
-	public void setAction(String action) {
-		_action = action;
-
-		if (_ebPartnerShipRemoteModel != null) {
-			try {
-				Class<?> clazz = _ebPartnerShipRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setAction", String.class);
-
-				method.invoke(_ebPartnerShipRemoteModel, action);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
-	public int getInbound() {
-		return _inbound;
-	}
-
-	@Override
-	public void setInbound(int inbound) {
-		_inbound = inbound;
-
-		if (_ebPartnerShipRemoteModel != null) {
-			try {
-				Class<?> clazz = _ebPartnerShipRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setInbound", int.class);
-
-				method.invoke(_ebPartnerShipRemoteModel, inbound);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
 	public BaseModel<?> getEbPartnerShipRemoteModel() {
 		return _ebPartnerShipRemoteModel;
 	}
@@ -393,12 +404,12 @@ public class EbPartnerShipClp extends BaseModelImpl<EbPartnerShip>
 
 		clone.setEbPartnerShipId(getEbPartnerShipId());
 		clone.setCompanyId(getCompanyId());
+		clone.setUserId(getUserId());
+		clone.setGroupId(getGroupId());
 		clone.setCreateDate(getCreateDate());
 		clone.setName(getName());
 		clone.setCpaId(getCpaId());
 		clone.setService(getService());
-		clone.setAction(getAction());
-		clone.setInbound(getInbound());
 
 		return clone;
 	}
@@ -457,6 +468,10 @@ public class EbPartnerShipClp extends BaseModelImpl<EbPartnerShip>
 		sb.append(getEbPartnerShipId());
 		sb.append(", companyId=");
 		sb.append(getCompanyId());
+		sb.append(", userId=");
+		sb.append(getUserId());
+		sb.append(", groupId=");
+		sb.append(getGroupId());
 		sb.append(", createDate=");
 		sb.append(getCreateDate());
 		sb.append(", name=");
@@ -465,10 +480,6 @@ public class EbPartnerShipClp extends BaseModelImpl<EbPartnerShip>
 		sb.append(getCpaId());
 		sb.append(", service=");
 		sb.append(getService());
-		sb.append(", action=");
-		sb.append(getAction());
-		sb.append(", inbound=");
-		sb.append(getInbound());
 		sb.append("}");
 
 		return sb.toString();
@@ -491,6 +502,14 @@ public class EbPartnerShipClp extends BaseModelImpl<EbPartnerShip>
 		sb.append(getCompanyId());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>userId</column-name><column-value><![CDATA[");
+		sb.append(getUserId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>groupId</column-name><column-value><![CDATA[");
+		sb.append(getGroupId());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>createDate</column-name><column-value><![CDATA[");
 		sb.append(getCreateDate());
 		sb.append("]]></column-value></column>");
@@ -506,14 +525,6 @@ public class EbPartnerShipClp extends BaseModelImpl<EbPartnerShip>
 			"<column><column-name>service</column-name><column-value><![CDATA[");
 		sb.append(getService());
 		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>action</column-name><column-value><![CDATA[");
-		sb.append(getAction());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>inbound</column-name><column-value><![CDATA[");
-		sb.append(getInbound());
-		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -522,12 +533,13 @@ public class EbPartnerShipClp extends BaseModelImpl<EbPartnerShip>
 
 	private long _ebPartnerShipId;
 	private long _companyId;
+	private long _userId;
+	private String _userUuid;
+	private long _groupId;
 	private Date _createDate;
 	private String _name;
 	private String _cpaId;
 	private String _service;
-	private String _action;
-	private int _inbound;
 	private BaseModel<?> _ebPartnerShipRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.dossiermgt.service.ClpSerializer.class;
 }

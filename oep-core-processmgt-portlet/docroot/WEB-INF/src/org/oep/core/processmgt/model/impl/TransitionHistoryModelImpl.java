@@ -76,13 +76,15 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 			{ "daysDoing", Types.INTEGER },
 			{ "daysDelay", Types.INTEGER },
 			{ "startDate", Types.TIMESTAMP },
+			{ "preDossierStatus", Types.VARCHAR },
+			{ "postDossierStatus", Types.VARCHAR },
 			{ "stepTransitionId", Types.BIGINT },
 			{ "preDossierStepId", Types.BIGINT },
 			{ "postDossierStepId", Types.BIGINT },
 			{ "transitionName", Types.VARCHAR },
 			{ "note", Types.VARCHAR }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_transitionhistory (transitionHistoryId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,dossierId LONG,processOrderId LONG,daysDoing INTEGER,daysDelay INTEGER,startDate DATE null,stepTransitionId LONG,preDossierStepId LONG,postDossierStepId LONG,transitionName VARCHAR(75) null,note VARCHAR(75) null)";
+	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_transitionhistory (transitionHistoryId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,dossierId LONG,processOrderId LONG,daysDoing INTEGER,daysDelay INTEGER,startDate DATE null,preDossierStatus VARCHAR(75) null,postDossierStatus VARCHAR(75) null,stepTransitionId LONG,preDossierStepId LONG,postDossierStepId LONG,transitionName VARCHAR(75) null,note VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table oep_processmgt_transitionhistory";
 	public static final String ORDER_BY_JPQL = " ORDER BY transitionHistory.transitionHistoryId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_processmgt_transitionhistory.transitionHistoryId ASC";
@@ -120,6 +122,8 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 		model.setDaysDoing(soapModel.getDaysDoing());
 		model.setDaysDelay(soapModel.getDaysDelay());
 		model.setStartDate(soapModel.getStartDate());
+		model.setPreDossierStatus(soapModel.getPreDossierStatus());
+		model.setPostDossierStatus(soapModel.getPostDossierStatus());
 		model.setStepTransitionId(soapModel.getStepTransitionId());
 		model.setPreDossierStepId(soapModel.getPreDossierStepId());
 		model.setPostDossierStepId(soapModel.getPostDossierStepId());
@@ -200,6 +204,8 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 		attributes.put("daysDoing", getDaysDoing());
 		attributes.put("daysDelay", getDaysDelay());
 		attributes.put("startDate", getStartDate());
+		attributes.put("preDossierStatus", getPreDossierStatus());
+		attributes.put("postDossierStatus", getPostDossierStatus());
 		attributes.put("stepTransitionId", getStepTransitionId());
 		attributes.put("preDossierStepId", getPreDossierStepId());
 		attributes.put("postDossierStepId", getPostDossierStepId());
@@ -269,6 +275,18 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 
 		if (startDate != null) {
 			setStartDate(startDate);
+		}
+
+		String preDossierStatus = (String)attributes.get("preDossierStatus");
+
+		if (preDossierStatus != null) {
+			setPreDossierStatus(preDossierStatus);
+		}
+
+		String postDossierStatus = (String)attributes.get("postDossierStatus");
+
+		if (postDossierStatus != null) {
+			setPostDossierStatus(postDossierStatus);
 		}
 
 		Long stepTransitionId = (Long)attributes.get("stepTransitionId");
@@ -424,6 +442,38 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 
 	@JSON
 	@Override
+	public String getPreDossierStatus() {
+		if (_preDossierStatus == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _preDossierStatus;
+		}
+	}
+
+	@Override
+	public void setPreDossierStatus(String preDossierStatus) {
+		_preDossierStatus = preDossierStatus;
+	}
+
+	@JSON
+	@Override
+	public String getPostDossierStatus() {
+		if (_postDossierStatus == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _postDossierStatus;
+		}
+	}
+
+	@Override
+	public void setPostDossierStatus(String postDossierStatus) {
+		_postDossierStatus = postDossierStatus;
+	}
+
+	@JSON
+	@Override
 	public long getStepTransitionId() {
 		return _stepTransitionId;
 	}
@@ -524,6 +574,8 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 		transitionHistoryImpl.setDaysDoing(getDaysDoing());
 		transitionHistoryImpl.setDaysDelay(getDaysDelay());
 		transitionHistoryImpl.setStartDate(getStartDate());
+		transitionHistoryImpl.setPreDossierStatus(getPreDossierStatus());
+		transitionHistoryImpl.setPostDossierStatus(getPostDossierStatus());
 		transitionHistoryImpl.setStepTransitionId(getStepTransitionId());
 		transitionHistoryImpl.setPreDossierStepId(getPreDossierStepId());
 		transitionHistoryImpl.setPostDossierStepId(getPostDossierStepId());
@@ -619,6 +671,22 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 			transitionHistoryCacheModel.startDate = Long.MIN_VALUE;
 		}
 
+		transitionHistoryCacheModel.preDossierStatus = getPreDossierStatus();
+
+		String preDossierStatus = transitionHistoryCacheModel.preDossierStatus;
+
+		if ((preDossierStatus != null) && (preDossierStatus.length() == 0)) {
+			transitionHistoryCacheModel.preDossierStatus = null;
+		}
+
+		transitionHistoryCacheModel.postDossierStatus = getPostDossierStatus();
+
+		String postDossierStatus = transitionHistoryCacheModel.postDossierStatus;
+
+		if ((postDossierStatus != null) && (postDossierStatus.length() == 0)) {
+			transitionHistoryCacheModel.postDossierStatus = null;
+		}
+
 		transitionHistoryCacheModel.stepTransitionId = getStepTransitionId();
 
 		transitionHistoryCacheModel.preDossierStepId = getPreDossierStepId();
@@ -646,7 +714,7 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(31);
+		StringBundler sb = new StringBundler(35);
 
 		sb.append("{transitionHistoryId=");
 		sb.append(getTransitionHistoryId());
@@ -668,6 +736,10 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 		sb.append(getDaysDelay());
 		sb.append(", startDate=");
 		sb.append(getStartDate());
+		sb.append(", preDossierStatus=");
+		sb.append(getPreDossierStatus());
+		sb.append(", postDossierStatus=");
+		sb.append(getPostDossierStatus());
 		sb.append(", stepTransitionId=");
 		sb.append(getStepTransitionId());
 		sb.append(", preDossierStepId=");
@@ -685,7 +757,7 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(49);
+		StringBundler sb = new StringBundler(55);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.TransitionHistory");
@@ -732,6 +804,14 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 		sb.append(getStartDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>preDossierStatus</column-name><column-value><![CDATA[");
+		sb.append(getPreDossierStatus());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>postDossierStatus</column-name><column-value><![CDATA[");
+		sb.append(getPostDossierStatus());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>stepTransitionId</column-name><column-value><![CDATA[");
 		sb.append(getStepTransitionId());
 		sb.append("]]></column-value></column>");
@@ -772,6 +852,8 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 	private int _daysDoing;
 	private int _daysDelay;
 	private Date _startDate;
+	private String _preDossierStatus;
+	private String _postDossierStatus;
 	private long _stepTransitionId;
 	private long _preDossierStepId;
 	private long _postDossierStepId;

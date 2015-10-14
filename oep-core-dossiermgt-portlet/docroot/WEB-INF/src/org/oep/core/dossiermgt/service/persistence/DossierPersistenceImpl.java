@@ -1828,6 +1828,7 @@ public class DossierPersistenceImpl extends BasePersistenceImpl<Dossier>
 		dossierImpl.setDaysDelay(dossier.getDaysDelay());
 		dossierImpl.setCloseDate(dossier.getCloseDate());
 		dossierImpl.setErrorStatus(dossier.getErrorStatus());
+		dossierImpl.setPendingStatus(dossier.getPendingStatus());
 		dossierImpl.setErrorCode(dossier.getErrorCode());
 		dossierImpl.setDirty(dossier.getDirty());
 

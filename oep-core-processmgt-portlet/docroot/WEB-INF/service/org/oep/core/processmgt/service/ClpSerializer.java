@@ -30,6 +30,7 @@ import org.oep.core.processmgt.model.DossierStep2RoleClp;
 import org.oep.core.processmgt.model.DossierStepClp;
 import org.oep.core.processmgt.model.ProcessOrder2UserClp;
 import org.oep.core.processmgt.model.ProcessOrderClp;
+import org.oep.core.processmgt.model.StatisticByUserClp;
 import org.oep.core.processmgt.model.StepTransitionClp;
 import org.oep.core.processmgt.model.TransitionHistoryClp;
 import org.oep.core.processmgt.model.UserAssignmentClp;
@@ -129,6 +130,10 @@ public class ClpSerializer {
 			return translateInputProcessOrder2User(oldModel);
 		}
 
+		if (oldModelClassName.equals(StatisticByUserClp.class.getName())) {
+			return translateInputStatisticByUser(oldModel);
+		}
+
 		if (oldModelClassName.equals(StepTransitionClp.class.getName())) {
 			return translateInputStepTransition(oldModel);
 		}
@@ -200,6 +205,16 @@ public class ClpSerializer {
 		ProcessOrder2UserClp oldClpModel = (ProcessOrder2UserClp)oldModel;
 
 		BaseModel<?> newModel = oldClpModel.getProcessOrder2UserRemoteModel();
+
+		newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+		return newModel;
+	}
+
+	public static Object translateInputStatisticByUser(BaseModel<?> oldModel) {
+		StatisticByUserClp oldClpModel = (StatisticByUserClp)oldModel;
+
+		BaseModel<?> newModel = oldClpModel.getStatisticByUserRemoteModel();
 
 		newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -404,6 +419,43 @@ public class ClpSerializer {
 		if (oldModelClassName.equals(
 					"org.oep.core.processmgt.model.impl.ProcessOrder2UserImpl")) {
 			return translateOutputProcessOrder2User(oldModel);
+		}
+		else if (oldModelClassName.endsWith("Clp")) {
+			try {
+				ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+				Method getClpSerializerClassMethod = oldModelClass.getMethod(
+						"getClpSerializerClass");
+
+				Class<?> oldClpSerializerClass = (Class<?>)getClpSerializerClassMethod.invoke(oldModel);
+
+				Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+				Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+						BaseModel.class);
+
+				Class<?> oldModelModelClass = oldModel.getModelClass();
+
+				Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+						oldModelModelClass.getSimpleName() + "RemoteModel");
+
+				Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+				BaseModel<?> newModel = (BaseModel<?>)translateOutputMethod.invoke(null,
+						oldRemoteModel);
+
+				return newModel;
+			}
+			catch (Throwable t) {
+				if (_log.isInfoEnabled()) {
+					_log.info("Unable to translate " + oldModelClassName, t);
+				}
+			}
+		}
+
+		if (oldModelClassName.equals(
+					"org.oep.core.processmgt.model.impl.StatisticByUserImpl")) {
+			return translateOutputStatisticByUser(oldModel);
 		}
 		else if (oldModelClassName.endsWith("Clp")) {
 			try {
@@ -655,6 +707,11 @@ public class ClpSerializer {
 		}
 
 		if (className.equals(
+					"org.oep.core.processmgt.NoSuchStatisticByUserException")) {
+			return new org.oep.core.processmgt.NoSuchStatisticByUserException();
+		}
+
+		if (className.equals(
 					"org.oep.core.processmgt.NoSuchStepTransitionException")) {
 			return new org.oep.core.processmgt.NoSuchStepTransitionException();
 		}
@@ -718,6 +775,16 @@ public class ClpSerializer {
 		newModel.setModelAttributes(oldModel.getModelAttributes());
 
 		newModel.setProcessOrder2UserRemoteModel(oldModel);
+
+		return newModel;
+	}
+
+	public static Object translateOutputStatisticByUser(BaseModel<?> oldModel) {
+		StatisticByUserClp newModel = new StatisticByUserClp();
+
+		newModel.setModelAttributes(oldModel.getModelAttributes());
+
+		newModel.setStatisticByUserRemoteModel(oldModel);
 
 		return newModel;
 	}

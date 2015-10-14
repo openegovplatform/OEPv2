@@ -36,8 +36,8 @@ public class DossierProcAgentSoap implements Serializable {
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setDossierProcId(model.getDossierProcId());
-		soapModel.setGovAgentId(model.getGovAgentId());
-		soapModel.setGovAgentName(model.getGovAgentName());
+		soapModel.setGovAgencyId(model.getGovAgencyId());
+		soapModel.setGovAgencyName(model.getGovAgencyName());
 		soapModel.setEbPartnerShipId(model.getEbPartnerShipId());
 
 		return soapModel;
@@ -133,20 +133,20 @@ public class DossierProcAgentSoap implements Serializable {
 		_dossierProcId = dossierProcId;
 	}
 
-	public String getGovAgentId() {
-		return _govAgentId;
+	public String getGovAgencyId() {
+		return _govAgencyId;
 	}
 
-	public void setGovAgentId(String govAgentId) {
-		_govAgentId = govAgentId;
+	public void setGovAgencyId(String govAgencyId) {
+		_govAgencyId = govAgencyId;
 	}
 
-	public String getGovAgentName() {
-		return _govAgentName;
+	public String getGovAgencyName() {
+		return _govAgencyName;
 	}
 
-	public void setGovAgentName(String govAgentName) {
-		_govAgentName = govAgentName;
+	public void setGovAgencyName(String govAgencyName) {
+		_govAgencyName = govAgencyName;
 	}
 
 	public long getEbPartnerShipId() {
@@ -162,7 +162,7 @@ public class DossierProcAgentSoap implements Serializable {
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _dossierProcId;
-	private String _govAgentId;
-	private String _govAgentName;
+	private String _govAgencyId;
+	private String _govAgencyName;
 	private long _ebPartnerShipId;
 }

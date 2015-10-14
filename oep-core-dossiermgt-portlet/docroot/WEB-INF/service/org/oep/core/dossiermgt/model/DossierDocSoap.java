@@ -44,7 +44,9 @@ public class DossierDocSoap implements Serializable {
 		soapModel.setSequenceNo(model.getSequenceNo());
 		soapModel.setDefaultDocTemplateId(model.getDefaultDocTemplateId());
 		soapModel.setValidationType(model.getValidationType());
+		soapModel.setRequirementType(model.getRequirementType());
 		soapModel.setNumberOfFile(model.getNumberOfFile());
+		soapModel.setSplitSubDossier(model.getSplitSubDossier());
 		soapModel.setOnlineForm(model.getOnlineForm());
 
 		return soapModel;
@@ -202,12 +204,28 @@ public class DossierDocSoap implements Serializable {
 		_validationType = validationType;
 	}
 
+	public int getRequirementType() {
+		return _requirementType;
+	}
+
+	public void setRequirementType(int requirementType) {
+		_requirementType = requirementType;
+	}
+
 	public int getNumberOfFile() {
 		return _numberOfFile;
 	}
 
 	public void setNumberOfFile(int numberOfFile) {
 		_numberOfFile = numberOfFile;
+	}
+
+	public int getSplitSubDossier() {
+		return _splitSubDossier;
+	}
+
+	public void setSplitSubDossier(int splitSubDossier) {
+		_splitSubDossier = splitSubDossier;
 	}
 
 	public String getOnlineForm() {
@@ -231,6 +249,8 @@ public class DossierDocSoap implements Serializable {
 	private int _sequenceNo;
 	private long _defaultDocTemplateId;
 	private int _validationType;
+	private int _requirementType;
 	private int _numberOfFile;
+	private int _splitSubDossier;
 	private String _onlineForm;
 }

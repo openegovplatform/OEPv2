@@ -606,4 +606,12 @@ public interface DossierProcLocalService extends BaseLocalService,
 		java.util.Date effectDate, java.util.Date expireDate, int active,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByCompany(
+		long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByCompany(
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

@@ -17,6 +17,7 @@ package org.oep.core.processmgt.model.impl;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSON;
+import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -66,6 +67,7 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 	 */
 	public static final String TABLE_NAME = "oep_processmgt_processorder";
 	public static final Object[][] TABLE_COLUMNS = {
+			{ "uuid_", Types.VARCHAR },
 			{ "processOrderId", Types.BIGINT },
 			{ "userId", Types.BIGINT },
 			{ "groupId", Types.BIGINT },
@@ -77,15 +79,17 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 			{ "dossierId", Types.BIGINT },
 			{ "dossierProcessId", Types.BIGINT },
 			{ "dossierStepId", Types.BIGINT },
-			{ "dossierStatus", Types.VARCHAR },
-			{ "dossierResume", Types.VARCHAR },
+			{ "orderStatus", Types.VARCHAR },
+			{ "orderResume", Types.VARCHAR },
 			{ "stepDate", Types.TIMESTAMP },
 			{ "stepNote", Types.VARCHAR },
 			{ "assignToUserId", Types.BIGINT },
 			{ "currentCondition", Types.VARCHAR },
-			{ "endState", Types.INTEGER }
+			{ "lastStepTransitionId", Types.BIGINT },
+			{ "stopRollback", Types.INTEGER },
+			{ "ebPartnerShipId", Types.BIGINT }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_processorder (processOrderId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,organizationId LONG,parentProcessOrderId LONG,dossierId LONG,dossierProcessId LONG,dossierStepId LONG,dossierStatus VARCHAR(75) null,dossierResume VARCHAR(75) null,stepDate DATE null,stepNote VARCHAR(75) null,assignToUserId LONG,currentCondition VARCHAR(75) null,endState INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_processorder (uuid_ VARCHAR(75) null,processOrderId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,organizationId LONG,parentProcessOrderId LONG,dossierId LONG,dossierProcessId LONG,dossierStepId LONG,orderStatus VARCHAR(75) null,orderResume VARCHAR(75) null,stepDate DATE null,stepNote VARCHAR(75) null,assignToUserId LONG,currentCondition VARCHAR(75) null,lastStepTransitionId LONG,stopRollback INTEGER,ebPartnerShipId LONG)";
 	public static final String TABLE_SQL_DROP = "drop table oep_processmgt_processorder";
 	public static final String ORDER_BY_JPQL = " ORDER BY processOrder.processOrderId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_processmgt_processorder.processOrderId ASC";
@@ -98,7 +102,13 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.finder.cache.enabled.org.oep.core.processmgt.model.ProcessOrder"),
 			true);
-	public static final boolean COLUMN_BITMASK_ENABLED = false;
+	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+				"value.object.column.bitmask.enabled.org.oep.core.processmgt.model.ProcessOrder"),
+			true);
+	public static long COMPANYID_COLUMN_BITMASK = 1L;
+	public static long GROUPID_COLUMN_BITMASK = 2L;
+	public static long UUID_COLUMN_BITMASK = 4L;
+	public static long PROCESSORDERID_COLUMN_BITMASK = 8L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -113,6 +123,7 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 
 		ProcessOrder model = new ProcessOrderImpl();
 
+		model.setUuid(soapModel.getUuid());
 		model.setProcessOrderId(soapModel.getProcessOrderId());
 		model.setUserId(soapModel.getUserId());
 		model.setGroupId(soapModel.getGroupId());
@@ -124,13 +135,15 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 		model.setDossierId(soapModel.getDossierId());
 		model.setDossierProcessId(soapModel.getDossierProcessId());
 		model.setDossierStepId(soapModel.getDossierStepId());
-		model.setDossierStatus(soapModel.getDossierStatus());
-		model.setDossierResume(soapModel.getDossierResume());
+		model.setOrderStatus(soapModel.getOrderStatus());
+		model.setOrderResume(soapModel.getOrderResume());
 		model.setStepDate(soapModel.getStepDate());
 		model.setStepNote(soapModel.getStepNote());
 		model.setAssignToUserId(soapModel.getAssignToUserId());
 		model.setCurrentCondition(soapModel.getCurrentCondition());
-		model.setEndState(soapModel.getEndState());
+		model.setLastStepTransitionId(soapModel.getLastStepTransitionId());
+		model.setStopRollback(soapModel.getStopRollback());
+		model.setEbPartnerShipId(soapModel.getEbPartnerShipId());
 
 		return model;
 	}
@@ -195,6 +208,7 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
+		attributes.put("uuid", getUuid());
 		attributes.put("processOrderId", getProcessOrderId());
 		attributes.put("userId", getUserId());
 		attributes.put("groupId", getGroupId());
@@ -206,19 +220,27 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 		attributes.put("dossierId", getDossierId());
 		attributes.put("dossierProcessId", getDossierProcessId());
 		attributes.put("dossierStepId", getDossierStepId());
-		attributes.put("dossierStatus", getDossierStatus());
-		attributes.put("dossierResume", getDossierResume());
+		attributes.put("orderStatus", getOrderStatus());
+		attributes.put("orderResume", getOrderResume());
 		attributes.put("stepDate", getStepDate());
 		attributes.put("stepNote", getStepNote());
 		attributes.put("assignToUserId", getAssignToUserId());
 		attributes.put("currentCondition", getCurrentCondition());
-		attributes.put("endState", getEndState());
+		attributes.put("lastStepTransitionId", getLastStepTransitionId());
+		attributes.put("stopRollback", getStopRollback());
+		attributes.put("ebPartnerShipId", getEbPartnerShipId());
 
 		return attributes;
 	}
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
+		String uuid = (String)attributes.get("uuid");
+
+		if (uuid != null) {
+			setUuid(uuid);
+		}
+
 		Long processOrderId = (Long)attributes.get("processOrderId");
 
 		if (processOrderId != null) {
@@ -285,16 +307,16 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 			setDossierStepId(dossierStepId);
 		}
 
-		String dossierStatus = (String)attributes.get("dossierStatus");
+		String orderStatus = (String)attributes.get("orderStatus");
 
-		if (dossierStatus != null) {
-			setDossierStatus(dossierStatus);
+		if (orderStatus != null) {
+			setOrderStatus(orderStatus);
 		}
 
-		String dossierResume = (String)attributes.get("dossierResume");
+		String orderResume = (String)attributes.get("orderResume");
 
-		if (dossierResume != null) {
-			setDossierResume(dossierResume);
+		if (orderResume != null) {
+			setOrderResume(orderResume);
 		}
 
 		Date stepDate = (Date)attributes.get("stepDate");
@@ -321,11 +343,47 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 			setCurrentCondition(currentCondition);
 		}
 
-		Integer endState = (Integer)attributes.get("endState");
+		Long lastStepTransitionId = (Long)attributes.get("lastStepTransitionId");
 
-		if (endState != null) {
-			setEndState(endState);
+		if (lastStepTransitionId != null) {
+			setLastStepTransitionId(lastStepTransitionId);
 		}
+
+		Integer stopRollback = (Integer)attributes.get("stopRollback");
+
+		if (stopRollback != null) {
+			setStopRollback(stopRollback);
+		}
+
+		Long ebPartnerShipId = (Long)attributes.get("ebPartnerShipId");
+
+		if (ebPartnerShipId != null) {
+			setEbPartnerShipId(ebPartnerShipId);
+		}
+	}
+
+	@JSON
+	@Override
+	public String getUuid() {
+		if (_uuid == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _uuid;
+		}
+	}
+
+	@Override
+	public void setUuid(String uuid) {
+		if (_originalUuid == null) {
+			_originalUuid = _uuid;
+		}
+
+		_uuid = uuid;
+	}
+
+	public String getOriginalUuid() {
+		return GetterUtil.getString(_originalUuid);
 	}
 
 	@JSON
@@ -368,7 +426,19 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 
 	@Override
 	public void setGroupId(long groupId) {
+		_columnBitmask |= GROUPID_COLUMN_BITMASK;
+
+		if (!_setOriginalGroupId) {
+			_setOriginalGroupId = true;
+
+			_originalGroupId = _groupId;
+		}
+
 		_groupId = groupId;
+	}
+
+	public long getOriginalGroupId() {
+		return _originalGroupId;
 	}
 
 	@JSON
@@ -379,7 +449,19 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 
 	@Override
 	public void setCompanyId(long companyId) {
+		_columnBitmask |= COMPANYID_COLUMN_BITMASK;
+
+		if (!_setOriginalCompanyId) {
+			_setOriginalCompanyId = true;
+
+			_originalCompanyId = _companyId;
+		}
+
 		_companyId = companyId;
+	}
+
+	public long getOriginalCompanyId() {
+		return _originalCompanyId;
 	}
 
 	@JSON
@@ -461,34 +543,34 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 
 	@JSON
 	@Override
-	public String getDossierStatus() {
-		if (_dossierStatus == null) {
+	public String getOrderStatus() {
+		if (_orderStatus == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _dossierStatus;
+			return _orderStatus;
 		}
 	}
 
 	@Override
-	public void setDossierStatus(String dossierStatus) {
-		_dossierStatus = dossierStatus;
+	public void setOrderStatus(String orderStatus) {
+		_orderStatus = orderStatus;
 	}
 
 	@JSON
 	@Override
-	public String getDossierResume() {
-		if (_dossierResume == null) {
+	public String getOrderResume() {
+		if (_orderResume == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _dossierResume;
+			return _orderResume;
 		}
 	}
 
 	@Override
-	public void setDossierResume(String dossierResume) {
-		_dossierResume = dossierResume;
+	public void setOrderResume(String orderResume) {
+		_orderResume = orderResume;
 	}
 
 	@JSON
@@ -558,13 +640,45 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 
 	@JSON
 	@Override
-	public int getEndState() {
-		return _endState;
+	public long getLastStepTransitionId() {
+		return _lastStepTransitionId;
 	}
 
 	@Override
-	public void setEndState(int endState) {
-		_endState = endState;
+	public void setLastStepTransitionId(long lastStepTransitionId) {
+		_lastStepTransitionId = lastStepTransitionId;
+	}
+
+	@JSON
+	@Override
+	public int getStopRollback() {
+		return _stopRollback;
+	}
+
+	@Override
+	public void setStopRollback(int stopRollback) {
+		_stopRollback = stopRollback;
+	}
+
+	@JSON
+	@Override
+	public long getEbPartnerShipId() {
+		return _ebPartnerShipId;
+	}
+
+	@Override
+	public void setEbPartnerShipId(long ebPartnerShipId) {
+		_ebPartnerShipId = ebPartnerShipId;
+	}
+
+	@Override
+	public StagedModelType getStagedModelType() {
+		return new StagedModelType(PortalUtil.getClassNameId(
+				ProcessOrder.class.getName()));
+	}
+
+	public long getColumnBitmask() {
+		return _columnBitmask;
 	}
 
 	@Override
@@ -594,6 +708,7 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 	public Object clone() {
 		ProcessOrderImpl processOrderImpl = new ProcessOrderImpl();
 
+		processOrderImpl.setUuid(getUuid());
 		processOrderImpl.setProcessOrderId(getProcessOrderId());
 		processOrderImpl.setUserId(getUserId());
 		processOrderImpl.setGroupId(getGroupId());
@@ -605,13 +720,15 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 		processOrderImpl.setDossierId(getDossierId());
 		processOrderImpl.setDossierProcessId(getDossierProcessId());
 		processOrderImpl.setDossierStepId(getDossierStepId());
-		processOrderImpl.setDossierStatus(getDossierStatus());
-		processOrderImpl.setDossierResume(getDossierResume());
+		processOrderImpl.setOrderStatus(getOrderStatus());
+		processOrderImpl.setOrderResume(getOrderResume());
 		processOrderImpl.setStepDate(getStepDate());
 		processOrderImpl.setStepNote(getStepNote());
 		processOrderImpl.setAssignToUserId(getAssignToUserId());
 		processOrderImpl.setCurrentCondition(getCurrentCondition());
-		processOrderImpl.setEndState(getEndState());
+		processOrderImpl.setLastStepTransitionId(getLastStepTransitionId());
+		processOrderImpl.setStopRollback(getStopRollback());
+		processOrderImpl.setEbPartnerShipId(getEbPartnerShipId());
 
 		processOrderImpl.resetOriginalValues();
 
@@ -662,11 +779,32 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 
 	@Override
 	public void resetOriginalValues() {
+		ProcessOrderModelImpl processOrderModelImpl = this;
+
+		processOrderModelImpl._originalUuid = processOrderModelImpl._uuid;
+
+		processOrderModelImpl._originalGroupId = processOrderModelImpl._groupId;
+
+		processOrderModelImpl._setOriginalGroupId = false;
+
+		processOrderModelImpl._originalCompanyId = processOrderModelImpl._companyId;
+
+		processOrderModelImpl._setOriginalCompanyId = false;
+
+		processOrderModelImpl._columnBitmask = 0;
 	}
 
 	@Override
 	public CacheModel<ProcessOrder> toCacheModel() {
 		ProcessOrderCacheModel processOrderCacheModel = new ProcessOrderCacheModel();
+
+		processOrderCacheModel.uuid = getUuid();
+
+		String uuid = processOrderCacheModel.uuid;
+
+		if ((uuid != null) && (uuid.length() == 0)) {
+			processOrderCacheModel.uuid = null;
+		}
 
 		processOrderCacheModel.processOrderId = getProcessOrderId();
 
@@ -704,20 +842,20 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 
 		processOrderCacheModel.dossierStepId = getDossierStepId();
 
-		processOrderCacheModel.dossierStatus = getDossierStatus();
+		processOrderCacheModel.orderStatus = getOrderStatus();
 
-		String dossierStatus = processOrderCacheModel.dossierStatus;
+		String orderStatus = processOrderCacheModel.orderStatus;
 
-		if ((dossierStatus != null) && (dossierStatus.length() == 0)) {
-			processOrderCacheModel.dossierStatus = null;
+		if ((orderStatus != null) && (orderStatus.length() == 0)) {
+			processOrderCacheModel.orderStatus = null;
 		}
 
-		processOrderCacheModel.dossierResume = getDossierResume();
+		processOrderCacheModel.orderResume = getOrderResume();
 
-		String dossierResume = processOrderCacheModel.dossierResume;
+		String orderResume = processOrderCacheModel.orderResume;
 
-		if ((dossierResume != null) && (dossierResume.length() == 0)) {
-			processOrderCacheModel.dossierResume = null;
+		if ((orderResume != null) && (orderResume.length() == 0)) {
+			processOrderCacheModel.orderResume = null;
 		}
 
 		Date stepDate = getStepDate();
@@ -747,16 +885,22 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 			processOrderCacheModel.currentCondition = null;
 		}
 
-		processOrderCacheModel.endState = getEndState();
+		processOrderCacheModel.lastStepTransitionId = getLastStepTransitionId();
+
+		processOrderCacheModel.stopRollback = getStopRollback();
+
+		processOrderCacheModel.ebPartnerShipId = getEbPartnerShipId();
 
 		return processOrderCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(43);
 
-		sb.append("{processOrderId=");
+		sb.append("{uuid=");
+		sb.append(getUuid());
+		sb.append(", processOrderId=");
 		sb.append(getProcessOrderId());
 		sb.append(", userId=");
 		sb.append(getUserId());
@@ -778,10 +922,10 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 		sb.append(getDossierProcessId());
 		sb.append(", dossierStepId=");
 		sb.append(getDossierStepId());
-		sb.append(", dossierStatus=");
-		sb.append(getDossierStatus());
-		sb.append(", dossierResume=");
-		sb.append(getDossierResume());
+		sb.append(", orderStatus=");
+		sb.append(getOrderStatus());
+		sb.append(", orderResume=");
+		sb.append(getOrderResume());
 		sb.append(", stepDate=");
 		sb.append(getStepDate());
 		sb.append(", stepNote=");
@@ -790,8 +934,12 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 		sb.append(getAssignToUserId());
 		sb.append(", currentCondition=");
 		sb.append(getCurrentCondition());
-		sb.append(", endState=");
-		sb.append(getEndState());
+		sb.append(", lastStepTransitionId=");
+		sb.append(getLastStepTransitionId());
+		sb.append(", stopRollback=");
+		sb.append(getStopRollback());
+		sb.append(", ebPartnerShipId=");
+		sb.append(getEbPartnerShipId());
 		sb.append("}");
 
 		return sb.toString();
@@ -799,12 +947,16 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(58);
+		StringBundler sb = new StringBundler(67);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.ProcessOrder");
 		sb.append("</model-name>");
 
+		sb.append(
+			"<column><column-name>uuid</column-name><column-value><![CDATA[");
+		sb.append(getUuid());
+		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>processOrderId</column-name><column-value><![CDATA[");
 		sb.append(getProcessOrderId());
@@ -850,12 +1002,12 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 		sb.append(getDossierStepId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>dossierStatus</column-name><column-value><![CDATA[");
-		sb.append(getDossierStatus());
+			"<column><column-name>orderStatus</column-name><column-value><![CDATA[");
+		sb.append(getOrderStatus());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>dossierResume</column-name><column-value><![CDATA[");
-		sb.append(getDossierResume());
+			"<column><column-name>orderResume</column-name><column-value><![CDATA[");
+		sb.append(getOrderResume());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>stepDate</column-name><column-value><![CDATA[");
@@ -874,8 +1026,16 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 		sb.append(getCurrentCondition());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>endState</column-name><column-value><![CDATA[");
-		sb.append(getEndState());
+			"<column><column-name>lastStepTransitionId</column-name><column-value><![CDATA[");
+		sb.append(getLastStepTransitionId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>stopRollback</column-name><column-value><![CDATA[");
+		sb.append(getStopRollback());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>ebPartnerShipId</column-name><column-value><![CDATA[");
+		sb.append(getEbPartnerShipId());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -887,11 +1047,17 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			ProcessOrder.class
 		};
+	private String _uuid;
+	private String _originalUuid;
 	private long _processOrderId;
 	private long _userId;
 	private String _userUuid;
 	private long _groupId;
+	private long _originalGroupId;
+	private boolean _setOriginalGroupId;
 	private long _companyId;
+	private long _originalCompanyId;
+	private boolean _setOriginalCompanyId;
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _organizationId;
@@ -899,13 +1065,16 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 	private long _dossierId;
 	private long _dossierProcessId;
 	private long _dossierStepId;
-	private String _dossierStatus;
-	private String _dossierResume;
+	private String _orderStatus;
+	private String _orderResume;
 	private Date _stepDate;
 	private String _stepNote;
 	private long _assignToUserId;
 	private String _assignToUserUuid;
 	private String _currentCondition;
-	private int _endState;
+	private long _lastStepTransitionId;
+	private int _stopRollback;
+	private long _ebPartnerShipId;
+	private long _columnBitmask;
 	private ProcessOrder _escapedModel;
 }

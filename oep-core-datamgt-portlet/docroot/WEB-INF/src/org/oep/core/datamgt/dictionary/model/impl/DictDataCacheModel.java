@@ -37,12 +37,16 @@ import java.util.Date;
 public class DictDataCacheModel implements CacheModel<DictData>, Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(35);
+		StringBundler sb = new StringBundler(39);
 
 		sb.append("{dictDataId=");
 		sb.append(dictDataId);
 		sb.append(", companyId=");
 		sb.append(companyId);
+		sb.append(", userId=");
+		sb.append(userId);
+		sb.append(", groupId=");
+		sb.append(groupId);
 		sb.append(", createDate=");
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
@@ -84,6 +88,8 @@ public class DictDataCacheModel implements CacheModel<DictData>, Externalizable 
 
 		dictDataImpl.setDictDataId(dictDataId);
 		dictDataImpl.setCompanyId(companyId);
+		dictDataImpl.setUserId(userId);
+		dictDataImpl.setGroupId(groupId);
 
 		if (createDate == Long.MIN_VALUE) {
 			dictDataImpl.setCreateDate(null);
@@ -189,6 +195,8 @@ public class DictDataCacheModel implements CacheModel<DictData>, Externalizable 
 	public void readExternal(ObjectInput objectInput) throws IOException {
 		dictDataId = objectInput.readLong();
 		companyId = objectInput.readLong();
+		userId = objectInput.readLong();
+		groupId = objectInput.readLong();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
 		collectionName = objectInput.readUTF();
@@ -211,6 +219,8 @@ public class DictDataCacheModel implements CacheModel<DictData>, Externalizable 
 		throws IOException {
 		objectOutput.writeLong(dictDataId);
 		objectOutput.writeLong(companyId);
+		objectOutput.writeLong(userId);
+		objectOutput.writeLong(groupId);
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
 
@@ -286,6 +296,8 @@ public class DictDataCacheModel implements CacheModel<DictData>, Externalizable 
 
 	public long dictDataId;
 	public long companyId;
+	public long userId;
+	public long groupId;
 	public long createDate;
 	public long modifiedDate;
 	public String collectionName;

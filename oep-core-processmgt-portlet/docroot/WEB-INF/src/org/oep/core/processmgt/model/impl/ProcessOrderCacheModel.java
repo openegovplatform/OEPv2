@@ -38,9 +38,11 @@ public class ProcessOrderCacheModel implements CacheModel<ProcessOrder>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(43);
 
-		sb.append("{processOrderId=");
+		sb.append("{uuid=");
+		sb.append(uuid);
+		sb.append(", processOrderId=");
 		sb.append(processOrderId);
 		sb.append(", userId=");
 		sb.append(userId);
@@ -62,10 +64,10 @@ public class ProcessOrderCacheModel implements CacheModel<ProcessOrder>,
 		sb.append(dossierProcessId);
 		sb.append(", dossierStepId=");
 		sb.append(dossierStepId);
-		sb.append(", dossierStatus=");
-		sb.append(dossierStatus);
-		sb.append(", dossierResume=");
-		sb.append(dossierResume);
+		sb.append(", orderStatus=");
+		sb.append(orderStatus);
+		sb.append(", orderResume=");
+		sb.append(orderResume);
 		sb.append(", stepDate=");
 		sb.append(stepDate);
 		sb.append(", stepNote=");
@@ -74,8 +76,12 @@ public class ProcessOrderCacheModel implements CacheModel<ProcessOrder>,
 		sb.append(assignToUserId);
 		sb.append(", currentCondition=");
 		sb.append(currentCondition);
-		sb.append(", endState=");
-		sb.append(endState);
+		sb.append(", lastStepTransitionId=");
+		sb.append(lastStepTransitionId);
+		sb.append(", stopRollback=");
+		sb.append(stopRollback);
+		sb.append(", ebPartnerShipId=");
+		sb.append(ebPartnerShipId);
 		sb.append("}");
 
 		return sb.toString();
@@ -84,6 +90,13 @@ public class ProcessOrderCacheModel implements CacheModel<ProcessOrder>,
 	@Override
 	public ProcessOrder toEntityModel() {
 		ProcessOrderImpl processOrderImpl = new ProcessOrderImpl();
+
+		if (uuid == null) {
+			processOrderImpl.setUuid(StringPool.BLANK);
+		}
+		else {
+			processOrderImpl.setUuid(uuid);
+		}
 
 		processOrderImpl.setProcessOrderId(processOrderId);
 		processOrderImpl.setUserId(userId);
@@ -110,18 +123,18 @@ public class ProcessOrderCacheModel implements CacheModel<ProcessOrder>,
 		processOrderImpl.setDossierProcessId(dossierProcessId);
 		processOrderImpl.setDossierStepId(dossierStepId);
 
-		if (dossierStatus == null) {
-			processOrderImpl.setDossierStatus(StringPool.BLANK);
+		if (orderStatus == null) {
+			processOrderImpl.setOrderStatus(StringPool.BLANK);
 		}
 		else {
-			processOrderImpl.setDossierStatus(dossierStatus);
+			processOrderImpl.setOrderStatus(orderStatus);
 		}
 
-		if (dossierResume == null) {
-			processOrderImpl.setDossierResume(StringPool.BLANK);
+		if (orderResume == null) {
+			processOrderImpl.setOrderResume(StringPool.BLANK);
 		}
 		else {
-			processOrderImpl.setDossierResume(dossierResume);
+			processOrderImpl.setOrderResume(orderResume);
 		}
 
 		if (stepDate == Long.MIN_VALUE) {
@@ -147,7 +160,9 @@ public class ProcessOrderCacheModel implements CacheModel<ProcessOrder>,
 			processOrderImpl.setCurrentCondition(currentCondition);
 		}
 
-		processOrderImpl.setEndState(endState);
+		processOrderImpl.setLastStepTransitionId(lastStepTransitionId);
+		processOrderImpl.setStopRollback(stopRollback);
+		processOrderImpl.setEbPartnerShipId(ebPartnerShipId);
 
 		processOrderImpl.resetOriginalValues();
 
@@ -156,6 +171,7 @@ public class ProcessOrderCacheModel implements CacheModel<ProcessOrder>,
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
+		uuid = objectInput.readUTF();
 		processOrderId = objectInput.readLong();
 		userId = objectInput.readLong();
 		groupId = objectInput.readLong();
@@ -167,18 +183,27 @@ public class ProcessOrderCacheModel implements CacheModel<ProcessOrder>,
 		dossierId = objectInput.readLong();
 		dossierProcessId = objectInput.readLong();
 		dossierStepId = objectInput.readLong();
-		dossierStatus = objectInput.readUTF();
-		dossierResume = objectInput.readUTF();
+		orderStatus = objectInput.readUTF();
+		orderResume = objectInput.readUTF();
 		stepDate = objectInput.readLong();
 		stepNote = objectInput.readUTF();
 		assignToUserId = objectInput.readLong();
 		currentCondition = objectInput.readUTF();
-		endState = objectInput.readInt();
+		lastStepTransitionId = objectInput.readLong();
+		stopRollback = objectInput.readInt();
+		ebPartnerShipId = objectInput.readLong();
 	}
 
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
+		if (uuid == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(uuid);
+		}
+
 		objectOutput.writeLong(processOrderId);
 		objectOutput.writeLong(userId);
 		objectOutput.writeLong(groupId);
@@ -191,18 +216,18 @@ public class ProcessOrderCacheModel implements CacheModel<ProcessOrder>,
 		objectOutput.writeLong(dossierProcessId);
 		objectOutput.writeLong(dossierStepId);
 
-		if (dossierStatus == null) {
+		if (orderStatus == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(dossierStatus);
+			objectOutput.writeUTF(orderStatus);
 		}
 
-		if (dossierResume == null) {
+		if (orderResume == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(dossierResume);
+			objectOutput.writeUTF(orderResume);
 		}
 
 		objectOutput.writeLong(stepDate);
@@ -223,9 +248,12 @@ public class ProcessOrderCacheModel implements CacheModel<ProcessOrder>,
 			objectOutput.writeUTF(currentCondition);
 		}
 
-		objectOutput.writeInt(endState);
+		objectOutput.writeLong(lastStepTransitionId);
+		objectOutput.writeInt(stopRollback);
+		objectOutput.writeLong(ebPartnerShipId);
 	}
 
+	public String uuid;
 	public long processOrderId;
 	public long userId;
 	public long groupId;
@@ -237,11 +265,13 @@ public class ProcessOrderCacheModel implements CacheModel<ProcessOrder>,
 	public long dossierId;
 	public long dossierProcessId;
 	public long dossierStepId;
-	public String dossierStatus;
-	public String dossierResume;
+	public String orderStatus;
+	public String orderResume;
 	public long stepDate;
 	public String stepNote;
 	public long assignToUserId;
 	public String currentCondition;
-	public int endState;
+	public long lastStepTransitionId;
+	public int stopRollback;
+	public long ebPartnerShipId;
 }

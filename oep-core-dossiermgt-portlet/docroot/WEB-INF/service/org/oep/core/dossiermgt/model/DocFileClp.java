@@ -88,6 +88,7 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 		attributes.put("docFileVersionId", getDocFileVersionId());
 		attributes.put("docName", getDocName());
 		attributes.put("note", getNote());
+		attributes.put("premier", getPremier());
 
 		return attributes;
 	}
@@ -170,6 +171,12 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 
 		if (note != null) {
 			setNote(note);
+		}
+
+		Integer premier = (Integer)attributes.get("premier");
+
+		if (premier != null) {
+			setPremier(premier);
 		}
 	}
 
@@ -484,6 +491,29 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 	}
 
 	@Override
+	public int getPremier() {
+		return _premier;
+	}
+
+	@Override
+	public void setPremier(int premier) {
+		_premier = premier;
+
+		if (_docFileRemoteModel != null) {
+			try {
+				Class<?> clazz = _docFileRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setPremier", int.class);
+
+				method.invoke(_docFileRemoteModel, premier);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
 	public StagedModelType getStagedModelType() {
 		return new StagedModelType(PortalUtil.getClassNameId(
 				DocFile.class.getName()));
@@ -571,6 +601,7 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 		clone.setDocFileVersionId(getDocFileVersionId());
 		clone.setDocName(getDocName());
 		clone.setNote(getNote());
+		clone.setPremier(getPremier());
 
 		return clone;
 	}
@@ -623,7 +654,7 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(27);
+		StringBundler sb = new StringBundler(29);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
@@ -651,6 +682,8 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 		sb.append(getDocName());
 		sb.append(", note=");
 		sb.append(getNote());
+		sb.append(", premier=");
+		sb.append(getPremier());
 		sb.append("}");
 
 		return sb.toString();
@@ -658,7 +691,7 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(43);
+		StringBundler sb = new StringBundler(46);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.DocFile");
@@ -716,6 +749,10 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 			"<column><column-name>note</column-name><column-value><![CDATA[");
 		sb.append(getNote());
 		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>premier</column-name><column-value><![CDATA[");
+		sb.append(getPremier());
+		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -736,6 +773,7 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 	private long _docFileVersionId;
 	private String _docName;
 	private String _note;
+	private int _premier;
 	private BaseModel<?> _docFileRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.dossiermgt.service.ClpSerializer.class;
 }

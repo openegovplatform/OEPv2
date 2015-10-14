@@ -22,26 +22,30 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.service.BaseServiceImpl;
 import com.liferay.portal.service.persistence.UserPersistence;
 
+import com.liferay.portlet.documentlibrary.service.persistence.DLFileEntryPersistence;
+
 import org.oep.core.dossiermgt.model.PaymentFile;
 import org.oep.core.dossiermgt.service.PaymentFileService;
 import org.oep.core.dossiermgt.service.persistence.DocFilePersistence;
 import org.oep.core.dossiermgt.service.persistence.DocFileVersionPersistence;
 import org.oep.core.dossiermgt.service.persistence.DocTemplateFinder;
 import org.oep.core.dossiermgt.service.persistence.DocTemplatePersistence;
-import org.oep.core.dossiermgt.service.persistence.DossierDoc2TemplatePersistence;
 import org.oep.core.dossiermgt.service.persistence.DossierDocPersistence;
 import org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePersistence;
 import org.oep.core.dossiermgt.service.persistence.DossierFolderPersistence;
 import org.oep.core.dossiermgt.service.persistence.DossierPersistence;
-import org.oep.core.dossiermgt.service.persistence.DossierProcAgencyPersistence;
+import org.oep.core.dossiermgt.service.persistence.DossierProcAgentPersistence;
 import org.oep.core.dossiermgt.service.persistence.DossierProcFinder;
 import org.oep.core.dossiermgt.service.persistence.DossierProcPersistence;
 import org.oep.core.dossiermgt.service.persistence.EbMessagePersistence;
+import org.oep.core.dossiermgt.service.persistence.EbPartnerShipFinder;
 import org.oep.core.dossiermgt.service.persistence.EbPartnerShipPersistence;
 import org.oep.core.dossiermgt.service.persistence.PaymentConfigPersistence;
 import org.oep.core.dossiermgt.service.persistence.PaymentFilePersistence;
 import org.oep.core.dossiermgt.service.persistence.PaymentRequestPersistence;
 import org.oep.core.dossiermgt.service.persistence.ProfileDataPersistence;
+import org.oep.core.dossiermgt.service.persistence.StatisticByAgencyPersistence;
+import org.oep.core.dossiermgt.service.persistence.StatisticByDayPersistence;
 
 import javax.sql.DataSource;
 
@@ -367,63 +371,6 @@ public abstract class PaymentFileServiceBaseImpl extends BaseServiceImpl
 	}
 
 	/**
-	 * Returns the dossier doc2 template local service.
-	 *
-	 * @return the dossier doc2 template local service
-	 */
-	public org.oep.core.dossiermgt.service.DossierDoc2TemplateLocalService getDossierDoc2TemplateLocalService() {
-		return dossierDoc2TemplateLocalService;
-	}
-
-	/**
-	 * Sets the dossier doc2 template local service.
-	 *
-	 * @param dossierDoc2TemplateLocalService the dossier doc2 template local service
-	 */
-	public void setDossierDoc2TemplateLocalService(
-		org.oep.core.dossiermgt.service.DossierDoc2TemplateLocalService dossierDoc2TemplateLocalService) {
-		this.dossierDoc2TemplateLocalService = dossierDoc2TemplateLocalService;
-	}
-
-	/**
-	 * Returns the dossier doc2 template remote service.
-	 *
-	 * @return the dossier doc2 template remote service
-	 */
-	public org.oep.core.dossiermgt.service.DossierDoc2TemplateService getDossierDoc2TemplateService() {
-		return dossierDoc2TemplateService;
-	}
-
-	/**
-	 * Sets the dossier doc2 template remote service.
-	 *
-	 * @param dossierDoc2TemplateService the dossier doc2 template remote service
-	 */
-	public void setDossierDoc2TemplateService(
-		org.oep.core.dossiermgt.service.DossierDoc2TemplateService dossierDoc2TemplateService) {
-		this.dossierDoc2TemplateService = dossierDoc2TemplateService;
-	}
-
-	/**
-	 * Returns the dossier doc2 template persistence.
-	 *
-	 * @return the dossier doc2 template persistence
-	 */
-	public DossierDoc2TemplatePersistence getDossierDoc2TemplatePersistence() {
-		return dossierDoc2TemplatePersistence;
-	}
-
-	/**
-	 * Sets the dossier doc2 template persistence.
-	 *
-	 * @param dossierDoc2TemplatePersistence the dossier doc2 template persistence
-	 */
-	public void setDossierDoc2TemplatePersistence(
-		DossierDoc2TemplatePersistence dossierDoc2TemplatePersistence) {
-		this.dossierDoc2TemplatePersistence = dossierDoc2TemplatePersistence;
-	}
-
-	/**
 	 * Returns the dossier folder local service.
 	 *
 	 * @return the dossier folder local service
@@ -613,60 +560,60 @@ public abstract class PaymentFileServiceBaseImpl extends BaseServiceImpl
 	}
 
 	/**
-	 * Returns the dossier proc agency local service.
+	 * Returns the dossier proc agent local service.
 	 *
-	 * @return the dossier proc agency local service
+	 * @return the dossier proc agent local service
 	 */
-	public org.oep.core.dossiermgt.service.DossierProcAgencyLocalService getDossierProcAgencyLocalService() {
-		return dossierProcAgencyLocalService;
+	public org.oep.core.dossiermgt.service.DossierProcAgentLocalService getDossierProcAgentLocalService() {
+		return dossierProcAgentLocalService;
 	}
 
 	/**
-	 * Sets the dossier proc agency local service.
+	 * Sets the dossier proc agent local service.
 	 *
-	 * @param dossierProcAgencyLocalService the dossier proc agency local service
+	 * @param dossierProcAgentLocalService the dossier proc agent local service
 	 */
-	public void setDossierProcAgencyLocalService(
-		org.oep.core.dossiermgt.service.DossierProcAgencyLocalService dossierProcAgencyLocalService) {
-		this.dossierProcAgencyLocalService = dossierProcAgencyLocalService;
+	public void setDossierProcAgentLocalService(
+		org.oep.core.dossiermgt.service.DossierProcAgentLocalService dossierProcAgentLocalService) {
+		this.dossierProcAgentLocalService = dossierProcAgentLocalService;
 	}
 
 	/**
-	 * Returns the dossier proc agency remote service.
+	 * Returns the dossier proc agent remote service.
 	 *
-	 * @return the dossier proc agency remote service
+	 * @return the dossier proc agent remote service
 	 */
-	public org.oep.core.dossiermgt.service.DossierProcAgencyService getDossierProcAgencyService() {
-		return dossierProcAgencyService;
+	public org.oep.core.dossiermgt.service.DossierProcAgentService getDossierProcAgentService() {
+		return dossierProcAgentService;
 	}
 
 	/**
-	 * Sets the dossier proc agency remote service.
+	 * Sets the dossier proc agent remote service.
 	 *
-	 * @param dossierProcAgencyService the dossier proc agency remote service
+	 * @param dossierProcAgentService the dossier proc agent remote service
 	 */
-	public void setDossierProcAgencyService(
-		org.oep.core.dossiermgt.service.DossierProcAgencyService dossierProcAgencyService) {
-		this.dossierProcAgencyService = dossierProcAgencyService;
+	public void setDossierProcAgentService(
+		org.oep.core.dossiermgt.service.DossierProcAgentService dossierProcAgentService) {
+		this.dossierProcAgentService = dossierProcAgentService;
 	}
 
 	/**
-	 * Returns the dossier proc agency persistence.
+	 * Returns the dossier proc agent persistence.
 	 *
-	 * @return the dossier proc agency persistence
+	 * @return the dossier proc agent persistence
 	 */
-	public DossierProcAgencyPersistence getDossierProcAgencyPersistence() {
-		return dossierProcAgencyPersistence;
+	public DossierProcAgentPersistence getDossierProcAgentPersistence() {
+		return dossierProcAgentPersistence;
 	}
 
 	/**
-	 * Sets the dossier proc agency persistence.
+	 * Sets the dossier proc agent persistence.
 	 *
-	 * @param dossierProcAgencyPersistence the dossier proc agency persistence
+	 * @param dossierProcAgentPersistence the dossier proc agent persistence
 	 */
-	public void setDossierProcAgencyPersistence(
-		DossierProcAgencyPersistence dossierProcAgencyPersistence) {
-		this.dossierProcAgencyPersistence = dossierProcAgencyPersistence;
+	public void setDossierProcAgentPersistence(
+		DossierProcAgentPersistence dossierProcAgentPersistence) {
+		this.dossierProcAgentPersistence = dossierProcAgentPersistence;
 	}
 
 	/**
@@ -781,6 +728,24 @@ public abstract class PaymentFileServiceBaseImpl extends BaseServiceImpl
 	public void setEbPartnerShipPersistence(
 		EbPartnerShipPersistence ebPartnerShipPersistence) {
 		this.ebPartnerShipPersistence = ebPartnerShipPersistence;
+	}
+
+	/**
+	 * Returns the eb partner ship finder.
+	 *
+	 * @return the eb partner ship finder
+	 */
+	public EbPartnerShipFinder getEbPartnerShipFinder() {
+		return ebPartnerShipFinder;
+	}
+
+	/**
+	 * Sets the eb partner ship finder.
+	 *
+	 * @param ebPartnerShipFinder the eb partner ship finder
+	 */
+	public void setEbPartnerShipFinder(EbPartnerShipFinder ebPartnerShipFinder) {
+		this.ebPartnerShipFinder = ebPartnerShipFinder;
 	}
 
 	/**
@@ -1012,6 +977,120 @@ public abstract class PaymentFileServiceBaseImpl extends BaseServiceImpl
 	}
 
 	/**
+	 * Returns the statistic by agency local service.
+	 *
+	 * @return the statistic by agency local service
+	 */
+	public org.oep.core.dossiermgt.service.StatisticByAgencyLocalService getStatisticByAgencyLocalService() {
+		return statisticByAgencyLocalService;
+	}
+
+	/**
+	 * Sets the statistic by agency local service.
+	 *
+	 * @param statisticByAgencyLocalService the statistic by agency local service
+	 */
+	public void setStatisticByAgencyLocalService(
+		org.oep.core.dossiermgt.service.StatisticByAgencyLocalService statisticByAgencyLocalService) {
+		this.statisticByAgencyLocalService = statisticByAgencyLocalService;
+	}
+
+	/**
+	 * Returns the statistic by agency remote service.
+	 *
+	 * @return the statistic by agency remote service
+	 */
+	public org.oep.core.dossiermgt.service.StatisticByAgencyService getStatisticByAgencyService() {
+		return statisticByAgencyService;
+	}
+
+	/**
+	 * Sets the statistic by agency remote service.
+	 *
+	 * @param statisticByAgencyService the statistic by agency remote service
+	 */
+	public void setStatisticByAgencyService(
+		org.oep.core.dossiermgt.service.StatisticByAgencyService statisticByAgencyService) {
+		this.statisticByAgencyService = statisticByAgencyService;
+	}
+
+	/**
+	 * Returns the statistic by agency persistence.
+	 *
+	 * @return the statistic by agency persistence
+	 */
+	public StatisticByAgencyPersistence getStatisticByAgencyPersistence() {
+		return statisticByAgencyPersistence;
+	}
+
+	/**
+	 * Sets the statistic by agency persistence.
+	 *
+	 * @param statisticByAgencyPersistence the statistic by agency persistence
+	 */
+	public void setStatisticByAgencyPersistence(
+		StatisticByAgencyPersistence statisticByAgencyPersistence) {
+		this.statisticByAgencyPersistence = statisticByAgencyPersistence;
+	}
+
+	/**
+	 * Returns the statistic by day local service.
+	 *
+	 * @return the statistic by day local service
+	 */
+	public org.oep.core.dossiermgt.service.StatisticByDayLocalService getStatisticByDayLocalService() {
+		return statisticByDayLocalService;
+	}
+
+	/**
+	 * Sets the statistic by day local service.
+	 *
+	 * @param statisticByDayLocalService the statistic by day local service
+	 */
+	public void setStatisticByDayLocalService(
+		org.oep.core.dossiermgt.service.StatisticByDayLocalService statisticByDayLocalService) {
+		this.statisticByDayLocalService = statisticByDayLocalService;
+	}
+
+	/**
+	 * Returns the statistic by day remote service.
+	 *
+	 * @return the statistic by day remote service
+	 */
+	public org.oep.core.dossiermgt.service.StatisticByDayService getStatisticByDayService() {
+		return statisticByDayService;
+	}
+
+	/**
+	 * Sets the statistic by day remote service.
+	 *
+	 * @param statisticByDayService the statistic by day remote service
+	 */
+	public void setStatisticByDayService(
+		org.oep.core.dossiermgt.service.StatisticByDayService statisticByDayService) {
+		this.statisticByDayService = statisticByDayService;
+	}
+
+	/**
+	 * Returns the statistic by day persistence.
+	 *
+	 * @return the statistic by day persistence
+	 */
+	public StatisticByDayPersistence getStatisticByDayPersistence() {
+		return statisticByDayPersistence;
+	}
+
+	/**
+	 * Sets the statistic by day persistence.
+	 *
+	 * @param statisticByDayPersistence the statistic by day persistence
+	 */
+	public void setStatisticByDayPersistence(
+		StatisticByDayPersistence statisticByDayPersistence) {
+		this.statisticByDayPersistence = statisticByDayPersistence;
+	}
+
+	/**
 	 * Returns the counter local service.
 	 *
 	 * @return the counter local service
@@ -1103,6 +1182,63 @@ public abstract class PaymentFileServiceBaseImpl extends BaseServiceImpl
 	 */
 	public void setUserPersistence(UserPersistence userPersistence) {
 		this.userPersistence = userPersistence;
+	}
+
+	/**
+	 * Returns the document library file entry local service.
+	 *
+	 * @return the document library file entry local service
+	 */
+	public com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService getDLFileEntryLocalService() {
+		return dlFileEntryLocalService;
+	}
+
+	/**
+	 * Sets the document library file entry local service.
+	 *
+	 * @param dlFileEntryLocalService the document library file entry local service
+	 */
+	public void setDLFileEntryLocalService(
+		com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService dlFileEntryLocalService) {
+		this.dlFileEntryLocalService = dlFileEntryLocalService;
+	}
+
+	/**
+	 * Returns the document library file entry remote service.
+	 *
+	 * @return the document library file entry remote service
+	 */
+	public com.liferay.portlet.documentlibrary.service.DLFileEntryService getDLFileEntryService() {
+		return dlFileEntryService;
+	}
+
+	/**
+	 * Sets the document library file entry remote service.
+	 *
+	 * @param dlFileEntryService the document library file entry remote service
+	 */
+	public void setDLFileEntryService(
+		com.liferay.portlet.documentlibrary.service.DLFileEntryService dlFileEntryService) {
+		this.dlFileEntryService = dlFileEntryService;
+	}
+
+	/**
+	 * Returns the document library file entry persistence.
+	 *
+	 * @return the document library file entry persistence
+	 */
+	public DLFileEntryPersistence getDLFileEntryPersistence() {
+		return dlFileEntryPersistence;
+	}
+
+	/**
+	 * Sets the document library file entry persistence.
+	 *
+	 * @param dlFileEntryPersistence the document library file entry persistence
+	 */
+	public void setDLFileEntryPersistence(
+		DLFileEntryPersistence dlFileEntryPersistence) {
+		this.dlFileEntryPersistence = dlFileEntryPersistence;
 	}
 
 	public void afterPropertiesSet() {
@@ -1214,12 +1350,6 @@ public abstract class PaymentFileServiceBaseImpl extends BaseServiceImpl
 	protected org.oep.core.dossiermgt.service.DossierDocService dossierDocService;
 	@BeanReference(type = DossierDocPersistence.class)
 	protected DossierDocPersistence dossierDocPersistence;
-	@BeanReference(type = org.oep.core.dossiermgt.service.DossierDoc2TemplateLocalService.class)
-	protected org.oep.core.dossiermgt.service.DossierDoc2TemplateLocalService dossierDoc2TemplateLocalService;
-	@BeanReference(type = org.oep.core.dossiermgt.service.DossierDoc2TemplateService.class)
-	protected org.oep.core.dossiermgt.service.DossierDoc2TemplateService dossierDoc2TemplateService;
-	@BeanReference(type = DossierDoc2TemplatePersistence.class)
-	protected DossierDoc2TemplatePersistence dossierDoc2TemplatePersistence;
 	@BeanReference(type = org.oep.core.dossiermgt.service.DossierFolderLocalService.class)
 	protected org.oep.core.dossiermgt.service.DossierFolderLocalService dossierFolderLocalService;
 	@BeanReference(type = org.oep.core.dossiermgt.service.DossierFolderService.class)
@@ -1240,12 +1370,12 @@ public abstract class PaymentFileServiceBaseImpl extends BaseServiceImpl
 	protected DossierProcPersistence dossierProcPersistence;
 	@BeanReference(type = DossierProcFinder.class)
 	protected DossierProcFinder dossierProcFinder;
-	@BeanReference(type = org.oep.core.dossiermgt.service.DossierProcAgencyLocalService.class)
-	protected org.oep.core.dossiermgt.service.DossierProcAgencyLocalService dossierProcAgencyLocalService;
-	@BeanReference(type = org.oep.core.dossiermgt.service.DossierProcAgencyService.class)
-	protected org.oep.core.dossiermgt.service.DossierProcAgencyService dossierProcAgencyService;
-	@BeanReference(type = DossierProcAgencyPersistence.class)
-	protected DossierProcAgencyPersistence dossierProcAgencyPersistence;
+	@BeanReference(type = org.oep.core.dossiermgt.service.DossierProcAgentLocalService.class)
+	protected org.oep.core.dossiermgt.service.DossierProcAgentLocalService dossierProcAgentLocalService;
+	@BeanReference(type = org.oep.core.dossiermgt.service.DossierProcAgentService.class)
+	protected org.oep.core.dossiermgt.service.DossierProcAgentService dossierProcAgentService;
+	@BeanReference(type = DossierProcAgentPersistence.class)
+	protected DossierProcAgentPersistence dossierProcAgentPersistence;
 	@BeanReference(type = org.oep.core.dossiermgt.service.EbMessageLocalService.class)
 	protected org.oep.core.dossiermgt.service.EbMessageLocalService ebMessageLocalService;
 	@BeanReference(type = org.oep.core.dossiermgt.service.EbMessageService.class)
@@ -1258,6 +1388,8 @@ public abstract class PaymentFileServiceBaseImpl extends BaseServiceImpl
 	protected org.oep.core.dossiermgt.service.EbPartnerShipService ebPartnerShipService;
 	@BeanReference(type = EbPartnerShipPersistence.class)
 	protected EbPartnerShipPersistence ebPartnerShipPersistence;
+	@BeanReference(type = EbPartnerShipFinder.class)
+	protected EbPartnerShipFinder ebPartnerShipFinder;
 	@BeanReference(type = org.oep.core.dossiermgt.service.PaymentConfigLocalService.class)
 	protected org.oep.core.dossiermgt.service.PaymentConfigLocalService paymentConfigLocalService;
 	@BeanReference(type = org.oep.core.dossiermgt.service.PaymentConfigService.class)
@@ -1282,6 +1414,18 @@ public abstract class PaymentFileServiceBaseImpl extends BaseServiceImpl
 	protected org.oep.core.dossiermgt.service.ProfileDataService profileDataService;
 	@BeanReference(type = ProfileDataPersistence.class)
 	protected ProfileDataPersistence profileDataPersistence;
+	@BeanReference(type = org.oep.core.dossiermgt.service.StatisticByAgencyLocalService.class)
+	protected org.oep.core.dossiermgt.service.StatisticByAgencyLocalService statisticByAgencyLocalService;
+	@BeanReference(type = org.oep.core.dossiermgt.service.StatisticByAgencyService.class)
+	protected org.oep.core.dossiermgt.service.StatisticByAgencyService statisticByAgencyService;
+	@BeanReference(type = StatisticByAgencyPersistence.class)
+	protected StatisticByAgencyPersistence statisticByAgencyPersistence;
+	@BeanReference(type = org.oep.core.dossiermgt.service.StatisticByDayLocalService.class)
+	protected org.oep.core.dossiermgt.service.StatisticByDayLocalService statisticByDayLocalService;
+	@BeanReference(type = org.oep.core.dossiermgt.service.StatisticByDayService.class)
+	protected org.oep.core.dossiermgt.service.StatisticByDayService statisticByDayService;
+	@BeanReference(type = StatisticByDayPersistence.class)
+	protected StatisticByDayPersistence statisticByDayPersistence;
 	@BeanReference(type = com.liferay.counter.service.CounterLocalService.class)
 	protected com.liferay.counter.service.CounterLocalService counterLocalService;
 	@BeanReference(type = com.liferay.portal.service.ResourceLocalService.class)
@@ -1292,6 +1436,12 @@ public abstract class PaymentFileServiceBaseImpl extends BaseServiceImpl
 	protected com.liferay.portal.service.UserService userService;
 	@BeanReference(type = UserPersistence.class)
 	protected UserPersistence userPersistence;
+	@BeanReference(type = com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService.class)
+	protected com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService dlFileEntryLocalService;
+	@BeanReference(type = com.liferay.portlet.documentlibrary.service.DLFileEntryService.class)
+	protected com.liferay.portlet.documentlibrary.service.DLFileEntryService dlFileEntryService;
+	@BeanReference(type = DLFileEntryPersistence.class)
+	protected DLFileEntryPersistence dlFileEntryPersistence;
 	private String _beanIdentifier;
 	private ClassLoader _classLoader;
 	private PaymentFileServiceClpInvoker _clpInvoker = new PaymentFileServiceClpInvoker();

@@ -252,6 +252,150 @@ public class DossierDocLocalServiceUtil {
 	}
 
 	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void addDocTemplateDossierDoc(long docTemplateId,
+		long dossierDocId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getService().addDocTemplateDossierDoc(docTemplateId, dossierDocId);
+	}
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void addDocTemplateDossierDoc(long docTemplateId,
+		org.oep.core.dossiermgt.model.DossierDoc dossierDoc)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getService().addDocTemplateDossierDoc(docTemplateId, dossierDoc);
+	}
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void addDocTemplateDossierDocs(long docTemplateId,
+		long[] dossierDocIds)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getService().addDocTemplateDossierDocs(docTemplateId, dossierDocIds);
+	}
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void addDocTemplateDossierDocs(long docTemplateId,
+		java.util.List<org.oep.core.dossiermgt.model.DossierDoc> DossierDocs)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getService().addDocTemplateDossierDocs(docTemplateId, DossierDocs);
+	}
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void clearDocTemplateDossierDocs(long docTemplateId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getService().clearDocTemplateDossierDocs(docTemplateId);
+	}
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void deleteDocTemplateDossierDoc(long docTemplateId,
+		long dossierDocId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getService().deleteDocTemplateDossierDoc(docTemplateId, dossierDocId);
+	}
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void deleteDocTemplateDossierDoc(long docTemplateId,
+		org.oep.core.dossiermgt.model.DossierDoc dossierDoc)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getService().deleteDocTemplateDossierDoc(docTemplateId, dossierDoc);
+	}
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void deleteDocTemplateDossierDocs(long docTemplateId,
+		long[] dossierDocIds)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getService().deleteDocTemplateDossierDocs(docTemplateId, dossierDocIds);
+	}
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void deleteDocTemplateDossierDocs(long docTemplateId,
+		java.util.List<org.oep.core.dossiermgt.model.DossierDoc> DossierDocs)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getService().deleteDocTemplateDossierDocs(docTemplateId, DossierDocs);
+	}
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierDoc> getDocTemplateDossierDocs(
+		long docTemplateId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getDocTemplateDossierDocs(docTemplateId);
+	}
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierDoc> getDocTemplateDossierDocs(
+		long docTemplateId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getDocTemplateDossierDocs(docTemplateId, start, end);
+	}
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.core.dossiermgt.model.DossierDoc> getDocTemplateDossierDocs(
+		long docTemplateId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .getDocTemplateDossierDocs(docTemplateId, start, end,
+			orderByComparator);
+	}
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int getDocTemplateDossierDocsCount(long docTemplateId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getDocTemplateDossierDocsCount(docTemplateId);
+	}
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public static boolean hasDocTemplateDossierDoc(long docTemplateId,
+		long dossierDocId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().hasDocTemplateDossierDoc(docTemplateId, dossierDocId);
+	}
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public static boolean hasDocTemplateDossierDocs(long docTemplateId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().hasDocTemplateDossierDocs(docTemplateId);
+	}
+
+	/**
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void setDocTemplateDossierDocs(long docTemplateId,
+		long[] dossierDocIds)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getService().setDocTemplateDossierDocs(docTemplateId, dossierDocIds);
+	}
+
+	/**
 	* Returns the Spring bean ID for this bean.
 	*
 	* @return the Spring bean ID for this bean

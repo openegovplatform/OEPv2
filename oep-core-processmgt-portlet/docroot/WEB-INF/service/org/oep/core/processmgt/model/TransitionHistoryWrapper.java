@@ -60,6 +60,8 @@ public class TransitionHistoryWrapper implements TransitionHistory,
 		attributes.put("daysDoing", getDaysDoing());
 		attributes.put("daysDelay", getDaysDelay());
 		attributes.put("startDate", getStartDate());
+		attributes.put("preDossierStatus", getPreDossierStatus());
+		attributes.put("postDossierStatus", getPostDossierStatus());
 		attributes.put("stepTransitionId", getStepTransitionId());
 		attributes.put("preDossierStepId", getPreDossierStepId());
 		attributes.put("postDossierStepId", getPostDossierStepId());
@@ -129,6 +131,18 @@ public class TransitionHistoryWrapper implements TransitionHistory,
 
 		if (startDate != null) {
 			setStartDate(startDate);
+		}
+
+		String preDossierStatus = (String)attributes.get("preDossierStatus");
+
+		if (preDossierStatus != null) {
+			setPreDossierStatus(preDossierStatus);
+		}
+
+		String postDossierStatus = (String)attributes.get("postDossierStatus");
+
+		if (postDossierStatus != null) {
+			setPostDossierStatus(postDossierStatus);
 		}
 
 		Long stepTransitionId = (Long)attributes.get("stepTransitionId");
@@ -402,6 +416,46 @@ public class TransitionHistoryWrapper implements TransitionHistory,
 	@Override
 	public void setStartDate(java.util.Date startDate) {
 		_transitionHistory.setStartDate(startDate);
+	}
+
+	/**
+	* Returns the pre dossier status of this transition history.
+	*
+	* @return the pre dossier status of this transition history
+	*/
+	@Override
+	public java.lang.String getPreDossierStatus() {
+		return _transitionHistory.getPreDossierStatus();
+	}
+
+	/**
+	* Sets the pre dossier status of this transition history.
+	*
+	* @param preDossierStatus the pre dossier status of this transition history
+	*/
+	@Override
+	public void setPreDossierStatus(java.lang.String preDossierStatus) {
+		_transitionHistory.setPreDossierStatus(preDossierStatus);
+	}
+
+	/**
+	* Returns the post dossier status of this transition history.
+	*
+	* @return the post dossier status of this transition history
+	*/
+	@Override
+	public java.lang.String getPostDossierStatus() {
+		return _transitionHistory.getPostDossierStatus();
+	}
+
+	/**
+	* Sets the post dossier status of this transition history.
+	*
+	* @param postDossierStatus the post dossier status of this transition history
+	*/
+	@Override
+	public void setPostDossierStatus(java.lang.String postDossierStatus) {
+		_transitionHistory.setPostDossierStatus(postDossierStatus);
 	}
 
 	/**
