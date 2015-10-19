@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="org.oep.core.datamgt">
+	<author>trungdk</author>
+	<namespace>DictionaryApp</namespace>
+	<entity name="DictionaryApp" local-service="true" remote-service="true">
+		<reference package-path="org.oep.core.datamgt.dictionary" entity="DictCollection" />
+		<reference package-path="org.oep.core.datamgt.dictionary" entity="DictData" />
+	</entity>
+	<entity name="ParameterApp" local-service="true" remote-service="true">
+		<reference package-path="org.oep.core.datamgt.parameter" entity="UserParameter" />
+		<reference package-path="org.oep.core.datamgt.parameter" entity="DefaultParameter" />
+	</entity>	
+</service-builder>
