@@ -15,6 +15,7 @@
 package org.oep.core.processmgt.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
+import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -23,13 +24,16 @@ import com.liferay.portal.model.impl.BaseModelImpl;
 
 import org.oep.core.processmgt.model.DossierStep2Role;
 import org.oep.core.processmgt.model.DossierStep2RoleModel;
+import org.oep.core.processmgt.model.DossierStep2RoleSoap;
 import org.oep.core.processmgt.service.persistence.DossierStep2RolePK;
 
 import java.io.Serializable;
 
 import java.sql.Types;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,6 +49,7 @@ import java.util.Map;
  * @see org.oep.core.processmgt.model.DossierStep2RoleModel
  * @generated
  */
+@JSON(strict = true)
 public class DossierStep2RoleModelImpl extends BaseModelImpl<DossierStep2Role>
 	implements DossierStep2RoleModel {
 	/*
@@ -71,6 +76,47 @@ public class DossierStep2RoleModelImpl extends BaseModelImpl<DossierStep2Role>
 				"value.object.finder.cache.enabled.org.oep.core.processmgt.model.DossierStep2Role"),
 			true);
 	public static final boolean COLUMN_BITMASK_ENABLED = false;
+
+	/**
+	 * Converts the soap model instance into a normal model instance.
+	 *
+	 * @param soapModel the soap model instance to convert
+	 * @return the normal model instance
+	 */
+	public static DossierStep2Role toModel(DossierStep2RoleSoap soapModel) {
+		if (soapModel == null) {
+			return null;
+		}
+
+		DossierStep2Role model = new DossierStep2RoleImpl();
+
+		model.setDossierStepId(soapModel.getDossierStepId());
+		model.setRoleId(soapModel.getRoleId());
+
+		return model;
+	}
+
+	/**
+	 * Converts the soap model instances into normal model instances.
+	 *
+	 * @param soapModels the soap model instances to convert
+	 * @return the normal model instances
+	 */
+	public static List<DossierStep2Role> toModels(
+		DossierStep2RoleSoap[] soapModels) {
+		if (soapModels == null) {
+			return null;
+		}
+
+		List<DossierStep2Role> models = new ArrayList<DossierStep2Role>(soapModels.length);
+
+		for (DossierStep2RoleSoap soapModel : soapModels) {
+			models.add(toModel(soapModel));
+		}
+
+		return models;
+	}
+
 	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
 				"lock.expiration.time.org.oep.core.processmgt.model.DossierStep2Role"));
 
@@ -133,6 +179,7 @@ public class DossierStep2RoleModelImpl extends BaseModelImpl<DossierStep2Role>
 		}
 	}
 
+	@JSON
 	@Override
 	public long getDossierStepId() {
 		return _dossierStepId;
@@ -143,6 +190,7 @@ public class DossierStep2RoleModelImpl extends BaseModelImpl<DossierStep2Role>
 		_dossierStepId = dossierStepId;
 	}
 
+	@JSON
 	@Override
 	public long getRoleId() {
 		return _roleId;

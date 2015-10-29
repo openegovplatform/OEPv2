@@ -253,4 +253,40 @@ public interface DossierStep2RoleLocalService extends BaseLocalService,
 	public java.lang.Object invokeMethod(java.lang.String name,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;
+
+	/**
+	* ThÃªm quan há»‡ giá»¯a bÆ°á»›c xá»­ lÃ½ vá»›i vai trÃ²
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param dossierStepId mÃ£ bÆ°á»›c xá»­ lÃ½ há»“ sÆ¡
+	* @param roleId mÃ£ vai trÃ²
+	* @return: quan há»‡ giá»¯a bÆ°á»›c xá»­ lÃ½ há»“ sÆ¡ vá»›i vai trÃ²
+	*/
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.processmgt.model.DossierStep2Role addDossierStep2Role(
+		long dossierStepId, long roleId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void removeDossierStep2Role(
+		org.oep.core.processmgt.model.DossierStep2Role dossierStep2Role)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void removeDossierStep2Role(long dossierStepId, long roleId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public org.oep.core.processmgt.model.DossierStep2Role getDossierStep2Role(
+		long dossierStepId, long roleId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
 }

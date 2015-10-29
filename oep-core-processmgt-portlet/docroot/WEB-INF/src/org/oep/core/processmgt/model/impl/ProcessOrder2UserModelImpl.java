@@ -16,6 +16,7 @@ package org.oep.core.processmgt.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -25,13 +26,16 @@ import com.liferay.portal.util.PortalUtil;
 
 import org.oep.core.processmgt.model.ProcessOrder2User;
 import org.oep.core.processmgt.model.ProcessOrder2UserModel;
+import org.oep.core.processmgt.model.ProcessOrder2UserSoap;
 import org.oep.core.processmgt.service.persistence.ProcessOrder2UserPK;
 
 import java.io.Serializable;
 
 import java.sql.Types;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -47,6 +51,7 @@ import java.util.Map;
  * @see org.oep.core.processmgt.model.ProcessOrder2UserModel
  * @generated
  */
+@JSON(strict = true)
 public class ProcessOrder2UserModelImpl extends BaseModelImpl<ProcessOrder2User>
 	implements ProcessOrder2UserModel {
 	/*
@@ -73,6 +78,47 @@ public class ProcessOrder2UserModelImpl extends BaseModelImpl<ProcessOrder2User>
 				"value.object.finder.cache.enabled.org.oep.core.processmgt.model.ProcessOrder2User"),
 			true);
 	public static final boolean COLUMN_BITMASK_ENABLED = false;
+
+	/**
+	 * Converts the soap model instance into a normal model instance.
+	 *
+	 * @param soapModel the soap model instance to convert
+	 * @return the normal model instance
+	 */
+	public static ProcessOrder2User toModel(ProcessOrder2UserSoap soapModel) {
+		if (soapModel == null) {
+			return null;
+		}
+
+		ProcessOrder2User model = new ProcessOrder2UserImpl();
+
+		model.setProcessOrderId(soapModel.getProcessOrderId());
+		model.setUserId(soapModel.getUserId());
+
+		return model;
+	}
+
+	/**
+	 * Converts the soap model instances into normal model instances.
+	 *
+	 * @param soapModels the soap model instances to convert
+	 * @return the normal model instances
+	 */
+	public static List<ProcessOrder2User> toModels(
+		ProcessOrder2UserSoap[] soapModels) {
+		if (soapModels == null) {
+			return null;
+		}
+
+		List<ProcessOrder2User> models = new ArrayList<ProcessOrder2User>(soapModels.length);
+
+		for (ProcessOrder2UserSoap soapModel : soapModels) {
+			models.add(toModel(soapModel));
+		}
+
+		return models;
+	}
+
 	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
 				"lock.expiration.time.org.oep.core.processmgt.model.ProcessOrder2User"));
 
@@ -135,6 +181,7 @@ public class ProcessOrder2UserModelImpl extends BaseModelImpl<ProcessOrder2User>
 		}
 	}
 
+	@JSON
 	@Override
 	public long getProcessOrderId() {
 		return _processOrderId;
@@ -145,6 +192,7 @@ public class ProcessOrder2UserModelImpl extends BaseModelImpl<ProcessOrder2User>
 		_processOrderId = processOrderId;
 	}
 
+	@JSON
 	@Override
 	public long getUserId() {
 		return _userId;

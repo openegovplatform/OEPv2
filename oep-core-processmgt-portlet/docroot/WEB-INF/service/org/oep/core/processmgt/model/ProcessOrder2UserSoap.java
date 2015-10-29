@@ -22,9 +22,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class is used by SOAP remote services.
+ * This class is used by SOAP remote services, specifically {@link org.oep.core.processmgt.service.http.ProcessOrder2UserServiceSoap}.
  *
  * @author trungdk
+ * @see org.oep.core.processmgt.service.http.ProcessOrder2UserServiceSoap
  * @generated
  */
 public class ProcessOrder2UserSoap implements Serializable {

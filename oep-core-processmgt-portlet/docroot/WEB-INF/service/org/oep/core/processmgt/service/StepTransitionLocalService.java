@@ -255,36 +255,65 @@ public interface StepTransitionLocalService extends BaseLocalService,
 		throws java.lang.Throwable;
 
 	/**
-	* Add step transition
+	* ThÃªm chuyá»ƒn dá»‹ch tráº¡ng thÃ¡i
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    Táº¡o má»›i
 	*
-	* @param
-	* @return: new step transition
+	* @param dossierProcessId náº±m trong quy trÃ¬nh nÃ o
+	* @param preDossierStepId tráº¡ng thÃ¡i nguá»“n
+	* @param postDossierStepId tráº¡ng thÃ¡i Ä‘Ã­ch
+	* @param autoCondition mÃ£ Ä‘iá»�u kiá»‡n chuyá»ƒn dá»‹ch tráº¡ng thÃ¡i
+	* @param transitionName tÃªn mÃ´ táº£ hÃ nh Ä‘á»™ng xá»­ lÃ½ há»“ sÆ¡
+	* @param dossierStatus káº¿t thÃºc má»™t bÆ°á»›c há»“ sÆ¡ Ä‘Æ°á»£c phÃ¢n tráº¡ng thÃ¡i má»›i
+	* @param sendResults tá»± Ä‘á»™ng gá»­i tráº£ káº¿t quáº£ cÃ³ trong há»“ sÆ¡
+	* @param userAssignment Ä‘Ã¡nh dáº¥u bÆ°á»›c nÃ y pháº£i Ä‘Æ°á»£c phÃ¢n cÃ´ng cá»¥ thá»ƒ ngÆ°á»�i xá»­ lÃ½
+	* @param newProcessOrder chuyá»ƒn dá»‹ch cÃ³ táº¡o phiáº¿u xá»­ lÃ½ con
+	* @return: chuyá»ƒn dá»‹ch tráº¡ng thÃ¡i má»›i táº¡o
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	@com.liferay.portal.kernel.transaction.Transactional
 	public org.oep.core.processmgt.model.StepTransition addStepTransition(
 		long dossierProcessId, long preDossierStepId, long postDossierStepId,
 		java.lang.String autoCondition, java.lang.String transitionName,
-		java.lang.String dossierStatus, int notifyStatus, int sendResults,
-		int requestPayment, int userAssignment, int newProcessOrder,
+		java.lang.String dossierStatus, int sendResults, int userAssignment,
+		int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Cáº­p nháº­t thÃ´ng tin chuyá»ƒn dá»‹ch tráº¡ng thÃ¡i
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param id mÃ£ chuyá»ƒn dá»‹ch tráº¡ng thÃ¡i
+	* @param dossierProcessId náº±m trong quy trÃ¬nh nÃ o
+	* @param preDossierStepId tráº¡ng thÃ¡i nguá»“n
+	* @param postDossierStepId tráº¡ng thÃ¡i Ä‘Ã­ch
+	* @param autoCondition mÃ£ Ä‘iá»�u kiá»‡n chuyá»ƒn dá»‹ch tráº¡ng thÃ¡i
+	* @param transitionName tÃªn mÃ´ táº£ hÃ nh Ä‘á»™ng xá»­ lÃ½ há»“ sÆ¡
+	* @param dossierStatus káº¿t thÃºc má»™t bÆ°á»›c há»“ sÆ¡ Ä‘Æ°á»£c phÃ¢n tráº¡ng thÃ¡i má»›i
+	* @param sendResults tá»± Ä‘á»™ng gá»­i tráº£ káº¿t quáº£ cÃ³ trong há»“ sÆ¡
+	* @param userAssignment Ä‘Ã¡nh dáº¥u bÆ°á»›c nÃ y pháº£i Ä‘Æ°á»£c phÃ¢n cÃ´ng cá»¥ thá»ƒ ngÆ°á»�i xá»­ lÃ½
+	* @param newProcessOrder chuyá»ƒn dá»‹ch cÃ³ táº¡o phiáº¿u xá»­ lÃ½ con
+	* @return: chuyá»ƒn dá»‹ch tráº¡ng thÃ¡i má»›i Ä‘Æ°á»£c cáº­p nháº­t
+	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.processmgt.model.StepTransition updateStepTransition(
 		long id, long dossierProcessId, long preDossierStepId,
 		long postDossierStepId, java.lang.String autoCondition,
 		java.lang.String transitionName, java.lang.String dossierStatus,
-		int notifyStatus, int sendResults, int requestPayment,
-		int userAssignment, int newProcessOrder,
+		int sendResults, int userAssignment, int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;

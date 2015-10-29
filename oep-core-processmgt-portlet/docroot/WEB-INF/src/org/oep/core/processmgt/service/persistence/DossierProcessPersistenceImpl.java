@@ -1393,12 +1393,6 @@ public class DossierProcessPersistenceImpl extends BasePersistenceImpl<DossierPr
 		dossierProcessImpl.setCompanyId(dossierProcess.getCompanyId());
 		dossierProcessImpl.setCreateDate(dossierProcess.getCreateDate());
 		dossierProcessImpl.setModifiedDate(dossierProcess.getModifiedDate());
-		dossierProcessImpl.setDossierProcId(dossierProcess.getDossierProcId());
-		dossierProcessImpl.setGovAgencyId(dossierProcess.getGovAgencyId());
-		dossierProcessImpl.setGovAgencyName(dossierProcess.getGovAgencyName());
-		dossierProcessImpl.setStartStepTransitionId(dossierProcess.getStartStepTransitionId());
-		dossierProcessImpl.setDaysDuration(dossierProcess.getDaysDuration());
-		dossierProcessImpl.setFee(dossierProcess.getFee());
 
 		return dossierProcessImpl;
 	}

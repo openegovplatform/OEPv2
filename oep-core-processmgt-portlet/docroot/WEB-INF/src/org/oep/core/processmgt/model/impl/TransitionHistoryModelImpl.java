@@ -82,9 +82,10 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 			{ "preDossierStepId", Types.BIGINT },
 			{ "postDossierStepId", Types.BIGINT },
 			{ "transitionName", Types.VARCHAR },
-			{ "note", Types.VARCHAR }
+			{ "note", Types.VARCHAR },
+			{ "assignToUserId", Types.BIGINT }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_transitionhistory (transitionHistoryId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,dossierId LONG,processOrderId LONG,daysDoing INTEGER,daysDelay INTEGER,startDate DATE null,preDossierStatus VARCHAR(75) null,postDossierStatus VARCHAR(75) null,stepTransitionId LONG,preDossierStepId LONG,postDossierStepId LONG,transitionName VARCHAR(75) null,note VARCHAR(75) null)";
+	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_transitionhistory (transitionHistoryId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,dossierId LONG,processOrderId LONG,daysDoing INTEGER,daysDelay INTEGER,startDate DATE null,preDossierStatus VARCHAR(30) null,postDossierStatus VARCHAR(30) null,stepTransitionId LONG,preDossierStepId LONG,postDossierStepId LONG,transitionName VARCHAR(100) null,note VARCHAR(200) null,assignToUserId LONG)";
 	public static final String TABLE_SQL_DROP = "drop table oep_processmgt_transitionhistory";
 	public static final String ORDER_BY_JPQL = " ORDER BY transitionHistory.transitionHistoryId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_processmgt_transitionhistory.transitionHistoryId ASC";
@@ -129,6 +130,7 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 		model.setPostDossierStepId(soapModel.getPostDossierStepId());
 		model.setTransitionName(soapModel.getTransitionName());
 		model.setNote(soapModel.getNote());
+		model.setAssignToUserId(soapModel.getAssignToUserId());
 
 		return model;
 	}
@@ -211,6 +213,7 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 		attributes.put("postDossierStepId", getPostDossierStepId());
 		attributes.put("transitionName", getTransitionName());
 		attributes.put("note", getNote());
+		attributes.put("assignToUserId", getAssignToUserId());
 
 		return attributes;
 	}
@@ -317,6 +320,12 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 
 		if (note != null) {
 			setNote(note);
+		}
+
+		Long assignToUserId = (Long)attributes.get("assignToUserId");
+
+		if (assignToUserId != null) {
+			setAssignToUserId(assignToUserId);
 		}
 	}
 
@@ -537,6 +546,28 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 		_note = note;
 	}
 
+	@JSON
+	@Override
+	public long getAssignToUserId() {
+		return _assignToUserId;
+	}
+
+	@Override
+	public void setAssignToUserId(long assignToUserId) {
+		_assignToUserId = assignToUserId;
+	}
+
+	@Override
+	public String getAssignToUserUuid() throws SystemException {
+		return PortalUtil.getUserValue(getAssignToUserId(), "uuid",
+			_assignToUserUuid);
+	}
+
+	@Override
+	public void setAssignToUserUuid(String assignToUserUuid) {
+		_assignToUserUuid = assignToUserUuid;
+	}
+
 	@Override
 	public ExpandoBridge getExpandoBridge() {
 		return ExpandoBridgeFactoryUtil.getExpandoBridge(getCompanyId(),
@@ -581,6 +612,7 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 		transitionHistoryImpl.setPostDossierStepId(getPostDossierStepId());
 		transitionHistoryImpl.setTransitionName(getTransitionName());
 		transitionHistoryImpl.setNote(getNote());
+		transitionHistoryImpl.setAssignToUserId(getAssignToUserId());
 
 		transitionHistoryImpl.resetOriginalValues();
 
@@ -709,12 +741,14 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 			transitionHistoryCacheModel.note = null;
 		}
 
+		transitionHistoryCacheModel.assignToUserId = getAssignToUserId();
+
 		return transitionHistoryCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(35);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("{transitionHistoryId=");
 		sb.append(getTransitionHistoryId());
@@ -750,6 +784,8 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 		sb.append(getTransitionName());
 		sb.append(", note=");
 		sb.append(getNote());
+		sb.append(", assignToUserId=");
+		sb.append(getAssignToUserId());
 		sb.append("}");
 
 		return sb.toString();
@@ -757,7 +793,7 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(55);
+		StringBundler sb = new StringBundler(58);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.TransitionHistory");
@@ -831,6 +867,10 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 			"<column><column-name>note</column-name><column-value><![CDATA[");
 		sb.append(getNote());
 		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>assignToUserId</column-name><column-value><![CDATA[");
+		sb.append(getAssignToUserId());
+		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -859,5 +899,7 @@ public class TransitionHistoryModelImpl extends BaseModelImpl<TransitionHistory>
 	private long _postDossierStepId;
 	private String _transitionName;
 	private String _note;
+	private long _assignToUserId;
+	private String _assignToUserUuid;
 	private TransitionHistory _escapedModel;
 }

@@ -331,13 +331,10 @@ public class StatisticByUserPersistenceImpl extends BasePersistenceImpl<Statisti
 		statisticByUserImpl.setCreateDate(statisticByUser.getCreateDate());
 		statisticByUserImpl.setMonth(statisticByUser.getMonth());
 		statisticByUserImpl.setYear(statisticByUser.getYear());
-		statisticByUserImpl.setDossierStatus(statisticByUser.getDossierStatus());
 		statisticByUserImpl.setTotalNumber(statisticByUser.getTotalNumber());
-		statisticByUserImpl.setDelayedNumber(statisticByUser.getDelayedNumber());
 		statisticByUserImpl.setOntimeNumber(statisticByUser.getOntimeNumber());
 		statisticByUserImpl.setOntimeRatio(statisticByUser.getOntimeRatio());
 		statisticByUserImpl.setDelayDaysAvg(statisticByUser.getDelayDaysAvg());
-		statisticByUserImpl.setFurtherDaysAvg(statisticByUser.getFurtherDaysAvg());
 
 		return statisticByUserImpl;
 	}

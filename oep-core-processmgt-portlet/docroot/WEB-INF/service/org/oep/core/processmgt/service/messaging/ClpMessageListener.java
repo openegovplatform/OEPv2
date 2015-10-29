@@ -18,14 +18,25 @@ import com.liferay.portal.kernel.messaging.BaseMessageListener;
 import com.liferay.portal.kernel.messaging.Message;
 
 import org.oep.core.processmgt.service.ClpSerializer;
+import org.oep.core.processmgt.service.CreateFileLocalServiceUtil;
+import org.oep.core.processmgt.service.CreateFileServiceUtil;
+import org.oep.core.processmgt.service.DocFile2ProcessOrderLocalServiceUtil;
+import org.oep.core.processmgt.service.DocFile2ProcessOrderServiceUtil;
+import org.oep.core.processmgt.service.DossierProc2ProcessLocalServiceUtil;
+import org.oep.core.processmgt.service.DossierProc2ProcessServiceUtil;
+import org.oep.core.processmgt.service.DossierProc2RoleLocalServiceUtil;
+import org.oep.core.processmgt.service.DossierProc2RoleServiceUtil;
 import org.oep.core.processmgt.service.DossierProcessLocalServiceUtil;
 import org.oep.core.processmgt.service.DossierProcessServiceUtil;
 import org.oep.core.processmgt.service.DossierStep2RoleLocalServiceUtil;
+import org.oep.core.processmgt.service.DossierStep2RoleServiceUtil;
 import org.oep.core.processmgt.service.DossierStepLocalServiceUtil;
 import org.oep.core.processmgt.service.DossierStepServiceUtil;
 import org.oep.core.processmgt.service.ProcessOrder2UserLocalServiceUtil;
+import org.oep.core.processmgt.service.ProcessOrder2UserServiceUtil;
 import org.oep.core.processmgt.service.ProcessOrderLocalServiceUtil;
 import org.oep.core.processmgt.service.ProcessOrderServiceUtil;
+import org.oep.core.processmgt.service.StatisticByUserLocalServiceUtil;
 import org.oep.core.processmgt.service.StatisticByUserServiceUtil;
 import org.oep.core.processmgt.service.StepTransitionLocalServiceUtil;
 import org.oep.core.processmgt.service.StepTransitionServiceUtil;
@@ -49,6 +60,18 @@ public class ClpMessageListener extends BaseMessageListener {
 
 		if (command.equals("undeploy") &&
 				servletContextName.equals(getServletContextName())) {
+			CreateFileLocalServiceUtil.clearService();
+
+			CreateFileServiceUtil.clearService();
+			DocFile2ProcessOrderLocalServiceUtil.clearService();
+
+			DocFile2ProcessOrderServiceUtil.clearService();
+			DossierProc2ProcessLocalServiceUtil.clearService();
+
+			DossierProc2ProcessServiceUtil.clearService();
+			DossierProc2RoleLocalServiceUtil.clearService();
+
+			DossierProc2RoleServiceUtil.clearService();
 			DossierProcessLocalServiceUtil.clearService();
 
 			DossierProcessServiceUtil.clearService();
@@ -57,10 +80,14 @@ public class ClpMessageListener extends BaseMessageListener {
 			DossierStepServiceUtil.clearService();
 			DossierStep2RoleLocalServiceUtil.clearService();
 
+			DossierStep2RoleServiceUtil.clearService();
 			ProcessOrderLocalServiceUtil.clearService();
 
 			ProcessOrderServiceUtil.clearService();
 			ProcessOrder2UserLocalServiceUtil.clearService();
+
+			ProcessOrder2UserServiceUtil.clearService();
+			StatisticByUserLocalServiceUtil.clearService();
 
 			StatisticByUserServiceUtil.clearService();
 			StepTransitionLocalServiceUtil.clearService();

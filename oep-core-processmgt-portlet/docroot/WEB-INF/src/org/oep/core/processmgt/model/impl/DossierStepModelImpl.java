@@ -80,7 +80,7 @@ public class DossierStepModelImpl extends BaseModelImpl<DossierStep>
 			{ "formLabel", Types.VARCHAR },
 			{ "rollback", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_dossierstep (dossierStepId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcessId LONG,title VARCHAR(75) null,sequenceNo INTEGER,daysDuration INTEGER,doForm VARCHAR(100) null,formLabel VARCHAR(100) null,rollback INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_dossierstep (dossierStepId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcessId LONG,title VARCHAR(100) null,sequenceNo INTEGER,daysDuration INTEGER,doForm VARCHAR(100) null,formLabel VARCHAR(100) null,rollback INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_processmgt_dossierstep";
 	public static final String ORDER_BY_JPQL = " ORDER BY dossierStep.dossierStepId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_processmgt_dossierstep.dossierStepId ASC";

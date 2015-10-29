@@ -1,8 +1,23 @@
 <?xml version="1.0"?>
 
 <model-hints>
-	<model name="org.oep.core.processmgt.model.DossierProcess">
-		<field name="dossierProcessId" type="long" />
+	<model name="org.oep.core.processmgt.model.CreateFile">
+		<field name="createFileId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="processOrderId" type="long" />
+		<field name="dossierStepId" type="long" />
+		<field name="stepDate" type="Date" />
+		<field name="docFileId" type="long" />
+	</model>
+	<model name="org.oep.core.processmgt.model.DocFile2ProcessOrder">
+		<field name="docFileId" type="long" />
+		<field name="processOrderId" type="long" />
+	</model>
+	<model name="org.oep.core.processmgt.model.DossierProc2Process">
+		<field name="dossierProc2ProcessId" type="long" />
 		<field name="userId" type="long" />
 		<field name="groupId" type="long" />
 		<field name="companyId" type="long" />
@@ -15,9 +30,34 @@
 		<field name="govAgencyName" type="String">
 			<hint name="max-length">200</hint>
 		</field>
-		<field name="startStepTransitionId" type="long" />
+		<field name="dossierProcessId" type="long" />
+		<field name="aaaa" type="String">
+			<hint name="max-length">4</hint>
+		</field>
+		<field name="bbb" type="String">
+			<hint name="max-length">3</hint>
+		</field>
 		<field name="daysDuration" type="int" />
-		<field name="fee" type="int" />
+		<field name="paymentFee" type="int" />
+		<field name="paymentOneGate" type="int" />
+		<field name="paymentEservice" type="int" />
+		<field name="organizationId" type="long" />
+		<field name="ebPartnershipId" type="long">
+			<hint name="max-length">100</hint>
+		</field>
+	</model>
+	<model name="org.oep.core.processmgt.model.DossierProc2Role">
+		<field name="dossierProc2RoleId" type="long" />
+		<field name="dossierProcId" type="long" />
+		<field name="roleId" type="long" />
+	</model>
+	<model name="org.oep.core.processmgt.model.DossierProcess">
+		<field name="dossierProcessId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
 	</model>
 	<model name="org.oep.core.processmgt.model.DossierStep">
 		<field name="dossierStepId" type="long" />
@@ -27,7 +67,9 @@
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
 		<field name="dossierProcessId" type="long" />
-		<field name="title" type="String" />
+		<field name="title" type="String">
+			<hint name="max-length">100</hint>
+		</field>
 		<field name="sequenceNo" type="int" />
 		<field name="daysDuration" type="int" />
 		<field name="doForm" type="String">
@@ -55,12 +97,20 @@
 		<field name="dossierId" type="long" />
 		<field name="dossierProcessId" type="long" />
 		<field name="dossierStepId" type="long" />
-		<field name="orderStatus" type="String" />
-		<field name="orderResume" type="String" />
+		<field name="orderStatus" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="orderResume" type="String">
+			<hint name="max-length">200</hint>
+		</field>
 		<field name="stepDate" type="Date" />
-		<field name="stepNote" type="String" />
+		<field name="stepNote" type="String">
+			<hint name="max-length">200</hint>
+		</field>
 		<field name="assignToUserId" type="long" />
-		<field name="currentCondition" type="String" />
+		<field name="currentCondition" type="String">
+			<hint name="max-length">30</hint>
+		</field>
 		<field name="lastStepTransitionId" type="long" />
 		<field name="stopRollback" type="int" />
 		<field name="ebPartnerShipId" type="long" />
@@ -77,13 +127,10 @@
 		<field name="createDate" type="Date" />
 		<field name="month" type="int" />
 		<field name="year" type="int" />
-		<field name="dossierStatus" type="String" />
 		<field name="totalNumber" type="int" />
-		<field name="delayedNumber" type="int" />
 		<field name="ontimeNumber" type="int" />
 		<field name="ontimeRatio" type="double" />
 		<field name="delayDaysAvg" type="double" />
-		<field name="furtherDaysAvg" type="double" />
 	</model>
 	<model name="org.oep.core.processmgt.model.StepTransition">
 		<field name="stepTransitionId" type="long" />
@@ -95,17 +142,16 @@
 		<field name="dossierProcessId" type="long" />
 		<field name="preDossierStepId" type="long" />
 		<field name="postDossierStepId" type="long" />
-		<field name="precondition" type="String" />
 		<field name="autoCondition" type="String">
 			<hint name="max-length">30</hint>
 		</field>
 		<field name="transitionName" type="String">
 			<hint name="max-length">100</hint>
 		</field>
-		<field name="dossierStatus" type="String" />
-		<field name="notifyStatus" type="int" />
+		<field name="dossierStatus" type="String">
+			<hint name="max-length">30</hint>
+		</field>
 		<field name="sendResults" type="int" />
-		<field name="requestPayment" type="int" />
 		<field name="userAssignment" type="int" />
 		<field name="newProcessOrder" type="int" />
 	</model>
@@ -120,13 +166,22 @@
 		<field name="daysDoing" type="int" />
 		<field name="daysDelay" type="int" />
 		<field name="startDate" type="Date" />
-		<field name="preDossierStatus" type="String" />
-		<field name="postDossierStatus" type="String" />
+		<field name="preDossierStatus" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="postDossierStatus" type="String">
+			<hint name="max-length">30</hint>
+		</field>
 		<field name="stepTransitionId" type="long" />
 		<field name="preDossierStepId" type="long" />
 		<field name="postDossierStepId" type="long" />
-		<field name="transitionName" type="String" />
-		<field name="note" type="String" />
+		<field name="transitionName" type="String">
+			<hint name="max-length">100</hint>
+		</field>
+		<field name="note" type="String">
+			<hint name="max-length">200</hint>
+		</field>
+		<field name="assignToUserId" type="long" />
 	</model>
 	<model name="org.oep.core.processmgt.model.UserAssignment">
 		<field name="userAssignmentId" type="long" />

@@ -12,6 +12,22 @@
  * details.
  */
 
+/** 
+ * Copyright (c) 2015 by Open eGovPlatform (http://http://openegovplatform.org/).
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+  */
+
 package org.oep.core.processmgt.service.impl;
 
 import java.util.Date;
@@ -30,7 +46,7 @@ import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.service.ServiceContext;
 
 /**
- * The implementation of the process order local service.
+ * API cung cấp các thao tác với dữ liệu thông tin phiếu xử lý hồ sơ theo quy trình.
  *
  * <p>
  * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link org.oep.core.processmgt.service.ProcessOrderLocalService} interface.
@@ -52,16 +68,29 @@ public class ProcessOrderLocalServiceImpl
 	 */
 	
 	/** 
-	 * Add process order
+	 * Thêm phiếu xử lý hồ sơ mới
 	 * 
 	 * Version: OEP 2.0
 	 *  
 	 * History: 
 	 *   DATE        AUTHOR      DESCRIPTION 
 	 *  ------------------------------------------------- 
-	 *  21-September-2015  trungdk    Create new
-	 * @param
-	 * @return: new process order
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param organizationId tổ chức thực hiện xử lý hồ sơ
+	 * @param parentProcessOrderId có phải là phiếu xử lý cha
+	 * @param dossierId hồ sơ cần xử lý
+	 * @param dossierProcessId nằm trong quy trình xử lý hồ sơ nào
+	 * @param dossierStepId đang xử lý tại bước nào (0 là đã kết thúc xử lý)
+	 * @param orderStatus trạng thái hiện tại của phiếu xử lý
+	 * @param orderResume tóm tắt nội dung cần xử lý
+	 * @param stepDate thời điểm bắt đầu thực hiện xử lý hồ sơ
+	 * @param stepNote ghi lại ghi chú của người xử lý cuối cùng
+	 * @param assignToUserId người chịu trách nhiệm xử lý
+	 * @param currentCondition điều kiện hiện tại của hồ sơ để xét chuyển dịch
+	 * @param lastStepTransitionId chuyển dịch cuối cùng của phiếu xử lý
+	 * @param stopRollback cờ đánh dấu tạm dừng việc rollback
+	 * @param ebPartnershipId trao đổi hồ sơ hiện tại với hệ thống bên ngoài
+	 * @return: thông tin xử lý hồ sơ mới được tạo
 	 */
 	@Indexable(type = IndexableType.REINDEX)	
 	@Transactional
@@ -118,6 +147,31 @@ public class ProcessOrderLocalServiceImpl
 		return getProcessOrder(id);
 	}
 
+	/** 
+	 * Cập nhật phiếu xử lý hồ sơ mới
+	 * 
+	 * Version: OEP 2.0
+	 *  
+	 * History: 
+	 *   DATE        AUTHOR      DESCRIPTION 
+	 *  ------------------------------------------------- 
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param organizationId tổ chức thực hiện xử lý hồ sơ
+	 * @param parentProcessOrderId có phải là phiếu xử lý cha
+	 * @param dossierId hồ sơ cần xử lý
+	 * @param dossierProcessId nằm trong quy trình xử lý hồ sơ nào
+	 * @param dossierStepId đang xử lý tại bước nào (0 là đã kết thúc xử lý)
+	 * @param orderStatus trạng thái hiện tại của phiếu xử lý
+	 * @param orderResume tóm tắt nội dung cần xử lý
+	 * @param stepDate thời điểm bắt đầu thực hiện xử lý hồ sơ
+	 * @param stepNote ghi lại ghi chú của người xử lý cuối cùng
+	 * @param assignToUserId người chịu trách nhiệm xử lý
+	 * @param currentCondition điều kiện hiện tại của hồ sơ để xét chuyển dịch
+	 * @param lastStepTransitionId chuyển dịch cuối cùng của phiếu xử lý
+	 * @param stopRollback cờ đánh dấu tạm dừng việc rollback
+	 * @param ebPartnershipId trao đổi hồ sơ hiện tại với hệ thống bên ngoài
+	 * @return: thông tin xử lý hồ sơ mới được cập nhật
+	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public ProcessOrder updateProcessOrder(
 			long id, 

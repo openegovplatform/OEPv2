@@ -23,6 +23,7 @@ import com.liferay.portal.model.impl.BaseModelImpl;
 import com.liferay.portal.util.PortalUtil;
 
 import org.oep.core.processmgt.service.ClpSerializer;
+import org.oep.core.processmgt.service.StatisticByUserLocalServiceUtil;
 
 import java.io.Serializable;
 
@@ -81,13 +82,10 @@ public class StatisticByUserClp extends BaseModelImpl<StatisticByUser>
 		attributes.put("createDate", getCreateDate());
 		attributes.put("month", getMonth());
 		attributes.put("year", getYear());
-		attributes.put("dossierStatus", getDossierStatus());
 		attributes.put("totalNumber", getTotalNumber());
-		attributes.put("delayedNumber", getDelayedNumber());
 		attributes.put("ontimeNumber", getOntimeNumber());
 		attributes.put("ontimeRatio", getOntimeRatio());
 		attributes.put("delayDaysAvg", getDelayDaysAvg());
-		attributes.put("furtherDaysAvg", getFurtherDaysAvg());
 
 		return attributes;
 	}
@@ -136,22 +134,10 @@ public class StatisticByUserClp extends BaseModelImpl<StatisticByUser>
 			setYear(year);
 		}
 
-		String dossierStatus = (String)attributes.get("dossierStatus");
-
-		if (dossierStatus != null) {
-			setDossierStatus(dossierStatus);
-		}
-
 		Integer totalNumber = (Integer)attributes.get("totalNumber");
 
 		if (totalNumber != null) {
 			setTotalNumber(totalNumber);
-		}
-
-		Integer delayedNumber = (Integer)attributes.get("delayedNumber");
-
-		if (delayedNumber != null) {
-			setDelayedNumber(delayedNumber);
 		}
 
 		Integer ontimeNumber = (Integer)attributes.get("ontimeNumber");
@@ -170,12 +156,6 @@ public class StatisticByUserClp extends BaseModelImpl<StatisticByUser>
 
 		if (delayDaysAvg != null) {
 			setDelayDaysAvg(delayDaysAvg);
-		}
-
-		Double furtherDaysAvg = (Double)attributes.get("furtherDaysAvg");
-
-		if (furtherDaysAvg != null) {
-			setFurtherDaysAvg(furtherDaysAvg);
 		}
 	}
 
@@ -363,29 +343,6 @@ public class StatisticByUserClp extends BaseModelImpl<StatisticByUser>
 	}
 
 	@Override
-	public String getDossierStatus() {
-		return _dossierStatus;
-	}
-
-	@Override
-	public void setDossierStatus(String dossierStatus) {
-		_dossierStatus = dossierStatus;
-
-		if (_statisticByUserRemoteModel != null) {
-			try {
-				Class<?> clazz = _statisticByUserRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setDossierStatus", String.class);
-
-				method.invoke(_statisticByUserRemoteModel, dossierStatus);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
 	public int getTotalNumber() {
 		return _totalNumber;
 	}
@@ -401,29 +358,6 @@ public class StatisticByUserClp extends BaseModelImpl<StatisticByUser>
 				Method method = clazz.getMethod("setTotalNumber", int.class);
 
 				method.invoke(_statisticByUserRemoteModel, totalNumber);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
-	public int getDelayedNumber() {
-		return _delayedNumber;
-	}
-
-	@Override
-	public void setDelayedNumber(int delayedNumber) {
-		_delayedNumber = delayedNumber;
-
-		if (_statisticByUserRemoteModel != null) {
-			try {
-				Class<?> clazz = _statisticByUserRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setDelayedNumber", int.class);
-
-				method.invoke(_statisticByUserRemoteModel, delayedNumber);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -500,30 +434,6 @@ public class StatisticByUserClp extends BaseModelImpl<StatisticByUser>
 		}
 	}
 
-	@Override
-	public double getFurtherDaysAvg() {
-		return _furtherDaysAvg;
-	}
-
-	@Override
-	public void setFurtherDaysAvg(double furtherDaysAvg) {
-		_furtherDaysAvg = furtherDaysAvg;
-
-		if (_statisticByUserRemoteModel != null) {
-			try {
-				Class<?> clazz = _statisticByUserRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setFurtherDaysAvg",
-						double.class);
-
-				method.invoke(_statisticByUserRemoteModel, furtherDaysAvg);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
 	public BaseModel<?> getStatisticByUserRemoteModel() {
 		return _statisticByUserRemoteModel;
 	}
@@ -575,6 +485,16 @@ public class StatisticByUserClp extends BaseModelImpl<StatisticByUser>
 	}
 
 	@Override
+	public void persist() throws SystemException {
+		if (this.isNew()) {
+			StatisticByUserLocalServiceUtil.addStatisticByUser(this);
+		}
+		else {
+			StatisticByUserLocalServiceUtil.updateStatisticByUser(this);
+		}
+	}
+
+	@Override
 	public StatisticByUser toEscapedModel() {
 		return (StatisticByUser)ProxyUtil.newProxyInstance(StatisticByUser.class.getClassLoader(),
 			new Class[] { StatisticByUser.class },
@@ -592,13 +512,10 @@ public class StatisticByUserClp extends BaseModelImpl<StatisticByUser>
 		clone.setCreateDate(getCreateDate());
 		clone.setMonth(getMonth());
 		clone.setYear(getYear());
-		clone.setDossierStatus(getDossierStatus());
 		clone.setTotalNumber(getTotalNumber());
-		clone.setDelayedNumber(getDelayedNumber());
 		clone.setOntimeNumber(getOntimeNumber());
 		clone.setOntimeRatio(getOntimeRatio());
 		clone.setDelayDaysAvg(getDelayDaysAvg());
-		clone.setFurtherDaysAvg(getFurtherDaysAvg());
 
 		return clone;
 	}
@@ -651,7 +568,7 @@ public class StatisticByUserClp extends BaseModelImpl<StatisticByUser>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(29);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{statisticByUserId=");
 		sb.append(getStatisticByUserId());
@@ -667,20 +584,14 @@ public class StatisticByUserClp extends BaseModelImpl<StatisticByUser>
 		sb.append(getMonth());
 		sb.append(", year=");
 		sb.append(getYear());
-		sb.append(", dossierStatus=");
-		sb.append(getDossierStatus());
 		sb.append(", totalNumber=");
 		sb.append(getTotalNumber());
-		sb.append(", delayedNumber=");
-		sb.append(getDelayedNumber());
 		sb.append(", ontimeNumber=");
 		sb.append(getOntimeNumber());
 		sb.append(", ontimeRatio=");
 		sb.append(getOntimeRatio());
 		sb.append(", delayDaysAvg=");
 		sb.append(getDelayDaysAvg());
-		sb.append(", furtherDaysAvg=");
-		sb.append(getFurtherDaysAvg());
 		sb.append("}");
 
 		return sb.toString();
@@ -688,7 +599,7 @@ public class StatisticByUserClp extends BaseModelImpl<StatisticByUser>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(46);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.StatisticByUser");
@@ -723,16 +634,8 @@ public class StatisticByUserClp extends BaseModelImpl<StatisticByUser>
 		sb.append(getYear());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>dossierStatus</column-name><column-value><![CDATA[");
-		sb.append(getDossierStatus());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>totalNumber</column-name><column-value><![CDATA[");
 		sb.append(getTotalNumber());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>delayedNumber</column-name><column-value><![CDATA[");
-		sb.append(getDelayedNumber());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>ontimeNumber</column-name><column-value><![CDATA[");
@@ -745,10 +648,6 @@ public class StatisticByUserClp extends BaseModelImpl<StatisticByUser>
 		sb.append(
 			"<column><column-name>delayDaysAvg</column-name><column-value><![CDATA[");
 		sb.append(getDelayDaysAvg());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>furtherDaysAvg</column-name><column-value><![CDATA[");
-		sb.append(getFurtherDaysAvg());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -765,13 +664,10 @@ public class StatisticByUserClp extends BaseModelImpl<StatisticByUser>
 	private Date _createDate;
 	private int _month;
 	private int _year;
-	private String _dossierStatus;
 	private int _totalNumber;
-	private int _delayedNumber;
 	private int _ontimeNumber;
 	private double _ontimeRatio;
 	private double _delayDaysAvg;
-	private double _furtherDaysAvg;
 	private BaseModel<?> _statisticByUserRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.processmgt.service.ClpSerializer.class;
 }

@@ -38,7 +38,7 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(31);
 
 		sb.append("{stepTransitionId=");
 		sb.append(stepTransitionId);
@@ -58,20 +58,14 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 		sb.append(preDossierStepId);
 		sb.append(", postDossierStepId=");
 		sb.append(postDossierStepId);
-		sb.append(", precondition=");
-		sb.append(precondition);
 		sb.append(", autoCondition=");
 		sb.append(autoCondition);
 		sb.append(", transitionName=");
 		sb.append(transitionName);
 		sb.append(", dossierStatus=");
 		sb.append(dossierStatus);
-		sb.append(", notifyStatus=");
-		sb.append(notifyStatus);
 		sb.append(", sendResults=");
 		sb.append(sendResults);
-		sb.append(", requestPayment=");
-		sb.append(requestPayment);
 		sb.append(", userAssignment=");
 		sb.append(userAssignment);
 		sb.append(", newProcessOrder=");
@@ -108,13 +102,6 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 		stepTransitionImpl.setPreDossierStepId(preDossierStepId);
 		stepTransitionImpl.setPostDossierStepId(postDossierStepId);
 
-		if (precondition == null) {
-			stepTransitionImpl.setPrecondition(StringPool.BLANK);
-		}
-		else {
-			stepTransitionImpl.setPrecondition(precondition);
-		}
-
 		if (autoCondition == null) {
 			stepTransitionImpl.setAutoCondition(StringPool.BLANK);
 		}
@@ -136,9 +123,7 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 			stepTransitionImpl.setDossierStatus(dossierStatus);
 		}
 
-		stepTransitionImpl.setNotifyStatus(notifyStatus);
 		stepTransitionImpl.setSendResults(sendResults);
-		stepTransitionImpl.setRequestPayment(requestPayment);
 		stepTransitionImpl.setUserAssignment(userAssignment);
 		stepTransitionImpl.setNewProcessOrder(newProcessOrder);
 
@@ -158,13 +143,10 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 		dossierProcessId = objectInput.readLong();
 		preDossierStepId = objectInput.readLong();
 		postDossierStepId = objectInput.readLong();
-		precondition = objectInput.readUTF();
 		autoCondition = objectInput.readUTF();
 		transitionName = objectInput.readUTF();
 		dossierStatus = objectInput.readUTF();
-		notifyStatus = objectInput.readInt();
 		sendResults = objectInput.readInt();
-		requestPayment = objectInput.readInt();
 		userAssignment = objectInput.readInt();
 		newProcessOrder = objectInput.readInt();
 	}
@@ -181,13 +163,6 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 		objectOutput.writeLong(dossierProcessId);
 		objectOutput.writeLong(preDossierStepId);
 		objectOutput.writeLong(postDossierStepId);
-
-		if (precondition == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(precondition);
-		}
 
 		if (autoCondition == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
@@ -210,9 +185,7 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 			objectOutput.writeUTF(dossierStatus);
 		}
 
-		objectOutput.writeInt(notifyStatus);
 		objectOutput.writeInt(sendResults);
-		objectOutput.writeInt(requestPayment);
 		objectOutput.writeInt(userAssignment);
 		objectOutput.writeInt(newProcessOrder);
 	}
@@ -226,13 +199,10 @@ public class StepTransitionCacheModel implements CacheModel<StepTransition>,
 	public long dossierProcessId;
 	public long preDossierStepId;
 	public long postDossierStepId;
-	public String precondition;
 	public String autoCondition;
 	public String transitionName;
 	public String dossierStatus;
-	public int notifyStatus;
 	public int sendResults;
-	public int requestPayment;
 	public int userAssignment;
 	public int newProcessOrder;
 }

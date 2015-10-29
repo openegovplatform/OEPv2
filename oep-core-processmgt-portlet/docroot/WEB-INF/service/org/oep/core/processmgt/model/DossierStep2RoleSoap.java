@@ -22,9 +22,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class is used by SOAP remote services.
+ * This class is used by SOAP remote services, specifically {@link org.oep.core.processmgt.service.http.DossierStep2RoleServiceSoap}.
  *
  * @author trungdk
+ * @see org.oep.core.processmgt.service.http.DossierStep2RoleServiceSoap
  * @generated
  */
 public class DossierStep2RoleSoap implements Serializable {

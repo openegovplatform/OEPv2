@@ -67,29 +67,15 @@ public class DossierProcessLocalServiceImpl
 	@Indexable(type = IndexableType.REINDEX)	
 	@Transactional
 	public DossierProcess addDossierProcess(
-			long dossierProcId, 
-			String govAgencyId, 
-			String govAgencyName, 
-			long startStepTransitionId, 
-			int daysDuration, 
-			int fee,
 			ServiceContext serviceContext) throws SystemException, PortalException {
-		validate(dossierProcId, govAgencyId, govAgencyName, startStepTransitionId, daysDuration);
 		long id = counterLocalService.increment();
 		DossierProcess dossierProcess = dossierProcessPersistence.create(id);
 		Date now = new Date();
 		
 		dossierProcess.setUserId(serviceContext.getUserId());
-		dossierProcess.setGroupId(serviceContext.getScopeGroupId());
-		dossierProcess.setGovAgencyId(govAgencyId);
-		dossierProcess.setGovAgencyName(govAgencyName);
-		dossierProcess.setStartStepTransitionId(startStepTransitionId);
-		dossierProcess.setDaysDuration(daysDuration);
-		dossierProcess.setFee(fee);
-		
+		dossierProcess.setGroupId(serviceContext.getScopeGroupId());		
 		dossierProcess.setCompanyId(serviceContext.getCompanyId());
 		dossierProcess.setCreateDate(serviceContext.getCreateDate(now));
-		dossierProcess.setDossierProcId(dossierProcId);
 		
 		dossierProcessPersistence.update(dossierProcess);
 
@@ -109,26 +95,12 @@ public class DossierProcessLocalServiceImpl
 	@Indexable(type = IndexableType.REINDEX)
 	public DossierProcess updateDossierProcess(
 			long id, 
-			long dossierProcId, 
-			String govAgencyId, 
-			String govAgencyName, 
-			long startStepTransitionId, 
-			int daysDuration, 
-			int fee,
 			ServiceContext serviceContext)
 		throws PortalException, SystemException {
-
-		validate(dossierProcId, govAgencyId, govAgencyName, startStepTransitionId, daysDuration);
 
 		DossierProcess dossierProcess = dossierProcessPersistence.findByPrimaryKey(id);
 
 		dossierProcess.setModifiedDate(serviceContext.getModifiedDate(null));
-		dossierProcess.setDossierProcId(dossierProcId);
-		dossierProcess.setGovAgencyId(govAgencyId);
-		dossierProcess.setGovAgencyName(govAgencyName);
-		dossierProcess.setStartStepTransitionId(startStepTransitionId);
-		dossierProcess.setDaysDuration(daysDuration);
-		dossierProcess.setFee(fee);
 		
 		dossierProcessPersistence.update(dossierProcess);
 

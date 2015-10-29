@@ -202,21 +202,6 @@ public interface StepTransitionModel extends BaseModel<StepTransition> {
 	public void setPostDossierStepId(long postDossierStepId);
 
 	/**
-	 * Returns the precondition of this step transition.
-	 *
-	 * @return the precondition of this step transition
-	 */
-	@AutoEscape
-	public String getPrecondition();
-
-	/**
-	 * Sets the precondition of this step transition.
-	 *
-	 * @param precondition the precondition of this step transition
-	 */
-	public void setPrecondition(String precondition);
-
-	/**
 	 * Returns the auto condition of this step transition.
 	 *
 	 * @return the auto condition of this step transition
@@ -262,20 +247,6 @@ public interface StepTransitionModel extends BaseModel<StepTransition> {
 	public void setDossierStatus(String dossierStatus);
 
 	/**
-	 * Returns the notify status of this step transition.
-	 *
-	 * @return the notify status of this step transition
-	 */
-	public int getNotifyStatus();
-
-	/**
-	 * Sets the notify status of this step transition.
-	 *
-	 * @param notifyStatus the notify status of this step transition
-	 */
-	public void setNotifyStatus(int notifyStatus);
-
-	/**
 	 * Returns the send results of this step transition.
 	 *
 	 * @return the send results of this step transition
@@ -288,20 +259,6 @@ public interface StepTransitionModel extends BaseModel<StepTransition> {
 	 * @param sendResults the send results of this step transition
 	 */
 	public void setSendResults(int sendResults);
-
-	/**
-	 * Returns the request payment of this step transition.
-	 *
-	 * @return the request payment of this step transition
-	 */
-	public int getRequestPayment();
-
-	/**
-	 * Sets the request payment of this step transition.
-	 *
-	 * @param requestPayment the request payment of this step transition
-	 */
-	public void setRequestPayment(int requestPayment);
 
 	/**
 	 * Returns the user assignment of this step transition.

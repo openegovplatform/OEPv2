@@ -38,13 +38,10 @@ public class StatisticByUserSoap implements Serializable {
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setMonth(model.getMonth());
 		soapModel.setYear(model.getYear());
-		soapModel.setDossierStatus(model.getDossierStatus());
 		soapModel.setTotalNumber(model.getTotalNumber());
-		soapModel.setDelayedNumber(model.getDelayedNumber());
 		soapModel.setOntimeNumber(model.getOntimeNumber());
 		soapModel.setOntimeRatio(model.getOntimeRatio());
 		soapModel.setDelayDaysAvg(model.getDelayDaysAvg());
-		soapModel.setFurtherDaysAvg(model.getFurtherDaysAvg());
 
 		return soapModel;
 	}
@@ -155,28 +152,12 @@ public class StatisticByUserSoap implements Serializable {
 		_year = year;
 	}
 
-	public String getDossierStatus() {
-		return _dossierStatus;
-	}
-
-	public void setDossierStatus(String dossierStatus) {
-		_dossierStatus = dossierStatus;
-	}
-
 	public int getTotalNumber() {
 		return _totalNumber;
 	}
 
 	public void setTotalNumber(int totalNumber) {
 		_totalNumber = totalNumber;
-	}
-
-	public int getDelayedNumber() {
-		return _delayedNumber;
-	}
-
-	public void setDelayedNumber(int delayedNumber) {
-		_delayedNumber = delayedNumber;
 	}
 
 	public int getOntimeNumber() {
@@ -203,14 +184,6 @@ public class StatisticByUserSoap implements Serializable {
 		_delayDaysAvg = delayDaysAvg;
 	}
 
-	public double getFurtherDaysAvg() {
-		return _furtherDaysAvg;
-	}
-
-	public void setFurtherDaysAvg(double furtherDaysAvg) {
-		_furtherDaysAvg = furtherDaysAvg;
-	}
-
 	private long _statisticByUserId;
 	private long _userId;
 	private long _groupId;
@@ -218,11 +191,8 @@ public class StatisticByUserSoap implements Serializable {
 	private Date _createDate;
 	private int _month;
 	private int _year;
-	private String _dossierStatus;
 	private int _totalNumber;
-	private int _delayedNumber;
 	private int _ontimeNumber;
 	private double _ontimeRatio;
 	private double _delayDaysAvg;
-	private double _furtherDaysAvg;
 }

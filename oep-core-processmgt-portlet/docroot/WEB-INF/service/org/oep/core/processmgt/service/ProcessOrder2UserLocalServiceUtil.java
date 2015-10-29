@@ -275,6 +275,49 @@ public class ProcessOrder2UserLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	/**
+	* ThÃƒÂªm quan hÃ¡Â»â€¡ giÃ¡Â»Â¯a thÃƒÂ´ng tin xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡ vÃ¡Â»â€ºi ngÃ†Â°Ã¡Â»ï¿½i xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
+	*
+	* @param processOrderId mÃƒÂ£ thÃƒÂ´ng tin xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡
+	* @param userId mÃƒÂ£ vai trÃƒÂ²
+	* @return: quan hÃ¡Â»â€¡ giÃ¡Â»Â¯a thÃƒÂ´ng tin xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡ vÃ¡Â»â€ºi cÃƒÂ¡n bÃ¡Â»â„¢ xÃ¡Â»Â­ lÃƒÂ½Ã¡Â»Â§e
+	*/
+	public static org.oep.core.processmgt.model.ProcessOrder2User addProcessOrder2User(
+		long processOrderId, long userId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addProcessOrder2User(processOrderId, userId, serviceContext);
+	}
+
+	public static void removeProcessOrder2User(
+		org.oep.core.processmgt.model.ProcessOrder2User processOrder2User)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeProcessOrder2User(processOrder2User);
+	}
+
+	public static void removeProcessOrder2User(long processOrderId, long userId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeProcessOrder2User(processOrderId, userId);
+	}
+
+	public static org.oep.core.processmgt.model.ProcessOrder2User getProcessOrder2User(
+		long processOrderId, long userId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().getProcessOrder2User(processOrderId, userId);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

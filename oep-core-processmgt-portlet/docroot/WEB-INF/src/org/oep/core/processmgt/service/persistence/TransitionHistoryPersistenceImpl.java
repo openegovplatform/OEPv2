@@ -342,6 +342,7 @@ public class TransitionHistoryPersistenceImpl extends BasePersistenceImpl<Transi
 		transitionHistoryImpl.setPostDossierStepId(transitionHistory.getPostDossierStepId());
 		transitionHistoryImpl.setTransitionName(transitionHistory.getTransitionName());
 		transitionHistoryImpl.setNote(transitionHistory.getNote());
+		transitionHistoryImpl.setAssignToUserId(transitionHistory.getAssignToUserId());
 
 		return transitionHistoryImpl;
 	}

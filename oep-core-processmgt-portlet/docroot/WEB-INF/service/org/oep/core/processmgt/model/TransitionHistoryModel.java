@@ -317,6 +317,35 @@ public interface TransitionHistoryModel extends BaseModel<TransitionHistory> {
 	 */
 	public void setNote(String note);
 
+	/**
+	 * Returns the assign to user ID of this transition history.
+	 *
+	 * @return the assign to user ID of this transition history
+	 */
+	public long getAssignToUserId();
+
+	/**
+	 * Sets the assign to user ID of this transition history.
+	 *
+	 * @param assignToUserId the assign to user ID of this transition history
+	 */
+	public void setAssignToUserId(long assignToUserId);
+
+	/**
+	 * Returns the assign to user uuid of this transition history.
+	 *
+	 * @return the assign to user uuid of this transition history
+	 * @throws SystemException if a system exception occurred
+	 */
+	public String getAssignToUserUuid() throws SystemException;
+
+	/**
+	 * Sets the assign to user uuid of this transition history.
+	 *
+	 * @param assignToUserUuid the assign to user uuid of this transition history
+	 */
+	public void setAssignToUserUuid(String assignToUserUuid);
+
 	@Override
 	public boolean isNew();
 

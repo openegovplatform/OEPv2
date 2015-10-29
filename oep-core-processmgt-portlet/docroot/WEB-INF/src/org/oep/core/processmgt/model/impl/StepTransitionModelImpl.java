@@ -75,17 +75,14 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 			{ "dossierProcessId", Types.BIGINT },
 			{ "preDossierStepId", Types.BIGINT },
 			{ "postDossierStepId", Types.BIGINT },
-			{ "precondition", Types.VARCHAR },
 			{ "autoCondition", Types.VARCHAR },
 			{ "transitionName", Types.VARCHAR },
 			{ "dossierStatus", Types.VARCHAR },
-			{ "notifyStatus", Types.INTEGER },
 			{ "sendResults", Types.INTEGER },
-			{ "requestPayment", Types.INTEGER },
 			{ "userAssignment", Types.INTEGER },
 			{ "newProcessOrder", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_steptransition (stepTransitionId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcessId LONG,preDossierStepId LONG,postDossierStepId LONG,precondition VARCHAR(75) null,autoCondition VARCHAR(30) null,transitionName VARCHAR(100) null,dossierStatus VARCHAR(75) null,notifyStatus INTEGER,sendResults INTEGER,requestPayment INTEGER,userAssignment INTEGER,newProcessOrder INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_steptransition (stepTransitionId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcessId LONG,preDossierStepId LONG,postDossierStepId LONG,autoCondition VARCHAR(30) null,transitionName VARCHAR(100) null,dossierStatus VARCHAR(30) null,sendResults INTEGER,userAssignment INTEGER,newProcessOrder INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_processmgt_steptransition";
 	public static final String ORDER_BY_JPQL = " ORDER BY stepTransition.stepTransitionId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_processmgt_steptransition.stepTransitionId ASC";
@@ -122,13 +119,10 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 		model.setDossierProcessId(soapModel.getDossierProcessId());
 		model.setPreDossierStepId(soapModel.getPreDossierStepId());
 		model.setPostDossierStepId(soapModel.getPostDossierStepId());
-		model.setPrecondition(soapModel.getPrecondition());
 		model.setAutoCondition(soapModel.getAutoCondition());
 		model.setTransitionName(soapModel.getTransitionName());
 		model.setDossierStatus(soapModel.getDossierStatus());
-		model.setNotifyStatus(soapModel.getNotifyStatus());
 		model.setSendResults(soapModel.getSendResults());
-		model.setRequestPayment(soapModel.getRequestPayment());
 		model.setUserAssignment(soapModel.getUserAssignment());
 		model.setNewProcessOrder(soapModel.getNewProcessOrder());
 
@@ -204,13 +198,10 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 		attributes.put("dossierProcessId", getDossierProcessId());
 		attributes.put("preDossierStepId", getPreDossierStepId());
 		attributes.put("postDossierStepId", getPostDossierStepId());
-		attributes.put("precondition", getPrecondition());
 		attributes.put("autoCondition", getAutoCondition());
 		attributes.put("transitionName", getTransitionName());
 		attributes.put("dossierStatus", getDossierStatus());
-		attributes.put("notifyStatus", getNotifyStatus());
 		attributes.put("sendResults", getSendResults());
-		attributes.put("requestPayment", getRequestPayment());
 		attributes.put("userAssignment", getUserAssignment());
 		attributes.put("newProcessOrder", getNewProcessOrder());
 
@@ -273,12 +264,6 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 			setPostDossierStepId(postDossierStepId);
 		}
 
-		String precondition = (String)attributes.get("precondition");
-
-		if (precondition != null) {
-			setPrecondition(precondition);
-		}
-
 		String autoCondition = (String)attributes.get("autoCondition");
 
 		if (autoCondition != null) {
@@ -297,22 +282,10 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 			setDossierStatus(dossierStatus);
 		}
 
-		Integer notifyStatus = (Integer)attributes.get("notifyStatus");
-
-		if (notifyStatus != null) {
-			setNotifyStatus(notifyStatus);
-		}
-
 		Integer sendResults = (Integer)attributes.get("sendResults");
 
 		if (sendResults != null) {
 			setSendResults(sendResults);
-		}
-
-		Integer requestPayment = (Integer)attributes.get("requestPayment");
-
-		if (requestPayment != null) {
-			setRequestPayment(requestPayment);
 		}
 
 		Integer userAssignment = (Integer)attributes.get("userAssignment");
@@ -439,22 +412,6 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 
 	@JSON
 	@Override
-	public String getPrecondition() {
-		if (_precondition == null) {
-			return StringPool.BLANK;
-		}
-		else {
-			return _precondition;
-		}
-	}
-
-	@Override
-	public void setPrecondition(String precondition) {
-		_precondition = precondition;
-	}
-
-	@JSON
-	@Override
 	public String getAutoCondition() {
 		if (_autoCondition == null) {
 			return StringPool.BLANK;
@@ -503,17 +460,6 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 
 	@JSON
 	@Override
-	public int getNotifyStatus() {
-		return _notifyStatus;
-	}
-
-	@Override
-	public void setNotifyStatus(int notifyStatus) {
-		_notifyStatus = notifyStatus;
-	}
-
-	@JSON
-	@Override
 	public int getSendResults() {
 		return _sendResults;
 	}
@@ -521,17 +467,6 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 	@Override
 	public void setSendResults(int sendResults) {
 		_sendResults = sendResults;
-	}
-
-	@JSON
-	@Override
-	public int getRequestPayment() {
-		return _requestPayment;
-	}
-
-	@Override
-	public void setRequestPayment(int requestPayment) {
-		_requestPayment = requestPayment;
 	}
 
 	@JSON
@@ -592,13 +527,10 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 		stepTransitionImpl.setDossierProcessId(getDossierProcessId());
 		stepTransitionImpl.setPreDossierStepId(getPreDossierStepId());
 		stepTransitionImpl.setPostDossierStepId(getPostDossierStepId());
-		stepTransitionImpl.setPrecondition(getPrecondition());
 		stepTransitionImpl.setAutoCondition(getAutoCondition());
 		stepTransitionImpl.setTransitionName(getTransitionName());
 		stepTransitionImpl.setDossierStatus(getDossierStatus());
-		stepTransitionImpl.setNotifyStatus(getNotifyStatus());
 		stepTransitionImpl.setSendResults(getSendResults());
-		stepTransitionImpl.setRequestPayment(getRequestPayment());
 		stepTransitionImpl.setUserAssignment(getUserAssignment());
 		stepTransitionImpl.setNewProcessOrder(getNewProcessOrder());
 
@@ -689,14 +621,6 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 
 		stepTransitionCacheModel.postDossierStepId = getPostDossierStepId();
 
-		stepTransitionCacheModel.precondition = getPrecondition();
-
-		String precondition = stepTransitionCacheModel.precondition;
-
-		if ((precondition != null) && (precondition.length() == 0)) {
-			stepTransitionCacheModel.precondition = null;
-		}
-
 		stepTransitionCacheModel.autoCondition = getAutoCondition();
 
 		String autoCondition = stepTransitionCacheModel.autoCondition;
@@ -721,11 +645,7 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 			stepTransitionCacheModel.dossierStatus = null;
 		}
 
-		stepTransitionCacheModel.notifyStatus = getNotifyStatus();
-
 		stepTransitionCacheModel.sendResults = getSendResults();
-
-		stepTransitionCacheModel.requestPayment = getRequestPayment();
 
 		stepTransitionCacheModel.userAssignment = getUserAssignment();
 
@@ -736,7 +656,7 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(31);
 
 		sb.append("{stepTransitionId=");
 		sb.append(getStepTransitionId());
@@ -756,20 +676,14 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 		sb.append(getPreDossierStepId());
 		sb.append(", postDossierStepId=");
 		sb.append(getPostDossierStepId());
-		sb.append(", precondition=");
-		sb.append(getPrecondition());
 		sb.append(", autoCondition=");
 		sb.append(getAutoCondition());
 		sb.append(", transitionName=");
 		sb.append(getTransitionName());
 		sb.append(", dossierStatus=");
 		sb.append(getDossierStatus());
-		sb.append(", notifyStatus=");
-		sb.append(getNotifyStatus());
 		sb.append(", sendResults=");
 		sb.append(getSendResults());
-		sb.append(", requestPayment=");
-		sb.append(getRequestPayment());
 		sb.append(", userAssignment=");
 		sb.append(getUserAssignment());
 		sb.append(", newProcessOrder=");
@@ -781,7 +695,7 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(58);
+		StringBundler sb = new StringBundler(49);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.StepTransition");
@@ -824,10 +738,6 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 		sb.append(getPostDossierStepId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>precondition</column-name><column-value><![CDATA[");
-		sb.append(getPrecondition());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>autoCondition</column-name><column-value><![CDATA[");
 		sb.append(getAutoCondition());
 		sb.append("]]></column-value></column>");
@@ -840,16 +750,8 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 		sb.append(getDossierStatus());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>notifyStatus</column-name><column-value><![CDATA[");
-		sb.append(getNotifyStatus());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>sendResults</column-name><column-value><![CDATA[");
 		sb.append(getSendResults());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>requestPayment</column-name><column-value><![CDATA[");
-		sb.append(getRequestPayment());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>userAssignment</column-name><column-value><![CDATA[");
@@ -879,13 +781,10 @@ public class StepTransitionModelImpl extends BaseModelImpl<StepTransition>
 	private long _dossierProcessId;
 	private long _preDossierStepId;
 	private long _postDossierStepId;
-	private String _precondition;
 	private String _autoCondition;
 	private String _transitionName;
 	private String _dossierStatus;
-	private int _notifyStatus;
 	private int _sendResults;
-	private int _requestPayment;
 	private int _userAssignment;
 	private int _newProcessOrder;
 	private StepTransition _escapedModel;

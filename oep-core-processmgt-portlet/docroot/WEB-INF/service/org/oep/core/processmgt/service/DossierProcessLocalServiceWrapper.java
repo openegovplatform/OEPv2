@@ -303,28 +303,19 @@ public class DossierProcessLocalServiceWrapper
 	*/
 	@Override
 	public org.oep.core.processmgt.model.DossierProcess addDossierProcess(
-		long dossierProcId, java.lang.String govAgencyId,
-		java.lang.String govAgencyName, long startStepTransitionId,
-		int daysDuration, int fee,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return _dossierProcessLocalService.addDossierProcess(dossierProcId,
-			govAgencyId, govAgencyName, startStepTransitionId, daysDuration,
-			fee, serviceContext);
+		return _dossierProcessLocalService.addDossierProcess(serviceContext);
 	}
 
 	@Override
 	public org.oep.core.processmgt.model.DossierProcess updateDossierProcess(
-		long id, long dossierProcId, java.lang.String govAgencyId,
-		java.lang.String govAgencyName, long startStepTransitionId,
-		int daysDuration, int fee,
-		com.liferay.portal.service.ServiceContext serviceContext)
+		long id, com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _dossierProcessLocalService.updateDossierProcess(id,
-			dossierProcId, govAgencyId, govAgencyName, startStepTransitionId,
-			daysDuration, fee, serviceContext);
+			serviceContext);
 	}
 
 	@Override

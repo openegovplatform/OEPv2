@@ -332,13 +332,10 @@ public class StepTransitionPersistenceImpl extends BasePersistenceImpl<StepTrans
 		stepTransitionImpl.setDossierProcessId(stepTransition.getDossierProcessId());
 		stepTransitionImpl.setPreDossierStepId(stepTransition.getPreDossierStepId());
 		stepTransitionImpl.setPostDossierStepId(stepTransition.getPostDossierStepId());
-		stepTransitionImpl.setPrecondition(stepTransition.getPrecondition());
 		stepTransitionImpl.setAutoCondition(stepTransition.getAutoCondition());
 		stepTransitionImpl.setTransitionName(stepTransition.getTransitionName());
 		stepTransitionImpl.setDossierStatus(stepTransition.getDossierStatus());
-		stepTransitionImpl.setNotifyStatus(stepTransition.getNotifyStatus());
 		stepTransitionImpl.setSendResults(stepTransition.getSendResults());
-		stepTransitionImpl.setRequestPayment(stepTransition.getRequestPayment());
 		stepTransitionImpl.setUserAssignment(stepTransition.getUserAssignment());
 		stepTransitionImpl.setNewProcessOrder(stepTransition.getNewProcessOrder());
 

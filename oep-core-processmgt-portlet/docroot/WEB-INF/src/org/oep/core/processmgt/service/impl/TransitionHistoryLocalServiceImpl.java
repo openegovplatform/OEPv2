@@ -11,6 +11,21 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
+/** 
+ * Copyright (c) 2015 by Open eGovPlatform (http://http://openegovplatform.org/).
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+  */
 
 package org.oep.core.processmgt.service.impl;
 
@@ -30,7 +45,7 @@ import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.service.ServiceContext;
 
 /**
- * The implementation of the transition history local service.
+ * API cung cấp thao tác với dữ liệu lịch sử chuyển dịch trạng thái.
  *
  * <p>
  * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link org.oep.core.processmgt.service.TransitionHistoryLocalService} interface.
@@ -52,7 +67,7 @@ public class TransitionHistoryLocalServiceImpl
 	 */
 
 	/** 
-	 * Add transition history
+	 * Thêm lịch sử chuyển dịch trạng thái
 	 * 
 	 * Version: OEP 2.0
 	 *  
@@ -60,8 +75,21 @@ public class TransitionHistoryLocalServiceImpl
 	 *   DATE        AUTHOR      DESCRIPTION 
 	 *  ------------------------------------------------- 
 	 *  21-September-2015  trungdk    Create new
-	 * @param
-	 * @return: new transition history
+	 * @param dossierId hồ sơ thủ tục của diễn biến
+	 * @param processOrderId ghi diễn biến cho phiếu xử lý chính hoặc phụ
+	 * @param dossierProcId tham chiếu thủ tục hành chính
+	 * @param daysDoing số ngày thực hiện xử lý hồ sơ
+	 * @param daysDelay số ngày hồ sơ bị quá hạn (dấu - thể hiện trước hạn)
+	 * @param startDate thời điểm bắt đầu thực hiện
+	 * @param preDossierStatus trạng thái hồ sơ khi xử lý
+	 * @param postDossierStatus trạng thái hồ sơ sau xử lý
+	 * @param stepTransitionId chuyển dịch trạng thái
+	 * @param preDossierStepId trạng thái trước
+	 * @param postDossierStepId bước chuyển dịch sau
+	 * @param transitionName tên mô tả hành động xử lý liên quan đến hồ sơ
+	 * @param note ghi chú được ghi lại của người xử lý hồ sơ
+	 * @param assignToUserId người thực hiện bước xử lý
+	 * @return: lịch sử chuyển dịch trạng thái mới
 	 */
 	@Indexable(type = IndexableType.REINDEX)	
 	@Transactional
@@ -100,7 +128,7 @@ public class TransitionHistoryLocalServiceImpl
 		transitionHistoryPersistence.update(transitionHistory);
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Create new step transition " + id);
+			_log.info("Create new transition history " + id);
 		}
 		
 		if (serviceContext.isAddGroupPermissions() || serviceContext.isAddGuestPermissions()) {
@@ -112,6 +140,32 @@ public class TransitionHistoryLocalServiceImpl
 		return getTransitionHistory(id);
 	}
 
+	/** 
+	 * Cập nhật diễn biến chuyển dịch trạng thái
+	 * 
+	 * Version: OEP 2.0
+	 *  
+	 * History: 
+	 *   DATE        AUTHOR      DESCRIPTION 
+	 *  ------------------------------------------------- 
+	 *  21-September-2015  trungdk    Create new
+	 * @param id mã diễn biến chuyển dịch trạng thái
+	 * @param dossierId hồ sơ thủ tục của diễn biến
+	 * @param processOrderId ghi diễn biến cho phiếu xử lý chính hoặc phụ
+	 * @param dossierProcId tham chiếu thủ tục hành chính
+	 * @param daysDoing số ngày thực hiện xử lý hồ sơ
+	 * @param daysDelay số ngày hồ sơ bị quá hạn (dấu - thể hiện trước hạn)
+	 * @param startDate thời điểm bắt đầu thực hiện
+	 * @param preDossierStatus trạng thái hồ sơ khi xử lý
+	 * @param postDossierStatus trạng thái hồ sơ sau xử lý
+	 * @param stepTransitionId chuyển dịch trạng thái
+	 * @param preDossierStepId trạng thái trước
+	 * @param postDossierStepId bước chuyển dịch sau
+	 * @param transitionName tên mô tả hành động xử lý liên quan đến hồ sơ
+	 * @param note ghi chú được ghi lại của người xử lý hồ sơ
+	 * @param assignToUserId người thực hiện bước xử lý
+	 * @return: lịch sử chuyển dịch trạng thái mới được cập nhật
+	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public TransitionHistory updateTransitionHistory(
 			long id, 

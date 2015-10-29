@@ -1,5 +1,22 @@
-create table oep_processmgt_dossierprocess (
-	dossierProcessId LONG not null primary key,
+create table oep_processmgt_createfile (
+	createFileId LONG not null primary key,
+	userId LONG,
+	groupId LONG,
+	companyId LONG,
+	createDate DATE null,
+	processOrderId LONG,
+	dossierStepId LONG,
+	stepDate DATE null,
+	docFileId LONG
+);
+
+create table oep_processmgt_docfile2processorder (
+	docFileId LONG not null primary key,
+	processOrderId LONG
+);
+
+create table oep_processmgt_dossierproc2process (
+	dossierProc2ProcessId LONG not null primary key,
 	userId LONG,
 	groupId LONG,
 	companyId LONG,
@@ -8,9 +25,30 @@ create table oep_processmgt_dossierprocess (
 	dossierProcId LONG,
 	govAgencyId VARCHAR(30) null,
 	govAgencyName VARCHAR(200) null,
-	startStepTransitionId LONG,
+	dossierProcessId LONG,
+	aaaa VARCHAR(4) null,
+	bbb VARCHAR(3) null,
 	daysDuration INTEGER,
-	fee INTEGER
+	paymentFee INTEGER,
+	paymentOneGate INTEGER,
+	paymentEservice INTEGER,
+	organizationId LONG,
+	ebPartnershipId LONG
+);
+
+create table oep_processmgt_dossierproc2role (
+	dossierProc2RoleId LONG not null primary key,
+	dossierProcId LONG,
+	roleId LONG
+);
+
+create table oep_processmgt_dossierprocess (
+	dossierProcessId LONG not null primary key,
+	userId LONG,
+	groupId LONG,
+	companyId LONG,
+	createDate DATE null,
+	modifiedDate DATE null
 );
 
 create table oep_processmgt_dossierstep (
@@ -21,7 +59,7 @@ create table oep_processmgt_dossierstep (
 	createDate DATE null,
 	modifiedDate DATE null,
 	dossierProcessId LONG,
-	title VARCHAR(75) null,
+	title VARCHAR(100) null,
 	sequenceNo INTEGER,
 	daysDuration INTEGER,
 	doForm VARCHAR(100) null,
@@ -48,12 +86,12 @@ create table oep_processmgt_processorder (
 	dossierId LONG,
 	dossierProcessId LONG,
 	dossierStepId LONG,
-	orderStatus VARCHAR(75) null,
-	orderResume VARCHAR(75) null,
+	orderStatus VARCHAR(30) null,
+	orderResume VARCHAR(200) null,
 	stepDate DATE null,
-	stepNote VARCHAR(75) null,
+	stepNote VARCHAR(200) null,
 	assignToUserId LONG,
-	currentCondition VARCHAR(75) null,
+	currentCondition VARCHAR(30) null,
 	lastStepTransitionId LONG,
 	stopRollback INTEGER,
 	ebPartnerShipId LONG
@@ -73,13 +111,10 @@ create table oep_processmgt_statisticbyuser (
 	createDate DATE null,
 	month INTEGER,
 	year INTEGER,
-	dossierStatus VARCHAR(75) null,
 	totalNumber INTEGER,
-	delayedNumber INTEGER,
 	ontimeNumber INTEGER,
 	ontimeRatio DOUBLE,
-	delayDaysAvg DOUBLE,
-	furtherDaysAvg DOUBLE
+	delayDaysAvg DOUBLE
 );
 
 create table oep_processmgt_steptransition (
@@ -92,13 +127,10 @@ create table oep_processmgt_steptransition (
 	dossierProcessId LONG,
 	preDossierStepId LONG,
 	postDossierStepId LONG,
-	precondition VARCHAR(75) null,
 	autoCondition VARCHAR(30) null,
 	transitionName VARCHAR(100) null,
-	dossierStatus VARCHAR(75) null,
-	notifyStatus INTEGER,
+	dossierStatus VARCHAR(30) null,
 	sendResults INTEGER,
-	requestPayment INTEGER,
 	userAssignment INTEGER,
 	newProcessOrder INTEGER
 );
@@ -114,13 +146,14 @@ create table oep_processmgt_transitionhistory (
 	daysDoing INTEGER,
 	daysDelay INTEGER,
 	startDate DATE null,
-	preDossierStatus VARCHAR(75) null,
-	postDossierStatus VARCHAR(75) null,
+	preDossierStatus VARCHAR(30) null,
+	postDossierStatus VARCHAR(30) null,
 	stepTransitionId LONG,
 	preDossierStepId LONG,
 	postDossierStepId LONG,
-	transitionName VARCHAR(75) null,
-	note VARCHAR(75) null
+	transitionName VARCHAR(100) null,
+	note VARCHAR(200) null,
+	assignToUserId LONG
 );
 
 create table oep_processmgt_userassignment (

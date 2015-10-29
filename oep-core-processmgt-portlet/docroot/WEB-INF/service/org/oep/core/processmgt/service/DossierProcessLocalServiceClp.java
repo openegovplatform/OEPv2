@@ -118,15 +118,13 @@ public class DossierProcessLocalServiceClp implements DossierProcessLocalService
 		_methodName19 = "addDossierProcess";
 
 		_methodParameterTypes19 = new String[] {
-				"long", "java.lang.String", "java.lang.String", "long", "int",
-				"int", "com.liferay.portal.service.ServiceContext"
+				"com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName20 = "updateDossierProcess";
 
 		_methodParameterTypes20 = new String[] {
-				"long", "long", "java.lang.String", "java.lang.String", "long",
-				"int", "int", "com.liferay.portal.service.ServiceContext"
+				"long", "com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName21 = "updateDossierProcessResources";
@@ -742,9 +740,6 @@ public class DossierProcessLocalServiceClp implements DossierProcessLocalService
 
 	@Override
 	public org.oep.core.processmgt.model.DossierProcess addDossierProcess(
-		long dossierProcId, java.lang.String govAgencyId,
-		java.lang.String govAgencyName, long startStepTransitionId,
-		int daysDuration, int fee,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -753,21 +748,7 @@ public class DossierProcessLocalServiceClp implements DossierProcessLocalService
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName19,
 					_methodParameterTypes19,
-					new Object[] {
-						dossierProcId,
-						
-					ClpSerializer.translateInput(govAgencyId),
-						
-					ClpSerializer.translateInput(govAgencyName),
-						
-					startStepTransitionId,
-						
-					daysDuration,
-						
-					fee,
-						
-					ClpSerializer.translateInput(serviceContext)
-					});
+					new Object[] { ClpSerializer.translateInput(serviceContext) });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -794,10 +775,7 @@ public class DossierProcessLocalServiceClp implements DossierProcessLocalService
 
 	@Override
 	public org.oep.core.processmgt.model.DossierProcess updateDossierProcess(
-		long id, long dossierProcId, java.lang.String govAgencyId,
-		java.lang.String govAgencyName, long startStepTransitionId,
-		int daysDuration, int fee,
-		com.liferay.portal.service.ServiceContext serviceContext)
+		long id, com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
@@ -807,18 +785,6 @@ public class DossierProcessLocalServiceClp implements DossierProcessLocalService
 					_methodParameterTypes20,
 					new Object[] {
 						id,
-						
-					dossierProcId,
-						
-					ClpSerializer.translateInput(govAgencyId),
-						
-					ClpSerializer.translateInput(govAgencyName),
-						
-					startStepTransitionId,
-						
-					daysDuration,
-						
-					fee,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});

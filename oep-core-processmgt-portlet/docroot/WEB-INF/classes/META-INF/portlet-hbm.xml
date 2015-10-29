@@ -2,6 +2,10 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="org.oep.core.processmgt.model.CreateFile" />
+	<import class="org.oep.core.processmgt.model.DocFile2ProcessOrder" />
+	<import class="org.oep.core.processmgt.model.DossierProc2Process" />
+	<import class="org.oep.core.processmgt.model.DossierProc2Role" />
 	<import class="org.oep.core.processmgt.model.DossierProcess" />
 	<import class="org.oep.core.processmgt.model.DossierStep" />
 	<import class="org.oep.core.processmgt.model.DossierStep2Role" />
@@ -11,9 +15,30 @@
 	<import class="org.oep.core.processmgt.model.StepTransition" />
 	<import class="org.oep.core.processmgt.model.TransitionHistory" />
 	<import class="org.oep.core.processmgt.model.UserAssignment" />
-	<class name="org.oep.core.processmgt.model.impl.DossierProcessImpl" table="oep_processmgt_dossierprocess">
+	<class name="org.oep.core.processmgt.model.impl.CreateFileImpl" table="oep_processmgt_createfile">
 		<cache usage="read-write" />
-		<id name="dossierProcessId" type="long">
+		<id name="createFileId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="processOrderId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="dossierStepId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="stepDate" type="org.hibernate.type.TimestampType" />
+		<property name="docFileId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="org.oep.core.processmgt.model.impl.DocFile2ProcessOrderImpl" table="oep_processmgt_docfile2processorder">
+		<cache usage="read-write" />
+		<id name="docFileId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="processOrderId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="org.oep.core.processmgt.model.impl.DossierProc2ProcessImpl" table="oep_processmgt_dossierproc2process">
+		<cache usage="read-write" />
+		<id name="dossierProc2ProcessId" type="long">
 			<generator class="assigned" />
 		</id>
 		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
@@ -24,9 +49,34 @@
 		<property name="dossierProcId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="govAgencyId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="govAgencyName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="startStepTransitionId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="dossierProcessId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="aaaa" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="bbb" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="daysDuration" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
-		<property name="fee" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="paymentFee" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="paymentOneGate" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="paymentEservice" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="organizationId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="ebPartnershipId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="org.oep.core.processmgt.model.impl.DossierProc2RoleImpl" table="oep_processmgt_dossierproc2role">
+		<cache usage="read-write" />
+		<id name="dossierProc2RoleId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="dossierProcId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="roleId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="org.oep.core.processmgt.model.impl.DossierProcessImpl" table="oep_processmgt_dossierprocess">
+		<cache usage="read-write" />
+		<id name="dossierProcessId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
 	</class>
 	<class name="org.oep.core.processmgt.model.impl.DossierStepImpl" table="oep_processmgt_dossierstep">
 		<cache usage="read-write" />
@@ -97,13 +147,10 @@
 		<property name="createDate" type="org.hibernate.type.TimestampType" />
 		<property name="month" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="year" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
-		<property name="dossierStatus" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="totalNumber" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
-		<property name="delayedNumber" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="ontimeNumber" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="ontimeRatio" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
 		<property name="delayDaysAvg" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
-		<property name="furtherDaysAvg" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
 	</class>
 	<class name="org.oep.core.processmgt.model.impl.StepTransitionImpl" table="oep_processmgt_steptransition">
 		<cache usage="read-write" />
@@ -118,13 +165,10 @@
 		<property name="dossierProcessId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="preDossierStepId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="postDossierStepId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="precondition" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="autoCondition" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="transitionName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="dossierStatus" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="notifyStatus" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="sendResults" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
-		<property name="requestPayment" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="userAssignment" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="newProcessOrder" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
@@ -149,6 +193,7 @@
 		<property name="postDossierStepId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="transitionName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="note" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="assignToUserId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 	</class>
 	<class name="org.oep.core.processmgt.model.impl.UserAssignmentImpl" table="oep_processmgt_userassignment">
 		<cache usage="read-write" />

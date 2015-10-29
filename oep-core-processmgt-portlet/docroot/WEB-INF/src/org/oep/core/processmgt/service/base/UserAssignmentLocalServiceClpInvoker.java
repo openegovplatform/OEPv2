@@ -106,68 +106,68 @@ public class UserAssignmentLocalServiceClpInvoker {
 				"org.oep.core.processmgt.model.UserAssignment"
 			};
 
-		_methodName76 = "getBeanIdentifier";
+		_methodName106 = "getBeanIdentifier";
 
-		_methodParameterTypes76 = new String[] {  };
+		_methodParameterTypes106 = new String[] {  };
 
-		_methodName77 = "setBeanIdentifier";
+		_methodName107 = "setBeanIdentifier";
 
-		_methodParameterTypes77 = new String[] { "java.lang.String" };
+		_methodParameterTypes107 = new String[] { "java.lang.String" };
 
-		_methodName82 = "addUserAssignment";
+		_methodName112 = "addUserAssignment";
 
-		_methodParameterTypes82 = new String[] {
+		_methodParameterTypes112 = new String[] {
 				"long", "long", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName83 = "updateUserAssignment";
+		_methodName113 = "updateUserAssignment";
 
-		_methodParameterTypes83 = new String[] {
+		_methodParameterTypes113 = new String[] {
 				"long", "long", "long", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName84 = "updateUserAssignmentResources";
+		_methodName114 = "updateUserAssignmentResources";
 
-		_methodParameterTypes84 = new String[] {
+		_methodParameterTypes114 = new String[] {
 				"org.oep.core.processmgt.model.UserAssignment",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName85 = "removeUserAssignment";
+		_methodName115 = "removeUserAssignment";
 
-		_methodParameterTypes85 = new String[] {
+		_methodParameterTypes115 = new String[] {
 				"org.oep.core.processmgt.model.UserAssignment"
 			};
 
-		_methodName86 = "removeUserAssignment";
+		_methodName116 = "removeUserAssignment";
 
-		_methodParameterTypes86 = new String[] { "long" };
+		_methodParameterTypes116 = new String[] { "long" };
 
-		_methodName87 = "getUserAssignment";
+		_methodName117 = "getUserAssignment";
 
-		_methodParameterTypes87 = new String[] { "long" };
+		_methodParameterTypes117 = new String[] { "long" };
 
-		_methodName88 = "addUserAssignmentResources";
+		_methodName118 = "addUserAssignmentResources";
 
-		_methodParameterTypes88 = new String[] {
+		_methodParameterTypes118 = new String[] {
 				"org.oep.core.processmgt.model.UserAssignment", "boolean",
 				"boolean", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName89 = "addUserAssignmentResources";
+		_methodName119 = "addUserAssignmentResources";
 
-		_methodParameterTypes89 = new String[] {
+		_methodParameterTypes119 = new String[] {
 				"org.oep.core.processmgt.model.UserAssignment",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName90 = "addUserAssignmentResources";
+		_methodName120 = "addUserAssignmentResources";
 
-		_methodParameterTypes90 = new String[] {
+		_methodParameterTypes120 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -262,28 +262,28 @@ public class UserAssignmentLocalServiceClpInvoker {
 			return UserAssignmentLocalServiceUtil.updateUserAssignment((org.oep.core.processmgt.model.UserAssignment)arguments[0]);
 		}
 
-		if (_methodName76.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes76, parameterTypes)) {
+		if (_methodName106.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
 			return UserAssignmentLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName77.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes77, parameterTypes)) {
+		if (_methodName107.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes107, parameterTypes)) {
 			UserAssignmentLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName82.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
+		if (_methodName112.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
 			return UserAssignmentLocalServiceUtil.addUserAssignment(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				((Long)arguments[2]).longValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[3]);
 		}
 
-		if (_methodName83.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
+		if (_methodName113.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes113, parameterTypes)) {
 			return UserAssignmentLocalServiceUtil.updateUserAssignment(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				((Long)arguments[2]).longValue(),
@@ -291,8 +291,8 @@ public class UserAssignmentLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[4]);
 		}
 
-		if (_methodName84.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes84, parameterTypes)) {
+		if (_methodName114.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes114, parameterTypes)) {
 			UserAssignmentLocalServiceUtil.updateUserAssignmentResources((org.oep.core.processmgt.model.UserAssignment)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -301,27 +301,27 @@ public class UserAssignmentLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName85.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes85, parameterTypes)) {
+		if (_methodName115.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes115, parameterTypes)) {
 			UserAssignmentLocalServiceUtil.removeUserAssignment((org.oep.core.processmgt.model.UserAssignment)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName86.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes86, parameterTypes)) {
+		if (_methodName116.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes116, parameterTypes)) {
 			UserAssignmentLocalServiceUtil.removeUserAssignment(((Long)arguments[0]).longValue());
 
 			return null;
 		}
 
-		if (_methodName87.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes87, parameterTypes)) {
+		if (_methodName117.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes117, parameterTypes)) {
 			return UserAssignmentLocalServiceUtil.getUserAssignment(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName88.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+		if (_methodName118.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes118, parameterTypes)) {
 			UserAssignmentLocalServiceUtil.addUserAssignmentResources((org.oep.core.processmgt.model.UserAssignment)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Boolean)arguments[2]).booleanValue(),
@@ -330,8 +330,8 @@ public class UserAssignmentLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName89.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+		if (_methodName119.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes119, parameterTypes)) {
 			UserAssignmentLocalServiceUtil.addUserAssignmentResources((org.oep.core.processmgt.model.UserAssignment)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -340,8 +340,8 @@ public class UserAssignmentLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName90.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes90, parameterTypes)) {
+		if (_methodName120.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes120, parameterTypes)) {
 			UserAssignmentLocalServiceUtil.addUserAssignmentResources(((Long)arguments[0]).longValue(),
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -385,26 +385,26 @@ public class UserAssignmentLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName76;
-	private String[] _methodParameterTypes76;
-	private String _methodName77;
-	private String[] _methodParameterTypes77;
-	private String _methodName82;
-	private String[] _methodParameterTypes82;
-	private String _methodName83;
-	private String[] _methodParameterTypes83;
-	private String _methodName84;
-	private String[] _methodParameterTypes84;
-	private String _methodName85;
-	private String[] _methodParameterTypes85;
-	private String _methodName86;
-	private String[] _methodParameterTypes86;
-	private String _methodName87;
-	private String[] _methodParameterTypes87;
-	private String _methodName88;
-	private String[] _methodParameterTypes88;
-	private String _methodName89;
-	private String[] _methodParameterTypes89;
-	private String _methodName90;
-	private String[] _methodParameterTypes90;
+	private String _methodName106;
+	private String[] _methodParameterTypes106;
+	private String _methodName107;
+	private String[] _methodParameterTypes107;
+	private String _methodName112;
+	private String[] _methodParameterTypes112;
+	private String _methodName113;
+	private String[] _methodParameterTypes113;
+	private String _methodName114;
+	private String[] _methodParameterTypes114;
+	private String _methodName115;
+	private String[] _methodParameterTypes115;
+	private String _methodName116;
+	private String[] _methodParameterTypes116;
+	private String _methodName117;
+	private String[] _methodParameterTypes117;
+	private String _methodName118;
+	private String[] _methodParameterTypes118;
+	private String _methodName119;
+	private String[] _methodParameterTypes119;
+	private String _methodName120;
+	private String[] _methodParameterTypes120;
 }

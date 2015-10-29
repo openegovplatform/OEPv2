@@ -37,12 +37,6 @@ public class DossierProcessSoap implements Serializable {
 		soapModel.setCompanyId(model.getCompanyId());
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
-		soapModel.setDossierProcId(model.getDossierProcId());
-		soapModel.setGovAgencyId(model.getGovAgencyId());
-		soapModel.setGovAgencyName(model.getGovAgencyName());
-		soapModel.setStartStepTransitionId(model.getStartStepTransitionId());
-		soapModel.setDaysDuration(model.getDaysDuration());
-		soapModel.setFee(model.getFee());
 
 		return soapModel;
 	}
@@ -143,64 +137,10 @@ public class DossierProcessSoap implements Serializable {
 		_modifiedDate = modifiedDate;
 	}
 
-	public long getDossierProcId() {
-		return _dossierProcId;
-	}
-
-	public void setDossierProcId(long dossierProcId) {
-		_dossierProcId = dossierProcId;
-	}
-
-	public String getGovAgencyId() {
-		return _govAgencyId;
-	}
-
-	public void setGovAgencyId(String govAgencyId) {
-		_govAgencyId = govAgencyId;
-	}
-
-	public String getGovAgencyName() {
-		return _govAgencyName;
-	}
-
-	public void setGovAgencyName(String govAgencyName) {
-		_govAgencyName = govAgencyName;
-	}
-
-	public long getStartStepTransitionId() {
-		return _startStepTransitionId;
-	}
-
-	public void setStartStepTransitionId(long startStepTransitionId) {
-		_startStepTransitionId = startStepTransitionId;
-	}
-
-	public int getDaysDuration() {
-		return _daysDuration;
-	}
-
-	public void setDaysDuration(int daysDuration) {
-		_daysDuration = daysDuration;
-	}
-
-	public int getFee() {
-		return _fee;
-	}
-
-	public void setFee(int fee) {
-		_fee = fee;
-	}
-
 	private long _dossierProcessId;
 	private long _userId;
 	private long _groupId;
 	private long _companyId;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private long _dossierProcId;
-	private String _govAgencyId;
-	private String _govAgencyName;
-	private long _startStepTransitionId;
-	private int _daysDuration;
-	private int _fee;
 }

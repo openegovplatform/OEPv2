@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//docroot/WEB-INF/src/org/oep/core/processmgt/service/impl/CreateFileLocalServiceImpl.java=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/core/processmgt/service/impl/DocFile2ProcessOrderLocalServiceImpl.java=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/core/processmgt/service/impl/DossierProc2ProcessLocalServiceImpl.java=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/core/processmgt/service/impl/DossierProc2RoleLocalServiceImpl.java=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/core/processmgt/service/impl/DossierStep2RoleLocalServiceImpl.java=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/core/processmgt/service/impl/DossierStepLocalServiceImpl.java=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/core/processmgt/service/impl/ProcessOrder2UserLocalServiceImpl.java=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/core/processmgt/service/impl/ProcessOrderLocalServiceImpl.java=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/core/processmgt/service/impl/StatisticByUserLocalServiceImpl.java=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/core/processmgt/service/impl/StepTransitionLocalServiceImpl.java=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/core/processmgt/service/impl/TransitionHistoryLocalServiceImpl.java=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/core/processmgt/service/impl/UserAssignmentLocalServiceImpl.java=UTF-8

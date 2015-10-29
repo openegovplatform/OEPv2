@@ -14,6 +14,8 @@
 
 package org.oep.core.processmgt.model;
 
+import com.liferay.portal.model.PersistedModel;
+
 /**
  * The extended model interface for the StatisticByUser service. Represents a row in the &quot;oep_processmgt_statisticbyuser&quot; database table, with each column mapped to a property of this class.
  *
@@ -23,7 +25,7 @@ package org.oep.core.processmgt.model;
  * @see org.oep.core.processmgt.model.impl.StatisticByUserModelImpl
  * @generated
  */
-public interface StatisticByUser extends StatisticByUserModel {
+public interface StatisticByUser extends StatisticByUserModel, PersistedModel {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *

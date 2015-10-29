@@ -276,17 +276,19 @@ public class UserAssignmentLocalServiceUtil {
 	}
 
 	/**
-	* Add user assignment
+	* ThÃƒÂªm phÃƒÂ¢n cÃƒÂ´ng mÃ¡Â»â€ºi
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
 	*
-	* @param
-	* @return: new user assignment
+	* @param processOrderId phÃƒÂ¢n cÃƒÂ´ng xÃ¡Â»Â­ lÃƒÂ½ cho mÃ¡Â»â„¢t trÃ¡ÂºÂ¡ng thÃƒÂ¡i hÃ¡Â»â€œ sÃ†Â¡ trÃƒÂªn phiÃ¡ÂºÂ¿u chÃƒÂ­nh hoÃ¡ÂºÂ·c phÃ¡Â»Â¥
+	* @param dossierStepId bÃ†Â°Ã¡Â»â€ºc xÃ¡Â»Â­ lÃƒÂ½
+	* @param assignToUserId phÃƒÂ¢n cÃƒÂ´ng cho ngÃ†Â°Ã¡Â»ï¿½i dÃƒÂ¹ng
+	* @return: phÃƒÂ¢n cÃƒÂ´ng mÃ¡Â»â€ºi Ã„â€˜Ã†Â°Ã¡Â»Â£c tÃ¡ÂºÂ¡o
 	*/
 	public static org.oep.core.processmgt.model.UserAssignment addUserAssignment(
 		long processOrderId, long dossierStepId, long assignToUserId,
@@ -298,6 +300,22 @@ public class UserAssignmentLocalServiceUtil {
 			assignToUserId, serviceContext);
 	}
 
+	/**
+	* CÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t thÃƒÂ´ng tin phÃƒÂ¢n cÃƒÂ´ng
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
+	*
+	* @param id mÃƒÂ£ thÃƒÂ´ng tin phÃƒÂ¢n cÃƒÂ´ng
+	* @param processOrderId phÃƒÂ¢n cÃƒÂ´ng xÃ¡Â»Â­ lÃƒÂ½ cho mÃ¡Â»â„¢t trÃ¡ÂºÂ¡ng thÃƒÂ¡i hÃ¡Â»â€œ sÃ†Â¡ trÃƒÂªn phiÃ¡ÂºÂ¿u chÃƒÂ­nh hoÃ¡ÂºÂ·c phÃ¡Â»Â¥
+	* @param dossierStepId bÃ†Â°Ã¡Â»â€ºc xÃ¡Â»Â­ lÃƒÂ½
+	* @param assignToUserId phÃƒÂ¢n cÃƒÂ´ng cho ngÃ†Â°Ã¡Â»ï¿½i dÃƒÂ¹ng
+	* @return: phÃƒÂ¢n cÃƒÂ´ng mÃ¡Â»â€ºi Ã„â€˜Ã†Â°Ã¡Â»Â£c cÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t
+	*/
 	public static org.oep.core.processmgt.model.UserAssignment updateUserAssignment(
 		long id, long processOrderId, long dossierStepId, long assignToUserId,
 		com.liferay.portal.service.ServiceContext serviceContext)

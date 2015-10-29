@@ -290,6 +290,55 @@ public class ProcessOrder2UserLocalServiceWrapper
 	}
 
 	/**
+	* ThÃƒÂªm quan hÃ¡Â»â€¡ giÃ¡Â»Â¯a thÃƒÂ´ng tin xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡ vÃ¡Â»â€ºi ngÃ†Â°Ã¡Â»ï¿½i xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
+	*
+	* @param processOrderId mÃƒÂ£ thÃƒÂ´ng tin xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡
+	* @param userId mÃƒÂ£ vai trÃƒÂ²
+	* @return: quan hÃ¡Â»â€¡ giÃ¡Â»Â¯a thÃƒÂ´ng tin xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡ vÃ¡Â»â€ºi cÃƒÂ¡n bÃ¡Â»â„¢ xÃ¡Â»Â­ lÃƒÂ½Ã¡Â»Â§e
+	*/
+	@Override
+	public org.oep.core.processmgt.model.ProcessOrder2User addProcessOrder2User(
+		long processOrderId, long userId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _processOrder2UserLocalService.addProcessOrder2User(processOrderId,
+			userId, serviceContext);
+	}
+
+	@Override
+	public void removeProcessOrder2User(
+		org.oep.core.processmgt.model.ProcessOrder2User processOrder2User)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_processOrder2UserLocalService.removeProcessOrder2User(processOrder2User);
+	}
+
+	@Override
+	public void removeProcessOrder2User(long processOrderId, long userId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_processOrder2UserLocalService.removeProcessOrder2User(processOrderId,
+			userId);
+	}
+
+	@Override
+	public org.oep.core.processmgt.model.ProcessOrder2User getProcessOrder2User(
+		long processOrderId, long userId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _processOrder2UserLocalService.getProcessOrder2User(processOrderId,
+			userId);
+	}
+
+	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */
 	public ProcessOrder2UserLocalService getWrappedProcessOrder2UserLocalService() {

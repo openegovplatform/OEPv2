@@ -67,6 +67,7 @@ public class TransitionHistoryWrapper implements TransitionHistory,
 		attributes.put("postDossierStepId", getPostDossierStepId());
 		attributes.put("transitionName", getTransitionName());
 		attributes.put("note", getNote());
+		attributes.put("assignToUserId", getAssignToUserId());
 
 		return attributes;
 	}
@@ -173,6 +174,12 @@ public class TransitionHistoryWrapper implements TransitionHistory,
 
 		if (note != null) {
 			setNote(note);
+		}
+
+		Long assignToUserId = (Long)attributes.get("assignToUserId");
+
+		if (assignToUserId != null) {
+			setAssignToUserId(assignToUserId);
 		}
 	}
 
@@ -556,6 +563,48 @@ public class TransitionHistoryWrapper implements TransitionHistory,
 	@Override
 	public void setNote(java.lang.String note) {
 		_transitionHistory.setNote(note);
+	}
+
+	/**
+	* Returns the assign to user ID of this transition history.
+	*
+	* @return the assign to user ID of this transition history
+	*/
+	@Override
+	public long getAssignToUserId() {
+		return _transitionHistory.getAssignToUserId();
+	}
+
+	/**
+	* Sets the assign to user ID of this transition history.
+	*
+	* @param assignToUserId the assign to user ID of this transition history
+	*/
+	@Override
+	public void setAssignToUserId(long assignToUserId) {
+		_transitionHistory.setAssignToUserId(assignToUserId);
+	}
+
+	/**
+	* Returns the assign to user uuid of this transition history.
+	*
+	* @return the assign to user uuid of this transition history
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public java.lang.String getAssignToUserUuid()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _transitionHistory.getAssignToUserUuid();
+	}
+
+	/**
+	* Sets the assign to user uuid of this transition history.
+	*
+	* @param assignToUserUuid the assign to user uuid of this transition history
+	*/
+	@Override
+	public void setAssignToUserUuid(java.lang.String assignToUserUuid) {
+		_transitionHistory.setAssignToUserUuid(assignToUserUuid);
 	}
 
 	@Override

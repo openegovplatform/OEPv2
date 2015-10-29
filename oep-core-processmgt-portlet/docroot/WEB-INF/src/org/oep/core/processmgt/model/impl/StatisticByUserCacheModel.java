@@ -15,7 +15,6 @@
 package org.oep.core.processmgt.model.impl;
 
 import com.liferay.portal.kernel.util.StringBundler;
-import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.CacheModel;
 
 import org.oep.core.processmgt.model.StatisticByUser;
@@ -38,7 +37,7 @@ public class StatisticByUserCacheModel implements CacheModel<StatisticByUser>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(29);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{statisticByUserId=");
 		sb.append(statisticByUserId);
@@ -54,20 +53,14 @@ public class StatisticByUserCacheModel implements CacheModel<StatisticByUser>,
 		sb.append(month);
 		sb.append(", year=");
 		sb.append(year);
-		sb.append(", dossierStatus=");
-		sb.append(dossierStatus);
 		sb.append(", totalNumber=");
 		sb.append(totalNumber);
-		sb.append(", delayedNumber=");
-		sb.append(delayedNumber);
 		sb.append(", ontimeNumber=");
 		sb.append(ontimeNumber);
 		sb.append(", ontimeRatio=");
 		sb.append(ontimeRatio);
 		sb.append(", delayDaysAvg=");
 		sb.append(delayDaysAvg);
-		sb.append(", furtherDaysAvg=");
-		sb.append(furtherDaysAvg);
 		sb.append("}");
 
 		return sb.toString();
@@ -91,20 +84,10 @@ public class StatisticByUserCacheModel implements CacheModel<StatisticByUser>,
 
 		statisticByUserImpl.setMonth(month);
 		statisticByUserImpl.setYear(year);
-
-		if (dossierStatus == null) {
-			statisticByUserImpl.setDossierStatus(StringPool.BLANK);
-		}
-		else {
-			statisticByUserImpl.setDossierStatus(dossierStatus);
-		}
-
 		statisticByUserImpl.setTotalNumber(totalNumber);
-		statisticByUserImpl.setDelayedNumber(delayedNumber);
 		statisticByUserImpl.setOntimeNumber(ontimeNumber);
 		statisticByUserImpl.setOntimeRatio(ontimeRatio);
 		statisticByUserImpl.setDelayDaysAvg(delayDaysAvg);
-		statisticByUserImpl.setFurtherDaysAvg(furtherDaysAvg);
 
 		statisticByUserImpl.resetOriginalValues();
 
@@ -120,13 +103,10 @@ public class StatisticByUserCacheModel implements CacheModel<StatisticByUser>,
 		createDate = objectInput.readLong();
 		month = objectInput.readInt();
 		year = objectInput.readInt();
-		dossierStatus = objectInput.readUTF();
 		totalNumber = objectInput.readInt();
-		delayedNumber = objectInput.readInt();
 		ontimeNumber = objectInput.readInt();
 		ontimeRatio = objectInput.readDouble();
 		delayDaysAvg = objectInput.readDouble();
-		furtherDaysAvg = objectInput.readDouble();
 	}
 
 	@Override
@@ -139,20 +119,10 @@ public class StatisticByUserCacheModel implements CacheModel<StatisticByUser>,
 		objectOutput.writeLong(createDate);
 		objectOutput.writeInt(month);
 		objectOutput.writeInt(year);
-
-		if (dossierStatus == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(dossierStatus);
-		}
-
 		objectOutput.writeInt(totalNumber);
-		objectOutput.writeInt(delayedNumber);
 		objectOutput.writeInt(ontimeNumber);
 		objectOutput.writeDouble(ontimeRatio);
 		objectOutput.writeDouble(delayDaysAvg);
-		objectOutput.writeDouble(furtherDaysAvg);
 	}
 
 	public long statisticByUserId;
@@ -162,11 +132,8 @@ public class StatisticByUserCacheModel implements CacheModel<StatisticByUser>,
 	public long createDate;
 	public int month;
 	public int year;
-	public String dossierStatus;
 	public int totalNumber;
-	public int delayedNumber;
 	public int ontimeNumber;
 	public double ontimeRatio;
 	public double delayDaysAvg;
-	public double furtherDaysAvg;
 }

@@ -20,7 +20,6 @@ import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
-import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
 import com.liferay.portal.service.ServiceContext;
@@ -73,15 +72,12 @@ public class StatisticByUserModelImpl extends BaseModelImpl<StatisticByUser>
 			{ "createDate", Types.TIMESTAMP },
 			{ "month", Types.INTEGER },
 			{ "year", Types.INTEGER },
-			{ "dossierStatus", Types.VARCHAR },
 			{ "totalNumber", Types.INTEGER },
-			{ "delayedNumber", Types.INTEGER },
 			{ "ontimeNumber", Types.INTEGER },
 			{ "ontimeRatio", Types.DOUBLE },
-			{ "delayDaysAvg", Types.DOUBLE },
-			{ "furtherDaysAvg", Types.DOUBLE }
+			{ "delayDaysAvg", Types.DOUBLE }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_statisticbyuser (statisticByUserId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,month INTEGER,year INTEGER,dossierStatus VARCHAR(75) null,totalNumber INTEGER,delayedNumber INTEGER,ontimeNumber INTEGER,ontimeRatio DOUBLE,delayDaysAvg DOUBLE,furtherDaysAvg DOUBLE)";
+	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_statisticbyuser (statisticByUserId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,month INTEGER,year INTEGER,totalNumber INTEGER,ontimeNumber INTEGER,ontimeRatio DOUBLE,delayDaysAvg DOUBLE)";
 	public static final String TABLE_SQL_DROP = "drop table oep_processmgt_statisticbyuser";
 	public static final String ORDER_BY_JPQL = " ORDER BY statisticByUser.statisticByUserId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_processmgt_statisticbyuser.statisticByUserId ASC";
@@ -116,13 +112,10 @@ public class StatisticByUserModelImpl extends BaseModelImpl<StatisticByUser>
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setMonth(soapModel.getMonth());
 		model.setYear(soapModel.getYear());
-		model.setDossierStatus(soapModel.getDossierStatus());
 		model.setTotalNumber(soapModel.getTotalNumber());
-		model.setDelayedNumber(soapModel.getDelayedNumber());
 		model.setOntimeNumber(soapModel.getOntimeNumber());
 		model.setOntimeRatio(soapModel.getOntimeRatio());
 		model.setDelayDaysAvg(soapModel.getDelayDaysAvg());
-		model.setFurtherDaysAvg(soapModel.getFurtherDaysAvg());
 
 		return model;
 	}
@@ -195,13 +188,10 @@ public class StatisticByUserModelImpl extends BaseModelImpl<StatisticByUser>
 		attributes.put("createDate", getCreateDate());
 		attributes.put("month", getMonth());
 		attributes.put("year", getYear());
-		attributes.put("dossierStatus", getDossierStatus());
 		attributes.put("totalNumber", getTotalNumber());
-		attributes.put("delayedNumber", getDelayedNumber());
 		attributes.put("ontimeNumber", getOntimeNumber());
 		attributes.put("ontimeRatio", getOntimeRatio());
 		attributes.put("delayDaysAvg", getDelayDaysAvg());
-		attributes.put("furtherDaysAvg", getFurtherDaysAvg());
 
 		return attributes;
 	}
@@ -250,22 +240,10 @@ public class StatisticByUserModelImpl extends BaseModelImpl<StatisticByUser>
 			setYear(year);
 		}
 
-		String dossierStatus = (String)attributes.get("dossierStatus");
-
-		if (dossierStatus != null) {
-			setDossierStatus(dossierStatus);
-		}
-
 		Integer totalNumber = (Integer)attributes.get("totalNumber");
 
 		if (totalNumber != null) {
 			setTotalNumber(totalNumber);
-		}
-
-		Integer delayedNumber = (Integer)attributes.get("delayedNumber");
-
-		if (delayedNumber != null) {
-			setDelayedNumber(delayedNumber);
 		}
 
 		Integer ontimeNumber = (Integer)attributes.get("ontimeNumber");
@@ -284,12 +262,6 @@ public class StatisticByUserModelImpl extends BaseModelImpl<StatisticByUser>
 
 		if (delayDaysAvg != null) {
 			setDelayDaysAvg(delayDaysAvg);
-		}
-
-		Double furtherDaysAvg = (Double)attributes.get("furtherDaysAvg");
-
-		if (furtherDaysAvg != null) {
-			setFurtherDaysAvg(furtherDaysAvg);
 		}
 	}
 
@@ -393,22 +365,6 @@ public class StatisticByUserModelImpl extends BaseModelImpl<StatisticByUser>
 
 	@JSON
 	@Override
-	public String getDossierStatus() {
-		if (_dossierStatus == null) {
-			return StringPool.BLANK;
-		}
-		else {
-			return _dossierStatus;
-		}
-	}
-
-	@Override
-	public void setDossierStatus(String dossierStatus) {
-		_dossierStatus = dossierStatus;
-	}
-
-	@JSON
-	@Override
 	public int getTotalNumber() {
 		return _totalNumber;
 	}
@@ -416,17 +372,6 @@ public class StatisticByUserModelImpl extends BaseModelImpl<StatisticByUser>
 	@Override
 	public void setTotalNumber(int totalNumber) {
 		_totalNumber = totalNumber;
-	}
-
-	@JSON
-	@Override
-	public int getDelayedNumber() {
-		return _delayedNumber;
-	}
-
-	@Override
-	public void setDelayedNumber(int delayedNumber) {
-		_delayedNumber = delayedNumber;
 	}
 
 	@JSON
@@ -460,17 +405,6 @@ public class StatisticByUserModelImpl extends BaseModelImpl<StatisticByUser>
 	@Override
 	public void setDelayDaysAvg(double delayDaysAvg) {
 		_delayDaysAvg = delayDaysAvg;
-	}
-
-	@JSON
-	@Override
-	public double getFurtherDaysAvg() {
-		return _furtherDaysAvg;
-	}
-
-	@Override
-	public void setFurtherDaysAvg(double furtherDaysAvg) {
-		_furtherDaysAvg = furtherDaysAvg;
 	}
 
 	@Override
@@ -507,13 +441,10 @@ public class StatisticByUserModelImpl extends BaseModelImpl<StatisticByUser>
 		statisticByUserImpl.setCreateDate(getCreateDate());
 		statisticByUserImpl.setMonth(getMonth());
 		statisticByUserImpl.setYear(getYear());
-		statisticByUserImpl.setDossierStatus(getDossierStatus());
 		statisticByUserImpl.setTotalNumber(getTotalNumber());
-		statisticByUserImpl.setDelayedNumber(getDelayedNumber());
 		statisticByUserImpl.setOntimeNumber(getOntimeNumber());
 		statisticByUserImpl.setOntimeRatio(getOntimeRatio());
 		statisticByUserImpl.setDelayDaysAvg(getDelayDaysAvg());
-		statisticByUserImpl.setFurtherDaysAvg(getFurtherDaysAvg());
 
 		statisticByUserImpl.resetOriginalValues();
 
@@ -591,17 +522,7 @@ public class StatisticByUserModelImpl extends BaseModelImpl<StatisticByUser>
 
 		statisticByUserCacheModel.year = getYear();
 
-		statisticByUserCacheModel.dossierStatus = getDossierStatus();
-
-		String dossierStatus = statisticByUserCacheModel.dossierStatus;
-
-		if ((dossierStatus != null) && (dossierStatus.length() == 0)) {
-			statisticByUserCacheModel.dossierStatus = null;
-		}
-
 		statisticByUserCacheModel.totalNumber = getTotalNumber();
-
-		statisticByUserCacheModel.delayedNumber = getDelayedNumber();
 
 		statisticByUserCacheModel.ontimeNumber = getOntimeNumber();
 
@@ -609,14 +530,12 @@ public class StatisticByUserModelImpl extends BaseModelImpl<StatisticByUser>
 
 		statisticByUserCacheModel.delayDaysAvg = getDelayDaysAvg();
 
-		statisticByUserCacheModel.furtherDaysAvg = getFurtherDaysAvg();
-
 		return statisticByUserCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(29);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{statisticByUserId=");
 		sb.append(getStatisticByUserId());
@@ -632,20 +551,14 @@ public class StatisticByUserModelImpl extends BaseModelImpl<StatisticByUser>
 		sb.append(getMonth());
 		sb.append(", year=");
 		sb.append(getYear());
-		sb.append(", dossierStatus=");
-		sb.append(getDossierStatus());
 		sb.append(", totalNumber=");
 		sb.append(getTotalNumber());
-		sb.append(", delayedNumber=");
-		sb.append(getDelayedNumber());
 		sb.append(", ontimeNumber=");
 		sb.append(getOntimeNumber());
 		sb.append(", ontimeRatio=");
 		sb.append(getOntimeRatio());
 		sb.append(", delayDaysAvg=");
 		sb.append(getDelayDaysAvg());
-		sb.append(", furtherDaysAvg=");
-		sb.append(getFurtherDaysAvg());
 		sb.append("}");
 
 		return sb.toString();
@@ -653,7 +566,7 @@ public class StatisticByUserModelImpl extends BaseModelImpl<StatisticByUser>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(46);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.StatisticByUser");
@@ -688,16 +601,8 @@ public class StatisticByUserModelImpl extends BaseModelImpl<StatisticByUser>
 		sb.append(getYear());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>dossierStatus</column-name><column-value><![CDATA[");
-		sb.append(getDossierStatus());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>totalNumber</column-name><column-value><![CDATA[");
 		sb.append(getTotalNumber());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>delayedNumber</column-name><column-value><![CDATA[");
-		sb.append(getDelayedNumber());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>ontimeNumber</column-name><column-value><![CDATA[");
@@ -710,10 +615,6 @@ public class StatisticByUserModelImpl extends BaseModelImpl<StatisticByUser>
 		sb.append(
 			"<column><column-name>delayDaysAvg</column-name><column-value><![CDATA[");
 		sb.append(getDelayDaysAvg());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>furtherDaysAvg</column-name><column-value><![CDATA[");
-		sb.append(getFurtherDaysAvg());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -734,12 +635,9 @@ public class StatisticByUserModelImpl extends BaseModelImpl<StatisticByUser>
 	private Date _createDate;
 	private int _month;
 	private int _year;
-	private String _dossierStatus;
 	private int _totalNumber;
-	private int _delayedNumber;
 	private int _ontimeNumber;
 	private double _ontimeRatio;
 	private double _delayDaysAvg;
-	private double _furtherDaysAvg;
 	private StatisticByUser _escapedModel;
 }

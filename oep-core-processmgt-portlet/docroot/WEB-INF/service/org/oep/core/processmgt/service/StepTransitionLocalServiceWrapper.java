@@ -289,48 +289,76 @@ public class StepTransitionLocalServiceWrapper
 	}
 
 	/**
-	* Add step transition
+	* ThÃƒÂªm chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch trÃ¡ÂºÂ¡ng thÃƒÂ¡i
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
 	*
-	* @param
-	* @return: new step transition
+	* @param dossierProcessId nÃ¡ÂºÂ±m trong quy trÃƒÂ¬nh nÃƒÂ o
+	* @param preDossierStepId trÃ¡ÂºÂ¡ng thÃƒÂ¡i nguÃ¡Â»â€œn
+	* @param postDossierStepId trÃ¡ÂºÂ¡ng thÃƒÂ¡i Ã„â€˜ÃƒÂ­ch
+	* @param autoCondition mÃƒÂ£ Ã„â€˜iÃ¡Â»ï¿½u kiÃ¡Â»â€¡n chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch trÃ¡ÂºÂ¡ng thÃƒÂ¡i
+	* @param transitionName tÃƒÂªn mÃƒÂ´ tÃ¡ÂºÂ£ hÃƒÂ nh Ã„â€˜Ã¡Â»â„¢ng xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡
+	* @param dossierStatus kÃ¡ÂºÂ¿t thÃƒÂºc mÃ¡Â»â„¢t bÃ†Â°Ã¡Â»â€ºc hÃ¡Â»â€œ sÃ†Â¡ Ã„â€˜Ã†Â°Ã¡Â»Â£c phÃƒÂ¢n trÃ¡ÂºÂ¡ng thÃƒÂ¡i mÃ¡Â»â€ºi
+	* @param sendResults tÃ¡Â»Â± Ã„â€˜Ã¡Â»â„¢ng gÃ¡Â»Â­i trÃ¡ÂºÂ£ kÃ¡ÂºÂ¿t quÃ¡ÂºÂ£ cÃƒÂ³ trong hÃ¡Â»â€œ sÃ†Â¡
+	* @param userAssignment Ã„â€˜ÃƒÂ¡nh dÃ¡ÂºÂ¥u bÃ†Â°Ã¡Â»â€ºc nÃƒÂ y phÃ¡ÂºÂ£i Ã„â€˜Ã†Â°Ã¡Â»Â£c phÃƒÂ¢n cÃƒÂ´ng cÃ¡Â»Â¥ thÃ¡Â»Æ’ ngÃ†Â°Ã¡Â»ï¿½i xÃ¡Â»Â­ lÃƒÂ½
+	* @param newProcessOrder chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch cÃƒÂ³ tÃ¡ÂºÂ¡o phiÃ¡ÂºÂ¿u xÃ¡Â»Â­ lÃƒÂ½ con
+	* @return: chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch trÃ¡ÂºÂ¡ng thÃƒÂ¡i mÃ¡Â»â€ºi tÃ¡ÂºÂ¡o
 	*/
 	@Override
 	public org.oep.core.processmgt.model.StepTransition addStepTransition(
 		long dossierProcessId, long preDossierStepId, long postDossierStepId,
 		java.lang.String autoCondition, java.lang.String transitionName,
-		java.lang.String dossierStatus, int notifyStatus, int sendResults,
-		int requestPayment, int userAssignment, int newProcessOrder,
+		java.lang.String dossierStatus, int sendResults, int userAssignment,
+		int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _stepTransitionLocalService.addStepTransition(dossierProcessId,
 			preDossierStepId, postDossierStepId, autoCondition, transitionName,
-			dossierStatus, notifyStatus, sendResults, requestPayment,
-			userAssignment, newProcessOrder, serviceContext);
+			dossierStatus, sendResults, userAssignment, newProcessOrder,
+			serviceContext);
 	}
 
+	/**
+	* CÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t thÃƒÂ´ng tin chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch trÃ¡ÂºÂ¡ng thÃƒÂ¡i
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
+	*
+	* @param id mÃƒÂ£ chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch trÃ¡ÂºÂ¡ng thÃƒÂ¡i
+	* @param dossierProcessId nÃ¡ÂºÂ±m trong quy trÃƒÂ¬nh nÃƒÂ o
+	* @param preDossierStepId trÃ¡ÂºÂ¡ng thÃƒÂ¡i nguÃ¡Â»â€œn
+	* @param postDossierStepId trÃ¡ÂºÂ¡ng thÃƒÂ¡i Ã„â€˜ÃƒÂ­ch
+	* @param autoCondition mÃƒÂ£ Ã„â€˜iÃ¡Â»ï¿½u kiÃ¡Â»â€¡n chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch trÃ¡ÂºÂ¡ng thÃƒÂ¡i
+	* @param transitionName tÃƒÂªn mÃƒÂ´ tÃ¡ÂºÂ£ hÃƒÂ nh Ã„â€˜Ã¡Â»â„¢ng xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡
+	* @param dossierStatus kÃ¡ÂºÂ¿t thÃƒÂºc mÃ¡Â»â„¢t bÃ†Â°Ã¡Â»â€ºc hÃ¡Â»â€œ sÃ†Â¡ Ã„â€˜Ã†Â°Ã¡Â»Â£c phÃƒÂ¢n trÃ¡ÂºÂ¡ng thÃƒÂ¡i mÃ¡Â»â€ºi
+	* @param sendResults tÃ¡Â»Â± Ã„â€˜Ã¡Â»â„¢ng gÃ¡Â»Â­i trÃ¡ÂºÂ£ kÃ¡ÂºÂ¿t quÃ¡ÂºÂ£ cÃƒÂ³ trong hÃ¡Â»â€œ sÃ†Â¡
+	* @param userAssignment Ã„â€˜ÃƒÂ¡nh dÃ¡ÂºÂ¥u bÃ†Â°Ã¡Â»â€ºc nÃƒÂ y phÃ¡ÂºÂ£i Ã„â€˜Ã†Â°Ã¡Â»Â£c phÃƒÂ¢n cÃƒÂ´ng cÃ¡Â»Â¥ thÃ¡Â»Æ’ ngÃ†Â°Ã¡Â»ï¿½i xÃ¡Â»Â­ lÃƒÂ½
+	* @param newProcessOrder chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch cÃƒÂ³ tÃ¡ÂºÂ¡o phiÃ¡ÂºÂ¿u xÃ¡Â»Â­ lÃƒÂ½ con
+	* @return: chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch trÃ¡ÂºÂ¡ng thÃƒÂ¡i mÃ¡Â»â€ºi Ã„â€˜Ã†Â°Ã¡Â»Â£c cÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t
+	*/
 	@Override
 	public org.oep.core.processmgt.model.StepTransition updateStepTransition(
 		long id, long dossierProcessId, long preDossierStepId,
 		long postDossierStepId, java.lang.String autoCondition,
 		java.lang.String transitionName, java.lang.String dossierStatus,
-		int notifyStatus, int sendResults, int requestPayment,
-		int userAssignment, int newProcessOrder,
+		int sendResults, int userAssignment, int newProcessOrder,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _stepTransitionLocalService.updateStepTransition(id,
 			dossierProcessId, preDossierStepId, postDossierStepId,
-			autoCondition, transitionName, dossierStatus, notifyStatus,
-			sendResults, requestPayment, userAssignment, newProcessOrder,
-			serviceContext);
+			autoCondition, transitionName, dossierStatus, sendResults,
+			userAssignment, newProcessOrder, serviceContext);
 	}
 
 	@Override

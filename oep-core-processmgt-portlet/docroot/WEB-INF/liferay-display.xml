@@ -3,4 +3,9 @@
 
 <display>
 	
+	<category name="OEP">
+		<category name="processmgt">
+			<portlet id="process-dossier-menu"></portlet>
+		</category>
+	</category>
 </display>

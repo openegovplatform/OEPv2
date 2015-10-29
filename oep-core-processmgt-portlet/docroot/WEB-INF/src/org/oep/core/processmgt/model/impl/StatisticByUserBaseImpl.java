@@ -14,7 +14,10 @@
 
 package org.oep.core.processmgt.model.impl;
 
+import com.liferay.portal.kernel.exception.SystemException;
+
 import org.oep.core.processmgt.model.StatisticByUser;
+import org.oep.core.processmgt.service.StatisticByUserLocalServiceUtil;
 
 /**
  * The extended model base implementation for the StatisticByUser service. Represents a row in the &quot;oep_processmgt_statisticbyuser&quot; database table, with each column mapped to a property of this class.
@@ -35,4 +38,13 @@ public abstract class StatisticByUserBaseImpl extends StatisticByUserModelImpl
 	 *
 	 * Never modify or reference this class directly. All methods that expect a statistic by user model instance should use the {@link StatisticByUser} interface instead.
 	 */
+	@Override
+	public void persist() throws SystemException {
+		if (this.isNew()) {
+			StatisticByUserLocalServiceUtil.addStatisticByUser(this);
+		}
+		else {
+			StatisticByUserLocalServiceUtil.updateStatisticByUser(this);
+		}
+	}
 }

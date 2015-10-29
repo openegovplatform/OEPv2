@@ -14,7 +14,6 @@
 
 package org.oep.core.processmgt.model;
 
-import com.liferay.portal.kernel.bean.AutoEscape;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.CacheModel;
@@ -158,92 +157,6 @@ public interface DossierProcessModel extends BaseModel<DossierProcess> {
 	 * @param modifiedDate the modified date of this dossier process
 	 */
 	public void setModifiedDate(Date modifiedDate);
-
-	/**
-	 * Returns the dossier proc ID of this dossier process.
-	 *
-	 * @return the dossier proc ID of this dossier process
-	 */
-	public long getDossierProcId();
-
-	/**
-	 * Sets the dossier proc ID of this dossier process.
-	 *
-	 * @param dossierProcId the dossier proc ID of this dossier process
-	 */
-	public void setDossierProcId(long dossierProcId);
-
-	/**
-	 * Returns the gov agency ID of this dossier process.
-	 *
-	 * @return the gov agency ID of this dossier process
-	 */
-	@AutoEscape
-	public String getGovAgencyId();
-
-	/**
-	 * Sets the gov agency ID of this dossier process.
-	 *
-	 * @param govAgencyId the gov agency ID of this dossier process
-	 */
-	public void setGovAgencyId(String govAgencyId);
-
-	/**
-	 * Returns the gov agency name of this dossier process.
-	 *
-	 * @return the gov agency name of this dossier process
-	 */
-	@AutoEscape
-	public String getGovAgencyName();
-
-	/**
-	 * Sets the gov agency name of this dossier process.
-	 *
-	 * @param govAgencyName the gov agency name of this dossier process
-	 */
-	public void setGovAgencyName(String govAgencyName);
-
-	/**
-	 * Returns the start step transition ID of this dossier process.
-	 *
-	 * @return the start step transition ID of this dossier process
-	 */
-	public long getStartStepTransitionId();
-
-	/**
-	 * Sets the start step transition ID of this dossier process.
-	 *
-	 * @param startStepTransitionId the start step transition ID of this dossier process
-	 */
-	public void setStartStepTransitionId(long startStepTransitionId);
-
-	/**
-	 * Returns the days duration of this dossier process.
-	 *
-	 * @return the days duration of this dossier process
-	 */
-	public int getDaysDuration();
-
-	/**
-	 * Sets the days duration of this dossier process.
-	 *
-	 * @param daysDuration the days duration of this dossier process
-	 */
-	public void setDaysDuration(int daysDuration);
-
-	/**
-	 * Returns the fee of this dossier process.
-	 *
-	 * @return the fee of this dossier process
-	 */
-	public int getFee();
-
-	/**
-	 * Sets the fee of this dossier process.
-	 *
-	 * @param fee the fee of this dossier process
-	 */
-	public void setFee(int fee);
 
 	@Override
 	public boolean isNew();

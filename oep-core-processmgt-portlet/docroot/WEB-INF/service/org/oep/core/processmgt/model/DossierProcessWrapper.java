@@ -56,12 +56,6 @@ public class DossierProcessWrapper implements DossierProcess,
 		attributes.put("companyId", getCompanyId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgencyId", getGovAgencyId());
-		attributes.put("govAgencyName", getGovAgencyName());
-		attributes.put("startStepTransitionId", getStartStepTransitionId());
-		attributes.put("daysDuration", getDaysDuration());
-		attributes.put("fee", getFee());
 
 		return attributes;
 	}
@@ -102,43 +96,6 @@ public class DossierProcessWrapper implements DossierProcess,
 
 		if (modifiedDate != null) {
 			setModifiedDate(modifiedDate);
-		}
-
-		Long dossierProcId = (Long)attributes.get("dossierProcId");
-
-		if (dossierProcId != null) {
-			setDossierProcId(dossierProcId);
-		}
-
-		String govAgencyId = (String)attributes.get("govAgencyId");
-
-		if (govAgencyId != null) {
-			setGovAgencyId(govAgencyId);
-		}
-
-		String govAgencyName = (String)attributes.get("govAgencyName");
-
-		if (govAgencyName != null) {
-			setGovAgencyName(govAgencyName);
-		}
-
-		Long startStepTransitionId = (Long)attributes.get(
-				"startStepTransitionId");
-
-		if (startStepTransitionId != null) {
-			setStartStepTransitionId(startStepTransitionId);
-		}
-
-		Integer daysDuration = (Integer)attributes.get("daysDuration");
-
-		if (daysDuration != null) {
-			setDaysDuration(daysDuration);
-		}
-
-		Integer fee = (Integer)attributes.get("fee");
-
-		if (fee != null) {
-			setFee(fee);
 		}
 	}
 
@@ -302,126 +259,6 @@ public class DossierProcessWrapper implements DossierProcess,
 	@Override
 	public void setModifiedDate(java.util.Date modifiedDate) {
 		_dossierProcess.setModifiedDate(modifiedDate);
-	}
-
-	/**
-	* Returns the dossier proc ID of this dossier process.
-	*
-	* @return the dossier proc ID of this dossier process
-	*/
-	@Override
-	public long getDossierProcId() {
-		return _dossierProcess.getDossierProcId();
-	}
-
-	/**
-	* Sets the dossier proc ID of this dossier process.
-	*
-	* @param dossierProcId the dossier proc ID of this dossier process
-	*/
-	@Override
-	public void setDossierProcId(long dossierProcId) {
-		_dossierProcess.setDossierProcId(dossierProcId);
-	}
-
-	/**
-	* Returns the gov agency ID of this dossier process.
-	*
-	* @return the gov agency ID of this dossier process
-	*/
-	@Override
-	public java.lang.String getGovAgencyId() {
-		return _dossierProcess.getGovAgencyId();
-	}
-
-	/**
-	* Sets the gov agency ID of this dossier process.
-	*
-	* @param govAgencyId the gov agency ID of this dossier process
-	*/
-	@Override
-	public void setGovAgencyId(java.lang.String govAgencyId) {
-		_dossierProcess.setGovAgencyId(govAgencyId);
-	}
-
-	/**
-	* Returns the gov agency name of this dossier process.
-	*
-	* @return the gov agency name of this dossier process
-	*/
-	@Override
-	public java.lang.String getGovAgencyName() {
-		return _dossierProcess.getGovAgencyName();
-	}
-
-	/**
-	* Sets the gov agency name of this dossier process.
-	*
-	* @param govAgencyName the gov agency name of this dossier process
-	*/
-	@Override
-	public void setGovAgencyName(java.lang.String govAgencyName) {
-		_dossierProcess.setGovAgencyName(govAgencyName);
-	}
-
-	/**
-	* Returns the start step transition ID of this dossier process.
-	*
-	* @return the start step transition ID of this dossier process
-	*/
-	@Override
-	public long getStartStepTransitionId() {
-		return _dossierProcess.getStartStepTransitionId();
-	}
-
-	/**
-	* Sets the start step transition ID of this dossier process.
-	*
-	* @param startStepTransitionId the start step transition ID of this dossier process
-	*/
-	@Override
-	public void setStartStepTransitionId(long startStepTransitionId) {
-		_dossierProcess.setStartStepTransitionId(startStepTransitionId);
-	}
-
-	/**
-	* Returns the days duration of this dossier process.
-	*
-	* @return the days duration of this dossier process
-	*/
-	@Override
-	public int getDaysDuration() {
-		return _dossierProcess.getDaysDuration();
-	}
-
-	/**
-	* Sets the days duration of this dossier process.
-	*
-	* @param daysDuration the days duration of this dossier process
-	*/
-	@Override
-	public void setDaysDuration(int daysDuration) {
-		_dossierProcess.setDaysDuration(daysDuration);
-	}
-
-	/**
-	* Returns the fee of this dossier process.
-	*
-	* @return the fee of this dossier process
-	*/
-	@Override
-	public int getFee() {
-		return _dossierProcess.getFee();
-	}
-
-	/**
-	* Sets the fee of this dossier process.
-	*
-	* @param fee the fee of this dossier process
-	*/
-	@Override
-	public void setFee(int fee) {
-		_dossierProcess.setFee(fee);
 	}
 
 	@Override

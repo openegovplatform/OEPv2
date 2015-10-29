@@ -255,17 +255,19 @@ public interface UserAssignmentLocalService extends BaseLocalService,
 		throws java.lang.Throwable;
 
 	/**
-	* Add user assignment
+	* ThÃªm phÃ¢n cÃ´ng má»›i
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    Táº¡o má»›i
 	*
-	* @param
-	* @return: new user assignment
+	* @param processOrderId phÃ¢n cÃ´ng xá»­ lÃ½ cho má»™t tráº¡ng thÃ¡i há»“ sÆ¡ trÃªn phiáº¿u chÃ­nh hoáº·c phá»¥
+	* @param dossierStepId bÆ°á»›c xá»­ lÃ½
+	* @param assignToUserId phÃ¢n cÃ´ng cho ngÆ°á»�i dÃ¹ng
+	* @return: phÃ¢n cÃ´ng má»›i Ä‘Æ°á»£c táº¡o
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	@com.liferay.portal.kernel.transaction.Transactional
@@ -275,6 +277,22 @@ public interface UserAssignmentLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Cáº­p nháº­t thÃ´ng tin phÃ¢n cÃ´ng
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param id mÃ£ thÃ´ng tin phÃ¢n cÃ´ng
+	* @param processOrderId phÃ¢n cÃ´ng xá»­ lÃ½ cho má»™t tráº¡ng thÃ¡i há»“ sÆ¡ trÃªn phiáº¿u chÃ­nh hoáº·c phá»¥
+	* @param dossierStepId bÆ°á»›c xá»­ lÃ½
+	* @param assignToUserId phÃ¢n cÃ´ng cho ngÆ°á»�i dÃ¹ng
+	* @return: phÃ¢n cÃ´ng má»›i Ä‘Æ°á»£c cáº­p nháº­t
+	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.processmgt.model.UserAssignment updateUserAssignment(
 		long id, long processOrderId, long dossierStepId, long assignToUserId,

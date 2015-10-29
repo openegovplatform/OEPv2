@@ -253,4 +253,40 @@ public interface ProcessOrder2UserLocalService extends BaseLocalService,
 	public java.lang.Object invokeMethod(java.lang.String name,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;
+
+	/**
+	* ThÃªm quan há»‡ giá»¯a thÃ´ng tin xá»­ lÃ½ há»“ sÆ¡ vá»›i ngÆ°á»�i xá»­ lÃ½ há»“ sÆ¡
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param processOrderId mÃ£ thÃ´ng tin xá»­ lÃ½ há»“ sÆ¡
+	* @param userId mÃ£ vai trÃ²
+	* @return: quan há»‡ giá»¯a thÃ´ng tin xá»­ lÃ½ há»“ sÆ¡ vá»›i cÃ¡n bá»™ xá»­ lÃ½á»§e
+	*/
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.processmgt.model.ProcessOrder2User addProcessOrder2User(
+		long processOrderId, long userId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void removeProcessOrder2User(
+		org.oep.core.processmgt.model.ProcessOrder2User processOrder2User)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void removeProcessOrder2User(long processOrderId, long userId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public org.oep.core.processmgt.model.ProcessOrder2User getProcessOrder2User(
+		long processOrderId, long userId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
 }

@@ -57,13 +57,10 @@ public class StatisticByUserWrapper implements StatisticByUser,
 		attributes.put("createDate", getCreateDate());
 		attributes.put("month", getMonth());
 		attributes.put("year", getYear());
-		attributes.put("dossierStatus", getDossierStatus());
 		attributes.put("totalNumber", getTotalNumber());
-		attributes.put("delayedNumber", getDelayedNumber());
 		attributes.put("ontimeNumber", getOntimeNumber());
 		attributes.put("ontimeRatio", getOntimeRatio());
 		attributes.put("delayDaysAvg", getDelayDaysAvg());
-		attributes.put("furtherDaysAvg", getFurtherDaysAvg());
 
 		return attributes;
 	}
@@ -112,22 +109,10 @@ public class StatisticByUserWrapper implements StatisticByUser,
 			setYear(year);
 		}
 
-		String dossierStatus = (String)attributes.get("dossierStatus");
-
-		if (dossierStatus != null) {
-			setDossierStatus(dossierStatus);
-		}
-
 		Integer totalNumber = (Integer)attributes.get("totalNumber");
 
 		if (totalNumber != null) {
 			setTotalNumber(totalNumber);
-		}
-
-		Integer delayedNumber = (Integer)attributes.get("delayedNumber");
-
-		if (delayedNumber != null) {
-			setDelayedNumber(delayedNumber);
 		}
 
 		Integer ontimeNumber = (Integer)attributes.get("ontimeNumber");
@@ -146,12 +131,6 @@ public class StatisticByUserWrapper implements StatisticByUser,
 
 		if (delayDaysAvg != null) {
 			setDelayDaysAvg(delayDaysAvg);
-		}
-
-		Double furtherDaysAvg = (Double)attributes.get("furtherDaysAvg");
-
-		if (furtherDaysAvg != null) {
-			setFurtherDaysAvg(furtherDaysAvg);
 		}
 	}
 
@@ -360,26 +339,6 @@ public class StatisticByUserWrapper implements StatisticByUser,
 	}
 
 	/**
-	* Returns the dossier status of this statistic by user.
-	*
-	* @return the dossier status of this statistic by user
-	*/
-	@Override
-	public java.lang.String getDossierStatus() {
-		return _statisticByUser.getDossierStatus();
-	}
-
-	/**
-	* Sets the dossier status of this statistic by user.
-	*
-	* @param dossierStatus the dossier status of this statistic by user
-	*/
-	@Override
-	public void setDossierStatus(java.lang.String dossierStatus) {
-		_statisticByUser.setDossierStatus(dossierStatus);
-	}
-
-	/**
 	* Returns the total number of this statistic by user.
 	*
 	* @return the total number of this statistic by user
@@ -397,26 +356,6 @@ public class StatisticByUserWrapper implements StatisticByUser,
 	@Override
 	public void setTotalNumber(int totalNumber) {
 		_statisticByUser.setTotalNumber(totalNumber);
-	}
-
-	/**
-	* Returns the delayed number of this statistic by user.
-	*
-	* @return the delayed number of this statistic by user
-	*/
-	@Override
-	public int getDelayedNumber() {
-		return _statisticByUser.getDelayedNumber();
-	}
-
-	/**
-	* Sets the delayed number of this statistic by user.
-	*
-	* @param delayedNumber the delayed number of this statistic by user
-	*/
-	@Override
-	public void setDelayedNumber(int delayedNumber) {
-		_statisticByUser.setDelayedNumber(delayedNumber);
 	}
 
 	/**
@@ -477,26 +416,6 @@ public class StatisticByUserWrapper implements StatisticByUser,
 	@Override
 	public void setDelayDaysAvg(double delayDaysAvg) {
 		_statisticByUser.setDelayDaysAvg(delayDaysAvg);
-	}
-
-	/**
-	* Returns the further days avg of this statistic by user.
-	*
-	* @return the further days avg of this statistic by user
-	*/
-	@Override
-	public double getFurtherDaysAvg() {
-		return _statisticByUser.getFurtherDaysAvg();
-	}
-
-	/**
-	* Sets the further days avg of this statistic by user.
-	*
-	* @param furtherDaysAvg the further days avg of this statistic by user
-	*/
-	@Override
-	public void setFurtherDaysAvg(double furtherDaysAvg) {
-		_statisticByUser.setFurtherDaysAvg(furtherDaysAvg);
 	}
 
 	@Override
@@ -596,6 +515,12 @@ public class StatisticByUserWrapper implements StatisticByUser,
 	@Override
 	public java.lang.String toXmlString() {
 		return _statisticByUser.toXmlString();
+	}
+
+	@Override
+	public void persist()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		_statisticByUser.persist();
 	}
 
 	@Override

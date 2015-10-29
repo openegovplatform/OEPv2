@@ -20,7 +20,6 @@ import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
-import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
 import com.liferay.portal.service.ServiceContext;
@@ -71,15 +70,9 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 			{ "groupId", Types.BIGINT },
 			{ "companyId", Types.BIGINT },
 			{ "createDate", Types.TIMESTAMP },
-			{ "modifiedDate", Types.TIMESTAMP },
-			{ "dossierProcId", Types.BIGINT },
-			{ "govAgencyId", Types.VARCHAR },
-			{ "govAgencyName", Types.VARCHAR },
-			{ "startStepTransitionId", Types.BIGINT },
-			{ "daysDuration", Types.INTEGER },
-			{ "fee", Types.INTEGER }
+			{ "modifiedDate", Types.TIMESTAMP }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_dossierprocess (dossierProcessId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcId LONG,govAgencyId VARCHAR(30) null,govAgencyName VARCHAR(200) null,startStepTransitionId LONG,daysDuration INTEGER,fee INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_dossierprocess (dossierProcessId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null)";
 	public static final String TABLE_SQL_DROP = "drop table oep_processmgt_dossierprocess";
 	public static final String ORDER_BY_JPQL = " ORDER BY dossierProcess.dossierProcessId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_processmgt_dossierprocess.dossierProcessId ASC";
@@ -118,12 +111,6 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 		model.setCompanyId(soapModel.getCompanyId());
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setModifiedDate(soapModel.getModifiedDate());
-		model.setDossierProcId(soapModel.getDossierProcId());
-		model.setGovAgencyId(soapModel.getGovAgencyId());
-		model.setGovAgencyName(soapModel.getGovAgencyName());
-		model.setStartStepTransitionId(soapModel.getStartStepTransitionId());
-		model.setDaysDuration(soapModel.getDaysDuration());
-		model.setFee(soapModel.getFee());
 
 		return model;
 	}
@@ -194,12 +181,6 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 		attributes.put("companyId", getCompanyId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgencyId", getGovAgencyId());
-		attributes.put("govAgencyName", getGovAgencyName());
-		attributes.put("startStepTransitionId", getStartStepTransitionId());
-		attributes.put("daysDuration", getDaysDuration());
-		attributes.put("fee", getFee());
 
 		return attributes;
 	}
@@ -240,43 +221,6 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 
 		if (modifiedDate != null) {
 			setModifiedDate(modifiedDate);
-		}
-
-		Long dossierProcId = (Long)attributes.get("dossierProcId");
-
-		if (dossierProcId != null) {
-			setDossierProcId(dossierProcId);
-		}
-
-		String govAgencyId = (String)attributes.get("govAgencyId");
-
-		if (govAgencyId != null) {
-			setGovAgencyId(govAgencyId);
-		}
-
-		String govAgencyName = (String)attributes.get("govAgencyName");
-
-		if (govAgencyName != null) {
-			setGovAgencyName(govAgencyName);
-		}
-
-		Long startStepTransitionId = (Long)attributes.get(
-				"startStepTransitionId");
-
-		if (startStepTransitionId != null) {
-			setStartStepTransitionId(startStepTransitionId);
-		}
-
-		Integer daysDuration = (Integer)attributes.get("daysDuration");
-
-		if (daysDuration != null) {
-			setDaysDuration(daysDuration);
-		}
-
-		Integer fee = (Integer)attributes.get("fee");
-
-		if (fee != null) {
-			setFee(fee);
 		}
 	}
 
@@ -380,82 +324,6 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 		_modifiedDate = modifiedDate;
 	}
 
-	@JSON
-	@Override
-	public long getDossierProcId() {
-		return _dossierProcId;
-	}
-
-	@Override
-	public void setDossierProcId(long dossierProcId) {
-		_dossierProcId = dossierProcId;
-	}
-
-	@JSON
-	@Override
-	public String getGovAgencyId() {
-		if (_govAgencyId == null) {
-			return StringPool.BLANK;
-		}
-		else {
-			return _govAgencyId;
-		}
-	}
-
-	@Override
-	public void setGovAgencyId(String govAgencyId) {
-		_govAgencyId = govAgencyId;
-	}
-
-	@JSON
-	@Override
-	public String getGovAgencyName() {
-		if (_govAgencyName == null) {
-			return StringPool.BLANK;
-		}
-		else {
-			return _govAgencyName;
-		}
-	}
-
-	@Override
-	public void setGovAgencyName(String govAgencyName) {
-		_govAgencyName = govAgencyName;
-	}
-
-	@JSON
-	@Override
-	public long getStartStepTransitionId() {
-		return _startStepTransitionId;
-	}
-
-	@Override
-	public void setStartStepTransitionId(long startStepTransitionId) {
-		_startStepTransitionId = startStepTransitionId;
-	}
-
-	@JSON
-	@Override
-	public int getDaysDuration() {
-		return _daysDuration;
-	}
-
-	@Override
-	public void setDaysDuration(int daysDuration) {
-		_daysDuration = daysDuration;
-	}
-
-	@JSON
-	@Override
-	public int getFee() {
-		return _fee;
-	}
-
-	@Override
-	public void setFee(int fee) {
-		_fee = fee;
-	}
-
 	public long getColumnBitmask() {
 		return _columnBitmask;
 	}
@@ -493,12 +361,6 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 		dossierProcessImpl.setCompanyId(getCompanyId());
 		dossierProcessImpl.setCreateDate(getCreateDate());
 		dossierProcessImpl.setModifiedDate(getModifiedDate());
-		dossierProcessImpl.setDossierProcId(getDossierProcId());
-		dossierProcessImpl.setGovAgencyId(getGovAgencyId());
-		dossierProcessImpl.setGovAgencyName(getGovAgencyName());
-		dossierProcessImpl.setStartStepTransitionId(getStartStepTransitionId());
-		dossierProcessImpl.setDaysDuration(getDaysDuration());
-		dossierProcessImpl.setFee(getFee());
 
 		dossierProcessImpl.resetOriginalValues();
 
@@ -592,36 +454,12 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 			dossierProcessCacheModel.modifiedDate = Long.MIN_VALUE;
 		}
 
-		dossierProcessCacheModel.dossierProcId = getDossierProcId();
-
-		dossierProcessCacheModel.govAgencyId = getGovAgencyId();
-
-		String govAgencyId = dossierProcessCacheModel.govAgencyId;
-
-		if ((govAgencyId != null) && (govAgencyId.length() == 0)) {
-			dossierProcessCacheModel.govAgencyId = null;
-		}
-
-		dossierProcessCacheModel.govAgencyName = getGovAgencyName();
-
-		String govAgencyName = dossierProcessCacheModel.govAgencyName;
-
-		if ((govAgencyName != null) && (govAgencyName.length() == 0)) {
-			dossierProcessCacheModel.govAgencyName = null;
-		}
-
-		dossierProcessCacheModel.startStepTransitionId = getStartStepTransitionId();
-
-		dossierProcessCacheModel.daysDuration = getDaysDuration();
-
-		dossierProcessCacheModel.fee = getFee();
-
 		return dossierProcessCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(25);
+		StringBundler sb = new StringBundler(13);
 
 		sb.append("{dossierProcessId=");
 		sb.append(getDossierProcessId());
@@ -635,18 +473,6 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 		sb.append(getCreateDate());
 		sb.append(", modifiedDate=");
 		sb.append(getModifiedDate());
-		sb.append(", dossierProcId=");
-		sb.append(getDossierProcId());
-		sb.append(", govAgencyId=");
-		sb.append(getGovAgencyId());
-		sb.append(", govAgencyName=");
-		sb.append(getGovAgencyName());
-		sb.append(", startStepTransitionId=");
-		sb.append(getStartStepTransitionId());
-		sb.append(", daysDuration=");
-		sb.append(getDaysDuration());
-		sb.append(", fee=");
-		sb.append(getFee());
 		sb.append("}");
 
 		return sb.toString();
@@ -654,7 +480,7 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(40);
+		StringBundler sb = new StringBundler(22);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.DossierProcess");
@@ -684,30 +510,6 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 			"<column><column-name>modifiedDate</column-name><column-value><![CDATA[");
 		sb.append(getModifiedDate());
 		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>dossierProcId</column-name><column-value><![CDATA[");
-		sb.append(getDossierProcId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>govAgencyId</column-name><column-value><![CDATA[");
-		sb.append(getGovAgencyId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>govAgencyName</column-name><column-value><![CDATA[");
-		sb.append(getGovAgencyName());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>startStepTransitionId</column-name><column-value><![CDATA[");
-		sb.append(getStartStepTransitionId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>daysDuration</column-name><column-value><![CDATA[");
-		sb.append(getDaysDuration());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>fee</column-name><column-value><![CDATA[");
-		sb.append(getFee());
-		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -729,12 +531,6 @@ public class DossierProcessModelImpl extends BaseModelImpl<DossierProcess>
 	private boolean _setOriginalCompanyId;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private long _dossierProcId;
-	private String _govAgencyId;
-	private String _govAgencyName;
-	private long _startStepTransitionId;
-	private int _daysDuration;
-	private int _fee;
 	private long _columnBitmask;
 	private DossierProcess _escapedModel;
 }

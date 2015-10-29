@@ -24,6 +24,10 @@ import com.liferay.portal.service.persistence.UserPersistence;
 
 import org.oep.core.processmgt.model.StatisticByUser;
 import org.oep.core.processmgt.service.StatisticByUserService;
+import org.oep.core.processmgt.service.persistence.CreateFilePersistence;
+import org.oep.core.processmgt.service.persistence.DocFile2ProcessOrderPersistence;
+import org.oep.core.processmgt.service.persistence.DossierProc2ProcessPersistence;
+import org.oep.core.processmgt.service.persistence.DossierProc2RolePersistence;
 import org.oep.core.processmgt.service.persistence.DossierProcessPersistence;
 import org.oep.core.processmgt.service.persistence.DossierStep2RolePersistence;
 import org.oep.core.processmgt.service.persistence.DossierStepPersistence;
@@ -55,6 +59,234 @@ public abstract class StatisticByUserServiceBaseImpl extends BaseServiceImpl
 	 *
 	 * Never modify or reference this class directly. Always use {@link org.oep.core.processmgt.service.StatisticByUserServiceUtil} to access the statistic by user remote service.
 	 */
+
+	/**
+	 * Returns the create file local service.
+	 *
+	 * @return the create file local service
+	 */
+	public org.oep.core.processmgt.service.CreateFileLocalService getCreateFileLocalService() {
+		return createFileLocalService;
+	}
+
+	/**
+	 * Sets the create file local service.
+	 *
+	 * @param createFileLocalService the create file local service
+	 */
+	public void setCreateFileLocalService(
+		org.oep.core.processmgt.service.CreateFileLocalService createFileLocalService) {
+		this.createFileLocalService = createFileLocalService;
+	}
+
+	/**
+	 * Returns the create file remote service.
+	 *
+	 * @return the create file remote service
+	 */
+	public org.oep.core.processmgt.service.CreateFileService getCreateFileService() {
+		return createFileService;
+	}
+
+	/**
+	 * Sets the create file remote service.
+	 *
+	 * @param createFileService the create file remote service
+	 */
+	public void setCreateFileService(
+		org.oep.core.processmgt.service.CreateFileService createFileService) {
+		this.createFileService = createFileService;
+	}
+
+	/**
+	 * Returns the create file persistence.
+	 *
+	 * @return the create file persistence
+	 */
+	public CreateFilePersistence getCreateFilePersistence() {
+		return createFilePersistence;
+	}
+
+	/**
+	 * Sets the create file persistence.
+	 *
+	 * @param createFilePersistence the create file persistence
+	 */
+	public void setCreateFilePersistence(
+		CreateFilePersistence createFilePersistence) {
+		this.createFilePersistence = createFilePersistence;
+	}
+
+	/**
+	 * Returns the doc file2 process order local service.
+	 *
+	 * @return the doc file2 process order local service
+	 */
+	public org.oep.core.processmgt.service.DocFile2ProcessOrderLocalService getDocFile2ProcessOrderLocalService() {
+		return docFile2ProcessOrderLocalService;
+	}
+
+	/**
+	 * Sets the doc file2 process order local service.
+	 *
+	 * @param docFile2ProcessOrderLocalService the doc file2 process order local service
+	 */
+	public void setDocFile2ProcessOrderLocalService(
+		org.oep.core.processmgt.service.DocFile2ProcessOrderLocalService docFile2ProcessOrderLocalService) {
+		this.docFile2ProcessOrderLocalService = docFile2ProcessOrderLocalService;
+	}
+
+	/**
+	 * Returns the doc file2 process order remote service.
+	 *
+	 * @return the doc file2 process order remote service
+	 */
+	public org.oep.core.processmgt.service.DocFile2ProcessOrderService getDocFile2ProcessOrderService() {
+		return docFile2ProcessOrderService;
+	}
+
+	/**
+	 * Sets the doc file2 process order remote service.
+	 *
+	 * @param docFile2ProcessOrderService the doc file2 process order remote service
+	 */
+	public void setDocFile2ProcessOrderService(
+		org.oep.core.processmgt.service.DocFile2ProcessOrderService docFile2ProcessOrderService) {
+		this.docFile2ProcessOrderService = docFile2ProcessOrderService;
+	}
+
+	/**
+	 * Returns the doc file2 process order persistence.
+	 *
+	 * @return the doc file2 process order persistence
+	 */
+	public DocFile2ProcessOrderPersistence getDocFile2ProcessOrderPersistence() {
+		return docFile2ProcessOrderPersistence;
+	}
+
+	/**
+	 * Sets the doc file2 process order persistence.
+	 *
+	 * @param docFile2ProcessOrderPersistence the doc file2 process order persistence
+	 */
+	public void setDocFile2ProcessOrderPersistence(
+		DocFile2ProcessOrderPersistence docFile2ProcessOrderPersistence) {
+		this.docFile2ProcessOrderPersistence = docFile2ProcessOrderPersistence;
+	}
+
+	/**
+	 * Returns the dossier proc2 process local service.
+	 *
+	 * @return the dossier proc2 process local service
+	 */
+	public org.oep.core.processmgt.service.DossierProc2ProcessLocalService getDossierProc2ProcessLocalService() {
+		return dossierProc2ProcessLocalService;
+	}
+
+	/**
+	 * Sets the dossier proc2 process local service.
+	 *
+	 * @param dossierProc2ProcessLocalService the dossier proc2 process local service
+	 */
+	public void setDossierProc2ProcessLocalService(
+		org.oep.core.processmgt.service.DossierProc2ProcessLocalService dossierProc2ProcessLocalService) {
+		this.dossierProc2ProcessLocalService = dossierProc2ProcessLocalService;
+	}
+
+	/**
+	 * Returns the dossier proc2 process remote service.
+	 *
+	 * @return the dossier proc2 process remote service
+	 */
+	public org.oep.core.processmgt.service.DossierProc2ProcessService getDossierProc2ProcessService() {
+		return dossierProc2ProcessService;
+	}
+
+	/**
+	 * Sets the dossier proc2 process remote service.
+	 *
+	 * @param dossierProc2ProcessService the dossier proc2 process remote service
+	 */
+	public void setDossierProc2ProcessService(
+		org.oep.core.processmgt.service.DossierProc2ProcessService dossierProc2ProcessService) {
+		this.dossierProc2ProcessService = dossierProc2ProcessService;
+	}
+
+	/**
+	 * Returns the dossier proc2 process persistence.
+	 *
+	 * @return the dossier proc2 process persistence
+	 */
+	public DossierProc2ProcessPersistence getDossierProc2ProcessPersistence() {
+		return dossierProc2ProcessPersistence;
+	}
+
+	/**
+	 * Sets the dossier proc2 process persistence.
+	 *
+	 * @param dossierProc2ProcessPersistence the dossier proc2 process persistence
+	 */
+	public void setDossierProc2ProcessPersistence(
+		DossierProc2ProcessPersistence dossierProc2ProcessPersistence) {
+		this.dossierProc2ProcessPersistence = dossierProc2ProcessPersistence;
+	}
+
+	/**
+	 * Returns the dossier proc2 role local service.
+	 *
+	 * @return the dossier proc2 role local service
+	 */
+	public org.oep.core.processmgt.service.DossierProc2RoleLocalService getDossierProc2RoleLocalService() {
+		return dossierProc2RoleLocalService;
+	}
+
+	/**
+	 * Sets the dossier proc2 role local service.
+	 *
+	 * @param dossierProc2RoleLocalService the dossier proc2 role local service
+	 */
+	public void setDossierProc2RoleLocalService(
+		org.oep.core.processmgt.service.DossierProc2RoleLocalService dossierProc2RoleLocalService) {
+		this.dossierProc2RoleLocalService = dossierProc2RoleLocalService;
+	}
+
+	/**
+	 * Returns the dossier proc2 role remote service.
+	 *
+	 * @return the dossier proc2 role remote service
+	 */
+	public org.oep.core.processmgt.service.DossierProc2RoleService getDossierProc2RoleService() {
+		return dossierProc2RoleService;
+	}
+
+	/**
+	 * Sets the dossier proc2 role remote service.
+	 *
+	 * @param dossierProc2RoleService the dossier proc2 role remote service
+	 */
+	public void setDossierProc2RoleService(
+		org.oep.core.processmgt.service.DossierProc2RoleService dossierProc2RoleService) {
+		this.dossierProc2RoleService = dossierProc2RoleService;
+	}
+
+	/**
+	 * Returns the dossier proc2 role persistence.
+	 *
+	 * @return the dossier proc2 role persistence
+	 */
+	public DossierProc2RolePersistence getDossierProc2RolePersistence() {
+		return dossierProc2RolePersistence;
+	}
+
+	/**
+	 * Sets the dossier proc2 role persistence.
+	 *
+	 * @param dossierProc2RolePersistence the dossier proc2 role persistence
+	 */
+	public void setDossierProc2RolePersistence(
+		DossierProc2RolePersistence dossierProc2RolePersistence) {
+		this.dossierProc2RolePersistence = dossierProc2RolePersistence;
+	}
 
 	/**
 	 * Returns the dossier process local service.
@@ -190,6 +422,25 @@ public abstract class StatisticByUserServiceBaseImpl extends BaseServiceImpl
 	}
 
 	/**
+	 * Returns the dossier step2 role remote service.
+	 *
+	 * @return the dossier step2 role remote service
+	 */
+	public org.oep.core.processmgt.service.DossierStep2RoleService getDossierStep2RoleService() {
+		return dossierStep2RoleService;
+	}
+
+	/**
+	 * Sets the dossier step2 role remote service.
+	 *
+	 * @param dossierStep2RoleService the dossier step2 role remote service
+	 */
+	public void setDossierStep2RoleService(
+		org.oep.core.processmgt.service.DossierStep2RoleService dossierStep2RoleService) {
+		this.dossierStep2RoleService = dossierStep2RoleService;
+	}
+
+	/**
 	 * Returns the dossier step2 role persistence.
 	 *
 	 * @return the dossier step2 role persistence
@@ -285,6 +536,25 @@ public abstract class StatisticByUserServiceBaseImpl extends BaseServiceImpl
 	}
 
 	/**
+	 * Returns the process order2 user remote service.
+	 *
+	 * @return the process order2 user remote service
+	 */
+	public org.oep.core.processmgt.service.ProcessOrder2UserService getProcessOrder2UserService() {
+		return processOrder2UserService;
+	}
+
+	/**
+	 * Sets the process order2 user remote service.
+	 *
+	 * @param processOrder2UserService the process order2 user remote service
+	 */
+	public void setProcessOrder2UserService(
+		org.oep.core.processmgt.service.ProcessOrder2UserService processOrder2UserService) {
+		this.processOrder2UserService = processOrder2UserService;
+	}
+
+	/**
 	 * Returns the process order2 user persistence.
 	 *
 	 * @return the process order2 user persistence
@@ -301,6 +571,25 @@ public abstract class StatisticByUserServiceBaseImpl extends BaseServiceImpl
 	public void setProcessOrder2UserPersistence(
 		ProcessOrder2UserPersistence processOrder2UserPersistence) {
 		this.processOrder2UserPersistence = processOrder2UserPersistence;
+	}
+
+	/**
+	 * Returns the statistic by user local service.
+	 *
+	 * @return the statistic by user local service
+	 */
+	public org.oep.core.processmgt.service.StatisticByUserLocalService getStatisticByUserLocalService() {
+		return statisticByUserLocalService;
+	}
+
+	/**
+	 * Sets the statistic by user local service.
+	 *
+	 * @param statisticByUserLocalService the statistic by user local service
+	 */
+	public void setStatisticByUserLocalService(
+		org.oep.core.processmgt.service.StatisticByUserLocalService statisticByUserLocalService) {
+		this.statisticByUserLocalService = statisticByUserLocalService;
 	}
 
 	/**
@@ -683,6 +972,30 @@ public abstract class StatisticByUserServiceBaseImpl extends BaseServiceImpl
 		}
 	}
 
+	@BeanReference(type = org.oep.core.processmgt.service.CreateFileLocalService.class)
+	protected org.oep.core.processmgt.service.CreateFileLocalService createFileLocalService;
+	@BeanReference(type = org.oep.core.processmgt.service.CreateFileService.class)
+	protected org.oep.core.processmgt.service.CreateFileService createFileService;
+	@BeanReference(type = CreateFilePersistence.class)
+	protected CreateFilePersistence createFilePersistence;
+	@BeanReference(type = org.oep.core.processmgt.service.DocFile2ProcessOrderLocalService.class)
+	protected org.oep.core.processmgt.service.DocFile2ProcessOrderLocalService docFile2ProcessOrderLocalService;
+	@BeanReference(type = org.oep.core.processmgt.service.DocFile2ProcessOrderService.class)
+	protected org.oep.core.processmgt.service.DocFile2ProcessOrderService docFile2ProcessOrderService;
+	@BeanReference(type = DocFile2ProcessOrderPersistence.class)
+	protected DocFile2ProcessOrderPersistence docFile2ProcessOrderPersistence;
+	@BeanReference(type = org.oep.core.processmgt.service.DossierProc2ProcessLocalService.class)
+	protected org.oep.core.processmgt.service.DossierProc2ProcessLocalService dossierProc2ProcessLocalService;
+	@BeanReference(type = org.oep.core.processmgt.service.DossierProc2ProcessService.class)
+	protected org.oep.core.processmgt.service.DossierProc2ProcessService dossierProc2ProcessService;
+	@BeanReference(type = DossierProc2ProcessPersistence.class)
+	protected DossierProc2ProcessPersistence dossierProc2ProcessPersistence;
+	@BeanReference(type = org.oep.core.processmgt.service.DossierProc2RoleLocalService.class)
+	protected org.oep.core.processmgt.service.DossierProc2RoleLocalService dossierProc2RoleLocalService;
+	@BeanReference(type = org.oep.core.processmgt.service.DossierProc2RoleService.class)
+	protected org.oep.core.processmgt.service.DossierProc2RoleService dossierProc2RoleService;
+	@BeanReference(type = DossierProc2RolePersistence.class)
+	protected DossierProc2RolePersistence dossierProc2RolePersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.DossierProcessLocalService.class)
 	protected org.oep.core.processmgt.service.DossierProcessLocalService dossierProcessLocalService;
 	@BeanReference(type = org.oep.core.processmgt.service.DossierProcessService.class)
@@ -697,6 +1010,8 @@ public abstract class StatisticByUserServiceBaseImpl extends BaseServiceImpl
 	protected DossierStepPersistence dossierStepPersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.DossierStep2RoleLocalService.class)
 	protected org.oep.core.processmgt.service.DossierStep2RoleLocalService dossierStep2RoleLocalService;
+	@BeanReference(type = org.oep.core.processmgt.service.DossierStep2RoleService.class)
+	protected org.oep.core.processmgt.service.DossierStep2RoleService dossierStep2RoleService;
 	@BeanReference(type = DossierStep2RolePersistence.class)
 	protected DossierStep2RolePersistence dossierStep2RolePersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.ProcessOrderLocalService.class)
@@ -707,8 +1022,12 @@ public abstract class StatisticByUserServiceBaseImpl extends BaseServiceImpl
 	protected ProcessOrderPersistence processOrderPersistence;
 	@BeanReference(type = org.oep.core.processmgt.service.ProcessOrder2UserLocalService.class)
 	protected org.oep.core.processmgt.service.ProcessOrder2UserLocalService processOrder2UserLocalService;
+	@BeanReference(type = org.oep.core.processmgt.service.ProcessOrder2UserService.class)
+	protected org.oep.core.processmgt.service.ProcessOrder2UserService processOrder2UserService;
 	@BeanReference(type = ProcessOrder2UserPersistence.class)
 	protected ProcessOrder2UserPersistence processOrder2UserPersistence;
+	@BeanReference(type = org.oep.core.processmgt.service.StatisticByUserLocalService.class)
+	protected org.oep.core.processmgt.service.StatisticByUserLocalService statisticByUserLocalService;
 	@BeanReference(type = org.oep.core.processmgt.service.StatisticByUserService.class)
 	protected org.oep.core.processmgt.service.StatisticByUserService statisticByUserService;
 	@BeanReference(type = StatisticByUserPersistence.class)

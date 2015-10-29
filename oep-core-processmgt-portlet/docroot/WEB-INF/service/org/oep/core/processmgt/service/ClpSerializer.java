@@ -25,6 +25,10 @@ import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.BaseModel;
 
+import org.oep.core.processmgt.model.CreateFileClp;
+import org.oep.core.processmgt.model.DocFile2ProcessOrderClp;
+import org.oep.core.processmgt.model.DossierProc2ProcessClp;
+import org.oep.core.processmgt.model.DossierProc2RoleClp;
 import org.oep.core.processmgt.model.DossierProcessClp;
 import org.oep.core.processmgt.model.DossierStep2RoleClp;
 import org.oep.core.processmgt.model.DossierStepClp;
@@ -110,6 +114,22 @@ public class ClpSerializer {
 
 		String oldModelClassName = oldModelClass.getName();
 
+		if (oldModelClassName.equals(CreateFileClp.class.getName())) {
+			return translateInputCreateFile(oldModel);
+		}
+
+		if (oldModelClassName.equals(DocFile2ProcessOrderClp.class.getName())) {
+			return translateInputDocFile2ProcessOrder(oldModel);
+		}
+
+		if (oldModelClassName.equals(DossierProc2ProcessClp.class.getName())) {
+			return translateInputDossierProc2Process(oldModel);
+		}
+
+		if (oldModelClassName.equals(DossierProc2RoleClp.class.getName())) {
+			return translateInputDossierProc2Role(oldModel);
+		}
+
 		if (oldModelClassName.equals(DossierProcessClp.class.getName())) {
 			return translateInputDossierProcess(oldModel);
 		}
@@ -159,6 +179,48 @@ public class ClpSerializer {
 		}
 
 		return newList;
+	}
+
+	public static Object translateInputCreateFile(BaseModel<?> oldModel) {
+		CreateFileClp oldClpModel = (CreateFileClp)oldModel;
+
+		BaseModel<?> newModel = oldClpModel.getCreateFileRemoteModel();
+
+		newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+		return newModel;
+	}
+
+	public static Object translateInputDocFile2ProcessOrder(
+		BaseModel<?> oldModel) {
+		DocFile2ProcessOrderClp oldClpModel = (DocFile2ProcessOrderClp)oldModel;
+
+		BaseModel<?> newModel = oldClpModel.getDocFile2ProcessOrderRemoteModel();
+
+		newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+		return newModel;
+	}
+
+	public static Object translateInputDossierProc2Process(
+		BaseModel<?> oldModel) {
+		DossierProc2ProcessClp oldClpModel = (DossierProc2ProcessClp)oldModel;
+
+		BaseModel<?> newModel = oldClpModel.getDossierProc2ProcessRemoteModel();
+
+		newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+		return newModel;
+	}
+
+	public static Object translateInputDossierProc2Role(BaseModel<?> oldModel) {
+		DossierProc2RoleClp oldClpModel = (DossierProc2RoleClp)oldModel;
+
+		BaseModel<?> newModel = oldClpModel.getDossierProc2RoleRemoteModel();
+
+		newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+		return newModel;
 	}
 
 	public static Object translateInputDossierProcess(BaseModel<?> oldModel) {
@@ -267,6 +329,154 @@ public class ClpSerializer {
 		Class<?> oldModelClass = oldModel.getClass();
 
 		String oldModelClassName = oldModelClass.getName();
+
+		if (oldModelClassName.equals(
+					"org.oep.core.processmgt.model.impl.CreateFileImpl")) {
+			return translateOutputCreateFile(oldModel);
+		}
+		else if (oldModelClassName.endsWith("Clp")) {
+			try {
+				ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+				Method getClpSerializerClassMethod = oldModelClass.getMethod(
+						"getClpSerializerClass");
+
+				Class<?> oldClpSerializerClass = (Class<?>)getClpSerializerClassMethod.invoke(oldModel);
+
+				Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+				Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+						BaseModel.class);
+
+				Class<?> oldModelModelClass = oldModel.getModelClass();
+
+				Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+						oldModelModelClass.getSimpleName() + "RemoteModel");
+
+				Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+				BaseModel<?> newModel = (BaseModel<?>)translateOutputMethod.invoke(null,
+						oldRemoteModel);
+
+				return newModel;
+			}
+			catch (Throwable t) {
+				if (_log.isInfoEnabled()) {
+					_log.info("Unable to translate " + oldModelClassName, t);
+				}
+			}
+		}
+
+		if (oldModelClassName.equals(
+					"org.oep.core.processmgt.model.impl.DocFile2ProcessOrderImpl")) {
+			return translateOutputDocFile2ProcessOrder(oldModel);
+		}
+		else if (oldModelClassName.endsWith("Clp")) {
+			try {
+				ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+				Method getClpSerializerClassMethod = oldModelClass.getMethod(
+						"getClpSerializerClass");
+
+				Class<?> oldClpSerializerClass = (Class<?>)getClpSerializerClassMethod.invoke(oldModel);
+
+				Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+				Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+						BaseModel.class);
+
+				Class<?> oldModelModelClass = oldModel.getModelClass();
+
+				Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+						oldModelModelClass.getSimpleName() + "RemoteModel");
+
+				Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+				BaseModel<?> newModel = (BaseModel<?>)translateOutputMethod.invoke(null,
+						oldRemoteModel);
+
+				return newModel;
+			}
+			catch (Throwable t) {
+				if (_log.isInfoEnabled()) {
+					_log.info("Unable to translate " + oldModelClassName, t);
+				}
+			}
+		}
+
+		if (oldModelClassName.equals(
+					"org.oep.core.processmgt.model.impl.DossierProc2ProcessImpl")) {
+			return translateOutputDossierProc2Process(oldModel);
+		}
+		else if (oldModelClassName.endsWith("Clp")) {
+			try {
+				ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+				Method getClpSerializerClassMethod = oldModelClass.getMethod(
+						"getClpSerializerClass");
+
+				Class<?> oldClpSerializerClass = (Class<?>)getClpSerializerClassMethod.invoke(oldModel);
+
+				Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+				Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+						BaseModel.class);
+
+				Class<?> oldModelModelClass = oldModel.getModelClass();
+
+				Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+						oldModelModelClass.getSimpleName() + "RemoteModel");
+
+				Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+				BaseModel<?> newModel = (BaseModel<?>)translateOutputMethod.invoke(null,
+						oldRemoteModel);
+
+				return newModel;
+			}
+			catch (Throwable t) {
+				if (_log.isInfoEnabled()) {
+					_log.info("Unable to translate " + oldModelClassName, t);
+				}
+			}
+		}
+
+		if (oldModelClassName.equals(
+					"org.oep.core.processmgt.model.impl.DossierProc2RoleImpl")) {
+			return translateOutputDossierProc2Role(oldModel);
+		}
+		else if (oldModelClassName.endsWith("Clp")) {
+			try {
+				ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+				Method getClpSerializerClassMethod = oldModelClass.getMethod(
+						"getClpSerializerClass");
+
+				Class<?> oldClpSerializerClass = (Class<?>)getClpSerializerClassMethod.invoke(oldModel);
+
+				Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+				Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+						BaseModel.class);
+
+				Class<?> oldModelModelClass = oldModel.getModelClass();
+
+				Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+						oldModelModelClass.getSimpleName() + "RemoteModel");
+
+				Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+				BaseModel<?> newModel = (BaseModel<?>)translateOutputMethod.invoke(null,
+						oldRemoteModel);
+
+				return newModel;
+			}
+			catch (Throwable t) {
+				if (_log.isInfoEnabled()) {
+					_log.info("Unable to translate " + oldModelClassName, t);
+				}
+			}
+		}
 
 		if (oldModelClassName.equals(
 					"org.oep.core.processmgt.model.impl.DossierProcessImpl")) {
@@ -682,6 +892,26 @@ public class ClpSerializer {
 		}
 
 		if (className.equals(
+					"org.oep.core.processmgt.NoSuchCreateFileException")) {
+			return new org.oep.core.processmgt.NoSuchCreateFileException();
+		}
+
+		if (className.equals(
+					"org.oep.core.processmgt.NoSuchDocFile2ProcessOrderException")) {
+			return new org.oep.core.processmgt.NoSuchDocFile2ProcessOrderException();
+		}
+
+		if (className.equals(
+					"org.oep.core.processmgt.NoSuchDossierProc2ProcessException")) {
+			return new org.oep.core.processmgt.NoSuchDossierProc2ProcessException();
+		}
+
+		if (className.equals(
+					"org.oep.core.processmgt.NoSuchDossierProc2RoleException")) {
+			return new org.oep.core.processmgt.NoSuchDossierProc2RoleException();
+		}
+
+		if (className.equals(
 					"org.oep.core.processmgt.NoSuchDossierProcessException")) {
 			return new org.oep.core.processmgt.NoSuchDossierProcessException();
 		}
@@ -727,6 +957,48 @@ public class ClpSerializer {
 		}
 
 		return throwable;
+	}
+
+	public static Object translateOutputCreateFile(BaseModel<?> oldModel) {
+		CreateFileClp newModel = new CreateFileClp();
+
+		newModel.setModelAttributes(oldModel.getModelAttributes());
+
+		newModel.setCreateFileRemoteModel(oldModel);
+
+		return newModel;
+	}
+
+	public static Object translateOutputDocFile2ProcessOrder(
+		BaseModel<?> oldModel) {
+		DocFile2ProcessOrderClp newModel = new DocFile2ProcessOrderClp();
+
+		newModel.setModelAttributes(oldModel.getModelAttributes());
+
+		newModel.setDocFile2ProcessOrderRemoteModel(oldModel);
+
+		return newModel;
+	}
+
+	public static Object translateOutputDossierProc2Process(
+		BaseModel<?> oldModel) {
+		DossierProc2ProcessClp newModel = new DossierProc2ProcessClp();
+
+		newModel.setModelAttributes(oldModel.getModelAttributes());
+
+		newModel.setDossierProc2ProcessRemoteModel(oldModel);
+
+		return newModel;
+	}
+
+	public static Object translateOutputDossierProc2Role(BaseModel<?> oldModel) {
+		DossierProc2RoleClp newModel = new DossierProc2RoleClp();
+
+		newModel.setModelAttributes(oldModel.getModelAttributes());
+
+		newModel.setDossierProc2RoleRemoteModel(oldModel);
+
+		return newModel;
 	}
 
 	public static Object translateOutputDossierProcess(BaseModel<?> oldModel) {

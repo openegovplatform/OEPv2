@@ -15,7 +15,6 @@
 package org.oep.core.processmgt.model.impl;
 
 import com.liferay.portal.kernel.util.StringBundler;
-import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.CacheModel;
 
 import org.oep.core.processmgt.model.DossierProcess;
@@ -38,7 +37,7 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(25);
+		StringBundler sb = new StringBundler(13);
 
 		sb.append("{dossierProcessId=");
 		sb.append(dossierProcessId);
@@ -52,18 +51,6 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
 		sb.append(modifiedDate);
-		sb.append(", dossierProcId=");
-		sb.append(dossierProcId);
-		sb.append(", govAgencyId=");
-		sb.append(govAgencyId);
-		sb.append(", govAgencyName=");
-		sb.append(govAgencyName);
-		sb.append(", startStepTransitionId=");
-		sb.append(startStepTransitionId);
-		sb.append(", daysDuration=");
-		sb.append(daysDuration);
-		sb.append(", fee=");
-		sb.append(fee);
 		sb.append("}");
 
 		return sb.toString();
@@ -92,26 +79,6 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 			dossierProcessImpl.setModifiedDate(new Date(modifiedDate));
 		}
 
-		dossierProcessImpl.setDossierProcId(dossierProcId);
-
-		if (govAgencyId == null) {
-			dossierProcessImpl.setGovAgencyId(StringPool.BLANK);
-		}
-		else {
-			dossierProcessImpl.setGovAgencyId(govAgencyId);
-		}
-
-		if (govAgencyName == null) {
-			dossierProcessImpl.setGovAgencyName(StringPool.BLANK);
-		}
-		else {
-			dossierProcessImpl.setGovAgencyName(govAgencyName);
-		}
-
-		dossierProcessImpl.setStartStepTransitionId(startStepTransitionId);
-		dossierProcessImpl.setDaysDuration(daysDuration);
-		dossierProcessImpl.setFee(fee);
-
 		dossierProcessImpl.resetOriginalValues();
 
 		return dossierProcessImpl;
@@ -125,12 +92,6 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 		companyId = objectInput.readLong();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
-		dossierProcId = objectInput.readLong();
-		govAgencyId = objectInput.readUTF();
-		govAgencyName = objectInput.readUTF();
-		startStepTransitionId = objectInput.readLong();
-		daysDuration = objectInput.readInt();
-		fee = objectInput.readInt();
 	}
 
 	@Override
@@ -142,25 +103,6 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 		objectOutput.writeLong(companyId);
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
-		objectOutput.writeLong(dossierProcId);
-
-		if (govAgencyId == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(govAgencyId);
-		}
-
-		if (govAgencyName == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(govAgencyName);
-		}
-
-		objectOutput.writeLong(startStepTransitionId);
-		objectOutput.writeInt(daysDuration);
-		objectOutput.writeInt(fee);
 	}
 
 	public long dossierProcessId;
@@ -169,10 +111,4 @@ public class DossierProcessCacheModel implements CacheModel<DossierProcess>,
 	public long companyId;
 	public long createDate;
 	public long modifiedDate;
-	public long dossierProcId;
-	public String govAgencyId;
-	public String govAgencyName;
-	public long startStepTransitionId;
-	public int daysDuration;
-	public int fee;
 }

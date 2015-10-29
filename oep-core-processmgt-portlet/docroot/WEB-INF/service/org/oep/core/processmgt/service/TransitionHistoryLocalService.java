@@ -255,7 +255,7 @@ public interface TransitionHistoryLocalService extends BaseLocalService,
 		throws java.lang.Throwable;
 
 	/**
-	* Add transition history
+	* ThÃªm lá»‹ch sá»­ chuyá»ƒn dá»‹ch tráº¡ng thÃ¡i
 	*
 	* Version: OEP 2.0
 	*
@@ -264,8 +264,21 @@ public interface TransitionHistoryLocalService extends BaseLocalService,
 	*  -------------------------------------------------
 	*  21-September-2015  trungdk    Create new
 	*
-	* @param
-	* @return: new transition history
+	* @param dossierId há»“ sÆ¡ thá»§ tá»¥c cá»§a diá»…n biáº¿n
+	* @param processOrderId ghi diá»…n biáº¿n cho phiáº¿u xá»­ lÃ½ chÃ­nh hoáº·c phá»¥
+	* @param dossierProcId tham chiáº¿u thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param daysDoing sá»‘ ngÃ y thá»±c hiá»‡n xá»­ lÃ½ há»“ sÆ¡
+	* @param daysDelay sá»‘ ngÃ y há»“ sÆ¡ bá»‹ quÃ¡ háº¡n (dáº¥u - thá»ƒ hiá»‡n trÆ°á»›c háº¡n)
+	* @param startDate thá»�i Ä‘iá»ƒm báº¯t Ä‘áº§u thá»±c hiá»‡n
+	* @param preDossierStatus tráº¡ng thÃ¡i há»“ sÆ¡ khi xá»­ lÃ½
+	* @param postDossierStatus tráº¡ng thÃ¡i há»“ sÆ¡ sau xá»­ lÃ½
+	* @param stepTransitionId chuyá»ƒn dá»‹ch tráº¡ng thÃ¡i
+	* @param preDossierStepId tráº¡ng thÃ¡i trÆ°á»›c
+	* @param postDossierStepId bÆ°á»›c chuyá»ƒn dá»‹ch sau
+	* @param transitionName tÃªn mÃ´ táº£ hÃ nh Ä‘á»™ng xá»­ lÃ½ liÃªn quan Ä‘áº¿n há»“ sÆ¡
+	* @param note ghi chÃº Ä‘Æ°á»£c ghi láº¡i cá»§a ngÆ°á»�i xá»­ lÃ½ há»“ sÆ¡
+	* @param assignToUserId ngÆ°á»�i thá»±c hiá»‡n bÆ°á»›c xá»­ lÃ½
+	* @return: lá»‹ch sá»­ chuyá»ƒn dá»‹ch tráº¡ng thÃ¡i má»›i
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	@com.liferay.portal.kernel.transaction.Transactional
@@ -278,6 +291,33 @@ public interface TransitionHistoryLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Cáº­p nháº­t diá»…n biáº¿n chuyá»ƒn dá»‹ch tráº¡ng thÃ¡i
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param id mÃ£ diá»…n biáº¿n chuyá»ƒn dá»‹ch tráº¡ng thÃ¡i
+	* @param dossierId há»“ sÆ¡ thá»§ tá»¥c cá»§a diá»…n biáº¿n
+	* @param processOrderId ghi diá»…n biáº¿n cho phiáº¿u xá»­ lÃ½ chÃ­nh hoáº·c phá»¥
+	* @param dossierProcId tham chiáº¿u thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param daysDoing sá»‘ ngÃ y thá»±c hiá»‡n xá»­ lÃ½ há»“ sÆ¡
+	* @param daysDelay sá»‘ ngÃ y há»“ sÆ¡ bá»‹ quÃ¡ háº¡n (dáº¥u - thá»ƒ hiá»‡n trÆ°á»›c háº¡n)
+	* @param startDate thá»�i Ä‘iá»ƒm báº¯t Ä‘áº§u thá»±c hiá»‡n
+	* @param preDossierStatus tráº¡ng thÃ¡i há»“ sÆ¡ khi xá»­ lÃ½
+	* @param postDossierStatus tráº¡ng thÃ¡i há»“ sÆ¡ sau xá»­ lÃ½
+	* @param stepTransitionId chuyá»ƒn dá»‹ch tráº¡ng thÃ¡i
+	* @param preDossierStepId tráº¡ng thÃ¡i trÆ°á»›c
+	* @param postDossierStepId bÆ°á»›c chuyá»ƒn dá»‹ch sau
+	* @param transitionName tÃªn mÃ´ táº£ hÃ nh Ä‘á»™ng xá»­ lÃ½ liÃªn quan Ä‘áº¿n há»“ sÆ¡
+	* @param note ghi chÃº Ä‘Æ°á»£c ghi láº¡i cá»§a ngÆ°á»�i xá»­ lÃ½ há»“ sÆ¡
+	* @param assignToUserId ngÆ°á»�i thá»±c hiá»‡n bÆ°á»›c xá»­ lÃ½
+	* @return: lá»‹ch sá»­ chuyá»ƒn dá»‹ch tráº¡ng thÃ¡i má»›i Ä‘Æ°á»£c cáº­p nháº­t
+	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.processmgt.model.TransitionHistory updateTransitionHistory(
 		long id, long dossierId, long processOrderId, int daysDoing,

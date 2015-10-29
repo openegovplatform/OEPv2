@@ -48,6 +48,7 @@ public class TransitionHistorySoap implements Serializable {
 		soapModel.setPostDossierStepId(model.getPostDossierStepId());
 		soapModel.setTransitionName(model.getTransitionName());
 		soapModel.setNote(model.getNote());
+		soapModel.setAssignToUserId(model.getAssignToUserId());
 
 		return soapModel;
 	}
@@ -239,6 +240,14 @@ public class TransitionHistorySoap implements Serializable {
 		_note = note;
 	}
 
+	public long getAssignToUserId() {
+		return _assignToUserId;
+	}
+
+	public void setAssignToUserId(long assignToUserId) {
+		_assignToUserId = assignToUserId;
+	}
+
 	private long _transitionHistoryId;
 	private long _userId;
 	private long _groupId;
@@ -256,4 +265,5 @@ public class TransitionHistorySoap implements Serializable {
 	private long _postDossierStepId;
 	private String _transitionName;
 	private String _note;
+	private long _assignToUserId;
 }

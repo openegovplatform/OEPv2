@@ -81,12 +81,6 @@ public class DossierProcessClp extends BaseModelImpl<DossierProcess>
 		attributes.put("companyId", getCompanyId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("dossierProcId", getDossierProcId());
-		attributes.put("govAgencyId", getGovAgencyId());
-		attributes.put("govAgencyName", getGovAgencyName());
-		attributes.put("startStepTransitionId", getStartStepTransitionId());
-		attributes.put("daysDuration", getDaysDuration());
-		attributes.put("fee", getFee());
 
 		return attributes;
 	}
@@ -127,43 +121,6 @@ public class DossierProcessClp extends BaseModelImpl<DossierProcess>
 
 		if (modifiedDate != null) {
 			setModifiedDate(modifiedDate);
-		}
-
-		Long dossierProcId = (Long)attributes.get("dossierProcId");
-
-		if (dossierProcId != null) {
-			setDossierProcId(dossierProcId);
-		}
-
-		String govAgencyId = (String)attributes.get("govAgencyId");
-
-		if (govAgencyId != null) {
-			setGovAgencyId(govAgencyId);
-		}
-
-		String govAgencyName = (String)attributes.get("govAgencyName");
-
-		if (govAgencyName != null) {
-			setGovAgencyName(govAgencyName);
-		}
-
-		Long startStepTransitionId = (Long)attributes.get(
-				"startStepTransitionId");
-
-		if (startStepTransitionId != null) {
-			setStartStepTransitionId(startStepTransitionId);
-		}
-
-		Integer daysDuration = (Integer)attributes.get("daysDuration");
-
-		if (daysDuration != null) {
-			setDaysDuration(daysDuration);
-		}
-
-		Integer fee = (Integer)attributes.get("fee");
-
-		if (fee != null) {
-			setFee(fee);
 		}
 	}
 
@@ -316,145 +273,6 @@ public class DossierProcessClp extends BaseModelImpl<DossierProcess>
 		}
 	}
 
-	@Override
-	public long getDossierProcId() {
-		return _dossierProcId;
-	}
-
-	@Override
-	public void setDossierProcId(long dossierProcId) {
-		_dossierProcId = dossierProcId;
-
-		if (_dossierProcessRemoteModel != null) {
-			try {
-				Class<?> clazz = _dossierProcessRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setDossierProcId", long.class);
-
-				method.invoke(_dossierProcessRemoteModel, dossierProcId);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
-	public String getGovAgencyId() {
-		return _govAgencyId;
-	}
-
-	@Override
-	public void setGovAgencyId(String govAgencyId) {
-		_govAgencyId = govAgencyId;
-
-		if (_dossierProcessRemoteModel != null) {
-			try {
-				Class<?> clazz = _dossierProcessRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setGovAgencyId", String.class);
-
-				method.invoke(_dossierProcessRemoteModel, govAgencyId);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
-	public String getGovAgencyName() {
-		return _govAgencyName;
-	}
-
-	@Override
-	public void setGovAgencyName(String govAgencyName) {
-		_govAgencyName = govAgencyName;
-
-		if (_dossierProcessRemoteModel != null) {
-			try {
-				Class<?> clazz = _dossierProcessRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setGovAgencyName", String.class);
-
-				method.invoke(_dossierProcessRemoteModel, govAgencyName);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
-	public long getStartStepTransitionId() {
-		return _startStepTransitionId;
-	}
-
-	@Override
-	public void setStartStepTransitionId(long startStepTransitionId) {
-		_startStepTransitionId = startStepTransitionId;
-
-		if (_dossierProcessRemoteModel != null) {
-			try {
-				Class<?> clazz = _dossierProcessRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setStartStepTransitionId",
-						long.class);
-
-				method.invoke(_dossierProcessRemoteModel, startStepTransitionId);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
-	public int getDaysDuration() {
-		return _daysDuration;
-	}
-
-	@Override
-	public void setDaysDuration(int daysDuration) {
-		_daysDuration = daysDuration;
-
-		if (_dossierProcessRemoteModel != null) {
-			try {
-				Class<?> clazz = _dossierProcessRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setDaysDuration", int.class);
-
-				method.invoke(_dossierProcessRemoteModel, daysDuration);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
-	public int getFee() {
-		return _fee;
-	}
-
-	@Override
-	public void setFee(int fee) {
-		_fee = fee;
-
-		if (_dossierProcessRemoteModel != null) {
-			try {
-				Class<?> clazz = _dossierProcessRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setFee", int.class);
-
-				method.invoke(_dossierProcessRemoteModel, fee);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
 	public BaseModel<?> getDossierProcessRemoteModel() {
 		return _dossierProcessRemoteModel;
 	}
@@ -532,12 +350,6 @@ public class DossierProcessClp extends BaseModelImpl<DossierProcess>
 		clone.setCompanyId(getCompanyId());
 		clone.setCreateDate(getCreateDate());
 		clone.setModifiedDate(getModifiedDate());
-		clone.setDossierProcId(getDossierProcId());
-		clone.setGovAgencyId(getGovAgencyId());
-		clone.setGovAgencyName(getGovAgencyName());
-		clone.setStartStepTransitionId(getStartStepTransitionId());
-		clone.setDaysDuration(getDaysDuration());
-		clone.setFee(getFee());
 
 		return clone;
 	}
@@ -590,7 +402,7 @@ public class DossierProcessClp extends BaseModelImpl<DossierProcess>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(25);
+		StringBundler sb = new StringBundler(13);
 
 		sb.append("{dossierProcessId=");
 		sb.append(getDossierProcessId());
@@ -604,18 +416,6 @@ public class DossierProcessClp extends BaseModelImpl<DossierProcess>
 		sb.append(getCreateDate());
 		sb.append(", modifiedDate=");
 		sb.append(getModifiedDate());
-		sb.append(", dossierProcId=");
-		sb.append(getDossierProcId());
-		sb.append(", govAgencyId=");
-		sb.append(getGovAgencyId());
-		sb.append(", govAgencyName=");
-		sb.append(getGovAgencyName());
-		sb.append(", startStepTransitionId=");
-		sb.append(getStartStepTransitionId());
-		sb.append(", daysDuration=");
-		sb.append(getDaysDuration());
-		sb.append(", fee=");
-		sb.append(getFee());
 		sb.append("}");
 
 		return sb.toString();
@@ -623,7 +423,7 @@ public class DossierProcessClp extends BaseModelImpl<DossierProcess>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(40);
+		StringBundler sb = new StringBundler(22);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.DossierProcess");
@@ -653,30 +453,6 @@ public class DossierProcessClp extends BaseModelImpl<DossierProcess>
 			"<column><column-name>modifiedDate</column-name><column-value><![CDATA[");
 		sb.append(getModifiedDate());
 		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>dossierProcId</column-name><column-value><![CDATA[");
-		sb.append(getDossierProcId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>govAgencyId</column-name><column-value><![CDATA[");
-		sb.append(getGovAgencyId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>govAgencyName</column-name><column-value><![CDATA[");
-		sb.append(getGovAgencyName());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>startStepTransitionId</column-name><column-value><![CDATA[");
-		sb.append(getStartStepTransitionId());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>daysDuration</column-name><column-value><![CDATA[");
-		sb.append(getDaysDuration());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>fee</column-name><column-value><![CDATA[");
-		sb.append(getFee());
-		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -690,12 +466,6 @@ public class DossierProcessClp extends BaseModelImpl<DossierProcess>
 	private long _companyId;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private long _dossierProcId;
-	private String _govAgencyId;
-	private String _govAgencyName;
-	private long _startStepTransitionId;
-	private int _daysDuration;
-	private int _fee;
 	private BaseModel<?> _dossierProcessRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.processmgt.service.ClpSerializer.class;
 }

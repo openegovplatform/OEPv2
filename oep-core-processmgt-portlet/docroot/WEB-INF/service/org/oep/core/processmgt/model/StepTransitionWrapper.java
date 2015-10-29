@@ -59,13 +59,10 @@ public class StepTransitionWrapper implements StepTransition,
 		attributes.put("dossierProcessId", getDossierProcessId());
 		attributes.put("preDossierStepId", getPreDossierStepId());
 		attributes.put("postDossierStepId", getPostDossierStepId());
-		attributes.put("precondition", getPrecondition());
 		attributes.put("autoCondition", getAutoCondition());
 		attributes.put("transitionName", getTransitionName());
 		attributes.put("dossierStatus", getDossierStatus());
-		attributes.put("notifyStatus", getNotifyStatus());
 		attributes.put("sendResults", getSendResults());
-		attributes.put("requestPayment", getRequestPayment());
 		attributes.put("userAssignment", getUserAssignment());
 		attributes.put("newProcessOrder", getNewProcessOrder());
 
@@ -128,12 +125,6 @@ public class StepTransitionWrapper implements StepTransition,
 			setPostDossierStepId(postDossierStepId);
 		}
 
-		String precondition = (String)attributes.get("precondition");
-
-		if (precondition != null) {
-			setPrecondition(precondition);
-		}
-
 		String autoCondition = (String)attributes.get("autoCondition");
 
 		if (autoCondition != null) {
@@ -152,22 +143,10 @@ public class StepTransitionWrapper implements StepTransition,
 			setDossierStatus(dossierStatus);
 		}
 
-		Integer notifyStatus = (Integer)attributes.get("notifyStatus");
-
-		if (notifyStatus != null) {
-			setNotifyStatus(notifyStatus);
-		}
-
 		Integer sendResults = (Integer)attributes.get("sendResults");
 
 		if (sendResults != null) {
 			setSendResults(sendResults);
-		}
-
-		Integer requestPayment = (Integer)attributes.get("requestPayment");
-
-		if (requestPayment != null) {
-			setRequestPayment(requestPayment);
 		}
 
 		Integer userAssignment = (Integer)attributes.get("userAssignment");
@@ -406,26 +385,6 @@ public class StepTransitionWrapper implements StepTransition,
 	}
 
 	/**
-	* Returns the precondition of this step transition.
-	*
-	* @return the precondition of this step transition
-	*/
-	@Override
-	public java.lang.String getPrecondition() {
-		return _stepTransition.getPrecondition();
-	}
-
-	/**
-	* Sets the precondition of this step transition.
-	*
-	* @param precondition the precondition of this step transition
-	*/
-	@Override
-	public void setPrecondition(java.lang.String precondition) {
-		_stepTransition.setPrecondition(precondition);
-	}
-
-	/**
 	* Returns the auto condition of this step transition.
 	*
 	* @return the auto condition of this step transition
@@ -486,26 +445,6 @@ public class StepTransitionWrapper implements StepTransition,
 	}
 
 	/**
-	* Returns the notify status of this step transition.
-	*
-	* @return the notify status of this step transition
-	*/
-	@Override
-	public int getNotifyStatus() {
-		return _stepTransition.getNotifyStatus();
-	}
-
-	/**
-	* Sets the notify status of this step transition.
-	*
-	* @param notifyStatus the notify status of this step transition
-	*/
-	@Override
-	public void setNotifyStatus(int notifyStatus) {
-		_stepTransition.setNotifyStatus(notifyStatus);
-	}
-
-	/**
 	* Returns the send results of this step transition.
 	*
 	* @return the send results of this step transition
@@ -523,26 +462,6 @@ public class StepTransitionWrapper implements StepTransition,
 	@Override
 	public void setSendResults(int sendResults) {
 		_stepTransition.setSendResults(sendResults);
-	}
-
-	/**
-	* Returns the request payment of this step transition.
-	*
-	* @return the request payment of this step transition
-	*/
-	@Override
-	public int getRequestPayment() {
-		return _stepTransition.getRequestPayment();
-	}
-
-	/**
-	* Sets the request payment of this step transition.
-	*
-	* @param requestPayment the request payment of this step transition
-	*/
-	@Override
-	public void setRequestPayment(int requestPayment) {
-		_stepTransition.setRequestPayment(requestPayment);
 	}
 
 	/**

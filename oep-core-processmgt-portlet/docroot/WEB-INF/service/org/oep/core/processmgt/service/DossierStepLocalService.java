@@ -255,17 +255,23 @@ public interface DossierStepLocalService extends BaseLocalService,
 		throws java.lang.Throwable;
 
 	/**
-	* Add dossier step
+	* ThÃªm bÆ°á»›c trong quy trÃ¬nh má»›i
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    Táº¡o má»›i
 	*
-	* @param
-	* @return: new dossier process
+	* @param dossierProcessId mÃ£ quy trÃ¬nh xá»­ lÃ½ thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param title tiÃªu Ä‘á»� bÆ°á»›c xá»­ lÃ½
+	* @param sequenceNo sá»‘ thá»© tá»± bÆ°á»›c xá»­ lÃ½
+	* @param daysDuration sá»‘ ngÃ y cáº§n thiáº¿t Ä‘á»ƒ xá»­ lÃ½ quy trÃ¬nh
+	* @param doForm Form xá»­ lÃ½ riÃªng cho quy trÃ¬nh
+	* @param formLabel TÃªn hiá»ƒn thá»‹ nÃºt xá»­ lÃ½ há»“ sÆ¡
+	* @param rollback cá»� Ä‘Ã¡nh dáº¥u cho viá»‡c roolback trong quy trÃ¬nh
+	* @return: bÆ°á»›c trong quy trÃ¬nh má»›i
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.processmgt.model.DossierStep addDossierStep(
@@ -275,6 +281,26 @@ public interface DossierStepLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Cáº­p nháº­t thÃ´ng tin bÆ°á»›c trong quy trÃ¬nh má»›i
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param id mÃ£ bÆ°á»›c cáº§n cáº­p nháº­t thÃ´ng tin
+	* @param dossierProcessId mÃ£ quy trÃ¬nh xá»­ lÃ½ thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param title tiÃªu Ä‘á»� bÆ°á»›c xá»­ lÃ½
+	* @param sequenceNo sá»‘ thá»© tá»± bÆ°á»›c xá»­ lÃ½
+	* @param daysDuration sá»‘ ngÃ y cáº§n thiáº¿t Ä‘á»ƒ xá»­ lÃ½ quy trÃ¬nh
+	* @param doForm Form xá»­ lÃ½ riÃªng cho quy trÃ¬nh
+	* @param formLabel TÃªn hiá»ƒn thá»‹ nÃºt xá»­ lÃ½ há»“ sÆ¡
+	* @param rollback cá»� Ä‘Ã¡nh dáº¥u cho viá»‡c roolback trong quy trÃ¬nh
+	* @return: bÆ°á»›c trong quy trÃ¬nh má»›i Ä‘Æ°á»£c cáº­p nháº­t
+	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.processmgt.model.DossierStep updateDossierStep(
 		long id, long dossierProcessId, java.lang.String title, int sequenceNo,

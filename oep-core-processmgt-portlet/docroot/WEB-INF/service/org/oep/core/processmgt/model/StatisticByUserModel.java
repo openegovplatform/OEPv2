@@ -14,7 +14,6 @@
 
 package org.oep.core.processmgt.model;
 
-import com.liferay.portal.kernel.bean.AutoEscape;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.CacheModel;
@@ -189,21 +188,6 @@ public interface StatisticByUserModel extends BaseModel<StatisticByUser> {
 	public void setYear(int year);
 
 	/**
-	 * Returns the dossier status of this statistic by user.
-	 *
-	 * @return the dossier status of this statistic by user
-	 */
-	@AutoEscape
-	public String getDossierStatus();
-
-	/**
-	 * Sets the dossier status of this statistic by user.
-	 *
-	 * @param dossierStatus the dossier status of this statistic by user
-	 */
-	public void setDossierStatus(String dossierStatus);
-
-	/**
 	 * Returns the total number of this statistic by user.
 	 *
 	 * @return the total number of this statistic by user
@@ -216,20 +200,6 @@ public interface StatisticByUserModel extends BaseModel<StatisticByUser> {
 	 * @param totalNumber the total number of this statistic by user
 	 */
 	public void setTotalNumber(int totalNumber);
-
-	/**
-	 * Returns the delayed number of this statistic by user.
-	 *
-	 * @return the delayed number of this statistic by user
-	 */
-	public int getDelayedNumber();
-
-	/**
-	 * Sets the delayed number of this statistic by user.
-	 *
-	 * @param delayedNumber the delayed number of this statistic by user
-	 */
-	public void setDelayedNumber(int delayedNumber);
 
 	/**
 	 * Returns the ontime number of this statistic by user.
@@ -272,20 +242,6 @@ public interface StatisticByUserModel extends BaseModel<StatisticByUser> {
 	 * @param delayDaysAvg the delay days avg of this statistic by user
 	 */
 	public void setDelayDaysAvg(double delayDaysAvg);
-
-	/**
-	 * Returns the further days avg of this statistic by user.
-	 *
-	 * @return the further days avg of this statistic by user
-	 */
-	public double getFurtherDaysAvg();
-
-	/**
-	 * Sets the further days avg of this statistic by user.
-	 *
-	 * @param furtherDaysAvg the further days avg of this statistic by user
-	 */
-	public void setFurtherDaysAvg(double furtherDaysAvg);
 
 	@Override
 	public boolean isNew();

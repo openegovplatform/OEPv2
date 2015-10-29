@@ -289,29 +289,17 @@ public class DossierProcessLocalServiceUtil {
 	* @return: new dossier process
 	*/
 	public static org.oep.core.processmgt.model.DossierProcess addDossierProcess(
-		long dossierProcId, java.lang.String govAgencyId,
-		java.lang.String govAgencyName, long startStepTransitionId,
-		int daysDuration, int fee,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return getService()
-				   .addDossierProcess(dossierProcId, govAgencyId,
-			govAgencyName, startStepTransitionId, daysDuration, fee,
-			serviceContext);
+		return getService().addDossierProcess(serviceContext);
 	}
 
 	public static org.oep.core.processmgt.model.DossierProcess updateDossierProcess(
-		long id, long dossierProcId, java.lang.String govAgencyId,
-		java.lang.String govAgencyName, long startStepTransitionId,
-		int daysDuration, int fee,
-		com.liferay.portal.service.ServiceContext serviceContext)
+		long id, com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return getService()
-				   .updateDossierProcess(id, dossierProcId, govAgencyId,
-			govAgencyName, startStepTransitionId, daysDuration, fee,
-			serviceContext);
+		return getService().updateDossierProcess(id, serviceContext);
 	}
 
 	public static void updateDossierProcessResources(

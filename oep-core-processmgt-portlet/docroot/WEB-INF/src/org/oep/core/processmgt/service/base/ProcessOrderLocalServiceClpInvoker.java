@@ -122,72 +122,72 @@ public class ProcessOrderLocalServiceClpInvoker {
 				"org.oep.core.processmgt.model.ProcessOrder"
 			};
 
-		_methodName80 = "getBeanIdentifier";
+		_methodName110 = "getBeanIdentifier";
 
-		_methodParameterTypes80 = new String[] {  };
+		_methodParameterTypes110 = new String[] {  };
 
-		_methodName81 = "setBeanIdentifier";
+		_methodName111 = "setBeanIdentifier";
 
-		_methodParameterTypes81 = new String[] { "java.lang.String" };
+		_methodParameterTypes111 = new String[] { "java.lang.String" };
 
-		_methodName86 = "addProcessOrder";
+		_methodName116 = "addProcessOrder";
 
-		_methodParameterTypes86 = new String[] {
+		_methodParameterTypes116 = new String[] {
 				"long", "long", "long", "long", "long", "java.lang.String",
 				"java.lang.String", "java.util.Date", "java.lang.String", "long",
 				"java.lang.String", "long", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName87 = "updateProcessOrder";
+		_methodName117 = "updateProcessOrder";
 
-		_methodParameterTypes87 = new String[] {
+		_methodParameterTypes117 = new String[] {
 				"long", "long", "long", "long", "long", "long",
 				"java.lang.String", "java.lang.String", "java.util.Date",
 				"java.lang.String", "long", "java.lang.String", "long", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName88 = "updateProcessOrderResources";
+		_methodName118 = "updateProcessOrderResources";
 
-		_methodParameterTypes88 = new String[] {
+		_methodParameterTypes118 = new String[] {
 				"org.oep.core.processmgt.model.ProcessOrder",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName89 = "removeProcessOrder";
+		_methodName119 = "removeProcessOrder";
 
-		_methodParameterTypes89 = new String[] {
+		_methodParameterTypes119 = new String[] {
 				"org.oep.core.processmgt.model.ProcessOrder"
 			};
 
-		_methodName90 = "removeProcessOrder";
+		_methodName120 = "removeProcessOrder";
 
-		_methodParameterTypes90 = new String[] { "long" };
+		_methodParameterTypes120 = new String[] { "long" };
 
-		_methodName91 = "getProcessOrder";
+		_methodName121 = "getProcessOrder";
 
-		_methodParameterTypes91 = new String[] { "long" };
+		_methodParameterTypes121 = new String[] { "long" };
 
-		_methodName92 = "addProcessOrderResources";
+		_methodName122 = "addProcessOrderResources";
 
-		_methodParameterTypes92 = new String[] {
+		_methodParameterTypes122 = new String[] {
 				"org.oep.core.processmgt.model.ProcessOrder", "boolean",
 				"boolean", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName93 = "addProcessOrderResources";
+		_methodName123 = "addProcessOrderResources";
 
-		_methodParameterTypes93 = new String[] {
+		_methodParameterTypes123 = new String[] {
 				"org.oep.core.processmgt.model.ProcessOrder",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName94 = "addProcessOrderResources";
+		_methodName124 = "addProcessOrderResources";
 
-		_methodParameterTypes94 = new String[] {
+		_methodParameterTypes124 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -306,20 +306,20 @@ public class ProcessOrderLocalServiceClpInvoker {
 			return ProcessOrderLocalServiceUtil.updateProcessOrder((org.oep.core.processmgt.model.ProcessOrder)arguments[0]);
 		}
 
-		if (_methodName80.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes80, parameterTypes)) {
+		if (_methodName110.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes110, parameterTypes)) {
 			return ProcessOrderLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName81.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes81, parameterTypes)) {
+		if (_methodName111.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes111, parameterTypes)) {
 			ProcessOrderLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName86.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes86, parameterTypes)) {
+		if (_methodName116.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes116, parameterTypes)) {
 			return ProcessOrderLocalServiceUtil.addProcessOrder(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				((Long)arguments[2]).longValue(),
@@ -334,8 +334,8 @@ public class ProcessOrderLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[13]);
 		}
 
-		if (_methodName87.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes87, parameterTypes)) {
+		if (_methodName117.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes117, parameterTypes)) {
 			return ProcessOrderLocalServiceUtil.updateProcessOrder(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				((Long)arguments[2]).longValue(),
@@ -351,8 +351,8 @@ public class ProcessOrderLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[14]);
 		}
 
-		if (_methodName88.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+		if (_methodName118.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes118, parameterTypes)) {
 			ProcessOrderLocalServiceUtil.updateProcessOrderResources((org.oep.core.processmgt.model.ProcessOrder)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -361,27 +361,27 @@ public class ProcessOrderLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName89.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+		if (_methodName119.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes119, parameterTypes)) {
 			ProcessOrderLocalServiceUtil.removeProcessOrder((org.oep.core.processmgt.model.ProcessOrder)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName90.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes90, parameterTypes)) {
+		if (_methodName120.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes120, parameterTypes)) {
 			ProcessOrderLocalServiceUtil.removeProcessOrder(((Long)arguments[0]).longValue());
 
 			return null;
 		}
 
-		if (_methodName91.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes91, parameterTypes)) {
+		if (_methodName121.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes121, parameterTypes)) {
 			return ProcessOrderLocalServiceUtil.getProcessOrder(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName92.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes92, parameterTypes)) {
+		if (_methodName122.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes122, parameterTypes)) {
 			ProcessOrderLocalServiceUtil.addProcessOrderResources((org.oep.core.processmgt.model.ProcessOrder)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Boolean)arguments[2]).booleanValue(),
@@ -390,8 +390,8 @@ public class ProcessOrderLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName93.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes93, parameterTypes)) {
+		if (_methodName123.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes123, parameterTypes)) {
 			ProcessOrderLocalServiceUtil.addProcessOrderResources((org.oep.core.processmgt.model.ProcessOrder)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -400,8 +400,8 @@ public class ProcessOrderLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName94.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
+		if (_methodName124.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes124, parameterTypes)) {
 			ProcessOrderLocalServiceUtil.addProcessOrderResources(((Long)arguments[0]).longValue(),
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -453,26 +453,26 @@ public class ProcessOrderLocalServiceClpInvoker {
 	private String[] _methodParameterTypes18;
 	private String _methodName19;
 	private String[] _methodParameterTypes19;
-	private String _methodName80;
-	private String[] _methodParameterTypes80;
-	private String _methodName81;
-	private String[] _methodParameterTypes81;
-	private String _methodName86;
-	private String[] _methodParameterTypes86;
-	private String _methodName87;
-	private String[] _methodParameterTypes87;
-	private String _methodName88;
-	private String[] _methodParameterTypes88;
-	private String _methodName89;
-	private String[] _methodParameterTypes89;
-	private String _methodName90;
-	private String[] _methodParameterTypes90;
-	private String _methodName91;
-	private String[] _methodParameterTypes91;
-	private String _methodName92;
-	private String[] _methodParameterTypes92;
-	private String _methodName93;
-	private String[] _methodParameterTypes93;
-	private String _methodName94;
-	private String[] _methodParameterTypes94;
+	private String _methodName110;
+	private String[] _methodParameterTypes110;
+	private String _methodName111;
+	private String[] _methodParameterTypes111;
+	private String _methodName116;
+	private String[] _methodParameterTypes116;
+	private String _methodName117;
+	private String[] _methodParameterTypes117;
+	private String _methodName118;
+	private String[] _methodParameterTypes118;
+	private String _methodName119;
+	private String[] _methodParameterTypes119;
+	private String _methodName120;
+	private String[] _methodParameterTypes120;
+	private String _methodName121;
+	private String[] _methodParameterTypes121;
+	private String _methodName122;
+	private String[] _methodParameterTypes122;
+	private String _methodName123;
+	private String[] _methodParameterTypes123;
+	private String _methodName124;
+	private String[] _methodParameterTypes124;
 }

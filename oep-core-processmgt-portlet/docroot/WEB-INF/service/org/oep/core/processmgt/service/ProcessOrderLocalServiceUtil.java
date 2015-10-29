@@ -336,17 +336,30 @@ public class ProcessOrderLocalServiceUtil {
 	}
 
 	/**
-	* Add process order
+	* ThÃƒÂªm phiÃ¡ÂºÂ¿u xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡ mÃ¡Â»â€ºi
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
 	*
-	* @param
-	* @return: new process order
+	* @param organizationId tÃ¡Â»â€¢ chÃ¡Â»Â©c thÃ¡Â»Â±c hiÃ¡Â»â€¡n xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡
+	* @param parentProcessOrderId cÃƒÂ³ phÃ¡ÂºÂ£i lÃƒÂ  phiÃ¡ÂºÂ¿u xÃ¡Â»Â­ lÃƒÂ½ cha
+	* @param dossierId hÃ¡Â»â€œ sÃ†Â¡ cÃ¡ÂºÂ§n xÃ¡Â»Â­ lÃƒÂ½
+	* @param dossierProcessId nÃ¡ÂºÂ±m trong quy trÃƒÂ¬nh xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡ nÃƒÂ o
+	* @param dossierStepId Ã„â€˜ang xÃ¡Â»Â­ lÃƒÂ½ tÃ¡ÂºÂ¡i bÃ†Â°Ã¡Â»â€ºc nÃƒÂ o (0 lÃƒÂ  Ã„â€˜ÃƒÂ£ kÃ¡ÂºÂ¿t thÃƒÂºc xÃ¡Â»Â­ lÃƒÂ½)
+	* @param orderStatus trÃ¡ÂºÂ¡ng thÃƒÂ¡i hiÃ¡Â»â€¡n tÃ¡ÂºÂ¡i cÃ¡Â»Â§a phiÃ¡ÂºÂ¿u xÃ¡Â»Â­ lÃƒÂ½
+	* @param orderResume tÃƒÂ³m tÃ¡ÂºÂ¯t nÃ¡Â»â„¢i dung cÃ¡ÂºÂ§n xÃ¡Â»Â­ lÃƒÂ½
+	* @param stepDate thÃ¡Â»ï¿½i Ã„â€˜iÃ¡Â»Æ’m bÃ¡ÂºÂ¯t Ã„â€˜Ã¡ÂºÂ§u thÃ¡Â»Â±c hiÃ¡Â»â€¡n xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡
+	* @param stepNote ghi lÃ¡ÂºÂ¡i ghi chÃƒÂº cÃ¡Â»Â§a ngÃ†Â°Ã¡Â»ï¿½i xÃ¡Â»Â­ lÃƒÂ½ cuÃ¡Â»â€˜i cÃƒÂ¹ng
+	* @param assignToUserId ngÃ†Â°Ã¡Â»ï¿½i chÃ¡Â»â€¹u trÃƒÂ¡ch nhiÃ¡Â»â€¡m xÃ¡Â»Â­ lÃƒÂ½
+	* @param currentCondition Ã„â€˜iÃ¡Â»ï¿½u kiÃ¡Â»â€¡n hiÃ¡Â»â€¡n tÃ¡ÂºÂ¡i cÃ¡Â»Â§a hÃ¡Â»â€œ sÃ†Â¡ Ã„â€˜Ã¡Â»Æ’ xÃƒÂ©t chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch
+	* @param lastStepTransitionId chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch cuÃ¡Â»â€˜i cÃƒÂ¹ng cÃ¡Â»Â§a phiÃ¡ÂºÂ¿u xÃ¡Â»Â­ lÃƒÂ½
+	* @param stopRollback cÃ¡Â»ï¿½ Ã„â€˜ÃƒÂ¡nh dÃ¡ÂºÂ¥u tÃ¡ÂºÂ¡m dÃ¡Â»Â«ng viÃ¡Â»â€¡c rollback
+	* @param ebPartnershipId trao Ã„â€˜Ã¡Â»â€¢i hÃ¡Â»â€œ sÃ†Â¡ hiÃ¡Â»â€¡n tÃ¡ÂºÂ¡i vÃ¡Â»â€ºi hÃ¡Â»â€¡ thÃ¡Â»â€˜ng bÃƒÂªn ngoÃƒÂ i
+	* @return: thÃƒÂ´ng tin xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡ mÃ¡Â»â€ºi Ã„â€˜Ã†Â°Ã¡Â»Â£c tÃ¡ÂºÂ¡o
 	*/
 	public static org.oep.core.processmgt.model.ProcessOrder addProcessOrder(
 		long organizationId, long parentProcessOrderId, long dossierId,
@@ -365,6 +378,32 @@ public class ProcessOrderLocalServiceUtil {
 			lastStepTransitionId, stopRollback, serviceContext);
 	}
 
+	/**
+	* CÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t phiÃ¡ÂºÂ¿u xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡ mÃ¡Â»â€ºi
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
+	*
+	* @param organizationId tÃ¡Â»â€¢ chÃ¡Â»Â©c thÃ¡Â»Â±c hiÃ¡Â»â€¡n xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡
+	* @param parentProcessOrderId cÃƒÂ³ phÃ¡ÂºÂ£i lÃƒÂ  phiÃ¡ÂºÂ¿u xÃ¡Â»Â­ lÃƒÂ½ cha
+	* @param dossierId hÃ¡Â»â€œ sÃ†Â¡ cÃ¡ÂºÂ§n xÃ¡Â»Â­ lÃƒÂ½
+	* @param dossierProcessId nÃ¡ÂºÂ±m trong quy trÃƒÂ¬nh xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡ nÃƒÂ o
+	* @param dossierStepId Ã„â€˜ang xÃ¡Â»Â­ lÃƒÂ½ tÃ¡ÂºÂ¡i bÃ†Â°Ã¡Â»â€ºc nÃƒÂ o (0 lÃƒÂ  Ã„â€˜ÃƒÂ£ kÃ¡ÂºÂ¿t thÃƒÂºc xÃ¡Â»Â­ lÃƒÂ½)
+	* @param orderStatus trÃ¡ÂºÂ¡ng thÃƒÂ¡i hiÃ¡Â»â€¡n tÃ¡ÂºÂ¡i cÃ¡Â»Â§a phiÃ¡ÂºÂ¿u xÃ¡Â»Â­ lÃƒÂ½
+	* @param orderResume tÃƒÂ³m tÃ¡ÂºÂ¯t nÃ¡Â»â„¢i dung cÃ¡ÂºÂ§n xÃ¡Â»Â­ lÃƒÂ½
+	* @param stepDate thÃ¡Â»ï¿½i Ã„â€˜iÃ¡Â»Æ’m bÃ¡ÂºÂ¯t Ã„â€˜Ã¡ÂºÂ§u thÃ¡Â»Â±c hiÃ¡Â»â€¡n xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡
+	* @param stepNote ghi lÃ¡ÂºÂ¡i ghi chÃƒÂº cÃ¡Â»Â§a ngÃ†Â°Ã¡Â»ï¿½i xÃ¡Â»Â­ lÃƒÂ½ cuÃ¡Â»â€˜i cÃƒÂ¹ng
+	* @param assignToUserId ngÃ†Â°Ã¡Â»ï¿½i chÃ¡Â»â€¹u trÃƒÂ¡ch nhiÃ¡Â»â€¡m xÃ¡Â»Â­ lÃƒÂ½
+	* @param currentCondition Ã„â€˜iÃ¡Â»ï¿½u kiÃ¡Â»â€¡n hiÃ¡Â»â€¡n tÃ¡ÂºÂ¡i cÃ¡Â»Â§a hÃ¡Â»â€œ sÃ†Â¡ Ã„â€˜Ã¡Â»Æ’ xÃƒÂ©t chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch
+	* @param lastStepTransitionId chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch cuÃ¡Â»â€˜i cÃƒÂ¹ng cÃ¡Â»Â§a phiÃ¡ÂºÂ¿u xÃ¡Â»Â­ lÃƒÂ½
+	* @param stopRollback cÃ¡Â»ï¿½ Ã„â€˜ÃƒÂ¡nh dÃ¡ÂºÂ¥u tÃ¡ÂºÂ¡m dÃ¡Â»Â«ng viÃ¡Â»â€¡c rollback
+	* @param ebPartnershipId trao Ã„â€˜Ã¡Â»â€¢i hÃ¡Â»â€œ sÃ†Â¡ hiÃ¡Â»â€¡n tÃ¡ÂºÂ¡i vÃ¡Â»â€ºi hÃ¡Â»â€¡ thÃ¡Â»â€˜ng bÃƒÂªn ngoÃƒÂ i
+	* @return: thÃƒÂ´ng tin xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡ mÃ¡Â»â€ºi Ã„â€˜Ã†Â°Ã¡Â»Â£c cÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t
+	*/
 	public static org.oep.core.processmgt.model.ProcessOrder updateProcessOrder(
 		long id, long organizationId, long parentProcessOrderId,
 		long dossierId, long dossierProcessId, long dossierStepId,

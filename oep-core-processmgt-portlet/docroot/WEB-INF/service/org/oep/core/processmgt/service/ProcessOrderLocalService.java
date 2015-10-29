@@ -311,17 +311,30 @@ public interface ProcessOrderLocalService extends BaseLocalService,
 		throws java.lang.Throwable;
 
 	/**
-	* Add process order
+	* ThÃªm phiáº¿u xá»­ lÃ½ há»“ sÆ¡ má»›i
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    Táº¡o má»›i
 	*
-	* @param
-	* @return: new process order
+	* @param organizationId tá»• chá»©c thá»±c hiá»‡n xá»­ lÃ½ há»“ sÆ¡
+	* @param parentProcessOrderId cÃ³ pháº£i lÃ  phiáº¿u xá»­ lÃ½ cha
+	* @param dossierId há»“ sÆ¡ cáº§n xá»­ lÃ½
+	* @param dossierProcessId náº±m trong quy trÃ¬nh xá»­ lÃ½ há»“ sÆ¡ nÃ o
+	* @param dossierStepId Ä‘ang xá»­ lÃ½ táº¡i bÆ°á»›c nÃ o (0 lÃ  Ä‘Ã£ káº¿t thÃºc xá»­ lÃ½)
+	* @param orderStatus tráº¡ng thÃ¡i hiá»‡n táº¡i cá»§a phiáº¿u xá»­ lÃ½
+	* @param orderResume tÃ³m táº¯t ná»™i dung cáº§n xá»­ lÃ½
+	* @param stepDate thá»�i Ä‘iá»ƒm báº¯t Ä‘áº§u thá»±c hiá»‡n xá»­ lÃ½ há»“ sÆ¡
+	* @param stepNote ghi láº¡i ghi chÃº cá»§a ngÆ°á»�i xá»­ lÃ½ cuá»‘i cÃ¹ng
+	* @param assignToUserId ngÆ°á»�i chá»‹u trÃ¡ch nhiá»‡m xá»­ lÃ½
+	* @param currentCondition Ä‘iá»�u kiá»‡n hiá»‡n táº¡i cá»§a há»“ sÆ¡ Ä‘á»ƒ xÃ©t chuyá»ƒn dá»‹ch
+	* @param lastStepTransitionId chuyá»ƒn dá»‹ch cuá»‘i cÃ¹ng cá»§a phiáº¿u xá»­ lÃ½
+	* @param stopRollback cá»� Ä‘Ã¡nh dáº¥u táº¡m dá»«ng viá»‡c rollback
+	* @param ebPartnershipId trao Ä‘á»•i há»“ sÆ¡ hiá»‡n táº¡i vá»›i há»‡ thá»‘ng bÃªn ngoÃ i
+	* @return: thÃ´ng tin xá»­ lÃ½ há»“ sÆ¡ má»›i Ä‘Æ°á»£c táº¡o
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	@com.liferay.portal.kernel.transaction.Transactional
@@ -336,6 +349,32 @@ public interface ProcessOrderLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Cáº­p nháº­t phiáº¿u xá»­ lÃ½ há»“ sÆ¡ má»›i
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param organizationId tá»• chá»©c thá»±c hiá»‡n xá»­ lÃ½ há»“ sÆ¡
+	* @param parentProcessOrderId cÃ³ pháº£i lÃ  phiáº¿u xá»­ lÃ½ cha
+	* @param dossierId há»“ sÆ¡ cáº§n xá»­ lÃ½
+	* @param dossierProcessId náº±m trong quy trÃ¬nh xá»­ lÃ½ há»“ sÆ¡ nÃ o
+	* @param dossierStepId Ä‘ang xá»­ lÃ½ táº¡i bÆ°á»›c nÃ o (0 lÃ  Ä‘Ã£ káº¿t thÃºc xá»­ lÃ½)
+	* @param orderStatus tráº¡ng thÃ¡i hiá»‡n táº¡i cá»§a phiáº¿u xá»­ lÃ½
+	* @param orderResume tÃ³m táº¯t ná»™i dung cáº§n xá»­ lÃ½
+	* @param stepDate thá»�i Ä‘iá»ƒm báº¯t Ä‘áº§u thá»±c hiá»‡n xá»­ lÃ½ há»“ sÆ¡
+	* @param stepNote ghi láº¡i ghi chÃº cá»§a ngÆ°á»�i xá»­ lÃ½ cuá»‘i cÃ¹ng
+	* @param assignToUserId ngÆ°á»�i chá»‹u trÃ¡ch nhiá»‡m xá»­ lÃ½
+	* @param currentCondition Ä‘iá»�u kiá»‡n hiá»‡n táº¡i cá»§a há»“ sÆ¡ Ä‘á»ƒ xÃ©t chuyá»ƒn dá»‹ch
+	* @param lastStepTransitionId chuyá»ƒn dá»‹ch cuá»‘i cÃ¹ng cá»§a phiáº¿u xá»­ lÃ½
+	* @param stopRollback cá»� Ä‘Ã¡nh dáº¥u táº¡m dá»«ng viá»‡c rollback
+	* @param ebPartnershipId trao Ä‘á»•i há»“ sÆ¡ hiá»‡n táº¡i vá»›i há»‡ thá»‘ng bÃªn ngoÃ i
+	* @return: thÃ´ng tin xá»­ lÃ½ há»“ sÆ¡ má»›i Ä‘Æ°á»£c cáº­p nháº­t
+	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.processmgt.model.ProcessOrder updateProcessOrder(
 		long id, long organizationId, long parentProcessOrderId,

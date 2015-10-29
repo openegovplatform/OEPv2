@@ -106,70 +106,70 @@ public class StepTransitionLocalServiceClpInvoker {
 				"org.oep.core.processmgt.model.StepTransition"
 			};
 
-		_methodName76 = "getBeanIdentifier";
+		_methodName106 = "getBeanIdentifier";
 
-		_methodParameterTypes76 = new String[] {  };
+		_methodParameterTypes106 = new String[] {  };
 
-		_methodName77 = "setBeanIdentifier";
+		_methodName107 = "setBeanIdentifier";
 
-		_methodParameterTypes77 = new String[] { "java.lang.String" };
+		_methodParameterTypes107 = new String[] { "java.lang.String" };
 
-		_methodName82 = "addStepTransition";
+		_methodName112 = "addStepTransition";
 
-		_methodParameterTypes82 = new String[] {
+		_methodParameterTypes112 = new String[] {
 				"long", "long", "long", "java.lang.String", "java.lang.String",
-				"java.lang.String", "int", "int", "int", "int", "int",
+				"java.lang.String", "int", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName83 = "updateStepTransition";
+		_methodName113 = "updateStepTransition";
 
-		_methodParameterTypes83 = new String[] {
+		_methodParameterTypes113 = new String[] {
 				"long", "long", "long", "long", "java.lang.String",
 				"java.lang.String", "java.lang.String", "int", "int", "int",
-				"int", "int", "com.liferay.portal.service.ServiceContext"
+				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName84 = "updateStepTransitionResources";
+		_methodName114 = "updateStepTransitionResources";
 
-		_methodParameterTypes84 = new String[] {
+		_methodParameterTypes114 = new String[] {
 				"org.oep.core.processmgt.model.StepTransition",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName85 = "removeStepTransition";
+		_methodName115 = "removeStepTransition";
 
-		_methodParameterTypes85 = new String[] {
+		_methodParameterTypes115 = new String[] {
 				"org.oep.core.processmgt.model.StepTransition"
 			};
 
-		_methodName86 = "removeStepTransition";
+		_methodName116 = "removeStepTransition";
 
-		_methodParameterTypes86 = new String[] { "long" };
+		_methodParameterTypes116 = new String[] { "long" };
 
-		_methodName87 = "getStepTransition";
+		_methodName117 = "getStepTransition";
 
-		_methodParameterTypes87 = new String[] { "long" };
+		_methodParameterTypes117 = new String[] { "long" };
 
-		_methodName88 = "addStepTransitionResources";
+		_methodName118 = "addStepTransitionResources";
 
-		_methodParameterTypes88 = new String[] {
+		_methodParameterTypes118 = new String[] {
 				"org.oep.core.processmgt.model.StepTransition", "boolean",
 				"boolean", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName89 = "addStepTransitionResources";
+		_methodName119 = "addStepTransitionResources";
 
-		_methodParameterTypes89 = new String[] {
+		_methodParameterTypes119 = new String[] {
 				"org.oep.core.processmgt.model.StepTransition",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName90 = "addStepTransitionResources";
+		_methodName120 = "addStepTransitionResources";
 
-		_methodParameterTypes90 = new String[] {
+		_methodParameterTypes120 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -264,20 +264,20 @@ public class StepTransitionLocalServiceClpInvoker {
 			return StepTransitionLocalServiceUtil.updateStepTransition((org.oep.core.processmgt.model.StepTransition)arguments[0]);
 		}
 
-		if (_methodName76.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes76, parameterTypes)) {
+		if (_methodName106.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
 			return StepTransitionLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName77.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes77, parameterTypes)) {
+		if (_methodName107.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes107, parameterTypes)) {
 			StepTransitionLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName82.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
+		if (_methodName112.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
 			return StepTransitionLocalServiceUtil.addStepTransition(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				((Long)arguments[2]).longValue(),
@@ -286,13 +286,11 @@ public class StepTransitionLocalServiceClpInvoker {
 				((Integer)arguments[6]).intValue(),
 				((Integer)arguments[7]).intValue(),
 				((Integer)arguments[8]).intValue(),
-				((Integer)arguments[9]).intValue(),
-				((Integer)arguments[10]).intValue(),
-				(com.liferay.portal.service.ServiceContext)arguments[11]);
+				(com.liferay.portal.service.ServiceContext)arguments[9]);
 		}
 
-		if (_methodName83.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
+		if (_methodName113.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes113, parameterTypes)) {
 			return StepTransitionLocalServiceUtil.updateStepTransition(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				((Long)arguments[2]).longValue(),
@@ -302,13 +300,11 @@ public class StepTransitionLocalServiceClpInvoker {
 				((Integer)arguments[7]).intValue(),
 				((Integer)arguments[8]).intValue(),
 				((Integer)arguments[9]).intValue(),
-				((Integer)arguments[10]).intValue(),
-				((Integer)arguments[11]).intValue(),
-				(com.liferay.portal.service.ServiceContext)arguments[12]);
+				(com.liferay.portal.service.ServiceContext)arguments[10]);
 		}
 
-		if (_methodName84.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes84, parameterTypes)) {
+		if (_methodName114.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes114, parameterTypes)) {
 			StepTransitionLocalServiceUtil.updateStepTransitionResources((org.oep.core.processmgt.model.StepTransition)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -317,27 +313,27 @@ public class StepTransitionLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName85.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes85, parameterTypes)) {
+		if (_methodName115.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes115, parameterTypes)) {
 			StepTransitionLocalServiceUtil.removeStepTransition((org.oep.core.processmgt.model.StepTransition)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName86.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes86, parameterTypes)) {
+		if (_methodName116.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes116, parameterTypes)) {
 			StepTransitionLocalServiceUtil.removeStepTransition(((Long)arguments[0]).longValue());
 
 			return null;
 		}
 
-		if (_methodName87.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes87, parameterTypes)) {
+		if (_methodName117.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes117, parameterTypes)) {
 			return StepTransitionLocalServiceUtil.getStepTransition(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName88.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+		if (_methodName118.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes118, parameterTypes)) {
 			StepTransitionLocalServiceUtil.addStepTransitionResources((org.oep.core.processmgt.model.StepTransition)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Boolean)arguments[2]).booleanValue(),
@@ -346,8 +342,8 @@ public class StepTransitionLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName89.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+		if (_methodName119.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes119, parameterTypes)) {
 			StepTransitionLocalServiceUtil.addStepTransitionResources((org.oep.core.processmgt.model.StepTransition)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -356,8 +352,8 @@ public class StepTransitionLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName90.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes90, parameterTypes)) {
+		if (_methodName120.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes120, parameterTypes)) {
 			StepTransitionLocalServiceUtil.addStepTransitionResources(((Long)arguments[0]).longValue(),
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -401,26 +397,26 @@ public class StepTransitionLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName76;
-	private String[] _methodParameterTypes76;
-	private String _methodName77;
-	private String[] _methodParameterTypes77;
-	private String _methodName82;
-	private String[] _methodParameterTypes82;
-	private String _methodName83;
-	private String[] _methodParameterTypes83;
-	private String _methodName84;
-	private String[] _methodParameterTypes84;
-	private String _methodName85;
-	private String[] _methodParameterTypes85;
-	private String _methodName86;
-	private String[] _methodParameterTypes86;
-	private String _methodName87;
-	private String[] _methodParameterTypes87;
-	private String _methodName88;
-	private String[] _methodParameterTypes88;
-	private String _methodName89;
-	private String[] _methodParameterTypes89;
-	private String _methodName90;
-	private String[] _methodParameterTypes90;
+	private String _methodName106;
+	private String[] _methodParameterTypes106;
+	private String _methodName107;
+	private String[] _methodParameterTypes107;
+	private String _methodName112;
+	private String[] _methodParameterTypes112;
+	private String _methodName113;
+	private String[] _methodParameterTypes113;
+	private String _methodName114;
+	private String[] _methodParameterTypes114;
+	private String _methodName115;
+	private String[] _methodParameterTypes115;
+	private String _methodName116;
+	private String[] _methodParameterTypes116;
+	private String _methodName117;
+	private String[] _methodParameterTypes117;
+	private String _methodName118;
+	private String[] _methodParameterTypes118;
+	private String _methodName119;
+	private String[] _methodParameterTypes119;
+	private String _methodName120;
+	private String[] _methodParameterTypes120;
 }

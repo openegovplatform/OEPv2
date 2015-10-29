@@ -3,16 +3,4 @@
 
 <resource-action-mapping>
 	<resource file="resource-actions/dossierprocess.xml" />
-	<resource file="resource-actions/docfileversion.xml" />
-	<resource file="resource-actions/doctemplate.xml" />
-	<resource file="resource-actions/dossier.xml" />
-	<resource file="resource-actions/dossierdoc.xml" />
-	<resource file="resource-actions/dossierfolder.xml" />
-	<resource file="resource-actions/dossierproc.xml" />
-	<resource file="resource-actions/dossierprocagent.xml" />
-	<resource file="resource-actions/ebmessage.xml" />
-	<resource file="resource-actions/ebpartnership.xml" />
-	<resource file="resource-actions/paymentconfig.xml" />
-	<resource file="resource-actions/paymentfile.xml" />
-	<resource file="resource-actions/paymentrequest.xml" />
 </resource-action-mapping>

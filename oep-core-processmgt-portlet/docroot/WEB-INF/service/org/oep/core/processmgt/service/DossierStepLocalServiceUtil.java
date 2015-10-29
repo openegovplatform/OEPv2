@@ -276,17 +276,23 @@ public class DossierStepLocalServiceUtil {
 	}
 
 	/**
-	* Add dossier step
+	* ThÃƒÂªm bÃ†Â°Ã¡Â»â€ºc trong quy trÃƒÂ¬nh mÃ¡Â»â€ºi
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
 	*
-	* @param
-	* @return: new dossier process
+	* @param dossierProcessId mÃƒÂ£ quy trÃƒÂ¬nh xÃ¡Â»Â­ lÃƒÂ½ thÃ¡Â»Â§ tÃ¡Â»Â¥c hÃƒÂ nh chÃƒÂ­nh
+	* @param title tiÃƒÂªu Ã„â€˜Ã¡Â»ï¿½ bÃ†Â°Ã¡Â»â€ºc xÃ¡Â»Â­ lÃƒÂ½
+	* @param sequenceNo sÃ¡Â»â€˜ thÃ¡Â»Â© tÃ¡Â»Â± bÃ†Â°Ã¡Â»â€ºc xÃ¡Â»Â­ lÃƒÂ½
+	* @param daysDuration sÃ¡Â»â€˜ ngÃƒÂ y cÃ¡ÂºÂ§n thiÃ¡ÂºÂ¿t Ã„â€˜Ã¡Â»Æ’ xÃ¡Â»Â­ lÃƒÂ½ quy trÃƒÂ¬nh
+	* @param doForm Form xÃ¡Â»Â­ lÃƒÂ½ riÃƒÂªng cho quy trÃƒÂ¬nh
+	* @param formLabel TÃƒÂªn hiÃ¡Â»Æ’n thÃ¡Â»â€¹ nÃƒÂºt xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡
+	* @param rollback cÃ¡Â»ï¿½ Ã„â€˜ÃƒÂ¡nh dÃ¡ÂºÂ¥u cho viÃ¡Â»â€¡c roolback trong quy trÃƒÂ¬nh
+	* @return: bÃ†Â°Ã¡Â»â€ºc trong quy trÃƒÂ¬nh mÃ¡Â»â€ºi
 	*/
 	public static org.oep.core.processmgt.model.DossierStep addDossierStep(
 		long dossierProcessId, java.lang.String title, int sequenceNo,
@@ -299,6 +305,26 @@ public class DossierStepLocalServiceUtil {
 			daysDuration, doForm, formLabel, rollback, serviceContext);
 	}
 
+	/**
+	* CÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t thÃƒÂ´ng tin bÃ†Â°Ã¡Â»â€ºc trong quy trÃƒÂ¬nh mÃ¡Â»â€ºi
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
+	*
+	* @param id mÃƒÂ£ bÃ†Â°Ã¡Â»â€ºc cÃ¡ÂºÂ§n cÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t thÃƒÂ´ng tin
+	* @param dossierProcessId mÃƒÂ£ quy trÃƒÂ¬nh xÃ¡Â»Â­ lÃƒÂ½ thÃ¡Â»Â§ tÃ¡Â»Â¥c hÃƒÂ nh chÃƒÂ­nh
+	* @param title tiÃƒÂªu Ã„â€˜Ã¡Â»ï¿½ bÃ†Â°Ã¡Â»â€ºc xÃ¡Â»Â­ lÃƒÂ½
+	* @param sequenceNo sÃ¡Â»â€˜ thÃ¡Â»Â© tÃ¡Â»Â± bÃ†Â°Ã¡Â»â€ºc xÃ¡Â»Â­ lÃƒÂ½
+	* @param daysDuration sÃ¡Â»â€˜ ngÃƒÂ y cÃ¡ÂºÂ§n thiÃ¡ÂºÂ¿t Ã„â€˜Ã¡Â»Æ’ xÃ¡Â»Â­ lÃƒÂ½ quy trÃƒÂ¬nh
+	* @param doForm Form xÃ¡Â»Â­ lÃƒÂ½ riÃƒÂªng cho quy trÃƒÂ¬nh
+	* @param formLabel TÃƒÂªn hiÃ¡Â»Æ’n thÃ¡Â»â€¹ nÃƒÂºt xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡
+	* @param rollback cÃ¡Â»ï¿½ Ã„â€˜ÃƒÂ¡nh dÃ¡ÂºÂ¥u cho viÃ¡Â»â€¡c roolback trong quy trÃƒÂ¬nh
+	* @return: bÃ†Â°Ã¡Â»â€ºc trong quy trÃƒÂ¬nh mÃ¡Â»â€ºi Ã„â€˜Ã†Â°Ã¡Â»Â£c cÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t
+	*/
 	public static org.oep.core.processmgt.model.DossierStep updateDossierStep(
 		long id, long dossierProcessId, java.lang.String title, int sequenceNo,
 		int daysDuration, java.lang.String doForm, java.lang.String formLabel,

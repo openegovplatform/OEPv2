@@ -114,13 +114,33 @@ public class DossierStep2RoleLocalServiceClpInvoker {
 				"org.oep.core.processmgt.model.DossierStep2Role"
 			};
 
-		_methodName76 = "getBeanIdentifier";
+		_methodName106 = "getBeanIdentifier";
 
-		_methodParameterTypes76 = new String[] {  };
+		_methodParameterTypes106 = new String[] {  };
 
-		_methodName77 = "setBeanIdentifier";
+		_methodName107 = "setBeanIdentifier";
 
-		_methodParameterTypes77 = new String[] { "java.lang.String" };
+		_methodParameterTypes107 = new String[] { "java.lang.String" };
+
+		_methodName112 = "addDossierStep2Role";
+
+		_methodParameterTypes112 = new String[] {
+				"long", "long", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName113 = "removeDossierStep2Role";
+
+		_methodParameterTypes113 = new String[] {
+				"org.oep.core.processmgt.model.DossierStep2Role"
+			};
+
+		_methodName114 = "removeDossierStep2Role";
+
+		_methodParameterTypes114 = new String[] { "long", "long" };
+
+		_methodName115 = "getDossierStep2Role";
+
+		_methodParameterTypes115 = new String[] { "long", "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -212,16 +232,44 @@ public class DossierStep2RoleLocalServiceClpInvoker {
 			return DossierStep2RoleLocalServiceUtil.updateDossierStep2Role((org.oep.core.processmgt.model.DossierStep2Role)arguments[0]);
 		}
 
-		if (_methodName76.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes76, parameterTypes)) {
+		if (_methodName106.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
 			return DossierStep2RoleLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName77.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes77, parameterTypes)) {
+		if (_methodName107.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes107, parameterTypes)) {
 			DossierStep2RoleLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
+		}
+
+		if (_methodName112.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
+			return DossierStep2RoleLocalServiceUtil.addDossierStep2Role(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[2]);
+		}
+
+		if (_methodName113.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes113, parameterTypes)) {
+			DossierStep2RoleLocalServiceUtil.removeDossierStep2Role((org.oep.core.processmgt.model.DossierStep2Role)arguments[0]);
+
+			return null;
+		}
+
+		if (_methodName114.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes114, parameterTypes)) {
+			DossierStep2RoleLocalServiceUtil.removeDossierStep2Role(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
+
+			return null;
+		}
+
+		if (_methodName115.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes115, parameterTypes)) {
+			return DossierStep2RoleLocalServiceUtil.getDossierStep2Role(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
 		}
 
 		throw new UnsupportedOperationException();
@@ -259,8 +307,16 @@ public class DossierStep2RoleLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName76;
-	private String[] _methodParameterTypes76;
-	private String _methodName77;
-	private String[] _methodParameterTypes77;
+	private String _methodName106;
+	private String[] _methodParameterTypes106;
+	private String _methodName107;
+	private String[] _methodParameterTypes107;
+	private String _methodName112;
+	private String[] _methodParameterTypes112;
+	private String _methodName113;
+	private String[] _methodParameterTypes113;
+	private String _methodName114;
+	private String[] _methodParameterTypes114;
+	private String _methodName115;
+	private String[] _methodParameterTypes115;
 }

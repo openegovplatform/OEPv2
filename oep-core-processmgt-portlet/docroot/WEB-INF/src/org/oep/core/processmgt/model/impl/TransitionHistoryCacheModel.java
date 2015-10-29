@@ -38,7 +38,7 @@ public class TransitionHistoryCacheModel implements CacheModel<TransitionHistory
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(35);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("{transitionHistoryId=");
 		sb.append(transitionHistoryId);
@@ -74,6 +74,8 @@ public class TransitionHistoryCacheModel implements CacheModel<TransitionHistory
 		sb.append(transitionName);
 		sb.append(", note=");
 		sb.append(note);
+		sb.append(", assignToUserId=");
+		sb.append(assignToUserId);
 		sb.append("}");
 
 		return sb.toString();
@@ -139,6 +141,8 @@ public class TransitionHistoryCacheModel implements CacheModel<TransitionHistory
 			transitionHistoryImpl.setNote(note);
 		}
 
+		transitionHistoryImpl.setAssignToUserId(assignToUserId);
+
 		transitionHistoryImpl.resetOriginalValues();
 
 		return transitionHistoryImpl;
@@ -163,6 +167,7 @@ public class TransitionHistoryCacheModel implements CacheModel<TransitionHistory
 		postDossierStepId = objectInput.readLong();
 		transitionName = objectInput.readUTF();
 		note = objectInput.readUTF();
+		assignToUserId = objectInput.readLong();
 	}
 
 	@Override
@@ -210,6 +215,8 @@ public class TransitionHistoryCacheModel implements CacheModel<TransitionHistory
 		else {
 			objectOutput.writeUTF(note);
 		}
+
+		objectOutput.writeLong(assignToUserId);
 	}
 
 	public long transitionHistoryId;
@@ -229,4 +236,5 @@ public class TransitionHistoryCacheModel implements CacheModel<TransitionHistory
 	public long postDossierStepId;
 	public String transitionName;
 	public String note;
+	public long assignToUserId;
 }

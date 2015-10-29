@@ -11,13 +11,13 @@
 		<weight>1</weight>
 		<permissions>
 			<supports>
-				<action-key>ADD_DOSSIERPROCESS</action-key>
+				<action-key>ADMIN_DOSSIERPROCESS</action-key>
 				<action-key>PERMISSIONS</action-key>
 			</supports>
 			<site-member-defaults />
 			<guest-defaults />
 			<guest-unsupported>
-				<action-key>ADD_DOSSIERPROCESS</action-key>
+				<action-key>ADMIN_DOSSIERPROCESS</action-key>
 				<action-key>PERMISSIONS</action-key>
 			</guest-unsupported>
 		</permissions>
@@ -30,24 +30,17 @@
 		<weight>2</weight>
 		<permissions>
 			<supports>
-				<action-key>ADD_DOSSIERPROCESS</action-key>
-				<action-key>DELETE_DOSSIERPROCESS</action-key>
+				<action-key>ADMIN_DOSSIERPROCESS</action-key>
 				<action-key>PERMISSIONS</action-key>
-				<action-key>UPDATE_DOSSIERPROCESS</action-key>
-				<action-key>VIEW</action-key>
 			</supports>
 			<site-member-defaults>
-				<action-key>ADD_DOSSIERPROCESS</action-key>
-				<action-key>VIEW</action-key>
+				<action-key>ADMIN_DOSSIERPROCESS</action-key>
 			</site-member-defaults>
 			<guest-defaults>
-				<action-key>ADD_DOSSIERPROCESS</action-key>
-				<action-key>VIEW</action-key>
 			</guest-defaults>
 			<guest-unsupported>
-				<action-key>DELETE_DOSSIERPROCESS</action-key>
 				<action-key>PERMISSIONS</action-key>
-				<action-key>UPDATE_DOSSIERPROCESS</action-key>
+				<action-key>ADMIN_DOSSIERPROCESS</action-key>
 			</guest-unsupported>
 		</permissions>
 	</model-resource>

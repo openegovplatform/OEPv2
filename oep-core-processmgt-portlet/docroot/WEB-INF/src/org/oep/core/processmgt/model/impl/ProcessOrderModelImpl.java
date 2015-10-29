@@ -89,7 +89,7 @@ public class ProcessOrderModelImpl extends BaseModelImpl<ProcessOrder>
 			{ "stopRollback", Types.INTEGER },
 			{ "ebPartnerShipId", Types.BIGINT }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_processorder (uuid_ VARCHAR(75) null,processOrderId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,organizationId LONG,parentProcessOrderId LONG,dossierId LONG,dossierProcessId LONG,dossierStepId LONG,orderStatus VARCHAR(75) null,orderResume VARCHAR(75) null,stepDate DATE null,stepNote VARCHAR(75) null,assignToUserId LONG,currentCondition VARCHAR(75) null,lastStepTransitionId LONG,stopRollback INTEGER,ebPartnerShipId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table oep_processmgt_processorder (uuid_ VARCHAR(75) null,processOrderId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,organizationId LONG,parentProcessOrderId LONG,dossierId LONG,dossierProcessId LONG,dossierStepId LONG,orderStatus VARCHAR(30) null,orderResume VARCHAR(200) null,stepDate DATE null,stepNote VARCHAR(200) null,assignToUserId LONG,currentCondition VARCHAR(30) null,lastStepTransitionId LONG,stopRollback INTEGER,ebPartnerShipId LONG)";
 	public static final String TABLE_SQL_DROP = "drop table oep_processmgt_processorder";
 	public static final String ORDER_BY_JPQL = " ORDER BY processOrder.processOrderId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_processmgt_processorder.processOrderId ASC";

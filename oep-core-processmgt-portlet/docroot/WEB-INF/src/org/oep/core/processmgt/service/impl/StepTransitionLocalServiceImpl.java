@@ -12,6 +12,22 @@
  * details.
  */
 
+/** 
+ * Copyright (c) 2015 by Open eGovPlatform (http://http://openegovplatform.org/).
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+  */
+
 package org.oep.core.processmgt.service.impl;
 
 import java.util.Date;
@@ -30,7 +46,7 @@ import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.service.ServiceContext;
 
 /**
- * The implementation of the step transition local service.
+ * API cung cấp thao tác với chuyển dịch trạng thái.
  *
  * <p>
  * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link org.oep.core.processmgt.service.StepTransitionLocalService} interface.
@@ -52,16 +68,24 @@ public class StepTransitionLocalServiceImpl
 	 */
 	
 	/** 
-	 * Add step transition
+	 * Thêm chuyển dịch trạng thái
 	 * 
 	 * Version: OEP 2.0
 	 *  
 	 * History: 
 	 *   DATE        AUTHOR      DESCRIPTION 
 	 *  ------------------------------------------------- 
-	 *  21-September-2015  trungdk    Create new
-	 * @param
-	 * @return: new step transition
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param dossierProcessId nằm trong quy trình nào
+	 * @param preDossierStepId trạng thái nguồn
+	 * @param postDossierStepId trạng thái đích
+	 * @param autoCondition mã điều kiện chuyển dịch trạng thái
+	 * @param transitionName tên mô tả hành động xử lý hồ sơ
+	 * @param dossierStatus kết thúc một bước hồ sơ được phân trạng thái mới
+	 * @param sendResults tự động gửi trả kết quả có trong hồ sơ
+	 * @param userAssignment đánh dấu bước này phải được phân công cụ thể người xử lý
+	 * @param newProcessOrder chuyển dịch có tạo phiếu xử lý con
+	 * @return: chuyển dịch trạng thái mới tạo
 	 */
 	@Indexable(type = IndexableType.REINDEX)	
 	@Transactional
@@ -72,9 +96,7 @@ public class StepTransitionLocalServiceImpl
 			String autoCondition,
 			String transitionName,
 			String dossierStatus,
-			int notifyStatus,
 			int sendResults,
-			int requestPayment,
 			int userAssignment,
 			int newProcessOrder,
 
@@ -94,9 +116,7 @@ public class StepTransitionLocalServiceImpl
 		stepTransition.setAutoCondition(autoCondition);;
 		stepTransition.setTransitionName(transitionName);
 		stepTransition.setDossierStatus(dossierStatus);
-		stepTransition.setNotifyStatus(notifyStatus);
 		stepTransition.setSendResults(sendResults);
-		stepTransition.setRequestPayment(requestPayment);
 		stepTransition.setUserAssignment(userAssignment);
 		stepTransition.setNewProcessOrder(newProcessOrder);
 		
@@ -115,6 +135,27 @@ public class StepTransitionLocalServiceImpl
 		return getStepTransition(id);
 	}
 
+	/** 
+	 * Cập nhật thông tin chuyển dịch trạng thái
+	 * 
+	 * Version: OEP 2.0
+	 *  
+	 * History: 
+	 *   DATE        AUTHOR      DESCRIPTION 
+	 *  ------------------------------------------------- 
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param id mã chuyển dịch trạng thái
+	 * @param dossierProcessId nằm trong quy trình nào
+	 * @param preDossierStepId trạng thái nguồn
+	 * @param postDossierStepId trạng thái đích
+	 * @param autoCondition mã điều kiện chuyển dịch trạng thái
+	 * @param transitionName tên mô tả hành động xử lý hồ sơ
+	 * @param dossierStatus kết thúc một bước hồ sơ được phân trạng thái mới
+	 * @param sendResults tự động gửi trả kết quả có trong hồ sơ
+	 * @param userAssignment đánh dấu bước này phải được phân công cụ thể người xử lý
+	 * @param newProcessOrder chuyển dịch có tạo phiếu xử lý con
+	 * @return: chuyển dịch trạng thái mới được cập nhật
+	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public StepTransition updateStepTransition(
 			long id, 
@@ -124,9 +165,7 @@ public class StepTransitionLocalServiceImpl
 			String autoCondition,
 			String transitionName,
 			String dossierStatus,
-			int notifyStatus,
 			int sendResults,
-			int requestPayment,
 			int userAssignment,
 			int newProcessOrder,
 
@@ -144,9 +183,7 @@ public class StepTransitionLocalServiceImpl
 		stepTransition.setAutoCondition(autoCondition);;
 		stepTransition.setTransitionName(transitionName);
 		stepTransition.setDossierStatus(dossierStatus);
-		stepTransition.setNotifyStatus(notifyStatus);
 		stepTransition.setSendResults(sendResults);
-		stepTransition.setRequestPayment(requestPayment);
 		stepTransition.setUserAssignment(userAssignment);
 		stepTransition.setNewProcessOrder(newProcessOrder);
 		

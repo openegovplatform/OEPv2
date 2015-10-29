@@ -290,7 +290,7 @@ public class TransitionHistoryLocalServiceWrapper
 	}
 
 	/**
-	* Add transition history
+	* ThÃƒÂªm lÃ¡Â»â€¹ch sÃ¡Â»Â­ chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch trÃ¡ÂºÂ¡ng thÃƒÂ¡i
 	*
 	* Version: OEP 2.0
 	*
@@ -299,8 +299,21 @@ public class TransitionHistoryLocalServiceWrapper
 	*  -------------------------------------------------
 	*  21-September-2015  trungdk    Create new
 	*
-	* @param
-	* @return: new transition history
+	* @param dossierId hÃ¡Â»â€œ sÃ†Â¡ thÃ¡Â»Â§ tÃ¡Â»Â¥c cÃ¡Â»Â§a diÃ¡Â»â€¦n biÃ¡ÂºÂ¿n
+	* @param processOrderId ghi diÃ¡Â»â€¦n biÃ¡ÂºÂ¿n cho phiÃ¡ÂºÂ¿u xÃ¡Â»Â­ lÃƒÂ½ chÃƒÂ­nh hoÃ¡ÂºÂ·c phÃ¡Â»Â¥
+	* @param dossierProcId tham chiÃ¡ÂºÂ¿u thÃ¡Â»Â§ tÃ¡Â»Â¥c hÃƒÂ nh chÃƒÂ­nh
+	* @param daysDoing sÃ¡Â»â€˜ ngÃƒÂ y thÃ¡Â»Â±c hiÃ¡Â»â€¡n xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡
+	* @param daysDelay sÃ¡Â»â€˜ ngÃƒÂ y hÃ¡Â»â€œ sÃ†Â¡ bÃ¡Â»â€¹ quÃƒÂ¡ hÃ¡ÂºÂ¡n (dÃ¡ÂºÂ¥u - thÃ¡Â»Æ’ hiÃ¡Â»â€¡n trÃ†Â°Ã¡Â»â€ºc hÃ¡ÂºÂ¡n)
+	* @param startDate thÃ¡Â»ï¿½i Ã„â€˜iÃ¡Â»Æ’m bÃ¡ÂºÂ¯t Ã„â€˜Ã¡ÂºÂ§u thÃ¡Â»Â±c hiÃ¡Â»â€¡n
+	* @param preDossierStatus trÃ¡ÂºÂ¡ng thÃƒÂ¡i hÃ¡Â»â€œ sÃ†Â¡ khi xÃ¡Â»Â­ lÃƒÂ½
+	* @param postDossierStatus trÃ¡ÂºÂ¡ng thÃƒÂ¡i hÃ¡Â»â€œ sÃ†Â¡ sau xÃ¡Â»Â­ lÃƒÂ½
+	* @param stepTransitionId chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch trÃ¡ÂºÂ¡ng thÃƒÂ¡i
+	* @param preDossierStepId trÃ¡ÂºÂ¡ng thÃƒÂ¡i trÃ†Â°Ã¡Â»â€ºc
+	* @param postDossierStepId bÃ†Â°Ã¡Â»â€ºc chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch sau
+	* @param transitionName tÃƒÂªn mÃƒÂ´ tÃ¡ÂºÂ£ hÃƒÂ nh Ã„â€˜Ã¡Â»â„¢ng xÃ¡Â»Â­ lÃƒÂ½ liÃƒÂªn quan Ã„â€˜Ã¡ÂºÂ¿n hÃ¡Â»â€œ sÃ†Â¡
+	* @param note ghi chÃƒÂº Ã„â€˜Ã†Â°Ã¡Â»Â£c ghi lÃ¡ÂºÂ¡i cÃ¡Â»Â§a ngÃ†Â°Ã¡Â»ï¿½i xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡
+	* @param assignToUserId ngÃ†Â°Ã¡Â»ï¿½i thÃ¡Â»Â±c hiÃ¡Â»â€¡n bÃ†Â°Ã¡Â»â€ºc xÃ¡Â»Â­ lÃƒÂ½
+	* @return: lÃ¡Â»â€¹ch sÃ¡Â»Â­ chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch trÃ¡ÂºÂ¡ng thÃƒÂ¡i mÃ¡Â»â€ºi
 	*/
 	@Override
 	public org.oep.core.processmgt.model.TransitionHistory addTransitionHistory(
@@ -317,6 +330,33 @@ public class TransitionHistoryLocalServiceWrapper
 			serviceContext);
 	}
 
+	/**
+	* CÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t diÃ¡Â»â€¦n biÃ¡ÂºÂ¿n chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch trÃ¡ÂºÂ¡ng thÃƒÂ¡i
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Create new
+	*
+	* @param id mÃƒÂ£ diÃ¡Â»â€¦n biÃ¡ÂºÂ¿n chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch trÃ¡ÂºÂ¡ng thÃƒÂ¡i
+	* @param dossierId hÃ¡Â»â€œ sÃ†Â¡ thÃ¡Â»Â§ tÃ¡Â»Â¥c cÃ¡Â»Â§a diÃ¡Â»â€¦n biÃ¡ÂºÂ¿n
+	* @param processOrderId ghi diÃ¡Â»â€¦n biÃ¡ÂºÂ¿n cho phiÃ¡ÂºÂ¿u xÃ¡Â»Â­ lÃƒÂ½ chÃƒÂ­nh hoÃ¡ÂºÂ·c phÃ¡Â»Â¥
+	* @param dossierProcId tham chiÃ¡ÂºÂ¿u thÃ¡Â»Â§ tÃ¡Â»Â¥c hÃƒÂ nh chÃƒÂ­nh
+	* @param daysDoing sÃ¡Â»â€˜ ngÃƒÂ y thÃ¡Â»Â±c hiÃ¡Â»â€¡n xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡
+	* @param daysDelay sÃ¡Â»â€˜ ngÃƒÂ y hÃ¡Â»â€œ sÃ†Â¡ bÃ¡Â»â€¹ quÃƒÂ¡ hÃ¡ÂºÂ¡n (dÃ¡ÂºÂ¥u - thÃ¡Â»Æ’ hiÃ¡Â»â€¡n trÃ†Â°Ã¡Â»â€ºc hÃ¡ÂºÂ¡n)
+	* @param startDate thÃ¡Â»ï¿½i Ã„â€˜iÃ¡Â»Æ’m bÃ¡ÂºÂ¯t Ã„â€˜Ã¡ÂºÂ§u thÃ¡Â»Â±c hiÃ¡Â»â€¡n
+	* @param preDossierStatus trÃ¡ÂºÂ¡ng thÃƒÂ¡i hÃ¡Â»â€œ sÃ†Â¡ khi xÃ¡Â»Â­ lÃƒÂ½
+	* @param postDossierStatus trÃ¡ÂºÂ¡ng thÃƒÂ¡i hÃ¡Â»â€œ sÃ†Â¡ sau xÃ¡Â»Â­ lÃƒÂ½
+	* @param stepTransitionId chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch trÃ¡ÂºÂ¡ng thÃƒÂ¡i
+	* @param preDossierStepId trÃ¡ÂºÂ¡ng thÃƒÂ¡i trÃ†Â°Ã¡Â»â€ºc
+	* @param postDossierStepId bÃ†Â°Ã¡Â»â€ºc chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch sau
+	* @param transitionName tÃƒÂªn mÃƒÂ´ tÃ¡ÂºÂ£ hÃƒÂ nh Ã„â€˜Ã¡Â»â„¢ng xÃ¡Â»Â­ lÃƒÂ½ liÃƒÂªn quan Ã„â€˜Ã¡ÂºÂ¿n hÃ¡Â»â€œ sÃ†Â¡
+	* @param note ghi chÃƒÂº Ã„â€˜Ã†Â°Ã¡Â»Â£c ghi lÃ¡ÂºÂ¡i cÃ¡Â»Â§a ngÃ†Â°Ã¡Â»ï¿½i xÃ¡Â»Â­ lÃƒÂ½ hÃ¡Â»â€œ sÃ†Â¡
+	* @param assignToUserId ngÃ†Â°Ã¡Â»ï¿½i thÃ¡Â»Â±c hiÃ¡Â»â€¡n bÃ†Â°Ã¡Â»â€ºc xÃ¡Â»Â­ lÃƒÂ½
+	* @return: lÃ¡Â»â€¹ch sÃ¡Â»Â­ chuyÃ¡Â»Æ’n dÃ¡Â»â€¹ch trÃ¡ÂºÂ¡ng thÃƒÂ¡i mÃ¡Â»â€ºi Ã„â€˜Ã†Â°Ã¡Â»Â£c cÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t
+	*/
 	@Override
 	public org.oep.core.processmgt.model.TransitionHistory updateTransitionHistory(
 		long id, long dossierId, long processOrderId, int daysDoing,

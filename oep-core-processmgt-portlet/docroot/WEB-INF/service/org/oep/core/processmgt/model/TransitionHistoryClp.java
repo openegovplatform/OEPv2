@@ -92,6 +92,7 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 		attributes.put("postDossierStepId", getPostDossierStepId());
 		attributes.put("transitionName", getTransitionName());
 		attributes.put("note", getNote());
+		attributes.put("assignToUserId", getAssignToUserId());
 
 		return attributes;
 	}
@@ -198,6 +199,12 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 
 		if (note != null) {
 			setNote(note);
+		}
+
+		Long assignToUserId = (Long)attributes.get("assignToUserId");
+
+		if (assignToUserId != null) {
+			setAssignToUserId(assignToUserId);
 		}
 	}
 
@@ -609,6 +616,40 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 		}
 	}
 
+	@Override
+	public long getAssignToUserId() {
+		return _assignToUserId;
+	}
+
+	@Override
+	public void setAssignToUserId(long assignToUserId) {
+		_assignToUserId = assignToUserId;
+
+		if (_transitionHistoryRemoteModel != null) {
+			try {
+				Class<?> clazz = _transitionHistoryRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setAssignToUserId", long.class);
+
+				method.invoke(_transitionHistoryRemoteModel, assignToUserId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getAssignToUserUuid() throws SystemException {
+		return PortalUtil.getUserValue(getAssignToUserId(), "uuid",
+			_assignToUserUuid);
+	}
+
+	@Override
+	public void setAssignToUserUuid(String assignToUserUuid) {
+		_assignToUserUuid = assignToUserUuid;
+	}
+
 	public BaseModel<?> getTransitionHistoryRemoteModel() {
 		return _transitionHistoryRemoteModel;
 	}
@@ -697,6 +738,7 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 		clone.setPostDossierStepId(getPostDossierStepId());
 		clone.setTransitionName(getTransitionName());
 		clone.setNote(getNote());
+		clone.setAssignToUserId(getAssignToUserId());
 
 		return clone;
 	}
@@ -749,7 +791,7 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(35);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("{transitionHistoryId=");
 		sb.append(getTransitionHistoryId());
@@ -785,6 +827,8 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 		sb.append(getTransitionName());
 		sb.append(", note=");
 		sb.append(getNote());
+		sb.append(", assignToUserId=");
+		sb.append(getAssignToUserId());
 		sb.append("}");
 
 		return sb.toString();
@@ -792,7 +836,7 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(55);
+		StringBundler sb = new StringBundler(58);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.processmgt.model.TransitionHistory");
@@ -866,6 +910,10 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 			"<column><column-name>note</column-name><column-value><![CDATA[");
 		sb.append(getNote());
 		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>assignToUserId</column-name><column-value><![CDATA[");
+		sb.append(getAssignToUserId());
+		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -890,6 +938,8 @@ public class TransitionHistoryClp extends BaseModelImpl<TransitionHistory>
 	private long _postDossierStepId;
 	private String _transitionName;
 	private String _note;
+	private long _assignToUserId;
+	private String _assignToUserUuid;
 	private BaseModel<?> _transitionHistoryRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.processmgt.service.ClpSerializer.class;
 }
