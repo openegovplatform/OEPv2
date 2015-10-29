@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<custom-sql>
+<!-- mysql  -->
+	<sql file="custom-sql/mysql/dictcollection.xml"/>
+	<sql file="custom-sql/mysql/dictattribute.xml"/>
+	<sql file="custom-sql/mysql/dictdata.xml"/>
+</custom-sql>

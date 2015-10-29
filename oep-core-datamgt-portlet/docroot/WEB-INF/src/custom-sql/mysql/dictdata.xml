@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<custom-sql>
+	<sql id="org.oep.core.datamgt.service.persistence.DictDataFinder.countByCustomCondition">
+		<![CDATA[
+			SELECT COUNT(*) total
+			FROM OEP_DATAMGT_DICTDATA
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$COLLECTIONNAME_FILTER$]
+			[$DATACODE_FILTER$]
+			[$VALIDATEDFROM_FILTER$]
+			[$VALIDATEDTO_FILTER$]
+			[$STATUS_FILTER$]
+			[$NODE_FILTER$]
+		]]>
+	</sql>
+	<sql id="org.oep.core.datamgt.service.persistence.DictDataFinder.findByCustomCondition">
+		<![CDATA[
+			SELECT *
+			FROM OEP_DATAMGT_DICTDATA
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$COLLECTIONNAME_FILTER$]
+			[$DATACODE_FILTER$]
+			[$VALIDATEDFROM_FILTER$]
+			[$VALIDATEDTO_FILTER$]
+			[$STATUS_FILTER$]
+			[$NODE_FILTER$]
+		]]>
+	</sql>
+</custom-sql>
