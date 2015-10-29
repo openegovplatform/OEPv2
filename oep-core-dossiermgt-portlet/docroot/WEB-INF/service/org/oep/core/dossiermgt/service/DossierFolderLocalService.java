@@ -189,6 +189,19 @@ public interface DossierFolderLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
+	* Returns the dossier folder matching the UUID and group.
+	*
+	* @param uuid the dossier folder's UUID
+	* @param groupId the primary key of the group
+	* @return the matching dossier folder, or <code>null</code> if a matching dossier folder could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public org.oep.core.dossiermgt.model.DossierFolder fetchDossierFolderByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
 	* Returns the dossier folder with the primary key.
 	*
 	* @param dossierFolderId the primary key of the dossier folder
@@ -221,6 +234,21 @@ public interface DossierFolderLocalService extends BaseLocalService,
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public org.oep.core.dossiermgt.model.DossierFolder getDossierFolderByUuidAndCompanyId(
 		java.lang.String uuid, long companyId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the dossier folder matching the UUID and group.
+	*
+	* @param uuid the dossier folder's UUID
+	* @param groupId the primary key of the group
+	* @return the matching dossier folder
+	* @throws PortalException if a matching dossier folder could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public org.oep.core.dossiermgt.model.DossierFolder getDossierFolderByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
@@ -283,25 +311,34 @@ public interface DossierFolderLocalService extends BaseLocalService,
 		throws java.lang.Throwable;
 
 	/**
-	* Add dossier folder
+	* ThÃªm UI xem danh sÃ¡ch há»“ sÆ¡
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    Táº¡o má»›i
 	*
-	* @param
+	* @param folderName tÃªn UI xem danh sÃ¡ch há»“ sÆ¡
+	* @param parentDossierFolderId mÃ£ cá»§a UI xem danh sÃ¡ch há»“ sÆ¡ cha
+	* @param sequenceNo sá»‘ thá»© tá»± UI xem danh sÃ¡ch há»“ sÆ¡
+	* @param procedureFilter Ä‘iá»�u kiá»‡n lá»�c theo thá»§ tá»¥c hÃ nh chÃ­nh, cÃ¡c mÃ£ cÃ¡ch nhau bá»Ÿi dáº¥u ;
+	* @param statusFilter Ä‘iá»�u kiá»‡n lá»�c theo tráº¡ng thÃ¡i
+	* @param tagFilter Ä‘iá»�u kiá»‡n lá»�c theo tag
+	* @param filterByOrganization lá»�c há»“ sÆ¡ theo tá»• chá»©c mÃ  ngÆ°á»�i dÃ¹ng thuá»™c vá»�
+	* @param filterByUser lá»�c há»“ sÆ¡ chá»‰ do ngÆ°á»�i dÃ¹ng táº¡o ra
+	* @param orderBy Ä‘iá»�u kiá»‡n sáº¯p xáº¿p cá»§a cÃ¡c há»“ sÆ¡
+	* @param counting cá»� Ä‘Ã¡nh dáº¥u Ä‘áº¿m sá»‘ há»“ sÆ¡ trÃªn menu
 	* @return: new dossier folder
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.DossierFolder addDossierFolder(
 		java.lang.String folderName, long parentDossierFolderId,
 		int sequenceNo, java.lang.String procedureFilter,
-		java.lang.String statusFilter, int filterByOrganization,
-		int filterByUser,
-		com.liferay.portal.service.ServiceContext serviceContext)
+		java.lang.String statusFilter, java.lang.String tagFilter,
+		int filterByOrganization, int filterByUser, java.lang.String orderBy,
+		int counting, com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
@@ -309,9 +346,9 @@ public interface DossierFolderLocalService extends BaseLocalService,
 	public org.oep.core.dossiermgt.model.DossierFolder updateDossierFolder(
 		long id, java.lang.String folderName, long parentDossierFolderId,
 		int sequenceNo, java.lang.String procedureFilter,
-		java.lang.String statusFilter, int filterByOrganization,
-		int filterByUser,
-		com.liferay.portal.service.ServiceContext serviceContext)
+		java.lang.String statusFilter, java.lang.String tagFilter,
+		int filterByOrganization, int filterByUser, java.lang.String orderBy,
+		int counting, com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 

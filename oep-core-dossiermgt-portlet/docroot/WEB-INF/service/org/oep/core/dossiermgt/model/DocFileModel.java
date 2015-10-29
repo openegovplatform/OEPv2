@@ -240,19 +240,47 @@ public interface DocFileModel extends BaseModel<DocFile>, StagedModel {
 	public void setDocFileVersionId(long docFileVersionId);
 
 	/**
-	 * Returns the doc name of this doc file.
+	 * Returns the doc file name of this doc file.
 	 *
-	 * @return the doc name of this doc file
+	 * @return the doc file name of this doc file
 	 */
 	@AutoEscape
-	public String getDocName();
+	public String getDocFileName();
 
 	/**
-	 * Sets the doc name of this doc file.
+	 * Sets the doc file name of this doc file.
 	 *
-	 * @param docName the doc name of this doc file
+	 * @param docFileName the doc file name of this doc file
 	 */
-	public void setDocName(String docName);
+	public void setDocFileName(String docFileName);
+
+	/**
+	 * Returns the doc file type of this doc file.
+	 *
+	 * @return the doc file type of this doc file
+	 */
+	public long getDocFileType();
+
+	/**
+	 * Sets the doc file type of this doc file.
+	 *
+	 * @param docFileType the doc file type of this doc file
+	 */
+	public void setDocFileType(long docFileType);
+
+	/**
+	 * Returns the verify status of this doc file.
+	 *
+	 * @return the verify status of this doc file
+	 */
+	public int getVerifyStatus();
+
+	/**
+	 * Sets the verify status of this doc file.
+	 *
+	 * @param verifyStatus the verify status of this doc file
+	 */
+	public void setVerifyStatus(int verifyStatus);
 
 	/**
 	 * Returns the note of this doc file.
@@ -268,6 +296,35 @@ public interface DocFileModel extends BaseModel<DocFile>, StagedModel {
 	 * @param note the note of this doc file
 	 */
 	public void setNote(String note);
+
+	/**
+	 * Returns the approve by of this doc file.
+	 *
+	 * @return the approve by of this doc file
+	 */
+	@AutoEscape
+	public String getApproveBy();
+
+	/**
+	 * Sets the approve by of this doc file.
+	 *
+	 * @param approveBy the approve by of this doc file
+	 */
+	public void setApproveBy(String approveBy);
+
+	/**
+	 * Returns the approve date of this doc file.
+	 *
+	 * @return the approve date of this doc file
+	 */
+	public Date getApproveDate();
+
+	/**
+	 * Sets the approve date of this doc file.
+	 *
+	 * @param approveDate the approve date of this doc file
+	 */
+	public void setApproveDate(Date approveDate);
 
 	/**
 	 * Returns the premier of this doc file.

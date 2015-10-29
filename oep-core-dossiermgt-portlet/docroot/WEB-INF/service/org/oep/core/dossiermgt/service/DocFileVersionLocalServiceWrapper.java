@@ -357,17 +357,20 @@ public class DocFileVersionLocalServiceWrapper
 	}
 
 	/**
-	* Add doc file version
+	* ThÃƒÂªm mÃ¡Â»â„¢t phiÃƒÂªn bÃ¡ÂºÂ£n tÃƒÂ i liÃ¡Â»â€¡u mÃ¡Â»â€ºi
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
 	*
-	* @param
-	* @return: new doc file version
+	* @param docFileId mÃƒÂ£ tÃƒÂ i liÃ¡Â»â€¡u
+	* @param fileEntryId mÃƒÂ£ tÃ¡Â»â€¡p tÃƒÂ i liÃ¡Â»â€¡u lÃ†Â°u trÃ¡Â»Â¯ trÃƒÂªn liferay
+	* @param xmlContent nÃ¡Â»â„¢i dung cÃ¡Â»Â§a tÃ¡Â»â€¡p tÃƒÂ i liÃ¡Â»â€¡u phiÃƒÂªn bÃ¡ÂºÂ£n mÃ¡Â»â€ºi
+	* @param ebMessageId Ã„â€˜ÃƒÂ¡nh dÃ¡ÂºÂ¥u Ã„â€˜ÃƒÂ£ submit dÃ¡Â»Â¯ liÃ¡Â»â€¡u nÃƒÂ y
+	* @return: phiÃƒÂªn bÃ¡ÂºÂ£n mÃ¡Â»â€ºi cÃ¡Â»Â§a tÃƒÂ i liÃ¡Â»â€¡u
 	*/
 	@Override
 	public org.oep.core.dossiermgt.model.DocFileVersion addDocFileVersion(
@@ -380,6 +383,22 @@ public class DocFileVersionLocalServiceWrapper
 			fileEntryId, xmlContent, ebMessageId, serviceContext);
 	}
 
+	/**
+	* ChÃ¡Â»â€°nh sÃ¡Â»Â­a mÃ¡Â»â„¢t phiÃƒÂªn bÃ¡ÂºÂ£n tÃƒÂ i liÃ¡Â»â€¡u mÃ¡Â»â€ºi
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
+	*
+	* @param docFileId mÃƒÂ£ tÃƒÂ i liÃ¡Â»â€¡u
+	* @param fileEntryId mÃƒÂ£ tÃ¡Â»â€¡p tÃƒÂ i liÃ¡Â»â€¡u lÃ†Â°u trÃ¡Â»Â¯ trÃƒÂªn liferay
+	* @param xmlContent nÃ¡Â»â„¢i dung cÃ¡Â»Â§a tÃ¡Â»â€¡p tÃƒÂ i liÃ¡Â»â€¡u phiÃƒÂªn bÃ¡ÂºÂ£n mÃ¡Â»â€ºi
+	* @param ebMessageId Ã„â€˜ÃƒÂ¡nh dÃ¡ÂºÂ¥u Ã„â€˜ÃƒÂ£ submit dÃ¡Â»Â¯ liÃ¡Â»â€¡u nÃƒÂ y
+	* @return: phiÃƒÂªn bÃ¡ÂºÂ£n tÃƒÂ i liÃ¡Â»â€¡u vÃ¡Â»Â«a Ã„â€˜Ã†Â°Ã¡Â»Â£c chÃ¡Â»â€°nh sÃ¡Â»Â­a
+	*/
 	@Override
 	public org.oep.core.dossiermgt.model.DocFileVersion updateDocFileVersion(
 		long id, long docFileId, long fileEntryId, java.lang.String xmlContent,

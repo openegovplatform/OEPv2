@@ -72,5 +72,8 @@
 		<supported-processing-event>
 		    <qname xmlns:x="http://org.oep.com/events">x:ipc-domainno</qname>
 		</supported-processing-event>    	
+		<supported-processing-event>
+		    <qname xmlns:x="http://org.oep.com/events">x:ipc-administrationno</qname>
+		</supported-processing-event>    	
     </portlet>
 </portlet-app>

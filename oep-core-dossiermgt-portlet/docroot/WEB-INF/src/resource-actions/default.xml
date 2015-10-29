@@ -10,9 +10,15 @@
 	<resource file="resource-actions/dossierfolder.xml" />
 	<resource file="resource-actions/dossierproc.xml" />
 	<resource file="resource-actions/dossierprocagent.xml" />
+	<resource file="resource-actions/dossierprocbookmark.xml" />
+	<resource file="resource-actions/dossiertag.xml" />
+	<resource file="resource-actions/profiledata.xml" />
 	<resource file="resource-actions/ebmessage.xml" />
 	<resource file="resource-actions/ebpartnership.xml" />
 	<resource file="resource-actions/paymentconfig.xml" />
 	<resource file="resource-actions/paymentfile.xml" />
 	<resource file="resource-actions/paymentrequest.xml" />
+	<resource file="resource-actions/statisticbyday.xml" />
+	<resource file="resource-actions/statisticbydomain.xml" />
+	<resource file="resource-actions/statisticbyagency.xml" />	
 </resource-action-mapping>

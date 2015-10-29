@@ -1799,8 +1799,12 @@ public class DocFilePersistenceImpl extends BasePersistenceImpl<DocFile>
 		docFileImpl.setDossierDocId(docFile.getDossierDocId());
 		docFileImpl.setDocTemplateId(docFile.getDocTemplateId());
 		docFileImpl.setDocFileVersionId(docFile.getDocFileVersionId());
-		docFileImpl.setDocName(docFile.getDocName());
+		docFileImpl.setDocFileName(docFile.getDocFileName());
+		docFileImpl.setDocFileType(docFile.getDocFileType());
+		docFileImpl.setVerifyStatus(docFile.getVerifyStatus());
 		docFileImpl.setNote(docFile.getNote());
+		docFileImpl.setApproveBy(docFile.getApproveBy());
+		docFileImpl.setApproveDate(docFile.getApproveDate());
 		docFileImpl.setPremier(docFile.getPremier());
 
 		return docFileImpl;

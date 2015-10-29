@@ -89,92 +89,102 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 
 		_methodParameterTypes11 = new String[] { "java.lang.String", "long" };
 
-		_methodName12 = "getDossierFolder";
+		_methodName12 = "fetchDossierFolderByUuidAndGroupId";
 
-		_methodParameterTypes12 = new String[] { "long" };
+		_methodParameterTypes12 = new String[] { "java.lang.String", "long" };
 
-		_methodName13 = "getPersistedModel";
+		_methodName13 = "getDossierFolder";
 
-		_methodParameterTypes13 = new String[] { "java.io.Serializable" };
+		_methodParameterTypes13 = new String[] { "long" };
 
-		_methodName14 = "getDossierFolderByUuidAndCompanyId";
+		_methodName14 = "getPersistedModel";
 
-		_methodParameterTypes14 = new String[] { "java.lang.String", "long" };
+		_methodParameterTypes14 = new String[] { "java.io.Serializable" };
 
-		_methodName15 = "getDossierFolders";
+		_methodName15 = "getDossierFolderByUuidAndCompanyId";
 
-		_methodParameterTypes15 = new String[] { "int", "int" };
+		_methodParameterTypes15 = new String[] { "java.lang.String", "long" };
 
-		_methodName16 = "getDossierFoldersCount";
+		_methodName16 = "getDossierFolderByUuidAndGroupId";
 
-		_methodParameterTypes16 = new String[] {  };
+		_methodParameterTypes16 = new String[] { "java.lang.String", "long" };
 
-		_methodName17 = "updateDossierFolder";
+		_methodName17 = "getDossierFolders";
 
-		_methodParameterTypes17 = new String[] {
-				"org.oep.core.dossiermgt.model.DossierFolder"
-			};
+		_methodParameterTypes17 = new String[] { "int", "int" };
 
-		_methodName18 = "getBeanIdentifier";
+		_methodName18 = "getDossierFoldersCount";
 
 		_methodParameterTypes18 = new String[] {  };
 
-		_methodName19 = "setBeanIdentifier";
+		_methodName19 = "updateDossierFolder";
 
-		_methodParameterTypes19 = new String[] { "java.lang.String" };
-
-		_methodName21 = "addDossierFolder";
-
-		_methodParameterTypes21 = new String[] {
-				"java.lang.String", "long", "int", "java.lang.String",
-				"java.lang.String", "int", "int",
-				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName22 = "updateDossierFolder";
-
-		_methodParameterTypes22 = new String[] {
-				"long", "java.lang.String", "long", "int", "java.lang.String",
-				"java.lang.String", "int", "int",
-				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName23 = "updateDossierFolderResources";
-
-		_methodParameterTypes23 = new String[] {
-				"org.oep.core.dossiermgt.model.DossierFolder",
-				"java.lang.String[][]", "java.lang.String[][]",
-				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName24 = "removeDossierFolder";
-
-		_methodParameterTypes24 = new String[] {
+		_methodParameterTypes19 = new String[] {
 				"org.oep.core.dossiermgt.model.DossierFolder"
 			};
 
-		_methodName25 = "removeDossierFolder";
+		_methodName20 = "getBeanIdentifier";
 
-		_methodParameterTypes25 = new String[] { "long" };
+		_methodParameterTypes20 = new String[] {  };
 
-		_methodName26 = "addDossierFolderResources";
+		_methodName21 = "setBeanIdentifier";
 
-		_methodParameterTypes26 = new String[] {
-				"org.oep.core.dossiermgt.model.DossierFolder", "boolean",
-				"boolean", "com.liferay.portal.service.ServiceContext"
+		_methodParameterTypes21 = new String[] { "java.lang.String" };
+
+		_methodName23 = "addDossierFolder";
+
+		_methodParameterTypes23 = new String[] {
+				"java.lang.String", "long", "int", "java.lang.String",
+				"java.lang.String", "java.lang.String", "int", "int",
+				"java.lang.String", "int",
+				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName27 = "addDossierFolderResources";
+		_methodName24 = "updateDossierFolder";
 
-		_methodParameterTypes27 = new String[] {
+		_methodParameterTypes24 = new String[] {
+				"long", "java.lang.String", "long", "int", "java.lang.String",
+				"java.lang.String", "java.lang.String", "int", "int",
+				"java.lang.String", "int",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName25 = "updateDossierFolderResources";
+
+		_methodParameterTypes25 = new String[] {
 				"org.oep.core.dossiermgt.model.DossierFolder",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
+
+		_methodName26 = "removeDossierFolder";
+
+		_methodParameterTypes26 = new String[] {
+				"org.oep.core.dossiermgt.model.DossierFolder"
+			};
+
+		_methodName27 = "removeDossierFolder";
+
+		_methodParameterTypes27 = new String[] { "long" };
 
 		_methodName28 = "addDossierFolderResources";
 
 		_methodParameterTypes28 = new String[] {
+				"org.oep.core.dossiermgt.model.DossierFolder", "boolean",
+				"boolean", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName29 = "addDossierFolderResources";
+
+		_methodParameterTypes29 = new String[] {
+				"org.oep.core.dossiermgt.model.DossierFolder",
+				"java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName30 = "addDossierFolderResources";
+
+		_methodParameterTypes30 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -555,6 +565,36 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 	}
 
 	@Override
+	public org.oep.core.dossiermgt.model.DossierFolder fetchDossierFolderByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName12,
+					_methodParameterTypes12,
+					new Object[] { ClpSerializer.translateInput(uuid), groupId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.dossiermgt.model.DossierFolder)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
 	public org.oep.core.dossiermgt.model.DossierFolder getDossierFolder(
 		long dossierFolderId)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -562,8 +602,8 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName12,
-					_methodParameterTypes12, new Object[] { dossierFolderId });
+			returnObj = _invokableLocalService.invokeMethod(_methodName13,
+					_methodParameterTypes13, new Object[] { dossierFolderId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -596,8 +636,8 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName13,
-					_methodParameterTypes13,
+			returnObj = _invokableLocalService.invokeMethod(_methodName14,
+					_methodParameterTypes14,
 					new Object[] { ClpSerializer.translateInput(primaryKeyObj) });
 		}
 		catch (Throwable t) {
@@ -631,9 +671,44 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName14,
-					_methodParameterTypes14,
+			returnObj = _invokableLocalService.invokeMethod(_methodName15,
+					_methodParameterTypes15,
 					new Object[] { ClpSerializer.translateInput(uuid), companyId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.dossiermgt.model.DossierFolder)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.DossierFolder getDossierFolderByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName16,
+					_methodParameterTypes16,
+					new Object[] { ClpSerializer.translateInput(uuid), groupId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -665,8 +740,8 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName15,
-					_methodParameterTypes15, new Object[] { start, end });
+			returnObj = _invokableLocalService.invokeMethod(_methodName17,
+					_methodParameterTypes17, new Object[] { start, end });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -693,8 +768,8 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName16,
-					_methodParameterTypes16, new Object[] {  });
+			returnObj = _invokableLocalService.invokeMethod(_methodName18,
+					_methodParameterTypes18, new Object[] {  });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -722,8 +797,8 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName17,
-					_methodParameterTypes17,
+			returnObj = _invokableLocalService.invokeMethod(_methodName19,
+					_methodParameterTypes19,
 					new Object[] { ClpSerializer.translateInput(dossierFolder) });
 		}
 		catch (Throwable t) {
@@ -750,8 +825,8 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName18,
-					_methodParameterTypes18, new Object[] {  });
+			returnObj = _invokableLocalService.invokeMethod(_methodName20,
+					_methodParameterTypes20, new Object[] {  });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -771,8 +846,8 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 	@Override
 	public void setBeanIdentifier(java.lang.String beanIdentifier) {
 		try {
-			_invokableLocalService.invokeMethod(_methodName19,
-				_methodParameterTypes19,
+			_invokableLocalService.invokeMethod(_methodName21,
+				_methodParameterTypes21,
 				new Object[] { ClpSerializer.translateInput(beanIdentifier) });
 		}
 		catch (Throwable t) {
@@ -799,16 +874,16 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 	public org.oep.core.dossiermgt.model.DossierFolder addDossierFolder(
 		java.lang.String folderName, long parentDossierFolderId,
 		int sequenceNo, java.lang.String procedureFilter,
-		java.lang.String statusFilter, int filterByOrganization,
-		int filterByUser,
-		com.liferay.portal.service.ServiceContext serviceContext)
+		java.lang.String statusFilter, java.lang.String tagFilter,
+		int filterByOrganization, int filterByUser, java.lang.String orderBy,
+		int counting, com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName21,
-					_methodParameterTypes21,
+			returnObj = _invokableLocalService.invokeMethod(_methodName23,
+					_methodParameterTypes23,
 					new Object[] {
 						ClpSerializer.translateInput(folderName),
 						
@@ -820,9 +895,15 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 						
 					ClpSerializer.translateInput(statusFilter),
 						
+					ClpSerializer.translateInput(tagFilter),
+						
 					filterByOrganization,
 						
 					filterByUser,
+						
+					ClpSerializer.translateInput(orderBy),
+						
+					counting,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});
@@ -854,16 +935,16 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 	public org.oep.core.dossiermgt.model.DossierFolder updateDossierFolder(
 		long id, java.lang.String folderName, long parentDossierFolderId,
 		int sequenceNo, java.lang.String procedureFilter,
-		java.lang.String statusFilter, int filterByOrganization,
-		int filterByUser,
-		com.liferay.portal.service.ServiceContext serviceContext)
+		java.lang.String statusFilter, java.lang.String tagFilter,
+		int filterByOrganization, int filterByUser, java.lang.String orderBy,
+		int counting, com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName22,
-					_methodParameterTypes22,
+			returnObj = _invokableLocalService.invokeMethod(_methodName24,
+					_methodParameterTypes24,
 					new Object[] {
 						id,
 						
@@ -877,9 +958,15 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 						
 					ClpSerializer.translateInput(statusFilter),
 						
+					ClpSerializer.translateInput(tagFilter),
+						
 					filterByOrganization,
 						
 					filterByUser,
+						
+					ClpSerializer.translateInput(orderBy),
+						
+					counting,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});
@@ -916,8 +1003,8 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName23,
-				_methodParameterTypes23,
+			_invokableLocalService.invokeMethod(_methodName25,
+				_methodParameterTypes25,
 				new Object[] {
 					ClpSerializer.translateInput(dossierFolder),
 					
@@ -955,8 +1042,8 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName24,
-				_methodParameterTypes24,
+			_invokableLocalService.invokeMethod(_methodName26,
+				_methodParameterTypes26,
 				new Object[] { ClpSerializer.translateInput(dossierFolder) });
 		}
 		catch (Throwable t) {
@@ -985,8 +1072,8 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName25,
-				_methodParameterTypes25, new Object[] { id });
+			_invokableLocalService.invokeMethod(_methodName27,
+				_methodParameterTypes27, new Object[] { id });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -1017,8 +1104,8 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName26,
-				_methodParameterTypes26,
+			_invokableLocalService.invokeMethod(_methodName28,
+				_methodParameterTypes28,
 				new Object[] {
 					ClpSerializer.translateInput(dossierFolder),
 					
@@ -1059,8 +1146,8 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName27,
-				_methodParameterTypes27,
+			_invokableLocalService.invokeMethod(_methodName29,
+				_methodParameterTypes29,
 				new Object[] {
 					ClpSerializer.translateInput(dossierFolder),
 					
@@ -1100,8 +1187,8 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName28,
-				_methodParameterTypes28,
+			_invokableLocalService.invokeMethod(_methodName30,
+				_methodParameterTypes30,
 				new Object[] {
 					id,
 					
@@ -1174,10 +1261,10 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 	private String[] _methodParameterTypes18;
 	private String _methodName19;
 	private String[] _methodParameterTypes19;
+	private String _methodName20;
+	private String[] _methodParameterTypes20;
 	private String _methodName21;
 	private String[] _methodParameterTypes21;
-	private String _methodName22;
-	private String[] _methodParameterTypes22;
 	private String _methodName23;
 	private String[] _methodParameterTypes23;
 	private String _methodName24;
@@ -1190,4 +1277,8 @@ public class DossierFolderLocalServiceClp implements DossierFolderLocalService {
 	private String[] _methodParameterTypes27;
 	private String _methodName28;
 	private String[] _methodParameterTypes28;
+	private String _methodName29;
+	private String[] _methodParameterTypes29;
+	private String _methodName30;
+	private String[] _methodParameterTypes30;
 }

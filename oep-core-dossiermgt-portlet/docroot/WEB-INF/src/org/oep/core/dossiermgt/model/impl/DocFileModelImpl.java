@@ -78,11 +78,15 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 			{ "dossierDocId", Types.BIGINT },
 			{ "docTemplateId", Types.BIGINT },
 			{ "docFileVersionId", Types.BIGINT },
-			{ "docName", Types.VARCHAR },
+			{ "docFileName", Types.VARCHAR },
+			{ "docFileType", Types.BIGINT },
+			{ "verifyStatus", Types.INTEGER },
 			{ "note", Types.VARCHAR },
+			{ "approveBy", Types.VARCHAR },
+			{ "approveDate", Types.TIMESTAMP },
 			{ "premier", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_docfile (uuid_ VARCHAR(75) null,docFileId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierId LONG,dossierDocId LONG,docTemplateId LONG,docFileVersionId LONG,docName VARCHAR(200) null,note VARCHAR(200) null,premier INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_docfile (uuid_ VARCHAR(75) null,docFileId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierId LONG,dossierDocId LONG,docTemplateId LONG,docFileVersionId LONG,docFileName VARCHAR(100) null,docFileType LONG,verifyStatus INTEGER,note VARCHAR(200) null,approveBy VARCHAR(100) null,approveDate DATE null,premier INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_docfile";
 	public static final String ORDER_BY_JPQL = " ORDER BY docFile.docFileId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_docfile.docFileId ASC";
@@ -127,8 +131,12 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 		model.setDossierDocId(soapModel.getDossierDocId());
 		model.setDocTemplateId(soapModel.getDocTemplateId());
 		model.setDocFileVersionId(soapModel.getDocFileVersionId());
-		model.setDocName(soapModel.getDocName());
+		model.setDocFileName(soapModel.getDocFileName());
+		model.setDocFileType(soapModel.getDocFileType());
+		model.setVerifyStatus(soapModel.getVerifyStatus());
 		model.setNote(soapModel.getNote());
+		model.setApproveBy(soapModel.getApproveBy());
+		model.setApproveDate(soapModel.getApproveDate());
 		model.setPremier(soapModel.getPremier());
 
 		return model;
@@ -205,8 +213,12 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 		attributes.put("dossierDocId", getDossierDocId());
 		attributes.put("docTemplateId", getDocTemplateId());
 		attributes.put("docFileVersionId", getDocFileVersionId());
-		attributes.put("docName", getDocName());
+		attributes.put("docFileName", getDocFileName());
+		attributes.put("docFileType", getDocFileType());
+		attributes.put("verifyStatus", getVerifyStatus());
 		attributes.put("note", getNote());
+		attributes.put("approveBy", getApproveBy());
+		attributes.put("approveDate", getApproveDate());
 		attributes.put("premier", getPremier());
 
 		return attributes;
@@ -280,16 +292,40 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 			setDocFileVersionId(docFileVersionId);
 		}
 
-		String docName = (String)attributes.get("docName");
+		String docFileName = (String)attributes.get("docFileName");
 
-		if (docName != null) {
-			setDocName(docName);
+		if (docFileName != null) {
+			setDocFileName(docFileName);
+		}
+
+		Long docFileType = (Long)attributes.get("docFileType");
+
+		if (docFileType != null) {
+			setDocFileType(docFileType);
+		}
+
+		Integer verifyStatus = (Integer)attributes.get("verifyStatus");
+
+		if (verifyStatus != null) {
+			setVerifyStatus(verifyStatus);
 		}
 
 		String note = (String)attributes.get("note");
 
 		if (note != null) {
 			setNote(note);
+		}
+
+		String approveBy = (String)attributes.get("approveBy");
+
+		if (approveBy != null) {
+			setApproveBy(approveBy);
+		}
+
+		Date approveDate = (Date)attributes.get("approveDate");
+
+		if (approveDate != null) {
+			setApproveDate(approveDate);
 		}
 
 		Integer premier = (Integer)attributes.get("premier");
@@ -469,18 +505,40 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 
 	@JSON
 	@Override
-	public String getDocName() {
-		if (_docName == null) {
+	public String getDocFileName() {
+		if (_docFileName == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _docName;
+			return _docFileName;
 		}
 	}
 
 	@Override
-	public void setDocName(String docName) {
-		_docName = docName;
+	public void setDocFileName(String docFileName) {
+		_docFileName = docFileName;
+	}
+
+	@JSON
+	@Override
+	public long getDocFileType() {
+		return _docFileType;
+	}
+
+	@Override
+	public void setDocFileType(long docFileType) {
+		_docFileType = docFileType;
+	}
+
+	@JSON
+	@Override
+	public int getVerifyStatus() {
+		return _verifyStatus;
+	}
+
+	@Override
+	public void setVerifyStatus(int verifyStatus) {
+		_verifyStatus = verifyStatus;
 	}
 
 	@JSON
@@ -497,6 +555,33 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 	@Override
 	public void setNote(String note) {
 		_note = note;
+	}
+
+	@JSON
+	@Override
+	public String getApproveBy() {
+		if (_approveBy == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _approveBy;
+		}
+	}
+
+	@Override
+	public void setApproveBy(String approveBy) {
+		_approveBy = approveBy;
+	}
+
+	@JSON
+	@Override
+	public Date getApproveDate() {
+		return _approveDate;
+	}
+
+	@Override
+	public void setApproveDate(Date approveDate) {
+		_approveDate = approveDate;
 	}
 
 	@JSON
@@ -558,8 +643,12 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 		docFileImpl.setDossierDocId(getDossierDocId());
 		docFileImpl.setDocTemplateId(getDocTemplateId());
 		docFileImpl.setDocFileVersionId(getDocFileVersionId());
-		docFileImpl.setDocName(getDocName());
+		docFileImpl.setDocFileName(getDocFileName());
+		docFileImpl.setDocFileType(getDocFileType());
+		docFileImpl.setVerifyStatus(getVerifyStatus());
 		docFileImpl.setNote(getNote());
+		docFileImpl.setApproveBy(getApproveBy());
+		docFileImpl.setApproveDate(getApproveDate());
 		docFileImpl.setPremier(getPremier());
 
 		docFileImpl.resetOriginalValues();
@@ -672,13 +761,17 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 
 		docFileCacheModel.docFileVersionId = getDocFileVersionId();
 
-		docFileCacheModel.docName = getDocName();
+		docFileCacheModel.docFileName = getDocFileName();
 
-		String docName = docFileCacheModel.docName;
+		String docFileName = docFileCacheModel.docFileName;
 
-		if ((docName != null) && (docName.length() == 0)) {
-			docFileCacheModel.docName = null;
+		if ((docFileName != null) && (docFileName.length() == 0)) {
+			docFileCacheModel.docFileName = null;
 		}
+
+		docFileCacheModel.docFileType = getDocFileType();
+
+		docFileCacheModel.verifyStatus = getVerifyStatus();
 
 		docFileCacheModel.note = getNote();
 
@@ -688,6 +781,23 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 			docFileCacheModel.note = null;
 		}
 
+		docFileCacheModel.approveBy = getApproveBy();
+
+		String approveBy = docFileCacheModel.approveBy;
+
+		if ((approveBy != null) && (approveBy.length() == 0)) {
+			docFileCacheModel.approveBy = null;
+		}
+
+		Date approveDate = getApproveDate();
+
+		if (approveDate != null) {
+			docFileCacheModel.approveDate = approveDate.getTime();
+		}
+		else {
+			docFileCacheModel.approveDate = Long.MIN_VALUE;
+		}
+
 		docFileCacheModel.premier = getPremier();
 
 		return docFileCacheModel;
@@ -695,7 +805,7 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(29);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
@@ -719,10 +829,18 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 		sb.append(getDocTemplateId());
 		sb.append(", docFileVersionId=");
 		sb.append(getDocFileVersionId());
-		sb.append(", docName=");
-		sb.append(getDocName());
+		sb.append(", docFileName=");
+		sb.append(getDocFileName());
+		sb.append(", docFileType=");
+		sb.append(getDocFileType());
+		sb.append(", verifyStatus=");
+		sb.append(getVerifyStatus());
 		sb.append(", note=");
 		sb.append(getNote());
+		sb.append(", approveBy=");
+		sb.append(getApproveBy());
+		sb.append(", approveDate=");
+		sb.append(getApproveDate());
 		sb.append(", premier=");
 		sb.append(getPremier());
 		sb.append("}");
@@ -732,7 +850,7 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(46);
+		StringBundler sb = new StringBundler(58);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.DocFile");
@@ -783,12 +901,28 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 		sb.append(getDocFileVersionId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>docName</column-name><column-value><![CDATA[");
-		sb.append(getDocName());
+			"<column><column-name>docFileName</column-name><column-value><![CDATA[");
+		sb.append(getDocFileName());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>docFileType</column-name><column-value><![CDATA[");
+		sb.append(getDocFileType());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>verifyStatus</column-name><column-value><![CDATA[");
+		sb.append(getVerifyStatus());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>note</column-name><column-value><![CDATA[");
 		sb.append(getNote());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>approveBy</column-name><column-value><![CDATA[");
+		sb.append(getApproveBy());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>approveDate</column-name><column-value><![CDATA[");
+		sb.append(getApproveDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>premier</column-name><column-value><![CDATA[");
@@ -821,8 +955,12 @@ public class DocFileModelImpl extends BaseModelImpl<DocFile>
 	private long _dossierDocId;
 	private long _docTemplateId;
 	private long _docFileVersionId;
-	private String _docName;
+	private String _docFileName;
+	private long _docFileType;
+	private int _verifyStatus;
 	private String _note;
+	private String _approveBy;
+	private Date _approveDate;
 	private int _premier;
 	private long _columnBitmask;
 	private DocFile _escapedModel;

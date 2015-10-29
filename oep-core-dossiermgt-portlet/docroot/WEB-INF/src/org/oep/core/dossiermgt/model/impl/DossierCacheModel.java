@@ -37,7 +37,7 @@ import java.util.Date;
 public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(87);
+		StringBundler sb = new StringBundler(103);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -83,8 +83,16 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		sb.append(wardName);
 		sb.append(", telNo=");
 		sb.append(telNo);
+		sb.append(", email=");
+		sb.append(email);
+		sb.append(", subjectAsContactPerson=");
+		sb.append(subjectAsContactPerson);
 		sb.append(", contactPersonName=");
 		sb.append(contactPersonName);
+		sb.append(", contactPersonId=");
+		sb.append(contactPersonId);
+		sb.append(", contactPersonSex=");
+		sb.append(contactPersonSex);
 		sb.append(", contactPersonTel=");
 		sb.append(contactPersonTel);
 		sb.append(", note=");
@@ -93,20 +101,30 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		sb.append(resumeDescription);
 		sb.append(", receptionNo=");
 		sb.append(receptionNo);
+		sb.append(", onegate=");
+		sb.append(onegate);
 		sb.append(", submitDate=");
 		sb.append(submitDate);
 		sb.append(", receiveDate=");
 		sb.append(receiveDate);
+		sb.append(", processDate=");
+		sb.append(processDate);
 		sb.append(", renewDate=");
 		sb.append(renewDate);
 		sb.append(", estimateDate=");
 		sb.append(estimateDate);
 		sb.append(", finishDate=");
 		sb.append(finishDate);
+		sb.append(", handoverDate=");
+		sb.append(handoverDate);
 		sb.append(", returnDate=");
 		sb.append(returnDate);
-		sb.append(", status=");
-		sb.append(status);
+		sb.append(", archiveDate=");
+		sb.append(archiveDate);
+		sb.append(", mainStatus=");
+		sb.append(mainStatus);
+		sb.append(", subStatus=");
+		sb.append(subStatus);
 		sb.append(", statusDate=");
 		sb.append(statusDate);
 		sb.append(", statusDescription=");
@@ -115,14 +133,12 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		sb.append(feedbackNote);
 		sb.append(", daysDelay=");
 		sb.append(daysDelay);
-		sb.append(", closeDate=");
-		sb.append(closeDate);
 		sb.append(", errorStatus=");
 		sb.append(errorStatus);
-		sb.append(", pendingStatus=");
-		sb.append(pendingStatus);
 		sb.append(", errorCode=");
 		sb.append(errorCode);
+		sb.append(", pendingStatus=");
+		sb.append(pendingStatus);
 		sb.append(", dirty=");
 		sb.append(dirty);
 		sb.append("}");
@@ -254,12 +270,30 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			dossierImpl.setTelNo(telNo);
 		}
 
+		if (email == null) {
+			dossierImpl.setEmail(StringPool.BLANK);
+		}
+		else {
+			dossierImpl.setEmail(email);
+		}
+
+		dossierImpl.setSubjectAsContactPerson(subjectAsContactPerson);
+
 		if (contactPersonName == null) {
 			dossierImpl.setContactPersonName(StringPool.BLANK);
 		}
 		else {
 			dossierImpl.setContactPersonName(contactPersonName);
 		}
+
+		if (contactPersonId == null) {
+			dossierImpl.setContactPersonId(StringPool.BLANK);
+		}
+		else {
+			dossierImpl.setContactPersonId(contactPersonId);
+		}
+
+		dossierImpl.setContactPersonSex(contactPersonSex);
 
 		if (contactPersonTel == null) {
 			dossierImpl.setContactPersonTel(StringPool.BLANK);
@@ -289,6 +323,8 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			dossierImpl.setReceptionNo(receptionNo);
 		}
 
+		dossierImpl.setOnegate(onegate);
+
 		if (submitDate == Long.MIN_VALUE) {
 			dossierImpl.setSubmitDate(null);
 		}
@@ -301,6 +337,13 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		}
 		else {
 			dossierImpl.setReceiveDate(new Date(receiveDate));
+		}
+
+		if (processDate == Long.MIN_VALUE) {
+			dossierImpl.setProcessDate(null);
+		}
+		else {
+			dossierImpl.setProcessDate(new Date(processDate));
 		}
 
 		if (renewDate == Long.MIN_VALUE) {
@@ -324,6 +367,13 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			dossierImpl.setFinishDate(new Date(finishDate));
 		}
 
+		if (handoverDate == Long.MIN_VALUE) {
+			dossierImpl.setHandoverDate(null);
+		}
+		else {
+			dossierImpl.setHandoverDate(new Date(handoverDate));
+		}
+
 		if (returnDate == Long.MIN_VALUE) {
 			dossierImpl.setReturnDate(null);
 		}
@@ -331,11 +381,25 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			dossierImpl.setReturnDate(new Date(returnDate));
 		}
 
-		if (status == null) {
-			dossierImpl.setStatus(StringPool.BLANK);
+		if (archiveDate == Long.MIN_VALUE) {
+			dossierImpl.setArchiveDate(null);
 		}
 		else {
-			dossierImpl.setStatus(status);
+			dossierImpl.setArchiveDate(new Date(archiveDate));
+		}
+
+		if (mainStatus == null) {
+			dossierImpl.setMainStatus(StringPool.BLANK);
+		}
+		else {
+			dossierImpl.setMainStatus(mainStatus);
+		}
+
+		if (subStatus == null) {
+			dossierImpl.setSubStatus(StringPool.BLANK);
+		}
+		else {
+			dossierImpl.setSubStatus(subStatus);
 		}
 
 		if (statusDate == Long.MIN_VALUE) {
@@ -361,21 +425,12 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 
 		dossierImpl.setDaysDelay(daysDelay);
 
-		if (closeDate == Long.MIN_VALUE) {
-			dossierImpl.setCloseDate(null);
-		}
-		else {
-			dossierImpl.setCloseDate(new Date(closeDate));
-		}
-
 		if (errorStatus == null) {
 			dossierImpl.setErrorStatus(StringPool.BLANK);
 		}
 		else {
 			dossierImpl.setErrorStatus(errorStatus);
 		}
-
-		dossierImpl.setPendingStatus(pendingStatus);
 
 		if (errorCode == null) {
 			dossierImpl.setErrorCode(StringPool.BLANK);
@@ -384,6 +439,7 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			dossierImpl.setErrorCode(errorCode);
 		}
 
+		dossierImpl.setPendingStatus(pendingStatus);
 		dossierImpl.setDirty(dirty);
 
 		dossierImpl.resetOriginalValues();
@@ -415,26 +471,34 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		wardNo = objectInput.readUTF();
 		wardName = objectInput.readUTF();
 		telNo = objectInput.readUTF();
+		email = objectInput.readUTF();
+		subjectAsContactPerson = objectInput.readInt();
 		contactPersonName = objectInput.readUTF();
+		contactPersonId = objectInput.readUTF();
+		contactPersonSex = objectInput.readInt();
 		contactPersonTel = objectInput.readUTF();
 		note = objectInput.readUTF();
 		resumeDescription = objectInput.readUTF();
 		receptionNo = objectInput.readUTF();
+		onegate = objectInput.readInt();
 		submitDate = objectInput.readLong();
 		receiveDate = objectInput.readLong();
+		processDate = objectInput.readLong();
 		renewDate = objectInput.readLong();
 		estimateDate = objectInput.readLong();
 		finishDate = objectInput.readLong();
+		handoverDate = objectInput.readLong();
 		returnDate = objectInput.readLong();
-		status = objectInput.readUTF();
+		archiveDate = objectInput.readLong();
+		mainStatus = objectInput.readUTF();
+		subStatus = objectInput.readUTF();
 		statusDate = objectInput.readLong();
 		statusDescription = objectInput.readUTF();
 		feedbackNote = objectInput.readUTF();
 		daysDelay = objectInput.readInt();
-		closeDate = objectInput.readLong();
 		errorStatus = objectInput.readUTF();
-		pendingStatus = objectInput.readInt();
 		errorCode = objectInput.readUTF();
+		pendingStatus = objectInput.readInt();
 		dirty = objectInput.readInt();
 	}
 
@@ -548,12 +612,30 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			objectOutput.writeUTF(telNo);
 		}
 
+		if (email == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(email);
+		}
+
+		objectOutput.writeInt(subjectAsContactPerson);
+
 		if (contactPersonName == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
 			objectOutput.writeUTF(contactPersonName);
 		}
+
+		if (contactPersonId == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(contactPersonId);
+		}
+
+		objectOutput.writeInt(contactPersonSex);
 
 		if (contactPersonTel == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
@@ -583,18 +665,29 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			objectOutput.writeUTF(receptionNo);
 		}
 
+		objectOutput.writeInt(onegate);
 		objectOutput.writeLong(submitDate);
 		objectOutput.writeLong(receiveDate);
+		objectOutput.writeLong(processDate);
 		objectOutput.writeLong(renewDate);
 		objectOutput.writeLong(estimateDate);
 		objectOutput.writeLong(finishDate);
+		objectOutput.writeLong(handoverDate);
 		objectOutput.writeLong(returnDate);
+		objectOutput.writeLong(archiveDate);
 
-		if (status == null) {
+		if (mainStatus == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(status);
+			objectOutput.writeUTF(mainStatus);
+		}
+
+		if (subStatus == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(subStatus);
 		}
 
 		objectOutput.writeLong(statusDate);
@@ -614,7 +707,6 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 		}
 
 		objectOutput.writeInt(daysDelay);
-		objectOutput.writeLong(closeDate);
 
 		if (errorStatus == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
@@ -623,8 +715,6 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			objectOutput.writeUTF(errorStatus);
 		}
 
-		objectOutput.writeInt(pendingStatus);
-
 		if (errorCode == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
@@ -632,6 +722,7 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 			objectOutput.writeUTF(errorCode);
 		}
 
+		objectOutput.writeInt(pendingStatus);
 		objectOutput.writeInt(dirty);
 	}
 
@@ -657,25 +748,33 @@ public class DossierCacheModel implements CacheModel<Dossier>, Externalizable {
 	public String wardNo;
 	public String wardName;
 	public String telNo;
+	public String email;
+	public int subjectAsContactPerson;
 	public String contactPersonName;
+	public String contactPersonId;
+	public int contactPersonSex;
 	public String contactPersonTel;
 	public String note;
 	public String resumeDescription;
 	public String receptionNo;
+	public int onegate;
 	public long submitDate;
 	public long receiveDate;
+	public long processDate;
 	public long renewDate;
 	public long estimateDate;
 	public long finishDate;
+	public long handoverDate;
 	public long returnDate;
-	public String status;
+	public long archiveDate;
+	public String mainStatus;
+	public String subStatus;
 	public long statusDate;
 	public String statusDescription;
 	public String feedbackNote;
 	public int daysDelay;
-	public long closeDate;
 	public String errorStatus;
-	public int pendingStatus;
 	public String errorCode;
+	public int pendingStatus;
 	public int dirty;
 }

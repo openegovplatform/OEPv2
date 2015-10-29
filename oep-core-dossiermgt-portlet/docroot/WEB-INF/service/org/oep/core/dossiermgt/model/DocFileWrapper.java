@@ -61,8 +61,12 @@ public class DocFileWrapper implements DocFile, ModelWrapper<DocFile> {
 		attributes.put("dossierDocId", getDossierDocId());
 		attributes.put("docTemplateId", getDocTemplateId());
 		attributes.put("docFileVersionId", getDocFileVersionId());
-		attributes.put("docName", getDocName());
+		attributes.put("docFileName", getDocFileName());
+		attributes.put("docFileType", getDocFileType());
+		attributes.put("verifyStatus", getVerifyStatus());
 		attributes.put("note", getNote());
+		attributes.put("approveBy", getApproveBy());
+		attributes.put("approveDate", getApproveDate());
 		attributes.put("premier", getPremier());
 
 		return attributes;
@@ -136,16 +140,40 @@ public class DocFileWrapper implements DocFile, ModelWrapper<DocFile> {
 			setDocFileVersionId(docFileVersionId);
 		}
 
-		String docName = (String)attributes.get("docName");
+		String docFileName = (String)attributes.get("docFileName");
 
-		if (docName != null) {
-			setDocName(docName);
+		if (docFileName != null) {
+			setDocFileName(docFileName);
+		}
+
+		Long docFileType = (Long)attributes.get("docFileType");
+
+		if (docFileType != null) {
+			setDocFileType(docFileType);
+		}
+
+		Integer verifyStatus = (Integer)attributes.get("verifyStatus");
+
+		if (verifyStatus != null) {
+			setVerifyStatus(verifyStatus);
 		}
 
 		String note = (String)attributes.get("note");
 
 		if (note != null) {
 			setNote(note);
+		}
+
+		String approveBy = (String)attributes.get("approveBy");
+
+		if (approveBy != null) {
+			setApproveBy(approveBy);
+		}
+
+		Date approveDate = (Date)attributes.get("approveDate");
+
+		if (approveDate != null) {
+			setApproveDate(approveDate);
 		}
 
 		Integer premier = (Integer)attributes.get("premier");
@@ -418,23 +446,63 @@ public class DocFileWrapper implements DocFile, ModelWrapper<DocFile> {
 	}
 
 	/**
-	* Returns the doc name of this doc file.
+	* Returns the doc file name of this doc file.
 	*
-	* @return the doc name of this doc file
+	* @return the doc file name of this doc file
 	*/
 	@Override
-	public java.lang.String getDocName() {
-		return _docFile.getDocName();
+	public java.lang.String getDocFileName() {
+		return _docFile.getDocFileName();
 	}
 
 	/**
-	* Sets the doc name of this doc file.
+	* Sets the doc file name of this doc file.
 	*
-	* @param docName the doc name of this doc file
+	* @param docFileName the doc file name of this doc file
 	*/
 	@Override
-	public void setDocName(java.lang.String docName) {
-		_docFile.setDocName(docName);
+	public void setDocFileName(java.lang.String docFileName) {
+		_docFile.setDocFileName(docFileName);
+	}
+
+	/**
+	* Returns the doc file type of this doc file.
+	*
+	* @return the doc file type of this doc file
+	*/
+	@Override
+	public long getDocFileType() {
+		return _docFile.getDocFileType();
+	}
+
+	/**
+	* Sets the doc file type of this doc file.
+	*
+	* @param docFileType the doc file type of this doc file
+	*/
+	@Override
+	public void setDocFileType(long docFileType) {
+		_docFile.setDocFileType(docFileType);
+	}
+
+	/**
+	* Returns the verify status of this doc file.
+	*
+	* @return the verify status of this doc file
+	*/
+	@Override
+	public int getVerifyStatus() {
+		return _docFile.getVerifyStatus();
+	}
+
+	/**
+	* Sets the verify status of this doc file.
+	*
+	* @param verifyStatus the verify status of this doc file
+	*/
+	@Override
+	public void setVerifyStatus(int verifyStatus) {
+		_docFile.setVerifyStatus(verifyStatus);
 	}
 
 	/**
@@ -455,6 +523,46 @@ public class DocFileWrapper implements DocFile, ModelWrapper<DocFile> {
 	@Override
 	public void setNote(java.lang.String note) {
 		_docFile.setNote(note);
+	}
+
+	/**
+	* Returns the approve by of this doc file.
+	*
+	* @return the approve by of this doc file
+	*/
+	@Override
+	public java.lang.String getApproveBy() {
+		return _docFile.getApproveBy();
+	}
+
+	/**
+	* Sets the approve by of this doc file.
+	*
+	* @param approveBy the approve by of this doc file
+	*/
+	@Override
+	public void setApproveBy(java.lang.String approveBy) {
+		_docFile.setApproveBy(approveBy);
+	}
+
+	/**
+	* Returns the approve date of this doc file.
+	*
+	* @return the approve date of this doc file
+	*/
+	@Override
+	public java.util.Date getApproveDate() {
+		return _docFile.getApproveDate();
+	}
+
+	/**
+	* Sets the approve date of this doc file.
+	*
+	* @param approveDate the approve date of this doc file
+	*/
+	@Override
+	public void setApproveDate(java.util.Date approveDate) {
+		_docFile.setApproveDate(approveDate);
 	}
 
 	/**

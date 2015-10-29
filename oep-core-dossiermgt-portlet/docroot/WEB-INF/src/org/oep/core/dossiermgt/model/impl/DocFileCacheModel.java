@@ -37,7 +37,7 @@ import java.util.Date;
 public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(29);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -61,10 +61,18 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 		sb.append(docTemplateId);
 		sb.append(", docFileVersionId=");
 		sb.append(docFileVersionId);
-		sb.append(", docName=");
-		sb.append(docName);
+		sb.append(", docFileName=");
+		sb.append(docFileName);
+		sb.append(", docFileType=");
+		sb.append(docFileType);
+		sb.append(", verifyStatus=");
+		sb.append(verifyStatus);
 		sb.append(", note=");
 		sb.append(note);
+		sb.append(", approveBy=");
+		sb.append(approveBy);
+		sb.append(", approveDate=");
+		sb.append(approveDate);
 		sb.append(", premier=");
 		sb.append(premier);
 		sb.append("}");
@@ -107,18 +115,35 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 		docFileImpl.setDocTemplateId(docTemplateId);
 		docFileImpl.setDocFileVersionId(docFileVersionId);
 
-		if (docName == null) {
-			docFileImpl.setDocName(StringPool.BLANK);
+		if (docFileName == null) {
+			docFileImpl.setDocFileName(StringPool.BLANK);
 		}
 		else {
-			docFileImpl.setDocName(docName);
+			docFileImpl.setDocFileName(docFileName);
 		}
+
+		docFileImpl.setDocFileType(docFileType);
+		docFileImpl.setVerifyStatus(verifyStatus);
 
 		if (note == null) {
 			docFileImpl.setNote(StringPool.BLANK);
 		}
 		else {
 			docFileImpl.setNote(note);
+		}
+
+		if (approveBy == null) {
+			docFileImpl.setApproveBy(StringPool.BLANK);
+		}
+		else {
+			docFileImpl.setApproveBy(approveBy);
+		}
+
+		if (approveDate == Long.MIN_VALUE) {
+			docFileImpl.setApproveDate(null);
+		}
+		else {
+			docFileImpl.setApproveDate(new Date(approveDate));
 		}
 
 		docFileImpl.setPremier(premier);
@@ -141,8 +166,12 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 		dossierDocId = objectInput.readLong();
 		docTemplateId = objectInput.readLong();
 		docFileVersionId = objectInput.readLong();
-		docName = objectInput.readUTF();
+		docFileName = objectInput.readUTF();
+		docFileType = objectInput.readLong();
+		verifyStatus = objectInput.readInt();
 		note = objectInput.readUTF();
+		approveBy = objectInput.readUTF();
+		approveDate = objectInput.readLong();
 		premier = objectInput.readInt();
 	}
 
@@ -167,12 +196,15 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 		objectOutput.writeLong(docTemplateId);
 		objectOutput.writeLong(docFileVersionId);
 
-		if (docName == null) {
+		if (docFileName == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(docName);
+			objectOutput.writeUTF(docFileName);
 		}
+
+		objectOutput.writeLong(docFileType);
+		objectOutput.writeInt(verifyStatus);
 
 		if (note == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
@@ -181,6 +213,14 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 			objectOutput.writeUTF(note);
 		}
 
+		if (approveBy == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(approveBy);
+		}
+
+		objectOutput.writeLong(approveDate);
 		objectOutput.writeInt(premier);
 	}
 
@@ -195,7 +235,11 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 	public long dossierDocId;
 	public long docTemplateId;
 	public long docFileVersionId;
-	public String docName;
+	public String docFileName;
+	public long docFileType;
+	public int verifyStatus;
 	public String note;
+	public String approveBy;
+	public long approveDate;
 	public int premier;
 }

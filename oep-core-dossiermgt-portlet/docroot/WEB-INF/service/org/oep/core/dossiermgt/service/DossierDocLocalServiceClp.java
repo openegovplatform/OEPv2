@@ -1266,7 +1266,7 @@ public class DossierDocLocalServiceClp implements DossierDocLocalService {
 	public org.oep.core.dossiermgt.model.DossierDoc addDossierDoc(
 		long dossierProcId, java.lang.String dossierDocNo,
 		java.lang.String dossierDocName, java.lang.String note, int sequenceNo,
-		long defaultDocTemplateId, int validationType, int numberOfFile,
+		long defaultDocTemplateId, int dossierDocType, int numberOfFile,
 		java.lang.String onlineForm,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -1289,7 +1289,7 @@ public class DossierDocLocalServiceClp implements DossierDocLocalService {
 						
 					defaultDocTemplateId,
 						
-					validationType,
+					dossierDocType,
 						
 					numberOfFile,
 						
@@ -1325,7 +1325,7 @@ public class DossierDocLocalServiceClp implements DossierDocLocalService {
 	public org.oep.core.dossiermgt.model.DossierDoc updateDossierDoc(long id,
 		long dossierProcId, java.lang.String dossierDocNo,
 		java.lang.String dossierDocName, java.lang.String note, int sequenceNo,
-		long defaultDocTemplateId, int validationType, int numberOfFile,
+		long defaultDocTemplateId, int dossierDocType, int numberOfFile,
 		java.lang.String onlineForm,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -1350,7 +1350,7 @@ public class DossierDocLocalServiceClp implements DossierDocLocalService {
 						
 					defaultDocTemplateId,
 						
-					validationType,
+					dossierDocType,
 						
 					numberOfFile,
 						

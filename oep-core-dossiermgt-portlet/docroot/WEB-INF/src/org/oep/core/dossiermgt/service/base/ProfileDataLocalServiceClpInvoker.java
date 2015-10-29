@@ -106,13 +106,48 @@ public class ProfileDataLocalServiceClpInvoker {
 				"org.oep.core.dossiermgt.model.ProfileData"
 			};
 
-		_methodName136 = "getBeanIdentifier";
+		_methodName152 = "getBeanIdentifier";
 
-		_methodParameterTypes136 = new String[] {  };
+		_methodParameterTypes152 = new String[] {  };
 
-		_methodName137 = "setBeanIdentifier";
+		_methodName153 = "setBeanIdentifier";
 
-		_methodParameterTypes137 = new String[] { "java.lang.String" };
+		_methodParameterTypes153 = new String[] { "java.lang.String" };
+
+		_methodName158 = "addProfileData";
+
+		_methodParameterTypes158 = new String[] {
+				"java.lang.String", "java.lang.String",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName159 = "updateProfileData";
+
+		_methodParameterTypes159 = new String[] {
+				"long", "java.lang.String", "java.lang.String",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName160 = "updateProfileData";
+
+		_methodParameterTypes160 = new String[] {
+				"org.oep.core.dossiermgt.model.ProfileData",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName162 = "removeProfileData";
+
+		_methodParameterTypes162 = new String[] {
+				"org.oep.core.dossiermgt.model.ProfileData"
+			};
+
+		_methodName163 = "removeProfileData";
+
+		_methodParameterTypes163 = new String[] { "long" };
+
+		_methodName164 = "getProfileData";
+
+		_methodParameterTypes164 = new String[] { "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -204,16 +239,55 @@ public class ProfileDataLocalServiceClpInvoker {
 			return ProfileDataLocalServiceUtil.updateProfileData((org.oep.core.dossiermgt.model.ProfileData)arguments[0]);
 		}
 
-		if (_methodName136.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes136, parameterTypes)) {
+		if (_methodName152.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes152, parameterTypes)) {
 			return ProfileDataLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName137.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes137, parameterTypes)) {
+		if (_methodName153.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes153, parameterTypes)) {
 			ProfileDataLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
+		}
+
+		if (_methodName158.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes158, parameterTypes)) {
+			return ProfileDataLocalServiceUtil.addProfileData((java.lang.String)arguments[0],
+				(java.lang.String)arguments[1],
+				(com.liferay.portal.service.ServiceContext)arguments[2]);
+		}
+
+		if (_methodName159.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes159, parameterTypes)) {
+			return ProfileDataLocalServiceUtil.updateProfileData(((Long)arguments[0]).longValue(),
+				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
+		}
+
+		if (_methodName160.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes160, parameterTypes)) {
+			return ProfileDataLocalServiceUtil.updateProfileData((org.oep.core.dossiermgt.model.ProfileData)arguments[0],
+				(com.liferay.portal.service.ServiceContext)arguments[1]);
+		}
+
+		if (_methodName162.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes162, parameterTypes)) {
+			ProfileDataLocalServiceUtil.removeProfileData((org.oep.core.dossiermgt.model.ProfileData)arguments[0]);
+
+			return null;
+		}
+
+		if (_methodName163.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes163, parameterTypes)) {
+			ProfileDataLocalServiceUtil.removeProfileData(((Long)arguments[0]).longValue());
+
+			return null;
+		}
+
+		if (_methodName164.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes164, parameterTypes)) {
+			return ProfileDataLocalServiceUtil.getProfileData(((Long)arguments[0]).longValue());
 		}
 
 		throw new UnsupportedOperationException();
@@ -251,8 +325,20 @@ public class ProfileDataLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName136;
-	private String[] _methodParameterTypes136;
-	private String _methodName137;
-	private String[] _methodParameterTypes137;
+	private String _methodName152;
+	private String[] _methodParameterTypes152;
+	private String _methodName153;
+	private String[] _methodParameterTypes153;
+	private String _methodName158;
+	private String[] _methodParameterTypes158;
+	private String _methodName159;
+	private String[] _methodParameterTypes159;
+	private String _methodName160;
+	private String[] _methodParameterTypes160;
+	private String _methodName162;
+	private String[] _methodParameterTypes162;
+	private String _methodName163;
+	private String[] _methodParameterTypes163;
+	private String _methodName164;
+	private String[] _methodParameterTypes164;
 }

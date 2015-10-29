@@ -407,6 +407,35 @@ public interface DossierModel extends BaseModel<Dossier>, StagedModel {
 	public void setTelNo(String telNo);
 
 	/**
+	 * Returns the email of this dossier.
+	 *
+	 * @return the email of this dossier
+	 */
+	@AutoEscape
+	public String getEmail();
+
+	/**
+	 * Sets the email of this dossier.
+	 *
+	 * @param email the email of this dossier
+	 */
+	public void setEmail(String email);
+
+	/**
+	 * Returns the subject as contact person of this dossier.
+	 *
+	 * @return the subject as contact person of this dossier
+	 */
+	public int getSubjectAsContactPerson();
+
+	/**
+	 * Sets the subject as contact person of this dossier.
+	 *
+	 * @param subjectAsContactPerson the subject as contact person of this dossier
+	 */
+	public void setSubjectAsContactPerson(int subjectAsContactPerson);
+
+	/**
 	 * Returns the contact person name of this dossier.
 	 *
 	 * @return the contact person name of this dossier
@@ -420,6 +449,35 @@ public interface DossierModel extends BaseModel<Dossier>, StagedModel {
 	 * @param contactPersonName the contact person name of this dossier
 	 */
 	public void setContactPersonName(String contactPersonName);
+
+	/**
+	 * Returns the contact person ID of this dossier.
+	 *
+	 * @return the contact person ID of this dossier
+	 */
+	@AutoEscape
+	public String getContactPersonId();
+
+	/**
+	 * Sets the contact person ID of this dossier.
+	 *
+	 * @param contactPersonId the contact person ID of this dossier
+	 */
+	public void setContactPersonId(String contactPersonId);
+
+	/**
+	 * Returns the contact person sex of this dossier.
+	 *
+	 * @return the contact person sex of this dossier
+	 */
+	public int getContactPersonSex();
+
+	/**
+	 * Sets the contact person sex of this dossier.
+	 *
+	 * @param contactPersonSex the contact person sex of this dossier
+	 */
+	public void setContactPersonSex(int contactPersonSex);
 
 	/**
 	 * Returns the contact person tel of this dossier.
@@ -482,6 +540,20 @@ public interface DossierModel extends BaseModel<Dossier>, StagedModel {
 	public void setReceptionNo(String receptionNo);
 
 	/**
+	 * Returns the onegate of this dossier.
+	 *
+	 * @return the onegate of this dossier
+	 */
+	public int getOnegate();
+
+	/**
+	 * Sets the onegate of this dossier.
+	 *
+	 * @param onegate the onegate of this dossier
+	 */
+	public void setOnegate(int onegate);
+
+	/**
 	 * Returns the submit date of this dossier.
 	 *
 	 * @return the submit date of this dossier
@@ -508,6 +580,20 @@ public interface DossierModel extends BaseModel<Dossier>, StagedModel {
 	 * @param receiveDate the receive date of this dossier
 	 */
 	public void setReceiveDate(Date receiveDate);
+
+	/**
+	 * Returns the process date of this dossier.
+	 *
+	 * @return the process date of this dossier
+	 */
+	public Date getProcessDate();
+
+	/**
+	 * Sets the process date of this dossier.
+	 *
+	 * @param processDate the process date of this dossier
+	 */
+	public void setProcessDate(Date processDate);
 
 	/**
 	 * Returns the renew date of this dossier.
@@ -552,6 +638,20 @@ public interface DossierModel extends BaseModel<Dossier>, StagedModel {
 	public void setFinishDate(Date finishDate);
 
 	/**
+	 * Returns the handover date of this dossier.
+	 *
+	 * @return the handover date of this dossier
+	 */
+	public Date getHandoverDate();
+
+	/**
+	 * Sets the handover date of this dossier.
+	 *
+	 * @param handoverDate the handover date of this dossier
+	 */
+	public void setHandoverDate(Date handoverDate);
+
+	/**
 	 * Returns the return date of this dossier.
 	 *
 	 * @return the return date of this dossier
@@ -566,19 +666,48 @@ public interface DossierModel extends BaseModel<Dossier>, StagedModel {
 	public void setReturnDate(Date returnDate);
 
 	/**
-	 * Returns the status of this dossier.
+	 * Returns the archive date of this dossier.
 	 *
-	 * @return the status of this dossier
+	 * @return the archive date of this dossier
 	 */
-	@AutoEscape
-	public String getStatus();
+	public Date getArchiveDate();
 
 	/**
-	 * Sets the status of this dossier.
+	 * Sets the archive date of this dossier.
 	 *
-	 * @param status the status of this dossier
+	 * @param archiveDate the archive date of this dossier
 	 */
-	public void setStatus(String status);
+	public void setArchiveDate(Date archiveDate);
+
+	/**
+	 * Returns the main status of this dossier.
+	 *
+	 * @return the main status of this dossier
+	 */
+	@AutoEscape
+	public String getMainStatus();
+
+	/**
+	 * Sets the main status of this dossier.
+	 *
+	 * @param mainStatus the main status of this dossier
+	 */
+	public void setMainStatus(String mainStatus);
+
+	/**
+	 * Returns the sub status of this dossier.
+	 *
+	 * @return the sub status of this dossier
+	 */
+	@AutoEscape
+	public String getSubStatus();
+
+	/**
+	 * Sets the sub status of this dossier.
+	 *
+	 * @param subStatus the sub status of this dossier
+	 */
+	public void setSubStatus(String subStatus);
 
 	/**
 	 * Returns the status date of this dossier.
@@ -639,20 +768,6 @@ public interface DossierModel extends BaseModel<Dossier>, StagedModel {
 	public void setDaysDelay(int daysDelay);
 
 	/**
-	 * Returns the close date of this dossier.
-	 *
-	 * @return the close date of this dossier
-	 */
-	public Date getCloseDate();
-
-	/**
-	 * Sets the close date of this dossier.
-	 *
-	 * @param closeDate the close date of this dossier
-	 */
-	public void setCloseDate(Date closeDate);
-
-	/**
 	 * Returns the error status of this dossier.
 	 *
 	 * @return the error status of this dossier
@@ -668,20 +783,6 @@ public interface DossierModel extends BaseModel<Dossier>, StagedModel {
 	public void setErrorStatus(String errorStatus);
 
 	/**
-	 * Returns the pending status of this dossier.
-	 *
-	 * @return the pending status of this dossier
-	 */
-	public int getPendingStatus();
-
-	/**
-	 * Sets the pending status of this dossier.
-	 *
-	 * @param pendingStatus the pending status of this dossier
-	 */
-	public void setPendingStatus(int pendingStatus);
-
-	/**
 	 * Returns the error code of this dossier.
 	 *
 	 * @return the error code of this dossier
@@ -695,6 +796,20 @@ public interface DossierModel extends BaseModel<Dossier>, StagedModel {
 	 * @param errorCode the error code of this dossier
 	 */
 	public void setErrorCode(String errorCode);
+
+	/**
+	 * Returns the pending status of this dossier.
+	 *
+	 * @return the pending status of this dossier
+	 */
+	public int getPendingStatus();
+
+	/**
+	 * Sets the pending status of this dossier.
+	 *
+	 * @param pendingStatus the pending status of this dossier
+	 */
+	public void setPendingStatus(int pendingStatus);
 
 	/**
 	 * Returns the dirty of this dossier.

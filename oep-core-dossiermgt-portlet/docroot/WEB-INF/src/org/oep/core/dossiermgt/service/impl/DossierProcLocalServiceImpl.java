@@ -11,6 +11,7 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
+
 /** 
  * Copyright (c) 2015 by Open eGovPlatform (http://http://openegovplatform.org/).
  * 
@@ -36,8 +37,6 @@ import org.oep.core.datamgt.dictionary.model.DictData;
 import org.oep.core.datamgt.service.DictionaryAppLocalServiceUtil;
 import org.oep.core.dossiermgt.DossierProcEffectExpireDateException;
 import org.oep.core.dossiermgt.DossierProcNoException;
-import org.oep.core.dossiermgt.NoSuchAdministrationException;
-import org.oep.core.dossiermgt.NoSuchDomainException;
 import org.oep.core.dossiermgt.model.DossierProc;
 import org.oep.core.dossiermgt.service.base.DossierProcLocalServiceBaseImpl;
 
@@ -123,9 +122,11 @@ public class DossierProcLocalServiceImpl extends DossierProcLocalServiceBaseImpl
 			String instructionsDescription,
 			String administrationNo,
 			String domainNo,
+			int forCitizen,
+			int forBusiness,
 			Date effectDate,
 			Date expireDate,
-			int active,
+			int statusActive,
 			ServiceContext serviceContext) throws SystemException, PortalException {
 		validate(-1, dossierProcNo, administrationNo, domainNo, effectDate, expireDate, true, serviceContext);
 		long id = counterLocalService.increment();
@@ -158,7 +159,9 @@ public class DossierProcLocalServiceImpl extends DossierProcLocalServiceBaseImpl
 		dossierProc.setDomainName(domainName);
 		dossierProc.setEffectDate(effectDate);
 		dossierProc.setExpireDate(expireDate);
-		dossierProc.setActive(active);
+		dossierProc.setForCitizen(forCitizen);
+		dossierProc.setForBusiness(forBusiness);
+		dossierProc.setStatusActive(statusActive);
 		
 		dossierProc.setCompanyId(user.getCompanyId());
 		dossierProc.setCreateDate(serviceContext.getCreateDate(now));
@@ -177,33 +180,6 @@ public class DossierProcLocalServiceImpl extends DossierProcLocalServiceBaseImpl
 			addDossierProcResources(dossierProc, serviceContext.getGroupPermissions(), serviceContext.getGuestPermissions(), serviceContext);
 		}
 		return getDossierProc(id);
-	}
-
-	/** 
-	 * Thêm mới một thủ tục hành chính công
-	 * 
-	 * Version: OEP 2.0
-	 *  
-	 * History: 
-	 *   DATE        AUTHOR      DESCRIPTION 
-	 *  ------------------------------------------------- 
-	 *  21-September-2015  trungdk    Tạo mới thủ tục hành chính
-	 * @param dossierProcNo mã thủ tục hành chính
-	 * @param name tên thủ tục hành chính
-	 * @param administrationNo Cấp quản lý
-	 * @param domainNo Đơn vị quản lý
-	 * @param serviceContext ngữ cảnh dịch vụ
-	 * @return: đối tượng thủ tục hành chính mới được thêm vào
-	 */
-	@Indexable(type = IndexableType.REINDEX)	
-	public DossierProc addDossierProc(
-			long userId,
-			String dossierProcNo, 
-			String name, 
-			String administrationNo,
-			String domainNo,
-			ServiceContext serviceContext) throws SystemException, PortalException {
-		return addDossierProc(userId, dossierProcNo, name, "", "", "", "", "", "", "", "", "", "", "", "", administrationNo, domainNo, null, null, 1, serviceContext);
 	}
 	
 	/** 
@@ -257,9 +233,11 @@ public class DossierProcLocalServiceImpl extends DossierProcLocalServiceBaseImpl
 			String instructionsDescription,
 			String administrationNo,
 			String domainNo,
+			int forCitizen,
+			int forBusiness,
 			Date effectDate,
 			Date expireDate,
-			int active,
+			int statusActive,
 			ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
@@ -292,7 +270,9 @@ public class DossierProcLocalServiceImpl extends DossierProcLocalServiceBaseImpl
 		dossierProc.setDomainName(domainName);
 		dossierProc.setEffectDate(effectDate);
 		dossierProc.setExpireDate(expireDate);
-		dossierProc.setActive(active);
+		dossierProc.setForCitizen(forCitizen);
+		dossierProc.setForBusiness(forBusiness);
+		dossierProc.setStatusActive(statusActive);
 
 		dossierProcPersistence.update(dossierProc);
 
@@ -325,7 +305,7 @@ public class DossierProcLocalServiceImpl extends DossierProcLocalServiceBaseImpl
 		DossierProc dossierProc,
 		ServiceContext serviceContext
 		) throws PortalException, SystemException {
-		return updateDossierProc(dossierProc.getDossierProcId(), dossierProc.getDossierProcNo(), dossierProc.getName(), dossierProc.getEnName(), dossierProc.getShortName(), dossierProc.getProcessDescription(), dossierProc.getMethodDescription(), dossierProc.getDossierDescription(), dossierProc.getConditionDescription(), dossierProc.getDurationDescription(), dossierProc.getActorsDescription(), dossierProc.getResultsDescription(), dossierProc.getRecordsDescription(), dossierProc.getFeeDescription(), dossierProc.getInstructionsDescription(), dossierProc.getAdministrationNo(), dossierProc.getDomainNo(), dossierProc.getEffectDate(), dossierProc.getExpireDate(), dossierProc.getActive(), serviceContext);
+		return updateDossierProc(dossierProc.getDossierProcId(), dossierProc.getDossierProcNo(), dossierProc.getName(), dossierProc.getEnName(), dossierProc.getShortName(), dossierProc.getProcessDescription(), dossierProc.getMethodDescription(), dossierProc.getDossierDescription(), dossierProc.getConditionDescription(), dossierProc.getDurationDescription(), dossierProc.getActorsDescription(), dossierProc.getResultsDescription(), dossierProc.getRecordsDescription(), dossierProc.getFeeDescription(), dossierProc.getInstructionsDescription(), dossierProc.getAdministrationNo(), dossierProc.getDomainNo(), dossierProc.getForCitizen(), dossierProc.getForBusiness(), dossierProc.getEffectDate(), dossierProc.getExpireDate(), dossierProc.getStatusActive(), serviceContext);
 	}
 	
 	private void updateDossierProcResources(
@@ -571,12 +551,12 @@ public class DossierProcLocalServiceImpl extends DossierProcLocalServiceBaseImpl
 		return dossierProcFinder.countByCustomCondition(name, effectDate, expireDate, active, serviceContext);
 	}
 
-	public List<DossierProc> findByGroupCustomCondition(String name, Date effectDate, Date expireDate, int active, int startIndex, int endIndex, ServiceContext serviceContext) throws SystemException {
-		return dossierProcFinder.findByGroupCustomCondition(name, effectDate, expireDate, active, startIndex, endIndex, serviceContext);
+	public List<DossierProc> findByGroupCustomCondition(String name, String administrationNo, String domainNo, Date effectDate, Date expireDate, int active, int startIndex, int endIndex, ServiceContext serviceContext) throws SystemException {
+		return dossierProcFinder.findByGroupCustomCondition(name, administrationNo, domainNo, effectDate, expireDate, active, startIndex, endIndex, serviceContext);
 	}
 	
-	public int countByGroupCustomCondition(String name, Date effectDate, Date expireDate, int active, ServiceContext serviceContext) throws SystemException {
-		return dossierProcFinder.countByGroupCustomCondition(name, effectDate, expireDate, active, serviceContext);
+	public int countByGroupCustomCondition(String name, String administrationNo, String domainNo, Date effectDate, Date expireDate, int active, ServiceContext serviceContext) throws SystemException {
+		return dossierProcFinder.countByGroupCustomCondition(name, administrationNo, domainNo, effectDate, expireDate, active, serviceContext);
 	}
 	
 	public List<DossierProc> findByCompany(long companyId) throws SystemException {

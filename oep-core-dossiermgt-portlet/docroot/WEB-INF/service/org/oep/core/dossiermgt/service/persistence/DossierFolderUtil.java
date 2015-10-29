@@ -271,6 +271,79 @@ public class DossierFolderUtil {
 	}
 
 	/**
+	* Returns the dossier folder where uuid = &#63; and groupId = &#63; or throws a {@link org.oep.core.dossiermgt.NoSuchDossierFolderException} if it could not be found.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @return the matching dossier folder
+	* @throws org.oep.core.dossiermgt.NoSuchDossierFolderException if a matching dossier folder could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierFolder findByUUID_G(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.core.dossiermgt.NoSuchDossierFolderException {
+		return getPersistence().findByUUID_G(uuid, groupId);
+	}
+
+	/**
+	* Returns the dossier folder where uuid = &#63; and groupId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @return the matching dossier folder, or <code>null</code> if a matching dossier folder could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierFolder fetchByUUID_G(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByUUID_G(uuid, groupId);
+	}
+
+	/**
+	* Returns the dossier folder where uuid = &#63; and groupId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @param retrieveFromCache whether to use the finder cache
+	* @return the matching dossier folder, or <code>null</code> if a matching dossier folder could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierFolder fetchByUUID_G(
+		java.lang.String uuid, long groupId, boolean retrieveFromCache)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByUUID_G(uuid, groupId, retrieveFromCache);
+	}
+
+	/**
+	* Removes the dossier folder where uuid = &#63; and groupId = &#63; from the database.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @return the dossier folder that was removed
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.core.dossiermgt.model.DossierFolder removeByUUID_G(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.core.dossiermgt.NoSuchDossierFolderException {
+		return getPersistence().removeByUUID_G(uuid, groupId);
+	}
+
+	/**
+	* Returns the number of dossier folders where uuid = &#63; and groupId = &#63;.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @return the number of matching dossier folders
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByUUID_G(java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByUUID_G(uuid, groupId);
+	}
+
+	/**
 	* Returns all the dossier folders where uuid = &#63; and companyId = &#63;.
 	*
 	* @param uuid the uuid

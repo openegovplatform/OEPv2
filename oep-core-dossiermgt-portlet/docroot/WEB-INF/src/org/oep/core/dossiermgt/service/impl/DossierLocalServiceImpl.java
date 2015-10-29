@@ -25,6 +25,7 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
+import com.liferay.portal.kernel.uuid.PortalUUIDUtil;
 import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.service.ServiceContext;
 
@@ -78,21 +79,34 @@ public class DossierLocalServiceImpl extends DossierLocalServiceBaseImpl {
 			String wardNo,
 			String wardName,
 			String telNo,
+			String email,
+			int subjectAsContactPerson,
 			String contactPersonName,
+			String contactPersonId,
+			int contactPersonSex,
 			String contactPersonTel,
 			String note,
 			String resumeDescription,
 			String receptionNo,
+			int onegate,
 			Date submitDate,
 			Date receiveDate,
+			Date processDate,
 			Date renewDate,
 			Date estimateDate,
+			Date finishDate,
+			Date handoverDate,
 			Date returnDate,
-			Date closeDate,
-			String status,
+			Date archiveDate,
+			String mainStatus,
+			String subStatus,
 			Date statusDate,
 			String statusDescription,
 			String feedbackNote,
+			int daysDelay,
+			String errorStatus,
+			String errorCode,
+			int pendingStatus,
 			int dirty,
 			ServiceContext serviceContext) throws SystemException, PortalException {
 		validate();
@@ -103,6 +117,7 @@ public class DossierLocalServiceImpl extends DossierLocalServiceBaseImpl {
 		dossier.setCompanyId(serviceContext.getCompanyId());
 		dossier.setGroupId(serviceContext.getScopeGroupId());
 		dossier.setUserId(serviceContext.getUserId());
+		dossier.setUuid(PortalUUIDUtil.generate());
 		dossier.setCreateDate(serviceContext.getCreateDate(now));
 		dossier.setOrganizationId(organizationId);
 		dossier.setDossierProcId(dossierProcId);
@@ -119,35 +134,55 @@ public class DossierLocalServiceImpl extends DossierLocalServiceBaseImpl {
 		dossier.setWardNo(wardNo);
 		dossier.setWardName(wardName);
 		dossier.setTelNo(telNo);
+		dossier.setEmail(email);
+		dossier.setSubjectAsContactPerson(subjectAsContactPerson);
 		dossier.setContactPersonName(contactPersonName);
+		dossier.setContactPersonId(contactPersonId);
+		dossier.setContactPersonSex(contactPersonSex);
 		dossier.setContactPersonTel(contactPersonTel);
 		dossier.setNote(note);
 		dossier.setResumeDescription(resumeDescription);
 		dossier.setReceptionNo(receptionNo);
+		dossier.setOnegate(onegate);
 		dossier.setSubmitDate(submitDate);
 		dossier.setReceiveDate(receiveDate);
+		dossier.setProcessDate(processDate);
 		dossier.setRenewDate(renewDate);
 		dossier.setEstimateDate(estimateDate);
+		dossier.setFinishDate(finishDate);
+		dossier.setHandoverDate(handoverDate);
 		dossier.setReturnDate(returnDate);
-		dossier.setCloseDate(closeDate);
+		dossier.setArchiveDate(archiveDate);
 		dossier.setStatusDate(statusDate);
-		dossier.setStatus(status);
+		dossier.setMainStatus(mainStatus);
+		dossier.setSubStatus(subStatus);
 		dossier.setStatusDescription(statusDescription);
 		dossier.setFeedbackNote(feedbackNote);
+		dossier.setDaysDelay(daysDelay);
+		dossier.setErrorCode(errorCode);
+		dossier.setErrorStatus(errorStatus);
+		dossier.setPendingStatus(pendingStatus);
 		dossier.setDirty(dirty);
 		
 		dossierPersistence.update(dossier);
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Create new dossier proc " + id);
+			_log.info("Create new dossier " + id);
 		}
 		
+		_log.info("After info enabled");
+		
 		if (serviceContext.isAddGroupPermissions() || serviceContext.isAddGuestPermissions()) {
+			_log.info("Add guest permission");
 			addDossierResources(dossier, serviceContext.isAddGroupPermissions(), serviceContext.isAddGuestPermissions(), serviceContext);
 		}
 		else {
+			_log.info("Add permission");
 			addDossierResources(dossier, serviceContext.getGroupPermissions(), serviceContext.getGuestPermissions(), serviceContext);
 		}
+		
+		_log.info("Success create new dossier");
+		
 		return getDossier(id);
 	}
 
@@ -169,21 +204,34 @@ public class DossierLocalServiceImpl extends DossierLocalServiceBaseImpl {
 			String wardNo,
 			String wardName,
 			String telNo,
+			String email,
+			int subjectAsContactPerson,
 			String contactPersonName,
+			String contactPersonId,
+			int contactPersonSex,
 			String contactPersonTel,
 			String note,
 			String resumeDescription,
 			String receptionNo,
+			int onegate,
 			Date submitDate,
 			Date receiveDate,
+			Date processDate,
 			Date renewDate,
 			Date estimateDate,
+			Date finishDate,
+			Date handoverDate,
 			Date returnDate,
-			Date closeDate,
-			String status,
+			Date archiveDate,
+			String mainStatus,
+			String subStatus,
 			Date statusDate,
 			String statusDescription,
 			String feedbackNote,
+			int daysDelay,
+			String errorStatus,
+			String errorCode,
+			int pendingStatus,
 			int dirty,
 			ServiceContext serviceContext)
 		throws PortalException, SystemException {
@@ -211,21 +259,34 @@ public class DossierLocalServiceImpl extends DossierLocalServiceBaseImpl {
 		dossier.setWardNo(wardNo);
 		dossier.setWardName(wardName);
 		dossier.setTelNo(telNo);
+		dossier.setEmail(email);
+		dossier.setSubjectAsContactPerson(subjectAsContactPerson);
 		dossier.setContactPersonName(contactPersonName);
+		dossier.setContactPersonId(contactPersonId);
+		dossier.setContactPersonSex(contactPersonSex);
 		dossier.setContactPersonTel(contactPersonTel);
 		dossier.setNote(note);
 		dossier.setResumeDescription(resumeDescription);
 		dossier.setReceptionNo(receptionNo);
+		dossier.setOnegate(onegate);
 		dossier.setSubmitDate(submitDate);
 		dossier.setReceiveDate(receiveDate);
+		dossier.setProcessDate(processDate);
 		dossier.setRenewDate(renewDate);
 		dossier.setEstimateDate(estimateDate);
+		dossier.setFinishDate(finishDate);
+		dossier.setHandoverDate(handoverDate);
 		dossier.setReturnDate(returnDate);
-		dossier.setCloseDate(closeDate);
+		dossier.setArchiveDate(archiveDate);
 		dossier.setStatusDate(statusDate);
-		dossier.setStatus(status);
+		dossier.setMainStatus(mainStatus);
+		dossier.setSubStatus(subStatus);
 		dossier.setStatusDescription(statusDescription);
 		dossier.setFeedbackNote(feedbackNote);
+		dossier.setDaysDelay(daysDelay);
+		dossier.setErrorCode(errorCode);
+		dossier.setErrorStatus(errorStatus);
+		dossier.setPendingStatus(pendingStatus);
 		dossier.setDirty(dirty);
 
 		dossierPersistence.update(dossier);

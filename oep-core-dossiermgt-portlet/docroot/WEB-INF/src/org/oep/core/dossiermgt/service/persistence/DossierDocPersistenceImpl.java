@@ -339,8 +339,7 @@ public class DossierDocPersistenceImpl extends BasePersistenceImpl<DossierDoc>
 		dossierDocImpl.setNote(dossierDoc.getNote());
 		dossierDocImpl.setSequenceNo(dossierDoc.getSequenceNo());
 		dossierDocImpl.setDefaultDocTemplateId(dossierDoc.getDefaultDocTemplateId());
-		dossierDocImpl.setValidationType(dossierDoc.getValidationType());
-		dossierDocImpl.setRequirementType(dossierDoc.getRequirementType());
+		dossierDocImpl.setDossierDocType(dossierDoc.getDossierDocType());
 		dossierDocImpl.setNumberOfFile(dossierDoc.getNumberOfFile());
 		dossierDocImpl.setSplitSubDossier(dossierDoc.getSplitSubDossier());
 		dossierDocImpl.setOnlineForm(dossierDoc.getOnlineForm());
@@ -910,7 +909,7 @@ public class DossierDocPersistenceImpl extends BasePersistenceImpl<DossierDoc>
 			throw processException(e);
 		}
 		finally {
-			FinderCacheUtil.clearCache(DossierDocModelImpl.MAPPING_TABLE_OEP_DOSSIERMGT_OEP_DOSSIERMGT_DOSSIERDOC2TEMPLATE_NAME);
+			FinderCacheUtil.clearCache(DossierDocModelImpl.MAPPING_TABLE_OEP_DOSSIERMGT_DOSSIERDOC2TEMPLATE_NAME);
 		}
 	}
 
@@ -938,7 +937,7 @@ public class DossierDocPersistenceImpl extends BasePersistenceImpl<DossierDoc>
 			}
 		}
 
-		dossierDocToDocTemplateTableMapper = TableMapperFactory.getTableMapper("oep_dossiermgt_oep_dossiermgt_dossierdoc2template",
+		dossierDocToDocTemplateTableMapper = TableMapperFactory.getTableMapper("oep_dossiermgt_dossierdoc2template",
 				"dossierDocId", "docTemplateId", this, docTemplatePersistence);
 	}
 

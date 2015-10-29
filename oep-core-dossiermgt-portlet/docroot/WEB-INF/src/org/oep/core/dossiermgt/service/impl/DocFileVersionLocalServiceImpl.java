@@ -12,6 +12,22 @@
  * details.
  */
 
+/** 
+ * Copyright (c) 2015 by Open eGovPlatform (http://http://openegovplatform.org/).
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.oep.core.dossiermgt.service.impl;
 
 import java.util.Date;
@@ -29,7 +45,7 @@ import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.service.ServiceContext;
 
 /**
- * The implementation of the doc file version local service.
+ * Lớp thao tác với các phiên bản của tài liệu trong bộ hồ sơ.
  *
  * <p>
  * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link org.oep.core.dossiermgt.service.DocFileVersionLocalService} interface.
@@ -51,16 +67,19 @@ public class DocFileVersionLocalServiceImpl
 	 */
 	
 	/** 
-	 * Add doc file version
+	 * Thêm một phiên bản tài liệu mới
 	 * 
 	 * Version: OEP 2.0
 	 *  
 	 * History: 
 	 *   DATE        AUTHOR      DESCRIPTION 
 	 *  ------------------------------------------------- 
-	 *  21-September-2015  trungdk    Create new
-	 * @param
-	 * @return: new doc file version
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param docFileId mã tài liệu
+	 * @param fileEntryId mã tệp tài liệu lưu trữ trên liferay
+	 * @param xmlContent nội dung của tệp tài liệu phiên bản mới
+	 * @param ebMessageId đánh dấu đã submit dữ liệu này
+	 * @return: phiên bản mới của tài liệu
 	 */
 	@Indexable(type = IndexableType.REINDEX)	
 	public DocFileVersion addDocFileVersion(
@@ -86,7 +105,7 @@ public class DocFileVersionLocalServiceImpl
 		docFileVersionPersistence.update(docFileVersion);
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Create new dossier proc " + id);
+			_log.info("Create new doc file version " + id);
 		}
 		
 		if (serviceContext.isAddGroupPermissions() || serviceContext.isAddGuestPermissions()) {
@@ -98,6 +117,21 @@ public class DocFileVersionLocalServiceImpl
 		return getDocFileVersion(id);
 	}
 
+	/** 
+	 * Chỉnh sửa một phiên bản tài liệu mới
+	 * 
+	 * Version: OEP 2.0
+	 *  
+	 * History: 
+	 *   DATE        AUTHOR      DESCRIPTION 
+	 *  ------------------------------------------------- 
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param docFileId mã tài liệu
+	 * @param fileEntryId mã tệp tài liệu lưu trữ trên liferay
+	 * @param xmlContent nội dung của tệp tài liệu phiên bản mới
+	 * @param ebMessageId đánh dấu đã submit dữ liệu này
+	 * @return: phiên bản tài liệu vừa được chỉnh sửa
+	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public DocFileVersion updateDocFileVersion(
 			long id, 

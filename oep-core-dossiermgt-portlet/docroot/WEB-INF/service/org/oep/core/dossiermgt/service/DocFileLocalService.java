@@ -307,30 +307,67 @@ public interface DocFileLocalService extends BaseLocalService,
 		throws java.lang.Throwable;
 
 	/**
-	* Add dossier proc
+	* ThÃªm má»™t tÃ i liá»‡u cho há»“ sÆ¡
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    Táº¡o má»›i
 	*
-	* @param
-	* @return: new dossier proc
+	* @param dossierId há»“ sÆ¡
+	* @param dossierDocId thÃ nh pháº§n há»“ sÆ¡
+	* @param docTemplateId máº«u thÃ nh pháº§n há»“ sÆ¡ máº·c Ä‘á»‹nh
+	* @param docFileVersionId phiÃªn báº£n tá»‡p thÃ nh pháº§n há»“ sÆ¡
+	* @param docFileName tÃªn tá»‡p thÃ nh pháº§n há»“ sÆ¡
+	* @param docFileType loáº¡i tÃ i liá»‡u
+	* @param verifyStatus Cá»� Ä‘Ã¡nh dáº¥u tÃ i liá»‡u Ä‘Ã£ Ä‘Æ°á»£c Ä‘á»‘i chiáº¿u
+	* @param note ghi chÃº
+	* @param approveBy TÃªn ngÆ°á»�i phÃª duyá»‡t tÃ i liá»‡u
+	* @param approveDate NgÃ y Ä‘Æ°á»£c phÃª duyá»‡t
+	* @param premier Cá»� Ä‘Ã¡nh dáº¥u báº£n gá»‘c tÃ i liá»‡u
+	* @return: tÃ i liá»‡u trong bá»™ há»“ sÆ¡ má»›i
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.DocFile addDocFile(long dossierId,
 		long dossierDocId, long docTemplateId, long docFileVersionId,
-		java.lang.String docName, java.lang.String note,
+		java.lang.String docFileName, int docFileType, int verifyStatus,
+		java.lang.String note, java.lang.String approveBy,
+		java.util.Date approveDate, int premier,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Chá»‰nh sá»­a má»™t tÃ i liá»‡u trong bá»™ há»“ sÆ¡
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param dossierId há»“ sÆ¡
+	* @param dossierDocId thÃ nh pháº§n há»“ sÆ¡
+	* @param docTemplateId máº«u thÃ nh pháº§n há»“ sÆ¡ máº·c Ä‘á»‹nh
+	* @param docFileVersionId phiÃªn báº£n tá»‡p thÃ nh pháº§n há»“ sÆ¡
+	* @param docFileName tÃªn tá»‡p thÃ nh pháº§n há»“ sÆ¡
+	* @param docFileType loáº¡i tÃ i liá»‡u
+	* @param verifyStatus Cá»� Ä‘Ã¡nh dáº¥u tÃ i liá»‡u Ä‘Ã£ Ä‘Æ°á»£c Ä‘á»‘i chiáº¿u
+	* @param note ghi chÃº
+	* @param approveBy TÃªn ngÆ°á»�i phÃª duyá»‡t tÃ i liá»‡u
+	* @param approveDate NgÃ y Ä‘Æ°á»£c phÃª duyá»‡t
+	* @param premier Cá»� Ä‘Ã¡nh dáº¥u báº£n gá»‘c tÃ i liá»‡u
+	* @return: tÃ i liá»‡u há»“ sÆ¡ vá»«a Ä‘Æ°á»£c cáº­p nháº­t
+	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.DocFile updateDocFile(long id,
 		long dossierId, long dossierDocId, long docTemplateId,
-		long docFileVersionId, java.lang.String docName, java.lang.String note,
+		long docFileVersionId, java.lang.String docFileName, int docFileType,
+		int verifyStatus, java.lang.String note, java.lang.String approveBy,
+		java.util.Date approveDate, int premier,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;

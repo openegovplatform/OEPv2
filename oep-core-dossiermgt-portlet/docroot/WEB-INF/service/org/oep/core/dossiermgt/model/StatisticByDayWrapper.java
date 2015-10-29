@@ -56,18 +56,13 @@ public class StatisticByDayWrapper implements StatisticByDay,
 		attributes.put("createDate", getCreateDate());
 		attributes.put("statisticDate", getStatisticDate());
 		attributes.put("statisticWeek", getStatisticWeek());
-		attributes.put("submittedNumber", getSubmittedNumber());
-		attributes.put("acceptedNumber", getAcceptedNumber());
-		attributes.put("deniedNumber", getDeniedNumber());
-		attributes.put("acceptedRatio", getAcceptedRatio());
-		attributes.put("finishedNumber", getFinishedNumber());
+		attributes.put("receiveNumber", getReceiveNumber());
+		attributes.put("onlineNumber", getOnlineNumber());
+		attributes.put("onlineRatio", getOnlineRatio());
+		attributes.put("finishNumber", getFinishNumber());
 		attributes.put("ontimeNumber", getOntimeNumber());
-		attributes.put("delayedNumber", getDelayedNumber());
 		attributes.put("ontimeRatio", getOntimeRatio());
-		attributes.put("doneNumber", getDoneNumber());
-		attributes.put("doneRatio", getDoneRatio());
 		attributes.put("delayDaysAvg", getDelayDaysAvg());
-		attributes.put("furtherDaysAvg", getFurtherDaysAvg());
 
 		return attributes;
 	}
@@ -110,34 +105,28 @@ public class StatisticByDayWrapper implements StatisticByDay,
 			setStatisticWeek(statisticWeek);
 		}
 
-		Integer submittedNumber = (Integer)attributes.get("submittedNumber");
+		Long receiveNumber = (Long)attributes.get("receiveNumber");
 
-		if (submittedNumber != null) {
-			setSubmittedNumber(submittedNumber);
+		if (receiveNumber != null) {
+			setReceiveNumber(receiveNumber);
 		}
 
-		Integer acceptedNumber = (Integer)attributes.get("acceptedNumber");
+		Long onlineNumber = (Long)attributes.get("onlineNumber");
 
-		if (acceptedNumber != null) {
-			setAcceptedNumber(acceptedNumber);
+		if (onlineNumber != null) {
+			setOnlineNumber(onlineNumber);
 		}
 
-		Integer deniedNumber = (Integer)attributes.get("deniedNumber");
+		Double onlineRatio = (Double)attributes.get("onlineRatio");
 
-		if (deniedNumber != null) {
-			setDeniedNumber(deniedNumber);
+		if (onlineRatio != null) {
+			setOnlineRatio(onlineRatio);
 		}
 
-		Double acceptedRatio = (Double)attributes.get("acceptedRatio");
+		Integer finishNumber = (Integer)attributes.get("finishNumber");
 
-		if (acceptedRatio != null) {
-			setAcceptedRatio(acceptedRatio);
-		}
-
-		Integer finishedNumber = (Integer)attributes.get("finishedNumber");
-
-		if (finishedNumber != null) {
-			setFinishedNumber(finishedNumber);
+		if (finishNumber != null) {
+			setFinishNumber(finishNumber);
 		}
 
 		Integer ontimeNumber = (Integer)attributes.get("ontimeNumber");
@@ -146,40 +135,16 @@ public class StatisticByDayWrapper implements StatisticByDay,
 			setOntimeNumber(ontimeNumber);
 		}
 
-		Integer delayedNumber = (Integer)attributes.get("delayedNumber");
-
-		if (delayedNumber != null) {
-			setDelayedNumber(delayedNumber);
-		}
-
 		Double ontimeRatio = (Double)attributes.get("ontimeRatio");
 
 		if (ontimeRatio != null) {
 			setOntimeRatio(ontimeRatio);
 		}
 
-		Integer doneNumber = (Integer)attributes.get("doneNumber");
-
-		if (doneNumber != null) {
-			setDoneNumber(doneNumber);
-		}
-
-		Double doneRatio = (Double)attributes.get("doneRatio");
-
-		if (doneRatio != null) {
-			setDoneRatio(doneRatio);
-		}
-
 		Double delayDaysAvg = (Double)attributes.get("delayDaysAvg");
 
 		if (delayDaysAvg != null) {
 			setDelayDaysAvg(delayDaysAvg);
-		}
-
-		Double furtherDaysAvg = (Double)attributes.get("furtherDaysAvg");
-
-		if (furtherDaysAvg != null) {
-			setFurtherDaysAvg(furtherDaysAvg);
 		}
 	}
 
@@ -324,103 +289,83 @@ public class StatisticByDayWrapper implements StatisticByDay,
 	}
 
 	/**
-	* Returns the submitted number of this statistic by day.
+	* Returns the receive number of this statistic by day.
 	*
-	* @return the submitted number of this statistic by day
+	* @return the receive number of this statistic by day
 	*/
 	@Override
-	public int getSubmittedNumber() {
-		return _statisticByDay.getSubmittedNumber();
+	public long getReceiveNumber() {
+		return _statisticByDay.getReceiveNumber();
 	}
 
 	/**
-	* Sets the submitted number of this statistic by day.
+	* Sets the receive number of this statistic by day.
 	*
-	* @param submittedNumber the submitted number of this statistic by day
+	* @param receiveNumber the receive number of this statistic by day
 	*/
 	@Override
-	public void setSubmittedNumber(int submittedNumber) {
-		_statisticByDay.setSubmittedNumber(submittedNumber);
+	public void setReceiveNumber(long receiveNumber) {
+		_statisticByDay.setReceiveNumber(receiveNumber);
 	}
 
 	/**
-	* Returns the accepted number of this statistic by day.
+	* Returns the online number of this statistic by day.
 	*
-	* @return the accepted number of this statistic by day
+	* @return the online number of this statistic by day
 	*/
 	@Override
-	public int getAcceptedNumber() {
-		return _statisticByDay.getAcceptedNumber();
+	public long getOnlineNumber() {
+		return _statisticByDay.getOnlineNumber();
 	}
 
 	/**
-	* Sets the accepted number of this statistic by day.
+	* Sets the online number of this statistic by day.
 	*
-	* @param acceptedNumber the accepted number of this statistic by day
+	* @param onlineNumber the online number of this statistic by day
 	*/
 	@Override
-	public void setAcceptedNumber(int acceptedNumber) {
-		_statisticByDay.setAcceptedNumber(acceptedNumber);
+	public void setOnlineNumber(long onlineNumber) {
+		_statisticByDay.setOnlineNumber(onlineNumber);
 	}
 
 	/**
-	* Returns the denied number of this statistic by day.
+	* Returns the online ratio of this statistic by day.
 	*
-	* @return the denied number of this statistic by day
+	* @return the online ratio of this statistic by day
 	*/
 	@Override
-	public int getDeniedNumber() {
-		return _statisticByDay.getDeniedNumber();
+	public double getOnlineRatio() {
+		return _statisticByDay.getOnlineRatio();
 	}
 
 	/**
-	* Sets the denied number of this statistic by day.
+	* Sets the online ratio of this statistic by day.
 	*
-	* @param deniedNumber the denied number of this statistic by day
+	* @param onlineRatio the online ratio of this statistic by day
 	*/
 	@Override
-	public void setDeniedNumber(int deniedNumber) {
-		_statisticByDay.setDeniedNumber(deniedNumber);
+	public void setOnlineRatio(double onlineRatio) {
+		_statisticByDay.setOnlineRatio(onlineRatio);
 	}
 
 	/**
-	* Returns the accepted ratio of this statistic by day.
+	* Returns the finish number of this statistic by day.
 	*
-	* @return the accepted ratio of this statistic by day
+	* @return the finish number of this statistic by day
 	*/
 	@Override
-	public double getAcceptedRatio() {
-		return _statisticByDay.getAcceptedRatio();
+	public int getFinishNumber() {
+		return _statisticByDay.getFinishNumber();
 	}
 
 	/**
-	* Sets the accepted ratio of this statistic by day.
+	* Sets the finish number of this statistic by day.
 	*
-	* @param acceptedRatio the accepted ratio of this statistic by day
+	* @param finishNumber the finish number of this statistic by day
 	*/
 	@Override
-	public void setAcceptedRatio(double acceptedRatio) {
-		_statisticByDay.setAcceptedRatio(acceptedRatio);
-	}
-
-	/**
-	* Returns the finished number of this statistic by day.
-	*
-	* @return the finished number of this statistic by day
-	*/
-	@Override
-	public int getFinishedNumber() {
-		return _statisticByDay.getFinishedNumber();
-	}
-
-	/**
-	* Sets the finished number of this statistic by day.
-	*
-	* @param finishedNumber the finished number of this statistic by day
-	*/
-	@Override
-	public void setFinishedNumber(int finishedNumber) {
-		_statisticByDay.setFinishedNumber(finishedNumber);
+	public void setFinishNumber(int finishNumber) {
+		_statisticByDay.setFinishNumber(finishNumber);
 	}
 
 	/**
@@ -444,26 +389,6 @@ public class StatisticByDayWrapper implements StatisticByDay,
 	}
 
 	/**
-	* Returns the delayed number of this statistic by day.
-	*
-	* @return the delayed number of this statistic by day
-	*/
-	@Override
-	public int getDelayedNumber() {
-		return _statisticByDay.getDelayedNumber();
-	}
-
-	/**
-	* Sets the delayed number of this statistic by day.
-	*
-	* @param delayedNumber the delayed number of this statistic by day
-	*/
-	@Override
-	public void setDelayedNumber(int delayedNumber) {
-		_statisticByDay.setDelayedNumber(delayedNumber);
-	}
-
-	/**
 	* Returns the ontime ratio of this statistic by day.
 	*
 	* @return the ontime ratio of this statistic by day
@@ -484,46 +409,6 @@ public class StatisticByDayWrapper implements StatisticByDay,
 	}
 
 	/**
-	* Returns the done number of this statistic by day.
-	*
-	* @return the done number of this statistic by day
-	*/
-	@Override
-	public int getDoneNumber() {
-		return _statisticByDay.getDoneNumber();
-	}
-
-	/**
-	* Sets the done number of this statistic by day.
-	*
-	* @param doneNumber the done number of this statistic by day
-	*/
-	@Override
-	public void setDoneNumber(int doneNumber) {
-		_statisticByDay.setDoneNumber(doneNumber);
-	}
-
-	/**
-	* Returns the done ratio of this statistic by day.
-	*
-	* @return the done ratio of this statistic by day
-	*/
-	@Override
-	public double getDoneRatio() {
-		return _statisticByDay.getDoneRatio();
-	}
-
-	/**
-	* Sets the done ratio of this statistic by day.
-	*
-	* @param doneRatio the done ratio of this statistic by day
-	*/
-	@Override
-	public void setDoneRatio(double doneRatio) {
-		_statisticByDay.setDoneRatio(doneRatio);
-	}
-
-	/**
 	* Returns the delay days avg of this statistic by day.
 	*
 	* @return the delay days avg of this statistic by day
@@ -541,26 +426,6 @@ public class StatisticByDayWrapper implements StatisticByDay,
 	@Override
 	public void setDelayDaysAvg(double delayDaysAvg) {
 		_statisticByDay.setDelayDaysAvg(delayDaysAvg);
-	}
-
-	/**
-	* Returns the further days avg of this statistic by day.
-	*
-	* @return the further days avg of this statistic by day
-	*/
-	@Override
-	public double getFurtherDaysAvg() {
-		return _statisticByDay.getFurtherDaysAvg();
-	}
-
-	/**
-	* Sets the further days avg of this statistic by day.
-	*
-	* @param furtherDaysAvg the further days avg of this statistic by day
-	*/
-	@Override
-	public void setFurtherDaysAvg(double furtherDaysAvg) {
-		_statisticByDay.setFurtherDaysAvg(furtherDaysAvg);
 	}
 
 	@Override

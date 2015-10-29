@@ -138,11 +138,14 @@ public class DossierLocalServiceClp implements DossierLocalService {
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
+				"int", "java.lang.String", "java.lang.String", "int",
 				"java.lang.String", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.util.Date", "java.util.Date",
+				"java.lang.String", "int", "java.util.Date", "java.util.Date",
 				"java.util.Date", "java.util.Date", "java.util.Date",
-				"java.util.Date", "java.lang.String", "java.util.Date",
-				"java.lang.String", "java.lang.String", "int",
+				"java.util.Date", "java.util.Date", "java.util.Date",
+				"java.util.Date", "java.lang.String", "java.lang.String",
+				"java.util.Date", "java.lang.String", "java.lang.String", "int",
+				"java.lang.String", "java.lang.String", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -154,11 +157,14 @@ public class DossierLocalServiceClp implements DossierLocalService {
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
+				"int", "java.lang.String", "java.lang.String", "int",
 				"java.lang.String", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.util.Date", "java.util.Date",
+				"java.lang.String", "int", "java.util.Date", "java.util.Date",
 				"java.util.Date", "java.util.Date", "java.util.Date",
-				"java.util.Date", "java.lang.String", "java.util.Date",
-				"java.lang.String", "java.lang.String", "int",
+				"java.util.Date", "java.util.Date", "java.util.Date",
+				"java.util.Date", "java.lang.String", "java.lang.String",
+				"java.util.Date", "java.lang.String", "java.lang.String", "int",
+				"java.lang.String", "java.lang.String", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -888,14 +894,20 @@ public class DossierLocalServiceClp implements DossierLocalService {
 		java.lang.String cityName, java.lang.String districtNo,
 		java.lang.String districtName, java.lang.String wardNo,
 		java.lang.String wardName, java.lang.String telNo,
-		java.lang.String contactPersonName, java.lang.String contactPersonTel,
+		java.lang.String email, int subjectAsContactPerson,
+		java.lang.String contactPersonName, java.lang.String contactPersonId,
+		int contactPersonSex, java.lang.String contactPersonTel,
 		java.lang.String note, java.lang.String resumeDescription,
-		java.lang.String receptionNo, java.util.Date submitDate,
-		java.util.Date receiveDate, java.util.Date renewDate,
-		java.util.Date estimateDate, java.util.Date returnDate,
-		java.util.Date closeDate, java.lang.String status,
+		java.lang.String receptionNo, int onegate, java.util.Date submitDate,
+		java.util.Date receiveDate, java.util.Date processDate,
+		java.util.Date renewDate, java.util.Date estimateDate,
+		java.util.Date finishDate, java.util.Date handoverDate,
+		java.util.Date returnDate, java.util.Date archiveDate,
+		java.lang.String mainStatus, java.lang.String subStatus,
 		java.util.Date statusDate, java.lang.String statusDescription,
-		java.lang.String feedbackNote, int dirty,
+		java.lang.String feedbackNote, int daysDelay,
+		java.lang.String errorStatus, java.lang.String errorCode,
+		int pendingStatus, int dirty,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -935,7 +947,15 @@ public class DossierLocalServiceClp implements DossierLocalService {
 						
 					ClpSerializer.translateInput(telNo),
 						
+					ClpSerializer.translateInput(email),
+						
+					subjectAsContactPerson,
+						
 					ClpSerializer.translateInput(contactPersonName),
+						
+					ClpSerializer.translateInput(contactPersonId),
+						
+					contactPersonSex,
 						
 					ClpSerializer.translateInput(contactPersonTel),
 						
@@ -945,25 +965,43 @@ public class DossierLocalServiceClp implements DossierLocalService {
 						
 					ClpSerializer.translateInput(receptionNo),
 						
+					onegate,
+						
 					ClpSerializer.translateInput(submitDate),
 						
 					ClpSerializer.translateInput(receiveDate),
+						
+					ClpSerializer.translateInput(processDate),
 						
 					ClpSerializer.translateInput(renewDate),
 						
 					ClpSerializer.translateInput(estimateDate),
 						
+					ClpSerializer.translateInput(finishDate),
+						
+					ClpSerializer.translateInput(handoverDate),
+						
 					ClpSerializer.translateInput(returnDate),
 						
-					ClpSerializer.translateInput(closeDate),
+					ClpSerializer.translateInput(archiveDate),
 						
-					ClpSerializer.translateInput(status),
+					ClpSerializer.translateInput(mainStatus),
+						
+					ClpSerializer.translateInput(subStatus),
 						
 					ClpSerializer.translateInput(statusDate),
 						
 					ClpSerializer.translateInput(statusDescription),
 						
 					ClpSerializer.translateInput(feedbackNote),
+						
+					daysDelay,
+						
+					ClpSerializer.translateInput(errorStatus),
+						
+					ClpSerializer.translateInput(errorCode),
+						
+					pendingStatus,
 						
 					dirty,
 						
@@ -1002,14 +1040,20 @@ public class DossierLocalServiceClp implements DossierLocalService {
 		java.lang.String cityName, java.lang.String districtNo,
 		java.lang.String districtName, java.lang.String wardNo,
 		java.lang.String wardName, java.lang.String telNo,
-		java.lang.String contactPersonName, java.lang.String contactPersonTel,
+		java.lang.String email, int subjectAsContactPerson,
+		java.lang.String contactPersonName, java.lang.String contactPersonId,
+		int contactPersonSex, java.lang.String contactPersonTel,
 		java.lang.String note, java.lang.String resumeDescription,
-		java.lang.String receptionNo, java.util.Date submitDate,
-		java.util.Date receiveDate, java.util.Date renewDate,
-		java.util.Date estimateDate, java.util.Date returnDate,
-		java.util.Date closeDate, java.lang.String status,
+		java.lang.String receptionNo, int onegate, java.util.Date submitDate,
+		java.util.Date receiveDate, java.util.Date processDate,
+		java.util.Date renewDate, java.util.Date estimateDate,
+		java.util.Date finishDate, java.util.Date handoverDate,
+		java.util.Date returnDate, java.util.Date archiveDate,
+		java.lang.String mainStatus, java.lang.String subStatus,
 		java.util.Date statusDate, java.lang.String statusDescription,
-		java.lang.String feedbackNote, int dirty,
+		java.lang.String feedbackNote, int daysDelay,
+		java.lang.String errorStatus, java.lang.String errorCode,
+		int pendingStatus, int dirty,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -1051,7 +1095,15 @@ public class DossierLocalServiceClp implements DossierLocalService {
 						
 					ClpSerializer.translateInput(telNo),
 						
+					ClpSerializer.translateInput(email),
+						
+					subjectAsContactPerson,
+						
 					ClpSerializer.translateInput(contactPersonName),
+						
+					ClpSerializer.translateInput(contactPersonId),
+						
+					contactPersonSex,
 						
 					ClpSerializer.translateInput(contactPersonTel),
 						
@@ -1061,25 +1113,43 @@ public class DossierLocalServiceClp implements DossierLocalService {
 						
 					ClpSerializer.translateInput(receptionNo),
 						
+					onegate,
+						
 					ClpSerializer.translateInput(submitDate),
 						
 					ClpSerializer.translateInput(receiveDate),
+						
+					ClpSerializer.translateInput(processDate),
 						
 					ClpSerializer.translateInput(renewDate),
 						
 					ClpSerializer.translateInput(estimateDate),
 						
+					ClpSerializer.translateInput(finishDate),
+						
+					ClpSerializer.translateInput(handoverDate),
+						
 					ClpSerializer.translateInput(returnDate),
 						
-					ClpSerializer.translateInput(closeDate),
+					ClpSerializer.translateInput(archiveDate),
 						
-					ClpSerializer.translateInput(status),
+					ClpSerializer.translateInput(mainStatus),
+						
+					ClpSerializer.translateInput(subStatus),
 						
 					ClpSerializer.translateInput(statusDate),
 						
 					ClpSerializer.translateInput(statusDescription),
 						
 					ClpSerializer.translateInput(feedbackNote),
+						
+					daysDelay,
+						
+					ClpSerializer.translateInput(errorStatus),
+						
+					ClpSerializer.translateInput(errorCode),
+						
+					pendingStatus,
 						
 					dirty,
 						

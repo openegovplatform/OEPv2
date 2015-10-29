@@ -208,6 +208,22 @@ public class DossierFolderLocalServiceWrapper
 	}
 
 	/**
+	* Returns the dossier folder matching the UUID and group.
+	*
+	* @param uuid the dossier folder's UUID
+	* @param groupId the primary key of the group
+	* @return the matching dossier folder, or <code>null</code> if a matching dossier folder could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public org.oep.core.dossiermgt.model.DossierFolder fetchDossierFolderByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dossierFolderLocalService.fetchDossierFolderByUuidAndGroupId(uuid,
+			groupId);
+	}
+
+	/**
 	* Returns the dossier folder with the primary key.
 	*
 	* @param dossierFolderId the primary key of the dossier folder
@@ -247,6 +263,24 @@ public class DossierFolderLocalServiceWrapper
 			com.liferay.portal.kernel.exception.SystemException {
 		return _dossierFolderLocalService.getDossierFolderByUuidAndCompanyId(uuid,
 			companyId);
+	}
+
+	/**
+	* Returns the dossier folder matching the UUID and group.
+	*
+	* @param uuid the dossier folder's UUID
+	* @param groupId the primary key of the group
+	* @return the matching dossier folder
+	* @throws PortalException if a matching dossier folder could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public org.oep.core.dossiermgt.model.DossierFolder getDossierFolderByUuidAndGroupId(
+		java.lang.String uuid, long groupId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierFolderLocalService.getDossierFolderByUuidAndGroupId(uuid,
+			groupId);
 	}
 
 	/**
@@ -323,44 +357,55 @@ public class DossierFolderLocalServiceWrapper
 	}
 
 	/**
-	* Add dossier folder
+	* ThÃƒÂªm UI xem danh sÃƒÂ¡ch hÃ¡Â»â€œ sÃ†Â¡
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
 	*
-	* @param
+	* @param folderName tÃƒÂªn UI xem danh sÃƒÂ¡ch hÃ¡Â»â€œ sÃ†Â¡
+	* @param parentDossierFolderId mÃƒÂ£ cÃ¡Â»Â§a UI xem danh sÃƒÂ¡ch hÃ¡Â»â€œ sÃ†Â¡ cha
+	* @param sequenceNo sÃ¡Â»â€˜ thÃ¡Â»Â© tÃ¡Â»Â± UI xem danh sÃƒÂ¡ch hÃ¡Â»â€œ sÃ†Â¡
+	* @param procedureFilter Ã„â€˜iÃ¡Â»ï¿½u kiÃ¡Â»â€¡n lÃ¡Â»ï¿½c theo thÃ¡Â»Â§ tÃ¡Â»Â¥c hÃƒÂ nh chÃƒÂ­nh, cÃƒÂ¡c mÃƒÂ£ cÃƒÂ¡ch nhau bÃ¡Â»Å¸i dÃ¡ÂºÂ¥u ;
+	* @param statusFilter Ã„â€˜iÃ¡Â»ï¿½u kiÃ¡Â»â€¡n lÃ¡Â»ï¿½c theo trÃ¡ÂºÂ¡ng thÃƒÂ¡i
+	* @param tagFilter Ã„â€˜iÃ¡Â»ï¿½u kiÃ¡Â»â€¡n lÃ¡Â»ï¿½c theo tag
+	* @param filterByOrganization lÃ¡Â»ï¿½c hÃ¡Â»â€œ sÃ†Â¡ theo tÃ¡Â»â€¢ chÃ¡Â»Â©c mÃƒÂ  ngÃ†Â°Ã¡Â»ï¿½i dÃƒÂ¹ng thuÃ¡Â»â„¢c vÃ¡Â»ï¿½
+	* @param filterByUser lÃ¡Â»ï¿½c hÃ¡Â»â€œ sÃ†Â¡ chÃ¡Â»â€° do ngÃ†Â°Ã¡Â»ï¿½i dÃƒÂ¹ng tÃ¡ÂºÂ¡o ra
+	* @param orderBy Ã„â€˜iÃ¡Â»ï¿½u kiÃ¡Â»â€¡n sÃ¡ÂºÂ¯p xÃ¡ÂºÂ¿p cÃ¡Â»Â§a cÃƒÂ¡c hÃ¡Â»â€œ sÃ†Â¡
+	* @param counting cÃ¡Â»ï¿½ Ã„â€˜ÃƒÂ¡nh dÃ¡ÂºÂ¥u Ã„â€˜Ã¡ÂºÂ¿m sÃ¡Â»â€˜ hÃ¡Â»â€œ sÃ†Â¡ trÃƒÂªn menu
 	* @return: new dossier folder
 	*/
 	@Override
 	public org.oep.core.dossiermgt.model.DossierFolder addDossierFolder(
 		java.lang.String folderName, long parentDossierFolderId,
 		int sequenceNo, java.lang.String procedureFilter,
-		java.lang.String statusFilter, int filterByOrganization,
-		int filterByUser,
-		com.liferay.portal.service.ServiceContext serviceContext)
+		java.lang.String statusFilter, java.lang.String tagFilter,
+		int filterByOrganization, int filterByUser, java.lang.String orderBy,
+		int counting, com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _dossierFolderLocalService.addDossierFolder(folderName,
 			parentDossierFolderId, sequenceNo, procedureFilter, statusFilter,
-			filterByOrganization, filterByUser, serviceContext);
+			tagFilter, filterByOrganization, filterByUser, orderBy, counting,
+			serviceContext);
 	}
 
 	@Override
 	public org.oep.core.dossiermgt.model.DossierFolder updateDossierFolder(
 		long id, java.lang.String folderName, long parentDossierFolderId,
 		int sequenceNo, java.lang.String procedureFilter,
-		java.lang.String statusFilter, int filterByOrganization,
-		int filterByUser,
-		com.liferay.portal.service.ServiceContext serviceContext)
+		java.lang.String statusFilter, java.lang.String tagFilter,
+		int filterByOrganization, int filterByUser, java.lang.String orderBy,
+		int counting, com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _dossierFolderLocalService.updateDossierFolder(id, folderName,
 			parentDossierFolderId, sequenceNo, procedureFilter, statusFilter,
-			filterByOrganization, filterByUser, serviceContext);
+			tagFilter, filterByOrganization, filterByUser, orderBy, counting,
+			serviceContext);
 	}
 
 	@Override

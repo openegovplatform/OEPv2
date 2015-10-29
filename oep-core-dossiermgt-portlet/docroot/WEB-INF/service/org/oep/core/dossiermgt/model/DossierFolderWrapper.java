@@ -53,6 +53,8 @@ public class DossierFolderWrapper implements DossierFolder,
 
 		attributes.put("uuid", getUuid());
 		attributes.put("dossierFolderId", getDossierFolderId());
+		attributes.put("userId", getUserId());
+		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
@@ -61,8 +63,11 @@ public class DossierFolderWrapper implements DossierFolder,
 		attributes.put("sequenceNo", getSequenceNo());
 		attributes.put("procedureFilter", getProcedureFilter());
 		attributes.put("statusFilter", getStatusFilter());
+		attributes.put("tagFilter", getTagFilter());
 		attributes.put("filterByOrganization", getFilterByOrganization());
 		attributes.put("filterByUser", getFilterByUser());
+		attributes.put("orderBy", getOrderBy());
+		attributes.put("counting", getCounting());
 
 		return attributes;
 	}
@@ -79,6 +84,18 @@ public class DossierFolderWrapper implements DossierFolder,
 
 		if (dossierFolderId != null) {
 			setDossierFolderId(dossierFolderId);
+		}
+
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
+		Long groupId = (Long)attributes.get("groupId");
+
+		if (groupId != null) {
+			setGroupId(groupId);
 		}
 
 		Long companyId = (Long)attributes.get("companyId");
@@ -130,6 +147,12 @@ public class DossierFolderWrapper implements DossierFolder,
 			setStatusFilter(statusFilter);
 		}
 
+		String tagFilter = (String)attributes.get("tagFilter");
+
+		if (tagFilter != null) {
+			setTagFilter(tagFilter);
+		}
+
 		Integer filterByOrganization = (Integer)attributes.get(
 				"filterByOrganization");
 
@@ -141,6 +164,18 @@ public class DossierFolderWrapper implements DossierFolder,
 
 		if (filterByUser != null) {
 			setFilterByUser(filterByUser);
+		}
+
+		String orderBy = (String)attributes.get("orderBy");
+
+		if (orderBy != null) {
+			setOrderBy(orderBy);
+		}
+
+		Integer counting = (Integer)attributes.get("counting");
+
+		if (counting != null) {
+			setCounting(counting);
 		}
 	}
 
@@ -202,6 +237,68 @@ public class DossierFolderWrapper implements DossierFolder,
 	@Override
 	public void setDossierFolderId(long dossierFolderId) {
 		_dossierFolder.setDossierFolderId(dossierFolderId);
+	}
+
+	/**
+	* Returns the user ID of this dossier folder.
+	*
+	* @return the user ID of this dossier folder
+	*/
+	@Override
+	public long getUserId() {
+		return _dossierFolder.getUserId();
+	}
+
+	/**
+	* Sets the user ID of this dossier folder.
+	*
+	* @param userId the user ID of this dossier folder
+	*/
+	@Override
+	public void setUserId(long userId) {
+		_dossierFolder.setUserId(userId);
+	}
+
+	/**
+	* Returns the user uuid of this dossier folder.
+	*
+	* @return the user uuid of this dossier folder
+	* @throws SystemException if a system exception occurred
+	*/
+	@Override
+	public java.lang.String getUserUuid()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dossierFolder.getUserUuid();
+	}
+
+	/**
+	* Sets the user uuid of this dossier folder.
+	*
+	* @param userUuid the user uuid of this dossier folder
+	*/
+	@Override
+	public void setUserUuid(java.lang.String userUuid) {
+		_dossierFolder.setUserUuid(userUuid);
+	}
+
+	/**
+	* Returns the group ID of this dossier folder.
+	*
+	* @return the group ID of this dossier folder
+	*/
+	@Override
+	public long getGroupId() {
+		return _dossierFolder.getGroupId();
+	}
+
+	/**
+	* Sets the group ID of this dossier folder.
+	*
+	* @param groupId the group ID of this dossier folder
+	*/
+	@Override
+	public void setGroupId(long groupId) {
+		_dossierFolder.setGroupId(groupId);
 	}
 
 	/**
@@ -365,6 +462,26 @@ public class DossierFolderWrapper implements DossierFolder,
 	}
 
 	/**
+	* Returns the tag filter of this dossier folder.
+	*
+	* @return the tag filter of this dossier folder
+	*/
+	@Override
+	public java.lang.String getTagFilter() {
+		return _dossierFolder.getTagFilter();
+	}
+
+	/**
+	* Sets the tag filter of this dossier folder.
+	*
+	* @param tagFilter the tag filter of this dossier folder
+	*/
+	@Override
+	public void setTagFilter(java.lang.String tagFilter) {
+		_dossierFolder.setTagFilter(tagFilter);
+	}
+
+	/**
 	* Returns the filter by organization of this dossier folder.
 	*
 	* @return the filter by organization of this dossier folder
@@ -402,6 +519,46 @@ public class DossierFolderWrapper implements DossierFolder,
 	@Override
 	public void setFilterByUser(int filterByUser) {
 		_dossierFolder.setFilterByUser(filterByUser);
+	}
+
+	/**
+	* Returns the order by of this dossier folder.
+	*
+	* @return the order by of this dossier folder
+	*/
+	@Override
+	public java.lang.String getOrderBy() {
+		return _dossierFolder.getOrderBy();
+	}
+
+	/**
+	* Sets the order by of this dossier folder.
+	*
+	* @param orderBy the order by of this dossier folder
+	*/
+	@Override
+	public void setOrderBy(java.lang.String orderBy) {
+		_dossierFolder.setOrderBy(orderBy);
+	}
+
+	/**
+	* Returns the counting of this dossier folder.
+	*
+	* @return the counting of this dossier folder
+	*/
+	@Override
+	public int getCounting() {
+		return _dossierFolder.getCounting();
+	}
+
+	/**
+	* Sets the counting of this dossier folder.
+	*
+	* @param counting the counting of this dossier folder
+	*/
+	@Override
+	public void setCounting(int counting) {
+		_dossierFolder.setCounting(counting);
 	}
 
 	@Override

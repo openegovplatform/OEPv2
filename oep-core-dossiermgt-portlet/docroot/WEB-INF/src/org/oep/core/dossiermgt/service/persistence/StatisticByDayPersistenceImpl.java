@@ -329,18 +329,13 @@ public class StatisticByDayPersistenceImpl extends BasePersistenceImpl<Statistic
 		statisticByDayImpl.setCreateDate(statisticByDay.getCreateDate());
 		statisticByDayImpl.setStatisticDate(statisticByDay.getStatisticDate());
 		statisticByDayImpl.setStatisticWeek(statisticByDay.getStatisticWeek());
-		statisticByDayImpl.setSubmittedNumber(statisticByDay.getSubmittedNumber());
-		statisticByDayImpl.setAcceptedNumber(statisticByDay.getAcceptedNumber());
-		statisticByDayImpl.setDeniedNumber(statisticByDay.getDeniedNumber());
-		statisticByDayImpl.setAcceptedRatio(statisticByDay.getAcceptedRatio());
-		statisticByDayImpl.setFinishedNumber(statisticByDay.getFinishedNumber());
+		statisticByDayImpl.setReceiveNumber(statisticByDay.getReceiveNumber());
+		statisticByDayImpl.setOnlineNumber(statisticByDay.getOnlineNumber());
+		statisticByDayImpl.setOnlineRatio(statisticByDay.getOnlineRatio());
+		statisticByDayImpl.setFinishNumber(statisticByDay.getFinishNumber());
 		statisticByDayImpl.setOntimeNumber(statisticByDay.getOntimeNumber());
-		statisticByDayImpl.setDelayedNumber(statisticByDay.getDelayedNumber());
 		statisticByDayImpl.setOntimeRatio(statisticByDay.getOntimeRatio());
-		statisticByDayImpl.setDoneNumber(statisticByDay.getDoneNumber());
-		statisticByDayImpl.setDoneRatio(statisticByDay.getDoneRatio());
 		statisticByDayImpl.setDelayDaysAvg(statisticByDay.getDelayDaysAvg());
-		statisticByDayImpl.setFurtherDaysAvg(statisticByDay.getFurtherDaysAvg());
 
 		return statisticByDayImpl;
 	}

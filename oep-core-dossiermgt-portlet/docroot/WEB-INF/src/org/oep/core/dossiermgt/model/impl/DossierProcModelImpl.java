@@ -90,11 +90,13 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 			{ "administrationName", Types.VARCHAR },
 			{ "domainNo", Types.VARCHAR },
 			{ "domainName", Types.VARCHAR },
+			{ "forCitizen", Types.INTEGER },
+			{ "forBusiness", Types.INTEGER },
 			{ "effectDate", Types.TIMESTAMP },
 			{ "expireDate", Types.TIMESTAMP },
-			{ "active_", Types.INTEGER }
+			{ "statusActive", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_dossierproc (dossierProcId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcNo VARCHAR(30) null,name VARCHAR(200) null,enName VARCHAR(200) null,shortName VARCHAR(100) null,processDescription VARCHAR(75) null,methodDescription VARCHAR(75) null,dossierDescription VARCHAR(75) null,conditionDescription VARCHAR(500) null,durationDescription VARCHAR(255) null,actorsDescription VARCHAR(255) null,resultsDescription VARCHAR(500) null,recordsDescription VARCHAR(75) null,feeDescription VARCHAR(255) null,instructionsDescription VARCHAR(75) null,administrationNo VARCHAR(30) null,administrationName VARCHAR(200) null,domainNo VARCHAR(30) null,domainName VARCHAR(200) null,effectDate DATE null,expireDate DATE null,active_ INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_dossierproc (dossierProcId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcNo VARCHAR(30) null,name VARCHAR(200) null,enName VARCHAR(200) null,shortName VARCHAR(100) null,processDescription TEXT null,methodDescription TEXT null,dossierDescription TEXT null,conditionDescription VARCHAR(500) null,durationDescription VARCHAR(255) null,actorsDescription VARCHAR(255) null,resultsDescription VARCHAR(500) null,recordsDescription TEXT null,feeDescription VARCHAR(255) null,instructionsDescription TEXT null,administrationNo VARCHAR(30) null,administrationName VARCHAR(200) null,domainNo VARCHAR(30) null,domainName VARCHAR(200) null,forCitizen INTEGER,forBusiness INTEGER,effectDate DATE null,expireDate DATE null,statusActive INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_dossierproc";
 	public static final String ORDER_BY_JPQL = " ORDER BY dossierProc.dossierProcId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_dossierproc.dossierProcId ASC";
@@ -110,12 +112,12 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.column.bitmask.enabled.org.oep.core.dossiermgt.model.DossierProc"),
 			true);
-	public static long ACTIVE_COLUMN_BITMASK = 1L;
-	public static long ADMINISTRATIONNO_COLUMN_BITMASK = 2L;
-	public static long COMPANYID_COLUMN_BITMASK = 4L;
-	public static long DOMAINNO_COLUMN_BITMASK = 8L;
-	public static long DOSSIERPROCNO_COLUMN_BITMASK = 16L;
-	public static long GROUPID_COLUMN_BITMASK = 32L;
+	public static long ADMINISTRATIONNO_COLUMN_BITMASK = 1L;
+	public static long COMPANYID_COLUMN_BITMASK = 2L;
+	public static long DOMAINNO_COLUMN_BITMASK = 4L;
+	public static long DOSSIERPROCNO_COLUMN_BITMASK = 8L;
+	public static long GROUPID_COLUMN_BITMASK = 16L;
+	public static long STATUSACTIVE_COLUMN_BITMASK = 32L;
 	public static long USERID_COLUMN_BITMASK = 64L;
 	public static long DOSSIERPROCID_COLUMN_BITMASK = 128L;
 
@@ -156,9 +158,11 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 		model.setAdministrationName(soapModel.getAdministrationName());
 		model.setDomainNo(soapModel.getDomainNo());
 		model.setDomainName(soapModel.getDomainName());
+		model.setForCitizen(soapModel.getForCitizen());
+		model.setForBusiness(soapModel.getForBusiness());
 		model.setEffectDate(soapModel.getEffectDate());
 		model.setExpireDate(soapModel.getExpireDate());
-		model.setActive(soapModel.getActive());
+		model.setStatusActive(soapModel.getStatusActive());
 
 		return model;
 	}
@@ -247,9 +251,11 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 		attributes.put("administrationName", getAdministrationName());
 		attributes.put("domainNo", getDomainNo());
 		attributes.put("domainName", getDomainName());
+		attributes.put("forCitizen", getForCitizen());
+		attributes.put("forBusiness", getForBusiness());
 		attributes.put("effectDate", getEffectDate());
 		attributes.put("expireDate", getExpireDate());
-		attributes.put("active", getActive());
+		attributes.put("statusActive", getStatusActive());
 
 		return attributes;
 	}
@@ -403,6 +409,18 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 			setDomainName(domainName);
 		}
 
+		Integer forCitizen = (Integer)attributes.get("forCitizen");
+
+		if (forCitizen != null) {
+			setForCitizen(forCitizen);
+		}
+
+		Integer forBusiness = (Integer)attributes.get("forBusiness");
+
+		if (forBusiness != null) {
+			setForBusiness(forBusiness);
+		}
+
 		Date effectDate = (Date)attributes.get("effectDate");
 
 		if (effectDate != null) {
@@ -415,10 +433,10 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 			setExpireDate(expireDate);
 		}
 
-		Integer active = (Integer)attributes.get("active");
+		Integer statusActive = (Integer)attributes.get("statusActive");
 
-		if (active != null) {
-			setActive(active);
+		if (statusActive != null) {
+			setStatusActive(statusActive);
 		}
 	}
 
@@ -854,6 +872,28 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 
 	@JSON
 	@Override
+	public int getForCitizen() {
+		return _forCitizen;
+	}
+
+	@Override
+	public void setForCitizen(int forCitizen) {
+		_forCitizen = forCitizen;
+	}
+
+	@JSON
+	@Override
+	public int getForBusiness() {
+		return _forBusiness;
+	}
+
+	@Override
+	public void setForBusiness(int forBusiness) {
+		_forBusiness = forBusiness;
+	}
+
+	@JSON
+	@Override
 	public Date getEffectDate() {
 		return _effectDate;
 	}
@@ -876,25 +916,25 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 
 	@JSON
 	@Override
-	public int getActive() {
-		return _active;
+	public int getStatusActive() {
+		return _statusActive;
 	}
 
 	@Override
-	public void setActive(int active) {
-		_columnBitmask |= ACTIVE_COLUMN_BITMASK;
+	public void setStatusActive(int statusActive) {
+		_columnBitmask |= STATUSACTIVE_COLUMN_BITMASK;
 
-		if (!_setOriginalActive) {
-			_setOriginalActive = true;
+		if (!_setOriginalStatusActive) {
+			_setOriginalStatusActive = true;
 
-			_originalActive = _active;
+			_originalStatusActive = _statusActive;
 		}
 
-		_active = active;
+		_statusActive = statusActive;
 	}
 
-	public int getOriginalActive() {
-		return _originalActive;
+	public int getOriginalStatusActive() {
+		return _originalStatusActive;
 	}
 
 	public long getColumnBitmask() {
@@ -952,9 +992,11 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 		dossierProcImpl.setAdministrationName(getAdministrationName());
 		dossierProcImpl.setDomainNo(getDomainNo());
 		dossierProcImpl.setDomainName(getDomainName());
+		dossierProcImpl.setForCitizen(getForCitizen());
+		dossierProcImpl.setForBusiness(getForBusiness());
 		dossierProcImpl.setEffectDate(getEffectDate());
 		dossierProcImpl.setExpireDate(getExpireDate());
-		dossierProcImpl.setActive(getActive());
+		dossierProcImpl.setStatusActive(getStatusActive());
 
 		dossierProcImpl.resetOriginalValues();
 
@@ -1025,9 +1067,9 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 
 		dossierProcModelImpl._originalDomainNo = dossierProcModelImpl._domainNo;
 
-		dossierProcModelImpl._originalActive = dossierProcModelImpl._active;
+		dossierProcModelImpl._originalStatusActive = dossierProcModelImpl._statusActive;
 
-		dossierProcModelImpl._setOriginalActive = false;
+		dossierProcModelImpl._setOriginalStatusActive = false;
 
 		dossierProcModelImpl._columnBitmask = 0;
 	}
@@ -1209,6 +1251,10 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 			dossierProcCacheModel.domainName = null;
 		}
 
+		dossierProcCacheModel.forCitizen = getForCitizen();
+
+		dossierProcCacheModel.forBusiness = getForBusiness();
+
 		Date effectDate = getEffectDate();
 
 		if (effectDate != null) {
@@ -1227,14 +1273,14 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 			dossierProcCacheModel.expireDate = Long.MIN_VALUE;
 		}
 
-		dossierProcCacheModel.active = getActive();
+		dossierProcCacheModel.statusActive = getStatusActive();
 
 		return dossierProcCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(55);
+		StringBundler sb = new StringBundler(59);
 
 		sb.append("{dossierProcId=");
 		sb.append(getDossierProcId());
@@ -1284,12 +1330,16 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 		sb.append(getDomainNo());
 		sb.append(", domainName=");
 		sb.append(getDomainName());
+		sb.append(", forCitizen=");
+		sb.append(getForCitizen());
+		sb.append(", forBusiness=");
+		sb.append(getForBusiness());
 		sb.append(", effectDate=");
 		sb.append(getEffectDate());
 		sb.append(", expireDate=");
 		sb.append(getExpireDate());
-		sb.append(", active=");
-		sb.append(getActive());
+		sb.append(", statusActive=");
+		sb.append(getStatusActive());
 		sb.append("}");
 
 		return sb.toString();
@@ -1297,7 +1347,7 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(85);
+		StringBundler sb = new StringBundler(91);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.DossierProc");
@@ -1400,6 +1450,14 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 		sb.append(getDomainName());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>forCitizen</column-name><column-value><![CDATA[");
+		sb.append(getForCitizen());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>forBusiness</column-name><column-value><![CDATA[");
+		sb.append(getForBusiness());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>effectDate</column-name><column-value><![CDATA[");
 		sb.append(getEffectDate());
 		sb.append("]]></column-value></column>");
@@ -1408,8 +1466,8 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 		sb.append(getExpireDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>active</column-name><column-value><![CDATA[");
-		sb.append(getActive());
+			"<column><column-name>statusActive</column-name><column-value><![CDATA[");
+		sb.append(getStatusActive());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -1455,11 +1513,13 @@ public class DossierProcModelImpl extends BaseModelImpl<DossierProc>
 	private String _domainNo;
 	private String _originalDomainNo;
 	private String _domainName;
+	private int _forCitizen;
+	private int _forBusiness;
 	private Date _effectDate;
 	private Date _expireDate;
-	private int _active;
-	private int _originalActive;
-	private boolean _setOriginalActive;
+	private int _statusActive;
+	private int _originalStatusActive;
+	private boolean _setOriginalStatusActive;
 	private long _columnBitmask;
 	private DossierProc _escapedModel;
 }

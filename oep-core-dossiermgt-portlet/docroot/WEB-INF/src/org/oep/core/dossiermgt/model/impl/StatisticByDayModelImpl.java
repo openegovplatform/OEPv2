@@ -69,20 +69,15 @@ public class StatisticByDayModelImpl extends BaseModelImpl<StatisticByDay>
 			{ "createDate", Types.TIMESTAMP },
 			{ "statisticDate", Types.TIMESTAMP },
 			{ "statisticWeek", Types.INTEGER },
-			{ "submittedNumber", Types.INTEGER },
-			{ "acceptedNumber", Types.INTEGER },
-			{ "deniedNumber", Types.INTEGER },
-			{ "acceptedRatio", Types.DOUBLE },
-			{ "finishedNumber", Types.INTEGER },
+			{ "receiveNumber", Types.BIGINT },
+			{ "onlineNumber", Types.BIGINT },
+			{ "onlineRatio", Types.DOUBLE },
+			{ "finishNumber", Types.INTEGER },
 			{ "ontimeNumber", Types.INTEGER },
-			{ "delayedNumber", Types.INTEGER },
 			{ "ontimeRatio", Types.DOUBLE },
-			{ "doneNumber", Types.INTEGER },
-			{ "doneRatio", Types.DOUBLE },
-			{ "delayDaysAvg", Types.DOUBLE },
-			{ "furtherDaysAvg", Types.DOUBLE }
+			{ "delayDaysAvg", Types.DOUBLE }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_statisticbyday (statisticByDayId LONG not null primary key,groupId LONG,companyId LONG,createDate DATE null,statisticDate DATE null,statisticWeek INTEGER,submittedNumber INTEGER,acceptedNumber INTEGER,deniedNumber INTEGER,acceptedRatio DOUBLE,finishedNumber INTEGER,ontimeNumber INTEGER,delayedNumber INTEGER,ontimeRatio DOUBLE,doneNumber INTEGER,doneRatio DOUBLE,delayDaysAvg DOUBLE,furtherDaysAvg DOUBLE)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_statisticbyday (statisticByDayId LONG not null primary key,groupId LONG,companyId LONG,createDate DATE null,statisticDate DATE null,statisticWeek INTEGER,receiveNumber LONG,onlineNumber LONG,onlineRatio DOUBLE,finishNumber INTEGER,ontimeNumber INTEGER,ontimeRatio DOUBLE,delayDaysAvg DOUBLE)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_statisticbyday";
 	public static final String ORDER_BY_JPQL = " ORDER BY statisticByDay.statisticByDayId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_statisticbyday.statisticByDayId ASC";
@@ -116,18 +111,13 @@ public class StatisticByDayModelImpl extends BaseModelImpl<StatisticByDay>
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setStatisticDate(soapModel.getStatisticDate());
 		model.setStatisticWeek(soapModel.getStatisticWeek());
-		model.setSubmittedNumber(soapModel.getSubmittedNumber());
-		model.setAcceptedNumber(soapModel.getAcceptedNumber());
-		model.setDeniedNumber(soapModel.getDeniedNumber());
-		model.setAcceptedRatio(soapModel.getAcceptedRatio());
-		model.setFinishedNumber(soapModel.getFinishedNumber());
+		model.setReceiveNumber(soapModel.getReceiveNumber());
+		model.setOnlineNumber(soapModel.getOnlineNumber());
+		model.setOnlineRatio(soapModel.getOnlineRatio());
+		model.setFinishNumber(soapModel.getFinishNumber());
 		model.setOntimeNumber(soapModel.getOntimeNumber());
-		model.setDelayedNumber(soapModel.getDelayedNumber());
 		model.setOntimeRatio(soapModel.getOntimeRatio());
-		model.setDoneNumber(soapModel.getDoneNumber());
-		model.setDoneRatio(soapModel.getDoneRatio());
 		model.setDelayDaysAvg(soapModel.getDelayDaysAvg());
-		model.setFurtherDaysAvg(soapModel.getFurtherDaysAvg());
 
 		return model;
 	}
@@ -198,18 +188,13 @@ public class StatisticByDayModelImpl extends BaseModelImpl<StatisticByDay>
 		attributes.put("createDate", getCreateDate());
 		attributes.put("statisticDate", getStatisticDate());
 		attributes.put("statisticWeek", getStatisticWeek());
-		attributes.put("submittedNumber", getSubmittedNumber());
-		attributes.put("acceptedNumber", getAcceptedNumber());
-		attributes.put("deniedNumber", getDeniedNumber());
-		attributes.put("acceptedRatio", getAcceptedRatio());
-		attributes.put("finishedNumber", getFinishedNumber());
+		attributes.put("receiveNumber", getReceiveNumber());
+		attributes.put("onlineNumber", getOnlineNumber());
+		attributes.put("onlineRatio", getOnlineRatio());
+		attributes.put("finishNumber", getFinishNumber());
 		attributes.put("ontimeNumber", getOntimeNumber());
-		attributes.put("delayedNumber", getDelayedNumber());
 		attributes.put("ontimeRatio", getOntimeRatio());
-		attributes.put("doneNumber", getDoneNumber());
-		attributes.put("doneRatio", getDoneRatio());
 		attributes.put("delayDaysAvg", getDelayDaysAvg());
-		attributes.put("furtherDaysAvg", getFurtherDaysAvg());
 
 		return attributes;
 	}
@@ -252,34 +237,28 @@ public class StatisticByDayModelImpl extends BaseModelImpl<StatisticByDay>
 			setStatisticWeek(statisticWeek);
 		}
 
-		Integer submittedNumber = (Integer)attributes.get("submittedNumber");
+		Long receiveNumber = (Long)attributes.get("receiveNumber");
 
-		if (submittedNumber != null) {
-			setSubmittedNumber(submittedNumber);
+		if (receiveNumber != null) {
+			setReceiveNumber(receiveNumber);
 		}
 
-		Integer acceptedNumber = (Integer)attributes.get("acceptedNumber");
+		Long onlineNumber = (Long)attributes.get("onlineNumber");
 
-		if (acceptedNumber != null) {
-			setAcceptedNumber(acceptedNumber);
+		if (onlineNumber != null) {
+			setOnlineNumber(onlineNumber);
 		}
 
-		Integer deniedNumber = (Integer)attributes.get("deniedNumber");
+		Double onlineRatio = (Double)attributes.get("onlineRatio");
 
-		if (deniedNumber != null) {
-			setDeniedNumber(deniedNumber);
+		if (onlineRatio != null) {
+			setOnlineRatio(onlineRatio);
 		}
 
-		Double acceptedRatio = (Double)attributes.get("acceptedRatio");
+		Integer finishNumber = (Integer)attributes.get("finishNumber");
 
-		if (acceptedRatio != null) {
-			setAcceptedRatio(acceptedRatio);
-		}
-
-		Integer finishedNumber = (Integer)attributes.get("finishedNumber");
-
-		if (finishedNumber != null) {
-			setFinishedNumber(finishedNumber);
+		if (finishNumber != null) {
+			setFinishNumber(finishNumber);
 		}
 
 		Integer ontimeNumber = (Integer)attributes.get("ontimeNumber");
@@ -288,40 +267,16 @@ public class StatisticByDayModelImpl extends BaseModelImpl<StatisticByDay>
 			setOntimeNumber(ontimeNumber);
 		}
 
-		Integer delayedNumber = (Integer)attributes.get("delayedNumber");
-
-		if (delayedNumber != null) {
-			setDelayedNumber(delayedNumber);
-		}
-
 		Double ontimeRatio = (Double)attributes.get("ontimeRatio");
 
 		if (ontimeRatio != null) {
 			setOntimeRatio(ontimeRatio);
 		}
 
-		Integer doneNumber = (Integer)attributes.get("doneNumber");
-
-		if (doneNumber != null) {
-			setDoneNumber(doneNumber);
-		}
-
-		Double doneRatio = (Double)attributes.get("doneRatio");
-
-		if (doneRatio != null) {
-			setDoneRatio(doneRatio);
-		}
-
 		Double delayDaysAvg = (Double)attributes.get("delayDaysAvg");
 
 		if (delayDaysAvg != null) {
 			setDelayDaysAvg(delayDaysAvg);
-		}
-
-		Double furtherDaysAvg = (Double)attributes.get("furtherDaysAvg");
-
-		if (furtherDaysAvg != null) {
-			setFurtherDaysAvg(furtherDaysAvg);
 		}
 	}
 
@@ -393,57 +348,46 @@ public class StatisticByDayModelImpl extends BaseModelImpl<StatisticByDay>
 
 	@JSON
 	@Override
-	public int getSubmittedNumber() {
-		return _submittedNumber;
+	public long getReceiveNumber() {
+		return _receiveNumber;
 	}
 
 	@Override
-	public void setSubmittedNumber(int submittedNumber) {
-		_submittedNumber = submittedNumber;
-	}
-
-	@JSON
-	@Override
-	public int getAcceptedNumber() {
-		return _acceptedNumber;
-	}
-
-	@Override
-	public void setAcceptedNumber(int acceptedNumber) {
-		_acceptedNumber = acceptedNumber;
+	public void setReceiveNumber(long receiveNumber) {
+		_receiveNumber = receiveNumber;
 	}
 
 	@JSON
 	@Override
-	public int getDeniedNumber() {
-		return _deniedNumber;
+	public long getOnlineNumber() {
+		return _onlineNumber;
 	}
 
 	@Override
-	public void setDeniedNumber(int deniedNumber) {
-		_deniedNumber = deniedNumber;
-	}
-
-	@JSON
-	@Override
-	public double getAcceptedRatio() {
-		return _acceptedRatio;
-	}
-
-	@Override
-	public void setAcceptedRatio(double acceptedRatio) {
-		_acceptedRatio = acceptedRatio;
+	public void setOnlineNumber(long onlineNumber) {
+		_onlineNumber = onlineNumber;
 	}
 
 	@JSON
 	@Override
-	public int getFinishedNumber() {
-		return _finishedNumber;
+	public double getOnlineRatio() {
+		return _onlineRatio;
 	}
 
 	@Override
-	public void setFinishedNumber(int finishedNumber) {
-		_finishedNumber = finishedNumber;
+	public void setOnlineRatio(double onlineRatio) {
+		_onlineRatio = onlineRatio;
+	}
+
+	@JSON
+	@Override
+	public int getFinishNumber() {
+		return _finishNumber;
+	}
+
+	@Override
+	public void setFinishNumber(int finishNumber) {
+		_finishNumber = finishNumber;
 	}
 
 	@JSON
@@ -459,17 +403,6 @@ public class StatisticByDayModelImpl extends BaseModelImpl<StatisticByDay>
 
 	@JSON
 	@Override
-	public int getDelayedNumber() {
-		return _delayedNumber;
-	}
-
-	@Override
-	public void setDelayedNumber(int delayedNumber) {
-		_delayedNumber = delayedNumber;
-	}
-
-	@JSON
-	@Override
 	public double getOntimeRatio() {
 		return _ontimeRatio;
 	}
@@ -481,28 +414,6 @@ public class StatisticByDayModelImpl extends BaseModelImpl<StatisticByDay>
 
 	@JSON
 	@Override
-	public int getDoneNumber() {
-		return _doneNumber;
-	}
-
-	@Override
-	public void setDoneNumber(int doneNumber) {
-		_doneNumber = doneNumber;
-	}
-
-	@JSON
-	@Override
-	public double getDoneRatio() {
-		return _doneRatio;
-	}
-
-	@Override
-	public void setDoneRatio(double doneRatio) {
-		_doneRatio = doneRatio;
-	}
-
-	@JSON
-	@Override
 	public double getDelayDaysAvg() {
 		return _delayDaysAvg;
 	}
@@ -510,17 +421,6 @@ public class StatisticByDayModelImpl extends BaseModelImpl<StatisticByDay>
 	@Override
 	public void setDelayDaysAvg(double delayDaysAvg) {
 		_delayDaysAvg = delayDaysAvg;
-	}
-
-	@JSON
-	@Override
-	public double getFurtherDaysAvg() {
-		return _furtherDaysAvg;
-	}
-
-	@Override
-	public void setFurtherDaysAvg(double furtherDaysAvg) {
-		_furtherDaysAvg = furtherDaysAvg;
 	}
 
 	@Override
@@ -556,18 +456,13 @@ public class StatisticByDayModelImpl extends BaseModelImpl<StatisticByDay>
 		statisticByDayImpl.setCreateDate(getCreateDate());
 		statisticByDayImpl.setStatisticDate(getStatisticDate());
 		statisticByDayImpl.setStatisticWeek(getStatisticWeek());
-		statisticByDayImpl.setSubmittedNumber(getSubmittedNumber());
-		statisticByDayImpl.setAcceptedNumber(getAcceptedNumber());
-		statisticByDayImpl.setDeniedNumber(getDeniedNumber());
-		statisticByDayImpl.setAcceptedRatio(getAcceptedRatio());
-		statisticByDayImpl.setFinishedNumber(getFinishedNumber());
+		statisticByDayImpl.setReceiveNumber(getReceiveNumber());
+		statisticByDayImpl.setOnlineNumber(getOnlineNumber());
+		statisticByDayImpl.setOnlineRatio(getOnlineRatio());
+		statisticByDayImpl.setFinishNumber(getFinishNumber());
 		statisticByDayImpl.setOntimeNumber(getOntimeNumber());
-		statisticByDayImpl.setDelayedNumber(getDelayedNumber());
 		statisticByDayImpl.setOntimeRatio(getOntimeRatio());
-		statisticByDayImpl.setDoneNumber(getDoneNumber());
-		statisticByDayImpl.setDoneRatio(getDoneRatio());
 		statisticByDayImpl.setDelayDaysAvg(getDelayDaysAvg());
-		statisticByDayImpl.setFurtherDaysAvg(getFurtherDaysAvg());
 
 		statisticByDayImpl.resetOriginalValues();
 
@@ -650,36 +545,26 @@ public class StatisticByDayModelImpl extends BaseModelImpl<StatisticByDay>
 
 		statisticByDayCacheModel.statisticWeek = getStatisticWeek();
 
-		statisticByDayCacheModel.submittedNumber = getSubmittedNumber();
+		statisticByDayCacheModel.receiveNumber = getReceiveNumber();
 
-		statisticByDayCacheModel.acceptedNumber = getAcceptedNumber();
+		statisticByDayCacheModel.onlineNumber = getOnlineNumber();
 
-		statisticByDayCacheModel.deniedNumber = getDeniedNumber();
+		statisticByDayCacheModel.onlineRatio = getOnlineRatio();
 
-		statisticByDayCacheModel.acceptedRatio = getAcceptedRatio();
-
-		statisticByDayCacheModel.finishedNumber = getFinishedNumber();
+		statisticByDayCacheModel.finishNumber = getFinishNumber();
 
 		statisticByDayCacheModel.ontimeNumber = getOntimeNumber();
 
-		statisticByDayCacheModel.delayedNumber = getDelayedNumber();
-
 		statisticByDayCacheModel.ontimeRatio = getOntimeRatio();
 
-		statisticByDayCacheModel.doneNumber = getDoneNumber();
-
-		statisticByDayCacheModel.doneRatio = getDoneRatio();
-
 		statisticByDayCacheModel.delayDaysAvg = getDelayDaysAvg();
-
-		statisticByDayCacheModel.furtherDaysAvg = getFurtherDaysAvg();
 
 		return statisticByDayCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(27);
 
 		sb.append("{statisticByDayId=");
 		sb.append(getStatisticByDayId());
@@ -693,30 +578,20 @@ public class StatisticByDayModelImpl extends BaseModelImpl<StatisticByDay>
 		sb.append(getStatisticDate());
 		sb.append(", statisticWeek=");
 		sb.append(getStatisticWeek());
-		sb.append(", submittedNumber=");
-		sb.append(getSubmittedNumber());
-		sb.append(", acceptedNumber=");
-		sb.append(getAcceptedNumber());
-		sb.append(", deniedNumber=");
-		sb.append(getDeniedNumber());
-		sb.append(", acceptedRatio=");
-		sb.append(getAcceptedRatio());
-		sb.append(", finishedNumber=");
-		sb.append(getFinishedNumber());
+		sb.append(", receiveNumber=");
+		sb.append(getReceiveNumber());
+		sb.append(", onlineNumber=");
+		sb.append(getOnlineNumber());
+		sb.append(", onlineRatio=");
+		sb.append(getOnlineRatio());
+		sb.append(", finishNumber=");
+		sb.append(getFinishNumber());
 		sb.append(", ontimeNumber=");
 		sb.append(getOntimeNumber());
-		sb.append(", delayedNumber=");
-		sb.append(getDelayedNumber());
 		sb.append(", ontimeRatio=");
 		sb.append(getOntimeRatio());
-		sb.append(", doneNumber=");
-		sb.append(getDoneNumber());
-		sb.append(", doneRatio=");
-		sb.append(getDoneRatio());
 		sb.append(", delayDaysAvg=");
 		sb.append(getDelayDaysAvg());
-		sb.append(", furtherDaysAvg=");
-		sb.append(getFurtherDaysAvg());
 		sb.append("}");
 
 		return sb.toString();
@@ -724,7 +599,7 @@ public class StatisticByDayModelImpl extends BaseModelImpl<StatisticByDay>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(58);
+		StringBundler sb = new StringBundler(43);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.StatisticByDay");
@@ -755,52 +630,32 @@ public class StatisticByDayModelImpl extends BaseModelImpl<StatisticByDay>
 		sb.append(getStatisticWeek());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>submittedNumber</column-name><column-value><![CDATA[");
-		sb.append(getSubmittedNumber());
+			"<column><column-name>receiveNumber</column-name><column-value><![CDATA[");
+		sb.append(getReceiveNumber());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>acceptedNumber</column-name><column-value><![CDATA[");
-		sb.append(getAcceptedNumber());
+			"<column><column-name>onlineNumber</column-name><column-value><![CDATA[");
+		sb.append(getOnlineNumber());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>deniedNumber</column-name><column-value><![CDATA[");
-		sb.append(getDeniedNumber());
+			"<column><column-name>onlineRatio</column-name><column-value><![CDATA[");
+		sb.append(getOnlineRatio());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>acceptedRatio</column-name><column-value><![CDATA[");
-		sb.append(getAcceptedRatio());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>finishedNumber</column-name><column-value><![CDATA[");
-		sb.append(getFinishedNumber());
+			"<column><column-name>finishNumber</column-name><column-value><![CDATA[");
+		sb.append(getFinishNumber());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>ontimeNumber</column-name><column-value><![CDATA[");
 		sb.append(getOntimeNumber());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>delayedNumber</column-name><column-value><![CDATA[");
-		sb.append(getDelayedNumber());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>ontimeRatio</column-name><column-value><![CDATA[");
 		sb.append(getOntimeRatio());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>doneNumber</column-name><column-value><![CDATA[");
-		sb.append(getDoneNumber());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>doneRatio</column-name><column-value><![CDATA[");
-		sb.append(getDoneRatio());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>delayDaysAvg</column-name><column-value><![CDATA[");
 		sb.append(getDelayDaysAvg());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>furtherDaysAvg</column-name><column-value><![CDATA[");
-		sb.append(getFurtherDaysAvg());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -818,17 +673,12 @@ public class StatisticByDayModelImpl extends BaseModelImpl<StatisticByDay>
 	private Date _createDate;
 	private Date _statisticDate;
 	private int _statisticWeek;
-	private int _submittedNumber;
-	private int _acceptedNumber;
-	private int _deniedNumber;
-	private double _acceptedRatio;
-	private int _finishedNumber;
+	private long _receiveNumber;
+	private long _onlineNumber;
+	private double _onlineRatio;
+	private int _finishNumber;
 	private int _ontimeNumber;
-	private int _delayedNumber;
 	private double _ontimeRatio;
-	private int _doneNumber;
-	private double _doneRatio;
 	private double _delayDaysAvg;
-	private double _furtherDaysAvg;
 	private StatisticByDay _escapedModel;
 }

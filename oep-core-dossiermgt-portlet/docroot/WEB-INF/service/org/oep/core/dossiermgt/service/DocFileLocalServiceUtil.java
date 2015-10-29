@@ -336,38 +336,77 @@ public class DocFileLocalServiceUtil {
 	}
 
 	/**
-	* Add dossier proc
+	* ThÃƒÂªm mÃ¡Â»â„¢t tÃƒÂ i liÃ¡Â»â€¡u cho hÃ¡Â»â€œ sÃ†Â¡
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
 	*
-	* @param
-	* @return: new dossier proc
+	* @param dossierId hÃ¡Â»â€œ sÃ†Â¡
+	* @param dossierDocId thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
+	* @param docTemplateId mÃ¡ÂºÂ«u thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡ mÃ¡ÂºÂ·c Ã„â€˜Ã¡Â»â€¹nh
+	* @param docFileVersionId phiÃƒÂªn bÃ¡ÂºÂ£n tÃ¡Â»â€¡p thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
+	* @param docFileName tÃƒÂªn tÃ¡Â»â€¡p thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
+	* @param docFileType loÃ¡ÂºÂ¡i tÃƒÂ i liÃ¡Â»â€¡u
+	* @param verifyStatus CÃ¡Â»ï¿½ Ã„â€˜ÃƒÂ¡nh dÃ¡ÂºÂ¥u tÃƒÂ i liÃ¡Â»â€¡u Ã„â€˜ÃƒÂ£ Ã„â€˜Ã†Â°Ã¡Â»Â£c Ã„â€˜Ã¡Â»â€˜i chiÃ¡ÂºÂ¿u
+	* @param note ghi chÃƒÂº
+	* @param approveBy TÃƒÂªn ngÃ†Â°Ã¡Â»ï¿½i phÃƒÂª duyÃ¡Â»â€¡t tÃƒÂ i liÃ¡Â»â€¡u
+	* @param approveDate NgÃƒÂ y Ã„â€˜Ã†Â°Ã¡Â»Â£c phÃƒÂª duyÃ¡Â»â€¡t
+	* @param premier CÃ¡Â»ï¿½ Ã„â€˜ÃƒÂ¡nh dÃ¡ÂºÂ¥u bÃ¡ÂºÂ£n gÃ¡Â»â€˜c tÃƒÂ i liÃ¡Â»â€¡u
+	* @return: tÃƒÂ i liÃ¡Â»â€¡u trong bÃ¡Â»â„¢ hÃ¡Â»â€œ sÃ†Â¡ mÃ¡Â»â€ºi
 	*/
 	public static org.oep.core.dossiermgt.model.DocFile addDocFile(
 		long dossierId, long dossierDocId, long docTemplateId,
-		long docFileVersionId, java.lang.String docName, java.lang.String note,
+		long docFileVersionId, java.lang.String docFileName, int docFileType,
+		int verifyStatus, java.lang.String note, java.lang.String approveBy,
+		java.util.Date approveDate, int premier,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .addDocFile(dossierId, dossierDocId, docTemplateId,
-			docFileVersionId, docName, note, serviceContext);
+			docFileVersionId, docFileName, docFileType, verifyStatus, note,
+			approveBy, approveDate, premier, serviceContext);
 	}
 
+	/**
+	* ChÃ¡Â»â€°nh sÃ¡Â»Â­a mÃ¡Â»â„¢t tÃƒÂ i liÃ¡Â»â€¡u trong bÃ¡Â»â„¢ hÃ¡Â»â€œ sÃ†Â¡
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
+	*
+	* @param dossierId hÃ¡Â»â€œ sÃ†Â¡
+	* @param dossierDocId thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
+	* @param docTemplateId mÃ¡ÂºÂ«u thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡ mÃ¡ÂºÂ·c Ã„â€˜Ã¡Â»â€¹nh
+	* @param docFileVersionId phiÃƒÂªn bÃ¡ÂºÂ£n tÃ¡Â»â€¡p thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
+	* @param docFileName tÃƒÂªn tÃ¡Â»â€¡p thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
+	* @param docFileType loÃ¡ÂºÂ¡i tÃƒÂ i liÃ¡Â»â€¡u
+	* @param verifyStatus CÃ¡Â»ï¿½ Ã„â€˜ÃƒÂ¡nh dÃ¡ÂºÂ¥u tÃƒÂ i liÃ¡Â»â€¡u Ã„â€˜ÃƒÂ£ Ã„â€˜Ã†Â°Ã¡Â»Â£c Ã„â€˜Ã¡Â»â€˜i chiÃ¡ÂºÂ¿u
+	* @param note ghi chÃƒÂº
+	* @param approveBy TÃƒÂªn ngÃ†Â°Ã¡Â»ï¿½i phÃƒÂª duyÃ¡Â»â€¡t tÃƒÂ i liÃ¡Â»â€¡u
+	* @param approveDate NgÃƒÂ y Ã„â€˜Ã†Â°Ã¡Â»Â£c phÃƒÂª duyÃ¡Â»â€¡t
+	* @param premier CÃ¡Â»ï¿½ Ã„â€˜ÃƒÂ¡nh dÃ¡ÂºÂ¥u bÃ¡ÂºÂ£n gÃ¡Â»â€˜c tÃƒÂ i liÃ¡Â»â€¡u
+	* @return: tÃƒÂ i liÃ¡Â»â€¡u hÃ¡Â»â€œ sÃ†Â¡ vÃ¡Â»Â«a Ã„â€˜Ã†Â°Ã¡Â»Â£c cÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t
+	*/
 	public static org.oep.core.dossiermgt.model.DocFile updateDocFile(long id,
 		long dossierId, long dossierDocId, long docTemplateId,
-		long docFileVersionId, java.lang.String docName, java.lang.String note,
+		long docFileVersionId, java.lang.String docFileName, int docFileType,
+		int verifyStatus, java.lang.String note, java.lang.String approveBy,
+		java.util.Date approveDate, int premier,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .updateDocFile(id, dossierId, dossierDocId, docTemplateId,
-			docFileVersionId, docName, note, serviceContext);
+			docFileVersionId, docFileName, docFileType, verifyStatus, note,
+			approveBy, approveDate, premier, serviceContext);
 	}
 
 	public static void updateDocFileResources(

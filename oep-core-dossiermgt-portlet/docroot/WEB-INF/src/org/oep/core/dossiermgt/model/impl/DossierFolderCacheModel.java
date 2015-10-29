@@ -38,12 +38,16 @@ public class DossierFolderCacheModel implements CacheModel<DossierFolder>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(25);
+		StringBundler sb = new StringBundler(35);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
 		sb.append(", dossierFolderId=");
 		sb.append(dossierFolderId);
+		sb.append(", userId=");
+		sb.append(userId);
+		sb.append(", groupId=");
+		sb.append(groupId);
 		sb.append(", companyId=");
 		sb.append(companyId);
 		sb.append(", createDate=");
@@ -60,10 +64,16 @@ public class DossierFolderCacheModel implements CacheModel<DossierFolder>,
 		sb.append(procedureFilter);
 		sb.append(", statusFilter=");
 		sb.append(statusFilter);
+		sb.append(", tagFilter=");
+		sb.append(tagFilter);
 		sb.append(", filterByOrganization=");
 		sb.append(filterByOrganization);
 		sb.append(", filterByUser=");
 		sb.append(filterByUser);
+		sb.append(", orderBy=");
+		sb.append(orderBy);
+		sb.append(", counting=");
+		sb.append(counting);
 		sb.append("}");
 
 		return sb.toString();
@@ -81,6 +91,8 @@ public class DossierFolderCacheModel implements CacheModel<DossierFolder>,
 		}
 
 		dossierFolderImpl.setDossierFolderId(dossierFolderId);
+		dossierFolderImpl.setUserId(userId);
+		dossierFolderImpl.setGroupId(groupId);
 		dossierFolderImpl.setCompanyId(companyId);
 
 		if (createDate == Long.MIN_VALUE) {
@@ -121,8 +133,24 @@ public class DossierFolderCacheModel implements CacheModel<DossierFolder>,
 			dossierFolderImpl.setStatusFilter(statusFilter);
 		}
 
+		if (tagFilter == null) {
+			dossierFolderImpl.setTagFilter(StringPool.BLANK);
+		}
+		else {
+			dossierFolderImpl.setTagFilter(tagFilter);
+		}
+
 		dossierFolderImpl.setFilterByOrganization(filterByOrganization);
 		dossierFolderImpl.setFilterByUser(filterByUser);
+
+		if (orderBy == null) {
+			dossierFolderImpl.setOrderBy(StringPool.BLANK);
+		}
+		else {
+			dossierFolderImpl.setOrderBy(orderBy);
+		}
+
+		dossierFolderImpl.setCounting(counting);
 
 		dossierFolderImpl.resetOriginalValues();
 
@@ -133,6 +161,8 @@ public class DossierFolderCacheModel implements CacheModel<DossierFolder>,
 	public void readExternal(ObjectInput objectInput) throws IOException {
 		uuid = objectInput.readUTF();
 		dossierFolderId = objectInput.readLong();
+		userId = objectInput.readLong();
+		groupId = objectInput.readLong();
 		companyId = objectInput.readLong();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
@@ -141,8 +171,11 @@ public class DossierFolderCacheModel implements CacheModel<DossierFolder>,
 		sequenceNo = objectInput.readInt();
 		procedureFilter = objectInput.readUTF();
 		statusFilter = objectInput.readUTF();
+		tagFilter = objectInput.readUTF();
 		filterByOrganization = objectInput.readInt();
 		filterByUser = objectInput.readInt();
+		orderBy = objectInput.readUTF();
+		counting = objectInput.readInt();
 	}
 
 	@Override
@@ -156,6 +189,8 @@ public class DossierFolderCacheModel implements CacheModel<DossierFolder>,
 		}
 
 		objectOutput.writeLong(dossierFolderId);
+		objectOutput.writeLong(userId);
+		objectOutput.writeLong(groupId);
 		objectOutput.writeLong(companyId);
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
@@ -184,12 +219,30 @@ public class DossierFolderCacheModel implements CacheModel<DossierFolder>,
 			objectOutput.writeUTF(statusFilter);
 		}
 
+		if (tagFilter == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(tagFilter);
+		}
+
 		objectOutput.writeInt(filterByOrganization);
 		objectOutput.writeInt(filterByUser);
+
+		if (orderBy == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(orderBy);
+		}
+
+		objectOutput.writeInt(counting);
 	}
 
 	public String uuid;
 	public long dossierFolderId;
+	public long userId;
+	public long groupId;
 	public long companyId;
 	public long createDate;
 	public long modifiedDate;
@@ -198,6 +251,9 @@ public class DossierFolderCacheModel implements CacheModel<DossierFolder>,
 	public int sequenceNo;
 	public String procedureFilter;
 	public String statusFilter;
+	public String tagFilter;
 	public int filterByOrganization;
 	public int filterByUser;
+	public String orderBy;
+	public int counting;
 }

@@ -290,24 +290,26 @@ public class DossierProcAgentLocalServiceUtil {
 	*/
 	public static org.oep.core.dossiermgt.model.DossierProcAgent addDossierProcAgent(
 		long dossierProcId, java.lang.String govAgencyId,
-		java.lang.String govAgencyName, long ebPartnerShipId,
+		java.lang.String govAgencyName, java.lang.String bankTransfer,
+		java.lang.String keypay, long ebPartnerShipId,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .addDossierProcAgent(dossierProcId, govAgencyId,
-			govAgencyName, ebPartnerShipId, serviceContext);
+			govAgencyName, bankTransfer, keypay, ebPartnerShipId, serviceContext);
 	}
 
 	public static org.oep.core.dossiermgt.model.DossierProcAgent updateDossierProcAgent(
 		long id, long dossierProcId, java.lang.String govAgencyId,
-		java.lang.String govAgencyName, long ebPartnerShipId,
+		java.lang.String govAgencyName, java.lang.String bankTransfer,
+		java.lang.String keypay, long ebPartnerShipId,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .updateDossierProcAgent(id, dossierProcId, govAgencyId,
-			govAgencyName, ebPartnerShipId, serviceContext);
+			govAgencyName, bankTransfer, keypay, ebPartnerShipId, serviceContext);
 	}
 
 	public static void updateDossierProcAgentResources(

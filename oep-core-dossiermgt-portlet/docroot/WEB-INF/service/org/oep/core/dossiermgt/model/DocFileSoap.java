@@ -42,8 +42,12 @@ public class DocFileSoap implements Serializable {
 		soapModel.setDossierDocId(model.getDossierDocId());
 		soapModel.setDocTemplateId(model.getDocTemplateId());
 		soapModel.setDocFileVersionId(model.getDocFileVersionId());
-		soapModel.setDocName(model.getDocName());
+		soapModel.setDocFileName(model.getDocFileName());
+		soapModel.setDocFileType(model.getDocFileType());
+		soapModel.setVerifyStatus(model.getVerifyStatus());
 		soapModel.setNote(model.getNote());
+		soapModel.setApproveBy(model.getApproveBy());
+		soapModel.setApproveDate(model.getApproveDate());
 		soapModel.setPremier(model.getPremier());
 
 		return soapModel;
@@ -185,12 +189,28 @@ public class DocFileSoap implements Serializable {
 		_docFileVersionId = docFileVersionId;
 	}
 
-	public String getDocName() {
-		return _docName;
+	public String getDocFileName() {
+		return _docFileName;
 	}
 
-	public void setDocName(String docName) {
-		_docName = docName;
+	public void setDocFileName(String docFileName) {
+		_docFileName = docFileName;
+	}
+
+	public long getDocFileType() {
+		return _docFileType;
+	}
+
+	public void setDocFileType(long docFileType) {
+		_docFileType = docFileType;
+	}
+
+	public int getVerifyStatus() {
+		return _verifyStatus;
+	}
+
+	public void setVerifyStatus(int verifyStatus) {
+		_verifyStatus = verifyStatus;
 	}
 
 	public String getNote() {
@@ -199,6 +219,22 @@ public class DocFileSoap implements Serializable {
 
 	public void setNote(String note) {
 		_note = note;
+	}
+
+	public String getApproveBy() {
+		return _approveBy;
+	}
+
+	public void setApproveBy(String approveBy) {
+		_approveBy = approveBy;
+	}
+
+	public Date getApproveDate() {
+		return _approveDate;
+	}
+
+	public void setApproveDate(Date approveDate) {
+		_approveDate = approveDate;
 	}
 
 	public int getPremier() {
@@ -220,7 +256,11 @@ public class DocFileSoap implements Serializable {
 	private long _dossierDocId;
 	private long _docTemplateId;
 	private long _docFileVersionId;
-	private String _docName;
+	private String _docFileName;
+	private long _docFileType;
+	private int _verifyStatus;
 	private String _note;
+	private String _approveBy;
+	private Date _approveDate;
 	private int _premier;
 }

@@ -21,10 +21,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * This class is used by SOAP remote services, specifically {@link org.oep.core.dossiermgt.service.http.DossierServiceSoap}.
+ * This class is used by SOAP remote services.
  *
  * @author trungdk
- * @see org.oep.core.dossiermgt.service.http.DossierServiceSoap
  * @generated
  */
 public class DossierSoap implements Serializable {
@@ -53,26 +52,34 @@ public class DossierSoap implements Serializable {
 		soapModel.setWardNo(model.getWardNo());
 		soapModel.setWardName(model.getWardName());
 		soapModel.setTelNo(model.getTelNo());
+		soapModel.setEmail(model.getEmail());
+		soapModel.setSubjectAsContactPerson(model.getSubjectAsContactPerson());
 		soapModel.setContactPersonName(model.getContactPersonName());
+		soapModel.setContactPersonId(model.getContactPersonId());
+		soapModel.setContactPersonSex(model.getContactPersonSex());
 		soapModel.setContactPersonTel(model.getContactPersonTel());
 		soapModel.setNote(model.getNote());
 		soapModel.setResumeDescription(model.getResumeDescription());
 		soapModel.setReceptionNo(model.getReceptionNo());
+		soapModel.setOnegate(model.getOnegate());
 		soapModel.setSubmitDate(model.getSubmitDate());
 		soapModel.setReceiveDate(model.getReceiveDate());
+		soapModel.setProcessDate(model.getProcessDate());
 		soapModel.setRenewDate(model.getRenewDate());
 		soapModel.setEstimateDate(model.getEstimateDate());
 		soapModel.setFinishDate(model.getFinishDate());
+		soapModel.setHandoverDate(model.getHandoverDate());
 		soapModel.setReturnDate(model.getReturnDate());
-		soapModel.setStatus(model.getStatus());
+		soapModel.setArchiveDate(model.getArchiveDate());
+		soapModel.setMainStatus(model.getMainStatus());
+		soapModel.setSubStatus(model.getSubStatus());
 		soapModel.setStatusDate(model.getStatusDate());
 		soapModel.setStatusDescription(model.getStatusDescription());
 		soapModel.setFeedbackNote(model.getFeedbackNote());
 		soapModel.setDaysDelay(model.getDaysDelay());
-		soapModel.setCloseDate(model.getCloseDate());
 		soapModel.setErrorStatus(model.getErrorStatus());
-		soapModel.setPendingStatus(model.getPendingStatus());
 		soapModel.setErrorCode(model.getErrorCode());
+		soapModel.setPendingStatus(model.getPendingStatus());
 		soapModel.setDirty(model.getDirty());
 
 		return soapModel;
@@ -302,12 +309,44 @@ public class DossierSoap implements Serializable {
 		_telNo = telNo;
 	}
 
+	public String getEmail() {
+		return _email;
+	}
+
+	public void setEmail(String email) {
+		_email = email;
+	}
+
+	public int getSubjectAsContactPerson() {
+		return _subjectAsContactPerson;
+	}
+
+	public void setSubjectAsContactPerson(int subjectAsContactPerson) {
+		_subjectAsContactPerson = subjectAsContactPerson;
+	}
+
 	public String getContactPersonName() {
 		return _contactPersonName;
 	}
 
 	public void setContactPersonName(String contactPersonName) {
 		_contactPersonName = contactPersonName;
+	}
+
+	public String getContactPersonId() {
+		return _contactPersonId;
+	}
+
+	public void setContactPersonId(String contactPersonId) {
+		_contactPersonId = contactPersonId;
+	}
+
+	public int getContactPersonSex() {
+		return _contactPersonSex;
+	}
+
+	public void setContactPersonSex(int contactPersonSex) {
+		_contactPersonSex = contactPersonSex;
 	}
 
 	public String getContactPersonTel() {
@@ -342,6 +381,14 @@ public class DossierSoap implements Serializable {
 		_receptionNo = receptionNo;
 	}
 
+	public int getOnegate() {
+		return _onegate;
+	}
+
+	public void setOnegate(int onegate) {
+		_onegate = onegate;
+	}
+
 	public Date getSubmitDate() {
 		return _submitDate;
 	}
@@ -356,6 +403,14 @@ public class DossierSoap implements Serializable {
 
 	public void setReceiveDate(Date receiveDate) {
 		_receiveDate = receiveDate;
+	}
+
+	public Date getProcessDate() {
+		return _processDate;
+	}
+
+	public void setProcessDate(Date processDate) {
+		_processDate = processDate;
 	}
 
 	public Date getRenewDate() {
@@ -382,6 +437,14 @@ public class DossierSoap implements Serializable {
 		_finishDate = finishDate;
 	}
 
+	public Date getHandoverDate() {
+		return _handoverDate;
+	}
+
+	public void setHandoverDate(Date handoverDate) {
+		_handoverDate = handoverDate;
+	}
+
 	public Date getReturnDate() {
 		return _returnDate;
 	}
@@ -390,12 +453,28 @@ public class DossierSoap implements Serializable {
 		_returnDate = returnDate;
 	}
 
-	public String getStatus() {
-		return _status;
+	public Date getArchiveDate() {
+		return _archiveDate;
 	}
 
-	public void setStatus(String status) {
-		_status = status;
+	public void setArchiveDate(Date archiveDate) {
+		_archiveDate = archiveDate;
+	}
+
+	public String getMainStatus() {
+		return _mainStatus;
+	}
+
+	public void setMainStatus(String mainStatus) {
+		_mainStatus = mainStatus;
+	}
+
+	public String getSubStatus() {
+		return _subStatus;
+	}
+
+	public void setSubStatus(String subStatus) {
+		_subStatus = subStatus;
 	}
 
 	public Date getStatusDate() {
@@ -430,14 +509,6 @@ public class DossierSoap implements Serializable {
 		_daysDelay = daysDelay;
 	}
 
-	public Date getCloseDate() {
-		return _closeDate;
-	}
-
-	public void setCloseDate(Date closeDate) {
-		_closeDate = closeDate;
-	}
-
 	public String getErrorStatus() {
 		return _errorStatus;
 	}
@@ -446,20 +517,20 @@ public class DossierSoap implements Serializable {
 		_errorStatus = errorStatus;
 	}
 
-	public int getPendingStatus() {
-		return _pendingStatus;
-	}
-
-	public void setPendingStatus(int pendingStatus) {
-		_pendingStatus = pendingStatus;
-	}
-
 	public String getErrorCode() {
 		return _errorCode;
 	}
 
 	public void setErrorCode(String errorCode) {
 		_errorCode = errorCode;
+	}
+
+	public int getPendingStatus() {
+		return _pendingStatus;
+	}
+
+	public void setPendingStatus(int pendingStatus) {
+		_pendingStatus = pendingStatus;
 	}
 
 	public int getDirty() {
@@ -492,25 +563,33 @@ public class DossierSoap implements Serializable {
 	private String _wardNo;
 	private String _wardName;
 	private String _telNo;
+	private String _email;
+	private int _subjectAsContactPerson;
 	private String _contactPersonName;
+	private String _contactPersonId;
+	private int _contactPersonSex;
 	private String _contactPersonTel;
 	private String _note;
 	private String _resumeDescription;
 	private String _receptionNo;
+	private int _onegate;
 	private Date _submitDate;
 	private Date _receiveDate;
+	private Date _processDate;
 	private Date _renewDate;
 	private Date _estimateDate;
 	private Date _finishDate;
+	private Date _handoverDate;
 	private Date _returnDate;
-	private String _status;
+	private Date _archiveDate;
+	private String _mainStatus;
+	private String _subStatus;
 	private Date _statusDate;
 	private String _statusDescription;
 	private String _feedbackNote;
 	private int _daysDelay;
-	private Date _closeDate;
 	private String _errorStatus;
-	private int _pendingStatus;
 	private String _errorCode;
+	private int _pendingStatus;
 	private int _dirty;
 }

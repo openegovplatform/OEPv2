@@ -107,7 +107,8 @@ public class DossierProcServiceSoap {
 		java.lang.String recordsDescription, java.lang.String feeDescription,
 		java.lang.String instructionsDescription,
 		java.lang.String administrationNo, java.lang.String domainNo,
-		java.util.Date effectDate, java.util.Date expireDate, int active,
+		java.util.Date effectDate, java.util.Date expireDate, int forCitizen,
+		int forBusiness, int statusActive,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws RemoteException {
 		try {
@@ -117,7 +118,8 @@ public class DossierProcServiceSoap {
 					conditionDescription, durationDescription,
 					actorsDescription, resultsDescription, recordsDescription,
 					feeDescription, instructionsDescription, administrationNo,
-					domainNo, effectDate, expireDate, active, serviceContext);
+					domainNo, effectDate, expireDate, forCitizen, forBusiness,
+					statusActive, serviceContext);
 
 			return org.oep.core.dossiermgt.model.DossierProcSoap.toSoapModel(returnValue);
 		}

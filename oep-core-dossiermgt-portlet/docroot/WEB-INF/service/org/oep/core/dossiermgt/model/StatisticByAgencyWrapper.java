@@ -57,18 +57,13 @@ public class StatisticByAgencyWrapper implements StatisticByAgency,
 		attributes.put("month", getMonth());
 		attributes.put("year", getYear());
 		attributes.put("govAgencyId", getGovAgencyId());
-		attributes.put("submittedNumber", getSubmittedNumber());
-		attributes.put("acceptedNumber", getAcceptedNumber());
-		attributes.put("deniedNumber", getDeniedNumber());
-		attributes.put("acceptedRatio", getAcceptedRatio());
-		attributes.put("finishedNumber", getFinishedNumber());
+		attributes.put("receiveNumber", getReceiveNumber());
+		attributes.put("onlineNumber", getOnlineNumber());
+		attributes.put("onlineRatio", getOnlineRatio());
+		attributes.put("finishNumber", getFinishNumber());
 		attributes.put("ontimeNumber", getOntimeNumber());
-		attributes.put("delayedNumber", getDelayedNumber());
 		attributes.put("ontimeRatio", getOntimeRatio());
-		attributes.put("doneNumber", getDoneNumber());
-		attributes.put("doneRatio", getDoneRatio());
 		attributes.put("delayDaysAvg", getDelayDaysAvg());
-		attributes.put("furtherDaysAvg", getFurtherDaysAvg());
 
 		return attributes;
 	}
@@ -117,34 +112,28 @@ public class StatisticByAgencyWrapper implements StatisticByAgency,
 			setGovAgencyId(govAgencyId);
 		}
 
-		Integer submittedNumber = (Integer)attributes.get("submittedNumber");
+		Long receiveNumber = (Long)attributes.get("receiveNumber");
 
-		if (submittedNumber != null) {
-			setSubmittedNumber(submittedNumber);
+		if (receiveNumber != null) {
+			setReceiveNumber(receiveNumber);
 		}
 
-		Integer acceptedNumber = (Integer)attributes.get("acceptedNumber");
+		Long onlineNumber = (Long)attributes.get("onlineNumber");
 
-		if (acceptedNumber != null) {
-			setAcceptedNumber(acceptedNumber);
+		if (onlineNumber != null) {
+			setOnlineNumber(onlineNumber);
 		}
 
-		Integer deniedNumber = (Integer)attributes.get("deniedNumber");
+		Double onlineRatio = (Double)attributes.get("onlineRatio");
 
-		if (deniedNumber != null) {
-			setDeniedNumber(deniedNumber);
+		if (onlineRatio != null) {
+			setOnlineRatio(onlineRatio);
 		}
 
-		Double acceptedRatio = (Double)attributes.get("acceptedRatio");
+		Integer finishNumber = (Integer)attributes.get("finishNumber");
 
-		if (acceptedRatio != null) {
-			setAcceptedRatio(acceptedRatio);
-		}
-
-		Integer finishedNumber = (Integer)attributes.get("finishedNumber");
-
-		if (finishedNumber != null) {
-			setFinishedNumber(finishedNumber);
+		if (finishNumber != null) {
+			setFinishNumber(finishNumber);
 		}
 
 		Integer ontimeNumber = (Integer)attributes.get("ontimeNumber");
@@ -153,40 +142,16 @@ public class StatisticByAgencyWrapper implements StatisticByAgency,
 			setOntimeNumber(ontimeNumber);
 		}
 
-		Integer delayedNumber = (Integer)attributes.get("delayedNumber");
-
-		if (delayedNumber != null) {
-			setDelayedNumber(delayedNumber);
-		}
-
 		Double ontimeRatio = (Double)attributes.get("ontimeRatio");
 
 		if (ontimeRatio != null) {
 			setOntimeRatio(ontimeRatio);
 		}
 
-		Integer doneNumber = (Integer)attributes.get("doneNumber");
-
-		if (doneNumber != null) {
-			setDoneNumber(doneNumber);
-		}
-
-		Double doneRatio = (Double)attributes.get("doneRatio");
-
-		if (doneRatio != null) {
-			setDoneRatio(doneRatio);
-		}
-
 		Double delayDaysAvg = (Double)attributes.get("delayDaysAvg");
 
 		if (delayDaysAvg != null) {
 			setDelayDaysAvg(delayDaysAvg);
-		}
-
-		Double furtherDaysAvg = (Double)attributes.get("furtherDaysAvg");
-
-		if (furtherDaysAvg != null) {
-			setFurtherDaysAvg(furtherDaysAvg);
 		}
 	}
 
@@ -351,103 +316,83 @@ public class StatisticByAgencyWrapper implements StatisticByAgency,
 	}
 
 	/**
-	* Returns the submitted number of this statistic by agency.
+	* Returns the receive number of this statistic by agency.
 	*
-	* @return the submitted number of this statistic by agency
+	* @return the receive number of this statistic by agency
 	*/
 	@Override
-	public int getSubmittedNumber() {
-		return _statisticByAgency.getSubmittedNumber();
+	public long getReceiveNumber() {
+		return _statisticByAgency.getReceiveNumber();
 	}
 
 	/**
-	* Sets the submitted number of this statistic by agency.
+	* Sets the receive number of this statistic by agency.
 	*
-	* @param submittedNumber the submitted number of this statistic by agency
+	* @param receiveNumber the receive number of this statistic by agency
 	*/
 	@Override
-	public void setSubmittedNumber(int submittedNumber) {
-		_statisticByAgency.setSubmittedNumber(submittedNumber);
+	public void setReceiveNumber(long receiveNumber) {
+		_statisticByAgency.setReceiveNumber(receiveNumber);
 	}
 
 	/**
-	* Returns the accepted number of this statistic by agency.
+	* Returns the online number of this statistic by agency.
 	*
-	* @return the accepted number of this statistic by agency
+	* @return the online number of this statistic by agency
 	*/
 	@Override
-	public int getAcceptedNumber() {
-		return _statisticByAgency.getAcceptedNumber();
+	public long getOnlineNumber() {
+		return _statisticByAgency.getOnlineNumber();
 	}
 
 	/**
-	* Sets the accepted number of this statistic by agency.
+	* Sets the online number of this statistic by agency.
 	*
-	* @param acceptedNumber the accepted number of this statistic by agency
+	* @param onlineNumber the online number of this statistic by agency
 	*/
 	@Override
-	public void setAcceptedNumber(int acceptedNumber) {
-		_statisticByAgency.setAcceptedNumber(acceptedNumber);
+	public void setOnlineNumber(long onlineNumber) {
+		_statisticByAgency.setOnlineNumber(onlineNumber);
 	}
 
 	/**
-	* Returns the denied number of this statistic by agency.
+	* Returns the online ratio of this statistic by agency.
 	*
-	* @return the denied number of this statistic by agency
+	* @return the online ratio of this statistic by agency
 	*/
 	@Override
-	public int getDeniedNumber() {
-		return _statisticByAgency.getDeniedNumber();
+	public double getOnlineRatio() {
+		return _statisticByAgency.getOnlineRatio();
 	}
 
 	/**
-	* Sets the denied number of this statistic by agency.
+	* Sets the online ratio of this statistic by agency.
 	*
-	* @param deniedNumber the denied number of this statistic by agency
+	* @param onlineRatio the online ratio of this statistic by agency
 	*/
 	@Override
-	public void setDeniedNumber(int deniedNumber) {
-		_statisticByAgency.setDeniedNumber(deniedNumber);
+	public void setOnlineRatio(double onlineRatio) {
+		_statisticByAgency.setOnlineRatio(onlineRatio);
 	}
 
 	/**
-	* Returns the accepted ratio of this statistic by agency.
+	* Returns the finish number of this statistic by agency.
 	*
-	* @return the accepted ratio of this statistic by agency
+	* @return the finish number of this statistic by agency
 	*/
 	@Override
-	public double getAcceptedRatio() {
-		return _statisticByAgency.getAcceptedRatio();
+	public int getFinishNumber() {
+		return _statisticByAgency.getFinishNumber();
 	}
 
 	/**
-	* Sets the accepted ratio of this statistic by agency.
+	* Sets the finish number of this statistic by agency.
 	*
-	* @param acceptedRatio the accepted ratio of this statistic by agency
+	* @param finishNumber the finish number of this statistic by agency
 	*/
 	@Override
-	public void setAcceptedRatio(double acceptedRatio) {
-		_statisticByAgency.setAcceptedRatio(acceptedRatio);
-	}
-
-	/**
-	* Returns the finished number of this statistic by agency.
-	*
-	* @return the finished number of this statistic by agency
-	*/
-	@Override
-	public int getFinishedNumber() {
-		return _statisticByAgency.getFinishedNumber();
-	}
-
-	/**
-	* Sets the finished number of this statistic by agency.
-	*
-	* @param finishedNumber the finished number of this statistic by agency
-	*/
-	@Override
-	public void setFinishedNumber(int finishedNumber) {
-		_statisticByAgency.setFinishedNumber(finishedNumber);
+	public void setFinishNumber(int finishNumber) {
+		_statisticByAgency.setFinishNumber(finishNumber);
 	}
 
 	/**
@@ -471,26 +416,6 @@ public class StatisticByAgencyWrapper implements StatisticByAgency,
 	}
 
 	/**
-	* Returns the delayed number of this statistic by agency.
-	*
-	* @return the delayed number of this statistic by agency
-	*/
-	@Override
-	public int getDelayedNumber() {
-		return _statisticByAgency.getDelayedNumber();
-	}
-
-	/**
-	* Sets the delayed number of this statistic by agency.
-	*
-	* @param delayedNumber the delayed number of this statistic by agency
-	*/
-	@Override
-	public void setDelayedNumber(int delayedNumber) {
-		_statisticByAgency.setDelayedNumber(delayedNumber);
-	}
-
-	/**
 	* Returns the ontime ratio of this statistic by agency.
 	*
 	* @return the ontime ratio of this statistic by agency
@@ -511,46 +436,6 @@ public class StatisticByAgencyWrapper implements StatisticByAgency,
 	}
 
 	/**
-	* Returns the done number of this statistic by agency.
-	*
-	* @return the done number of this statistic by agency
-	*/
-	@Override
-	public int getDoneNumber() {
-		return _statisticByAgency.getDoneNumber();
-	}
-
-	/**
-	* Sets the done number of this statistic by agency.
-	*
-	* @param doneNumber the done number of this statistic by agency
-	*/
-	@Override
-	public void setDoneNumber(int doneNumber) {
-		_statisticByAgency.setDoneNumber(doneNumber);
-	}
-
-	/**
-	* Returns the done ratio of this statistic by agency.
-	*
-	* @return the done ratio of this statistic by agency
-	*/
-	@Override
-	public double getDoneRatio() {
-		return _statisticByAgency.getDoneRatio();
-	}
-
-	/**
-	* Sets the done ratio of this statistic by agency.
-	*
-	* @param doneRatio the done ratio of this statistic by agency
-	*/
-	@Override
-	public void setDoneRatio(double doneRatio) {
-		_statisticByAgency.setDoneRatio(doneRatio);
-	}
-
-	/**
 	* Returns the delay days avg of this statistic by agency.
 	*
 	* @return the delay days avg of this statistic by agency
@@ -568,26 +453,6 @@ public class StatisticByAgencyWrapper implements StatisticByAgency,
 	@Override
 	public void setDelayDaysAvg(double delayDaysAvg) {
 		_statisticByAgency.setDelayDaysAvg(delayDaysAvg);
-	}
-
-	/**
-	* Returns the further days avg of this statistic by agency.
-	*
-	* @return the further days avg of this statistic by agency
-	*/
-	@Override
-	public double getFurtherDaysAvg() {
-		return _statisticByAgency.getFurtherDaysAvg();
-	}
-
-	/**
-	* Sets the further days avg of this statistic by agency.
-	*
-	* @param furtherDaysAvg the further days avg of this statistic by agency
-	*/
-	@Override
-	public void setFurtherDaysAvg(double furtherDaysAvg) {
-		_statisticByAgency.setFurtherDaysAvg(furtherDaysAvg);
 	}
 
 	@Override

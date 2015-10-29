@@ -247,32 +247,18 @@ public interface DossierDocModel extends BaseModel<DossierDoc> {
 	public void setDefaultDocTemplateId(long defaultDocTemplateId);
 
 	/**
-	 * Returns the validation type of this dossier doc.
+	 * Returns the dossier doc type of this dossier doc.
 	 *
-	 * @return the validation type of this dossier doc
+	 * @return the dossier doc type of this dossier doc
 	 */
-	public int getValidationType();
+	public int getDossierDocType();
 
 	/**
-	 * Sets the validation type of this dossier doc.
+	 * Sets the dossier doc type of this dossier doc.
 	 *
-	 * @param validationType the validation type of this dossier doc
+	 * @param dossierDocType the dossier doc type of this dossier doc
 	 */
-	public void setValidationType(int validationType);
-
-	/**
-	 * Returns the requirement type of this dossier doc.
-	 *
-	 * @return the requirement type of this dossier doc
-	 */
-	public int getRequirementType();
-
-	/**
-	 * Sets the requirement type of this dossier doc.
-	 *
-	 * @param requirementType the requirement type of this dossier doc
-	 */
-	public void setRequirementType(int requirementType);
+	public void setDossierDocType(int dossierDocType);
 
 	/**
 	 * Returns the number of file of this dossier doc.

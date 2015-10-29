@@ -42,11 +42,13 @@ public interface DossierProcFinder {
 		com.liferay.portal.service.ServiceContext serviceContext);
 
 	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByGroupCustomCondition(
-		java.lang.String name, java.util.Date effectDate,
+		java.lang.String name, java.lang.String administrationNo,
+		java.lang.String domainNo, java.util.Date effectDate,
 		java.util.Date expireDate, int active, int startIndex, int endIndex,
 		com.liferay.portal.service.ServiceContext serviceContext);
 
 	public int countByGroupCustomCondition(java.lang.String name,
+		java.lang.String administrationNo, java.lang.String domainNo,
 		java.util.Date effectDate, java.util.Date expireDate, int active,
 		com.liferay.portal.service.ServiceContext serviceContext);
 }

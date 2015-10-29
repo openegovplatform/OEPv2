@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<globalConfiguration>
+		<parameter name="adminPassword" value="admin" />
+		<parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl" />
+		<parameter name="sendXsiTypes" value="true" />
+		<parameter name="sendMultiRefs" value="true" />
+		<parameter name="sendXMLDeclaration" value="true" />
+		<parameter name="axis.sendMinimizedElements" value="true" />
+		<requestFlow>
+			<handler type="java:org.apache.axis.handlers.JWSHandler">
+				<parameter name="scope" value="session" />
+			</handler>
+			<handler type="java:org.apache.axis.handlers.JWSHandler">
+				<parameter name="scope" value="request" />
+				<parameter name="extension" value=".jwr" />
+			</handler>
+		</requestFlow>
+	</globalConfiguration>
+	<handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder" />
+	<handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper" />
+	<handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler" />
+	<transport name="http">
+		<requestFlow>
+			<handler type="URLMapper" />
+			<handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler" />
+		</requestFlow>
+	</transport>
+	<transport name="local">
+		<responseFlow>
+			<handler type="LocalResponder" />
+		</responseFlow>
+	</transport>
+	<service name="Plugin_oep_dossiermgt_DocFileService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.DocFileServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="DocFileServiceSoap" />
+		<parameter name="wsdlServiceElement" value="DocFileServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_DocFileService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+	<service name="Plugin_oep_dossiermgt_DocFileVersionService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.DocFileVersionServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="DocFileVersionServiceSoap" />
+		<parameter name="wsdlServiceElement" value="DocFileVersionServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_DocFileVersionService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+	<service name="Plugin_oep_dossiermgt_DocTemplateService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.DocTemplateServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="DocTemplateServiceSoap" />
+		<parameter name="wsdlServiceElement" value="DocTemplateServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_DocTemplateService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+	<service name="Plugin_oep_dossiermgt_DossierDocService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.DossierDocServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="DossierDocServiceSoap" />
+		<parameter name="wsdlServiceElement" value="DossierDocServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_DossierDocService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+	<service name="Plugin_oep_dossiermgt_DossierFolder2RoleService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.DossierFolder2RoleServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="DossierFolder2RoleServiceSoap" />
+		<parameter name="wsdlServiceElement" value="DossierFolder2RoleServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_DossierFolder2RoleService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+	<service name="Plugin_oep_dossiermgt_DossierFolderService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.DossierFolderServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="DossierFolderServiceSoap" />
+		<parameter name="wsdlServiceElement" value="DossierFolderServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_DossierFolderService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+	<service name="Plugin_oep_dossiermgt_DossierProcAgentService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.DossierProcAgentServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="DossierProcAgentServiceSoap" />
+		<parameter name="wsdlServiceElement" value="DossierProcAgentServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_DossierProcAgentService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+	<service name="Plugin_oep_dossiermgt_DossierProcService" provider="java:RPC" style="rpc" use="encoded">
+		<arrayMapping xmlns:ns="urn:http.service.dossiermgt.core.oep.org" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema" qname="ns:ArrayOf_xsd_anyType" type="java:java.lang.Object[]" innerType="cmp-ns:anyType" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></arrayMapping>
+		<arrayMapping xmlns:ns="urn:http.service.dossiermgt.core.oep.org" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema" qname="ns:ArrayOf_xsd_long" type="java:long[]" innerType="cmp-ns:long" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></arrayMapping>
+		<arrayMapping xmlns:ns="urn:http.service.dossiermgt.core.oep.org" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema" qname="ns:ArrayOf_xsd_string" type="java:java.lang.String[]" innerType="cmp-ns:string" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></arrayMapping>
+		<typeMapping xmlns:ns="http://model.dossiermgt.core.oep.org" qname="ns:DossierProcSoap" type="java:org.oep.core.dossiermgt.model.DossierProcSoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<typeMapping xmlns:ns="http://model.portal.liferay.com" qname="ns:PortletPreferencesIds" type="java:com.liferay.portal.model.PortletPreferencesIds" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<typeMapping xmlns:ns="http://service.portal.liferay.com" qname="ns:ServiceContext" type="java:com.liferay.portal.service.ServiceContext" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<typeMapping xmlns:ns="http://theme.portal.liferay.com" qname="ns:PortletDisplay" type="java:com.liferay.portal.theme.PortletDisplay" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<typeMapping xmlns:ns="http://theme.portal.liferay.com" qname="ns:ThemeDisplay" type="java:com.liferay.portal.theme.ThemeDisplay" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<typeMapping xmlns:ns="http://util.kernel.portal.liferay.com" qname="ns:StringBundler" type="java:com.liferay.portal.kernel.util.StringBundler" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<typeMapping xmlns:ns="http://xml.apache.org/xml-soap" qname="ns:mapItem" type="java:org.apache.xml.xml_soap.MapItem" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<operation xmlns:operNS="urn:http.service.dossiermgt.core.oep.org" xmlns:rtns="http://model.dossiermgt.core.oep.org" name="addDossierProc" qname="operNS:addDossierProc" returnQName="addDossierProcReturn" returnType="rtns:DossierProcSoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dossierProcNo" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="name" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="enName" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="shortName" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="processDescription" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="methodDescription" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="dossierDescription" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="conditionDescription" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="durationDescription" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="actorsDescription" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="resultsDescription" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="recordsDescription" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="feeDescription" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="instructionsDescription" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="administrationNo" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="domainNo" type="tns:string"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="effectDate" type="tns:dateTime"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="expireDate" type="tns:dateTime"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="active" type="tns:int"></parameter>
+			<parameter xmlns:tns="http://service.portal.liferay.com" qname="serviceContext" type="tns:ServiceContext"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="addDossierProc" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.DossierProcServiceSoap" />
+		<parameter name="schemaUnqualified" value="http://model.dossiermgt.core.oep.org,http://model.portal.liferay.com,http://service.portal.liferay.com,http://theme.portal.liferay.com,http://util.kernel.portal.liferay.com,http://xml.apache.org/xml-soap,urn:http.service.dossiermgt.core.oep.org" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="DossierProcServiceSoap" />
+		<parameter name="wsdlServiceElement" value="DossierProcServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_DossierProcService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+	<service name="Plugin_oep_dossiermgt_DossierService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.DossierServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="DossierServiceSoap" />
+		<parameter name="wsdlServiceElement" value="DossierServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_DossierService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+	<service name="Plugin_oep_dossiermgt_EbMessageService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.EbMessageServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="EbMessageServiceSoap" />
+		<parameter name="wsdlServiceElement" value="EbMessageServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_EbMessageService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+	<service name="Plugin_oep_dossiermgt_EbPartnerShipService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.EbPartnerShipServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="EbPartnerShipServiceSoap" />
+		<parameter name="wsdlServiceElement" value="EbPartnerShipServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_EbPartnerShipService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+	<service name="Plugin_oep_dossiermgt_PaymentConfigService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.PaymentConfigServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="PaymentConfigServiceSoap" />
+		<parameter name="wsdlServiceElement" value="PaymentConfigServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_PaymentConfigService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+	<service name="Plugin_oep_dossiermgt_PaymentFileService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.PaymentFileServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="PaymentFileServiceSoap" />
+		<parameter name="wsdlServiceElement" value="PaymentFileServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_PaymentFileService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+	<service name="Plugin_oep_dossiermgt_PaymentRequestService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.PaymentRequestServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="PaymentRequestServiceSoap" />
+		<parameter name="wsdlServiceElement" value="PaymentRequestServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_PaymentRequestService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+	<service name="Plugin_oep_dossiermgt_ProfileDataService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.ProfileDataServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="ProfileDataServiceSoap" />
+		<parameter name="wsdlServiceElement" value="ProfileDataServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_ProfileDataService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+	<service name="Plugin_oep_dossiermgt_StatisticByAgencyService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.StatisticByAgencyServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="StatisticByAgencyServiceSoap" />
+		<parameter name="wsdlServiceElement" value="StatisticByAgencyServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_StatisticByAgencyService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+	<service name="Plugin_oep_dossiermgt_StatisticByDayService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.StatisticByDayServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="StatisticByDayServiceSoap" />
+		<parameter name="wsdlServiceElement" value="StatisticByDayServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_StatisticByDayService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+</deployment>

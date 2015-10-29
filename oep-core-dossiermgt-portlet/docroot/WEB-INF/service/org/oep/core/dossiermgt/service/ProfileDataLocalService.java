@@ -253,4 +253,105 @@ public interface ProfileDataLocalService extends BaseLocalService,
 	public java.lang.Object invokeMethod(java.lang.String name,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;
+
+	/**
+	* ThÃªm má»›i má»™t dá»¯ liá»‡u Ä‘á»‡m
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param fieldName tÃªn trÆ°á»�ng
+	* @param fieldValue giÃ¡ trá»‹ cá»§a trÆ°á»�ng
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return: tag há»“ sÆ¡ má»›i Ä‘Æ°á»£c táº¡o
+	*/
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.dossiermgt.model.ProfileData addProfileData(
+		java.lang.String fieldName, java.lang.String fieldValue,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Cáº­p nháº­t thÃ´ng tin má»™t dá»¯ liá»‡u Ä‘á»‡m
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Cáº­p nháº­t thÃ´ng tin dá»¯ liá»‡u Ä‘á»‡m
+	*
+	* @param id mÃ£ phÃ¢n biá»‡t dá»¯ liá»‡u Ä‘á»‡m
+	* @param fieldName tÃªn trÆ°á»�ng dá»¯ liá»‡u
+	* @param fieldValue giÃ¡ trá»‹ trÆ°á»�ng dá»¯ liá»‡u
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return: dá»¯ liá»‡u Ä‘á»‡m má»›i Ä‘Æ°á»£c cáº­p nháº­t thÃ´ng tin
+	*/
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.dossiermgt.model.ProfileData updateProfileData(
+		long id, java.lang.String fieldName, java.lang.String fieldValue,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Cáº­p nháº­t thÃ´ng tin má»™t dá»¯ liá»‡u Ä‘á»‡m
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Cáº­p nháº­t thÃ´ng tin dá»¯ liá»‡u Ä‘á»‡m
+	*
+	* @param profileData dá»¯ liá»‡u Ä‘á»‡m
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return: Ä‘á»‘i tÆ°á»£ng dá»¯ liá»‡u Ä‘á»‡m má»›i Ä‘Æ°á»£c cáº­p nháº­t thÃ´ng tin
+	*/
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.dossiermgt.model.ProfileData updateProfileData(
+		org.oep.core.dossiermgt.model.ProfileData profileData,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* XÃ³a bá»� thÃ´ng tin má»™t dá»¯ liá»‡u Ä‘á»‡m
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    XÃ³a bá»� thÃ´ng tin dá»¯ liá»‡u Ä‘á»‡m
+	*
+	* @param profileData dá»¯ liá»‡u Ä‘á»‡m Ä‘Æ°á»£c xÃ³a
+	* @return
+	*/
+	public void removeProfileData(
+		org.oep.core.dossiermgt.model.ProfileData profileData)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* XÃ³a bá»� thÃ´ng tin má»™t dá»¯ liá»‡u Ä‘á»‡m
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    XÃ³a bá»� thÃ´ng tin dá»¯ liá»‡u Ä‘á»‡m
+	*
+	* @param id mÃ£ phÃ¢n biá»‡t dá»¯ liá»‡u Ä‘á»‡m
+	* @return
+	*/
+	public void removeProfileData(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
 }

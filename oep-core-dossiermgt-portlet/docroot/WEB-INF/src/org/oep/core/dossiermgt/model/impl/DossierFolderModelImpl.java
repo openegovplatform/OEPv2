@@ -15,6 +15,7 @@
 package org.oep.core.dossiermgt.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.GetterUtil;
@@ -68,6 +69,8 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 	public static final Object[][] TABLE_COLUMNS = {
 			{ "uuid_", Types.VARCHAR },
 			{ "dossierFolderId", Types.BIGINT },
+			{ "userId", Types.BIGINT },
+			{ "groupId", Types.BIGINT },
 			{ "companyId", Types.BIGINT },
 			{ "createDate", Types.TIMESTAMP },
 			{ "modifiedDate", Types.TIMESTAMP },
@@ -76,10 +79,13 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 			{ "sequenceNo", Types.INTEGER },
 			{ "procedureFilter", Types.VARCHAR },
 			{ "statusFilter", Types.VARCHAR },
+			{ "tagFilter", Types.VARCHAR },
 			{ "filterByOrganization", Types.INTEGER },
-			{ "filterByUser", Types.INTEGER }
+			{ "filterByUser", Types.INTEGER },
+			{ "orderBy", Types.VARCHAR },
+			{ "counting", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_dossierfolder (uuid_ VARCHAR(75) null,dossierFolderId LONG not null primary key,companyId LONG,createDate DATE null,modifiedDate DATE null,folderName VARCHAR(100) null,parentDossierFolderId LONG,sequenceNo INTEGER,procedureFilter VARCHAR(100) null,statusFilter VARCHAR(100) null,filterByOrganization INTEGER,filterByUser INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_dossierfolder (uuid_ VARCHAR(75) null,dossierFolderId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,folderName VARCHAR(100) null,parentDossierFolderId LONG,sequenceNo INTEGER,procedureFilter VARCHAR(100) null,statusFilter VARCHAR(100) null,tagFilter VARCHAR(100) null,filterByOrganization INTEGER,filterByUser INTEGER,orderBy VARCHAR(100) null,counting INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_dossierfolder";
 	public static final String ORDER_BY_JPQL = " ORDER BY dossierFolder.dossierFolderId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_dossierfolder.dossierFolderId ASC";
@@ -96,8 +102,9 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 				"value.object.column.bitmask.enabled.org.oep.core.dossiermgt.model.DossierFolder"),
 			true);
 	public static long COMPANYID_COLUMN_BITMASK = 1L;
-	public static long UUID_COLUMN_BITMASK = 2L;
-	public static long DOSSIERFOLDERID_COLUMN_BITMASK = 4L;
+	public static long GROUPID_COLUMN_BITMASK = 2L;
+	public static long UUID_COLUMN_BITMASK = 4L;
+	public static long DOSSIERFOLDERID_COLUMN_BITMASK = 8L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -114,6 +121,8 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 
 		model.setUuid(soapModel.getUuid());
 		model.setDossierFolderId(soapModel.getDossierFolderId());
+		model.setUserId(soapModel.getUserId());
+		model.setGroupId(soapModel.getGroupId());
 		model.setCompanyId(soapModel.getCompanyId());
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setModifiedDate(soapModel.getModifiedDate());
@@ -122,8 +131,11 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 		model.setSequenceNo(soapModel.getSequenceNo());
 		model.setProcedureFilter(soapModel.getProcedureFilter());
 		model.setStatusFilter(soapModel.getStatusFilter());
+		model.setTagFilter(soapModel.getTagFilter());
 		model.setFilterByOrganization(soapModel.getFilterByOrganization());
 		model.setFilterByUser(soapModel.getFilterByUser());
+		model.setOrderBy(soapModel.getOrderBy());
+		model.setCounting(soapModel.getCounting());
 
 		return model;
 	}
@@ -190,6 +202,8 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 
 		attributes.put("uuid", getUuid());
 		attributes.put("dossierFolderId", getDossierFolderId());
+		attributes.put("userId", getUserId());
+		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
@@ -198,8 +212,11 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 		attributes.put("sequenceNo", getSequenceNo());
 		attributes.put("procedureFilter", getProcedureFilter());
 		attributes.put("statusFilter", getStatusFilter());
+		attributes.put("tagFilter", getTagFilter());
 		attributes.put("filterByOrganization", getFilterByOrganization());
 		attributes.put("filterByUser", getFilterByUser());
+		attributes.put("orderBy", getOrderBy());
+		attributes.put("counting", getCounting());
 
 		return attributes;
 	}
@@ -216,6 +233,18 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 
 		if (dossierFolderId != null) {
 			setDossierFolderId(dossierFolderId);
+		}
+
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
+		Long groupId = (Long)attributes.get("groupId");
+
+		if (groupId != null) {
+			setGroupId(groupId);
 		}
 
 		Long companyId = (Long)attributes.get("companyId");
@@ -267,6 +296,12 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 			setStatusFilter(statusFilter);
 		}
 
+		String tagFilter = (String)attributes.get("tagFilter");
+
+		if (tagFilter != null) {
+			setTagFilter(tagFilter);
+		}
+
 		Integer filterByOrganization = (Integer)attributes.get(
 				"filterByOrganization");
 
@@ -278,6 +313,18 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 
 		if (filterByUser != null) {
 			setFilterByUser(filterByUser);
+		}
+
+		String orderBy = (String)attributes.get("orderBy");
+
+		if (orderBy != null) {
+			setOrderBy(orderBy);
+		}
+
+		Integer counting = (Integer)attributes.get("counting");
+
+		if (counting != null) {
+			setCounting(counting);
 		}
 	}
 
@@ -314,6 +361,50 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 	@Override
 	public void setDossierFolderId(long dossierFolderId) {
 		_dossierFolderId = dossierFolderId;
+	}
+
+	@JSON
+	@Override
+	public long getUserId() {
+		return _userId;
+	}
+
+	@Override
+	public void setUserId(long userId) {
+		_userId = userId;
+	}
+
+	@Override
+	public String getUserUuid() throws SystemException {
+		return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
+	}
+
+	@Override
+	public void setUserUuid(String userUuid) {
+		_userUuid = userUuid;
+	}
+
+	@JSON
+	@Override
+	public long getGroupId() {
+		return _groupId;
+	}
+
+	@Override
+	public void setGroupId(long groupId) {
+		_columnBitmask |= GROUPID_COLUMN_BITMASK;
+
+		if (!_setOriginalGroupId) {
+			_setOriginalGroupId = true;
+
+			_originalGroupId = _groupId;
+		}
+
+		_groupId = groupId;
+	}
+
+	public long getOriginalGroupId() {
+		return _originalGroupId;
 	}
 
 	@JSON
@@ -433,6 +524,22 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 
 	@JSON
 	@Override
+	public String getTagFilter() {
+		if (_tagFilter == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _tagFilter;
+		}
+	}
+
+	@Override
+	public void setTagFilter(String tagFilter) {
+		_tagFilter = tagFilter;
+	}
+
+	@JSON
+	@Override
 	public int getFilterByOrganization() {
 		return _filterByOrganization;
 	}
@@ -451,6 +558,33 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 	@Override
 	public void setFilterByUser(int filterByUser) {
 		_filterByUser = filterByUser;
+	}
+
+	@JSON
+	@Override
+	public String getOrderBy() {
+		if (_orderBy == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _orderBy;
+		}
+	}
+
+	@Override
+	public void setOrderBy(String orderBy) {
+		_orderBy = orderBy;
+	}
+
+	@JSON
+	@Override
+	public int getCounting() {
+		return _counting;
+	}
+
+	@Override
+	public void setCounting(int counting) {
+		_counting = counting;
 	}
 
 	@Override
@@ -492,6 +626,8 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 
 		dossierFolderImpl.setUuid(getUuid());
 		dossierFolderImpl.setDossierFolderId(getDossierFolderId());
+		dossierFolderImpl.setUserId(getUserId());
+		dossierFolderImpl.setGroupId(getGroupId());
 		dossierFolderImpl.setCompanyId(getCompanyId());
 		dossierFolderImpl.setCreateDate(getCreateDate());
 		dossierFolderImpl.setModifiedDate(getModifiedDate());
@@ -500,8 +636,11 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 		dossierFolderImpl.setSequenceNo(getSequenceNo());
 		dossierFolderImpl.setProcedureFilter(getProcedureFilter());
 		dossierFolderImpl.setStatusFilter(getStatusFilter());
+		dossierFolderImpl.setTagFilter(getTagFilter());
 		dossierFolderImpl.setFilterByOrganization(getFilterByOrganization());
 		dossierFolderImpl.setFilterByUser(getFilterByUser());
+		dossierFolderImpl.setOrderBy(getOrderBy());
+		dossierFolderImpl.setCounting(getCounting());
 
 		dossierFolderImpl.resetOriginalValues();
 
@@ -556,6 +695,10 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 
 		dossierFolderModelImpl._originalUuid = dossierFolderModelImpl._uuid;
 
+		dossierFolderModelImpl._originalGroupId = dossierFolderModelImpl._groupId;
+
+		dossierFolderModelImpl._setOriginalGroupId = false;
+
 		dossierFolderModelImpl._originalCompanyId = dossierFolderModelImpl._companyId;
 
 		dossierFolderModelImpl._setOriginalCompanyId = false;
@@ -576,6 +719,10 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 		}
 
 		dossierFolderCacheModel.dossierFolderId = getDossierFolderId();
+
+		dossierFolderCacheModel.userId = getUserId();
+
+		dossierFolderCacheModel.groupId = getGroupId();
 
 		dossierFolderCacheModel.companyId = getCompanyId();
 
@@ -625,21 +772,43 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 			dossierFolderCacheModel.statusFilter = null;
 		}
 
+		dossierFolderCacheModel.tagFilter = getTagFilter();
+
+		String tagFilter = dossierFolderCacheModel.tagFilter;
+
+		if ((tagFilter != null) && (tagFilter.length() == 0)) {
+			dossierFolderCacheModel.tagFilter = null;
+		}
+
 		dossierFolderCacheModel.filterByOrganization = getFilterByOrganization();
 
 		dossierFolderCacheModel.filterByUser = getFilterByUser();
+
+		dossierFolderCacheModel.orderBy = getOrderBy();
+
+		String orderBy = dossierFolderCacheModel.orderBy;
+
+		if ((orderBy != null) && (orderBy.length() == 0)) {
+			dossierFolderCacheModel.orderBy = null;
+		}
+
+		dossierFolderCacheModel.counting = getCounting();
 
 		return dossierFolderCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(25);
+		StringBundler sb = new StringBundler(35);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
 		sb.append(", dossierFolderId=");
 		sb.append(getDossierFolderId());
+		sb.append(", userId=");
+		sb.append(getUserId());
+		sb.append(", groupId=");
+		sb.append(getGroupId());
 		sb.append(", companyId=");
 		sb.append(getCompanyId());
 		sb.append(", createDate=");
@@ -656,10 +825,16 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 		sb.append(getProcedureFilter());
 		sb.append(", statusFilter=");
 		sb.append(getStatusFilter());
+		sb.append(", tagFilter=");
+		sb.append(getTagFilter());
 		sb.append(", filterByOrganization=");
 		sb.append(getFilterByOrganization());
 		sb.append(", filterByUser=");
 		sb.append(getFilterByUser());
+		sb.append(", orderBy=");
+		sb.append(getOrderBy());
+		sb.append(", counting=");
+		sb.append(getCounting());
 		sb.append("}");
 
 		return sb.toString();
@@ -667,7 +842,7 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(40);
+		StringBundler sb = new StringBundler(55);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.DossierFolder");
@@ -680,6 +855,14 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 		sb.append(
 			"<column><column-name>dossierFolderId</column-name><column-value><![CDATA[");
 		sb.append(getDossierFolderId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>userId</column-name><column-value><![CDATA[");
+		sb.append(getUserId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>groupId</column-name><column-value><![CDATA[");
+		sb.append(getGroupId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>companyId</column-name><column-value><![CDATA[");
@@ -714,12 +897,24 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 		sb.append(getStatusFilter());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>tagFilter</column-name><column-value><![CDATA[");
+		sb.append(getTagFilter());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>filterByOrganization</column-name><column-value><![CDATA[");
 		sb.append(getFilterByOrganization());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>filterByUser</column-name><column-value><![CDATA[");
 		sb.append(getFilterByUser());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>orderBy</column-name><column-value><![CDATA[");
+		sb.append(getOrderBy());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>counting</column-name><column-value><![CDATA[");
+		sb.append(getCounting());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -734,6 +929,11 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 	private String _uuid;
 	private String _originalUuid;
 	private long _dossierFolderId;
+	private long _userId;
+	private String _userUuid;
+	private long _groupId;
+	private long _originalGroupId;
+	private boolean _setOriginalGroupId;
 	private long _companyId;
 	private long _originalCompanyId;
 	private boolean _setOriginalCompanyId;
@@ -744,8 +944,11 @@ public class DossierFolderModelImpl extends BaseModelImpl<DossierFolder>
 	private int _sequenceNo;
 	private String _procedureFilter;
 	private String _statusFilter;
+	private String _tagFilter;
 	private int _filterByOrganization;
 	private int _filterByUser;
+	private String _orderBy;
+	private int _counting;
 	private long _columnBitmask;
 	private DossierFolder _escapedModel;
 }

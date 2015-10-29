@@ -109,9 +109,11 @@ public class DossierProcServiceImpl extends DossierProcServiceBaseImpl {
 			String domainNo,
 			Date effectDate,
 			Date expireDate,
-			int active,
+			int forCitizen,
+			int forBusiness,
+			int statusActive,
 			ServiceContext serviceContext) throws SystemException, PortalException {
 		DossierProcPermission.check(getPermissionChecker(), serviceContext.getScopeGroupId(), ActionKeys.ADD_DOSSIERPROC);
-		return DossierProcLocalServiceUtil.addDossierProc(userId, dossierProcNo, name, enName, shortName, processDescription, methodDescription, dossierDescription, conditionDescription, durationDescription, actorsDescription, resultsDescription, recordsDescription, feeDescription, instructionsDescription, administrationNo, domainNo, effectDate, expireDate, active, serviceContext);
+		return DossierProcLocalServiceUtil.addDossierProc(userId, dossierProcNo, name, enName, shortName, processDescription, methodDescription, dossierDescription, conditionDescription, durationDescription, actorsDescription, resultsDescription, recordsDescription, feeDescription, instructionsDescription, administrationNo, domainNo, forCitizen, forBusiness, effectDate, expireDate, statusActive, serviceContext);
 	}	
 }

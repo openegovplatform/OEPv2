@@ -332,18 +332,13 @@ public class StatisticByAgencyPersistenceImpl extends BasePersistenceImpl<Statis
 		statisticByAgencyImpl.setMonth(statisticByAgency.getMonth());
 		statisticByAgencyImpl.setYear(statisticByAgency.getYear());
 		statisticByAgencyImpl.setGovAgencyId(statisticByAgency.getGovAgencyId());
-		statisticByAgencyImpl.setSubmittedNumber(statisticByAgency.getSubmittedNumber());
-		statisticByAgencyImpl.setAcceptedNumber(statisticByAgency.getAcceptedNumber());
-		statisticByAgencyImpl.setDeniedNumber(statisticByAgency.getDeniedNumber());
-		statisticByAgencyImpl.setAcceptedRatio(statisticByAgency.getAcceptedRatio());
-		statisticByAgencyImpl.setFinishedNumber(statisticByAgency.getFinishedNumber());
+		statisticByAgencyImpl.setReceiveNumber(statisticByAgency.getReceiveNumber());
+		statisticByAgencyImpl.setOnlineNumber(statisticByAgency.getOnlineNumber());
+		statisticByAgencyImpl.setOnlineRatio(statisticByAgency.getOnlineRatio());
+		statisticByAgencyImpl.setFinishNumber(statisticByAgency.getFinishNumber());
 		statisticByAgencyImpl.setOntimeNumber(statisticByAgency.getOntimeNumber());
-		statisticByAgencyImpl.setDelayedNumber(statisticByAgency.getDelayedNumber());
 		statisticByAgencyImpl.setOntimeRatio(statisticByAgency.getOntimeRatio());
-		statisticByAgencyImpl.setDoneNumber(statisticByAgency.getDoneNumber());
-		statisticByAgencyImpl.setDoneRatio(statisticByAgency.getDoneRatio());
 		statisticByAgencyImpl.setDelayDaysAvg(statisticByAgency.getDelayDaysAvg());
-		statisticByAgencyImpl.setFurtherDaysAvg(statisticByAgency.getFurtherDaysAvg());
 
 		return statisticByAgencyImpl;
 	}

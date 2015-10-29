@@ -119,14 +119,16 @@ public class DossierProcAgentLocalServiceClp
 		_methodName19 = "addDossierProcAgent";
 
 		_methodParameterTypes19 = new String[] {
-				"long", "java.lang.String", "java.lang.String", "long",
+				"long", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName20 = "updateDossierProcAgent";
 
 		_methodParameterTypes20 = new String[] {
-				"long", "long", "java.lang.String", "java.lang.String", "long",
+				"long", "long", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -727,7 +729,8 @@ public class DossierProcAgentLocalServiceClp
 	@Override
 	public org.oep.core.dossiermgt.model.DossierProcAgent addDossierProcAgent(
 		long dossierProcId, java.lang.String govAgencyId,
-		java.lang.String govAgencyName, long ebPartnerShipId,
+		java.lang.String govAgencyName, java.lang.String bankTransfer,
+		java.lang.String keypay, long ebPartnerShipId,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -742,6 +745,10 @@ public class DossierProcAgentLocalServiceClp
 					ClpSerializer.translateInput(govAgencyId),
 						
 					ClpSerializer.translateInput(govAgencyName),
+						
+					ClpSerializer.translateInput(bankTransfer),
+						
+					ClpSerializer.translateInput(keypay),
 						
 					ebPartnerShipId,
 						
@@ -774,7 +781,8 @@ public class DossierProcAgentLocalServiceClp
 	@Override
 	public org.oep.core.dossiermgt.model.DossierProcAgent updateDossierProcAgent(
 		long id, long dossierProcId, java.lang.String govAgencyId,
-		java.lang.String govAgencyName, long ebPartnerShipId,
+		java.lang.String govAgencyName, java.lang.String bankTransfer,
+		java.lang.String keypay, long ebPartnerShipId,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -791,6 +799,10 @@ public class DossierProcAgentLocalServiceClp
 					ClpSerializer.translateInput(govAgencyId),
 						
 					ClpSerializer.translateInput(govAgencyName),
+						
+					ClpSerializer.translateInput(bankTransfer),
+						
+					ClpSerializer.translateInput(keypay),
 						
 					ebPartnerShipId,
 						

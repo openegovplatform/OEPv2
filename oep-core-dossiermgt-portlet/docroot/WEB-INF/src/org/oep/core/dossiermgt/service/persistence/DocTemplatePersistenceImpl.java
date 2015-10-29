@@ -2636,7 +2636,7 @@ public class DocTemplatePersistenceImpl extends BasePersistenceImpl<DocTemplate>
 			throw processException(e);
 		}
 		finally {
-			FinderCacheUtil.clearCache(DocTemplateModelImpl.MAPPING_TABLE_OEP_DOSSIERMGT_OEP_DOSSIERMGT_DOSSIERDOC2TEMPLATE_NAME);
+			FinderCacheUtil.clearCache(DocTemplateModelImpl.MAPPING_TABLE_OEP_DOSSIERMGT_DOSSIERDOC2TEMPLATE_NAME);
 		}
 	}
 
@@ -2664,7 +2664,7 @@ public class DocTemplatePersistenceImpl extends BasePersistenceImpl<DocTemplate>
 			}
 		}
 
-		docTemplateToDossierDocTableMapper = TableMapperFactory.getTableMapper("oep_dossiermgt_oep_dossiermgt_dossierdoc2template",
+		docTemplateToDossierDocTableMapper = TableMapperFactory.getTableMapper("oep_dossiermgt_dossierdoc2template",
 				"docTemplateId", "dossierDocId", this, dossierDocPersistence);
 	}
 

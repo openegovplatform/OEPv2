@@ -114,13 +114,33 @@ public class DossierFolder2RoleLocalServiceClpInvoker {
 				"org.oep.core.dossiermgt.model.DossierFolder2Role"
 			};
 
-		_methodName136 = "getBeanIdentifier";
+		_methodName152 = "getBeanIdentifier";
 
-		_methodParameterTypes136 = new String[] {  };
+		_methodParameterTypes152 = new String[] {  };
 
-		_methodName137 = "setBeanIdentifier";
+		_methodName153 = "setBeanIdentifier";
 
-		_methodParameterTypes137 = new String[] { "java.lang.String" };
+		_methodParameterTypes153 = new String[] { "java.lang.String" };
+
+		_methodName158 = "addDossierFolder2Role";
+
+		_methodParameterTypes158 = new String[] {
+				"long", "long", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName159 = "removeDossierFolder2Role";
+
+		_methodParameterTypes159 = new String[] {
+				"org.oep.core.dossiermgt.model.DossierFolder2Role"
+			};
+
+		_methodName160 = "removeDossierFolder2Role";
+
+		_methodParameterTypes160 = new String[] { "long", "long" };
+
+		_methodName161 = "getDossierFolder2Role";
+
+		_methodParameterTypes161 = new String[] { "long", "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -212,16 +232,44 @@ public class DossierFolder2RoleLocalServiceClpInvoker {
 			return DossierFolder2RoleLocalServiceUtil.updateDossierFolder2Role((org.oep.core.dossiermgt.model.DossierFolder2Role)arguments[0]);
 		}
 
-		if (_methodName136.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes136, parameterTypes)) {
+		if (_methodName152.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes152, parameterTypes)) {
 			return DossierFolder2RoleLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName137.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes137, parameterTypes)) {
+		if (_methodName153.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes153, parameterTypes)) {
 			DossierFolder2RoleLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
+		}
+
+		if (_methodName158.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes158, parameterTypes)) {
+			return DossierFolder2RoleLocalServiceUtil.addDossierFolder2Role(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[2]);
+		}
+
+		if (_methodName159.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes159, parameterTypes)) {
+			DossierFolder2RoleLocalServiceUtil.removeDossierFolder2Role((org.oep.core.dossiermgt.model.DossierFolder2Role)arguments[0]);
+
+			return null;
+		}
+
+		if (_methodName160.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes160, parameterTypes)) {
+			DossierFolder2RoleLocalServiceUtil.removeDossierFolder2Role(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
+
+			return null;
+		}
+
+		if (_methodName161.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes161, parameterTypes)) {
+			return DossierFolder2RoleLocalServiceUtil.getDossierFolder2Role(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
 		}
 
 		throw new UnsupportedOperationException();
@@ -259,8 +307,16 @@ public class DossierFolder2RoleLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName136;
-	private String[] _methodParameterTypes136;
-	private String _methodName137;
-	private String[] _methodParameterTypes137;
+	private String _methodName152;
+	private String[] _methodParameterTypes152;
+	private String _methodName153;
+	private String[] _methodParameterTypes153;
+	private String _methodName158;
+	private String[] _methodParameterTypes158;
+	private String _methodName159;
+	private String[] _methodParameterTypes159;
+	private String _methodName160;
+	private String[] _methodParameterTypes160;
+	private String _methodName161;
+	private String[] _methodParameterTypes161;
 }

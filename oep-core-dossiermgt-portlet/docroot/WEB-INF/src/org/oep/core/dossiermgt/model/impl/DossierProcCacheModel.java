@@ -38,7 +38,7 @@ public class DossierProcCacheModel implements CacheModel<DossierProc>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(55);
+		StringBundler sb = new StringBundler(59);
 
 		sb.append("{dossierProcId=");
 		sb.append(dossierProcId);
@@ -88,12 +88,16 @@ public class DossierProcCacheModel implements CacheModel<DossierProc>,
 		sb.append(domainNo);
 		sb.append(", domainName=");
 		sb.append(domainName);
+		sb.append(", forCitizen=");
+		sb.append(forCitizen);
+		sb.append(", forBusiness=");
+		sb.append(forBusiness);
 		sb.append(", effectDate=");
 		sb.append(effectDate);
 		sb.append(", expireDate=");
 		sb.append(expireDate);
-		sb.append(", active=");
-		sb.append(active);
+		sb.append(", statusActive=");
+		sb.append(statusActive);
 		sb.append("}");
 
 		return sb.toString();
@@ -248,6 +252,9 @@ public class DossierProcCacheModel implements CacheModel<DossierProc>,
 			dossierProcImpl.setDomainName(domainName);
 		}
 
+		dossierProcImpl.setForCitizen(forCitizen);
+		dossierProcImpl.setForBusiness(forBusiness);
+
 		if (effectDate == Long.MIN_VALUE) {
 			dossierProcImpl.setEffectDate(null);
 		}
@@ -262,7 +269,7 @@ public class DossierProcCacheModel implements CacheModel<DossierProc>,
 			dossierProcImpl.setExpireDate(new Date(expireDate));
 		}
 
-		dossierProcImpl.setActive(active);
+		dossierProcImpl.setStatusActive(statusActive);
 
 		dossierProcImpl.resetOriginalValues();
 
@@ -295,9 +302,11 @@ public class DossierProcCacheModel implements CacheModel<DossierProc>,
 		administrationName = objectInput.readUTF();
 		domainNo = objectInput.readUTF();
 		domainName = objectInput.readUTF();
+		forCitizen = objectInput.readInt();
+		forBusiness = objectInput.readInt();
 		effectDate = objectInput.readLong();
 		expireDate = objectInput.readLong();
-		active = objectInput.readInt();
+		statusActive = objectInput.readInt();
 	}
 
 	@Override
@@ -436,9 +445,11 @@ public class DossierProcCacheModel implements CacheModel<DossierProc>,
 			objectOutput.writeUTF(domainName);
 		}
 
+		objectOutput.writeInt(forCitizen);
+		objectOutput.writeInt(forBusiness);
 		objectOutput.writeLong(effectDate);
 		objectOutput.writeLong(expireDate);
-		objectOutput.writeInt(active);
+		objectOutput.writeInt(statusActive);
 	}
 
 	public long dossierProcId;
@@ -465,7 +476,9 @@ public class DossierProcCacheModel implements CacheModel<DossierProc>,
 	public String administrationName;
 	public String domainNo;
 	public String domainName;
+	public int forCitizen;
+	public int forBusiness;
 	public long effectDate;
 	public long expireDate;
-	public int active;
+	public int statusActive;
 }

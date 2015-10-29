@@ -102,7 +102,8 @@ public class DossierProcServiceWrapper implements DossierProcService,
 		java.lang.String recordsDescription, java.lang.String feeDescription,
 		java.lang.String instructionsDescription,
 		java.lang.String administrationNo, java.lang.String domainNo,
-		java.util.Date effectDate, java.util.Date expireDate, int active,
+		java.util.Date effectDate, java.util.Date expireDate, int forCitizen,
+		int forBusiness, int statusActive,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -111,7 +112,8 @@ public class DossierProcServiceWrapper implements DossierProcService,
 			dossierDescription, conditionDescription, durationDescription,
 			actorsDescription, resultsDescription, recordsDescription,
 			feeDescription, instructionsDescription, administrationNo,
-			domainNo, effectDate, expireDate, active, serviceContext);
+			domainNo, effectDate, expireDate, forCitizen, forBusiness,
+			statusActive, serviceContext);
 	}
 
 	/**

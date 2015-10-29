@@ -106,17 +106,17 @@ public class EbMessageLocalServiceClpInvoker {
 				"org.oep.core.dossiermgt.model.EbMessage"
 			};
 
-		_methodName136 = "getBeanIdentifier";
+		_methodName152 = "getBeanIdentifier";
 
-		_methodParameterTypes136 = new String[] {  };
+		_methodParameterTypes152 = new String[] {  };
 
-		_methodName137 = "setBeanIdentifier";
+		_methodName153 = "setBeanIdentifier";
 
-		_methodParameterTypes137 = new String[] { "java.lang.String" };
+		_methodParameterTypes153 = new String[] { "java.lang.String" };
 
-		_methodName142 = "addEbMessage";
+		_methodName158 = "addEbMessage";
 
-		_methodParameterTypes142 = new String[] {
+		_methodParameterTypes158 = new String[] {
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
@@ -126,9 +126,9 @@ public class EbMessageLocalServiceClpInvoker {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName143 = "updateEbMessage";
+		_methodName159 = "updateEbMessage";
 
-		_methodParameterTypes143 = new String[] {
+		_methodParameterTypes159 = new String[] {
 				"long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
@@ -138,46 +138,46 @@ public class EbMessageLocalServiceClpInvoker {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName144 = "updateEbMessageResources";
+		_methodName160 = "updateEbMessageResources";
 
-		_methodParameterTypes144 = new String[] {
+		_methodParameterTypes160 = new String[] {
 				"org.oep.core.dossiermgt.model.EbMessage",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName145 = "removeEbMessage";
+		_methodName161 = "removeEbMessage";
 
-		_methodParameterTypes145 = new String[] {
+		_methodParameterTypes161 = new String[] {
 				"org.oep.core.dossiermgt.model.EbMessage"
 			};
 
-		_methodName146 = "removeEbMessage";
+		_methodName162 = "removeEbMessage";
 
-		_methodParameterTypes146 = new String[] { "long" };
+		_methodParameterTypes162 = new String[] { "long" };
 
-		_methodName147 = "getEbMessage";
+		_methodName163 = "getEbMessage";
 
-		_methodParameterTypes147 = new String[] { "long" };
+		_methodParameterTypes163 = new String[] { "long" };
 
-		_methodName148 = "addEbMessageResources";
+		_methodName164 = "addEbMessageResources";
 
-		_methodParameterTypes148 = new String[] {
+		_methodParameterTypes164 = new String[] {
 				"org.oep.core.dossiermgt.model.EbMessage", "boolean", "boolean",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName149 = "addEbMessageResources";
+		_methodName165 = "addEbMessageResources";
 
-		_methodParameterTypes149 = new String[] {
+		_methodParameterTypes165 = new String[] {
 				"org.oep.core.dossiermgt.model.EbMessage",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName150 = "addEbMessageResources";
+		_methodName166 = "addEbMessageResources";
 
-		_methodParameterTypes150 = new String[] {
+		_methodParameterTypes166 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -272,20 +272,20 @@ public class EbMessageLocalServiceClpInvoker {
 			return EbMessageLocalServiceUtil.updateEbMessage((org.oep.core.dossiermgt.model.EbMessage)arguments[0]);
 		}
 
-		if (_methodName136.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes136, parameterTypes)) {
+		if (_methodName152.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes152, parameterTypes)) {
 			return EbMessageLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName137.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes137, parameterTypes)) {
+		if (_methodName153.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes153, parameterTypes)) {
 			EbMessageLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName142.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes142, parameterTypes)) {
+		if (_methodName158.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes158, parameterTypes)) {
 			return EbMessageLocalServiceUtil.addEbMessage((java.lang.String)arguments[0],
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				(java.lang.String)arguments[3], (java.lang.String)arguments[4],
@@ -302,8 +302,8 @@ public class EbMessageLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[17]);
 		}
 
-		if (_methodName143.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes143, parameterTypes)) {
+		if (_methodName159.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes159, parameterTypes)) {
 			return EbMessageLocalServiceUtil.updateEbMessage(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				(java.lang.String)arguments[3], (java.lang.String)arguments[4],
@@ -321,8 +321,8 @@ public class EbMessageLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[18]);
 		}
 
-		if (_methodName144.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes144, parameterTypes)) {
+		if (_methodName160.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes160, parameterTypes)) {
 			EbMessageLocalServiceUtil.updateEbMessageResources((org.oep.core.dossiermgt.model.EbMessage)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -331,27 +331,27 @@ public class EbMessageLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName145.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes145, parameterTypes)) {
+		if (_methodName161.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes161, parameterTypes)) {
 			EbMessageLocalServiceUtil.removeEbMessage((org.oep.core.dossiermgt.model.EbMessage)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName146.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes146, parameterTypes)) {
+		if (_methodName162.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes162, parameterTypes)) {
 			EbMessageLocalServiceUtil.removeEbMessage(((Long)arguments[0]).longValue());
 
 			return null;
 		}
 
-		if (_methodName147.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes147, parameterTypes)) {
+		if (_methodName163.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes163, parameterTypes)) {
 			return EbMessageLocalServiceUtil.getEbMessage(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName148.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes148, parameterTypes)) {
+		if (_methodName164.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes164, parameterTypes)) {
 			EbMessageLocalServiceUtil.addEbMessageResources((org.oep.core.dossiermgt.model.EbMessage)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Boolean)arguments[2]).booleanValue(),
@@ -360,8 +360,8 @@ public class EbMessageLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName149.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes149, parameterTypes)) {
+		if (_methodName165.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes165, parameterTypes)) {
 			EbMessageLocalServiceUtil.addEbMessageResources((org.oep.core.dossiermgt.model.EbMessage)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -370,8 +370,8 @@ public class EbMessageLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName150.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes150, parameterTypes)) {
+		if (_methodName166.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes166, parameterTypes)) {
 			EbMessageLocalServiceUtil.addEbMessageResources(((Long)arguments[0]).longValue(),
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -415,26 +415,26 @@ public class EbMessageLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName136;
-	private String[] _methodParameterTypes136;
-	private String _methodName137;
-	private String[] _methodParameterTypes137;
-	private String _methodName142;
-	private String[] _methodParameterTypes142;
-	private String _methodName143;
-	private String[] _methodParameterTypes143;
-	private String _methodName144;
-	private String[] _methodParameterTypes144;
-	private String _methodName145;
-	private String[] _methodParameterTypes145;
-	private String _methodName146;
-	private String[] _methodParameterTypes146;
-	private String _methodName147;
-	private String[] _methodParameterTypes147;
-	private String _methodName148;
-	private String[] _methodParameterTypes148;
-	private String _methodName149;
-	private String[] _methodParameterTypes149;
-	private String _methodName150;
-	private String[] _methodParameterTypes150;
+	private String _methodName152;
+	private String[] _methodParameterTypes152;
+	private String _methodName153;
+	private String[] _methodParameterTypes153;
+	private String _methodName158;
+	private String[] _methodParameterTypes158;
+	private String _methodName159;
+	private String[] _methodParameterTypes159;
+	private String _methodName160;
+	private String[] _methodParameterTypes160;
+	private String _methodName161;
+	private String[] _methodParameterTypes161;
+	private String _methodName162;
+	private String[] _methodParameterTypes162;
+	private String _methodName163;
+	private String[] _methodParameterTypes163;
+	private String _methodName164;
+	private String[] _methodParameterTypes164;
+	private String _methodName165;
+	private String[] _methodParameterTypes165;
+	private String _methodName166;
+	private String[] _methodParameterTypes166;
 }

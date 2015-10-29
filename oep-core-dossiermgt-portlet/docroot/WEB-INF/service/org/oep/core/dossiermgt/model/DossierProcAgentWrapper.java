@@ -57,6 +57,8 @@ public class DossierProcAgentWrapper implements DossierProcAgent,
 		attributes.put("dossierProcId", getDossierProcId());
 		attributes.put("govAgencyId", getGovAgencyId());
 		attributes.put("govAgencyName", getGovAgencyName());
+		attributes.put("bankTransfer", getBankTransfer());
+		attributes.put("keypay", getKeypay());
 		attributes.put("ebPartnerShipId", getEbPartnerShipId());
 
 		return attributes;
@@ -104,6 +106,18 @@ public class DossierProcAgentWrapper implements DossierProcAgent,
 
 		if (govAgencyName != null) {
 			setGovAgencyName(govAgencyName);
+		}
+
+		String bankTransfer = (String)attributes.get("bankTransfer");
+
+		if (bankTransfer != null) {
+			setBankTransfer(bankTransfer);
+		}
+
+		String keypay = (String)attributes.get("keypay");
+
+		if (keypay != null) {
+			setKeypay(keypay);
 		}
 
 		Long ebPartnerShipId = (Long)attributes.get("ebPartnerShipId");
@@ -271,6 +285,46 @@ public class DossierProcAgentWrapper implements DossierProcAgent,
 	@Override
 	public void setGovAgencyName(java.lang.String govAgencyName) {
 		_dossierProcAgent.setGovAgencyName(govAgencyName);
+	}
+
+	/**
+	* Returns the bank transfer of this dossier proc agent.
+	*
+	* @return the bank transfer of this dossier proc agent
+	*/
+	@Override
+	public java.lang.String getBankTransfer() {
+		return _dossierProcAgent.getBankTransfer();
+	}
+
+	/**
+	* Sets the bank transfer of this dossier proc agent.
+	*
+	* @param bankTransfer the bank transfer of this dossier proc agent
+	*/
+	@Override
+	public void setBankTransfer(java.lang.String bankTransfer) {
+		_dossierProcAgent.setBankTransfer(bankTransfer);
+	}
+
+	/**
+	* Returns the keypay of this dossier proc agent.
+	*
+	* @return the keypay of this dossier proc agent
+	*/
+	@Override
+	public java.lang.String getKeypay() {
+		return _dossierProcAgent.getKeypay();
+	}
+
+	/**
+	* Sets the keypay of this dossier proc agent.
+	*
+	* @param keypay the keypay of this dossier proc agent
+	*/
+	@Override
+	public void setKeypay(java.lang.String keypay) {
+		_dossierProcAgent.setKeypay(keypay);
 	}
 
 	/**

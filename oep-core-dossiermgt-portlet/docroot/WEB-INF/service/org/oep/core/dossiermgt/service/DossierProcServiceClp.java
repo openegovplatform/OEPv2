@@ -41,7 +41,7 @@ public class DossierProcServiceClp implements DossierProcService {
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.util.Date",
-				"java.util.Date", "int",
+				"java.util.Date", "int", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 	}
@@ -110,7 +110,8 @@ public class DossierProcServiceClp implements DossierProcService {
 		java.lang.String recordsDescription, java.lang.String feeDescription,
 		java.lang.String instructionsDescription,
 		java.lang.String administrationNo, java.lang.String domainNo,
-		java.util.Date effectDate, java.util.Date expireDate, int active,
+		java.util.Date effectDate, java.util.Date expireDate, int forCitizen,
+		int forBusiness, int statusActive,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -158,7 +159,11 @@ public class DossierProcServiceClp implements DossierProcService {
 						
 					ClpSerializer.translateInput(expireDate),
 						
-					active,
+					forCitizen,
+						
+					forBusiness,
+						
+					statusActive,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});

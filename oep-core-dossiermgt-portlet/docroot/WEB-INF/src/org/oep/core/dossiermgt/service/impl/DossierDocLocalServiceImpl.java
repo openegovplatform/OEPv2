@@ -12,6 +12,22 @@
  * details.
  */
 
+/** 
+ * Copyright (c) 2015 by Open eGovPlatform (http://http://openegovplatform.org/).
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.oep.core.dossiermgt.service.impl;
 
 import java.util.Date;
@@ -29,7 +45,7 @@ import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.service.ServiceContext;
 
 /**
- * The implementation of the dossier doc local service.
+ * API cung cấp thao tác với dữ liệu thành phần hồ sơ.
  *
  * <p>
  * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link org.oep.core.dossiermgt.service.DossierDocLocalService} interface.
@@ -50,16 +66,25 @@ public class DossierDocLocalServiceImpl extends DossierDocLocalServiceBaseImpl {
 	 */
 	
 	/** 
-	 * Add dossier doc
+	 * Thêm mới thành phần hồ sơ
 	 * 
 	 * Version: OEP 2.0
 	 *  
 	 * History: 
 	 *   DATE        AUTHOR      DESCRIPTION 
 	 *  ------------------------------------------------- 
-	 *  21-September-2015  trungdk    Create new
-	 * @param
-	 * @return: new dossier doc
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param dossierProcId mã thủ tục hành chính
+	 * @param dossierDocNo mã định danh thành phần hồ sơ
+	 * @param dossierDocName tên thành phần hồ sơ
+	 * @param note ghi chú
+	 * @param sequenceNo số thứ tự thành phần hồ sơ
+	 * @param defaultDocTemplateId biểu mẫu ngầm định của hồ sơ
+	 * @param dossierDocType loại thành phần hồ sơ
+	 * @param numberOfFile số lượng tài liệu tối đa
+	 * @param splitSubDossier cờ đánh dấu phân thành hồ sơ con
+	 * @param onlineForm thành phần khai trực tuyến
+	 * @return: thành phần hồ sơ mới tạo
 	 */
 	@Indexable(type = IndexableType.REINDEX)	
 	public DossierDoc addDossierDoc(
@@ -69,7 +94,7 @@ public class DossierDocLocalServiceImpl extends DossierDocLocalServiceBaseImpl {
 			String note,
 			int sequenceNo,
 			long defaultDocTemplateId,
-			int validationType,
+			int dossierDocType,
 			int numberOfFile,
 			String onlineForm,
 			ServiceContext serviceContext) throws SystemException, PortalException {
@@ -88,7 +113,7 @@ public class DossierDocLocalServiceImpl extends DossierDocLocalServiceBaseImpl {
 		dossierDoc.setNote(note);
 		dossierDoc.setSequenceNo(sequenceNo);
 		dossierDoc.setDefaultDocTemplateId(defaultDocTemplateId);
-		dossierDoc.setValidationType(validationType);
+		dossierDoc.setDossierDocType(dossierDocType);
 		dossierDoc.setNumberOfFile(numberOfFile);
 		dossierDoc.setOnlineForm(onlineForm);
 		
@@ -107,6 +132,28 @@ public class DossierDocLocalServiceImpl extends DossierDocLocalServiceBaseImpl {
 		return getDossierDoc(id);
 	}
 
+	/** 
+	 * Chỉnh sửa thành phần hồ sơ
+	 * 
+	 * Version: OEP 2.0
+	 *  
+	 * History: 
+	 *   DATE        AUTHOR      DESCRIPTION 
+	 *  ------------------------------------------------- 
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param id mã thành phần hồ sơ
+	 * @param dossierProcId mã thủ tục hành chính
+	 * @param dossierDocNo mã định danh thành phần hồ sơ
+	 * @param dossierDocName tên thành phần hồ sơ
+	 * @param note ghi chú
+	 * @param sequenceNo số thứ tự thành phần hồ sơ
+	 * @param defaultDocTemplateId biểu mẫu ngầm định của hồ sơ
+	 * @param dossierDocType loại thành phần hồ sơ
+	 * @param numberOfFile số lượng tài liệu tối đa
+	 * @param splitSubDossier cờ đánh dấu phân thành hồ sơ con
+	 * @param onlineForm thành phần khai trực tuyến
+	 * @return: thành phần hồ sơ mới tạo
+	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public DossierDoc updateDossierDoc(
 			long id, 
@@ -116,7 +163,7 @@ public class DossierDocLocalServiceImpl extends DossierDocLocalServiceBaseImpl {
 			String note,
 			int sequenceNo,
 			long defaultDocTemplateId,
-			int validationType,
+			int dossierDocType,
 			int numberOfFile,
 			String onlineForm,
 			ServiceContext serviceContext)
@@ -133,7 +180,7 @@ public class DossierDocLocalServiceImpl extends DossierDocLocalServiceBaseImpl {
 		dossierDoc.setNote(note);
 		dossierDoc.setSequenceNo(sequenceNo);
 		dossierDoc.setDefaultDocTemplateId(defaultDocTemplateId);
-		dossierDoc.setValidationType(validationType);
+		dossierDoc.setDossierDocType(dossierDocType);
 		dossierDoc.setNumberOfFile(numberOfFile);
 		dossierDoc.setOnlineForm(onlineForm);
 

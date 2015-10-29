@@ -290,6 +290,55 @@ public class DossierFolder2RoleLocalServiceWrapper
 	}
 
 	/**
+	* ThÃƒÂªm quan hÃ¡Â»â€¡ giÃ¡Â»Â¯a UI xem danh sÃƒÂ¡ch hÃ¡Â»â€œ sÃ†Â¡ vÃ¡Â»â€ºi vai trÃƒÂ²
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
+	*
+	* @param dossierFolderId UI xem danh sÃƒÂ¡ch hÃ¡Â»â€œ sÃ†Â¡
+	* @param roleId mÃƒÂ£ vai trÃƒÂ²
+	* @return: quan hÃ¡Â»â€¡ giÃ¡Â»Â¯a UI xem danh sÃƒÂ¡ch hÃ¡Â»â€œ sÃ†Â¡ vÃ¡Â»â€ºi vai trÃƒÂ²
+	*/
+	@Override
+	public org.oep.core.dossiermgt.model.DossierFolder2Role addDossierFolder2Role(
+		long dossierFolderId, long roleId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierFolder2RoleLocalService.addDossierFolder2Role(dossierFolderId,
+			roleId, serviceContext);
+	}
+
+	@Override
+	public void removeDossierFolder2Role(
+		org.oep.core.dossiermgt.model.DossierFolder2Role dossierFolder2Role)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierFolder2RoleLocalService.removeDossierFolder2Role(dossierFolder2Role);
+	}
+
+	@Override
+	public void removeDossierFolder2Role(long dossierFolderId, long roleId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dossierFolder2RoleLocalService.removeDossierFolder2Role(dossierFolderId,
+			roleId);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.DossierFolder2Role getDossierFolder2Role(
+		long dossierFolderId, long roleId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dossierFolder2RoleLocalService.getDossierFolder2Role(dossierFolderId,
+			roleId);
+	}
+
+	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */
 	public DossierFolder2RoleLocalService getWrappedDossierFolder2RoleLocalService() {

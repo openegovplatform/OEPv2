@@ -333,7 +333,8 @@ public class DossierProcLocalServiceWrapper implements DossierProcLocalService,
 		java.lang.String recordsDescription, java.lang.String feeDescription,
 		java.lang.String instructionsDescription,
 		java.lang.String administrationNo, java.lang.String domainNo,
-		java.util.Date effectDate, java.util.Date expireDate, int active,
+		int forCitizen, int forBusiness, java.util.Date effectDate,
+		java.util.Date expireDate, int statusActive,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -342,35 +343,8 @@ public class DossierProcLocalServiceWrapper implements DossierProcLocalService,
 			dossierDescription, conditionDescription, durationDescription,
 			actorsDescription, resultsDescription, recordsDescription,
 			feeDescription, instructionsDescription, administrationNo,
-			domainNo, effectDate, expireDate, active, serviceContext);
-	}
-
-	/**
-	* ThÃƒÂªm mÃ¡Â»â€ºi mÃ¡Â»â„¢t thÃ¡Â»Â§ tÃ¡Â»Â¥c hÃƒÂ nh chÃƒÂ­nh cÃƒÂ´ng
-	*
-	* Version: OEP 2.0
-	*
-	* History:
-	*   DATE        AUTHOR      DESCRIPTION
-	*  -------------------------------------------------
-	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi thÃ¡Â»Â§ tÃ¡Â»Â¥c hÃƒÂ nh chÃƒÂ­nh
-	*
-	* @param dossierProcNo mÃƒÂ£ thÃ¡Â»Â§ tÃ¡Â»Â¥c hÃƒÂ nh chÃƒÂ­nh
-	* @param name tÃƒÂªn thÃ¡Â»Â§ tÃ¡Â»Â¥c hÃƒÂ nh chÃƒÂ­nh
-	* @param administrationNo CÃ¡ÂºÂ¥p quÃ¡ÂºÂ£n lÃƒÂ½
-	* @param domainNo Ã„ï¿½Ã†Â¡n vÃ¡Â»â€¹ quÃ¡ÂºÂ£n lÃƒÂ½
-	* @param serviceContext ngÃ¡Â»Â¯ cÃ¡ÂºÂ£nh dÃ¡Â»â€¹ch vÃ¡Â»Â¥
-	* @return: Ã„â€˜Ã¡Â»â€˜i tÃ†Â°Ã¡Â»Â£ng thÃ¡Â»Â§ tÃ¡Â»Â¥c hÃƒÂ nh chÃƒÂ­nh mÃ¡Â»â€ºi Ã„â€˜Ã†Â°Ã¡Â»Â£c thÃƒÂªm vÃƒÂ o
-	*/
-	@Override
-	public org.oep.core.dossiermgt.model.DossierProc addDossierProc(
-		long userId, java.lang.String dossierProcNo, java.lang.String name,
-		java.lang.String administrationNo, java.lang.String domainNo,
-		com.liferay.portal.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		return _dossierProcLocalService.addDossierProc(userId, dossierProcNo,
-			name, administrationNo, domainNo, serviceContext);
+			domainNo, forCitizen, forBusiness, effectDate, expireDate,
+			statusActive, serviceContext);
 	}
 
 	/**
@@ -420,7 +394,8 @@ public class DossierProcLocalServiceWrapper implements DossierProcLocalService,
 		java.lang.String recordsDescription, java.lang.String feeDescription,
 		java.lang.String instructionsDescription,
 		java.lang.String administrationNo, java.lang.String domainNo,
-		java.util.Date effectDate, java.util.Date expireDate, int active,
+		int forCitizen, int forBusiness, java.util.Date effectDate,
+		java.util.Date expireDate, int statusActive,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -429,7 +404,8 @@ public class DossierProcLocalServiceWrapper implements DossierProcLocalService,
 			dossierDescription, conditionDescription, durationDescription,
 			actorsDescription, resultsDescription, recordsDescription,
 			feeDescription, instructionsDescription, administrationNo,
-			domainNo, effectDate, expireDate, active, serviceContext);
+			domainNo, forCitizen, forBusiness, effectDate, expireDate,
+			statusActive, serviceContext);
 	}
 
 	/**
@@ -708,21 +684,25 @@ public class DossierProcLocalServiceWrapper implements DossierProcLocalService,
 
 	@Override
 	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByGroupCustomCondition(
-		java.lang.String name, java.util.Date effectDate,
+		java.lang.String name, java.lang.String administrationNo,
+		java.lang.String domainNo, java.util.Date effectDate,
 		java.util.Date expireDate, int active, int startIndex, int endIndex,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _dossierProcLocalService.findByGroupCustomCondition(name,
-			effectDate, expireDate, active, startIndex, endIndex, serviceContext);
+			administrationNo, domainNo, effectDate, expireDate, active,
+			startIndex, endIndex, serviceContext);
 	}
 
 	@Override
 	public int countByGroupCustomCondition(java.lang.String name,
+		java.lang.String administrationNo, java.lang.String domainNo,
 		java.util.Date effectDate, java.util.Date expireDate, int active,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _dossierProcLocalService.countByGroupCustomCondition(name,
-			effectDate, expireDate, active, serviceContext);
+			administrationNo, domainNo, effectDate, expireDate, active,
+			serviceContext);
 	}
 
 	@Override

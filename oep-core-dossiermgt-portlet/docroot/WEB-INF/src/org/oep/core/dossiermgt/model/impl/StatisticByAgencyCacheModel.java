@@ -38,7 +38,7 @@ public class StatisticByAgencyCacheModel implements CacheModel<StatisticByAgency
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(39);
+		StringBundler sb = new StringBundler(29);
 
 		sb.append("{statisticByAgencyId=");
 		sb.append(statisticByAgencyId);
@@ -54,30 +54,20 @@ public class StatisticByAgencyCacheModel implements CacheModel<StatisticByAgency
 		sb.append(year);
 		sb.append(", govAgencyId=");
 		sb.append(govAgencyId);
-		sb.append(", submittedNumber=");
-		sb.append(submittedNumber);
-		sb.append(", acceptedNumber=");
-		sb.append(acceptedNumber);
-		sb.append(", deniedNumber=");
-		sb.append(deniedNumber);
-		sb.append(", acceptedRatio=");
-		sb.append(acceptedRatio);
-		sb.append(", finishedNumber=");
-		sb.append(finishedNumber);
+		sb.append(", receiveNumber=");
+		sb.append(receiveNumber);
+		sb.append(", onlineNumber=");
+		sb.append(onlineNumber);
+		sb.append(", onlineRatio=");
+		sb.append(onlineRatio);
+		sb.append(", finishNumber=");
+		sb.append(finishNumber);
 		sb.append(", ontimeNumber=");
 		sb.append(ontimeNumber);
-		sb.append(", delayedNumber=");
-		sb.append(delayedNumber);
 		sb.append(", ontimeRatio=");
 		sb.append(ontimeRatio);
-		sb.append(", doneNumber=");
-		sb.append(doneNumber);
-		sb.append(", doneRatio=");
-		sb.append(doneRatio);
 		sb.append(", delayDaysAvg=");
 		sb.append(delayDaysAvg);
-		sb.append(", furtherDaysAvg=");
-		sb.append(furtherDaysAvg);
 		sb.append("}");
 
 		return sb.toString();
@@ -108,18 +98,13 @@ public class StatisticByAgencyCacheModel implements CacheModel<StatisticByAgency
 			statisticByAgencyImpl.setGovAgencyId(govAgencyId);
 		}
 
-		statisticByAgencyImpl.setSubmittedNumber(submittedNumber);
-		statisticByAgencyImpl.setAcceptedNumber(acceptedNumber);
-		statisticByAgencyImpl.setDeniedNumber(deniedNumber);
-		statisticByAgencyImpl.setAcceptedRatio(acceptedRatio);
-		statisticByAgencyImpl.setFinishedNumber(finishedNumber);
+		statisticByAgencyImpl.setReceiveNumber(receiveNumber);
+		statisticByAgencyImpl.setOnlineNumber(onlineNumber);
+		statisticByAgencyImpl.setOnlineRatio(onlineRatio);
+		statisticByAgencyImpl.setFinishNumber(finishNumber);
 		statisticByAgencyImpl.setOntimeNumber(ontimeNumber);
-		statisticByAgencyImpl.setDelayedNumber(delayedNumber);
 		statisticByAgencyImpl.setOntimeRatio(ontimeRatio);
-		statisticByAgencyImpl.setDoneNumber(doneNumber);
-		statisticByAgencyImpl.setDoneRatio(doneRatio);
 		statisticByAgencyImpl.setDelayDaysAvg(delayDaysAvg);
-		statisticByAgencyImpl.setFurtherDaysAvg(furtherDaysAvg);
 
 		statisticByAgencyImpl.resetOriginalValues();
 
@@ -135,18 +120,13 @@ public class StatisticByAgencyCacheModel implements CacheModel<StatisticByAgency
 		month = objectInput.readInt();
 		year = objectInput.readInt();
 		govAgencyId = objectInput.readUTF();
-		submittedNumber = objectInput.readInt();
-		acceptedNumber = objectInput.readInt();
-		deniedNumber = objectInput.readInt();
-		acceptedRatio = objectInput.readDouble();
-		finishedNumber = objectInput.readInt();
+		receiveNumber = objectInput.readLong();
+		onlineNumber = objectInput.readLong();
+		onlineRatio = objectInput.readDouble();
+		finishNumber = objectInput.readInt();
 		ontimeNumber = objectInput.readInt();
-		delayedNumber = objectInput.readInt();
 		ontimeRatio = objectInput.readDouble();
-		doneNumber = objectInput.readInt();
-		doneRatio = objectInput.readDouble();
 		delayDaysAvg = objectInput.readDouble();
-		furtherDaysAvg = objectInput.readDouble();
 	}
 
 	@Override
@@ -166,18 +146,13 @@ public class StatisticByAgencyCacheModel implements CacheModel<StatisticByAgency
 			objectOutput.writeUTF(govAgencyId);
 		}
 
-		objectOutput.writeInt(submittedNumber);
-		objectOutput.writeInt(acceptedNumber);
-		objectOutput.writeInt(deniedNumber);
-		objectOutput.writeDouble(acceptedRatio);
-		objectOutput.writeInt(finishedNumber);
+		objectOutput.writeLong(receiveNumber);
+		objectOutput.writeLong(onlineNumber);
+		objectOutput.writeDouble(onlineRatio);
+		objectOutput.writeInt(finishNumber);
 		objectOutput.writeInt(ontimeNumber);
-		objectOutput.writeInt(delayedNumber);
 		objectOutput.writeDouble(ontimeRatio);
-		objectOutput.writeInt(doneNumber);
-		objectOutput.writeDouble(doneRatio);
 		objectOutput.writeDouble(delayDaysAvg);
-		objectOutput.writeDouble(furtherDaysAvg);
 	}
 
 	public long statisticByAgencyId;
@@ -187,16 +162,11 @@ public class StatisticByAgencyCacheModel implements CacheModel<StatisticByAgency
 	public int month;
 	public int year;
 	public String govAgencyId;
-	public int submittedNumber;
-	public int acceptedNumber;
-	public int deniedNumber;
-	public double acceptedRatio;
-	public int finishedNumber;
+	public long receiveNumber;
+	public long onlineNumber;
+	public double onlineRatio;
+	public int finishNumber;
 	public int ontimeNumber;
-	public int delayedNumber;
 	public double ontimeRatio;
-	public int doneNumber;
-	public double doneRatio;
 	public double delayDaysAvg;
-	public double furtherDaysAvg;
 }

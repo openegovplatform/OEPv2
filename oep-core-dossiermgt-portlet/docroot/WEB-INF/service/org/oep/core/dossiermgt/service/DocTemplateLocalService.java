@@ -483,6 +483,22 @@ public interface DocTemplateLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* TÃ¬m kiáº¿m biá»ƒu máº«u tÃ i liá»‡u cÃ³ tiÃªu Ä‘á»� gáº§n giá»‘ng
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param title tiÃªu Ä‘á»� biá»ƒu máº«u
+	* @param startIndex chá»‰ sá»‘ báº¯t Ä‘áº§u
+	* @param endIndex chá»‰ sá»‘ káº¿t thÃºc
+	* @param serviceContext ngá»¯ cáº£nh dá»¯ liá»‡u
+	* @return danh sÃ¡ch biá»ƒu máº«u tÃ i liá»‡u
+	*/
 	public java.util.List<org.oep.core.dossiermgt.model.DocTemplate> findByLikeTitle(
 		java.lang.String title, int startIndex, int endIndex,
 		com.liferay.portal.service.ServiceContext serviceContext)
@@ -492,6 +508,22 @@ public interface DocTemplateLocalService extends BaseLocalService,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* TÃ¬m kiáº¿m biá»ƒu máº«u tÃ i liá»‡u cÃ³ tiÃªu Ä‘á»� gáº§n giá»‘ng trong má»™t nhÃ³m nÃ o Ä‘Ã³
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param title tiÃªu Ä‘á»� biá»ƒu máº«u
+	* @param startIndex chá»‰ sá»‘ báº¯t Ä‘áº§u
+	* @param endIndex chá»‰ sá»‘ káº¿t thÃºc
+	* @param serviceContext ngá»¯ cáº£nh dá»¯ liá»‡u
+	* @return danh sÃ¡ch biá»ƒu máº«u tÃ i liá»‡u
+	*/
 	public java.util.List<org.oep.core.dossiermgt.model.DocTemplate> findByGroupLikeTitle(
 		java.lang.String title, int startIndex, int endIndex,
 		com.liferay.portal.service.ServiceContext serviceContext)

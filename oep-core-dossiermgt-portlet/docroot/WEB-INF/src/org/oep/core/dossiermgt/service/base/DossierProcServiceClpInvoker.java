@@ -24,44 +24,44 @@ import java.util.Arrays;
  */
 public class DossierProcServiceClpInvoker {
 	public DossierProcServiceClpInvoker() {
-		_methodName120 = "getBeanIdentifier";
+		_methodName136 = "getBeanIdentifier";
 
-		_methodParameterTypes120 = new String[] {  };
+		_methodParameterTypes136 = new String[] {  };
 
-		_methodName121 = "setBeanIdentifier";
+		_methodName137 = "setBeanIdentifier";
 
-		_methodParameterTypes121 = new String[] { "java.lang.String" };
+		_methodParameterTypes137 = new String[] { "java.lang.String" };
 
-		_methodName126 = "addDossierProc";
+		_methodName142 = "addDossierProc";
 
-		_methodParameterTypes126 = new String[] {
+		_methodParameterTypes142 = new String[] {
 				"long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.util.Date",
-				"java.util.Date", "int",
+				"java.util.Date", "int", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
 		Object[] arguments) throws Throwable {
-		if (_methodName120.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes120, parameterTypes)) {
+		if (_methodName136.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes136, parameterTypes)) {
 			return DossierProcServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName121.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes121, parameterTypes)) {
+		if (_methodName137.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes137, parameterTypes)) {
 			DossierProcServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName126.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes126, parameterTypes)) {
+		if (_methodName142.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes142, parameterTypes)) {
 			return DossierProcServiceUtil.addDossierProc(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				(java.lang.String)arguments[3], (java.lang.String)arguments[4],
@@ -77,16 +77,18 @@ public class DossierProcServiceClpInvoker {
 				(java.lang.String)arguments[16], (java.util.Date)arguments[17],
 				(java.util.Date)arguments[18],
 				((Integer)arguments[19]).intValue(),
-				(com.liferay.portal.service.ServiceContext)arguments[20]);
+				((Integer)arguments[20]).intValue(),
+				((Integer)arguments[21]).intValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[22]);
 		}
 
 		throw new UnsupportedOperationException();
 	}
 
-	private String _methodName120;
-	private String[] _methodParameterTypes120;
-	private String _methodName121;
-	private String[] _methodParameterTypes121;
-	private String _methodName126;
-	private String[] _methodParameterTypes126;
+	private String _methodName136;
+	private String[] _methodParameterTypes136;
+	private String _methodName137;
+	private String[] _methodParameterTypes137;
+	private String _methodName142;
+	private String[] _methodParameterTypes142;
 }

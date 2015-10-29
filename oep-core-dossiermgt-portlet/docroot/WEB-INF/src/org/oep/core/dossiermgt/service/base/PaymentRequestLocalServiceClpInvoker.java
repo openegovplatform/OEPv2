@@ -122,72 +122,72 @@ public class PaymentRequestLocalServiceClpInvoker {
 				"org.oep.core.dossiermgt.model.PaymentRequest"
 			};
 
-		_methodName140 = "getBeanIdentifier";
+		_methodName156 = "getBeanIdentifier";
 
-		_methodParameterTypes140 = new String[] {  };
+		_methodParameterTypes156 = new String[] {  };
 
-		_methodName141 = "setBeanIdentifier";
+		_methodName157 = "setBeanIdentifier";
 
-		_methodParameterTypes141 = new String[] { "java.lang.String" };
+		_methodParameterTypes157 = new String[] { "java.lang.String" };
 
-		_methodName146 = "addPaymentRequest";
+		_methodName162 = "addPaymentRequest";
 
-		_methodParameterTypes146 = new String[] {
+		_methodParameterTypes162 = new String[] {
 				"long", "long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"int", "java.lang.String", "long", "int", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName147 = "updatePaymentRequest";
+		_methodName163 = "updatePaymentRequest";
 
-		_methodParameterTypes147 = new String[] {
+		_methodParameterTypes163 = new String[] {
 				"long", "long", "long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"int", "java.lang.String", "long", "int", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName148 = "updatePaymentRequestResources";
+		_methodName164 = "updatePaymentRequestResources";
 
-		_methodParameterTypes148 = new String[] {
+		_methodParameterTypes164 = new String[] {
 				"org.oep.core.dossiermgt.model.PaymentRequest",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName149 = "removePaymentRequest";
+		_methodName165 = "removePaymentRequest";
 
-		_methodParameterTypes149 = new String[] {
+		_methodParameterTypes165 = new String[] {
 				"org.oep.core.dossiermgt.model.PaymentRequest"
 			};
 
-		_methodName150 = "removePaymentRequest";
+		_methodName166 = "removePaymentRequest";
 
-		_methodParameterTypes150 = new String[] { "long" };
+		_methodParameterTypes166 = new String[] { "long" };
 
-		_methodName151 = "getPaymentRequest";
+		_methodName167 = "getPaymentRequest";
 
-		_methodParameterTypes151 = new String[] { "long" };
+		_methodParameterTypes167 = new String[] { "long" };
 
-		_methodName152 = "addPaymentRequestResources";
+		_methodName168 = "addPaymentRequestResources";
 
-		_methodParameterTypes152 = new String[] {
+		_methodParameterTypes168 = new String[] {
 				"org.oep.core.dossiermgt.model.PaymentRequest", "boolean",
 				"boolean", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName153 = "addPaymentRequestResources";
+		_methodName169 = "addPaymentRequestResources";
 
-		_methodParameterTypes153 = new String[] {
+		_methodParameterTypes169 = new String[] {
 				"org.oep.core.dossiermgt.model.PaymentRequest",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName154 = "addPaymentRequestResources";
+		_methodName170 = "addPaymentRequestResources";
 
-		_methodParameterTypes154 = new String[] {
+		_methodParameterTypes170 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -306,20 +306,20 @@ public class PaymentRequestLocalServiceClpInvoker {
 			return PaymentRequestLocalServiceUtil.updatePaymentRequest((org.oep.core.dossiermgt.model.PaymentRequest)arguments[0]);
 		}
 
-		if (_methodName140.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes140, parameterTypes)) {
+		if (_methodName156.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes156, parameterTypes)) {
 			return PaymentRequestLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName141.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes141, parameterTypes)) {
+		if (_methodName157.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes157, parameterTypes)) {
 			PaymentRequestLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName146.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes146, parameterTypes)) {
+		if (_methodName162.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes162, parameterTypes)) {
 			return PaymentRequestLocalServiceUtil.addPaymentRequest(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				(java.lang.String)arguments[2], (java.lang.String)arguments[3],
@@ -333,8 +333,8 @@ public class PaymentRequestLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[12]);
 		}
 
-		if (_methodName147.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes147, parameterTypes)) {
+		if (_methodName163.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes163, parameterTypes)) {
 			return PaymentRequestLocalServiceUtil.updatePaymentRequest(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				((Long)arguments[2]).longValue(),
@@ -349,8 +349,8 @@ public class PaymentRequestLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[13]);
 		}
 
-		if (_methodName148.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes148, parameterTypes)) {
+		if (_methodName164.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes164, parameterTypes)) {
 			PaymentRequestLocalServiceUtil.updatePaymentRequestResources((org.oep.core.dossiermgt.model.PaymentRequest)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -359,27 +359,27 @@ public class PaymentRequestLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName149.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes149, parameterTypes)) {
+		if (_methodName165.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes165, parameterTypes)) {
 			PaymentRequestLocalServiceUtil.removePaymentRequest((org.oep.core.dossiermgt.model.PaymentRequest)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName150.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes150, parameterTypes)) {
+		if (_methodName166.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes166, parameterTypes)) {
 			PaymentRequestLocalServiceUtil.removePaymentRequest(((Long)arguments[0]).longValue());
 
 			return null;
 		}
 
-		if (_methodName151.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes151, parameterTypes)) {
+		if (_methodName167.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes167, parameterTypes)) {
 			return PaymentRequestLocalServiceUtil.getPaymentRequest(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName152.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes152, parameterTypes)) {
+		if (_methodName168.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes168, parameterTypes)) {
 			PaymentRequestLocalServiceUtil.addPaymentRequestResources((org.oep.core.dossiermgt.model.PaymentRequest)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Boolean)arguments[2]).booleanValue(),
@@ -388,8 +388,8 @@ public class PaymentRequestLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName153.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes153, parameterTypes)) {
+		if (_methodName169.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes169, parameterTypes)) {
 			PaymentRequestLocalServiceUtil.addPaymentRequestResources((org.oep.core.dossiermgt.model.PaymentRequest)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -398,8 +398,8 @@ public class PaymentRequestLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName154.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes154, parameterTypes)) {
+		if (_methodName170.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes170, parameterTypes)) {
 			PaymentRequestLocalServiceUtil.addPaymentRequestResources(((Long)arguments[0]).longValue(),
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -451,26 +451,26 @@ public class PaymentRequestLocalServiceClpInvoker {
 	private String[] _methodParameterTypes18;
 	private String _methodName19;
 	private String[] _methodParameterTypes19;
-	private String _methodName140;
-	private String[] _methodParameterTypes140;
-	private String _methodName141;
-	private String[] _methodParameterTypes141;
-	private String _methodName146;
-	private String[] _methodParameterTypes146;
-	private String _methodName147;
-	private String[] _methodParameterTypes147;
-	private String _methodName148;
-	private String[] _methodParameterTypes148;
-	private String _methodName149;
-	private String[] _methodParameterTypes149;
-	private String _methodName150;
-	private String[] _methodParameterTypes150;
-	private String _methodName151;
-	private String[] _methodParameterTypes151;
-	private String _methodName152;
-	private String[] _methodParameterTypes152;
-	private String _methodName153;
-	private String[] _methodParameterTypes153;
-	private String _methodName154;
-	private String[] _methodParameterTypes154;
+	private String _methodName156;
+	private String[] _methodParameterTypes156;
+	private String _methodName157;
+	private String[] _methodParameterTypes157;
+	private String _methodName162;
+	private String[] _methodParameterTypes162;
+	private String _methodName163;
+	private String[] _methodParameterTypes163;
+	private String _methodName164;
+	private String[] _methodParameterTypes164;
+	private String _methodName165;
+	private String[] _methodParameterTypes165;
+	private String _methodName166;
+	private String[] _methodParameterTypes166;
+	private String _methodName167;
+	private String[] _methodParameterTypes167;
+	private String _methodName168;
+	private String[] _methodParameterTypes168;
+	private String _methodName169;
+	private String[] _methodParameterTypes169;
+	private String _methodName170;
+	private String[] _methodParameterTypes170;
 }

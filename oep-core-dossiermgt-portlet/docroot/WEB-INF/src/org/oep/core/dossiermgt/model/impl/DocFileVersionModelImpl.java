@@ -77,7 +77,7 @@ public class DocFileVersionModelImpl extends BaseModelImpl<DocFileVersion>
 			{ "xmlContent", Types.VARCHAR },
 			{ "ebMessageId", Types.BIGINT }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_docfileversion (uuid_ VARCHAR(75) null,docFileVersionId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,docFileId LONG,fileEntryId LONG,xmlContent VARCHAR(75) null,ebMessageId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_docfileversion (uuid_ VARCHAR(75) null,docFileVersionId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,docFileId LONG,fileEntryId LONG,xmlContent TEXT null,ebMessageId LONG)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_docfileversion";
 	public static final String ORDER_BY_JPQL = " ORDER BY docFileVersion.docFileVersionId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_docfileversion.docFileVersionId ASC";

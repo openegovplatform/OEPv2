@@ -12,6 +12,22 @@
  * details.
  */
 
+/** 
+ * Copyright (c) 2015 by Open eGovPlatform (http://http://openegovplatform.org/).
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.oep.core.dossiermgt.service.impl;
 
 import java.util.Date;
@@ -229,6 +245,21 @@ public class DocTemplateLocalServiceImpl extends DocTemplateLocalServiceBaseImpl
 		}
 	}
 	
+	/** 
+	 * Tìm kiếm biểu mẫu tài liệu có tiêu đề gần giống
+	 * 
+	 * Version: OEP 2.0
+	 *  
+	 * History: 
+	 *   DATE        AUTHOR      DESCRIPTION 
+	 *  ------------------------------------------------- 
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param title tiêu đề biểu mẫu
+	 * @param startIndex chỉ số bắt đầu
+	 * @param endIndex chỉ số kết thúc
+	 * @param serviceContext ngữ cảnh dữ liệu
+	 * @return danh sách biểu mẫu tài liệu
+	 */
 	public List<DocTemplate> findByLikeTitle(String title, int startIndex, int endIndex, ServiceContext serviceContext) throws SystemException {
 		return docTemplateFinder.findByLikeTitle(title, startIndex, endIndex, serviceContext);
 	}
@@ -237,6 +268,21 @@ public class DocTemplateLocalServiceImpl extends DocTemplateLocalServiceBaseImpl
 		return docTemplateFinder.countByLikeTitle(title, serviceContext);
 	}
 	
+	/** 
+	 * Tìm kiếm biểu mẫu tài liệu có tiêu đề gần giống trong một nhóm nào đó
+	 * 
+	 * Version: OEP 2.0
+	 *  
+	 * History: 
+	 *   DATE        AUTHOR      DESCRIPTION 
+	 *  ------------------------------------------------- 
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param title tiêu đề biểu mẫu
+	 * @param startIndex chỉ số bắt đầu
+	 * @param endIndex chỉ số kết thúc
+	 * @param serviceContext ngữ cảnh dữ liệu
+	 * @return danh sách biểu mẫu tài liệu
+	 */
 	public List<DocTemplate> findByGroupLikeTitle(String title, int startIndex, int endIndex, ServiceContext serviceContext) throws SystemException {
 		return docTemplateFinder.findByGroupLikeTitle(title, startIndex, endIndex, serviceContext);
 	}

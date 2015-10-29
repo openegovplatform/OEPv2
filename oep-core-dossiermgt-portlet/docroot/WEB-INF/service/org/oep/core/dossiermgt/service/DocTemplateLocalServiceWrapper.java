@@ -598,6 +598,22 @@ public class DocTemplateLocalServiceWrapper implements DocTemplateLocalService,
 			guestPermissions, serviceContext);
 	}
 
+	/**
+	* TÃƒÂ¬m kiÃ¡ÂºÂ¿m biÃ¡Â»Æ’u mÃ¡ÂºÂ«u tÃƒÂ i liÃ¡Â»â€¡u cÃƒÂ³ tiÃƒÂªu Ã„â€˜Ã¡Â»ï¿½ gÃ¡ÂºÂ§n giÃ¡Â»â€˜ng
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
+	*
+	* @param title tiÃƒÂªu Ã„â€˜Ã¡Â»ï¿½ biÃ¡Â»Æ’u mÃ¡ÂºÂ«u
+	* @param startIndex chÃ¡Â»â€° sÃ¡Â»â€˜ bÃ¡ÂºÂ¯t Ã„â€˜Ã¡ÂºÂ§u
+	* @param endIndex chÃ¡Â»â€° sÃ¡Â»â€˜ kÃ¡ÂºÂ¿t thÃƒÂºc
+	* @param serviceContext ngÃ¡Â»Â¯ cÃ¡ÂºÂ£nh dÃ¡Â»Â¯ liÃ¡Â»â€¡u
+	* @return danh sÃƒÂ¡ch biÃ¡Â»Æ’u mÃ¡ÂºÂ«u tÃƒÂ i liÃ¡Â»â€¡u
+	*/
 	@Override
 	public java.util.List<org.oep.core.dossiermgt.model.DocTemplate> findByLikeTitle(
 		java.lang.String title, int startIndex, int endIndex,
@@ -614,6 +630,22 @@ public class DocTemplateLocalServiceWrapper implements DocTemplateLocalService,
 		return _docTemplateLocalService.countByLikeTitle(title, serviceContext);
 	}
 
+	/**
+	* TÃƒÂ¬m kiÃ¡ÂºÂ¿m biÃ¡Â»Æ’u mÃ¡ÂºÂ«u tÃƒÂ i liÃ¡Â»â€¡u cÃƒÂ³ tiÃƒÂªu Ã„â€˜Ã¡Â»ï¿½ gÃ¡ÂºÂ§n giÃ¡Â»â€˜ng trong mÃ¡Â»â„¢t nhÃƒÂ³m nÃƒÂ o Ã„â€˜ÃƒÂ³
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
+	*
+	* @param title tiÃƒÂªu Ã„â€˜Ã¡Â»ï¿½ biÃ¡Â»Æ’u mÃ¡ÂºÂ«u
+	* @param startIndex chÃ¡Â»â€° sÃ¡Â»â€˜ bÃ¡ÂºÂ¯t Ã„â€˜Ã¡ÂºÂ§u
+	* @param endIndex chÃ¡Â»â€° sÃ¡Â»â€˜ kÃ¡ÂºÂ¿t thÃƒÂºc
+	* @param serviceContext ngÃ¡Â»Â¯ cÃ¡ÂºÂ£nh dÃ¡Â»Â¯ liÃ¡Â»â€¡u
+	* @return danh sÃƒÂ¡ch biÃ¡Â»Æ’u mÃ¡ÂºÂ«u tÃƒÂ i liÃ¡Â»â€¡u
+	*/
 	@Override
 	public java.util.List<org.oep.core.dossiermgt.model.DocTemplate> findByGroupLikeTitle(
 		java.lang.String title, int startIndex, int endIndex,

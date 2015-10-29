@@ -143,74 +143,60 @@ public interface StatisticByDayModel extends BaseModel<StatisticByDay> {
 	public void setStatisticWeek(int statisticWeek);
 
 	/**
-	 * Returns the submitted number of this statistic by day.
+	 * Returns the receive number of this statistic by day.
 	 *
-	 * @return the submitted number of this statistic by day
+	 * @return the receive number of this statistic by day
 	 */
-	public int getSubmittedNumber();
+	public long getReceiveNumber();
 
 	/**
-	 * Sets the submitted number of this statistic by day.
+	 * Sets the receive number of this statistic by day.
 	 *
-	 * @param submittedNumber the submitted number of this statistic by day
+	 * @param receiveNumber the receive number of this statistic by day
 	 */
-	public void setSubmittedNumber(int submittedNumber);
+	public void setReceiveNumber(long receiveNumber);
 
 	/**
-	 * Returns the accepted number of this statistic by day.
+	 * Returns the online number of this statistic by day.
 	 *
-	 * @return the accepted number of this statistic by day
+	 * @return the online number of this statistic by day
 	 */
-	public int getAcceptedNumber();
+	public long getOnlineNumber();
 
 	/**
-	 * Sets the accepted number of this statistic by day.
+	 * Sets the online number of this statistic by day.
 	 *
-	 * @param acceptedNumber the accepted number of this statistic by day
+	 * @param onlineNumber the online number of this statistic by day
 	 */
-	public void setAcceptedNumber(int acceptedNumber);
+	public void setOnlineNumber(long onlineNumber);
 
 	/**
-	 * Returns the denied number of this statistic by day.
+	 * Returns the online ratio of this statistic by day.
 	 *
-	 * @return the denied number of this statistic by day
+	 * @return the online ratio of this statistic by day
 	 */
-	public int getDeniedNumber();
+	public double getOnlineRatio();
 
 	/**
-	 * Sets the denied number of this statistic by day.
+	 * Sets the online ratio of this statistic by day.
 	 *
-	 * @param deniedNumber the denied number of this statistic by day
+	 * @param onlineRatio the online ratio of this statistic by day
 	 */
-	public void setDeniedNumber(int deniedNumber);
+	public void setOnlineRatio(double onlineRatio);
 
 	/**
-	 * Returns the accepted ratio of this statistic by day.
+	 * Returns the finish number of this statistic by day.
 	 *
-	 * @return the accepted ratio of this statistic by day
+	 * @return the finish number of this statistic by day
 	 */
-	public double getAcceptedRatio();
+	public int getFinishNumber();
 
 	/**
-	 * Sets the accepted ratio of this statistic by day.
+	 * Sets the finish number of this statistic by day.
 	 *
-	 * @param acceptedRatio the accepted ratio of this statistic by day
+	 * @param finishNumber the finish number of this statistic by day
 	 */
-	public void setAcceptedRatio(double acceptedRatio);
-
-	/**
-	 * Returns the finished number of this statistic by day.
-	 *
-	 * @return the finished number of this statistic by day
-	 */
-	public int getFinishedNumber();
-
-	/**
-	 * Sets the finished number of this statistic by day.
-	 *
-	 * @param finishedNumber the finished number of this statistic by day
-	 */
-	public void setFinishedNumber(int finishedNumber);
+	public void setFinishNumber(int finishNumber);
 
 	/**
 	 * Returns the ontime number of this statistic by day.
@@ -227,20 +213,6 @@ public interface StatisticByDayModel extends BaseModel<StatisticByDay> {
 	public void setOntimeNumber(int ontimeNumber);
 
 	/**
-	 * Returns the delayed number of this statistic by day.
-	 *
-	 * @return the delayed number of this statistic by day
-	 */
-	public int getDelayedNumber();
-
-	/**
-	 * Sets the delayed number of this statistic by day.
-	 *
-	 * @param delayedNumber the delayed number of this statistic by day
-	 */
-	public void setDelayedNumber(int delayedNumber);
-
-	/**
 	 * Returns the ontime ratio of this statistic by day.
 	 *
 	 * @return the ontime ratio of this statistic by day
@@ -255,34 +227,6 @@ public interface StatisticByDayModel extends BaseModel<StatisticByDay> {
 	public void setOntimeRatio(double ontimeRatio);
 
 	/**
-	 * Returns the done number of this statistic by day.
-	 *
-	 * @return the done number of this statistic by day
-	 */
-	public int getDoneNumber();
-
-	/**
-	 * Sets the done number of this statistic by day.
-	 *
-	 * @param doneNumber the done number of this statistic by day
-	 */
-	public void setDoneNumber(int doneNumber);
-
-	/**
-	 * Returns the done ratio of this statistic by day.
-	 *
-	 * @return the done ratio of this statistic by day
-	 */
-	public double getDoneRatio();
-
-	/**
-	 * Sets the done ratio of this statistic by day.
-	 *
-	 * @param doneRatio the done ratio of this statistic by day
-	 */
-	public void setDoneRatio(double doneRatio);
-
-	/**
 	 * Returns the delay days avg of this statistic by day.
 	 *
 	 * @return the delay days avg of this statistic by day
@@ -295,20 +239,6 @@ public interface StatisticByDayModel extends BaseModel<StatisticByDay> {
 	 * @param delayDaysAvg the delay days avg of this statistic by day
 	 */
 	public void setDelayDaysAvg(double delayDaysAvg);
-
-	/**
-	 * Returns the further days avg of this statistic by day.
-	 *
-	 * @return the further days avg of this statistic by day
-	 */
-	public double getFurtherDaysAvg();
-
-	/**
-	 * Sets the further days avg of this statistic by day.
-	 *
-	 * @param furtherDaysAvg the further days avg of this statistic by day
-	 */
-	public void setFurtherDaysAvg(double furtherDaysAvg);
 
 	@Override
 	public boolean isNew();

@@ -255,17 +255,32 @@ public interface EbMessageLocalService extends BaseLocalService,
 		throws java.lang.Throwable;
 
 	/**
-	* Add eb message
+	* ThÃªm thÃ´ng Ä‘iá»‡p ebXML
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    Táº¡o má»›i
 	*
-	* @param
-	* @return: new eb message
+	* @param messageId mÃ£ Ä‘á»‹nh danh thÃ´ng Ä‘iá»‡p
+	* @param cpaId
+	* @param service
+	* @param action
+	* @param conversationId
+	* @param fromPartyId
+	* @param fromPartyType
+	* @param toPartyId
+	* @param toPartyType
+	* @param refToMessageId
+	* @param status
+	* @param statusDescription
+	* @param ackMessageId
+	* @param ackStatusDescription
+	* @param messageDescription
+	* @param inbound
+	* @return: thÃ´ng Ä‘iá»‡p má»›i Ä‘Æ°á»£c táº¡o
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.EbMessage addEbMessage(
@@ -282,6 +297,35 @@ public interface EbMessageLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Cáº­p nháº­t thÃ´ng Ä‘iá»‡p ebXML
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param id mÃ£ thÃ´ng Ä‘iá»‡p
+	* @param messageId mÃ£ Ä‘á»‹nh danh thÃ´ng Ä‘iá»‡p
+	* @param cpaId
+	* @param service
+	* @param action
+	* @param conversationId
+	* @param fromPartyId
+	* @param fromPartyType
+	* @param toPartyId
+	* @param toPartyType
+	* @param refToMessageId
+	* @param status
+	* @param statusDescription
+	* @param ackMessageId
+	* @param ackStatusDescription
+	* @param messageDescription
+	* @param inbound
+	* @return: thÃ´ng Ä‘iá»‡p má»›i Ä‘Æ°á»£c cáº­p nháº­t
+	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.EbMessage updateEbMessage(long id,
 		java.lang.String messageId, java.lang.String cpaId,

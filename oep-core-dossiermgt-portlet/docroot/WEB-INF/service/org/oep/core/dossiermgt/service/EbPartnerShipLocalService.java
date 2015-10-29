@@ -255,17 +255,19 @@ public interface EbPartnerShipLocalService extends BaseLocalService,
 		throws java.lang.Throwable;
 
 	/**
-	* Add eb partner ship
+	* ThÃªm service káº¿t ná»‘i á»©ng dá»¥ng
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    Táº¡o má»›i
 	*
-	* @param
-	* @return: new eb partner ship
+	* @param name tÃªn service káº¿t ná»‘i
+	* @param cpaId
+	* @param service
+	* @return: service káº¿t ná»‘i á»©ng dá»¥ng vá»«a táº¡o
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.EbPartnerShip addEbPartnerShip(
@@ -275,6 +277,21 @@ public interface EbPartnerShipLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Cáº­p nháº­t service káº¿t ná»‘i á»©ng dá»¥ng
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param name tÃªn service káº¿t ná»‘i
+	* @param cpaId
+	* @param service
+	* @return: service káº¿t ná»‘i á»©ng dá»¥ng vá»«a cáº­p nháº­t
+	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.EbPartnerShip updateEbPartnerShip(
 		long id, java.lang.String name, java.lang.String cpaId,

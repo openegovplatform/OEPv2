@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<service name="Plugin_oep_dossiermgt_DossierFolder2RoleService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="org.oep.core.dossiermgt.service.http.DossierFolder2RoleServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="DossierFolder2RoleServiceSoap" />
+		<parameter name="wsdlServiceElement" value="DossierFolder2RoleServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_oep_dossiermgt_DossierFolder2RoleService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.dossiermgt.core.oep.org" />
+	</service>
+</deployment>

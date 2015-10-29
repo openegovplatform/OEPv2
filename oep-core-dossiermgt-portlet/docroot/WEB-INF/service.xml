@@ -15,7 +15,7 @@
         <column name="enTitle" type="String"></column>
         <column name="fileEntryId" type="long"></column>
         
-        <column name="dossierDocs" type="Collection" entity="DossierDoc" mapping-table="oep_dossiermgt_dossierdoc2template"></column>
+        <column name="dossierDocs" type="Collection" entity="DossierDoc" mapping-table="dossierdoc2template"></column>
         
         <finder name="C" return-type="Collection">
             <finder-column name="companyId"></finder-column>
@@ -36,7 +36,7 @@
 		        
         <reference package-path="com.liferay.portlet.documentlibrary" entity="DLFileEntry" />
     </entity>
-    <entity name="Dossier" table="oep_dossiermgt_dossier" local-service="true" uuid="true" uuid-accessor="true">
+    <entity name="Dossier" table="oep_dossiermgt_dossier" local-service="true" remote-service="false" uuid="true" uuid-accessor="true">
         <column name="dossierId" type="long" primary="true"></column>
         <column name="userId" type="long"></column>
         <column name="groupId" type="long"></column>
@@ -58,26 +58,34 @@
         <column name="wardNo" type="String"></column>
         <column name="wardName" type="String"></column>
         <column name="telNo" type="String"></column>
+        <column name="email" type="String"></column>
+        <column name="subjectAsContactPerson" type="int"></column>
         <column name="contactPersonName" type="String"></column>
+        <column name="contactPersonId" type="String"></column>
+        <column name="contactPersonSex" type="int"></column>
         <column name="contactPersonTel" type="String"></column>
         <column name="note" type="String"></column>
         <column name="resumeDescription" type="String"></column>
         <column name="receptionNo" type="String"></column>
+        <column name="onegate" type="int"></column>
         <column name="submitDate" type="Date"></column>
         <column name="receiveDate" type="Date"></column>
+        <column name="processDate" type="Date"></column>
         <column name="renewDate" type="Date"></column>
         <column name="estimateDate" type="Date"></column>
         <column name="finishDate" type="Date"></column>
+        <column name="handoverDate" type="Date"></column>
         <column name="returnDate" type="Date"></column>
-        <column name="status" type="String"></column>
+        <column name="archiveDate" type="Date"></column>
+        <column name="mainStatus" type="String"></column>
+        <column name="subStatus" type="String"></column>
         <column name="statusDate" type="Date"></column>
         <column name="statusDescription" type="String"></column>
         <column name="feedbackNote" type="String"></column>
         <column name="daysDelay" type="int"></column>
-        <column name="closeDate" type="Date"></column>
 		<column name="errorStatus" type="String"></column>
+        <column name="errorCode" type="String"></column>		
 		<column name="pendingStatus" type="int"></column>
-		<column name="errorCode" type="String"></column>
         <column name="dirty" type="int"></column>        
     </entity>
     <entity name="DocFile" table="oep_dossiermgt_docfile" local-service="true" uuid="true" uuid-accessor="true">
@@ -91,8 +99,12 @@
         <column name="dossierDocId" type="long"></column>
         <column name="docTemplateId" type="long"></column>
         <column name="docFileVersionId" type="long"></column>
-        <column name="docName" type="String"></column>
+        <column name="docFileName" type="String"></column>
+        <column name="docFileType" type="long"></column>
+		<column name="verifyStatus" type="int"></column>
         <column name="note" type="String"></column>
+        <column name="approveBy" type="String"></column>
+        <column name="approveDate" type="Date"></column>
     	<column name="premier" type="int"></column>
     </entity>
     <entity name="DocFileVersion" table="oep_dossiermgt_docfileversion" local-service="true" uuid="true" uuid-accessor="true">
@@ -120,13 +132,12 @@
         <column name="note" type="String"></column>
         <column name="sequenceNo" type="int"></column>
         <column name="defaultDocTemplateId" type="long"></column>
- 		<column name="validationType" type="int"></column>
- 		<column name="requirementType" type="int"></column>
+		<column name="dossierDocType" type="int"></column>
         <column name="numberOfFile" type="int"></column>
         <column name="splitSubDossier" type="int"></column>
         <column name="onlineForm" type="String"></column>
 
-        <column name="docTemplates" type="Collection" entity="DocTemplate" mapping-table="oep_dossiermgt_dossierdoc2template">
+        <column name="docTemplates" type="Collection" entity="DocTemplate" mapping-table="dossierdoc2template">
         </column>
     </entity>
     <entity name="DossierProc" table="oep_dossiermgt_dossierproc" local-service="true">
@@ -154,9 +165,11 @@
         <column name="administrationName" type="String"></column>
         <column name="domainNo" type="String"></column>
         <column name="domainName" type="String"></column>
+        <column name="forCitizen" type="int"></column>
+        <column name="forBusiness" type="int"></column>
         <column name="effectDate" type="Date"></column>
         <column name="expireDate" type="Date"></column>
-        <column name="active" type="int"></column>
+        <column name="statusActive" type="int"></column>
         <finder name="C" return-type="Collection">
             <finder-column name="companyId"></finder-column>
         </finder>
@@ -211,11 +224,11 @@
         </finder>
         <finder name="C_AC" return-type="Collection">
             <finder-column name="companyId"></finder-column>
-            <finder-column name="active"></finder-column>
+            <finder-column name="statusActive"></finder-column>
         </finder>
         <finder name="G_AC" return-type="Collection">
             <finder-column name="groupId"></finder-column>
-            <finder-column name="active"></finder-column>
+            <finder-column name="statusActive"></finder-column>
         </finder>
         
         <reference entity="User" package-path="com.liferay.portal"></reference>
@@ -228,8 +241,20 @@
         <column name="dossierProcId" type="long"></column>
         <column name="govAgencyId" type="String"></column>
         <column name="govAgencyName" type="String"></column>
+        <column name="bankTransfer" type="String"></column>
+        <column name="keypay" type="String"></column>
         <column name="ebPartnerShipId" type="long"></column>
     </entity>
+    
+    <entity name="DossierProcBookmark" table="oep_dossiermgt_dossierprocbookmark" local-service="true">
+    	<column name="dossierProcBookmarkId" type="long" primary="true"></column>
+    	<column name="userId" type="long"></column>
+    	<column name="groupId" type="long"></column>
+    	<column name="companyId" type="long"></column>
+    	<column name="createDate" type="Date"></column>
+    	<column name="dossierProcAgentId" type="long"></column>
+    </entity>
+    
     <entity name="PaymentFile" local-service="true" uuid="true" uuid-accessor="true" table="oep_dossiermgt_paymentfile">
         <column name="paymentFileId" type="long" primary="true"></column>
         <column name="userId" type="long"></column>
@@ -288,8 +313,21 @@
         <column name="keypay" type="String"></column>
 		<column name="ebPartnerShipId" type="long"></column>
     </entity>
+    
+    <entity name="DossierTag" table="oep_dossiermgt_dossiertag" local-service="true">
+    	<column name="dossierTagId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="dossierId" type="long"></column>
+		<column name="tag" type="String"></column>
+    </entity>
+    
     <entity name="DossierFolder" table="oep_dossiermgt_dossierfolder" local-service="true" uuid="true" uuid-accessor="true">
         <column name="dossierFolderId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
         <column name="companyId" type="long"></column>
         <column name="createDate" type="Date"></column>
         <column name="modifiedDate" type="Date"></column>
@@ -298,8 +336,11 @@
         <column name="sequenceNo" type="int"></column>
         <column name="procedureFilter" type="String"></column>
         <column name="statusFilter" type="String"></column>
+        <column name="tagFilter" type="String"></column>
         <column name="filterByOrganization" type="int"></column>
         <column name="filterByUser" type="int"></column>
+		<column name="orderBy" type="String"></column>
+		<column name="counting" type="int"></column>
     </entity>
     <entity name="DossierFolder2Role" table="oep_dossiermgt_dossierfolder2role" local-service="true">
         <column name="dossierFolderId" type="long" primary="true"></column>
@@ -356,19 +397,32 @@
 		<column name="createDate" type="Date"></column>
 		<column name="statisticDate" type="Date"></column>
 		<column name="statisticWeek" type="int"></column>
-		<column name="submittedNumber" type="int"></column>
-		<column name="acceptedNumber" type="int"></column>
-		<column name="deniedNumber" type="int"></column>
-		<column name="acceptedRatio" type="double"></column>
-		<column name="finishedNumber" type="int"></column>
+		<column name="receiveNumber" type="long"></column>
+		<column name="onlineNumber" type="long"></column>
+		<column name="onlineRatio" type="double"></column>
+		<column name="finishNumber" type="int"></column>
 		<column name="ontimeNumber" type="int"></column>
-		<column name="delayedNumber" type="int"></column>
 		<column name="ontimeRatio" type="double"></column>
-		<column name="doneNumber" type="int"></column>
-		<column name="doneRatio" type="double"></column>
 		<column name="delayDaysAvg" type="double"></column>
-		<column name="furtherDaysAvg" type="double"></column>
 	</entity>
+	
+	<entity name="StatisticByDomain" table="oep_dossiermgt_statisticbydomain" local-service="true">
+		<column name="statisticByDomainId" type="long" primary="true"></column>
+		<column name="groupId" type="long"></column>
+		<column name="companyId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="month" type="int"></column>
+		<column name="year" type="int"></column>
+		<column name="dossierDomain" type="String"></column>
+		<column name="receiveNumber" type="long"></column>
+		<column name="onlineNumber" type="long"></column>
+		<column name="onlineRatio" type="double"></column>
+		<column name="finishNumber" type="int"></column>
+		<column name="ontimeNumber" type="int"></column>
+		<column name="ontimeRatio" type="double"></column>
+		<column name="delayDaysAvg" type="double"></column>
+	</entity>
+	
 	<entity name="StatisticByAgency" table="oep_dossiermgt_statisticbyagency" local-service="true">
 		<column name="statisticByAgencyId" type="long" primary="true"></column>
 		<column name="groupId" type="long"></column>
@@ -377,18 +431,13 @@
 		<column name="month" type="int"></column>
 		<column name="year" type="int"></column>
 		<column name="govAgencyId" type="String"></column>
-		<column name="submittedNumber" type="int"></column>
-		<column name="acceptedNumber" type="int"></column>
-		<column name="deniedNumber" type="int"></column>
-		<column name="acceptedRatio" type="double"></column>
-		<column name="finishedNumber" type="int"></column>
+		<column name="receiveNumber" type="long"></column>
+		<column name="onlineNumber" type="long"></column>
+		<column name="onlineRatio" type="double"></column>
+		<column name="finishNumber" type="int"></column>
 		<column name="ontimeNumber" type="int"></column>
-		<column name="delayedNumber" type="int"></column>
 		<column name="ontimeRatio" type="double"></column>
-		<column name="doneNumber" type="int"></column>
-		<column name="doneRatio" type="double"></column>
 		<column name="delayDaysAvg" type="double"></column>
-		<column name="furtherDaysAvg" type="double"></column>
 	</entity>
     <exceptions>
         <exception>DossierProcNo</exception>

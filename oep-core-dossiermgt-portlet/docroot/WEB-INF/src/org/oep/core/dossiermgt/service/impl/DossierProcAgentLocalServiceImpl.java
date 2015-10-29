@@ -67,6 +67,8 @@ public class DossierProcAgentLocalServiceImpl
 			long dossierProcId,
 			String govAgencyId,
 			String govAgencyName,
+			String bankTransfer,
+			String keypay,
 			long ebPartnerShipId,
 			ServiceContext serviceContext) throws SystemException, PortalException {
 		validate();
@@ -78,6 +80,8 @@ public class DossierProcAgentLocalServiceImpl
 		dossierProcAgent.setDossierProcId(dossierProcId);
 		dossierProcAgent.setGovAgencyId(govAgencyId);
 		dossierProcAgent.setGovAgencyName(govAgencyName);
+		dossierProcAgent.setBankTransfer(bankTransfer);
+		dossierProcAgent.setKeypay(keypay);
 		dossierProcAgent.setEbPartnerShipId(ebPartnerShipId);
 		
 		dossierProcAgent.setCreateDate(serviceContext.getCreateDate(now));
@@ -85,7 +89,7 @@ public class DossierProcAgentLocalServiceImpl
 		dossierProcAgentPersistence.update(dossierProcAgent);
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Create new dossier proc " + id);
+			_log.info("Create new dossier proc agent " + id);
 		}
 		
 		if (serviceContext.isAddGroupPermissions() || serviceContext.isAddGuestPermissions()) {
@@ -103,6 +107,8 @@ public class DossierProcAgentLocalServiceImpl
 			long dossierProcId,
 			String govAgencyId,
 			String govAgencyName,
+			String bankTransfer,
+			String keypay,
 			long ebPartnerShipId,
 			ServiceContext serviceContext)
 		throws PortalException, SystemException {
@@ -115,6 +121,8 @@ public class DossierProcAgentLocalServiceImpl
 		dossierProcAgent.setDossierProcId(dossierProcId);
 		dossierProcAgent.setGovAgencyId(govAgencyId);
 		dossierProcAgent.setGovAgencyName(govAgencyName);
+		dossierProcAgent.setBankTransfer(bankTransfer);
+		dossierProcAgent.setKeypay(keypay);
 		dossierProcAgent.setEbPartnerShipId(ebPartnerShipId);
 
 		dossierProcAgentPersistence.update(dossierProcAgent);

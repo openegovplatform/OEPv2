@@ -430,6 +430,34 @@ public interface DossierProcModel extends BaseModel<DossierProc> {
 	public void setDomainName(String domainName);
 
 	/**
+	 * Returns the for citizen of this dossier proc.
+	 *
+	 * @return the for citizen of this dossier proc
+	 */
+	public int getForCitizen();
+
+	/**
+	 * Sets the for citizen of this dossier proc.
+	 *
+	 * @param forCitizen the for citizen of this dossier proc
+	 */
+	public void setForCitizen(int forCitizen);
+
+	/**
+	 * Returns the for business of this dossier proc.
+	 *
+	 * @return the for business of this dossier proc
+	 */
+	public int getForBusiness();
+
+	/**
+	 * Sets the for business of this dossier proc.
+	 *
+	 * @param forBusiness the for business of this dossier proc
+	 */
+	public void setForBusiness(int forBusiness);
+
+	/**
 	 * Returns the effect date of this dossier proc.
 	 *
 	 * @return the effect date of this dossier proc
@@ -458,18 +486,18 @@ public interface DossierProcModel extends BaseModel<DossierProc> {
 	public void setExpireDate(Date expireDate);
 
 	/**
-	 * Returns the active of this dossier proc.
+	 * Returns the status active of this dossier proc.
 	 *
-	 * @return the active of this dossier proc
+	 * @return the status active of this dossier proc
 	 */
-	public int getActive();
+	public int getStatusActive();
 
 	/**
-	 * Sets the active of this dossier proc.
+	 * Sets the status active of this dossier proc.
 	 *
-	 * @param active the active of this dossier proc
+	 * @param statusActive the status active of this dossier proc
 	 */
-	public void setActive(int active);
+	public void setStatusActive(int statusActive);
 
 	@Override
 	public boolean isNew();

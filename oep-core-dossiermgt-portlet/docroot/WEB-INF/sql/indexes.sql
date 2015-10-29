@@ -15,11 +15,14 @@ create index IX_26AB4E2E on oep_dossiermgt_dossier (uuid_);
 create index IX_F03DAD3A on oep_dossiermgt_dossier (uuid_, companyId);
 create unique index IX_11E43A3C on oep_dossiermgt_dossier (uuid_, groupId);
 
+create index IX_9E7BD083 on oep_dossiermgt_dossierdoc2template (docTemplateId);
+create index IX_7AA45316 on oep_dossiermgt_dossierdoc2template (dossierDocId);
+
 create index IX_20720D80 on oep_dossiermgt_dossierfolder (uuid_);
 create index IX_400086A8 on oep_dossiermgt_dossierfolder (uuid_, companyId);
+create unique index IX_C1CA972A on oep_dossiermgt_dossierfolder (uuid_, groupId);
 
 create index IX_BA92D40C on oep_dossiermgt_dossierproc (companyId);
-create index IX_55EC687D on oep_dossiermgt_dossierproc (companyId, active_);
 create index IX_ECD9D8FF on oep_dossiermgt_dossierproc (companyId, administrationNo);
 create index IX_D108E998 on oep_dossiermgt_dossierproc (companyId, administrationNo, domainNo);
 create index IX_A3A13865 on oep_dossiermgt_dossierproc (companyId, domainNo);
@@ -29,15 +32,10 @@ create index IX_7A5B94AA on oep_dossiermgt_dossierproc (companyId, groupId, admi
 create index IX_C33CE3F7 on oep_dossiermgt_dossierproc (companyId, groupId, domainNo);
 create index IX_282710B4 on oep_dossiermgt_dossierproc (companyId, groupId, dossierProcNo);
 create index IX_70C6C858 on oep_dossiermgt_dossierproc (companyId, groupId, userId);
+create index IX_B5503098 on oep_dossiermgt_dossierproc (companyId, statusActive);
 create unique index IX_DF17C76 on oep_dossiermgt_dossierproc (dossierProcNo);
 create index IX_3698ED8E on oep_dossiermgt_dossierproc (groupId);
-create index IX_39FDE13B on oep_dossiermgt_dossierproc (groupId, active_);
-
-create index IX_734602D6 on oep_dossiermgt_oep_dossiermgt_dossier2dossierdoc (dossierDocId);
-create index IX_EB35373C on oep_dossiermgt_oep_dossiermgt_dossier2dossierdoc (dossierId);
-
-create index IX_3FE26338 on oep_dossiermgt_oep_dossiermgt_dossierdoc2template (docTemplateId);
-create index IX_F37615C1 on oep_dossiermgt_oep_dossiermgt_dossierdoc2template (dossierDocId);
+create index IX_BDA27E9A on oep_dossiermgt_dossierproc (groupId, statusActive);
 
 create index IX_FBEFE8D7 on oep_dossiermgt_paymentfile (uuid_);
 create index IX_DA3AFEF1 on oep_dossiermgt_paymentfile (uuid_, companyId);

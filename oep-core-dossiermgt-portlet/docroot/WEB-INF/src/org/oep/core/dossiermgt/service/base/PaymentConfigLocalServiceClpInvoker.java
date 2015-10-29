@@ -106,70 +106,70 @@ public class PaymentConfigLocalServiceClpInvoker {
 				"org.oep.core.dossiermgt.model.PaymentConfig"
 			};
 
-		_methodName136 = "getBeanIdentifier";
+		_methodName152 = "getBeanIdentifier";
 
-		_methodParameterTypes136 = new String[] {  };
+		_methodParameterTypes152 = new String[] {  };
 
-		_methodName137 = "setBeanIdentifier";
+		_methodName153 = "setBeanIdentifier";
 
-		_methodParameterTypes137 = new String[] { "java.lang.String" };
+		_methodParameterTypes153 = new String[] { "java.lang.String" };
 
-		_methodName142 = "addPaymentConfig";
+		_methodName158 = "addPaymentConfig";
 
-		_methodParameterTypes142 = new String[] {
+		_methodParameterTypes158 = new String[] {
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName143 = "updatePaymentConfig";
+		_methodName159 = "updatePaymentConfig";
 
-		_methodParameterTypes143 = new String[] {
+		_methodParameterTypes159 = new String[] {
 				"long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName144 = "updatePaymentConfigResources";
+		_methodName160 = "updatePaymentConfigResources";
 
-		_methodParameterTypes144 = new String[] {
+		_methodParameterTypes160 = new String[] {
 				"org.oep.core.dossiermgt.model.PaymentConfig",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName145 = "removePaymentConfig";
+		_methodName161 = "removePaymentConfig";
 
-		_methodParameterTypes145 = new String[] {
+		_methodParameterTypes161 = new String[] {
 				"org.oep.core.dossiermgt.model.PaymentConfig"
 			};
 
-		_methodName146 = "removePaymentConfig";
+		_methodName162 = "removePaymentConfig";
 
-		_methodParameterTypes146 = new String[] { "long" };
+		_methodParameterTypes162 = new String[] { "long" };
 
-		_methodName147 = "getPaymentConfig";
+		_methodName163 = "getPaymentConfig";
 
-		_methodParameterTypes147 = new String[] { "long" };
+		_methodParameterTypes163 = new String[] { "long" };
 
-		_methodName148 = "addPaymentConfigResources";
+		_methodName164 = "addPaymentConfigResources";
 
-		_methodParameterTypes148 = new String[] {
+		_methodParameterTypes164 = new String[] {
 				"org.oep.core.dossiermgt.model.PaymentConfig", "boolean",
 				"boolean", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName149 = "addPaymentConfigResources";
+		_methodName165 = "addPaymentConfigResources";
 
-		_methodParameterTypes149 = new String[] {
+		_methodParameterTypes165 = new String[] {
 				"org.oep.core.dossiermgt.model.PaymentConfig",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName150 = "addPaymentConfigResources";
+		_methodName166 = "addPaymentConfigResources";
 
-		_methodParameterTypes150 = new String[] {
+		_methodParameterTypes166 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -264,20 +264,20 @@ public class PaymentConfigLocalServiceClpInvoker {
 			return PaymentConfigLocalServiceUtil.updatePaymentConfig((org.oep.core.dossiermgt.model.PaymentConfig)arguments[0]);
 		}
 
-		if (_methodName136.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes136, parameterTypes)) {
+		if (_methodName152.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes152, parameterTypes)) {
 			return PaymentConfigLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName137.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes137, parameterTypes)) {
+		if (_methodName153.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes153, parameterTypes)) {
 			PaymentConfigLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName142.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes142, parameterTypes)) {
+		if (_methodName158.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes158, parameterTypes)) {
 			return PaymentConfigLocalServiceUtil.addPaymentConfig((java.lang.String)arguments[0],
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				(java.lang.String)arguments[3],
@@ -285,8 +285,8 @@ public class PaymentConfigLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[5]);
 		}
 
-		if (_methodName143.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes143, parameterTypes)) {
+		if (_methodName159.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes159, parameterTypes)) {
 			return PaymentConfigLocalServiceUtil.updatePaymentConfig(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				(java.lang.String)arguments[3], (java.lang.String)arguments[4],
@@ -294,8 +294,8 @@ public class PaymentConfigLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[6]);
 		}
 
-		if (_methodName144.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes144, parameterTypes)) {
+		if (_methodName160.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes160, parameterTypes)) {
 			PaymentConfigLocalServiceUtil.updatePaymentConfigResources((org.oep.core.dossiermgt.model.PaymentConfig)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -304,27 +304,27 @@ public class PaymentConfigLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName145.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes145, parameterTypes)) {
+		if (_methodName161.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes161, parameterTypes)) {
 			PaymentConfigLocalServiceUtil.removePaymentConfig((org.oep.core.dossiermgt.model.PaymentConfig)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName146.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes146, parameterTypes)) {
+		if (_methodName162.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes162, parameterTypes)) {
 			PaymentConfigLocalServiceUtil.removePaymentConfig(((Long)arguments[0]).longValue());
 
 			return null;
 		}
 
-		if (_methodName147.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes147, parameterTypes)) {
+		if (_methodName163.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes163, parameterTypes)) {
 			return PaymentConfigLocalServiceUtil.getPaymentConfig(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName148.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes148, parameterTypes)) {
+		if (_methodName164.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes164, parameterTypes)) {
 			PaymentConfigLocalServiceUtil.addPaymentConfigResources((org.oep.core.dossiermgt.model.PaymentConfig)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Boolean)arguments[2]).booleanValue(),
@@ -333,8 +333,8 @@ public class PaymentConfigLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName149.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes149, parameterTypes)) {
+		if (_methodName165.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes165, parameterTypes)) {
 			PaymentConfigLocalServiceUtil.addPaymentConfigResources((org.oep.core.dossiermgt.model.PaymentConfig)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -343,8 +343,8 @@ public class PaymentConfigLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName150.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes150, parameterTypes)) {
+		if (_methodName166.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes166, parameterTypes)) {
 			PaymentConfigLocalServiceUtil.addPaymentConfigResources(((Long)arguments[0]).longValue(),
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -388,26 +388,26 @@ public class PaymentConfigLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName136;
-	private String[] _methodParameterTypes136;
-	private String _methodName137;
-	private String[] _methodParameterTypes137;
-	private String _methodName142;
-	private String[] _methodParameterTypes142;
-	private String _methodName143;
-	private String[] _methodParameterTypes143;
-	private String _methodName144;
-	private String[] _methodParameterTypes144;
-	private String _methodName145;
-	private String[] _methodParameterTypes145;
-	private String _methodName146;
-	private String[] _methodParameterTypes146;
-	private String _methodName147;
-	private String[] _methodParameterTypes147;
-	private String _methodName148;
-	private String[] _methodParameterTypes148;
-	private String _methodName149;
-	private String[] _methodParameterTypes149;
-	private String _methodName150;
-	private String[] _methodParameterTypes150;
+	private String _methodName152;
+	private String[] _methodParameterTypes152;
+	private String _methodName153;
+	private String[] _methodParameterTypes153;
+	private String _methodName158;
+	private String[] _methodParameterTypes158;
+	private String _methodName159;
+	private String[] _methodParameterTypes159;
+	private String _methodName160;
+	private String[] _methodParameterTypes160;
+	private String _methodName161;
+	private String[] _methodParameterTypes161;
+	private String _methodName162;
+	private String[] _methodParameterTypes162;
+	private String _methodName163;
+	private String[] _methodParameterTypes163;
+	private String _methodName164;
+	private String[] _methodParameterTypes164;
+	private String _methodName165;
+	private String[] _methodParameterTypes165;
+	private String _methodName166;
+	private String[] _methodParameterTypes166;
 }

@@ -33,6 +33,8 @@ public class DossierFolderSoap implements Serializable {
 
 		soapModel.setUuid(model.getUuid());
 		soapModel.setDossierFolderId(model.getDossierFolderId());
+		soapModel.setUserId(model.getUserId());
+		soapModel.setGroupId(model.getGroupId());
 		soapModel.setCompanyId(model.getCompanyId());
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
@@ -41,8 +43,11 @@ public class DossierFolderSoap implements Serializable {
 		soapModel.setSequenceNo(model.getSequenceNo());
 		soapModel.setProcedureFilter(model.getProcedureFilter());
 		soapModel.setStatusFilter(model.getStatusFilter());
+		soapModel.setTagFilter(model.getTagFilter());
 		soapModel.setFilterByOrganization(model.getFilterByOrganization());
 		soapModel.setFilterByUser(model.getFilterByUser());
+		soapModel.setOrderBy(model.getOrderBy());
+		soapModel.setCounting(model.getCounting());
 
 		return soapModel;
 	}
@@ -111,6 +116,22 @@ public class DossierFolderSoap implements Serializable {
 		_dossierFolderId = dossierFolderId;
 	}
 
+	public long getUserId() {
+		return _userId;
+	}
+
+	public void setUserId(long userId) {
+		_userId = userId;
+	}
+
+	public long getGroupId() {
+		return _groupId;
+	}
+
+	public void setGroupId(long groupId) {
+		_groupId = groupId;
+	}
+
 	public long getCompanyId() {
 		return _companyId;
 	}
@@ -175,6 +196,14 @@ public class DossierFolderSoap implements Serializable {
 		_statusFilter = statusFilter;
 	}
 
+	public String getTagFilter() {
+		return _tagFilter;
+	}
+
+	public void setTagFilter(String tagFilter) {
+		_tagFilter = tagFilter;
+	}
+
 	public int getFilterByOrganization() {
 		return _filterByOrganization;
 	}
@@ -191,8 +220,26 @@ public class DossierFolderSoap implements Serializable {
 		_filterByUser = filterByUser;
 	}
 
+	public String getOrderBy() {
+		return _orderBy;
+	}
+
+	public void setOrderBy(String orderBy) {
+		_orderBy = orderBy;
+	}
+
+	public int getCounting() {
+		return _counting;
+	}
+
+	public void setCounting(int counting) {
+		_counting = counting;
+	}
+
 	private String _uuid;
 	private long _dossierFolderId;
+	private long _userId;
+	private long _groupId;
 	private long _companyId;
 	private Date _createDate;
 	private Date _modifiedDate;
@@ -201,6 +248,9 @@ public class DossierFolderSoap implements Serializable {
 	private int _sequenceNo;
 	private String _procedureFilter;
 	private String _statusFilter;
+	private String _tagFilter;
 	private int _filterByOrganization;
 	private int _filterByUser;
+	private String _orderBy;
+	private int _counting;
 }

@@ -159,74 +159,60 @@ public interface StatisticByAgencyModel extends BaseModel<StatisticByAgency> {
 	public void setGovAgencyId(String govAgencyId);
 
 	/**
-	 * Returns the submitted number of this statistic by agency.
+	 * Returns the receive number of this statistic by agency.
 	 *
-	 * @return the submitted number of this statistic by agency
+	 * @return the receive number of this statistic by agency
 	 */
-	public int getSubmittedNumber();
+	public long getReceiveNumber();
 
 	/**
-	 * Sets the submitted number of this statistic by agency.
+	 * Sets the receive number of this statistic by agency.
 	 *
-	 * @param submittedNumber the submitted number of this statistic by agency
+	 * @param receiveNumber the receive number of this statistic by agency
 	 */
-	public void setSubmittedNumber(int submittedNumber);
+	public void setReceiveNumber(long receiveNumber);
 
 	/**
-	 * Returns the accepted number of this statistic by agency.
+	 * Returns the online number of this statistic by agency.
 	 *
-	 * @return the accepted number of this statistic by agency
+	 * @return the online number of this statistic by agency
 	 */
-	public int getAcceptedNumber();
+	public long getOnlineNumber();
 
 	/**
-	 * Sets the accepted number of this statistic by agency.
+	 * Sets the online number of this statistic by agency.
 	 *
-	 * @param acceptedNumber the accepted number of this statistic by agency
+	 * @param onlineNumber the online number of this statistic by agency
 	 */
-	public void setAcceptedNumber(int acceptedNumber);
+	public void setOnlineNumber(long onlineNumber);
 
 	/**
-	 * Returns the denied number of this statistic by agency.
+	 * Returns the online ratio of this statistic by agency.
 	 *
-	 * @return the denied number of this statistic by agency
+	 * @return the online ratio of this statistic by agency
 	 */
-	public int getDeniedNumber();
+	public double getOnlineRatio();
 
 	/**
-	 * Sets the denied number of this statistic by agency.
+	 * Sets the online ratio of this statistic by agency.
 	 *
-	 * @param deniedNumber the denied number of this statistic by agency
+	 * @param onlineRatio the online ratio of this statistic by agency
 	 */
-	public void setDeniedNumber(int deniedNumber);
+	public void setOnlineRatio(double onlineRatio);
 
 	/**
-	 * Returns the accepted ratio of this statistic by agency.
+	 * Returns the finish number of this statistic by agency.
 	 *
-	 * @return the accepted ratio of this statistic by agency
+	 * @return the finish number of this statistic by agency
 	 */
-	public double getAcceptedRatio();
+	public int getFinishNumber();
 
 	/**
-	 * Sets the accepted ratio of this statistic by agency.
+	 * Sets the finish number of this statistic by agency.
 	 *
-	 * @param acceptedRatio the accepted ratio of this statistic by agency
+	 * @param finishNumber the finish number of this statistic by agency
 	 */
-	public void setAcceptedRatio(double acceptedRatio);
-
-	/**
-	 * Returns the finished number of this statistic by agency.
-	 *
-	 * @return the finished number of this statistic by agency
-	 */
-	public int getFinishedNumber();
-
-	/**
-	 * Sets the finished number of this statistic by agency.
-	 *
-	 * @param finishedNumber the finished number of this statistic by agency
-	 */
-	public void setFinishedNumber(int finishedNumber);
+	public void setFinishNumber(int finishNumber);
 
 	/**
 	 * Returns the ontime number of this statistic by agency.
@@ -243,20 +229,6 @@ public interface StatisticByAgencyModel extends BaseModel<StatisticByAgency> {
 	public void setOntimeNumber(int ontimeNumber);
 
 	/**
-	 * Returns the delayed number of this statistic by agency.
-	 *
-	 * @return the delayed number of this statistic by agency
-	 */
-	public int getDelayedNumber();
-
-	/**
-	 * Sets the delayed number of this statistic by agency.
-	 *
-	 * @param delayedNumber the delayed number of this statistic by agency
-	 */
-	public void setDelayedNumber(int delayedNumber);
-
-	/**
 	 * Returns the ontime ratio of this statistic by agency.
 	 *
 	 * @return the ontime ratio of this statistic by agency
@@ -271,34 +243,6 @@ public interface StatisticByAgencyModel extends BaseModel<StatisticByAgency> {
 	public void setOntimeRatio(double ontimeRatio);
 
 	/**
-	 * Returns the done number of this statistic by agency.
-	 *
-	 * @return the done number of this statistic by agency
-	 */
-	public int getDoneNumber();
-
-	/**
-	 * Sets the done number of this statistic by agency.
-	 *
-	 * @param doneNumber the done number of this statistic by agency
-	 */
-	public void setDoneNumber(int doneNumber);
-
-	/**
-	 * Returns the done ratio of this statistic by agency.
-	 *
-	 * @return the done ratio of this statistic by agency
-	 */
-	public double getDoneRatio();
-
-	/**
-	 * Sets the done ratio of this statistic by agency.
-	 *
-	 * @param doneRatio the done ratio of this statistic by agency
-	 */
-	public void setDoneRatio(double doneRatio);
-
-	/**
 	 * Returns the delay days avg of this statistic by agency.
 	 *
 	 * @return the delay days avg of this statistic by agency
@@ -311,20 +255,6 @@ public interface StatisticByAgencyModel extends BaseModel<StatisticByAgency> {
 	 * @param delayDaysAvg the delay days avg of this statistic by agency
 	 */
 	public void setDelayDaysAvg(double delayDaysAvg);
-
-	/**
-	 * Returns the further days avg of this statistic by agency.
-	 *
-	 * @return the further days avg of this statistic by agency
-	 */
-	public double getFurtherDaysAvg();
-
-	/**
-	 * Sets the further days avg of this statistic by agency.
-	 *
-	 * @param furtherDaysAvg the further days avg of this statistic by agency
-	 */
-	public void setFurtherDaysAvg(double furtherDaysAvg);
 
 	@Override
 	public boolean isNew();

@@ -123,158 +123,152 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String", "java.util.Date",
-				"java.util.Date", "int",
+				"java.lang.String", "java.lang.String", "int", "int",
+				"java.util.Date", "java.util.Date", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName20 = "addDossierProc";
+		_methodName20 = "updateDossierProc";
 
 		_methodParameterTypes20 = new String[] {
 				"long", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "int", "int",
+				"java.util.Date", "java.util.Date", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName21 = "updateDossierProc";
 
 		_methodParameterTypes21 = new String[] {
-				"long", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String", "java.util.Date",
-				"java.util.Date", "int",
-				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName22 = "updateDossierProc";
-
-		_methodParameterTypes22 = new String[] {
 				"org.oep.core.dossiermgt.model.DossierProc",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName23 = "removeDossierProc";
+		_methodName22 = "removeDossierProc";
 
-		_methodParameterTypes23 = new String[] {
+		_methodParameterTypes22 = new String[] {
 				"org.oep.core.dossiermgt.model.DossierProc"
 			};
 
-		_methodName24 = "removeDossierProc";
+		_methodName23 = "removeDossierProc";
+
+		_methodParameterTypes23 = new String[] { "long" };
+
+		_methodName24 = "deleteDossierProcs";
 
 		_methodParameterTypes24 = new String[] { "long" };
 
-		_methodName25 = "deleteDossierProcs";
+		_methodName25 = "getByDossierProcNo";
 
-		_methodParameterTypes25 = new String[] { "long" };
+		_methodParameterTypes25 = new String[] {
+				"java.lang.String", "com.liferay.portal.service.ServiceContext"
+			};
 
-		_methodName26 = "getByDossierProcNo";
+		_methodName26 = "findAllByAdministrationNo";
 
 		_methodParameterTypes26 = new String[] {
 				"java.lang.String", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName27 = "findAllByAdministrationNo";
+		_methodName27 = "findAllByDomainNo";
 
 		_methodParameterTypes27 = new String[] {
 				"java.lang.String", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName28 = "findAllByDomainNo";
+		_methodName28 = "findAllByAdministrationAndDomain";
 
 		_methodParameterTypes28 = new String[] {
-				"java.lang.String", "com.liferay.portal.service.ServiceContext"
+				"java.lang.String", "java.lang.String",
+				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName29 = "findAllByAdministrationAndDomain";
+		_methodName29 = "findByGroupAdministrationAndDomain";
 
 		_methodParameterTypes29 = new String[] {
 				"java.lang.String", "java.lang.String",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName30 = "findByGroupAdministrationAndDomain";
+		_methodName30 = "getCompanyDossierProcs";
 
 		_methodParameterTypes30 = new String[] {
-				"java.lang.String", "java.lang.String",
-				"com.liferay.portal.service.ServiceContext"
+				"long", "com.liferay.portal.kernel.dao.orm.QueryDefinition"
 			};
 
-		_methodName31 = "getCompanyDossierProcs";
+		_methodName31 = "getCompanyDossierProcsCount";
 
 		_methodParameterTypes31 = new String[] {
 				"long", "com.liferay.portal.kernel.dao.orm.QueryDefinition"
 			};
 
-		_methodName32 = "getCompanyDossierProcsCount";
+		_methodName32 = "findByGroupLikeName";
 
 		_methodParameterTypes32 = new String[] {
-				"long", "com.liferay.portal.kernel.dao.orm.QueryDefinition"
+				"java.lang.String", "int", "int",
+				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName33 = "findByGroupLikeName";
+		_methodName33 = "countByGroupLikeName";
 
 		_methodParameterTypes33 = new String[] {
-				"java.lang.String", "int", "int",
-				"com.liferay.portal.service.ServiceContext"
+				"java.lang.String", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName34 = "countByGroupLikeName";
+		_methodName34 = "findByLikeName";
 
 		_methodParameterTypes34 = new String[] {
-				"java.lang.String", "com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName35 = "findByLikeName";
-
-		_methodParameterTypes35 = new String[] {
 				"java.lang.String", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName36 = "countByLikeName";
+		_methodName35 = "countByLikeName";
 
-		_methodParameterTypes36 = new String[] {
+		_methodParameterTypes35 = new String[] {
 				"java.lang.String", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName37 = "findByCustomCondition";
+		_methodName36 = "findByCustomCondition";
+
+		_methodParameterTypes36 = new String[] {
+				"java.lang.String", "java.util.Date", "java.util.Date", "int",
+				"int", "int", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName37 = "countByCustomCondition";
 
 		_methodParameterTypes37 = new String[] {
 				"java.lang.String", "java.util.Date", "java.util.Date", "int",
-				"int", "int", "com.liferay.portal.service.ServiceContext"
+				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName38 = "countByCustomCondition";
+		_methodName38 = "findByGroupCustomCondition";
 
 		_methodParameterTypes38 = new String[] {
-				"java.lang.String", "java.util.Date", "java.util.Date", "int",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.util.Date", "java.util.Date", "int", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName39 = "findByGroupCustomCondition";
+		_methodName39 = "countByGroupCustomCondition";
 
 		_methodParameterTypes39 = new String[] {
-				"java.lang.String", "java.util.Date", "java.util.Date", "int",
-				"int", "int", "com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName40 = "countByGroupCustomCondition";
-
-		_methodParameterTypes40 = new String[] {
-				"java.lang.String", "java.util.Date", "java.util.Date", "int",
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.util.Date", "java.util.Date", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
+
+		_methodName40 = "findByCompany";
+
+		_methodParameterTypes40 = new String[] { "long" };
 
 		_methodName41 = "findByCompany";
 
-		_methodParameterTypes41 = new String[] { "long" };
-
-		_methodName42 = "findByCompany";
-
-		_methodParameterTypes42 = new String[] {
+		_methodParameterTypes41 = new String[] {
 				"com.liferay.portal.service.ServiceContext"
 			};
 	}
@@ -843,7 +837,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		java.lang.String recordsDescription, java.lang.String feeDescription,
 		java.lang.String instructionsDescription,
 		java.lang.String administrationNo, java.lang.String domainNo,
-		java.util.Date effectDate, java.util.Date expireDate, int active,
+		int forCitizen, int forBusiness, java.util.Date effectDate,
+		java.util.Date expireDate, int statusActive,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -887,60 +882,15 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 						
 					ClpSerializer.translateInput(domainNo),
 						
+					forCitizen,
+						
+					forBusiness,
+						
 					ClpSerializer.translateInput(effectDate),
 						
 					ClpSerializer.translateInput(expireDate),
 						
-					active,
-						
-					ClpSerializer.translateInput(serviceContext)
-					});
-		}
-		catch (Throwable t) {
-			t = ClpSerializer.translateThrowable(t);
-
-			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
-				throw (com.liferay.portal.kernel.exception.PortalException)t;
-			}
-
-			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-				throw (com.liferay.portal.kernel.exception.SystemException)t;
-			}
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-
-		return (org.oep.core.dossiermgt.model.DossierProc)ClpSerializer.translateOutput(returnObj);
-	}
-
-	@Override
-	public org.oep.core.dossiermgt.model.DossierProc addDossierProc(
-		long userId, java.lang.String dossierProcNo, java.lang.String name,
-		java.lang.String administrationNo, java.lang.String domainNo,
-		com.liferay.portal.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		Object returnObj = null;
-
-		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName20,
-					_methodParameterTypes20,
-					new Object[] {
-						userId,
-						
-					ClpSerializer.translateInput(dossierProcNo),
-						
-					ClpSerializer.translateInput(name),
-						
-					ClpSerializer.translateInput(administrationNo),
-						
-					ClpSerializer.translateInput(domainNo),
+					statusActive,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});
@@ -982,15 +932,16 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		java.lang.String recordsDescription, java.lang.String feeDescription,
 		java.lang.String instructionsDescription,
 		java.lang.String administrationNo, java.lang.String domainNo,
-		java.util.Date effectDate, java.util.Date expireDate, int active,
+		int forCitizen, int forBusiness, java.util.Date effectDate,
+		java.util.Date expireDate, int statusActive,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName21,
-					_methodParameterTypes21,
+			returnObj = _invokableLocalService.invokeMethod(_methodName20,
+					_methodParameterTypes20,
 					new Object[] {
 						id,
 						
@@ -1026,11 +977,15 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 						
 					ClpSerializer.translateInput(domainNo),
 						
+					forCitizen,
+						
+					forBusiness,
+						
 					ClpSerializer.translateInput(effectDate),
 						
 					ClpSerializer.translateInput(expireDate),
 						
-					active,
+					statusActive,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});
@@ -1067,8 +1022,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName22,
-					_methodParameterTypes22,
+			returnObj = _invokableLocalService.invokeMethod(_methodName21,
+					_methodParameterTypes21,
 					new Object[] {
 						ClpSerializer.translateInput(dossierProc),
 						
@@ -1104,8 +1059,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName23,
-				_methodParameterTypes23,
+			_invokableLocalService.invokeMethod(_methodName22,
+				_methodParameterTypes22,
 				new Object[] { ClpSerializer.translateInput(dossierProc) });
 		}
 		catch (Throwable t) {
@@ -1134,8 +1089,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName24,
-				_methodParameterTypes24, new Object[] { id });
+			_invokableLocalService.invokeMethod(_methodName23,
+				_methodParameterTypes23, new Object[] { id });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -1163,8 +1118,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName25,
-				_methodParameterTypes25, new Object[] { groupId });
+			_invokableLocalService.invokeMethod(_methodName24,
+				_methodParameterTypes24, new Object[] { groupId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -1196,8 +1151,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName26,
-					_methodParameterTypes26,
+			returnObj = _invokableLocalService.invokeMethod(_methodName25,
+					_methodParameterTypes25,
 					new Object[] {
 						ClpSerializer.translateInput(dossierProcNo),
 						
@@ -1236,8 +1191,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName27,
-					_methodParameterTypes27,
+			returnObj = _invokableLocalService.invokeMethod(_methodName26,
+					_methodParameterTypes26,
 					new Object[] {
 						ClpSerializer.translateInput(administrationNo),
 						
@@ -1276,8 +1231,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName28,
-					_methodParameterTypes28,
+			returnObj = _invokableLocalService.invokeMethod(_methodName27,
+					_methodParameterTypes27,
 					new Object[] {
 						ClpSerializer.translateInput(domainNo),
 						
@@ -1309,6 +1264,48 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 
 	@Override
 	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findAllByAdministrationAndDomain(
+		java.lang.String administrationNo, java.lang.String domainNo,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName28,
+					_methodParameterTypes28,
+					new Object[] {
+						ClpSerializer.translateInput(administrationNo),
+						
+					ClpSerializer.translateInput(domainNo),
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<org.oep.core.dossiermgt.model.DossierProc>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByGroupAdministrationAndDomain(
 		java.lang.String administrationNo, java.lang.String domainNo,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -1350,48 +1347,6 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 	}
 
 	@Override
-	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByGroupAdministrationAndDomain(
-		java.lang.String administrationNo, java.lang.String domainNo,
-		com.liferay.portal.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		Object returnObj = null;
-
-		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName30,
-					_methodParameterTypes30,
-					new Object[] {
-						ClpSerializer.translateInput(administrationNo),
-						
-					ClpSerializer.translateInput(domainNo),
-						
-					ClpSerializer.translateInput(serviceContext)
-					});
-		}
-		catch (Throwable t) {
-			t = ClpSerializer.translateThrowable(t);
-
-			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
-				throw (com.liferay.portal.kernel.exception.PortalException)t;
-			}
-
-			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-				throw (com.liferay.portal.kernel.exception.SystemException)t;
-			}
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-
-		return (java.util.List<org.oep.core.dossiermgt.model.DossierProc>)ClpSerializer.translateOutput(returnObj);
-	}
-
-	@Override
 	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> getCompanyDossierProcs(
 		long companyId,
 		com.liferay.portal.kernel.dao.orm.QueryDefinition queryDefinition)
@@ -1399,8 +1354,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName31,
-					_methodParameterTypes31,
+			returnObj = _invokableLocalService.invokeMethod(_methodName30,
+					_methodParameterTypes30,
 					new Object[] {
 						companyId,
 						
@@ -1433,8 +1388,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName32,
-					_methodParameterTypes32,
+			returnObj = _invokableLocalService.invokeMethod(_methodName31,
+					_methodParameterTypes31,
 					new Object[] {
 						companyId,
 						
@@ -1468,8 +1423,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName33,
-					_methodParameterTypes33,
+			returnObj = _invokableLocalService.invokeMethod(_methodName32,
+					_methodParameterTypes32,
 					new Object[] {
 						ClpSerializer.translateInput(name),
 						
@@ -1506,8 +1461,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName34,
-					_methodParameterTypes34,
+			returnObj = _invokableLocalService.invokeMethod(_methodName33,
+					_methodParameterTypes33,
 					new Object[] {
 						ClpSerializer.translateInput(name),
 						
@@ -1541,8 +1496,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName35,
-					_methodParameterTypes35,
+			returnObj = _invokableLocalService.invokeMethod(_methodName34,
+					_methodParameterTypes34,
 					new Object[] {
 						ClpSerializer.translateInput(name),
 						
@@ -1579,8 +1534,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName36,
-					_methodParameterTypes36,
+			returnObj = _invokableLocalService.invokeMethod(_methodName35,
+					_methodParameterTypes35,
 					new Object[] {
 						ClpSerializer.translateInput(name),
 						
@@ -1615,8 +1570,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName37,
-					_methodParameterTypes37,
+			returnObj = _invokableLocalService.invokeMethod(_methodName36,
+					_methodParameterTypes36,
 					new Object[] {
 						ClpSerializer.translateInput(name),
 						
@@ -1660,8 +1615,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName38,
-					_methodParameterTypes38,
+			returnObj = _invokableLocalService.invokeMethod(_methodName37,
+					_methodParameterTypes37,
 					new Object[] {
 						ClpSerializer.translateInput(name),
 						
@@ -1695,17 +1650,22 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 
 	@Override
 	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByGroupCustomCondition(
-		java.lang.String name, java.util.Date effectDate,
+		java.lang.String name, java.lang.String administrationNo,
+		java.lang.String domainNo, java.util.Date effectDate,
 		java.util.Date expireDate, int active, int startIndex, int endIndex,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName39,
-					_methodParameterTypes39,
+			returnObj = _invokableLocalService.invokeMethod(_methodName38,
+					_methodParameterTypes38,
 					new Object[] {
 						ClpSerializer.translateInput(name),
+						
+					ClpSerializer.translateInput(administrationNo),
+						
+					ClpSerializer.translateInput(domainNo),
 						
 					ClpSerializer.translateInput(effectDate),
 						
@@ -1741,16 +1701,21 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 
 	@Override
 	public int countByGroupCustomCondition(java.lang.String name,
+		java.lang.String administrationNo, java.lang.String domainNo,
 		java.util.Date effectDate, java.util.Date expireDate, int active,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName40,
-					_methodParameterTypes40,
+			returnObj = _invokableLocalService.invokeMethod(_methodName39,
+					_methodParameterTypes39,
 					new Object[] {
 						ClpSerializer.translateInput(name),
+						
+					ClpSerializer.translateInput(administrationNo),
+						
+					ClpSerializer.translateInput(domainNo),
 						
 					ClpSerializer.translateInput(effectDate),
 						
@@ -1787,8 +1752,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName41,
-					_methodParameterTypes41, new Object[] { companyId });
+			returnObj = _invokableLocalService.invokeMethod(_methodName40,
+					_methodParameterTypes40, new Object[] { companyId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -1816,8 +1781,8 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName42,
-					_methodParameterTypes42,
+			returnObj = _invokableLocalService.invokeMethod(_methodName41,
+					_methodParameterTypes41,
 					new Object[] { ClpSerializer.translateInput(serviceContext) });
 		}
 		catch (Throwable t) {
@@ -1922,6 +1887,4 @@ public class DossierProcLocalServiceClp implements DossierProcLocalService {
 	private String[] _methodParameterTypes40;
 	private String _methodName41;
 	private String[] _methodParameterTypes41;
-	private String _methodName42;
-	private String[] _methodParameterTypes42;
 }

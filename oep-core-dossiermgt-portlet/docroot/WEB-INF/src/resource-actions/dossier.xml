@@ -3,51 +3,29 @@
 
 <resource-action-mapping>
 	<model-resource>
-		<model-name>org.oep.core.dossiermgt</model-name>
-		<portlet-ref>
-			<portlet-name>oep-core-dossiermgt</portlet-name>
-		</portlet-ref>
-		<root>true</root>
-		<weight>1</weight>
-		<permissions>
-			<supports>
-				<action-key>ADD_DOSSIERPROC</action-key>
-				<action-key>PERMISSIONS</action-key>
-			</supports>
-			<site-member-defaults />
-			<guest-defaults />
-			<guest-unsupported>
-				<action-key>ADD_DOSSIERPROC</action-key>
-				<action-key>PERMISSIONS</action-key>
-			</guest-unsupported>
-		</permissions>
-	</model-resource>
-	<model-resource>
-		<model-name>org.oep.core.dossiermgt.model.DossierProc</model-name>
+		<model-name>org.oep.core.dossiermgt.model.Dossier</model-name>
 		<portlet-ref>
 			<portlet-name>oep-core-dossiermgt</portlet-name>
 		</portlet-ref>
 		<weight>2</weight>
 		<permissions>
 			<supports>
-				<action-key>ADD_DOSSIERPROC</action-key>
-				<action-key>DELETE_DOSSIERPROC</action-key>
+				<action-key>CREATE_DOSSIER</action-key>
 				<action-key>PERMISSIONS</action-key>
-				<action-key>UPDATE_DOSSIERPROC</action-key>
-				<action-key>VIEW</action-key>
+				<action-key>UPDATE_DOSSIER</action-key>
+				<action-key>VIEW_DOSSIER</action-key>
 			</supports>
 			<site-member-defaults>
-				<action-key>ADD_DOSSIERPROC</action-key>
-				<action-key>VIEW</action-key>
+				<action-key>CREATE_DOSSIER</action-key>
+				<action-key>VIEW_DOSSIER</action-key>
 			</site-member-defaults>
 			<guest-defaults>
-				<action-key>ADD_DOSSIERPROC</action-key>
-				<action-key>VIEW</action-key>
+				<action-key>CREATE_DOSSIER</action-key>
+				<action-key>VIEW_DOSSIER</action-key>
 			</guest-defaults>
 			<guest-unsupported>
-				<action-key>DELETE_DOSSIERPROC</action-key>
+				<action-key>UPDATE_DOSSIER</action-key>
 				<action-key>PERMISSIONS</action-key>
-				<action-key>UPDATE_DOSSIERPROC</action-key>
 			</guest-unsupported>
 		</permissions>
 	</model-resource>

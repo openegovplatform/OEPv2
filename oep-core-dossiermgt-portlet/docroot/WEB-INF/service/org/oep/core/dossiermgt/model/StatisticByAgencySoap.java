@@ -38,18 +38,13 @@ public class StatisticByAgencySoap implements Serializable {
 		soapModel.setMonth(model.getMonth());
 		soapModel.setYear(model.getYear());
 		soapModel.setGovAgencyId(model.getGovAgencyId());
-		soapModel.setSubmittedNumber(model.getSubmittedNumber());
-		soapModel.setAcceptedNumber(model.getAcceptedNumber());
-		soapModel.setDeniedNumber(model.getDeniedNumber());
-		soapModel.setAcceptedRatio(model.getAcceptedRatio());
-		soapModel.setFinishedNumber(model.getFinishedNumber());
+		soapModel.setReceiveNumber(model.getReceiveNumber());
+		soapModel.setOnlineNumber(model.getOnlineNumber());
+		soapModel.setOnlineRatio(model.getOnlineRatio());
+		soapModel.setFinishNumber(model.getFinishNumber());
 		soapModel.setOntimeNumber(model.getOntimeNumber());
-		soapModel.setDelayedNumber(model.getDelayedNumber());
 		soapModel.setOntimeRatio(model.getOntimeRatio());
-		soapModel.setDoneNumber(model.getDoneNumber());
-		soapModel.setDoneRatio(model.getDoneRatio());
 		soapModel.setDelayDaysAvg(model.getDelayDaysAvg());
-		soapModel.setFurtherDaysAvg(model.getFurtherDaysAvg());
 
 		return soapModel;
 	}
@@ -161,44 +156,36 @@ public class StatisticByAgencySoap implements Serializable {
 		_govAgencyId = govAgencyId;
 	}
 
-	public int getSubmittedNumber() {
-		return _submittedNumber;
+	public long getReceiveNumber() {
+		return _receiveNumber;
 	}
 
-	public void setSubmittedNumber(int submittedNumber) {
-		_submittedNumber = submittedNumber;
+	public void setReceiveNumber(long receiveNumber) {
+		_receiveNumber = receiveNumber;
 	}
 
-	public int getAcceptedNumber() {
-		return _acceptedNumber;
+	public long getOnlineNumber() {
+		return _onlineNumber;
 	}
 
-	public void setAcceptedNumber(int acceptedNumber) {
-		_acceptedNumber = acceptedNumber;
+	public void setOnlineNumber(long onlineNumber) {
+		_onlineNumber = onlineNumber;
 	}
 
-	public int getDeniedNumber() {
-		return _deniedNumber;
+	public double getOnlineRatio() {
+		return _onlineRatio;
 	}
 
-	public void setDeniedNumber(int deniedNumber) {
-		_deniedNumber = deniedNumber;
+	public void setOnlineRatio(double onlineRatio) {
+		_onlineRatio = onlineRatio;
 	}
 
-	public double getAcceptedRatio() {
-		return _acceptedRatio;
+	public int getFinishNumber() {
+		return _finishNumber;
 	}
 
-	public void setAcceptedRatio(double acceptedRatio) {
-		_acceptedRatio = acceptedRatio;
-	}
-
-	public int getFinishedNumber() {
-		return _finishedNumber;
-	}
-
-	public void setFinishedNumber(int finishedNumber) {
-		_finishedNumber = finishedNumber;
+	public void setFinishNumber(int finishNumber) {
+		_finishNumber = finishNumber;
 	}
 
 	public int getOntimeNumber() {
@@ -209,36 +196,12 @@ public class StatisticByAgencySoap implements Serializable {
 		_ontimeNumber = ontimeNumber;
 	}
 
-	public int getDelayedNumber() {
-		return _delayedNumber;
-	}
-
-	public void setDelayedNumber(int delayedNumber) {
-		_delayedNumber = delayedNumber;
-	}
-
 	public double getOntimeRatio() {
 		return _ontimeRatio;
 	}
 
 	public void setOntimeRatio(double ontimeRatio) {
 		_ontimeRatio = ontimeRatio;
-	}
-
-	public int getDoneNumber() {
-		return _doneNumber;
-	}
-
-	public void setDoneNumber(int doneNumber) {
-		_doneNumber = doneNumber;
-	}
-
-	public double getDoneRatio() {
-		return _doneRatio;
-	}
-
-	public void setDoneRatio(double doneRatio) {
-		_doneRatio = doneRatio;
 	}
 
 	public double getDelayDaysAvg() {
@@ -249,14 +212,6 @@ public class StatisticByAgencySoap implements Serializable {
 		_delayDaysAvg = delayDaysAvg;
 	}
 
-	public double getFurtherDaysAvg() {
-		return _furtherDaysAvg;
-	}
-
-	public void setFurtherDaysAvg(double furtherDaysAvg) {
-		_furtherDaysAvg = furtherDaysAvg;
-	}
-
 	private long _statisticByAgencyId;
 	private long _groupId;
 	private long _companyId;
@@ -264,16 +219,11 @@ public class StatisticByAgencySoap implements Serializable {
 	private int _month;
 	private int _year;
 	private String _govAgencyId;
-	private int _submittedNumber;
-	private int _acceptedNumber;
-	private int _deniedNumber;
-	private double _acceptedRatio;
-	private int _finishedNumber;
+	private long _receiveNumber;
+	private long _onlineNumber;
+	private double _onlineRatio;
+	private int _finishNumber;
 	private int _ontimeNumber;
-	private int _delayedNumber;
 	private double _ontimeRatio;
-	private int _doneNumber;
-	private double _doneRatio;
 	private double _delayDaysAvg;
-	private double _furtherDaysAvg;
 }

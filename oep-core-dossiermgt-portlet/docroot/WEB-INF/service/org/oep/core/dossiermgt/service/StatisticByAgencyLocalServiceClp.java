@@ -115,6 +115,39 @@ public class StatisticByAgencyLocalServiceClp
 		_methodName17 = "setBeanIdentifier";
 
 		_methodParameterTypes17 = new String[] { "java.lang.String" };
+
+		_methodName19 = "addStatisticByAgency";
+
+		_methodParameterTypes19 = new String[] {
+				"int", "int", "java.lang.String", "int", "int", "double", "int",
+				"int", "double", "double",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName20 = "updateStatisticByAgency";
+
+		_methodParameterTypes20 = new String[] {
+				"long", "int", "int", "java.lang.String", "long", "long",
+				"double", "int", "int", "double", "double",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName21 = "updateStatisticByAgency";
+
+		_methodParameterTypes21 = new String[] {
+				"org.oep.core.dossiermgt.model.StatisticByAgency",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName22 = "removeStatisticByAgency";
+
+		_methodParameterTypes22 = new String[] {
+				"org.oep.core.dossiermgt.model.StatisticByAgency"
+			};
+
+		_methodName23 = "removeStatisticByAgency";
+
+		_methodParameterTypes23 = new String[] { "long" };
 	}
 
 	@Override
@@ -672,6 +705,229 @@ public class StatisticByAgencyLocalServiceClp
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public org.oep.core.dossiermgt.model.StatisticByAgency addStatisticByAgency(
+		int month, int year, java.lang.String govAgencyId, int receiveNumber,
+		int onlineNumber, double onlineRatio, int finishNumber,
+		int ontimeNumber, double ontimeRatio, double delayDaysAvg,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName19,
+					_methodParameterTypes19,
+					new Object[] {
+						month,
+						
+					year,
+						
+					ClpSerializer.translateInput(govAgencyId),
+						
+					receiveNumber,
+						
+					onlineNumber,
+						
+					onlineRatio,
+						
+					finishNumber,
+						
+					ontimeNumber,
+						
+					ontimeRatio,
+						
+					delayDaysAvg,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.dossiermgt.model.StatisticByAgency)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.StatisticByAgency updateStatisticByAgency(
+		long id, int month, int year, java.lang.String govAgencyId,
+		long receiveNumber, long onlineNumber, double onlineRatio,
+		int finishNumber, int ontimeNumber, double ontimeRatio,
+		double delayDaysAvg,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName20,
+					_methodParameterTypes20,
+					new Object[] {
+						id,
+						
+					month,
+						
+					year,
+						
+					ClpSerializer.translateInput(govAgencyId),
+						
+					receiveNumber,
+						
+					onlineNumber,
+						
+					onlineRatio,
+						
+					finishNumber,
+						
+					ontimeNumber,
+						
+					ontimeRatio,
+						
+					delayDaysAvg,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.dossiermgt.model.StatisticByAgency)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.StatisticByAgency updateStatisticByAgency(
+		org.oep.core.dossiermgt.model.StatisticByAgency statisticByAgency,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName21,
+					_methodParameterTypes21,
+					new Object[] {
+						ClpSerializer.translateInput(statisticByAgency),
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.dossiermgt.model.StatisticByAgency)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public void removeStatisticByAgency(
+		org.oep.core.dossiermgt.model.StatisticByAgency statisticByAgency)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName22,
+				_methodParameterTypes22,
+				new Object[] { ClpSerializer.translateInput(statisticByAgency) });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void removeStatisticByAgency(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName23,
+				_methodParameterTypes23, new Object[] { id });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
 	private InvokableLocalService _invokableLocalService;
 	private String _methodName0;
 	private String[] _methodParameterTypes0;
@@ -709,4 +965,14 @@ public class StatisticByAgencyLocalServiceClp
 	private String[] _methodParameterTypes16;
 	private String _methodName17;
 	private String[] _methodParameterTypes17;
+	private String _methodName19;
+	private String[] _methodParameterTypes19;
+	private String _methodName20;
+	private String[] _methodParameterTypes20;
+	private String _methodName21;
+	private String[] _methodParameterTypes21;
+	private String _methodName22;
+	private String[] _methodParameterTypes22;
+	private String _methodName23;
+	private String[] _methodParameterTypes23;
 }

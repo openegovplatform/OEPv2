@@ -133,15 +133,18 @@ public class DocFileLocalServiceClp implements DocFileLocalService {
 		_methodName23 = "addDocFile";
 
 		_methodParameterTypes23 = new String[] {
-				"long", "long", "long", "long", "java.lang.String",
-				"java.lang.String", "com.liferay.portal.service.ServiceContext"
+				"long", "long", "long", "long", "java.lang.String", "int", "int",
+				"java.lang.String", "java.lang.String", "java.util.Date", "int",
+				"com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName24 = "updateDocFile";
 
 		_methodParameterTypes24 = new String[] {
 				"long", "long", "long", "long", "long", "java.lang.String",
-				"java.lang.String", "com.liferay.portal.service.ServiceContext"
+				"int", "int", "java.lang.String", "java.lang.String",
+				"java.util.Date", "int",
+				"com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName25 = "updateDocFileResources";
@@ -864,7 +867,9 @@ public class DocFileLocalServiceClp implements DocFileLocalService {
 	@Override
 	public org.oep.core.dossiermgt.model.DocFile addDocFile(long dossierId,
 		long dossierDocId, long docTemplateId, long docFileVersionId,
-		java.lang.String docName, java.lang.String note,
+		java.lang.String docFileName, int docFileType, int verifyStatus,
+		java.lang.String note, java.lang.String approveBy,
+		java.util.Date approveDate, int premier,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -882,9 +887,19 @@ public class DocFileLocalServiceClp implements DocFileLocalService {
 						
 					docFileVersionId,
 						
-					ClpSerializer.translateInput(docName),
+					ClpSerializer.translateInput(docFileName),
+						
+					docFileType,
+						
+					verifyStatus,
 						
 					ClpSerializer.translateInput(note),
+						
+					ClpSerializer.translateInput(approveBy),
+						
+					ClpSerializer.translateInput(approveDate),
+						
+					premier,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});
@@ -915,7 +930,9 @@ public class DocFileLocalServiceClp implements DocFileLocalService {
 	@Override
 	public org.oep.core.dossiermgt.model.DocFile updateDocFile(long id,
 		long dossierId, long dossierDocId, long docTemplateId,
-		long docFileVersionId, java.lang.String docName, java.lang.String note,
+		long docFileVersionId, java.lang.String docFileName, int docFileType,
+		int verifyStatus, java.lang.String note, java.lang.String approveBy,
+		java.util.Date approveDate, int premier,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -935,9 +952,19 @@ public class DocFileLocalServiceClp implements DocFileLocalService {
 						
 					docFileVersionId,
 						
-					ClpSerializer.translateInput(docName),
+					ClpSerializer.translateInput(docFileName),
+						
+					docFileType,
+						
+					verifyStatus,
 						
 					ClpSerializer.translateInput(note),
+						
+					ClpSerializer.translateInput(approveBy),
+						
+					ClpSerializer.translateInput(approveDate),
+						
+					premier,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});

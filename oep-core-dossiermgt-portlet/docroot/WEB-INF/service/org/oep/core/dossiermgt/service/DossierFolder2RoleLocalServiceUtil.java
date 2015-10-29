@@ -275,6 +275,51 @@ public class DossierFolder2RoleLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	/**
+	* ThÃƒÂªm quan hÃ¡Â»â€¡ giÃ¡Â»Â¯a UI xem danh sÃƒÂ¡ch hÃ¡Â»â€œ sÃ†Â¡ vÃ¡Â»â€ºi vai trÃƒÂ²
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
+	*
+	* @param dossierFolderId UI xem danh sÃƒÂ¡ch hÃ¡Â»â€œ sÃ†Â¡
+	* @param roleId mÃƒÂ£ vai trÃƒÂ²
+	* @return: quan hÃ¡Â»â€¡ giÃ¡Â»Â¯a UI xem danh sÃƒÂ¡ch hÃ¡Â»â€œ sÃ†Â¡ vÃ¡Â»â€ºi vai trÃƒÂ²
+	*/
+	public static org.oep.core.dossiermgt.model.DossierFolder2Role addDossierFolder2Role(
+		long dossierFolderId, long roleId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addDossierFolder2Role(dossierFolderId, roleId,
+			serviceContext);
+	}
+
+	public static void removeDossierFolder2Role(
+		org.oep.core.dossiermgt.model.DossierFolder2Role dossierFolder2Role)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeDossierFolder2Role(dossierFolder2Role);
+	}
+
+	public static void removeDossierFolder2Role(long dossierFolderId,
+		long roleId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeDossierFolder2Role(dossierFolderId, roleId);
+	}
+
+	public static org.oep.core.dossiermgt.model.DossierFolder2Role getDossierFolder2Role(
+		long dossierFolderId, long roleId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().getDossierFolder2Role(dossierFolderId, roleId);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

@@ -30,7 +30,6 @@ import com.liferay.portal.kernel.util.InstanceFactory;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
-import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
@@ -50,7 +49,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 /**
  * The persistence implementation for the dossier proc service.
@@ -6461,56 +6459,56 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByC_AC",
 			new String[] { Long.class.getName(), Integer.class.getName() },
 			DossierProcModelImpl.COMPANYID_COLUMN_BITMASK |
-			DossierProcModelImpl.ACTIVE_COLUMN_BITMASK);
+			DossierProcModelImpl.STATUSACTIVE_COLUMN_BITMASK);
 	public static final FinderPath FINDER_PATH_COUNT_BY_C_AC = new FinderPath(DossierProcModelImpl.ENTITY_CACHE_ENABLED,
 			DossierProcModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByC_AC",
 			new String[] { Long.class.getName(), Integer.class.getName() });
 
 	/**
-	 * Returns all the dossier procs where companyId = &#63; and active = &#63;.
+	 * Returns all the dossier procs where companyId = &#63; and statusActive = &#63;.
 	 *
 	 * @param companyId the company ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @return the matching dossier procs
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<DossierProc> findByC_AC(long companyId, int active)
+	public List<DossierProc> findByC_AC(long companyId, int statusActive)
 		throws SystemException {
-		return findByC_AC(companyId, active, QueryUtil.ALL_POS,
+		return findByC_AC(companyId, statusActive, QueryUtil.ALL_POS,
 			QueryUtil.ALL_POS, null);
 	}
 
 	/**
-	 * Returns a range of all the dossier procs where companyId = &#63; and active = &#63;.
+	 * Returns a range of all the dossier procs where companyId = &#63; and statusActive = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DossierProcModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param companyId the company ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @param start the lower bound of the range of dossier procs
 	 * @param end the upper bound of the range of dossier procs (not inclusive)
 	 * @return the range of matching dossier procs
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<DossierProc> findByC_AC(long companyId, int active, int start,
-		int end) throws SystemException {
-		return findByC_AC(companyId, active, start, end, null);
+	public List<DossierProc> findByC_AC(long companyId, int statusActive,
+		int start, int end) throws SystemException {
+		return findByC_AC(companyId, statusActive, start, end, null);
 	}
 
 	/**
-	 * Returns an ordered range of all the dossier procs where companyId = &#63; and active = &#63;.
+	 * Returns an ordered range of all the dossier procs where companyId = &#63; and statusActive = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DossierProcModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param companyId the company ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @param start the lower bound of the range of dossier procs
 	 * @param end the upper bound of the range of dossier procs (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
@@ -6518,8 +6516,9 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<DossierProc> findByC_AC(long companyId, int active, int start,
-		int end, OrderByComparator orderByComparator) throws SystemException {
+	public List<DossierProc> findByC_AC(long companyId, int statusActive,
+		int start, int end, OrderByComparator orderByComparator)
+		throws SystemException {
 		boolean pagination = true;
 		FinderPath finderPath = null;
 		Object[] finderArgs = null;
@@ -6528,12 +6527,12 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 				(orderByComparator == null)) {
 			pagination = false;
 			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_C_AC;
-			finderArgs = new Object[] { companyId, active };
+			finderArgs = new Object[] { companyId, statusActive };
 		}
 		else {
 			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_C_AC;
 			finderArgs = new Object[] {
-					companyId, active,
+					companyId, statusActive,
 					
 					start, end, orderByComparator
 				};
@@ -6545,7 +6544,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 		if ((list != null) && !list.isEmpty()) {
 			for (DossierProc dossierProc : list) {
 				if ((companyId != dossierProc.getCompanyId()) ||
-						(active != dossierProc.getActive())) {
+						(statusActive != dossierProc.getStatusActive())) {
 					list = null;
 
 					break;
@@ -6568,7 +6567,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 
 			query.append(_FINDER_COLUMN_C_AC_COMPANYID_2);
 
-			query.append(_FINDER_COLUMN_C_AC_ACTIVE_2);
+			query.append(_FINDER_COLUMN_C_AC_STATUSACTIVE_2);
 
 			if (orderByComparator != null) {
 				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
@@ -6592,7 +6591,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 
 				qPos.add(companyId);
 
-				qPos.add(active);
+				qPos.add(statusActive);
 
 				if (!pagination) {
 					list = (List<DossierProc>)QueryUtil.list(q, getDialect(),
@@ -6625,20 +6624,20 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	}
 
 	/**
-	 * Returns the first dossier proc in the ordered set where companyId = &#63; and active = &#63;.
+	 * Returns the first dossier proc in the ordered set where companyId = &#63; and statusActive = &#63;.
 	 *
 	 * @param companyId the company ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching dossier proc
 	 * @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierProc findByC_AC_First(long companyId, int active,
+	public DossierProc findByC_AC_First(long companyId, int statusActive,
 		OrderByComparator orderByComparator)
 		throws NoSuchDossierProcException, SystemException {
-		DossierProc dossierProc = fetchByC_AC_First(companyId, active,
+		DossierProc dossierProc = fetchByC_AC_First(companyId, statusActive,
 				orderByComparator);
 
 		if (dossierProc != null) {
@@ -6652,8 +6651,8 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 		msg.append("companyId=");
 		msg.append(companyId);
 
-		msg.append(", active=");
-		msg.append(active);
+		msg.append(", statusActive=");
+		msg.append(statusActive);
 
 		msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -6661,18 +6660,18 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	}
 
 	/**
-	 * Returns the first dossier proc in the ordered set where companyId = &#63; and active = &#63;.
+	 * Returns the first dossier proc in the ordered set where companyId = &#63; and statusActive = &#63;.
 	 *
 	 * @param companyId the company ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierProc fetchByC_AC_First(long companyId, int active,
+	public DossierProc fetchByC_AC_First(long companyId, int statusActive,
 		OrderByComparator orderByComparator) throws SystemException {
-		List<DossierProc> list = findByC_AC(companyId, active, 0, 1,
+		List<DossierProc> list = findByC_AC(companyId, statusActive, 0, 1,
 				orderByComparator);
 
 		if (!list.isEmpty()) {
@@ -6683,20 +6682,20 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	}
 
 	/**
-	 * Returns the last dossier proc in the ordered set where companyId = &#63; and active = &#63;.
+	 * Returns the last dossier proc in the ordered set where companyId = &#63; and statusActive = &#63;.
 	 *
 	 * @param companyId the company ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching dossier proc
 	 * @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierProc findByC_AC_Last(long companyId, int active,
+	public DossierProc findByC_AC_Last(long companyId, int statusActive,
 		OrderByComparator orderByComparator)
 		throws NoSuchDossierProcException, SystemException {
-		DossierProc dossierProc = fetchByC_AC_Last(companyId, active,
+		DossierProc dossierProc = fetchByC_AC_Last(companyId, statusActive,
 				orderByComparator);
 
 		if (dossierProc != null) {
@@ -6710,8 +6709,8 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 		msg.append("companyId=");
 		msg.append(companyId);
 
-		msg.append(", active=");
-		msg.append(active);
+		msg.append(", statusActive=");
+		msg.append(statusActive);
 
 		msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -6719,24 +6718,24 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	}
 
 	/**
-	 * Returns the last dossier proc in the ordered set where companyId = &#63; and active = &#63;.
+	 * Returns the last dossier proc in the ordered set where companyId = &#63; and statusActive = &#63;.
 	 *
 	 * @param companyId the company ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierProc fetchByC_AC_Last(long companyId, int active,
+	public DossierProc fetchByC_AC_Last(long companyId, int statusActive,
 		OrderByComparator orderByComparator) throws SystemException {
-		int count = countByC_AC(companyId, active);
+		int count = countByC_AC(companyId, statusActive);
 
 		if (count == 0) {
 			return null;
 		}
 
-		List<DossierProc> list = findByC_AC(companyId, active, count - 1,
+		List<DossierProc> list = findByC_AC(companyId, statusActive, count - 1,
 				count, orderByComparator);
 
 		if (!list.isEmpty()) {
@@ -6747,11 +6746,11 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	}
 
 	/**
-	 * Returns the dossier procs before and after the current dossier proc in the ordered set where companyId = &#63; and active = &#63;.
+	 * Returns the dossier procs before and after the current dossier proc in the ordered set where companyId = &#63; and statusActive = &#63;.
 	 *
 	 * @param dossierProcId the primary key of the current dossier proc
 	 * @param companyId the company ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next dossier proc
 	 * @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a dossier proc with the primary key could not be found
@@ -6759,7 +6758,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	 */
 	@Override
 	public DossierProc[] findByC_AC_PrevAndNext(long dossierProcId,
-		long companyId, int active, OrderByComparator orderByComparator)
+		long companyId, int statusActive, OrderByComparator orderByComparator)
 		throws NoSuchDossierProcException, SystemException {
 		DossierProc dossierProc = findByPrimaryKey(dossierProcId);
 
@@ -6771,12 +6770,12 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 			DossierProc[] array = new DossierProcImpl[3];
 
 			array[0] = getByC_AC_PrevAndNext(session, dossierProc, companyId,
-					active, orderByComparator, true);
+					statusActive, orderByComparator, true);
 
 			array[1] = dossierProc;
 
 			array[2] = getByC_AC_PrevAndNext(session, dossierProc, companyId,
-					active, orderByComparator, false);
+					statusActive, orderByComparator, false);
 
 			return array;
 		}
@@ -6789,7 +6788,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	}
 
 	protected DossierProc getByC_AC_PrevAndNext(Session session,
-		DossierProc dossierProc, long companyId, int active,
+		DossierProc dossierProc, long companyId, int statusActive,
 		OrderByComparator orderByComparator, boolean previous) {
 		StringBundler query = null;
 
@@ -6805,7 +6804,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 
 		query.append(_FINDER_COLUMN_C_AC_COMPANYID_2);
 
-		query.append(_FINDER_COLUMN_C_AC_ACTIVE_2);
+		query.append(_FINDER_COLUMN_C_AC_STATUSACTIVE_2);
 
 		if (orderByComparator != null) {
 			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
@@ -6877,7 +6876,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 
 		qPos.add(companyId);
 
-		qPos.add(active);
+		qPos.add(statusActive);
 
 		if (orderByComparator != null) {
 			Object[] values = orderByComparator.getOrderByConditionValues(dossierProc);
@@ -6898,35 +6897,35 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	}
 
 	/**
-	 * Removes all the dossier procs where companyId = &#63; and active = &#63; from the database.
+	 * Removes all the dossier procs where companyId = &#63; and statusActive = &#63; from the database.
 	 *
 	 * @param companyId the company ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public void removeByC_AC(long companyId, int active)
+	public void removeByC_AC(long companyId, int statusActive)
 		throws SystemException {
-		for (DossierProc dossierProc : findByC_AC(companyId, active,
+		for (DossierProc dossierProc : findByC_AC(companyId, statusActive,
 				QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
 			remove(dossierProc);
 		}
 	}
 
 	/**
-	 * Returns the number of dossier procs where companyId = &#63; and active = &#63;.
+	 * Returns the number of dossier procs where companyId = &#63; and statusActive = &#63;.
 	 *
 	 * @param companyId the company ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @return the number of matching dossier procs
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public int countByC_AC(long companyId, int active)
+	public int countByC_AC(long companyId, int statusActive)
 		throws SystemException {
 		FinderPath finderPath = FINDER_PATH_COUNT_BY_C_AC;
 
-		Object[] finderArgs = new Object[] { companyId, active };
+		Object[] finderArgs = new Object[] { companyId, statusActive };
 
 		Long count = (Long)FinderCacheUtil.getResult(finderPath, finderArgs,
 				this);
@@ -6938,7 +6937,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 
 			query.append(_FINDER_COLUMN_C_AC_COMPANYID_2);
 
-			query.append(_FINDER_COLUMN_C_AC_ACTIVE_2);
+			query.append(_FINDER_COLUMN_C_AC_STATUSACTIVE_2);
 
 			String sql = query.toString();
 
@@ -6953,7 +6952,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 
 				qPos.add(companyId);
 
-				qPos.add(active);
+				qPos.add(statusActive);
 
 				count = (Long)q.uniqueResult();
 
@@ -6973,7 +6972,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	}
 
 	private static final String _FINDER_COLUMN_C_AC_COMPANYID_2 = "dossierProc.companyId = ? AND ";
-	private static final String _FINDER_COLUMN_C_AC_ACTIVE_2 = "dossierProc.active = ?";
+	private static final String _FINDER_COLUMN_C_AC_STATUSACTIVE_2 = "dossierProc.statusActive = ?";
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_G_AC = new FinderPath(DossierProcModelImpl.ENTITY_CACHE_ENABLED,
 			DossierProcModelImpl.FINDER_CACHE_ENABLED, DossierProcImpl.class,
 			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByG_AC",
@@ -6988,56 +6987,56 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByG_AC",
 			new String[] { Long.class.getName(), Integer.class.getName() },
 			DossierProcModelImpl.GROUPID_COLUMN_BITMASK |
-			DossierProcModelImpl.ACTIVE_COLUMN_BITMASK);
+			DossierProcModelImpl.STATUSACTIVE_COLUMN_BITMASK);
 	public static final FinderPath FINDER_PATH_COUNT_BY_G_AC = new FinderPath(DossierProcModelImpl.ENTITY_CACHE_ENABLED,
 			DossierProcModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByG_AC",
 			new String[] { Long.class.getName(), Integer.class.getName() });
 
 	/**
-	 * Returns all the dossier procs where groupId = &#63; and active = &#63;.
+	 * Returns all the dossier procs where groupId = &#63; and statusActive = &#63;.
 	 *
 	 * @param groupId the group ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @return the matching dossier procs
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<DossierProc> findByG_AC(long groupId, int active)
+	public List<DossierProc> findByG_AC(long groupId, int statusActive)
 		throws SystemException {
-		return findByG_AC(groupId, active, QueryUtil.ALL_POS,
+		return findByG_AC(groupId, statusActive, QueryUtil.ALL_POS,
 			QueryUtil.ALL_POS, null);
 	}
 
 	/**
-	 * Returns a range of all the dossier procs where groupId = &#63; and active = &#63;.
+	 * Returns a range of all the dossier procs where groupId = &#63; and statusActive = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DossierProcModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param groupId the group ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @param start the lower bound of the range of dossier procs
 	 * @param end the upper bound of the range of dossier procs (not inclusive)
 	 * @return the range of matching dossier procs
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<DossierProc> findByG_AC(long groupId, int active, int start,
-		int end) throws SystemException {
-		return findByG_AC(groupId, active, start, end, null);
+	public List<DossierProc> findByG_AC(long groupId, int statusActive,
+		int start, int end) throws SystemException {
+		return findByG_AC(groupId, statusActive, start, end, null);
 	}
 
 	/**
-	 * Returns an ordered range of all the dossier procs where groupId = &#63; and active = &#63;.
+	 * Returns an ordered range of all the dossier procs where groupId = &#63; and statusActive = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.core.dossiermgt.model.impl.DossierProcModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param groupId the group ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @param start the lower bound of the range of dossier procs
 	 * @param end the upper bound of the range of dossier procs (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
@@ -7045,8 +7044,9 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<DossierProc> findByG_AC(long groupId, int active, int start,
-		int end, OrderByComparator orderByComparator) throws SystemException {
+	public List<DossierProc> findByG_AC(long groupId, int statusActive,
+		int start, int end, OrderByComparator orderByComparator)
+		throws SystemException {
 		boolean pagination = true;
 		FinderPath finderPath = null;
 		Object[] finderArgs = null;
@@ -7055,12 +7055,12 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 				(orderByComparator == null)) {
 			pagination = false;
 			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_AC;
-			finderArgs = new Object[] { groupId, active };
+			finderArgs = new Object[] { groupId, statusActive };
 		}
 		else {
 			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_G_AC;
 			finderArgs = new Object[] {
-					groupId, active,
+					groupId, statusActive,
 					
 					start, end, orderByComparator
 				};
@@ -7072,7 +7072,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 		if ((list != null) && !list.isEmpty()) {
 			for (DossierProc dossierProc : list) {
 				if ((groupId != dossierProc.getGroupId()) ||
-						(active != dossierProc.getActive())) {
+						(statusActive != dossierProc.getStatusActive())) {
 					list = null;
 
 					break;
@@ -7095,7 +7095,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 
 			query.append(_FINDER_COLUMN_G_AC_GROUPID_2);
 
-			query.append(_FINDER_COLUMN_G_AC_ACTIVE_2);
+			query.append(_FINDER_COLUMN_G_AC_STATUSACTIVE_2);
 
 			if (orderByComparator != null) {
 				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
@@ -7119,7 +7119,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 
 				qPos.add(groupId);
 
-				qPos.add(active);
+				qPos.add(statusActive);
 
 				if (!pagination) {
 					list = (List<DossierProc>)QueryUtil.list(q, getDialect(),
@@ -7152,20 +7152,20 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	}
 
 	/**
-	 * Returns the first dossier proc in the ordered set where groupId = &#63; and active = &#63;.
+	 * Returns the first dossier proc in the ordered set where groupId = &#63; and statusActive = &#63;.
 	 *
 	 * @param groupId the group ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching dossier proc
 	 * @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierProc findByG_AC_First(long groupId, int active,
+	public DossierProc findByG_AC_First(long groupId, int statusActive,
 		OrderByComparator orderByComparator)
 		throws NoSuchDossierProcException, SystemException {
-		DossierProc dossierProc = fetchByG_AC_First(groupId, active,
+		DossierProc dossierProc = fetchByG_AC_First(groupId, statusActive,
 				orderByComparator);
 
 		if (dossierProc != null) {
@@ -7179,8 +7179,8 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 		msg.append("groupId=");
 		msg.append(groupId);
 
-		msg.append(", active=");
-		msg.append(active);
+		msg.append(", statusActive=");
+		msg.append(statusActive);
 
 		msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -7188,18 +7188,18 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	}
 
 	/**
-	 * Returns the first dossier proc in the ordered set where groupId = &#63; and active = &#63;.
+	 * Returns the first dossier proc in the ordered set where groupId = &#63; and statusActive = &#63;.
 	 *
 	 * @param groupId the group ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierProc fetchByG_AC_First(long groupId, int active,
+	public DossierProc fetchByG_AC_First(long groupId, int statusActive,
 		OrderByComparator orderByComparator) throws SystemException {
-		List<DossierProc> list = findByG_AC(groupId, active, 0, 1,
+		List<DossierProc> list = findByG_AC(groupId, statusActive, 0, 1,
 				orderByComparator);
 
 		if (!list.isEmpty()) {
@@ -7210,20 +7210,20 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	}
 
 	/**
-	 * Returns the last dossier proc in the ordered set where groupId = &#63; and active = &#63;.
+	 * Returns the last dossier proc in the ordered set where groupId = &#63; and statusActive = &#63;.
 	 *
 	 * @param groupId the group ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching dossier proc
 	 * @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a matching dossier proc could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierProc findByG_AC_Last(long groupId, int active,
+	public DossierProc findByG_AC_Last(long groupId, int statusActive,
 		OrderByComparator orderByComparator)
 		throws NoSuchDossierProcException, SystemException {
-		DossierProc dossierProc = fetchByG_AC_Last(groupId, active,
+		DossierProc dossierProc = fetchByG_AC_Last(groupId, statusActive,
 				orderByComparator);
 
 		if (dossierProc != null) {
@@ -7237,8 +7237,8 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 		msg.append("groupId=");
 		msg.append(groupId);
 
-		msg.append(", active=");
-		msg.append(active);
+		msg.append(", statusActive=");
+		msg.append(statusActive);
 
 		msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -7246,25 +7246,25 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	}
 
 	/**
-	 * Returns the last dossier proc in the ordered set where groupId = &#63; and active = &#63;.
+	 * Returns the last dossier proc in the ordered set where groupId = &#63; and statusActive = &#63;.
 	 *
 	 * @param groupId the group ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching dossier proc, or <code>null</code> if a matching dossier proc could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public DossierProc fetchByG_AC_Last(long groupId, int active,
+	public DossierProc fetchByG_AC_Last(long groupId, int statusActive,
 		OrderByComparator orderByComparator) throws SystemException {
-		int count = countByG_AC(groupId, active);
+		int count = countByG_AC(groupId, statusActive);
 
 		if (count == 0) {
 			return null;
 		}
 
-		List<DossierProc> list = findByG_AC(groupId, active, count - 1, count,
-				orderByComparator);
+		List<DossierProc> list = findByG_AC(groupId, statusActive, count - 1,
+				count, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -7274,11 +7274,11 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	}
 
 	/**
-	 * Returns the dossier procs before and after the current dossier proc in the ordered set where groupId = &#63; and active = &#63;.
+	 * Returns the dossier procs before and after the current dossier proc in the ordered set where groupId = &#63; and statusActive = &#63;.
 	 *
 	 * @param dossierProcId the primary key of the current dossier proc
 	 * @param groupId the group ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next dossier proc
 	 * @throws org.oep.core.dossiermgt.NoSuchDossierProcException if a dossier proc with the primary key could not be found
@@ -7286,7 +7286,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	 */
 	@Override
 	public DossierProc[] findByG_AC_PrevAndNext(long dossierProcId,
-		long groupId, int active, OrderByComparator orderByComparator)
+		long groupId, int statusActive, OrderByComparator orderByComparator)
 		throws NoSuchDossierProcException, SystemException {
 		DossierProc dossierProc = findByPrimaryKey(dossierProcId);
 
@@ -7298,12 +7298,12 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 			DossierProc[] array = new DossierProcImpl[3];
 
 			array[0] = getByG_AC_PrevAndNext(session, dossierProc, groupId,
-					active, orderByComparator, true);
+					statusActive, orderByComparator, true);
 
 			array[1] = dossierProc;
 
 			array[2] = getByG_AC_PrevAndNext(session, dossierProc, groupId,
-					active, orderByComparator, false);
+					statusActive, orderByComparator, false);
 
 			return array;
 		}
@@ -7316,7 +7316,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	}
 
 	protected DossierProc getByG_AC_PrevAndNext(Session session,
-		DossierProc dossierProc, long groupId, int active,
+		DossierProc dossierProc, long groupId, int statusActive,
 		OrderByComparator orderByComparator, boolean previous) {
 		StringBundler query = null;
 
@@ -7332,7 +7332,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 
 		query.append(_FINDER_COLUMN_G_AC_GROUPID_2);
 
-		query.append(_FINDER_COLUMN_G_AC_ACTIVE_2);
+		query.append(_FINDER_COLUMN_G_AC_STATUSACTIVE_2);
 
 		if (orderByComparator != null) {
 			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
@@ -7404,7 +7404,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 
 		qPos.add(groupId);
 
-		qPos.add(active);
+		qPos.add(statusActive);
 
 		if (orderByComparator != null) {
 			Object[] values = orderByComparator.getOrderByConditionValues(dossierProc);
@@ -7425,34 +7425,35 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	}
 
 	/**
-	 * Removes all the dossier procs where groupId = &#63; and active = &#63; from the database.
+	 * Removes all the dossier procs where groupId = &#63; and statusActive = &#63; from the database.
 	 *
 	 * @param groupId the group ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public void removeByG_AC(long groupId, int active)
+	public void removeByG_AC(long groupId, int statusActive)
 		throws SystemException {
-		for (DossierProc dossierProc : findByG_AC(groupId, active,
+		for (DossierProc dossierProc : findByG_AC(groupId, statusActive,
 				QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
 			remove(dossierProc);
 		}
 	}
 
 	/**
-	 * Returns the number of dossier procs where groupId = &#63; and active = &#63;.
+	 * Returns the number of dossier procs where groupId = &#63; and statusActive = &#63;.
 	 *
 	 * @param groupId the group ID
-	 * @param active the active
+	 * @param statusActive the status active
 	 * @return the number of matching dossier procs
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public int countByG_AC(long groupId, int active) throws SystemException {
+	public int countByG_AC(long groupId, int statusActive)
+		throws SystemException {
 		FinderPath finderPath = FINDER_PATH_COUNT_BY_G_AC;
 
-		Object[] finderArgs = new Object[] { groupId, active };
+		Object[] finderArgs = new Object[] { groupId, statusActive };
 
 		Long count = (Long)FinderCacheUtil.getResult(finderPath, finderArgs,
 				this);
@@ -7464,7 +7465,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 
 			query.append(_FINDER_COLUMN_G_AC_GROUPID_2);
 
-			query.append(_FINDER_COLUMN_G_AC_ACTIVE_2);
+			query.append(_FINDER_COLUMN_G_AC_STATUSACTIVE_2);
 
 			String sql = query.toString();
 
@@ -7479,7 +7480,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 
 				qPos.add(groupId);
 
-				qPos.add(active);
+				qPos.add(statusActive);
 
 				count = (Long)q.uniqueResult();
 
@@ -7499,7 +7500,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	}
 
 	private static final String _FINDER_COLUMN_G_AC_GROUPID_2 = "dossierProc.groupId = ? AND ";
-	private static final String _FINDER_COLUMN_G_AC_ACTIVE_2 = "dossierProc.active = ?";
+	private static final String _FINDER_COLUMN_G_AC_STATUSACTIVE_2 = "dossierProc.statusActive = ?";
 
 	public DossierProcPersistenceImpl() {
 		setModelClass(DossierProc.class);
@@ -8045,7 +8046,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_C_AC.getColumnBitmask()) != 0) {
 				Object[] args = new Object[] {
 						dossierProcModelImpl.getOriginalCompanyId(),
-						dossierProcModelImpl.getOriginalActive()
+						dossierProcModelImpl.getOriginalStatusActive()
 					};
 
 				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_C_AC, args);
@@ -8054,7 +8055,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 
 				args = new Object[] {
 						dossierProcModelImpl.getCompanyId(),
-						dossierProcModelImpl.getActive()
+						dossierProcModelImpl.getStatusActive()
 					};
 
 				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_C_AC, args);
@@ -8066,7 +8067,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_AC.getColumnBitmask()) != 0) {
 				Object[] args = new Object[] {
 						dossierProcModelImpl.getOriginalGroupId(),
-						dossierProcModelImpl.getOriginalActive()
+						dossierProcModelImpl.getOriginalStatusActive()
 					};
 
 				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_G_AC, args);
@@ -8075,7 +8076,7 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 
 				args = new Object[] {
 						dossierProcModelImpl.getGroupId(),
-						dossierProcModelImpl.getActive()
+						dossierProcModelImpl.getStatusActive()
 					};
 
 				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_G_AC, args);
@@ -8127,9 +8128,11 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 		dossierProcImpl.setAdministrationName(dossierProc.getAdministrationName());
 		dossierProcImpl.setDomainNo(dossierProc.getDomainNo());
 		dossierProcImpl.setDomainName(dossierProc.getDomainName());
+		dossierProcImpl.setForCitizen(dossierProc.getForCitizen());
+		dossierProcImpl.setForBusiness(dossierProc.getForBusiness());
 		dossierProcImpl.setEffectDate(dossierProc.getEffectDate());
 		dossierProcImpl.setExpireDate(dossierProc.getExpireDate());
-		dossierProcImpl.setActive(dossierProc.getActive());
+		dossierProcImpl.setStatusActive(dossierProc.getStatusActive());
 
 		return dossierProcImpl;
 	}
@@ -8407,11 +8410,6 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 		return count.intValue();
 	}
 
-	@Override
-	protected Set<String> getBadColumnNames() {
-		return _badColumnNames;
-	}
-
 	/**
 	 * Initializes the dossier proc persistence.
 	 */
@@ -8454,9 +8452,6 @@ public class DossierProcPersistenceImpl extends BasePersistenceImpl<DossierProc>
 	private static final boolean _HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE = GetterUtil.getBoolean(PropsUtil.get(
 				PropsKeys.HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE));
 	private static Log _log = LogFactoryUtil.getLog(DossierProcPersistenceImpl.class);
-	private static Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
-				"active"
-			});
 	private static DossierProc _nullDossierProc = new DossierProcImpl() {
 			@Override
 			public Object clone() {

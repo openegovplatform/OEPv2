@@ -86,8 +86,12 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 		attributes.put("dossierDocId", getDossierDocId());
 		attributes.put("docTemplateId", getDocTemplateId());
 		attributes.put("docFileVersionId", getDocFileVersionId());
-		attributes.put("docName", getDocName());
+		attributes.put("docFileName", getDocFileName());
+		attributes.put("docFileType", getDocFileType());
+		attributes.put("verifyStatus", getVerifyStatus());
 		attributes.put("note", getNote());
+		attributes.put("approveBy", getApproveBy());
+		attributes.put("approveDate", getApproveDate());
 		attributes.put("premier", getPremier());
 
 		return attributes;
@@ -161,16 +165,40 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 			setDocFileVersionId(docFileVersionId);
 		}
 
-		String docName = (String)attributes.get("docName");
+		String docFileName = (String)attributes.get("docFileName");
 
-		if (docName != null) {
-			setDocName(docName);
+		if (docFileName != null) {
+			setDocFileName(docFileName);
+		}
+
+		Long docFileType = (Long)attributes.get("docFileType");
+
+		if (docFileType != null) {
+			setDocFileType(docFileType);
+		}
+
+		Integer verifyStatus = (Integer)attributes.get("verifyStatus");
+
+		if (verifyStatus != null) {
+			setVerifyStatus(verifyStatus);
 		}
 
 		String note = (String)attributes.get("note");
 
 		if (note != null) {
 			setNote(note);
+		}
+
+		String approveBy = (String)attributes.get("approveBy");
+
+		if (approveBy != null) {
+			setApproveBy(approveBy);
+		}
+
+		Date approveDate = (Date)attributes.get("approveDate");
+
+		if (approveDate != null) {
+			setApproveDate(approveDate);
 		}
 
 		Integer premier = (Integer)attributes.get("premier");
@@ -445,21 +473,67 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 	}
 
 	@Override
-	public String getDocName() {
-		return _docName;
+	public String getDocFileName() {
+		return _docFileName;
 	}
 
 	@Override
-	public void setDocName(String docName) {
-		_docName = docName;
+	public void setDocFileName(String docFileName) {
+		_docFileName = docFileName;
 
 		if (_docFileRemoteModel != null) {
 			try {
 				Class<?> clazz = _docFileRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setDocName", String.class);
+				Method method = clazz.getMethod("setDocFileName", String.class);
 
-				method.invoke(_docFileRemoteModel, docName);
+				method.invoke(_docFileRemoteModel, docFileName);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public long getDocFileType() {
+		return _docFileType;
+	}
+
+	@Override
+	public void setDocFileType(long docFileType) {
+		_docFileType = docFileType;
+
+		if (_docFileRemoteModel != null) {
+			try {
+				Class<?> clazz = _docFileRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setDocFileType", long.class);
+
+				method.invoke(_docFileRemoteModel, docFileType);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public int getVerifyStatus() {
+		return _verifyStatus;
+	}
+
+	@Override
+	public void setVerifyStatus(int verifyStatus) {
+		_verifyStatus = verifyStatus;
+
+		if (_docFileRemoteModel != null) {
+			try {
+				Class<?> clazz = _docFileRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setVerifyStatus", int.class);
+
+				method.invoke(_docFileRemoteModel, verifyStatus);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -483,6 +557,52 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 				Method method = clazz.getMethod("setNote", String.class);
 
 				method.invoke(_docFileRemoteModel, note);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getApproveBy() {
+		return _approveBy;
+	}
+
+	@Override
+	public void setApproveBy(String approveBy) {
+		_approveBy = approveBy;
+
+		if (_docFileRemoteModel != null) {
+			try {
+				Class<?> clazz = _docFileRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setApproveBy", String.class);
+
+				method.invoke(_docFileRemoteModel, approveBy);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public Date getApproveDate() {
+		return _approveDate;
+	}
+
+	@Override
+	public void setApproveDate(Date approveDate) {
+		_approveDate = approveDate;
+
+		if (_docFileRemoteModel != null) {
+			try {
+				Class<?> clazz = _docFileRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setApproveDate", Date.class);
+
+				method.invoke(_docFileRemoteModel, approveDate);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -599,8 +719,12 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 		clone.setDossierDocId(getDossierDocId());
 		clone.setDocTemplateId(getDocTemplateId());
 		clone.setDocFileVersionId(getDocFileVersionId());
-		clone.setDocName(getDocName());
+		clone.setDocFileName(getDocFileName());
+		clone.setDocFileType(getDocFileType());
+		clone.setVerifyStatus(getVerifyStatus());
 		clone.setNote(getNote());
+		clone.setApproveBy(getApproveBy());
+		clone.setApproveDate(getApproveDate());
 		clone.setPremier(getPremier());
 
 		return clone;
@@ -654,7 +778,7 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(29);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
@@ -678,10 +802,18 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 		sb.append(getDocTemplateId());
 		sb.append(", docFileVersionId=");
 		sb.append(getDocFileVersionId());
-		sb.append(", docName=");
-		sb.append(getDocName());
+		sb.append(", docFileName=");
+		sb.append(getDocFileName());
+		sb.append(", docFileType=");
+		sb.append(getDocFileType());
+		sb.append(", verifyStatus=");
+		sb.append(getVerifyStatus());
 		sb.append(", note=");
 		sb.append(getNote());
+		sb.append(", approveBy=");
+		sb.append(getApproveBy());
+		sb.append(", approveDate=");
+		sb.append(getApproveDate());
 		sb.append(", premier=");
 		sb.append(getPremier());
 		sb.append("}");
@@ -691,7 +823,7 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(46);
+		StringBundler sb = new StringBundler(58);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.DocFile");
@@ -742,12 +874,28 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 		sb.append(getDocFileVersionId());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>docName</column-name><column-value><![CDATA[");
-		sb.append(getDocName());
+			"<column><column-name>docFileName</column-name><column-value><![CDATA[");
+		sb.append(getDocFileName());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>docFileType</column-name><column-value><![CDATA[");
+		sb.append(getDocFileType());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>verifyStatus</column-name><column-value><![CDATA[");
+		sb.append(getVerifyStatus());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>note</column-name><column-value><![CDATA[");
 		sb.append(getNote());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>approveBy</column-name><column-value><![CDATA[");
+		sb.append(getApproveBy());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>approveDate</column-name><column-value><![CDATA[");
+		sb.append(getApproveDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>premier</column-name><column-value><![CDATA[");
@@ -771,8 +919,12 @@ public class DocFileClp extends BaseModelImpl<DocFile> implements DocFile {
 	private long _dossierDocId;
 	private long _docTemplateId;
 	private long _docFileVersionId;
-	private String _docName;
+	private String _docFileName;
+	private long _docFileType;
+	private int _verifyStatus;
 	private String _note;
+	private String _approveBy;
+	private Date _approveDate;
 	private int _premier;
 	private BaseModel<?> _docFileRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.dossiermgt.service.ClpSerializer.class;

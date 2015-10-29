@@ -55,9 +55,11 @@ public class DossierProcSoap implements Serializable {
 		soapModel.setAdministrationName(model.getAdministrationName());
 		soapModel.setDomainNo(model.getDomainNo());
 		soapModel.setDomainName(model.getDomainName());
+		soapModel.setForCitizen(model.getForCitizen());
+		soapModel.setForBusiness(model.getForBusiness());
 		soapModel.setEffectDate(model.getEffectDate());
 		soapModel.setExpireDate(model.getExpireDate());
-		soapModel.setActive(model.getActive());
+		soapModel.setStatusActive(model.getStatusActive());
 
 		return soapModel;
 	}
@@ -302,6 +304,22 @@ public class DossierProcSoap implements Serializable {
 		_domainName = domainName;
 	}
 
+	public int getForCitizen() {
+		return _forCitizen;
+	}
+
+	public void setForCitizen(int forCitizen) {
+		_forCitizen = forCitizen;
+	}
+
+	public int getForBusiness() {
+		return _forBusiness;
+	}
+
+	public void setForBusiness(int forBusiness) {
+		_forBusiness = forBusiness;
+	}
+
 	public Date getEffectDate() {
 		return _effectDate;
 	}
@@ -318,12 +336,12 @@ public class DossierProcSoap implements Serializable {
 		_expireDate = expireDate;
 	}
 
-	public int getActive() {
-		return _active;
+	public int getStatusActive() {
+		return _statusActive;
 	}
 
-	public void setActive(int active) {
-		_active = active;
+	public void setStatusActive(int statusActive) {
+		_statusActive = statusActive;
 	}
 
 	private long _dossierProcId;
@@ -350,7 +368,9 @@ public class DossierProcSoap implements Serializable {
 	private String _administrationName;
 	private String _domainNo;
 	private String _domainName;
+	private int _forCitizen;
+	private int _forBusiness;
 	private Date _effectDate;
 	private Date _expireDate;
-	private int _active;
+	private int _statusActive;
 }

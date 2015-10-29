@@ -97,26 +97,34 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		attributes.put("wardNo", getWardNo());
 		attributes.put("wardName", getWardName());
 		attributes.put("telNo", getTelNo());
+		attributes.put("email", getEmail());
+		attributes.put("subjectAsContactPerson", getSubjectAsContactPerson());
 		attributes.put("contactPersonName", getContactPersonName());
+		attributes.put("contactPersonId", getContactPersonId());
+		attributes.put("contactPersonSex", getContactPersonSex());
 		attributes.put("contactPersonTel", getContactPersonTel());
 		attributes.put("note", getNote());
 		attributes.put("resumeDescription", getResumeDescription());
 		attributes.put("receptionNo", getReceptionNo());
+		attributes.put("onegate", getOnegate());
 		attributes.put("submitDate", getSubmitDate());
 		attributes.put("receiveDate", getReceiveDate());
+		attributes.put("processDate", getProcessDate());
 		attributes.put("renewDate", getRenewDate());
 		attributes.put("estimateDate", getEstimateDate());
 		attributes.put("finishDate", getFinishDate());
+		attributes.put("handoverDate", getHandoverDate());
 		attributes.put("returnDate", getReturnDate());
-		attributes.put("status", getStatus());
+		attributes.put("archiveDate", getArchiveDate());
+		attributes.put("mainStatus", getMainStatus());
+		attributes.put("subStatus", getSubStatus());
 		attributes.put("statusDate", getStatusDate());
 		attributes.put("statusDescription", getStatusDescription());
 		attributes.put("feedbackNote", getFeedbackNote());
 		attributes.put("daysDelay", getDaysDelay());
-		attributes.put("closeDate", getCloseDate());
 		attributes.put("errorStatus", getErrorStatus());
-		attributes.put("pendingStatus", getPendingStatus());
 		attributes.put("errorCode", getErrorCode());
+		attributes.put("pendingStatus", getPendingStatus());
 		attributes.put("dirty", getDirty());
 
 		return attributes;
@@ -256,10 +264,35 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 			setTelNo(telNo);
 		}
 
+		String email = (String)attributes.get("email");
+
+		if (email != null) {
+			setEmail(email);
+		}
+
+		Integer subjectAsContactPerson = (Integer)attributes.get(
+				"subjectAsContactPerson");
+
+		if (subjectAsContactPerson != null) {
+			setSubjectAsContactPerson(subjectAsContactPerson);
+		}
+
 		String contactPersonName = (String)attributes.get("contactPersonName");
 
 		if (contactPersonName != null) {
 			setContactPersonName(contactPersonName);
+		}
+
+		String contactPersonId = (String)attributes.get("contactPersonId");
+
+		if (contactPersonId != null) {
+			setContactPersonId(contactPersonId);
+		}
+
+		Integer contactPersonSex = (Integer)attributes.get("contactPersonSex");
+
+		if (contactPersonSex != null) {
+			setContactPersonSex(contactPersonSex);
 		}
 
 		String contactPersonTel = (String)attributes.get("contactPersonTel");
@@ -286,6 +319,12 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 			setReceptionNo(receptionNo);
 		}
 
+		Integer onegate = (Integer)attributes.get("onegate");
+
+		if (onegate != null) {
+			setOnegate(onegate);
+		}
+
 		Date submitDate = (Date)attributes.get("submitDate");
 
 		if (submitDate != null) {
@@ -296,6 +335,12 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 
 		if (receiveDate != null) {
 			setReceiveDate(receiveDate);
+		}
+
+		Date processDate = (Date)attributes.get("processDate");
+
+		if (processDate != null) {
+			setProcessDate(processDate);
 		}
 
 		Date renewDate = (Date)attributes.get("renewDate");
@@ -316,16 +361,34 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 			setFinishDate(finishDate);
 		}
 
+		Date handoverDate = (Date)attributes.get("handoverDate");
+
+		if (handoverDate != null) {
+			setHandoverDate(handoverDate);
+		}
+
 		Date returnDate = (Date)attributes.get("returnDate");
 
 		if (returnDate != null) {
 			setReturnDate(returnDate);
 		}
 
-		String status = (String)attributes.get("status");
+		Date archiveDate = (Date)attributes.get("archiveDate");
 
-		if (status != null) {
-			setStatus(status);
+		if (archiveDate != null) {
+			setArchiveDate(archiveDate);
+		}
+
+		String mainStatus = (String)attributes.get("mainStatus");
+
+		if (mainStatus != null) {
+			setMainStatus(mainStatus);
+		}
+
+		String subStatus = (String)attributes.get("subStatus");
+
+		if (subStatus != null) {
+			setSubStatus(subStatus);
 		}
 
 		Date statusDate = (Date)attributes.get("statusDate");
@@ -352,28 +415,22 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 			setDaysDelay(daysDelay);
 		}
 
-		Date closeDate = (Date)attributes.get("closeDate");
-
-		if (closeDate != null) {
-			setCloseDate(closeDate);
-		}
-
 		String errorStatus = (String)attributes.get("errorStatus");
 
 		if (errorStatus != null) {
 			setErrorStatus(errorStatus);
 		}
 
-		Integer pendingStatus = (Integer)attributes.get("pendingStatus");
-
-		if (pendingStatus != null) {
-			setPendingStatus(pendingStatus);
-		}
-
 		String errorCode = (String)attributes.get("errorCode");
 
 		if (errorCode != null) {
 			setErrorCode(errorCode);
+		}
+
+		Integer pendingStatus = (Integer)attributes.get("pendingStatus");
+
+		if (pendingStatus != null) {
+			setPendingStatus(pendingStatus);
 		}
 
 		Integer dirty = (Integer)attributes.get("dirty");
@@ -900,6 +957,53 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
+	public String getEmail() {
+		return _email;
+	}
+
+	@Override
+	public void setEmail(String email) {
+		_email = email;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setEmail", String.class);
+
+				method.invoke(_dossierRemoteModel, email);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public int getSubjectAsContactPerson() {
+		return _subjectAsContactPerson;
+	}
+
+	@Override
+	public void setSubjectAsContactPerson(int subjectAsContactPerson) {
+		_subjectAsContactPerson = subjectAsContactPerson;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setSubjectAsContactPerson",
+						int.class);
+
+				method.invoke(_dossierRemoteModel, subjectAsContactPerson);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
 	public String getContactPersonName() {
 		return _contactPersonName;
 	}
@@ -916,6 +1020,53 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 						String.class);
 
 				method.invoke(_dossierRemoteModel, contactPersonName);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getContactPersonId() {
+		return _contactPersonId;
+	}
+
+	@Override
+	public void setContactPersonId(String contactPersonId) {
+		_contactPersonId = contactPersonId;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setContactPersonId",
+						String.class);
+
+				method.invoke(_dossierRemoteModel, contactPersonId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public int getContactPersonSex() {
+		return _contactPersonSex;
+	}
+
+	@Override
+	public void setContactPersonSex(int contactPersonSex) {
+		_contactPersonSex = contactPersonSex;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setContactPersonSex", int.class);
+
+				method.invoke(_dossierRemoteModel, contactPersonSex);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -1018,6 +1169,29 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
+	public int getOnegate() {
+		return _onegate;
+	}
+
+	@Override
+	public void setOnegate(int onegate) {
+		_onegate = onegate;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setOnegate", int.class);
+
+				method.invoke(_dossierRemoteModel, onegate);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
 	public Date getSubmitDate() {
 		return _submitDate;
 	}
@@ -1056,6 +1230,29 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 				Method method = clazz.getMethod("setReceiveDate", Date.class);
 
 				method.invoke(_dossierRemoteModel, receiveDate);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public Date getProcessDate() {
+		return _processDate;
+	}
+
+	@Override
+	public void setProcessDate(Date processDate) {
+		_processDate = processDate;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setProcessDate", Date.class);
+
+				method.invoke(_dossierRemoteModel, processDate);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -1133,6 +1330,29 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
+	public Date getHandoverDate() {
+		return _handoverDate;
+	}
+
+	@Override
+	public void setHandoverDate(Date handoverDate) {
+		_handoverDate = handoverDate;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setHandoverDate", Date.class);
+
+				method.invoke(_dossierRemoteModel, handoverDate);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
 	public Date getReturnDate() {
 		return _returnDate;
 	}
@@ -1156,21 +1376,67 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public String getStatus() {
-		return _status;
+	public Date getArchiveDate() {
+		return _archiveDate;
 	}
 
 	@Override
-	public void setStatus(String status) {
-		_status = status;
+	public void setArchiveDate(Date archiveDate) {
+		_archiveDate = archiveDate;
 
 		if (_dossierRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setStatus", String.class);
+				Method method = clazz.getMethod("setArchiveDate", Date.class);
 
-				method.invoke(_dossierRemoteModel, status);
+				method.invoke(_dossierRemoteModel, archiveDate);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getMainStatus() {
+		return _mainStatus;
+	}
+
+	@Override
+	public void setMainStatus(String mainStatus) {
+		_mainStatus = mainStatus;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setMainStatus", String.class);
+
+				method.invoke(_dossierRemoteModel, mainStatus);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getSubStatus() {
+		return _subStatus;
+	}
+
+	@Override
+	public void setSubStatus(String subStatus) {
+		_subStatus = subStatus;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setSubStatus", String.class);
+
+				method.invoke(_dossierRemoteModel, subStatus);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -1272,29 +1538,6 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public Date getCloseDate() {
-		return _closeDate;
-	}
-
-	@Override
-	public void setCloseDate(Date closeDate) {
-		_closeDate = closeDate;
-
-		if (_dossierRemoteModel != null) {
-			try {
-				Class<?> clazz = _dossierRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setCloseDate", Date.class);
-
-				method.invoke(_dossierRemoteModel, closeDate);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
 	public String getErrorStatus() {
 		return _errorStatus;
 	}
@@ -1318,29 +1561,6 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	}
 
 	@Override
-	public int getPendingStatus() {
-		return _pendingStatus;
-	}
-
-	@Override
-	public void setPendingStatus(int pendingStatus) {
-		_pendingStatus = pendingStatus;
-
-		if (_dossierRemoteModel != null) {
-			try {
-				Class<?> clazz = _dossierRemoteModel.getClass();
-
-				Method method = clazz.getMethod("setPendingStatus", int.class);
-
-				method.invoke(_dossierRemoteModel, pendingStatus);
-			}
-			catch (Exception e) {
-				throw new UnsupportedOperationException(e);
-			}
-		}
-	}
-
-	@Override
 	public String getErrorCode() {
 		return _errorCode;
 	}
@@ -1356,6 +1576,29 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 				Method method = clazz.getMethod("setErrorCode", String.class);
 
 				method.invoke(_dossierRemoteModel, errorCode);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public int getPendingStatus() {
+		return _pendingStatus;
+	}
+
+	@Override
+	public void setPendingStatus(int pendingStatus) {
+		_pendingStatus = pendingStatus;
+
+		if (_dossierRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setPendingStatus", int.class);
+
+				method.invoke(_dossierRemoteModel, pendingStatus);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -1483,26 +1726,34 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		clone.setWardNo(getWardNo());
 		clone.setWardName(getWardName());
 		clone.setTelNo(getTelNo());
+		clone.setEmail(getEmail());
+		clone.setSubjectAsContactPerson(getSubjectAsContactPerson());
 		clone.setContactPersonName(getContactPersonName());
+		clone.setContactPersonId(getContactPersonId());
+		clone.setContactPersonSex(getContactPersonSex());
 		clone.setContactPersonTel(getContactPersonTel());
 		clone.setNote(getNote());
 		clone.setResumeDescription(getResumeDescription());
 		clone.setReceptionNo(getReceptionNo());
+		clone.setOnegate(getOnegate());
 		clone.setSubmitDate(getSubmitDate());
 		clone.setReceiveDate(getReceiveDate());
+		clone.setProcessDate(getProcessDate());
 		clone.setRenewDate(getRenewDate());
 		clone.setEstimateDate(getEstimateDate());
 		clone.setFinishDate(getFinishDate());
+		clone.setHandoverDate(getHandoverDate());
 		clone.setReturnDate(getReturnDate());
-		clone.setStatus(getStatus());
+		clone.setArchiveDate(getArchiveDate());
+		clone.setMainStatus(getMainStatus());
+		clone.setSubStatus(getSubStatus());
 		clone.setStatusDate(getStatusDate());
 		clone.setStatusDescription(getStatusDescription());
 		clone.setFeedbackNote(getFeedbackNote());
 		clone.setDaysDelay(getDaysDelay());
-		clone.setCloseDate(getCloseDate());
 		clone.setErrorStatus(getErrorStatus());
-		clone.setPendingStatus(getPendingStatus());
 		clone.setErrorCode(getErrorCode());
+		clone.setPendingStatus(getPendingStatus());
 		clone.setDirty(getDirty());
 
 		return clone;
@@ -1556,7 +1807,7 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(87);
+		StringBundler sb = new StringBundler(103);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
@@ -1602,8 +1853,16 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getWardName());
 		sb.append(", telNo=");
 		sb.append(getTelNo());
+		sb.append(", email=");
+		sb.append(getEmail());
+		sb.append(", subjectAsContactPerson=");
+		sb.append(getSubjectAsContactPerson());
 		sb.append(", contactPersonName=");
 		sb.append(getContactPersonName());
+		sb.append(", contactPersonId=");
+		sb.append(getContactPersonId());
+		sb.append(", contactPersonSex=");
+		sb.append(getContactPersonSex());
 		sb.append(", contactPersonTel=");
 		sb.append(getContactPersonTel());
 		sb.append(", note=");
@@ -1612,20 +1871,30 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getResumeDescription());
 		sb.append(", receptionNo=");
 		sb.append(getReceptionNo());
+		sb.append(", onegate=");
+		sb.append(getOnegate());
 		sb.append(", submitDate=");
 		sb.append(getSubmitDate());
 		sb.append(", receiveDate=");
 		sb.append(getReceiveDate());
+		sb.append(", processDate=");
+		sb.append(getProcessDate());
 		sb.append(", renewDate=");
 		sb.append(getRenewDate());
 		sb.append(", estimateDate=");
 		sb.append(getEstimateDate());
 		sb.append(", finishDate=");
 		sb.append(getFinishDate());
+		sb.append(", handoverDate=");
+		sb.append(getHandoverDate());
 		sb.append(", returnDate=");
 		sb.append(getReturnDate());
-		sb.append(", status=");
-		sb.append(getStatus());
+		sb.append(", archiveDate=");
+		sb.append(getArchiveDate());
+		sb.append(", mainStatus=");
+		sb.append(getMainStatus());
+		sb.append(", subStatus=");
+		sb.append(getSubStatus());
 		sb.append(", statusDate=");
 		sb.append(getStatusDate());
 		sb.append(", statusDescription=");
@@ -1634,14 +1903,12 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getFeedbackNote());
 		sb.append(", daysDelay=");
 		sb.append(getDaysDelay());
-		sb.append(", closeDate=");
-		sb.append(getCloseDate());
 		sb.append(", errorStatus=");
 		sb.append(getErrorStatus());
-		sb.append(", pendingStatus=");
-		sb.append(getPendingStatus());
 		sb.append(", errorCode=");
 		sb.append(getErrorCode());
+		sb.append(", pendingStatus=");
+		sb.append(getPendingStatus());
 		sb.append(", dirty=");
 		sb.append(getDirty());
 		sb.append("}");
@@ -1651,7 +1918,7 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(133);
+		StringBundler sb = new StringBundler(157);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.Dossier");
@@ -1746,8 +2013,24 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getTelNo());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>email</column-name><column-value><![CDATA[");
+		sb.append(getEmail());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>subjectAsContactPerson</column-name><column-value><![CDATA[");
+		sb.append(getSubjectAsContactPerson());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>contactPersonName</column-name><column-value><![CDATA[");
 		sb.append(getContactPersonName());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>contactPersonId</column-name><column-value><![CDATA[");
+		sb.append(getContactPersonId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>contactPersonSex</column-name><column-value><![CDATA[");
+		sb.append(getContactPersonSex());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>contactPersonTel</column-name><column-value><![CDATA[");
@@ -1766,12 +2049,20 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getReceptionNo());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>onegate</column-name><column-value><![CDATA[");
+		sb.append(getOnegate());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>submitDate</column-name><column-value><![CDATA[");
 		sb.append(getSubmitDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>receiveDate</column-name><column-value><![CDATA[");
 		sb.append(getReceiveDate());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>processDate</column-name><column-value><![CDATA[");
+		sb.append(getProcessDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>renewDate</column-name><column-value><![CDATA[");
@@ -1786,12 +2077,24 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getFinishDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>handoverDate</column-name><column-value><![CDATA[");
+		sb.append(getHandoverDate());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>returnDate</column-name><column-value><![CDATA[");
 		sb.append(getReturnDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>status</column-name><column-value><![CDATA[");
-		sb.append(getStatus());
+			"<column><column-name>archiveDate</column-name><column-value><![CDATA[");
+		sb.append(getArchiveDate());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>mainStatus</column-name><column-value><![CDATA[");
+		sb.append(getMainStatus());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>subStatus</column-name><column-value><![CDATA[");
+		sb.append(getSubStatus());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>statusDate</column-name><column-value><![CDATA[");
@@ -1810,20 +2113,16 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 		sb.append(getDaysDelay());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>closeDate</column-name><column-value><![CDATA[");
-		sb.append(getCloseDate());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>errorStatus</column-name><column-value><![CDATA[");
 		sb.append(getErrorStatus());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>pendingStatus</column-name><column-value><![CDATA[");
-		sb.append(getPendingStatus());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>errorCode</column-name><column-value><![CDATA[");
 		sb.append(getErrorCode());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>pendingStatus</column-name><column-value><![CDATA[");
+		sb.append(getPendingStatus());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>dirty</column-name><column-value><![CDATA[");
@@ -1858,26 +2157,34 @@ public class DossierClp extends BaseModelImpl<Dossier> implements Dossier {
 	private String _wardNo;
 	private String _wardName;
 	private String _telNo;
+	private String _email;
+	private int _subjectAsContactPerson;
 	private String _contactPersonName;
+	private String _contactPersonId;
+	private int _contactPersonSex;
 	private String _contactPersonTel;
 	private String _note;
 	private String _resumeDescription;
 	private String _receptionNo;
+	private int _onegate;
 	private Date _submitDate;
 	private Date _receiveDate;
+	private Date _processDate;
 	private Date _renewDate;
 	private Date _estimateDate;
 	private Date _finishDate;
+	private Date _handoverDate;
 	private Date _returnDate;
-	private String _status;
+	private Date _archiveDate;
+	private String _mainStatus;
+	private String _subStatus;
 	private Date _statusDate;
 	private String _statusDescription;
 	private String _feedbackNote;
 	private int _daysDelay;
-	private Date _closeDate;
 	private String _errorStatus;
-	private int _pendingStatus;
 	private String _errorCode;
+	private int _pendingStatus;
 	private int _dirty;
 	private BaseModel<?> _dossierRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.dossiermgt.service.ClpSerializer.class;

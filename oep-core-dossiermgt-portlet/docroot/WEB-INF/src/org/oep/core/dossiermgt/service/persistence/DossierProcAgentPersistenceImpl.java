@@ -332,6 +332,8 @@ public class DossierProcAgentPersistenceImpl extends BasePersistenceImpl<Dossier
 		dossierProcAgentImpl.setDossierProcId(dossierProcAgent.getDossierProcId());
 		dossierProcAgentImpl.setGovAgencyId(dossierProcAgent.getGovAgencyId());
 		dossierProcAgentImpl.setGovAgencyName(dossierProcAgent.getGovAgencyName());
+		dossierProcAgentImpl.setBankTransfer(dossierProcAgent.getBankTransfer());
+		dossierProcAgentImpl.setKeypay(dossierProcAgent.getKeypay());
 		dossierProcAgentImpl.setEbPartnerShipId(dossierProcAgent.getEbPartnerShipId());
 
 		return dossierProcAgentImpl;

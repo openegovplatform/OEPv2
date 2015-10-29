@@ -33,8 +33,10 @@ import org.oep.core.dossiermgt.service.persistence.DossierFolder2RolePersistence
 import org.oep.core.dossiermgt.service.persistence.DossierFolderPersistence;
 import org.oep.core.dossiermgt.service.persistence.DossierPersistence;
 import org.oep.core.dossiermgt.service.persistence.DossierProcAgentPersistence;
+import org.oep.core.dossiermgt.service.persistence.DossierProcBookmarkPersistence;
 import org.oep.core.dossiermgt.service.persistence.DossierProcFinder;
 import org.oep.core.dossiermgt.service.persistence.DossierProcPersistence;
+import org.oep.core.dossiermgt.service.persistence.DossierTagPersistence;
 import org.oep.core.dossiermgt.service.persistence.EbMessagePersistence;
 import org.oep.core.dossiermgt.service.persistence.EbPartnerShipFinder;
 import org.oep.core.dossiermgt.service.persistence.EbPartnerShipPersistence;
@@ -44,6 +46,7 @@ import org.oep.core.dossiermgt.service.persistence.PaymentRequestPersistence;
 import org.oep.core.dossiermgt.service.persistence.ProfileDataPersistence;
 import org.oep.core.dossiermgt.service.persistence.StatisticByAgencyPersistence;
 import org.oep.core.dossiermgt.service.persistence.StatisticByDayPersistence;
+import org.oep.core.dossiermgt.service.persistence.StatisticByDomainPersistence;
 
 import javax.sql.DataSource;
 
@@ -272,25 +275,6 @@ public abstract class DossierFolder2RoleServiceBaseImpl extends BaseServiceImpl
 	public void setDossierLocalService(
 		org.oep.core.dossiermgt.service.DossierLocalService dossierLocalService) {
 		this.dossierLocalService = dossierLocalService;
-	}
-
-	/**
-	 * Returns the dossier remote service.
-	 *
-	 * @return the dossier remote service
-	 */
-	public org.oep.core.dossiermgt.service.DossierService getDossierService() {
-		return dossierService;
-	}
-
-	/**
-	 * Sets the dossier remote service.
-	 *
-	 * @param dossierService the dossier remote service
-	 */
-	public void setDossierService(
-		org.oep.core.dossiermgt.service.DossierService dossierService) {
-		this.dossierService = dossierService;
 	}
 
 	/**
@@ -612,6 +596,120 @@ public abstract class DossierFolder2RoleServiceBaseImpl extends BaseServiceImpl
 	public void setDossierProcAgentPersistence(
 		DossierProcAgentPersistence dossierProcAgentPersistence) {
 		this.dossierProcAgentPersistence = dossierProcAgentPersistence;
+	}
+
+	/**
+	 * Returns the dossier proc bookmark local service.
+	 *
+	 * @return the dossier proc bookmark local service
+	 */
+	public org.oep.core.dossiermgt.service.DossierProcBookmarkLocalService getDossierProcBookmarkLocalService() {
+		return dossierProcBookmarkLocalService;
+	}
+
+	/**
+	 * Sets the dossier proc bookmark local service.
+	 *
+	 * @param dossierProcBookmarkLocalService the dossier proc bookmark local service
+	 */
+	public void setDossierProcBookmarkLocalService(
+		org.oep.core.dossiermgt.service.DossierProcBookmarkLocalService dossierProcBookmarkLocalService) {
+		this.dossierProcBookmarkLocalService = dossierProcBookmarkLocalService;
+	}
+
+	/**
+	 * Returns the dossier proc bookmark remote service.
+	 *
+	 * @return the dossier proc bookmark remote service
+	 */
+	public org.oep.core.dossiermgt.service.DossierProcBookmarkService getDossierProcBookmarkService() {
+		return dossierProcBookmarkService;
+	}
+
+	/**
+	 * Sets the dossier proc bookmark remote service.
+	 *
+	 * @param dossierProcBookmarkService the dossier proc bookmark remote service
+	 */
+	public void setDossierProcBookmarkService(
+		org.oep.core.dossiermgt.service.DossierProcBookmarkService dossierProcBookmarkService) {
+		this.dossierProcBookmarkService = dossierProcBookmarkService;
+	}
+
+	/**
+	 * Returns the dossier proc bookmark persistence.
+	 *
+	 * @return the dossier proc bookmark persistence
+	 */
+	public DossierProcBookmarkPersistence getDossierProcBookmarkPersistence() {
+		return dossierProcBookmarkPersistence;
+	}
+
+	/**
+	 * Sets the dossier proc bookmark persistence.
+	 *
+	 * @param dossierProcBookmarkPersistence the dossier proc bookmark persistence
+	 */
+	public void setDossierProcBookmarkPersistence(
+		DossierProcBookmarkPersistence dossierProcBookmarkPersistence) {
+		this.dossierProcBookmarkPersistence = dossierProcBookmarkPersistence;
+	}
+
+	/**
+	 * Returns the dossier tag local service.
+	 *
+	 * @return the dossier tag local service
+	 */
+	public org.oep.core.dossiermgt.service.DossierTagLocalService getDossierTagLocalService() {
+		return dossierTagLocalService;
+	}
+
+	/**
+	 * Sets the dossier tag local service.
+	 *
+	 * @param dossierTagLocalService the dossier tag local service
+	 */
+	public void setDossierTagLocalService(
+		org.oep.core.dossiermgt.service.DossierTagLocalService dossierTagLocalService) {
+		this.dossierTagLocalService = dossierTagLocalService;
+	}
+
+	/**
+	 * Returns the dossier tag remote service.
+	 *
+	 * @return the dossier tag remote service
+	 */
+	public org.oep.core.dossiermgt.service.DossierTagService getDossierTagService() {
+		return dossierTagService;
+	}
+
+	/**
+	 * Sets the dossier tag remote service.
+	 *
+	 * @param dossierTagService the dossier tag remote service
+	 */
+	public void setDossierTagService(
+		org.oep.core.dossiermgt.service.DossierTagService dossierTagService) {
+		this.dossierTagService = dossierTagService;
+	}
+
+	/**
+	 * Returns the dossier tag persistence.
+	 *
+	 * @return the dossier tag persistence
+	 */
+	public DossierTagPersistence getDossierTagPersistence() {
+		return dossierTagPersistence;
+	}
+
+	/**
+	 * Sets the dossier tag persistence.
+	 *
+	 * @param dossierTagPersistence the dossier tag persistence
+	 */
+	public void setDossierTagPersistence(
+		DossierTagPersistence dossierTagPersistence) {
+		this.dossierTagPersistence = dossierTagPersistence;
 	}
 
 	/**
@@ -1089,6 +1187,63 @@ public abstract class DossierFolder2RoleServiceBaseImpl extends BaseServiceImpl
 	}
 
 	/**
+	 * Returns the statistic by domain local service.
+	 *
+	 * @return the statistic by domain local service
+	 */
+	public org.oep.core.dossiermgt.service.StatisticByDomainLocalService getStatisticByDomainLocalService() {
+		return statisticByDomainLocalService;
+	}
+
+	/**
+	 * Sets the statistic by domain local service.
+	 *
+	 * @param statisticByDomainLocalService the statistic by domain local service
+	 */
+	public void setStatisticByDomainLocalService(
+		org.oep.core.dossiermgt.service.StatisticByDomainLocalService statisticByDomainLocalService) {
+		this.statisticByDomainLocalService = statisticByDomainLocalService;
+	}
+
+	/**
+	 * Returns the statistic by domain remote service.
+	 *
+	 * @return the statistic by domain remote service
+	 */
+	public org.oep.core.dossiermgt.service.StatisticByDomainService getStatisticByDomainService() {
+		return statisticByDomainService;
+	}
+
+	/**
+	 * Sets the statistic by domain remote service.
+	 *
+	 * @param statisticByDomainService the statistic by domain remote service
+	 */
+	public void setStatisticByDomainService(
+		org.oep.core.dossiermgt.service.StatisticByDomainService statisticByDomainService) {
+		this.statisticByDomainService = statisticByDomainService;
+	}
+
+	/**
+	 * Returns the statistic by domain persistence.
+	 *
+	 * @return the statistic by domain persistence
+	 */
+	public StatisticByDomainPersistence getStatisticByDomainPersistence() {
+		return statisticByDomainPersistence;
+	}
+
+	/**
+	 * Sets the statistic by domain persistence.
+	 *
+	 * @param statisticByDomainPersistence the statistic by domain persistence
+	 */
+	public void setStatisticByDomainPersistence(
+		StatisticByDomainPersistence statisticByDomainPersistence) {
+		this.statisticByDomainPersistence = statisticByDomainPersistence;
+	}
+
+	/**
 	 * Returns the counter local service.
 	 *
 	 * @return the counter local service
@@ -1281,8 +1436,6 @@ public abstract class DossierFolder2RoleServiceBaseImpl extends BaseServiceImpl
 	protected DocTemplateFinder docTemplateFinder;
 	@BeanReference(type = org.oep.core.dossiermgt.service.DossierLocalService.class)
 	protected org.oep.core.dossiermgt.service.DossierLocalService dossierLocalService;
-	@BeanReference(type = org.oep.core.dossiermgt.service.DossierService.class)
-	protected org.oep.core.dossiermgt.service.DossierService dossierService;
 	@BeanReference(type = DossierPersistence.class)
 	protected DossierPersistence dossierPersistence;
 	@BeanReference(type = org.oep.core.dossiermgt.service.DossierDocLocalService.class)
@@ -1317,6 +1470,18 @@ public abstract class DossierFolder2RoleServiceBaseImpl extends BaseServiceImpl
 	protected org.oep.core.dossiermgt.service.DossierProcAgentService dossierProcAgentService;
 	@BeanReference(type = DossierProcAgentPersistence.class)
 	protected DossierProcAgentPersistence dossierProcAgentPersistence;
+	@BeanReference(type = org.oep.core.dossiermgt.service.DossierProcBookmarkLocalService.class)
+	protected org.oep.core.dossiermgt.service.DossierProcBookmarkLocalService dossierProcBookmarkLocalService;
+	@BeanReference(type = org.oep.core.dossiermgt.service.DossierProcBookmarkService.class)
+	protected org.oep.core.dossiermgt.service.DossierProcBookmarkService dossierProcBookmarkService;
+	@BeanReference(type = DossierProcBookmarkPersistence.class)
+	protected DossierProcBookmarkPersistence dossierProcBookmarkPersistence;
+	@BeanReference(type = org.oep.core.dossiermgt.service.DossierTagLocalService.class)
+	protected org.oep.core.dossiermgt.service.DossierTagLocalService dossierTagLocalService;
+	@BeanReference(type = org.oep.core.dossiermgt.service.DossierTagService.class)
+	protected org.oep.core.dossiermgt.service.DossierTagService dossierTagService;
+	@BeanReference(type = DossierTagPersistence.class)
+	protected DossierTagPersistence dossierTagPersistence;
 	@BeanReference(type = org.oep.core.dossiermgt.service.EbMessageLocalService.class)
 	protected org.oep.core.dossiermgt.service.EbMessageLocalService ebMessageLocalService;
 	@BeanReference(type = org.oep.core.dossiermgt.service.EbMessageService.class)
@@ -1367,6 +1532,12 @@ public abstract class DossierFolder2RoleServiceBaseImpl extends BaseServiceImpl
 	protected org.oep.core.dossiermgt.service.StatisticByDayService statisticByDayService;
 	@BeanReference(type = StatisticByDayPersistence.class)
 	protected StatisticByDayPersistence statisticByDayPersistence;
+	@BeanReference(type = org.oep.core.dossiermgt.service.StatisticByDomainLocalService.class)
+	protected org.oep.core.dossiermgt.service.StatisticByDomainLocalService statisticByDomainLocalService;
+	@BeanReference(type = org.oep.core.dossiermgt.service.StatisticByDomainService.class)
+	protected org.oep.core.dossiermgt.service.StatisticByDomainService statisticByDomainService;
+	@BeanReference(type = StatisticByDomainPersistence.class)
+	protected StatisticByDomainPersistence statisticByDomainPersistence;
 	@BeanReference(type = com.liferay.counter.service.CounterLocalService.class)
 	protected com.liferay.counter.service.CounterLocalService counterLocalService;
 	@BeanReference(type = com.liferay.portal.service.ResourceLocalService.class)

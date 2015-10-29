@@ -15,6 +15,7 @@
 package org.oep.core.dossiermgt.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.model.StagedModel;
@@ -90,6 +91,49 @@ public interface DossierFolderModel extends BaseModel<DossierFolder>, StagedMode
 	 * @param dossierFolderId the dossier folder ID of this dossier folder
 	 */
 	public void setDossierFolderId(long dossierFolderId);
+
+	/**
+	 * Returns the user ID of this dossier folder.
+	 *
+	 * @return the user ID of this dossier folder
+	 */
+	public long getUserId();
+
+	/**
+	 * Sets the user ID of this dossier folder.
+	 *
+	 * @param userId the user ID of this dossier folder
+	 */
+	public void setUserId(long userId);
+
+	/**
+	 * Returns the user uuid of this dossier folder.
+	 *
+	 * @return the user uuid of this dossier folder
+	 * @throws SystemException if a system exception occurred
+	 */
+	public String getUserUuid() throws SystemException;
+
+	/**
+	 * Sets the user uuid of this dossier folder.
+	 *
+	 * @param userUuid the user uuid of this dossier folder
+	 */
+	public void setUserUuid(String userUuid);
+
+	/**
+	 * Returns the group ID of this dossier folder.
+	 *
+	 * @return the group ID of this dossier folder
+	 */
+	public long getGroupId();
+
+	/**
+	 * Sets the group ID of this dossier folder.
+	 *
+	 * @param groupId the group ID of this dossier folder
+	 */
+	public void setGroupId(long groupId);
 
 	/**
 	 * Returns the company ID of this dossier folder.
@@ -213,6 +257,21 @@ public interface DossierFolderModel extends BaseModel<DossierFolder>, StagedMode
 	public void setStatusFilter(String statusFilter);
 
 	/**
+	 * Returns the tag filter of this dossier folder.
+	 *
+	 * @return the tag filter of this dossier folder
+	 */
+	@AutoEscape
+	public String getTagFilter();
+
+	/**
+	 * Sets the tag filter of this dossier folder.
+	 *
+	 * @param tagFilter the tag filter of this dossier folder
+	 */
+	public void setTagFilter(String tagFilter);
+
+	/**
 	 * Returns the filter by organization of this dossier folder.
 	 *
 	 * @return the filter by organization of this dossier folder
@@ -239,6 +298,35 @@ public interface DossierFolderModel extends BaseModel<DossierFolder>, StagedMode
 	 * @param filterByUser the filter by user of this dossier folder
 	 */
 	public void setFilterByUser(int filterByUser);
+
+	/**
+	 * Returns the order by of this dossier folder.
+	 *
+	 * @return the order by of this dossier folder
+	 */
+	@AutoEscape
+	public String getOrderBy();
+
+	/**
+	 * Sets the order by of this dossier folder.
+	 *
+	 * @param orderBy the order by of this dossier folder
+	 */
+	public void setOrderBy(String orderBy);
+
+	/**
+	 * Returns the counting of this dossier folder.
+	 *
+	 * @return the counting of this dossier folder
+	 */
+	public int getCounting();
+
+	/**
+	 * Sets the counting of this dossier folder.
+	 *
+	 * @param counting the counting of this dossier folder
+	 */
+	public void setCounting(int counting);
 
 	@Override
 	public boolean isNew();

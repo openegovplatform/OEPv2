@@ -12,6 +12,22 @@
  * details.
  */
 
+/** 
+ * Copyright (c) 2015 by Open eGovPlatform (http://http://openegovplatform.org/).
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+  */
+
 package org.oep.core.dossiermgt.service.impl;
 
 import java.util.Date;
@@ -29,7 +45,7 @@ import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.service.ServiceContext;
 
 /**
- * The implementation of the eb message local service.
+ * API cung cấp thao tác với thông điệp gửi thông qua ebXML.
  *
  * <p>
  * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link org.oep.core.dossiermgt.service.EbMessageLocalService} interface.
@@ -50,16 +66,31 @@ public class EbMessageLocalServiceImpl extends EbMessageLocalServiceBaseImpl {
 	 */
 	
 	/** 
-	 * Add eb message
+	 * Thêm thông điệp ebXML
 	 * 
 	 * Version: OEP 2.0
 	 *  
 	 * History: 
 	 *   DATE        AUTHOR      DESCRIPTION 
 	 *  ------------------------------------------------- 
-	 *  21-September-2015  trungdk    Create new
-	 * @param
-	 * @return: new eb message
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param messageId mã định danh thông điệp
+	 * @param cpaId
+	 * @param service
+	 * @param action
+	 * @param conversationId
+	 * @param fromPartyId
+	 * @param fromPartyType
+	 * @param toPartyId
+	 * @param toPartyType
+	 * @param refToMessageId
+	 * @param status
+	 * @param statusDescription
+	 * @param ackMessageId
+	 * @param ackStatusDescription
+	 * @param messageDescription
+	 * @param inbound
+	 * @return: thông điệp mới được tạo
 	 */
 	@Indexable(type = IndexableType.REINDEX)	
 	public EbMessage addEbMessage(
@@ -109,7 +140,7 @@ public class EbMessageLocalServiceImpl extends EbMessageLocalServiceBaseImpl {
 		ebMessagePersistence.update(ebMessage);
 
 		if (_log.isInfoEnabled()) {
-			_log.info("Create new dossier proc " + id);
+			_log.info("Create new eb message " + id);
 		}
 		
 		if (serviceContext.isAddGroupPermissions() || serviceContext.isAddGuestPermissions()) {
@@ -121,6 +152,34 @@ public class EbMessageLocalServiceImpl extends EbMessageLocalServiceBaseImpl {
 		return getEbMessage(id);
 	}
 
+	/** 
+	 * Cập nhật thông điệp ebXML
+	 * 
+	 * Version: OEP 2.0
+	 *  
+	 * History: 
+	 *   DATE        AUTHOR      DESCRIPTION 
+	 *  ------------------------------------------------- 
+	 *  21-September-2015  trungdk    Tạo mới
+	 * @param id mã thông điệp
+	 * @param messageId mã định danh thông điệp
+	 * @param cpaId
+	 * @param service
+	 * @param action
+	 * @param conversationId
+	 * @param fromPartyId
+	 * @param fromPartyType
+	 * @param toPartyId
+	 * @param toPartyType
+	 * @param refToMessageId
+	 * @param status
+	 * @param statusDescription
+	 * @param ackMessageId
+	 * @param ackStatusDescription
+	 * @param messageDescription
+	 * @param inbound
+	 * @return: thông điệp mới được cập nhật
+	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public EbMessage updateEbMessage(
 			long id, 

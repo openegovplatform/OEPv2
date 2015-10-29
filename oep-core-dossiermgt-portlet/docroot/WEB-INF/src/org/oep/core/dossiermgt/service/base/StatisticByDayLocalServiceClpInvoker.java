@@ -106,13 +106,49 @@ public class StatisticByDayLocalServiceClpInvoker {
 				"org.oep.core.dossiermgt.model.StatisticByDay"
 			};
 
-		_methodName136 = "getBeanIdentifier";
+		_methodName152 = "getBeanIdentifier";
 
-		_methodParameterTypes136 = new String[] {  };
+		_methodParameterTypes152 = new String[] {  };
 
-		_methodName137 = "setBeanIdentifier";
+		_methodName153 = "setBeanIdentifier";
 
-		_methodParameterTypes137 = new String[] { "java.lang.String" };
+		_methodParameterTypes153 = new String[] { "java.lang.String" };
+
+		_methodName158 = "addStatisticByDay";
+
+		_methodParameterTypes158 = new String[] {
+				"java.util.Date", "int", "int", "int", "double", "int", "int",
+				"double", "double", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName159 = "updateStatisticByDay";
+
+		_methodParameterTypes159 = new String[] {
+				"long", "java.util.Date", "int", "long", "long", "double", "int",
+				"int", "double", "double",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName160 = "updateStatisticByDay";
+
+		_methodParameterTypes160 = new String[] {
+				"org.oep.core.dossiermgt.model.StatisticByDay",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName162 = "removeStatisticByDay";
+
+		_methodParameterTypes162 = new String[] {
+				"org.oep.core.dossiermgt.model.StatisticByDay"
+			};
+
+		_methodName163 = "removeStatisticByDay";
+
+		_methodParameterTypes163 = new String[] { "long" };
+
+		_methodName164 = "getStatisticByDay";
+
+		_methodParameterTypes164 = new String[] { "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -204,16 +240,70 @@ public class StatisticByDayLocalServiceClpInvoker {
 			return StatisticByDayLocalServiceUtil.updateStatisticByDay((org.oep.core.dossiermgt.model.StatisticByDay)arguments[0]);
 		}
 
-		if (_methodName136.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes136, parameterTypes)) {
+		if (_methodName152.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes152, parameterTypes)) {
 			return StatisticByDayLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName137.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes137, parameterTypes)) {
+		if (_methodName153.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes153, parameterTypes)) {
 			StatisticByDayLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
+		}
+
+		if (_methodName158.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes158, parameterTypes)) {
+			return StatisticByDayLocalServiceUtil.addStatisticByDay((java.util.Date)arguments[0],
+				((Integer)arguments[1]).intValue(),
+				((Integer)arguments[2]).intValue(),
+				((Integer)arguments[3]).intValue(),
+				((Double)arguments[4]).doubleValue(),
+				((Integer)arguments[5]).intValue(),
+				((Integer)arguments[6]).intValue(),
+				((Double)arguments[7]).doubleValue(),
+				((Double)arguments[8]).doubleValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[9]);
+		}
+
+		if (_methodName159.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes159, parameterTypes)) {
+			return StatisticByDayLocalServiceUtil.updateStatisticByDay(((Long)arguments[0]).longValue(),
+				(java.util.Date)arguments[1],
+				((Integer)arguments[2]).intValue(),
+				((Long)arguments[3]).longValue(),
+				((Long)arguments[4]).longValue(),
+				((Double)arguments[5]).doubleValue(),
+				((Integer)arguments[6]).intValue(),
+				((Integer)arguments[7]).intValue(),
+				((Double)arguments[8]).doubleValue(),
+				((Double)arguments[9]).doubleValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[10]);
+		}
+
+		if (_methodName160.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes160, parameterTypes)) {
+			return StatisticByDayLocalServiceUtil.updateStatisticByDay((org.oep.core.dossiermgt.model.StatisticByDay)arguments[0],
+				(com.liferay.portal.service.ServiceContext)arguments[1]);
+		}
+
+		if (_methodName162.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes162, parameterTypes)) {
+			StatisticByDayLocalServiceUtil.removeStatisticByDay((org.oep.core.dossiermgt.model.StatisticByDay)arguments[0]);
+
+			return null;
+		}
+
+		if (_methodName163.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes163, parameterTypes)) {
+			StatisticByDayLocalServiceUtil.removeStatisticByDay(((Long)arguments[0]).longValue());
+
+			return null;
+		}
+
+		if (_methodName164.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes164, parameterTypes)) {
+			return StatisticByDayLocalServiceUtil.getStatisticByDay(((Long)arguments[0]).longValue());
 		}
 
 		throw new UnsupportedOperationException();
@@ -251,8 +341,20 @@ public class StatisticByDayLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName136;
-	private String[] _methodParameterTypes136;
-	private String _methodName137;
-	private String[] _methodParameterTypes137;
+	private String _methodName152;
+	private String[] _methodParameterTypes152;
+	private String _methodName153;
+	private String[] _methodParameterTypes153;
+	private String _methodName158;
+	private String[] _methodParameterTypes158;
+	private String _methodName159;
+	private String[] _methodParameterTypes159;
+	private String _methodName160;
+	private String[] _methodParameterTypes160;
+	private String _methodName162;
+	private String[] _methodParameterTypes162;
+	private String _methodName163;
+	private String[] _methodParameterTypes163;
+	private String _methodName164;
+	private String[] _methodParameterTypes164;
 }

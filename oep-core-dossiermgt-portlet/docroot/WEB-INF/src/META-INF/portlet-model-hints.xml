@@ -13,12 +13,18 @@
 		<field name="dossierDocId" type="long" />
 		<field name="docTemplateId" type="long" />
 		<field name="docFileVersionId" type="long" />
-		<field name="docName" type="String">
-			<hint name="max-length">200</hint>
+		<field name="docFileName" type="String">
+			<hint name="max-length">100</hint>
 		</field>
+		<field name="docFileType" type="long" />
+		<field name="verifyStatus" type="int" />
 		<field name="note" type="String">
 			<hint name="max-length">200</hint>
 		</field>
+		<field name="approveBy" type="String">
+			<hint name="max-length">100</hint>
+		</field>
+		<field name="approveDate" type="Date" />
 		<field name="premier" type="int" />
 	</model>
 	<model name="org.oep.core.dossiermgt.model.DocFileVersion">
@@ -30,11 +36,15 @@
 		<field name="createDate" type="Date" />
 		<field name="docFileId" type="long" />
 		<field name="fileEntryId" type="long" />
-		<field name="xmlContent" type="String" />
+		<field name="xmlContent" type="String">
+			<hint name="max-length">5000</hint>
+		</field>
 		<field name="ebMessageId" type="long" />
 	</model>
 	<model name="org.oep.core.dossiermgt.model.DocTemplate">
-		<field name="docTemplateId" type="long" />
+		<field name="docTemplateId" type="long">
+			<hint name="max-length">20</hint>
+		</field>
 		<field name="userId" type="long" />
 		<field name="groupId" type="long" />
 		<field name="companyId" type="long" />
@@ -100,9 +110,19 @@
 		<field name="telNo" type="String">
 			<hint name="max-length">30</hint>
 		</field>
+		<field name="email" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="subjectAsContactPerson" type="int">
+			<hint name="max-length">4</hint>
+		</field>
 		<field name="contactPersonName" type="String">
 			<hint name="max-length">100</hint>
 		</field>
+		<field name="contactPersonId" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="contactPersonSex" type="int" />
 		<field name="contactPersonTel" type="String">
 			<hint name="max-length">30</hint>
 		</field>
@@ -115,13 +135,20 @@
 		<field name="receptionNo" type="String">
 			<hint name="max-length">30</hint>
 		</field>
+		<field name="onegate" type="int" />
 		<field name="submitDate" type="Date" />
 		<field name="receiveDate" type="Date" />
+		<field name="processDate" type="Date" />
 		<field name="renewDate" type="Date" />
 		<field name="estimateDate" type="Date" />
 		<field name="finishDate" type="Date" />
+		<field name="handoverDate" type="Date" />
 		<field name="returnDate" type="Date" />
-		<field name="status" type="String">
+		<field name="archiveDate" type="Date" />
+		<field name="mainStatus" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="subStatus" type="String">
 			<hint name="max-length">30</hint>
 		</field>
 		<field name="statusDate" type="Date" />
@@ -132,14 +159,13 @@
 			<hint name="max-length">255</hint>
 		</field>
 		<field name="daysDelay" type="int" />
-		<field name="closeDate" type="Date" />
 		<field name="errorStatus" type="String">
 			<hint name="max-length">30</hint>
 		</field>
-		<field name="pendingStatus" type="int" />
 		<field name="errorCode" type="String">
 			<hint name="max-length">30</hint>
 		</field>
+		<field name="pendingStatus" type="int" />
 		<field name="dirty" type="int" />
 	</model>
 	<model name="org.oep.core.dossiermgt.model.DossierDoc">
@@ -161,10 +187,11 @@
 		</field>
 		<field name="sequenceNo" type="int" />
 		<field name="defaultDocTemplateId" type="long" />
-		<field name="validationType" type="int" />
-		<field name="requirementType" type="int" />
+		<field name="dossierDocType" type="int" />
 		<field name="numberOfFile" type="int" />
-		<field name="splitSubDossier" type="int" />
+		<field name="splitSubDossier" type="int">
+			<hint name="max-length">4</hint>
+		</field>
 		<field name="onlineForm" type="String">
 			<hint name="max-length">30</hint>
 		</field>
@@ -172,6 +199,8 @@
 	<model name="org.oep.core.dossiermgt.model.DossierFolder">
 		<field name="uuid" type="String" />
 		<field name="dossierFolderId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
 		<field name="companyId" type="long" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
@@ -186,8 +215,15 @@
 		<field name="statusFilter" type="String">
 			<hint name="max-length">100</hint>
 		</field>
+		<field name="tagFilter" type="String">
+			<hint name="max-length">100</hint>
+		</field>
 		<field name="filterByOrganization" type="int" />
 		<field name="filterByUser" type="int" />
+		<field name="orderBy" type="String">
+			<hint name="max-length">100</hint>
+		</field>
+		<field name="counting" type="int" />
 	</model>
 	<model name="org.oep.core.dossiermgt.model.DossierFolder2Role">
 		<field name="dossierFolderId" type="long" />
@@ -212,9 +248,15 @@
 		<field name="shortName" type="String">
 			<hint name="max-length">100</hint>
 		</field>
-		<field name="processDescription" type="String" />
-		<field name="methodDescription" type="String" />
-		<field name="dossierDescription" type="String" />
+		<field name="processDescription" type="String">
+			<hint name="max-length">5000</hint>
+		</field>
+		<field name="methodDescription" type="String">
+			<hint name="max-length">5000</hint>
+		</field>
+		<field name="dossierDescription" type="String">
+			<hint name="max-length">5000</hint>
+		</field>
 		<field name="conditionDescription" type="String">
 			<hint name="max-length">500</hint>
 		</field>
@@ -227,11 +269,15 @@
 		<field name="resultsDescription" type="String">
 			<hint name="max-length">500</hint>
 		</field>
-		<field name="recordsDescription" type="String" />
+		<field name="recordsDescription" type="String">
+			<hint name="max-length">5000</hint>
+		</field>
 		<field name="feeDescription" type="String">
 			<hint name="max-length">255</hint>
 		</field>
-		<field name="instructionsDescription" type="String" />
+		<field name="instructionsDescription" type="String">
+			<hint name="max-length">5000</hint>
+		</field>
 		<field name="administrationNo" type="String">
 			<hint name="max-length">30</hint>
 		</field>
@@ -244,9 +290,11 @@
 		<field name="domainName" type="String">
 			<hint name="max-length">200</hint>
 		</field>
+		<field name="forCitizen" type="int" />
+		<field name="forBusiness" type="int" />
 		<field name="effectDate" type="Date" />
 		<field name="expireDate" type="Date" />
-		<field name="active" type="int" />
+		<field name="statusActive" type="int" />
 	</model>
 	<model name="org.oep.core.dossiermgt.model.DossierProcAgent">
 		<field name="dossierProcAgentId" type="long" />
@@ -260,7 +308,34 @@
 		<field name="govAgencyName" type="String">
 			<hint name="max-length">200</hint>
 		</field>
-		<field name="ebPartnerShipId" type="long" />
+		<field name="bankTransfer" type="String">
+			<hint name="max-length">500</hint>
+		</field>
+		<field name="keypay" type="String">
+			<hint name="max-length">255</hint>
+		</field>
+		<field name="ebPartnerShipId" type="long">
+			<hint name="max-length">100</hint>
+		</field>
+	</model>
+	<model name="org.oep.core.dossiermgt.model.DossierProcBookmark">
+		<field name="dossierProcBookmarkId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="dossierProcAgentId" type="long" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.DossierTag">
+		<field name="dossierTagId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="dossierId" type="long" />
+		<field name="tag" type="String">
+			<hint name="max-length">100</hint>
+		</field>
 	</model>
 	<model name="org.oep.core.dossiermgt.model.EbMessage">
 		<field name="ebMessageId" type="long" />
@@ -453,19 +528,16 @@
 		<field name="createDate" type="Date" />
 		<field name="month" type="int" />
 		<field name="year" type="int" />
-		<field name="govAgencyId" type="String" />
-		<field name="submittedNumber" type="int" />
-		<field name="acceptedNumber" type="int" />
-		<field name="deniedNumber" type="int" />
-		<field name="acceptedRatio" type="double" />
-		<field name="finishedNumber" type="int" />
+		<field name="govAgencyId" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="receiveNumber" type="long" />
+		<field name="onlineNumber" type="long" />
+		<field name="onlineRatio" type="double" />
+		<field name="finishNumber" type="int" />
 		<field name="ontimeNumber" type="int" />
-		<field name="delayedNumber" type="int" />
 		<field name="ontimeRatio" type="double" />
-		<field name="doneNumber" type="int" />
-		<field name="doneRatio" type="double" />
 		<field name="delayDaysAvg" type="double" />
-		<field name="furtherDaysAvg" type="double" />
 	</model>
 	<model name="org.oep.core.dossiermgt.model.StatisticByDay">
 		<field name="statisticByDayId" type="long" />
@@ -474,17 +546,30 @@
 		<field name="createDate" type="Date" />
 		<field name="statisticDate" type="Date" />
 		<field name="statisticWeek" type="int" />
-		<field name="submittedNumber" type="int" />
-		<field name="acceptedNumber" type="int" />
-		<field name="deniedNumber" type="int" />
-		<field name="acceptedRatio" type="double" />
-		<field name="finishedNumber" type="int" />
+		<field name="receiveNumber" type="long" />
+		<field name="onlineNumber" type="long" />
+		<field name="onlineRatio" type="double" />
+		<field name="finishNumber" type="int" />
 		<field name="ontimeNumber" type="int" />
-		<field name="delayedNumber" type="int" />
 		<field name="ontimeRatio" type="double" />
-		<field name="doneNumber" type="int" />
-		<field name="doneRatio" type="double" />
 		<field name="delayDaysAvg" type="double" />
-		<field name="furtherDaysAvg" type="double" />
+	</model>
+	<model name="org.oep.core.dossiermgt.model.StatisticByDomain">
+		<field name="statisticByDomainId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="month" type="int" />
+		<field name="year" type="int" />
+		<field name="dossierDomain" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="receiveNumber" type="long" />
+		<field name="onlineNumber" type="long" />
+		<field name="onlineRatio" type="double" />
+		<field name="finishNumber" type="int" />
+		<field name="ontimeNumber" type="int" />
+		<field name="ontimeRatio" type="double" />
+		<field name="delayDaysAvg" type="double" />
 	</model>
 </model-hints>

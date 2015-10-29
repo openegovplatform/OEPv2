@@ -276,17 +276,19 @@ public class EbPartnerShipLocalServiceUtil {
 	}
 
 	/**
-	* Add eb partner ship
+	* ThÃƒÂªm service kÃ¡ÂºÂ¿t nÃ¡Â»â€˜i Ã¡Â»Â©ng dÃ¡Â»Â¥ng
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
 	*
-	* @param
-	* @return: new eb partner ship
+	* @param name tÃƒÂªn service kÃ¡ÂºÂ¿t nÃ¡Â»â€˜i
+	* @param cpaId
+	* @param service
+	* @return: service kÃ¡ÂºÂ¿t nÃ¡Â»â€˜i Ã¡Â»Â©ng dÃ¡Â»Â¥ng vÃ¡Â»Â«a tÃ¡ÂºÂ¡o
 	*/
 	public static org.oep.core.dossiermgt.model.EbPartnerShip addEbPartnerShip(
 		java.lang.String name, java.lang.String cpaId,
@@ -298,6 +300,21 @@ public class EbPartnerShipLocalServiceUtil {
 				   .addEbPartnerShip(name, cpaId, service, serviceContext);
 	}
 
+	/**
+	* CÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t service kÃ¡ÂºÂ¿t nÃ¡Â»â€˜i Ã¡Â»Â©ng dÃ¡Â»Â¥ng
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
+	*
+	* @param name tÃƒÂªn service kÃ¡ÂºÂ¿t nÃ¡Â»â€˜i
+	* @param cpaId
+	* @param service
+	* @return: service kÃ¡ÂºÂ¿t nÃ¡Â»â€˜i Ã¡Â»Â©ng dÃ¡Â»Â¥ng vÃ¡Â»Â«a cÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t
+	*/
 	public static org.oep.core.dossiermgt.model.EbPartnerShip updateEbPartnerShip(
 		long id, java.lang.String name, java.lang.String cpaId,
 		java.lang.String service,

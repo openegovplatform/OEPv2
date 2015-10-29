@@ -12,7 +12,6 @@
 	<bean id="org.oep.core.dossiermgt.service.persistence.DocTemplatePersistence" class="org.oep.core.dossiermgt.service.persistence.DocTemplatePersistenceImpl" parent="basePersistence" />
 	<bean id="org.oep.core.dossiermgt.service.persistence.DocTemplateFinder" class="org.oep.core.dossiermgt.service.persistence.DocTemplateFinderImpl" parent="basePersistence" />
 	<bean id="org.oep.core.dossiermgt.service.DossierLocalService" class="org.oep.core.dossiermgt.service.impl.DossierLocalServiceImpl" />
-	<bean id="org.oep.core.dossiermgt.service.DossierService" class="org.oep.core.dossiermgt.service.impl.DossierServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.persistence.DossierPersistence" class="org.oep.core.dossiermgt.service.persistence.DossierPersistenceImpl" parent="basePersistence" />
 	<bean id="org.oep.core.dossiermgt.service.DossierDocLocalService" class="org.oep.core.dossiermgt.service.impl.DossierDocLocalServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.DossierDocService" class="org.oep.core.dossiermgt.service.impl.DossierDocServiceImpl" />
@@ -30,6 +29,12 @@
 	<bean id="org.oep.core.dossiermgt.service.DossierProcAgentLocalService" class="org.oep.core.dossiermgt.service.impl.DossierProcAgentLocalServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.DossierProcAgentService" class="org.oep.core.dossiermgt.service.impl.DossierProcAgentServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.persistence.DossierProcAgentPersistence" class="org.oep.core.dossiermgt.service.persistence.DossierProcAgentPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.dossiermgt.service.DossierProcBookmarkLocalService" class="org.oep.core.dossiermgt.service.impl.DossierProcBookmarkLocalServiceImpl" />
+	<bean id="org.oep.core.dossiermgt.service.DossierProcBookmarkService" class="org.oep.core.dossiermgt.service.impl.DossierProcBookmarkServiceImpl" />
+	<bean id="org.oep.core.dossiermgt.service.persistence.DossierProcBookmarkPersistence" class="org.oep.core.dossiermgt.service.persistence.DossierProcBookmarkPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.dossiermgt.service.DossierTagLocalService" class="org.oep.core.dossiermgt.service.impl.DossierTagLocalServiceImpl" />
+	<bean id="org.oep.core.dossiermgt.service.DossierTagService" class="org.oep.core.dossiermgt.service.impl.DossierTagServiceImpl" />
+	<bean id="org.oep.core.dossiermgt.service.persistence.DossierTagPersistence" class="org.oep.core.dossiermgt.service.persistence.DossierTagPersistenceImpl" parent="basePersistence" />
 	<bean id="org.oep.core.dossiermgt.service.EbMessageLocalService" class="org.oep.core.dossiermgt.service.impl.EbMessageLocalServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.EbMessageService" class="org.oep.core.dossiermgt.service.impl.EbMessageServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.persistence.EbMessagePersistence" class="org.oep.core.dossiermgt.service.persistence.EbMessagePersistenceImpl" parent="basePersistence" />
@@ -55,4 +60,7 @@
 	<bean id="org.oep.core.dossiermgt.service.StatisticByDayLocalService" class="org.oep.core.dossiermgt.service.impl.StatisticByDayLocalServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.StatisticByDayService" class="org.oep.core.dossiermgt.service.impl.StatisticByDayServiceImpl" />
 	<bean id="org.oep.core.dossiermgt.service.persistence.StatisticByDayPersistence" class="org.oep.core.dossiermgt.service.persistence.StatisticByDayPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.core.dossiermgt.service.StatisticByDomainLocalService" class="org.oep.core.dossiermgt.service.impl.StatisticByDomainLocalServiceImpl" />
+	<bean id="org.oep.core.dossiermgt.service.StatisticByDomainService" class="org.oep.core.dossiermgt.service.impl.StatisticByDomainServiceImpl" />
+	<bean id="org.oep.core.dossiermgt.service.persistence.StatisticByDomainPersistence" class="org.oep.core.dossiermgt.service.persistence.StatisticByDomainPersistenceImpl" parent="basePersistence" />
 </beans>

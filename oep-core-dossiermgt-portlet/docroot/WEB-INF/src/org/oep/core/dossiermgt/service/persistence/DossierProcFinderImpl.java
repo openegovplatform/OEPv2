@@ -174,7 +174,7 @@ public class DossierProcFinderImpl extends BasePersistenceImpl implements Dossie
 			sql = sql.replace("[$EXPIREDATE_FILTER$]", "");
 		}		
 		if (active != -1) {
-			sql = sql.replace("[$ACTIVE_FILTER$]", " AND ACTIVE = ?");
+			sql = sql.replace("[$ACTIVE_FILTER$]", " AND ACTIVE_ = ?");
 			params.add(active);						
 		}
 		else {
@@ -221,7 +221,7 @@ public class DossierProcFinderImpl extends BasePersistenceImpl implements Dossie
 			sql = sql.replace("[$EXPIREDATE_FILTER$]", "");
 		}		
 		if (active != -1) {
-			sql = sql.replace("[$ACTIVE_FILTER$]", " AND ACTIVE = ?");
+			sql = sql.replace("[$ACTIVE_FILTER$]", " AND ACTIVE_ = ?");
 			params.add(active);						
 		}
 		else {
@@ -246,7 +246,7 @@ public class DossierProcFinderImpl extends BasePersistenceImpl implements Dossie
 	}
 
 
-	public List<DossierProc> findByGroupCustomCondition(String name, Date effectDate, Date expireDate, int active, int startIndex, int endIndex, ServiceContext serviceContext) {
+	public List<DossierProc> findByGroupCustomCondition(String name, String administrationNo, String domainNo, Date effectDate, Date expireDate, int active, int startIndex, int endIndex, ServiceContext serviceContext) {
 		List<Object> params = new ArrayList<Object>();
 		Session session = openSession();
 		String sql = CustomSQLUtil.get(DossierProcFinder.class.getName(), FIND_BY_GROUP_CUSTOMCONDITION);
@@ -262,6 +262,21 @@ public class DossierProcFinderImpl extends BasePersistenceImpl implements Dossie
 		else {
 			sql = sql.replace("[$NAME_FILTER$]", "");
 		}
+		if (!StringUtil.isNullOrEmpty(administrationNo)) {
+			sql = sql.replace("[$ADMINISTRATIONNO_FILTER$]", " AND ADMINISTRATIONNO = ?");
+			params.add(administrationNo);			
+		}
+		else {
+			sql = sql.replace("[$ADMINISTRATIONNO_FILTER$]", "");
+		}
+		if (!StringUtil.isNullOrEmpty(domainNo)) {
+			sql = sql.replace("[$DOMAINNO_FILTER$]", " AND DOMAINNO = ?");
+			params.add(domainNo);			
+		}
+		else {
+			sql = sql.replace("[$DOMAINNO_FILTER$]", "");
+		}
+
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		if (effectDate != null) {
 			sql = sql.replace("[$EFFECTDATE_FILTER$]", " AND EFFECTDATE >= ?");
@@ -278,7 +293,7 @@ public class DossierProcFinderImpl extends BasePersistenceImpl implements Dossie
 			sql = sql.replace("[$EXPIREDATE_FILTER$]", "");
 		}		
 		if (active != -1) {
-			sql = sql.replace("[$ACTIVE_FILTER$]", " AND ACTIVE = ?");
+			sql = sql.replace("[$ACTIVE_FILTER$]", " AND ACTIVE_ = ?");
 			params.add(active);						
 		}
 		else {
@@ -295,7 +310,7 @@ public class DossierProcFinderImpl extends BasePersistenceImpl implements Dossie
 		return (List<DossierProc>) QueryUtil.list(query, getDialect(), startIndex, endIndex);
 	}
 	
-	public int countByGroupCustomCondition(String name, Date effectDate, Date expireDate, int active, ServiceContext serviceContext) {
+	public int countByGroupCustomCondition(String name, String administrationNo, String domainNo, Date effectDate, Date expireDate, int active, ServiceContext serviceContext) {
 		List<Object> params = new ArrayList<Object>();
 		Session session = openSession();
 		String sql = CustomSQLUtil.get(DossierProcFinder.class.getName(), COUNT_BY_GROUP_CUSTOMCONDITION);		
@@ -310,6 +325,20 @@ public class DossierProcFinderImpl extends BasePersistenceImpl implements Dossie
 		}
 		else {
 			sql = sql.replace("[$NAME_FILTER$]", "");
+		}
+		if (!StringUtil.isNullOrEmpty(administrationNo)) {
+			sql = sql.replace("[$ADMINISTRATIONNO_FILTER$]", " AND ADMINISTRATIONNO = ?");
+			params.add(administrationNo);			
+		}
+		else {
+			sql = sql.replace("[$ADMINISTRATIONNO_FILTER$]", "");
+		}
+		if (!StringUtil.isNullOrEmpty(domainNo)) {
+			sql = sql.replace("[$DOMAINNO_FILTER$]", " AND DOMAINNO = ?");
+			params.add(domainNo);			
+		}
+		else {
+			sql = sql.replace("[$DOMAINNO_FILTER$]", "");
 		}
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		if (effectDate != null) {
@@ -327,7 +356,7 @@ public class DossierProcFinderImpl extends BasePersistenceImpl implements Dossie
 			sql = sql.replace("[$EXPIREDATE_FILTER$]", "");
 		}		
 		if (active != -1) {
-			sql = sql.replace("[$ACTIVE_FILTER$]", " AND ACTIVE = ?");
+			sql = sql.replace("[$ACTIVE_FILTER$]", " AND ACTIVE_ = ?");
 			params.add(active);						
 		}
 		else {

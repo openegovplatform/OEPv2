@@ -38,6 +38,8 @@ public class DossierProcAgentSoap implements Serializable {
 		soapModel.setDossierProcId(model.getDossierProcId());
 		soapModel.setGovAgencyId(model.getGovAgencyId());
 		soapModel.setGovAgencyName(model.getGovAgencyName());
+		soapModel.setBankTransfer(model.getBankTransfer());
+		soapModel.setKeypay(model.getKeypay());
 		soapModel.setEbPartnerShipId(model.getEbPartnerShipId());
 
 		return soapModel;
@@ -149,6 +151,22 @@ public class DossierProcAgentSoap implements Serializable {
 		_govAgencyName = govAgencyName;
 	}
 
+	public String getBankTransfer() {
+		return _bankTransfer;
+	}
+
+	public void setBankTransfer(String bankTransfer) {
+		_bankTransfer = bankTransfer;
+	}
+
+	public String getKeypay() {
+		return _keypay;
+	}
+
+	public void setKeypay(String keypay) {
+		_keypay = keypay;
+	}
+
 	public long getEbPartnerShipId() {
 		return _ebPartnerShipId;
 	}
@@ -164,5 +182,7 @@ public class DossierProcAgentSoap implements Serializable {
 	private long _dossierProcId;
 	private String _govAgencyId;
 	private String _govAgencyName;
+	private String _bankTransfer;
+	private String _keypay;
 	private long _ebPartnerShipId;
 }

@@ -106,95 +106,95 @@ public class EbPartnerShipLocalServiceClpInvoker {
 				"org.oep.core.dossiermgt.model.EbPartnerShip"
 			};
 
-		_methodName136 = "getBeanIdentifier";
+		_methodName152 = "getBeanIdentifier";
 
-		_methodParameterTypes136 = new String[] {  };
+		_methodParameterTypes152 = new String[] {  };
 
-		_methodName137 = "setBeanIdentifier";
+		_methodName153 = "setBeanIdentifier";
 
-		_methodParameterTypes137 = new String[] { "java.lang.String" };
+		_methodParameterTypes153 = new String[] { "java.lang.String" };
 
-		_methodName142 = "addEbPartnerShip";
+		_methodName158 = "addEbPartnerShip";
 
-		_methodParameterTypes142 = new String[] {
+		_methodParameterTypes158 = new String[] {
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName143 = "updateEbPartnerShip";
+		_methodName159 = "updateEbPartnerShip";
 
-		_methodParameterTypes143 = new String[] {
+		_methodParameterTypes159 = new String[] {
 				"long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName144 = "updateEbPartnerShipResources";
+		_methodName160 = "updateEbPartnerShipResources";
 
-		_methodParameterTypes144 = new String[] {
+		_methodParameterTypes160 = new String[] {
 				"org.oep.core.dossiermgt.model.EbPartnerShip",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName145 = "removeEbPartnerShip";
+		_methodName161 = "removeEbPartnerShip";
 
-		_methodParameterTypes145 = new String[] {
+		_methodParameterTypes161 = new String[] {
 				"org.oep.core.dossiermgt.model.EbPartnerShip"
 			};
 
-		_methodName146 = "removeEbPartnerShip";
+		_methodName162 = "removeEbPartnerShip";
 
-		_methodParameterTypes146 = new String[] { "long" };
+		_methodParameterTypes162 = new String[] { "long" };
 
-		_methodName147 = "getEbPartnerShip";
+		_methodName163 = "getEbPartnerShip";
 
-		_methodParameterTypes147 = new String[] { "long" };
+		_methodParameterTypes163 = new String[] { "long" };
 
-		_methodName148 = "addEbPartnerShipResources";
+		_methodName164 = "addEbPartnerShipResources";
 
-		_methodParameterTypes148 = new String[] {
+		_methodParameterTypes164 = new String[] {
 				"org.oep.core.dossiermgt.model.EbPartnerShip", "boolean",
 				"boolean", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName149 = "addEbPartnerShipResources";
+		_methodName165 = "addEbPartnerShipResources";
 
-		_methodParameterTypes149 = new String[] {
+		_methodParameterTypes165 = new String[] {
 				"org.oep.core.dossiermgt.model.EbPartnerShip",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName150 = "addEbPartnerShipResources";
+		_methodName166 = "addEbPartnerShipResources";
 
-		_methodParameterTypes150 = new String[] {
+		_methodParameterTypes166 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName152 = "findByLikeName";
+		_methodName168 = "findByLikeName";
 
-		_methodParameterTypes152 = new String[] {
+		_methodParameterTypes168 = new String[] {
 				"java.lang.String", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName153 = "countByLikeName";
+		_methodName169 = "countByLikeName";
 
-		_methodParameterTypes153 = new String[] {
+		_methodParameterTypes169 = new String[] {
 				"java.lang.String", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName154 = "findByGroupLikeName";
+		_methodName170 = "findByGroupLikeName";
 
-		_methodParameterTypes154 = new String[] {
+		_methodParameterTypes170 = new String[] {
 				"java.lang.String", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName155 = "countByGroupLikeName";
+		_methodName171 = "countByGroupLikeName";
 
-		_methodParameterTypes155 = new String[] {
+		_methodParameterTypes171 = new String[] {
 				"java.lang.String", "com.liferay.portal.service.ServiceContext"
 			};
 	}
@@ -288,35 +288,35 @@ public class EbPartnerShipLocalServiceClpInvoker {
 			return EbPartnerShipLocalServiceUtil.updateEbPartnerShip((org.oep.core.dossiermgt.model.EbPartnerShip)arguments[0]);
 		}
 
-		if (_methodName136.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes136, parameterTypes)) {
+		if (_methodName152.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes152, parameterTypes)) {
 			return EbPartnerShipLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName137.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes137, parameterTypes)) {
+		if (_methodName153.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes153, parameterTypes)) {
 			EbPartnerShipLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName142.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes142, parameterTypes)) {
+		if (_methodName158.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes158, parameterTypes)) {
 			return EbPartnerShipLocalServiceUtil.addEbPartnerShip((java.lang.String)arguments[0],
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				(com.liferay.portal.service.ServiceContext)arguments[3]);
 		}
 
-		if (_methodName143.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes143, parameterTypes)) {
+		if (_methodName159.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes159, parameterTypes)) {
 			return EbPartnerShipLocalServiceUtil.updateEbPartnerShip(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				(java.lang.String)arguments[3],
 				(com.liferay.portal.service.ServiceContext)arguments[4]);
 		}
 
-		if (_methodName144.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes144, parameterTypes)) {
+		if (_methodName160.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes160, parameterTypes)) {
 			EbPartnerShipLocalServiceUtil.updateEbPartnerShipResources((org.oep.core.dossiermgt.model.EbPartnerShip)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -325,27 +325,27 @@ public class EbPartnerShipLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName145.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes145, parameterTypes)) {
+		if (_methodName161.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes161, parameterTypes)) {
 			EbPartnerShipLocalServiceUtil.removeEbPartnerShip((org.oep.core.dossiermgt.model.EbPartnerShip)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName146.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes146, parameterTypes)) {
+		if (_methodName162.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes162, parameterTypes)) {
 			EbPartnerShipLocalServiceUtil.removeEbPartnerShip(((Long)arguments[0]).longValue());
 
 			return null;
 		}
 
-		if (_methodName147.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes147, parameterTypes)) {
+		if (_methodName163.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes163, parameterTypes)) {
 			return EbPartnerShipLocalServiceUtil.getEbPartnerShip(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName148.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes148, parameterTypes)) {
+		if (_methodName164.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes164, parameterTypes)) {
 			EbPartnerShipLocalServiceUtil.addEbPartnerShipResources((org.oep.core.dossiermgt.model.EbPartnerShip)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Boolean)arguments[2]).booleanValue(),
@@ -354,8 +354,8 @@ public class EbPartnerShipLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName149.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes149, parameterTypes)) {
+		if (_methodName165.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes165, parameterTypes)) {
 			EbPartnerShipLocalServiceUtil.addEbPartnerShipResources((org.oep.core.dossiermgt.model.EbPartnerShip)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -364,8 +364,8 @@ public class EbPartnerShipLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName150.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes150, parameterTypes)) {
+		if (_methodName166.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes166, parameterTypes)) {
 			EbPartnerShipLocalServiceUtil.addEbPartnerShipResources(((Long)arguments[0]).longValue(),
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -374,30 +374,30 @@ public class EbPartnerShipLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName152.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes152, parameterTypes)) {
+		if (_methodName168.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes168, parameterTypes)) {
 			return EbPartnerShipLocalServiceUtil.findByLikeName((java.lang.String)arguments[0],
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[3]);
 		}
 
-		if (_methodName153.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes153, parameterTypes)) {
+		if (_methodName169.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes169, parameterTypes)) {
 			return EbPartnerShipLocalServiceUtil.countByLikeName((java.lang.String)arguments[0],
 				(com.liferay.portal.service.ServiceContext)arguments[1]);
 		}
 
-		if (_methodName154.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes154, parameterTypes)) {
+		if (_methodName170.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes170, parameterTypes)) {
 			return EbPartnerShipLocalServiceUtil.findByGroupLikeName((java.lang.String)arguments[0],
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[3]);
 		}
 
-		if (_methodName155.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes155, parameterTypes)) {
+		if (_methodName171.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes171, parameterTypes)) {
 			return EbPartnerShipLocalServiceUtil.countByGroupLikeName((java.lang.String)arguments[0],
 				(com.liferay.portal.service.ServiceContext)arguments[1]);
 		}
@@ -437,34 +437,34 @@ public class EbPartnerShipLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName136;
-	private String[] _methodParameterTypes136;
-	private String _methodName137;
-	private String[] _methodParameterTypes137;
-	private String _methodName142;
-	private String[] _methodParameterTypes142;
-	private String _methodName143;
-	private String[] _methodParameterTypes143;
-	private String _methodName144;
-	private String[] _methodParameterTypes144;
-	private String _methodName145;
-	private String[] _methodParameterTypes145;
-	private String _methodName146;
-	private String[] _methodParameterTypes146;
-	private String _methodName147;
-	private String[] _methodParameterTypes147;
-	private String _methodName148;
-	private String[] _methodParameterTypes148;
-	private String _methodName149;
-	private String[] _methodParameterTypes149;
-	private String _methodName150;
-	private String[] _methodParameterTypes150;
 	private String _methodName152;
 	private String[] _methodParameterTypes152;
 	private String _methodName153;
 	private String[] _methodParameterTypes153;
-	private String _methodName154;
-	private String[] _methodParameterTypes154;
-	private String _methodName155;
-	private String[] _methodParameterTypes155;
+	private String _methodName158;
+	private String[] _methodParameterTypes158;
+	private String _methodName159;
+	private String[] _methodParameterTypes159;
+	private String _methodName160;
+	private String[] _methodParameterTypes160;
+	private String _methodName161;
+	private String[] _methodParameterTypes161;
+	private String _methodName162;
+	private String[] _methodParameterTypes162;
+	private String _methodName163;
+	private String[] _methodParameterTypes163;
+	private String _methodName164;
+	private String[] _methodParameterTypes164;
+	private String _methodName165;
+	private String[] _methodParameterTypes165;
+	private String _methodName166;
+	private String[] _methodParameterTypes166;
+	private String _methodName168;
+	private String[] _methodParameterTypes168;
+	private String _methodName169;
+	private String[] _methodParameterTypes169;
+	private String _methodName170;
+	private String[] _methodParameterTypes170;
+	private String _methodName171;
+	private String[] _methodParameterTypes171;
 }

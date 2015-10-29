@@ -420,36 +420,68 @@ public class DossierDocLocalServiceUtil {
 	}
 
 	/**
-	* Add dossier doc
+	* ThÃƒÂªm mÃ¡Â»â€ºi thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
 	*
-	* @param
-	* @return: new dossier doc
+	* @param dossierProcId mÃƒÂ£ thÃ¡Â»Â§ tÃ¡Â»Â¥c hÃƒÂ nh chÃƒÂ­nh
+	* @param dossierDocNo mÃƒÂ£ Ã„â€˜Ã¡Â»â€¹nh danh thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
+	* @param dossierDocName tÃƒÂªn thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
+	* @param note ghi chÃƒÂº
+	* @param sequenceNo sÃ¡Â»â€˜ thÃ¡Â»Â© tÃ¡Â»Â± thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
+	* @param defaultDocTemplateId biÃ¡Â»Æ’u mÃ¡ÂºÂ«u ngÃ¡ÂºÂ§m Ã„â€˜Ã¡Â»â€¹nh cÃ¡Â»Â§a hÃ¡Â»â€œ sÃ†Â¡
+	* @param dossierDocType loÃ¡ÂºÂ¡i thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
+	* @param numberOfFile sÃ¡Â»â€˜ lÃ†Â°Ã¡Â»Â£ng tÃƒÂ i liÃ¡Â»â€¡u tÃ¡Â»â€˜i Ã„â€˜a
+	* @param splitSubDossier cÃ¡Â»ï¿½ Ã„â€˜ÃƒÂ¡nh dÃ¡ÂºÂ¥u phÃƒÂ¢n thÃƒÂ nh hÃ¡Â»â€œ sÃ†Â¡ con
+	* @param onlineForm thÃƒÂ nh phÃ¡ÂºÂ§n khai trÃ¡Â»Â±c tuyÃ¡ÂºÂ¿n
+	* @return: thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡ mÃ¡Â»â€ºi tÃ¡ÂºÂ¡o
 	*/
 	public static org.oep.core.dossiermgt.model.DossierDoc addDossierDoc(
 		long dossierProcId, java.lang.String dossierDocNo,
 		java.lang.String dossierDocName, java.lang.String note, int sequenceNo,
-		long defaultDocTemplateId, int validationType, int numberOfFile,
+		long defaultDocTemplateId, int dossierDocType, int numberOfFile,
 		java.lang.String onlineForm,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .addDossierDoc(dossierProcId, dossierDocNo, dossierDocName,
-			note, sequenceNo, defaultDocTemplateId, validationType,
+			note, sequenceNo, defaultDocTemplateId, dossierDocType,
 			numberOfFile, onlineForm, serviceContext);
 	}
 
+	/**
+	* ChÃ¡Â»â€°nh sÃ¡Â»Â­a thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
+	*
+	* @param id mÃƒÂ£ thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
+	* @param dossierProcId mÃƒÂ£ thÃ¡Â»Â§ tÃ¡Â»Â¥c hÃƒÂ nh chÃƒÂ­nh
+	* @param dossierDocNo mÃƒÂ£ Ã„â€˜Ã¡Â»â€¹nh danh thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
+	* @param dossierDocName tÃƒÂªn thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
+	* @param note ghi chÃƒÂº
+	* @param sequenceNo sÃ¡Â»â€˜ thÃ¡Â»Â© tÃ¡Â»Â± thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
+	* @param defaultDocTemplateId biÃ¡Â»Æ’u mÃ¡ÂºÂ«u ngÃ¡ÂºÂ§m Ã„â€˜Ã¡Â»â€¹nh cÃ¡Â»Â§a hÃ¡Â»â€œ sÃ†Â¡
+	* @param dossierDocType loÃ¡ÂºÂ¡i thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡
+	* @param numberOfFile sÃ¡Â»â€˜ lÃ†Â°Ã¡Â»Â£ng tÃƒÂ i liÃ¡Â»â€¡u tÃ¡Â»â€˜i Ã„â€˜a
+	* @param splitSubDossier cÃ¡Â»ï¿½ Ã„â€˜ÃƒÂ¡nh dÃ¡ÂºÂ¥u phÃƒÂ¢n thÃƒÂ nh hÃ¡Â»â€œ sÃ†Â¡ con
+	* @param onlineForm thÃƒÂ nh phÃ¡ÂºÂ§n khai trÃ¡Â»Â±c tuyÃ¡ÂºÂ¿n
+	* @return: thÃƒÂ nh phÃ¡ÂºÂ§n hÃ¡Â»â€œ sÃ†Â¡ mÃ¡Â»â€ºi tÃ¡ÂºÂ¡o
+	*/
 	public static org.oep.core.dossiermgt.model.DossierDoc updateDossierDoc(
 		long id, long dossierProcId, java.lang.String dossierDocNo,
 		java.lang.String dossierDocName, java.lang.String note, int sequenceNo,
-		long defaultDocTemplateId, int validationType, int numberOfFile,
+		long defaultDocTemplateId, int dossierDocType, int numberOfFile,
 		java.lang.String onlineForm,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -457,7 +489,7 @@ public class DossierDocLocalServiceUtil {
 		return getService()
 				   .updateDossierDoc(id, dossierProcId, dossierDocNo,
 			dossierDocName, note, sequenceNo, defaultDocTemplateId,
-			validationType, numberOfFile, onlineForm, serviceContext);
+			dossierDocType, numberOfFile, onlineForm, serviceContext);
 	}
 
 	public static void updateDossierDocResources(

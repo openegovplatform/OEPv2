@@ -311,17 +311,20 @@ public interface DocFileVersionLocalService extends BaseLocalService,
 		throws java.lang.Throwable;
 
 	/**
-	* Add doc file version
+	* ThÃªm má»™t phiÃªn báº£n tÃ i liá»‡u má»›i
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    Táº¡o má»›i
 	*
-	* @param
-	* @return: new doc file version
+	* @param docFileId mÃ£ tÃ i liá»‡u
+	* @param fileEntryId mÃ£ tá»‡p tÃ i liá»‡u lÆ°u trá»¯ trÃªn liferay
+	* @param xmlContent ná»™i dung cá»§a tá»‡p tÃ i liá»‡u phiÃªn báº£n má»›i
+	* @param ebMessageId Ä‘Ã¡nh dáº¥u Ä‘Ã£ submit dá»¯ liá»‡u nÃ y
+	* @return: phiÃªn báº£n má»›i cá»§a tÃ i liá»‡u
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.DocFileVersion addDocFileVersion(
@@ -331,6 +334,22 @@ public interface DocFileVersionLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Chá»‰nh sá»­a má»™t phiÃªn báº£n tÃ i liá»‡u má»›i
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param docFileId mÃ£ tÃ i liá»‡u
+	* @param fileEntryId mÃ£ tá»‡p tÃ i liá»‡u lÆ°u trá»¯ trÃªn liferay
+	* @param xmlContent ná»™i dung cá»§a tá»‡p tÃ i liá»‡u phiÃªn báº£n má»›i
+	* @param ebMessageId Ä‘Ã¡nh dáº¥u Ä‘Ã£ submit dá»¯ liá»‡u nÃ y
+	* @return: phiÃªn báº£n tÃ i liá»‡u vá»«a Ä‘Æ°á»£c chá»‰nh sá»­a
+	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.DocFileVersion updateDocFileVersion(
 		long id, long docFileId, long fileEntryId, java.lang.String xmlContent,

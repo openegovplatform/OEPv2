@@ -300,32 +300,8 @@ public interface DossierProcLocalService extends BaseLocalService,
 		java.lang.String recordsDescription, java.lang.String feeDescription,
 		java.lang.String instructionsDescription,
 		java.lang.String administrationNo, java.lang.String domainNo,
-		java.util.Date effectDate, java.util.Date expireDate, int active,
-		com.liferay.portal.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException;
-
-	/**
-	* ThÃªm má»›i má»™t thá»§ tá»¥c hÃ nh chÃ­nh cÃ´ng
-	*
-	* Version: OEP 2.0
-	*
-	* History:
-	*   DATE        AUTHOR      DESCRIPTION
-	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Táº¡o má»›i thá»§ tá»¥c hÃ nh chÃ­nh
-	*
-	* @param dossierProcNo mÃ£ thá»§ tá»¥c hÃ nh chÃ­nh
-	* @param name tÃªn thá»§ tá»¥c hÃ nh chÃ­nh
-	* @param administrationNo Cáº¥p quáº£n lÃ½
-	* @param domainNo Ä�Æ¡n vá»‹ quáº£n lÃ½
-	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
-	* @return: Ä‘á»‘i tÆ°á»£ng thá»§ tá»¥c hÃ nh chÃ­nh má»›i Ä‘Æ°á»£c thÃªm vÃ o
-	*/
-	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
-	public org.oep.core.dossiermgt.model.DossierProc addDossierProc(
-		long userId, java.lang.String dossierProcNo, java.lang.String name,
-		java.lang.String administrationNo, java.lang.String domainNo,
+		int forCitizen, int forBusiness, java.util.Date effectDate,
+		java.util.Date expireDate, int statusActive,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
@@ -377,7 +353,8 @@ public interface DossierProcLocalService extends BaseLocalService,
 		java.lang.String recordsDescription, java.lang.String feeDescription,
 		java.lang.String instructionsDescription,
 		java.lang.String administrationNo, java.lang.String domainNo,
-		java.util.Date effectDate, java.util.Date expireDate, int active,
+		int forCitizen, int forBusiness, java.util.Date effectDate,
+		java.util.Date expireDate, int statusActive,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
@@ -597,12 +574,14 @@ public interface DossierProcLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	public java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByGroupCustomCondition(
-		java.lang.String name, java.util.Date effectDate,
+		java.lang.String name, java.lang.String administrationNo,
+		java.lang.String domainNo, java.util.Date effectDate,
 		java.util.Date expireDate, int active, int startIndex, int endIndex,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	public int countByGroupCustomCondition(java.lang.String name,
+		java.lang.String administrationNo, java.lang.String domainNo,
 		java.util.Date effectDate, java.util.Date expireDate, int active,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.SystemException;

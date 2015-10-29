@@ -72,26 +72,34 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 		attributes.put("wardNo", getWardNo());
 		attributes.put("wardName", getWardName());
 		attributes.put("telNo", getTelNo());
+		attributes.put("email", getEmail());
+		attributes.put("subjectAsContactPerson", getSubjectAsContactPerson());
 		attributes.put("contactPersonName", getContactPersonName());
+		attributes.put("contactPersonId", getContactPersonId());
+		attributes.put("contactPersonSex", getContactPersonSex());
 		attributes.put("contactPersonTel", getContactPersonTel());
 		attributes.put("note", getNote());
 		attributes.put("resumeDescription", getResumeDescription());
 		attributes.put("receptionNo", getReceptionNo());
+		attributes.put("onegate", getOnegate());
 		attributes.put("submitDate", getSubmitDate());
 		attributes.put("receiveDate", getReceiveDate());
+		attributes.put("processDate", getProcessDate());
 		attributes.put("renewDate", getRenewDate());
 		attributes.put("estimateDate", getEstimateDate());
 		attributes.put("finishDate", getFinishDate());
+		attributes.put("handoverDate", getHandoverDate());
 		attributes.put("returnDate", getReturnDate());
-		attributes.put("status", getStatus());
+		attributes.put("archiveDate", getArchiveDate());
+		attributes.put("mainStatus", getMainStatus());
+		attributes.put("subStatus", getSubStatus());
 		attributes.put("statusDate", getStatusDate());
 		attributes.put("statusDescription", getStatusDescription());
 		attributes.put("feedbackNote", getFeedbackNote());
 		attributes.put("daysDelay", getDaysDelay());
-		attributes.put("closeDate", getCloseDate());
 		attributes.put("errorStatus", getErrorStatus());
-		attributes.put("pendingStatus", getPendingStatus());
 		attributes.put("errorCode", getErrorCode());
+		attributes.put("pendingStatus", getPendingStatus());
 		attributes.put("dirty", getDirty());
 
 		return attributes;
@@ -231,10 +239,35 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 			setTelNo(telNo);
 		}
 
+		String email = (String)attributes.get("email");
+
+		if (email != null) {
+			setEmail(email);
+		}
+
+		Integer subjectAsContactPerson = (Integer)attributes.get(
+				"subjectAsContactPerson");
+
+		if (subjectAsContactPerson != null) {
+			setSubjectAsContactPerson(subjectAsContactPerson);
+		}
+
 		String contactPersonName = (String)attributes.get("contactPersonName");
 
 		if (contactPersonName != null) {
 			setContactPersonName(contactPersonName);
+		}
+
+		String contactPersonId = (String)attributes.get("contactPersonId");
+
+		if (contactPersonId != null) {
+			setContactPersonId(contactPersonId);
+		}
+
+		Integer contactPersonSex = (Integer)attributes.get("contactPersonSex");
+
+		if (contactPersonSex != null) {
+			setContactPersonSex(contactPersonSex);
 		}
 
 		String contactPersonTel = (String)attributes.get("contactPersonTel");
@@ -261,6 +294,12 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 			setReceptionNo(receptionNo);
 		}
 
+		Integer onegate = (Integer)attributes.get("onegate");
+
+		if (onegate != null) {
+			setOnegate(onegate);
+		}
+
 		Date submitDate = (Date)attributes.get("submitDate");
 
 		if (submitDate != null) {
@@ -271,6 +310,12 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 
 		if (receiveDate != null) {
 			setReceiveDate(receiveDate);
+		}
+
+		Date processDate = (Date)attributes.get("processDate");
+
+		if (processDate != null) {
+			setProcessDate(processDate);
 		}
 
 		Date renewDate = (Date)attributes.get("renewDate");
@@ -291,16 +336,34 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 			setFinishDate(finishDate);
 		}
 
+		Date handoverDate = (Date)attributes.get("handoverDate");
+
+		if (handoverDate != null) {
+			setHandoverDate(handoverDate);
+		}
+
 		Date returnDate = (Date)attributes.get("returnDate");
 
 		if (returnDate != null) {
 			setReturnDate(returnDate);
 		}
 
-		String status = (String)attributes.get("status");
+		Date archiveDate = (Date)attributes.get("archiveDate");
 
-		if (status != null) {
-			setStatus(status);
+		if (archiveDate != null) {
+			setArchiveDate(archiveDate);
+		}
+
+		String mainStatus = (String)attributes.get("mainStatus");
+
+		if (mainStatus != null) {
+			setMainStatus(mainStatus);
+		}
+
+		String subStatus = (String)attributes.get("subStatus");
+
+		if (subStatus != null) {
+			setSubStatus(subStatus);
 		}
 
 		Date statusDate = (Date)attributes.get("statusDate");
@@ -327,28 +390,22 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 			setDaysDelay(daysDelay);
 		}
 
-		Date closeDate = (Date)attributes.get("closeDate");
-
-		if (closeDate != null) {
-			setCloseDate(closeDate);
-		}
-
 		String errorStatus = (String)attributes.get("errorStatus");
 
 		if (errorStatus != null) {
 			setErrorStatus(errorStatus);
 		}
 
-		Integer pendingStatus = (Integer)attributes.get("pendingStatus");
-
-		if (pendingStatus != null) {
-			setPendingStatus(pendingStatus);
-		}
-
 		String errorCode = (String)attributes.get("errorCode");
 
 		if (errorCode != null) {
 			setErrorCode(errorCode);
+		}
+
+		Integer pendingStatus = (Integer)attributes.get("pendingStatus");
+
+		if (pendingStatus != null) {
+			setPendingStatus(pendingStatus);
 		}
 
 		Integer dirty = (Integer)attributes.get("dirty");
@@ -841,6 +898,46 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	}
 
 	/**
+	* Returns the email of this dossier.
+	*
+	* @return the email of this dossier
+	*/
+	@Override
+	public java.lang.String getEmail() {
+		return _dossier.getEmail();
+	}
+
+	/**
+	* Sets the email of this dossier.
+	*
+	* @param email the email of this dossier
+	*/
+	@Override
+	public void setEmail(java.lang.String email) {
+		_dossier.setEmail(email);
+	}
+
+	/**
+	* Returns the subject as contact person of this dossier.
+	*
+	* @return the subject as contact person of this dossier
+	*/
+	@Override
+	public int getSubjectAsContactPerson() {
+		return _dossier.getSubjectAsContactPerson();
+	}
+
+	/**
+	* Sets the subject as contact person of this dossier.
+	*
+	* @param subjectAsContactPerson the subject as contact person of this dossier
+	*/
+	@Override
+	public void setSubjectAsContactPerson(int subjectAsContactPerson) {
+		_dossier.setSubjectAsContactPerson(subjectAsContactPerson);
+	}
+
+	/**
 	* Returns the contact person name of this dossier.
 	*
 	* @return the contact person name of this dossier
@@ -858,6 +955,46 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	@Override
 	public void setContactPersonName(java.lang.String contactPersonName) {
 		_dossier.setContactPersonName(contactPersonName);
+	}
+
+	/**
+	* Returns the contact person ID of this dossier.
+	*
+	* @return the contact person ID of this dossier
+	*/
+	@Override
+	public java.lang.String getContactPersonId() {
+		return _dossier.getContactPersonId();
+	}
+
+	/**
+	* Sets the contact person ID of this dossier.
+	*
+	* @param contactPersonId the contact person ID of this dossier
+	*/
+	@Override
+	public void setContactPersonId(java.lang.String contactPersonId) {
+		_dossier.setContactPersonId(contactPersonId);
+	}
+
+	/**
+	* Returns the contact person sex of this dossier.
+	*
+	* @return the contact person sex of this dossier
+	*/
+	@Override
+	public int getContactPersonSex() {
+		return _dossier.getContactPersonSex();
+	}
+
+	/**
+	* Sets the contact person sex of this dossier.
+	*
+	* @param contactPersonSex the contact person sex of this dossier
+	*/
+	@Override
+	public void setContactPersonSex(int contactPersonSex) {
+		_dossier.setContactPersonSex(contactPersonSex);
 	}
 
 	/**
@@ -941,6 +1078,26 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	}
 
 	/**
+	* Returns the onegate of this dossier.
+	*
+	* @return the onegate of this dossier
+	*/
+	@Override
+	public int getOnegate() {
+		return _dossier.getOnegate();
+	}
+
+	/**
+	* Sets the onegate of this dossier.
+	*
+	* @param onegate the onegate of this dossier
+	*/
+	@Override
+	public void setOnegate(int onegate) {
+		_dossier.setOnegate(onegate);
+	}
+
+	/**
 	* Returns the submit date of this dossier.
 	*
 	* @return the submit date of this dossier
@@ -978,6 +1135,26 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	@Override
 	public void setReceiveDate(java.util.Date receiveDate) {
 		_dossier.setReceiveDate(receiveDate);
+	}
+
+	/**
+	* Returns the process date of this dossier.
+	*
+	* @return the process date of this dossier
+	*/
+	@Override
+	public java.util.Date getProcessDate() {
+		return _dossier.getProcessDate();
+	}
+
+	/**
+	* Sets the process date of this dossier.
+	*
+	* @param processDate the process date of this dossier
+	*/
+	@Override
+	public void setProcessDate(java.util.Date processDate) {
+		_dossier.setProcessDate(processDate);
 	}
 
 	/**
@@ -1041,6 +1218,26 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	}
 
 	/**
+	* Returns the handover date of this dossier.
+	*
+	* @return the handover date of this dossier
+	*/
+	@Override
+	public java.util.Date getHandoverDate() {
+		return _dossier.getHandoverDate();
+	}
+
+	/**
+	* Sets the handover date of this dossier.
+	*
+	* @param handoverDate the handover date of this dossier
+	*/
+	@Override
+	public void setHandoverDate(java.util.Date handoverDate) {
+		_dossier.setHandoverDate(handoverDate);
+	}
+
+	/**
 	* Returns the return date of this dossier.
 	*
 	* @return the return date of this dossier
@@ -1061,23 +1258,63 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	}
 
 	/**
-	* Returns the status of this dossier.
+	* Returns the archive date of this dossier.
 	*
-	* @return the status of this dossier
+	* @return the archive date of this dossier
 	*/
 	@Override
-	public java.lang.String getStatus() {
-		return _dossier.getStatus();
+	public java.util.Date getArchiveDate() {
+		return _dossier.getArchiveDate();
 	}
 
 	/**
-	* Sets the status of this dossier.
+	* Sets the archive date of this dossier.
 	*
-	* @param status the status of this dossier
+	* @param archiveDate the archive date of this dossier
 	*/
 	@Override
-	public void setStatus(java.lang.String status) {
-		_dossier.setStatus(status);
+	public void setArchiveDate(java.util.Date archiveDate) {
+		_dossier.setArchiveDate(archiveDate);
+	}
+
+	/**
+	* Returns the main status of this dossier.
+	*
+	* @return the main status of this dossier
+	*/
+	@Override
+	public java.lang.String getMainStatus() {
+		return _dossier.getMainStatus();
+	}
+
+	/**
+	* Sets the main status of this dossier.
+	*
+	* @param mainStatus the main status of this dossier
+	*/
+	@Override
+	public void setMainStatus(java.lang.String mainStatus) {
+		_dossier.setMainStatus(mainStatus);
+	}
+
+	/**
+	* Returns the sub status of this dossier.
+	*
+	* @return the sub status of this dossier
+	*/
+	@Override
+	public java.lang.String getSubStatus() {
+		return _dossier.getSubStatus();
+	}
+
+	/**
+	* Sets the sub status of this dossier.
+	*
+	* @param subStatus the sub status of this dossier
+	*/
+	@Override
+	public void setSubStatus(java.lang.String subStatus) {
+		_dossier.setSubStatus(subStatus);
 	}
 
 	/**
@@ -1161,26 +1398,6 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	}
 
 	/**
-	* Returns the close date of this dossier.
-	*
-	* @return the close date of this dossier
-	*/
-	@Override
-	public java.util.Date getCloseDate() {
-		return _dossier.getCloseDate();
-	}
-
-	/**
-	* Sets the close date of this dossier.
-	*
-	* @param closeDate the close date of this dossier
-	*/
-	@Override
-	public void setCloseDate(java.util.Date closeDate) {
-		_dossier.setCloseDate(closeDate);
-	}
-
-	/**
 	* Returns the error status of this dossier.
 	*
 	* @return the error status of this dossier
@@ -1201,26 +1418,6 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	}
 
 	/**
-	* Returns the pending status of this dossier.
-	*
-	* @return the pending status of this dossier
-	*/
-	@Override
-	public int getPendingStatus() {
-		return _dossier.getPendingStatus();
-	}
-
-	/**
-	* Sets the pending status of this dossier.
-	*
-	* @param pendingStatus the pending status of this dossier
-	*/
-	@Override
-	public void setPendingStatus(int pendingStatus) {
-		_dossier.setPendingStatus(pendingStatus);
-	}
-
-	/**
 	* Returns the error code of this dossier.
 	*
 	* @return the error code of this dossier
@@ -1238,6 +1435,26 @@ public class DossierWrapper implements Dossier, ModelWrapper<Dossier> {
 	@Override
 	public void setErrorCode(java.lang.String errorCode) {
 		_dossier.setErrorCode(errorCode);
+	}
+
+	/**
+	* Returns the pending status of this dossier.
+	*
+	* @return the pending status of this dossier
+	*/
+	@Override
+	public int getPendingStatus() {
+		return _dossier.getPendingStatus();
+	}
+
+	/**
+	* Sets the pending status of this dossier.
+	*
+	* @param pendingStatus the pending status of this dossier
+	*/
+	@Override
+	public void setPendingStatus(int pendingStatus) {
+		_dossier.setPendingStatus(pendingStatus);
 	}
 
 	/**

@@ -253,4 +253,126 @@ public interface StatisticByAgencyLocalService extends BaseLocalService,
 	public java.lang.Object invokeMethod(java.lang.String name,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;
+
+	/**
+	* ThÃªm má»›i má»™t thá»‘ng kÃª há»“ sÆ¡ theo cÆ¡ quan xá»­ lÃ½
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param month thÃ¡ng thá»‘ng kÃª
+	* @param year nÄƒm thá»‘ng kÃª
+	* @param govAgencyId mÃ£ cÆ¡ quan xá»­ lÃ½
+	* @param receiveNumber sá»‘ há»“ sÆ¡ Ä‘Æ°á»£c tiáº¿p nháº­n
+	* @param onlineNumber sá»‘ há»“ sÆ¡ trá»±c tuyáº¿n
+	* @param onlineRatio tá»‰ lá»‡ há»“ sÆ¡ trá»±c tuyáº¿n
+	* @param finishNumber sá»‘ há»“ sÆ¡ Ä‘Æ°á»£c hoÃ n thÃ nh
+	* @param ontimeNumber sá»‘ há»“ sÆ¡ hoÃ n thÃ nh Ä‘Ãºng háº¹n
+	* @param ontimeRatio tá»‰ lá»‡ há»“ sÆ¡ hoÃ n thÃ nh Ä‘Ãºng háº¹n
+	* @param delayDaysAvg sá»‘ ngÃ y trá»… háº¹n trung bÃ¬nh
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return: thá»‘ng kÃª há»“ sÆ¡ má»›i Ä‘Æ°á»£c táº¡o
+	*/
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.dossiermgt.model.StatisticByAgency addStatisticByAgency(
+		int month, int year, java.lang.String govAgencyId, int receiveNumber,
+		int onlineNumber, double onlineRatio, int finishNumber,
+		int ontimeNumber, double ontimeRatio, double delayDaysAvg,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Cáº­p nháº­t thÃ´ng tin thá»‘ng kÃª theo cÆ¡ quan xá»­ lÃ½
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Cáº­p nháº­t thÃ´ng tin thá»‘ng kÃª theo cÆ¡ quan xá»­ lÃ½
+	*
+	* @param id mÃ£ phÃ¢n biá»‡t cá»§a thá»‘ng kÃª theo ngÃ y
+	* @param month thÃ¡ng thá»‘ng kÃª
+	* @param year nÄƒm thá»‘ng kÃª
+	* @param govAgencyId cÆ¡ quan xá»­ lÃ½
+	* @param receiveNumber sá»‘ há»“ sÆ¡ Ä‘Æ°á»£c tiáº¿p nháº­n
+	* @param onlineNumber sá»‘ há»“ sÆ¡ trá»±c tuyáº¿n
+	* @param onlineRatio tá»‰ lá»‡ há»“ sÆ¡ trá»±c tuyáº¿n
+	* @param finishNumber sá»‘ há»“ sÆ¡ Ä‘Æ°á»£c hoÃ n thÃ nh
+	* @param ontimeNumber sá»‘ há»“ sÆ¡ hoÃ n thÃ nh Ä‘Ãºng háº¹n
+	* @param ontimeRatio tá»‰ lá»‡ há»“ sÆ¡ hoÃ n thÃ nh Ä‘Ãºng háº¹n
+	* @param delayDaysAvg sá»‘ ngÃ y trá»… háº¹n trung bÃ¬nh
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return: Ä‘á»‘i tÆ°á»£ng thá»‘ng kÃª theo ngÃ y má»›i Ä‘Æ°á»£c cáº­p nháº­t thÃ´ng tin
+	*/
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.dossiermgt.model.StatisticByAgency updateStatisticByAgency(
+		long id, int month, int year, java.lang.String govAgencyId,
+		long receiveNumber, long onlineNumber, double onlineRatio,
+		int finishNumber, int ontimeNumber, double ontimeRatio,
+		double delayDaysAvg,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Cáº­p nháº­t thÃ´ng tin má»™t thá»‘ng kÃª há»“ sÆ¡
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Cáº­p nháº­t thÃ´ng tin thá»‘ng kÃª há»“ sÆ¡
+	*
+	* @param statisticByAgency thá»‘ng kÃª há»“ sÆ¡ theo cÆ¡ quan xá»­ lÃ½
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return: Ä‘á»‘i tÆ°á»£ng thá»‘ng kÃª há»“ sÆ¡ theo ngÃ y má»›i Ä‘Æ°á»£c cáº­p nháº­t thÃ´ng tin
+	*/
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.dossiermgt.model.StatisticByAgency updateStatisticByAgency(
+		org.oep.core.dossiermgt.model.StatisticByAgency statisticByAgency,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* XÃ³a bá»� thÃ´ng tin má»™t thá»‘ng kÃª theo ngÃ y
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    XÃ³a bá»� thÃ´ng tin thá»‘ng kÃª theo ngÃ y
+	*
+	* @param statisticByAgency thá»‘ng kÃª theo ngÃ y Ä‘Æ°á»£c xÃ³a
+	* @return
+	*/
+	public void removeStatisticByAgency(
+		org.oep.core.dossiermgt.model.StatisticByAgency statisticByAgency)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* XÃ³a bá»� thÃ´ng tin má»™t thá»‘ng kÃª theo ngÃ y
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    XÃ³a bá»� thÃ´ng tin thá»‘ng kÃª theo ngÃ y
+	*
+	* @param id mÃ£ phÃ¢n biá»‡t thá»‘ng kÃª theo ngÃ y
+	* @return
+	*/
+	public void removeStatisticByAgency(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
 }

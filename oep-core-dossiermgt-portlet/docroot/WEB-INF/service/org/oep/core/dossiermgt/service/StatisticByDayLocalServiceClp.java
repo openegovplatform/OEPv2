@@ -114,6 +114,38 @@ public class StatisticByDayLocalServiceClp implements StatisticByDayLocalService
 		_methodName17 = "setBeanIdentifier";
 
 		_methodParameterTypes17 = new String[] { "java.lang.String" };
+
+		_methodName19 = "addStatisticByDay";
+
+		_methodParameterTypes19 = new String[] {
+				"java.util.Date", "int", "int", "int", "double", "int", "int",
+				"double", "double", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName20 = "updateStatisticByDay";
+
+		_methodParameterTypes20 = new String[] {
+				"long", "java.util.Date", "int", "long", "long", "double", "int",
+				"int", "double", "double",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName21 = "updateStatisticByDay";
+
+		_methodParameterTypes21 = new String[] {
+				"org.oep.core.dossiermgt.model.StatisticByDay",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName22 = "removeStatisticByDay";
+
+		_methodParameterTypes22 = new String[] {
+				"org.oep.core.dossiermgt.model.StatisticByDay"
+			};
+
+		_methodName23 = "removeStatisticByDay";
+
+		_methodParameterTypes23 = new String[] { "long" };
 	}
 
 	@Override
@@ -666,6 +698,225 @@ public class StatisticByDayLocalServiceClp implements StatisticByDayLocalService
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public org.oep.core.dossiermgt.model.StatisticByDay addStatisticByDay(
+		java.util.Date statisticDate, int statisticWeek, int receiveNumber,
+		int onlineNumber, double onlineRatio, int finishNumber,
+		int ontimeNumber, double ontimeRatio, double delayDaysAvg,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName19,
+					_methodParameterTypes19,
+					new Object[] {
+						ClpSerializer.translateInput(statisticDate),
+						
+					statisticWeek,
+						
+					receiveNumber,
+						
+					onlineNumber,
+						
+					onlineRatio,
+						
+					finishNumber,
+						
+					ontimeNumber,
+						
+					ontimeRatio,
+						
+					delayDaysAvg,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.dossiermgt.model.StatisticByDay)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.StatisticByDay updateStatisticByDay(
+		long id, java.util.Date statisticDate, int statisticWeek,
+		long receiveNumber, long onlineNumber, double onlineRatio,
+		int finishNumber, int ontimeNumber, double ontimeRatio,
+		double delayDaysAvg,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName20,
+					_methodParameterTypes20,
+					new Object[] {
+						id,
+						
+					ClpSerializer.translateInput(statisticDate),
+						
+					statisticWeek,
+						
+					receiveNumber,
+						
+					onlineNumber,
+						
+					onlineRatio,
+						
+					finishNumber,
+						
+					ontimeNumber,
+						
+					ontimeRatio,
+						
+					delayDaysAvg,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.dossiermgt.model.StatisticByDay)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public org.oep.core.dossiermgt.model.StatisticByDay updateStatisticByDay(
+		org.oep.core.dossiermgt.model.StatisticByDay statisticByDay,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName21,
+					_methodParameterTypes21,
+					new Object[] {
+						ClpSerializer.translateInput(statisticByDay),
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.core.dossiermgt.model.StatisticByDay)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public void removeStatisticByDay(
+		org.oep.core.dossiermgt.model.StatisticByDay statisticByDay)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName22,
+				_methodParameterTypes22,
+				new Object[] { ClpSerializer.translateInput(statisticByDay) });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void removeStatisticByDay(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName23,
+				_methodParameterTypes23, new Object[] { id });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
 	private InvokableLocalService _invokableLocalService;
 	private String _methodName0;
 	private String[] _methodParameterTypes0;
@@ -703,4 +954,14 @@ public class StatisticByDayLocalServiceClp implements StatisticByDayLocalService
 	private String[] _methodParameterTypes16;
 	private String _methodName17;
 	private String[] _methodParameterTypes17;
+	private String _methodName19;
+	private String[] _methodParameterTypes19;
+	private String _methodName20;
+	private String[] _methodParameterTypes20;
+	private String _methodName21;
+	private String[] _methodParameterTypes21;
+	private String _methodName22;
+	private String[] _methodParameterTypes22;
+	private String _methodName23;
+	private String[] _methodParameterTypes23;
 }

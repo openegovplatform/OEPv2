@@ -370,33 +370,65 @@ public interface DossierDocLocalService extends BaseLocalService,
 		throws java.lang.Throwable;
 
 	/**
-	* Add dossier doc
+	* ThÃªm má»›i thÃ nh pháº§n há»“ sÆ¡
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    Táº¡o má»›i
 	*
-	* @param
-	* @return: new dossier doc
+	* @param dossierProcId mÃ£ thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param dossierDocNo mÃ£ Ä‘á»‹nh danh thÃ nh pháº§n há»“ sÆ¡
+	* @param dossierDocName tÃªn thÃ nh pháº§n há»“ sÆ¡
+	* @param note ghi chÃº
+	* @param sequenceNo sá»‘ thá»© tá»± thÃ nh pháº§n há»“ sÆ¡
+	* @param defaultDocTemplateId biá»ƒu máº«u ngáº§m Ä‘á»‹nh cá»§a há»“ sÆ¡
+	* @param dossierDocType loáº¡i thÃ nh pháº§n há»“ sÆ¡
+	* @param numberOfFile sá»‘ lÆ°á»£ng tÃ i liá»‡u tá»‘i Ä‘a
+	* @param splitSubDossier cá»� Ä‘Ã¡nh dáº¥u phÃ¢n thÃ nh há»“ sÆ¡ con
+	* @param onlineForm thÃ nh pháº§n khai trá»±c tuyáº¿n
+	* @return: thÃ nh pháº§n há»“ sÆ¡ má»›i táº¡o
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.DossierDoc addDossierDoc(
 		long dossierProcId, java.lang.String dossierDocNo,
 		java.lang.String dossierDocName, java.lang.String note, int sequenceNo,
-		long defaultDocTemplateId, int validationType, int numberOfFile,
+		long defaultDocTemplateId, int dossierDocType, int numberOfFile,
 		java.lang.String onlineForm,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Chá»‰nh sá»­a thÃ nh pháº§n há»“ sÆ¡
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param id mÃ£ thÃ nh pháº§n há»“ sÆ¡
+	* @param dossierProcId mÃ£ thá»§ tá»¥c hÃ nh chÃ­nh
+	* @param dossierDocNo mÃ£ Ä‘á»‹nh danh thÃ nh pháº§n há»“ sÆ¡
+	* @param dossierDocName tÃªn thÃ nh pháº§n há»“ sÆ¡
+	* @param note ghi chÃº
+	* @param sequenceNo sá»‘ thá»© tá»± thÃ nh pháº§n há»“ sÆ¡
+	* @param defaultDocTemplateId biá»ƒu máº«u ngáº§m Ä‘á»‹nh cá»§a há»“ sÆ¡
+	* @param dossierDocType loáº¡i thÃ nh pháº§n há»“ sÆ¡
+	* @param numberOfFile sá»‘ lÆ°á»£ng tÃ i liá»‡u tá»‘i Ä‘a
+	* @param splitSubDossier cá»� Ä‘Ã¡nh dáº¥u phÃ¢n thÃ nh há»“ sÆ¡ con
+	* @param onlineForm thÃ nh pháº§n khai trá»±c tuyáº¿n
+	* @return: thÃ nh pháº§n há»“ sÆ¡ má»›i táº¡o
+	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.core.dossiermgt.model.DossierDoc updateDossierDoc(long id,
 		long dossierProcId, java.lang.String dossierDocNo,
 		java.lang.String dossierDocName, java.lang.String note, int sequenceNo,
-		long defaultDocTemplateId, int validationType, int numberOfFile,
+		long defaultDocTemplateId, int dossierDocType, int numberOfFile,
 		java.lang.String onlineForm,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,

@@ -16,7 +16,6 @@ package org.oep.core.dossiermgt.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
@@ -32,16 +31,13 @@ import com.liferay.portlet.expando.util.ExpandoBridgeFactoryUtil;
 
 import org.oep.core.dossiermgt.model.Dossier;
 import org.oep.core.dossiermgt.model.DossierModel;
-import org.oep.core.dossiermgt.model.DossierSoap;
 
 import java.io.Serializable;
 
 import java.sql.Types;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -57,7 +53,6 @@ import java.util.Map;
  * @see org.oep.core.dossiermgt.model.DossierModel
  * @generated
  */
-@JSON(strict = true)
 public class DossierModelImpl extends BaseModelImpl<Dossier>
 	implements DossierModel {
 	/*
@@ -89,29 +84,37 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			{ "wardNo", Types.VARCHAR },
 			{ "wardName", Types.VARCHAR },
 			{ "telNo", Types.VARCHAR },
+			{ "email", Types.VARCHAR },
+			{ "subjectAsContactPerson", Types.INTEGER },
 			{ "contactPersonName", Types.VARCHAR },
+			{ "contactPersonId", Types.VARCHAR },
+			{ "contactPersonSex", Types.INTEGER },
 			{ "contactPersonTel", Types.VARCHAR },
 			{ "note", Types.VARCHAR },
 			{ "resumeDescription", Types.VARCHAR },
 			{ "receptionNo", Types.VARCHAR },
+			{ "onegate", Types.INTEGER },
 			{ "submitDate", Types.TIMESTAMP },
 			{ "receiveDate", Types.TIMESTAMP },
+			{ "processDate", Types.TIMESTAMP },
 			{ "renewDate", Types.TIMESTAMP },
 			{ "estimateDate", Types.TIMESTAMP },
 			{ "finishDate", Types.TIMESTAMP },
+			{ "handoverDate", Types.TIMESTAMP },
 			{ "returnDate", Types.TIMESTAMP },
-			{ "status", Types.VARCHAR },
+			{ "archiveDate", Types.TIMESTAMP },
+			{ "mainStatus", Types.VARCHAR },
+			{ "subStatus", Types.VARCHAR },
 			{ "statusDate", Types.TIMESTAMP },
 			{ "statusDescription", Types.VARCHAR },
 			{ "feedbackNote", Types.VARCHAR },
 			{ "daysDelay", Types.INTEGER },
-			{ "closeDate", Types.TIMESTAMP },
 			{ "errorStatus", Types.VARCHAR },
-			{ "pendingStatus", Types.INTEGER },
 			{ "errorCode", Types.VARCHAR },
+			{ "pendingStatus", Types.INTEGER },
 			{ "dirty", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_dossier (uuid_ VARCHAR(75) null,dossierId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,organizationId LONG,dossierProcId LONG,govAgencyId VARCHAR(30) null,govAgencyName VARCHAR(200) null,subjectId VARCHAR(30) null,subjectType VARCHAR(30) null,subjectName VARCHAR(100) null,address VARCHAR(255) null,cityNo VARCHAR(30) null,cityName VARCHAR(100) null,districtNo VARCHAR(30) null,districtName VARCHAR(100) null,wardNo VARCHAR(30) null,wardName VARCHAR(100) null,telNo VARCHAR(30) null,contactPersonName VARCHAR(100) null,contactPersonTel VARCHAR(30) null,note VARCHAR(255) null,resumeDescription VARCHAR(255) null,receptionNo VARCHAR(30) null,submitDate DATE null,receiveDate DATE null,renewDate DATE null,estimateDate DATE null,finishDate DATE null,returnDate DATE null,status VARCHAR(30) null,statusDate DATE null,statusDescription VARCHAR(100) null,feedbackNote VARCHAR(255) null,daysDelay INTEGER,closeDate DATE null,errorStatus VARCHAR(30) null,pendingStatus INTEGER,errorCode VARCHAR(30) null,dirty INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_dossier (uuid_ VARCHAR(75) null,dossierId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,organizationId LONG,dossierProcId LONG,govAgencyId VARCHAR(30) null,govAgencyName VARCHAR(200) null,subjectId VARCHAR(30) null,subjectType VARCHAR(30) null,subjectName VARCHAR(100) null,address VARCHAR(255) null,cityNo VARCHAR(30) null,cityName VARCHAR(100) null,districtNo VARCHAR(30) null,districtName VARCHAR(100) null,wardNo VARCHAR(30) null,wardName VARCHAR(100) null,telNo VARCHAR(30) null,email VARCHAR(30) null,subjectAsContactPerson INTEGER,contactPersonName VARCHAR(100) null,contactPersonId VARCHAR(30) null,contactPersonSex INTEGER,contactPersonTel VARCHAR(30) null,note VARCHAR(255) null,resumeDescription VARCHAR(255) null,receptionNo VARCHAR(30) null,onegate INTEGER,submitDate DATE null,receiveDate DATE null,processDate DATE null,renewDate DATE null,estimateDate DATE null,finishDate DATE null,handoverDate DATE null,returnDate DATE null,archiveDate DATE null,mainStatus VARCHAR(30) null,subStatus VARCHAR(30) null,statusDate DATE null,statusDescription VARCHAR(100) null,feedbackNote VARCHAR(255) null,daysDelay INTEGER,errorStatus VARCHAR(30) null,errorCode VARCHAR(30) null,pendingStatus INTEGER,dirty INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_dossier";
 	public static final String ORDER_BY_JPQL = " ORDER BY dossier.dossierId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_dossier.dossierId ASC";
@@ -131,87 +134,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 	public static long GROUPID_COLUMN_BITMASK = 2L;
 	public static long UUID_COLUMN_BITMASK = 4L;
 	public static long DOSSIERID_COLUMN_BITMASK = 8L;
-
-	/**
-	 * Converts the soap model instance into a normal model instance.
-	 *
-	 * @param soapModel the soap model instance to convert
-	 * @return the normal model instance
-	 */
-	public static Dossier toModel(DossierSoap soapModel) {
-		if (soapModel == null) {
-			return null;
-		}
-
-		Dossier model = new DossierImpl();
-
-		model.setUuid(soapModel.getUuid());
-		model.setDossierId(soapModel.getDossierId());
-		model.setUserId(soapModel.getUserId());
-		model.setGroupId(soapModel.getGroupId());
-		model.setCompanyId(soapModel.getCompanyId());
-		model.setCreateDate(soapModel.getCreateDate());
-		model.setModifiedDate(soapModel.getModifiedDate());
-		model.setOrganizationId(soapModel.getOrganizationId());
-		model.setDossierProcId(soapModel.getDossierProcId());
-		model.setGovAgencyId(soapModel.getGovAgencyId());
-		model.setGovAgencyName(soapModel.getGovAgencyName());
-		model.setSubjectId(soapModel.getSubjectId());
-		model.setSubjectType(soapModel.getSubjectType());
-		model.setSubjectName(soapModel.getSubjectName());
-		model.setAddress(soapModel.getAddress());
-		model.setCityNo(soapModel.getCityNo());
-		model.setCityName(soapModel.getCityName());
-		model.setDistrictNo(soapModel.getDistrictNo());
-		model.setDistrictName(soapModel.getDistrictName());
-		model.setWardNo(soapModel.getWardNo());
-		model.setWardName(soapModel.getWardName());
-		model.setTelNo(soapModel.getTelNo());
-		model.setContactPersonName(soapModel.getContactPersonName());
-		model.setContactPersonTel(soapModel.getContactPersonTel());
-		model.setNote(soapModel.getNote());
-		model.setResumeDescription(soapModel.getResumeDescription());
-		model.setReceptionNo(soapModel.getReceptionNo());
-		model.setSubmitDate(soapModel.getSubmitDate());
-		model.setReceiveDate(soapModel.getReceiveDate());
-		model.setRenewDate(soapModel.getRenewDate());
-		model.setEstimateDate(soapModel.getEstimateDate());
-		model.setFinishDate(soapModel.getFinishDate());
-		model.setReturnDate(soapModel.getReturnDate());
-		model.setStatus(soapModel.getStatus());
-		model.setStatusDate(soapModel.getStatusDate());
-		model.setStatusDescription(soapModel.getStatusDescription());
-		model.setFeedbackNote(soapModel.getFeedbackNote());
-		model.setDaysDelay(soapModel.getDaysDelay());
-		model.setCloseDate(soapModel.getCloseDate());
-		model.setErrorStatus(soapModel.getErrorStatus());
-		model.setPendingStatus(soapModel.getPendingStatus());
-		model.setErrorCode(soapModel.getErrorCode());
-		model.setDirty(soapModel.getDirty());
-
-		return model;
-	}
-
-	/**
-	 * Converts the soap model instances into normal model instances.
-	 *
-	 * @param soapModels the soap model instances to convert
-	 * @return the normal model instances
-	 */
-	public static List<Dossier> toModels(DossierSoap[] soapModels) {
-		if (soapModels == null) {
-			return null;
-		}
-
-		List<Dossier> models = new ArrayList<Dossier>(soapModels.length);
-
-		for (DossierSoap soapModel : soapModels) {
-			models.add(toModel(soapModel));
-		}
-
-		return models;
-	}
-
 	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
 				"lock.expiration.time.org.oep.core.dossiermgt.model.Dossier"));
 
@@ -274,26 +196,34 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		attributes.put("wardNo", getWardNo());
 		attributes.put("wardName", getWardName());
 		attributes.put("telNo", getTelNo());
+		attributes.put("email", getEmail());
+		attributes.put("subjectAsContactPerson", getSubjectAsContactPerson());
 		attributes.put("contactPersonName", getContactPersonName());
+		attributes.put("contactPersonId", getContactPersonId());
+		attributes.put("contactPersonSex", getContactPersonSex());
 		attributes.put("contactPersonTel", getContactPersonTel());
 		attributes.put("note", getNote());
 		attributes.put("resumeDescription", getResumeDescription());
 		attributes.put("receptionNo", getReceptionNo());
+		attributes.put("onegate", getOnegate());
 		attributes.put("submitDate", getSubmitDate());
 		attributes.put("receiveDate", getReceiveDate());
+		attributes.put("processDate", getProcessDate());
 		attributes.put("renewDate", getRenewDate());
 		attributes.put("estimateDate", getEstimateDate());
 		attributes.put("finishDate", getFinishDate());
+		attributes.put("handoverDate", getHandoverDate());
 		attributes.put("returnDate", getReturnDate());
-		attributes.put("status", getStatus());
+		attributes.put("archiveDate", getArchiveDate());
+		attributes.put("mainStatus", getMainStatus());
+		attributes.put("subStatus", getSubStatus());
 		attributes.put("statusDate", getStatusDate());
 		attributes.put("statusDescription", getStatusDescription());
 		attributes.put("feedbackNote", getFeedbackNote());
 		attributes.put("daysDelay", getDaysDelay());
-		attributes.put("closeDate", getCloseDate());
 		attributes.put("errorStatus", getErrorStatus());
-		attributes.put("pendingStatus", getPendingStatus());
 		attributes.put("errorCode", getErrorCode());
+		attributes.put("pendingStatus", getPendingStatus());
 		attributes.put("dirty", getDirty());
 
 		return attributes;
@@ -433,10 +363,35 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			setTelNo(telNo);
 		}
 
+		String email = (String)attributes.get("email");
+
+		if (email != null) {
+			setEmail(email);
+		}
+
+		Integer subjectAsContactPerson = (Integer)attributes.get(
+				"subjectAsContactPerson");
+
+		if (subjectAsContactPerson != null) {
+			setSubjectAsContactPerson(subjectAsContactPerson);
+		}
+
 		String contactPersonName = (String)attributes.get("contactPersonName");
 
 		if (contactPersonName != null) {
 			setContactPersonName(contactPersonName);
+		}
+
+		String contactPersonId = (String)attributes.get("contactPersonId");
+
+		if (contactPersonId != null) {
+			setContactPersonId(contactPersonId);
+		}
+
+		Integer contactPersonSex = (Integer)attributes.get("contactPersonSex");
+
+		if (contactPersonSex != null) {
+			setContactPersonSex(contactPersonSex);
 		}
 
 		String contactPersonTel = (String)attributes.get("contactPersonTel");
@@ -463,6 +418,12 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			setReceptionNo(receptionNo);
 		}
 
+		Integer onegate = (Integer)attributes.get("onegate");
+
+		if (onegate != null) {
+			setOnegate(onegate);
+		}
+
 		Date submitDate = (Date)attributes.get("submitDate");
 
 		if (submitDate != null) {
@@ -473,6 +434,12 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 
 		if (receiveDate != null) {
 			setReceiveDate(receiveDate);
+		}
+
+		Date processDate = (Date)attributes.get("processDate");
+
+		if (processDate != null) {
+			setProcessDate(processDate);
 		}
 
 		Date renewDate = (Date)attributes.get("renewDate");
@@ -493,16 +460,34 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			setFinishDate(finishDate);
 		}
 
+		Date handoverDate = (Date)attributes.get("handoverDate");
+
+		if (handoverDate != null) {
+			setHandoverDate(handoverDate);
+		}
+
 		Date returnDate = (Date)attributes.get("returnDate");
 
 		if (returnDate != null) {
 			setReturnDate(returnDate);
 		}
 
-		String status = (String)attributes.get("status");
+		Date archiveDate = (Date)attributes.get("archiveDate");
 
-		if (status != null) {
-			setStatus(status);
+		if (archiveDate != null) {
+			setArchiveDate(archiveDate);
+		}
+
+		String mainStatus = (String)attributes.get("mainStatus");
+
+		if (mainStatus != null) {
+			setMainStatus(mainStatus);
+		}
+
+		String subStatus = (String)attributes.get("subStatus");
+
+		if (subStatus != null) {
+			setSubStatus(subStatus);
 		}
 
 		Date statusDate = (Date)attributes.get("statusDate");
@@ -529,28 +514,22 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			setDaysDelay(daysDelay);
 		}
 
-		Date closeDate = (Date)attributes.get("closeDate");
-
-		if (closeDate != null) {
-			setCloseDate(closeDate);
-		}
-
 		String errorStatus = (String)attributes.get("errorStatus");
 
 		if (errorStatus != null) {
 			setErrorStatus(errorStatus);
 		}
 
-		Integer pendingStatus = (Integer)attributes.get("pendingStatus");
-
-		if (pendingStatus != null) {
-			setPendingStatus(pendingStatus);
-		}
-
 		String errorCode = (String)attributes.get("errorCode");
 
 		if (errorCode != null) {
 			setErrorCode(errorCode);
+		}
+
+		Integer pendingStatus = (Integer)attributes.get("pendingStatus");
+
+		if (pendingStatus != null) {
+			setPendingStatus(pendingStatus);
 		}
 
 		Integer dirty = (Integer)attributes.get("dirty");
@@ -560,7 +539,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		}
 	}
 
-	@JSON
 	@Override
 	public String getUuid() {
 		if (_uuid == null) {
@@ -584,7 +562,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		return GetterUtil.getString(_originalUuid);
 	}
 
-	@JSON
 	@Override
 	public long getDossierId() {
 		return _dossierId;
@@ -595,7 +572,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_dossierId = dossierId;
 	}
 
-	@JSON
 	@Override
 	public long getUserId() {
 		return _userId;
@@ -616,7 +592,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_userUuid = userUuid;
 	}
 
-	@JSON
 	@Override
 	public long getGroupId() {
 		return _groupId;
@@ -639,7 +614,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		return _originalGroupId;
 	}
 
-	@JSON
 	@Override
 	public long getCompanyId() {
 		return _companyId;
@@ -662,7 +636,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		return _originalCompanyId;
 	}
 
-	@JSON
 	@Override
 	public Date getCreateDate() {
 		return _createDate;
@@ -673,7 +646,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_createDate = createDate;
 	}
 
-	@JSON
 	@Override
 	public Date getModifiedDate() {
 		return _modifiedDate;
@@ -684,7 +656,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_modifiedDate = modifiedDate;
 	}
 
-	@JSON
 	@Override
 	public long getOrganizationId() {
 		return _organizationId;
@@ -695,7 +666,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_organizationId = organizationId;
 	}
 
-	@JSON
 	@Override
 	public long getDossierProcId() {
 		return _dossierProcId;
@@ -706,7 +676,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_dossierProcId = dossierProcId;
 	}
 
-	@JSON
 	@Override
 	public String getGovAgencyId() {
 		if (_govAgencyId == null) {
@@ -722,7 +691,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_govAgencyId = govAgencyId;
 	}
 
-	@JSON
 	@Override
 	public String getGovAgencyName() {
 		if (_govAgencyName == null) {
@@ -738,7 +706,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_govAgencyName = govAgencyName;
 	}
 
-	@JSON
 	@Override
 	public String getSubjectId() {
 		if (_subjectId == null) {
@@ -754,7 +721,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_subjectId = subjectId;
 	}
 
-	@JSON
 	@Override
 	public String getSubjectType() {
 		if (_subjectType == null) {
@@ -770,7 +736,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_subjectType = subjectType;
 	}
 
-	@JSON
 	@Override
 	public String getSubjectName() {
 		if (_subjectName == null) {
@@ -786,7 +751,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_subjectName = subjectName;
 	}
 
-	@JSON
 	@Override
 	public String getAddress() {
 		if (_address == null) {
@@ -802,7 +766,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_address = address;
 	}
 
-	@JSON
 	@Override
 	public String getCityNo() {
 		if (_cityNo == null) {
@@ -818,7 +781,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_cityNo = cityNo;
 	}
 
-	@JSON
 	@Override
 	public String getCityName() {
 		if (_cityName == null) {
@@ -834,7 +796,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_cityName = cityName;
 	}
 
-	@JSON
 	@Override
 	public String getDistrictNo() {
 		if (_districtNo == null) {
@@ -850,7 +811,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_districtNo = districtNo;
 	}
 
-	@JSON
 	@Override
 	public String getDistrictName() {
 		if (_districtName == null) {
@@ -866,7 +826,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_districtName = districtName;
 	}
 
-	@JSON
 	@Override
 	public String getWardNo() {
 		if (_wardNo == null) {
@@ -882,7 +841,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_wardNo = wardNo;
 	}
 
-	@JSON
 	@Override
 	public String getWardName() {
 		if (_wardName == null) {
@@ -898,7 +856,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_wardName = wardName;
 	}
 
-	@JSON
 	@Override
 	public String getTelNo() {
 		if (_telNo == null) {
@@ -914,7 +871,31 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_telNo = telNo;
 	}
 
-	@JSON
+	@Override
+	public String getEmail() {
+		if (_email == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _email;
+		}
+	}
+
+	@Override
+	public void setEmail(String email) {
+		_email = email;
+	}
+
+	@Override
+	public int getSubjectAsContactPerson() {
+		return _subjectAsContactPerson;
+	}
+
+	@Override
+	public void setSubjectAsContactPerson(int subjectAsContactPerson) {
+		_subjectAsContactPerson = subjectAsContactPerson;
+	}
+
 	@Override
 	public String getContactPersonName() {
 		if (_contactPersonName == null) {
@@ -930,7 +911,31 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_contactPersonName = contactPersonName;
 	}
 
-	@JSON
+	@Override
+	public String getContactPersonId() {
+		if (_contactPersonId == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _contactPersonId;
+		}
+	}
+
+	@Override
+	public void setContactPersonId(String contactPersonId) {
+		_contactPersonId = contactPersonId;
+	}
+
+	@Override
+	public int getContactPersonSex() {
+		return _contactPersonSex;
+	}
+
+	@Override
+	public void setContactPersonSex(int contactPersonSex) {
+		_contactPersonSex = contactPersonSex;
+	}
+
 	@Override
 	public String getContactPersonTel() {
 		if (_contactPersonTel == null) {
@@ -946,7 +951,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_contactPersonTel = contactPersonTel;
 	}
 
-	@JSON
 	@Override
 	public String getNote() {
 		if (_note == null) {
@@ -962,7 +966,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_note = note;
 	}
 
-	@JSON
 	@Override
 	public String getResumeDescription() {
 		if (_resumeDescription == null) {
@@ -978,7 +981,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_resumeDescription = resumeDescription;
 	}
 
-	@JSON
 	@Override
 	public String getReceptionNo() {
 		if (_receptionNo == null) {
@@ -994,7 +996,16 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_receptionNo = receptionNo;
 	}
 
-	@JSON
+	@Override
+	public int getOnegate() {
+		return _onegate;
+	}
+
+	@Override
+	public void setOnegate(int onegate) {
+		_onegate = onegate;
+	}
+
 	@Override
 	public Date getSubmitDate() {
 		return _submitDate;
@@ -1005,7 +1016,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_submitDate = submitDate;
 	}
 
-	@JSON
 	@Override
 	public Date getReceiveDate() {
 		return _receiveDate;
@@ -1016,7 +1026,16 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_receiveDate = receiveDate;
 	}
 
-	@JSON
+	@Override
+	public Date getProcessDate() {
+		return _processDate;
+	}
+
+	@Override
+	public void setProcessDate(Date processDate) {
+		_processDate = processDate;
+	}
+
 	@Override
 	public Date getRenewDate() {
 		return _renewDate;
@@ -1027,7 +1046,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_renewDate = renewDate;
 	}
 
-	@JSON
 	@Override
 	public Date getEstimateDate() {
 		return _estimateDate;
@@ -1038,7 +1056,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_estimateDate = estimateDate;
 	}
 
-	@JSON
 	@Override
 	public Date getFinishDate() {
 		return _finishDate;
@@ -1049,7 +1066,16 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_finishDate = finishDate;
 	}
 
-	@JSON
+	@Override
+	public Date getHandoverDate() {
+		return _handoverDate;
+	}
+
+	@Override
+	public void setHandoverDate(Date handoverDate) {
+		_handoverDate = handoverDate;
+	}
+
 	@Override
 	public Date getReturnDate() {
 		return _returnDate;
@@ -1060,23 +1086,46 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_returnDate = returnDate;
 	}
 
-	@JSON
 	@Override
-	public String getStatus() {
-		if (_status == null) {
+	public Date getArchiveDate() {
+		return _archiveDate;
+	}
+
+	@Override
+	public void setArchiveDate(Date archiveDate) {
+		_archiveDate = archiveDate;
+	}
+
+	@Override
+	public String getMainStatus() {
+		if (_mainStatus == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _status;
+			return _mainStatus;
 		}
 	}
 
 	@Override
-	public void setStatus(String status) {
-		_status = status;
+	public void setMainStatus(String mainStatus) {
+		_mainStatus = mainStatus;
 	}
 
-	@JSON
+	@Override
+	public String getSubStatus() {
+		if (_subStatus == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _subStatus;
+		}
+	}
+
+	@Override
+	public void setSubStatus(String subStatus) {
+		_subStatus = subStatus;
+	}
+
 	@Override
 	public Date getStatusDate() {
 		return _statusDate;
@@ -1087,7 +1136,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_statusDate = statusDate;
 	}
 
-	@JSON
 	@Override
 	public String getStatusDescription() {
 		if (_statusDescription == null) {
@@ -1103,7 +1151,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_statusDescription = statusDescription;
 	}
 
-	@JSON
 	@Override
 	public String getFeedbackNote() {
 		if (_feedbackNote == null) {
@@ -1119,7 +1166,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_feedbackNote = feedbackNote;
 	}
 
-	@JSON
 	@Override
 	public int getDaysDelay() {
 		return _daysDelay;
@@ -1130,18 +1176,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_daysDelay = daysDelay;
 	}
 
-	@JSON
-	@Override
-	public Date getCloseDate() {
-		return _closeDate;
-	}
-
-	@Override
-	public void setCloseDate(Date closeDate) {
-		_closeDate = closeDate;
-	}
-
-	@JSON
 	@Override
 	public String getErrorStatus() {
 		if (_errorStatus == null) {
@@ -1157,18 +1191,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_errorStatus = errorStatus;
 	}
 
-	@JSON
-	@Override
-	public int getPendingStatus() {
-		return _pendingStatus;
-	}
-
-	@Override
-	public void setPendingStatus(int pendingStatus) {
-		_pendingStatus = pendingStatus;
-	}
-
-	@JSON
 	@Override
 	public String getErrorCode() {
 		if (_errorCode == null) {
@@ -1184,7 +1206,16 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		_errorCode = errorCode;
 	}
 
-	@JSON
+	@Override
+	public int getPendingStatus() {
+		return _pendingStatus;
+	}
+
+	@Override
+	public void setPendingStatus(int pendingStatus) {
+		_pendingStatus = pendingStatus;
+	}
+
 	@Override
 	public int getDirty() {
 		return _dirty;
@@ -1254,26 +1285,34 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		dossierImpl.setWardNo(getWardNo());
 		dossierImpl.setWardName(getWardName());
 		dossierImpl.setTelNo(getTelNo());
+		dossierImpl.setEmail(getEmail());
+		dossierImpl.setSubjectAsContactPerson(getSubjectAsContactPerson());
 		dossierImpl.setContactPersonName(getContactPersonName());
+		dossierImpl.setContactPersonId(getContactPersonId());
+		dossierImpl.setContactPersonSex(getContactPersonSex());
 		dossierImpl.setContactPersonTel(getContactPersonTel());
 		dossierImpl.setNote(getNote());
 		dossierImpl.setResumeDescription(getResumeDescription());
 		dossierImpl.setReceptionNo(getReceptionNo());
+		dossierImpl.setOnegate(getOnegate());
 		dossierImpl.setSubmitDate(getSubmitDate());
 		dossierImpl.setReceiveDate(getReceiveDate());
+		dossierImpl.setProcessDate(getProcessDate());
 		dossierImpl.setRenewDate(getRenewDate());
 		dossierImpl.setEstimateDate(getEstimateDate());
 		dossierImpl.setFinishDate(getFinishDate());
+		dossierImpl.setHandoverDate(getHandoverDate());
 		dossierImpl.setReturnDate(getReturnDate());
-		dossierImpl.setStatus(getStatus());
+		dossierImpl.setArchiveDate(getArchiveDate());
+		dossierImpl.setMainStatus(getMainStatus());
+		dossierImpl.setSubStatus(getSubStatus());
 		dossierImpl.setStatusDate(getStatusDate());
 		dossierImpl.setStatusDescription(getStatusDescription());
 		dossierImpl.setFeedbackNote(getFeedbackNote());
 		dossierImpl.setDaysDelay(getDaysDelay());
-		dossierImpl.setCloseDate(getCloseDate());
 		dossierImpl.setErrorStatus(getErrorStatus());
-		dossierImpl.setPendingStatus(getPendingStatus());
 		dossierImpl.setErrorCode(getErrorCode());
+		dossierImpl.setPendingStatus(getPendingStatus());
 		dossierImpl.setDirty(getDirty());
 
 		dossierImpl.resetOriginalValues();
@@ -1486,6 +1525,16 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			dossierCacheModel.telNo = null;
 		}
 
+		dossierCacheModel.email = getEmail();
+
+		String email = dossierCacheModel.email;
+
+		if ((email != null) && (email.length() == 0)) {
+			dossierCacheModel.email = null;
+		}
+
+		dossierCacheModel.subjectAsContactPerson = getSubjectAsContactPerson();
+
 		dossierCacheModel.contactPersonName = getContactPersonName();
 
 		String contactPersonName = dossierCacheModel.contactPersonName;
@@ -1493,6 +1542,16 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		if ((contactPersonName != null) && (contactPersonName.length() == 0)) {
 			dossierCacheModel.contactPersonName = null;
 		}
+
+		dossierCacheModel.contactPersonId = getContactPersonId();
+
+		String contactPersonId = dossierCacheModel.contactPersonId;
+
+		if ((contactPersonId != null) && (contactPersonId.length() == 0)) {
+			dossierCacheModel.contactPersonId = null;
+		}
+
+		dossierCacheModel.contactPersonSex = getContactPersonSex();
 
 		dossierCacheModel.contactPersonTel = getContactPersonTel();
 
@@ -1526,6 +1585,8 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			dossierCacheModel.receptionNo = null;
 		}
 
+		dossierCacheModel.onegate = getOnegate();
+
 		Date submitDate = getSubmitDate();
 
 		if (submitDate != null) {
@@ -1542,6 +1603,15 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		}
 		else {
 			dossierCacheModel.receiveDate = Long.MIN_VALUE;
+		}
+
+		Date processDate = getProcessDate();
+
+		if (processDate != null) {
+			dossierCacheModel.processDate = processDate.getTime();
+		}
+		else {
+			dossierCacheModel.processDate = Long.MIN_VALUE;
 		}
 
 		Date renewDate = getRenewDate();
@@ -1571,6 +1641,15 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			dossierCacheModel.finishDate = Long.MIN_VALUE;
 		}
 
+		Date handoverDate = getHandoverDate();
+
+		if (handoverDate != null) {
+			dossierCacheModel.handoverDate = handoverDate.getTime();
+		}
+		else {
+			dossierCacheModel.handoverDate = Long.MIN_VALUE;
+		}
+
 		Date returnDate = getReturnDate();
 
 		if (returnDate != null) {
@@ -1580,12 +1659,29 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			dossierCacheModel.returnDate = Long.MIN_VALUE;
 		}
 
-		dossierCacheModel.status = getStatus();
+		Date archiveDate = getArchiveDate();
 
-		String status = dossierCacheModel.status;
+		if (archiveDate != null) {
+			dossierCacheModel.archiveDate = archiveDate.getTime();
+		}
+		else {
+			dossierCacheModel.archiveDate = Long.MIN_VALUE;
+		}
 
-		if ((status != null) && (status.length() == 0)) {
-			dossierCacheModel.status = null;
+		dossierCacheModel.mainStatus = getMainStatus();
+
+		String mainStatus = dossierCacheModel.mainStatus;
+
+		if ((mainStatus != null) && (mainStatus.length() == 0)) {
+			dossierCacheModel.mainStatus = null;
+		}
+
+		dossierCacheModel.subStatus = getSubStatus();
+
+		String subStatus = dossierCacheModel.subStatus;
+
+		if ((subStatus != null) && (subStatus.length() == 0)) {
+			dossierCacheModel.subStatus = null;
 		}
 
 		Date statusDate = getStatusDate();
@@ -1615,15 +1711,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 
 		dossierCacheModel.daysDelay = getDaysDelay();
 
-		Date closeDate = getCloseDate();
-
-		if (closeDate != null) {
-			dossierCacheModel.closeDate = closeDate.getTime();
-		}
-		else {
-			dossierCacheModel.closeDate = Long.MIN_VALUE;
-		}
-
 		dossierCacheModel.errorStatus = getErrorStatus();
 
 		String errorStatus = dossierCacheModel.errorStatus;
@@ -1631,8 +1718,6 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		if ((errorStatus != null) && (errorStatus.length() == 0)) {
 			dossierCacheModel.errorStatus = null;
 		}
-
-		dossierCacheModel.pendingStatus = getPendingStatus();
 
 		dossierCacheModel.errorCode = getErrorCode();
 
@@ -1642,6 +1727,8 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 			dossierCacheModel.errorCode = null;
 		}
 
+		dossierCacheModel.pendingStatus = getPendingStatus();
+
 		dossierCacheModel.dirty = getDirty();
 
 		return dossierCacheModel;
@@ -1649,7 +1736,7 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(87);
+		StringBundler sb = new StringBundler(103);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
@@ -1695,8 +1782,16 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		sb.append(getWardName());
 		sb.append(", telNo=");
 		sb.append(getTelNo());
+		sb.append(", email=");
+		sb.append(getEmail());
+		sb.append(", subjectAsContactPerson=");
+		sb.append(getSubjectAsContactPerson());
 		sb.append(", contactPersonName=");
 		sb.append(getContactPersonName());
+		sb.append(", contactPersonId=");
+		sb.append(getContactPersonId());
+		sb.append(", contactPersonSex=");
+		sb.append(getContactPersonSex());
 		sb.append(", contactPersonTel=");
 		sb.append(getContactPersonTel());
 		sb.append(", note=");
@@ -1705,20 +1800,30 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		sb.append(getResumeDescription());
 		sb.append(", receptionNo=");
 		sb.append(getReceptionNo());
+		sb.append(", onegate=");
+		sb.append(getOnegate());
 		sb.append(", submitDate=");
 		sb.append(getSubmitDate());
 		sb.append(", receiveDate=");
 		sb.append(getReceiveDate());
+		sb.append(", processDate=");
+		sb.append(getProcessDate());
 		sb.append(", renewDate=");
 		sb.append(getRenewDate());
 		sb.append(", estimateDate=");
 		sb.append(getEstimateDate());
 		sb.append(", finishDate=");
 		sb.append(getFinishDate());
+		sb.append(", handoverDate=");
+		sb.append(getHandoverDate());
 		sb.append(", returnDate=");
 		sb.append(getReturnDate());
-		sb.append(", status=");
-		sb.append(getStatus());
+		sb.append(", archiveDate=");
+		sb.append(getArchiveDate());
+		sb.append(", mainStatus=");
+		sb.append(getMainStatus());
+		sb.append(", subStatus=");
+		sb.append(getSubStatus());
 		sb.append(", statusDate=");
 		sb.append(getStatusDate());
 		sb.append(", statusDescription=");
@@ -1727,14 +1832,12 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		sb.append(getFeedbackNote());
 		sb.append(", daysDelay=");
 		sb.append(getDaysDelay());
-		sb.append(", closeDate=");
-		sb.append(getCloseDate());
 		sb.append(", errorStatus=");
 		sb.append(getErrorStatus());
-		sb.append(", pendingStatus=");
-		sb.append(getPendingStatus());
 		sb.append(", errorCode=");
 		sb.append(getErrorCode());
+		sb.append(", pendingStatus=");
+		sb.append(getPendingStatus());
 		sb.append(", dirty=");
 		sb.append(getDirty());
 		sb.append("}");
@@ -1744,7 +1847,7 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(133);
+		StringBundler sb = new StringBundler(157);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.Dossier");
@@ -1839,8 +1942,24 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		sb.append(getTelNo());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>email</column-name><column-value><![CDATA[");
+		sb.append(getEmail());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>subjectAsContactPerson</column-name><column-value><![CDATA[");
+		sb.append(getSubjectAsContactPerson());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>contactPersonName</column-name><column-value><![CDATA[");
 		sb.append(getContactPersonName());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>contactPersonId</column-name><column-value><![CDATA[");
+		sb.append(getContactPersonId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>contactPersonSex</column-name><column-value><![CDATA[");
+		sb.append(getContactPersonSex());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>contactPersonTel</column-name><column-value><![CDATA[");
@@ -1859,12 +1978,20 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		sb.append(getReceptionNo());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>onegate</column-name><column-value><![CDATA[");
+		sb.append(getOnegate());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>submitDate</column-name><column-value><![CDATA[");
 		sb.append(getSubmitDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>receiveDate</column-name><column-value><![CDATA[");
 		sb.append(getReceiveDate());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>processDate</column-name><column-value><![CDATA[");
+		sb.append(getProcessDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>renewDate</column-name><column-value><![CDATA[");
@@ -1879,12 +2006,24 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		sb.append(getFinishDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>handoverDate</column-name><column-value><![CDATA[");
+		sb.append(getHandoverDate());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>returnDate</column-name><column-value><![CDATA[");
 		sb.append(getReturnDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>status</column-name><column-value><![CDATA[");
-		sb.append(getStatus());
+			"<column><column-name>archiveDate</column-name><column-value><![CDATA[");
+		sb.append(getArchiveDate());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>mainStatus</column-name><column-value><![CDATA[");
+		sb.append(getMainStatus());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>subStatus</column-name><column-value><![CDATA[");
+		sb.append(getSubStatus());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>statusDate</column-name><column-value><![CDATA[");
@@ -1903,20 +2042,16 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 		sb.append(getDaysDelay());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>closeDate</column-name><column-value><![CDATA[");
-		sb.append(getCloseDate());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>errorStatus</column-name><column-value><![CDATA[");
 		sb.append(getErrorStatus());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>pendingStatus</column-name><column-value><![CDATA[");
-		sb.append(getPendingStatus());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>errorCode</column-name><column-value><![CDATA[");
 		sb.append(getErrorCode());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>pendingStatus</column-name><column-value><![CDATA[");
+		sb.append(getPendingStatus());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>dirty</column-name><column-value><![CDATA[");
@@ -1960,26 +2095,34 @@ public class DossierModelImpl extends BaseModelImpl<Dossier>
 	private String _wardNo;
 	private String _wardName;
 	private String _telNo;
+	private String _email;
+	private int _subjectAsContactPerson;
 	private String _contactPersonName;
+	private String _contactPersonId;
+	private int _contactPersonSex;
 	private String _contactPersonTel;
 	private String _note;
 	private String _resumeDescription;
 	private String _receptionNo;
+	private int _onegate;
 	private Date _submitDate;
 	private Date _receiveDate;
+	private Date _processDate;
 	private Date _renewDate;
 	private Date _estimateDate;
 	private Date _finishDate;
+	private Date _handoverDate;
 	private Date _returnDate;
-	private String _status;
+	private Date _archiveDate;
+	private String _mainStatus;
+	private String _subStatus;
 	private Date _statusDate;
 	private String _statusDescription;
 	private String _feedbackNote;
 	private int _daysDelay;
-	private Date _closeDate;
 	private String _errorStatus;
-	private int _pendingStatus;
 	private String _errorCode;
+	private int _pendingStatus;
 	private int _dirty;
 	private long _columnBitmask;
 	private Dossier _escapedModel;

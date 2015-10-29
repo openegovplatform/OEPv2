@@ -74,9 +74,11 @@ public class DossierProcWrapper implements DossierProc,
 		attributes.put("administrationName", getAdministrationName());
 		attributes.put("domainNo", getDomainNo());
 		attributes.put("domainName", getDomainName());
+		attributes.put("forCitizen", getForCitizen());
+		attributes.put("forBusiness", getForBusiness());
 		attributes.put("effectDate", getEffectDate());
 		attributes.put("expireDate", getExpireDate());
-		attributes.put("active", getActive());
+		attributes.put("statusActive", getStatusActive());
 
 		return attributes;
 	}
@@ -230,6 +232,18 @@ public class DossierProcWrapper implements DossierProc,
 			setDomainName(domainName);
 		}
 
+		Integer forCitizen = (Integer)attributes.get("forCitizen");
+
+		if (forCitizen != null) {
+			setForCitizen(forCitizen);
+		}
+
+		Integer forBusiness = (Integer)attributes.get("forBusiness");
+
+		if (forBusiness != null) {
+			setForBusiness(forBusiness);
+		}
+
 		Date effectDate = (Date)attributes.get("effectDate");
 
 		if (effectDate != null) {
@@ -242,10 +256,10 @@ public class DossierProcWrapper implements DossierProc,
 			setExpireDate(expireDate);
 		}
 
-		Integer active = (Integer)attributes.get("active");
+		Integer statusActive = (Integer)attributes.get("statusActive");
 
-		if (active != null) {
-			setActive(active);
+		if (statusActive != null) {
+			setStatusActive(statusActive);
 		}
 	}
 
@@ -773,6 +787,46 @@ public class DossierProcWrapper implements DossierProc,
 	}
 
 	/**
+	* Returns the for citizen of this dossier proc.
+	*
+	* @return the for citizen of this dossier proc
+	*/
+	@Override
+	public int getForCitizen() {
+		return _dossierProc.getForCitizen();
+	}
+
+	/**
+	* Sets the for citizen of this dossier proc.
+	*
+	* @param forCitizen the for citizen of this dossier proc
+	*/
+	@Override
+	public void setForCitizen(int forCitizen) {
+		_dossierProc.setForCitizen(forCitizen);
+	}
+
+	/**
+	* Returns the for business of this dossier proc.
+	*
+	* @return the for business of this dossier proc
+	*/
+	@Override
+	public int getForBusiness() {
+		return _dossierProc.getForBusiness();
+	}
+
+	/**
+	* Sets the for business of this dossier proc.
+	*
+	* @param forBusiness the for business of this dossier proc
+	*/
+	@Override
+	public void setForBusiness(int forBusiness) {
+		_dossierProc.setForBusiness(forBusiness);
+	}
+
+	/**
 	* Returns the effect date of this dossier proc.
 	*
 	* @return the effect date of this dossier proc
@@ -813,23 +867,23 @@ public class DossierProcWrapper implements DossierProc,
 	}
 
 	/**
-	* Returns the active of this dossier proc.
+	* Returns the status active of this dossier proc.
 	*
-	* @return the active of this dossier proc
+	* @return the status active of this dossier proc
 	*/
 	@Override
-	public int getActive() {
-		return _dossierProc.getActive();
+	public int getStatusActive() {
+		return _dossierProc.getStatusActive();
 	}
 
 	/**
-	* Sets the active of this dossier proc.
+	* Sets the status active of this dossier proc.
 	*
-	* @param active the active of this dossier proc
+	* @param statusActive the status active of this dossier proc
 	*/
 	@Override
-	public void setActive(int active) {
-		_dossierProc.setActive(active);
+	public void setStatusActive(int statusActive) {
+		_dossierProc.setStatusActive(statusActive);
 	}
 
 	@Override

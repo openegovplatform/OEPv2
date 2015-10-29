@@ -37,7 +37,7 @@ public class StatisticByDayCacheModel implements CacheModel<StatisticByDay>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(27);
 
 		sb.append("{statisticByDayId=");
 		sb.append(statisticByDayId);
@@ -51,30 +51,20 @@ public class StatisticByDayCacheModel implements CacheModel<StatisticByDay>,
 		sb.append(statisticDate);
 		sb.append(", statisticWeek=");
 		sb.append(statisticWeek);
-		sb.append(", submittedNumber=");
-		sb.append(submittedNumber);
-		sb.append(", acceptedNumber=");
-		sb.append(acceptedNumber);
-		sb.append(", deniedNumber=");
-		sb.append(deniedNumber);
-		sb.append(", acceptedRatio=");
-		sb.append(acceptedRatio);
-		sb.append(", finishedNumber=");
-		sb.append(finishedNumber);
+		sb.append(", receiveNumber=");
+		sb.append(receiveNumber);
+		sb.append(", onlineNumber=");
+		sb.append(onlineNumber);
+		sb.append(", onlineRatio=");
+		sb.append(onlineRatio);
+		sb.append(", finishNumber=");
+		sb.append(finishNumber);
 		sb.append(", ontimeNumber=");
 		sb.append(ontimeNumber);
-		sb.append(", delayedNumber=");
-		sb.append(delayedNumber);
 		sb.append(", ontimeRatio=");
 		sb.append(ontimeRatio);
-		sb.append(", doneNumber=");
-		sb.append(doneNumber);
-		sb.append(", doneRatio=");
-		sb.append(doneRatio);
 		sb.append(", delayDaysAvg=");
 		sb.append(delayDaysAvg);
-		sb.append(", furtherDaysAvg=");
-		sb.append(furtherDaysAvg);
 		sb.append("}");
 
 		return sb.toString();
@@ -103,18 +93,13 @@ public class StatisticByDayCacheModel implements CacheModel<StatisticByDay>,
 		}
 
 		statisticByDayImpl.setStatisticWeek(statisticWeek);
-		statisticByDayImpl.setSubmittedNumber(submittedNumber);
-		statisticByDayImpl.setAcceptedNumber(acceptedNumber);
-		statisticByDayImpl.setDeniedNumber(deniedNumber);
-		statisticByDayImpl.setAcceptedRatio(acceptedRatio);
-		statisticByDayImpl.setFinishedNumber(finishedNumber);
+		statisticByDayImpl.setReceiveNumber(receiveNumber);
+		statisticByDayImpl.setOnlineNumber(onlineNumber);
+		statisticByDayImpl.setOnlineRatio(onlineRatio);
+		statisticByDayImpl.setFinishNumber(finishNumber);
 		statisticByDayImpl.setOntimeNumber(ontimeNumber);
-		statisticByDayImpl.setDelayedNumber(delayedNumber);
 		statisticByDayImpl.setOntimeRatio(ontimeRatio);
-		statisticByDayImpl.setDoneNumber(doneNumber);
-		statisticByDayImpl.setDoneRatio(doneRatio);
 		statisticByDayImpl.setDelayDaysAvg(delayDaysAvg);
-		statisticByDayImpl.setFurtherDaysAvg(furtherDaysAvg);
 
 		statisticByDayImpl.resetOriginalValues();
 
@@ -129,18 +114,13 @@ public class StatisticByDayCacheModel implements CacheModel<StatisticByDay>,
 		createDate = objectInput.readLong();
 		statisticDate = objectInput.readLong();
 		statisticWeek = objectInput.readInt();
-		submittedNumber = objectInput.readInt();
-		acceptedNumber = objectInput.readInt();
-		deniedNumber = objectInput.readInt();
-		acceptedRatio = objectInput.readDouble();
-		finishedNumber = objectInput.readInt();
+		receiveNumber = objectInput.readLong();
+		onlineNumber = objectInput.readLong();
+		onlineRatio = objectInput.readDouble();
+		finishNumber = objectInput.readInt();
 		ontimeNumber = objectInput.readInt();
-		delayedNumber = objectInput.readInt();
 		ontimeRatio = objectInput.readDouble();
-		doneNumber = objectInput.readInt();
-		doneRatio = objectInput.readDouble();
 		delayDaysAvg = objectInput.readDouble();
-		furtherDaysAvg = objectInput.readDouble();
 	}
 
 	@Override
@@ -152,18 +132,13 @@ public class StatisticByDayCacheModel implements CacheModel<StatisticByDay>,
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(statisticDate);
 		objectOutput.writeInt(statisticWeek);
-		objectOutput.writeInt(submittedNumber);
-		objectOutput.writeInt(acceptedNumber);
-		objectOutput.writeInt(deniedNumber);
-		objectOutput.writeDouble(acceptedRatio);
-		objectOutput.writeInt(finishedNumber);
+		objectOutput.writeLong(receiveNumber);
+		objectOutput.writeLong(onlineNumber);
+		objectOutput.writeDouble(onlineRatio);
+		objectOutput.writeInt(finishNumber);
 		objectOutput.writeInt(ontimeNumber);
-		objectOutput.writeInt(delayedNumber);
 		objectOutput.writeDouble(ontimeRatio);
-		objectOutput.writeInt(doneNumber);
-		objectOutput.writeDouble(doneRatio);
 		objectOutput.writeDouble(delayDaysAvg);
-		objectOutput.writeDouble(furtherDaysAvg);
 	}
 
 	public long statisticByDayId;
@@ -172,16 +147,11 @@ public class StatisticByDayCacheModel implements CacheModel<StatisticByDay>,
 	public long createDate;
 	public long statisticDate;
 	public int statisticWeek;
-	public int submittedNumber;
-	public int acceptedNumber;
-	public int deniedNumber;
-	public double acceptedRatio;
-	public int finishedNumber;
+	public long receiveNumber;
+	public long onlineNumber;
+	public double onlineRatio;
+	public int finishNumber;
 	public int ontimeNumber;
-	public int delayedNumber;
 	public double ontimeRatio;
-	public int doneNumber;
-	public double doneRatio;
 	public double delayDaysAvg;
-	public double furtherDaysAvg;
 }

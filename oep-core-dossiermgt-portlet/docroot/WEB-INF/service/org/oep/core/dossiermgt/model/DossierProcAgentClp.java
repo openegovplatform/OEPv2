@@ -81,6 +81,8 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 		attributes.put("dossierProcId", getDossierProcId());
 		attributes.put("govAgencyId", getGovAgencyId());
 		attributes.put("govAgencyName", getGovAgencyName());
+		attributes.put("bankTransfer", getBankTransfer());
+		attributes.put("keypay", getKeypay());
 		attributes.put("ebPartnerShipId", getEbPartnerShipId());
 
 		return attributes;
@@ -128,6 +130,18 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 
 		if (govAgencyName != null) {
 			setGovAgencyName(govAgencyName);
+		}
+
+		String bankTransfer = (String)attributes.get("bankTransfer");
+
+		if (bankTransfer != null) {
+			setBankTransfer(bankTransfer);
+		}
+
+		String keypay = (String)attributes.get("keypay");
+
+		if (keypay != null) {
+			setKeypay(keypay);
 		}
 
 		Long ebPartnerShipId = (Long)attributes.get("ebPartnerShipId");
@@ -300,6 +314,52 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 	}
 
 	@Override
+	public String getBankTransfer() {
+		return _bankTransfer;
+	}
+
+	@Override
+	public void setBankTransfer(String bankTransfer) {
+		_bankTransfer = bankTransfer;
+
+		if (_dossierProcAgentRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierProcAgentRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setBankTransfer", String.class);
+
+				method.invoke(_dossierProcAgentRemoteModel, bankTransfer);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getKeypay() {
+		return _keypay;
+	}
+
+	@Override
+	public void setKeypay(String keypay) {
+		_keypay = keypay;
+
+		if (_dossierProcAgentRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierProcAgentRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setKeypay", String.class);
+
+				method.invoke(_dossierProcAgentRemoteModel, keypay);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
 	public long getEbPartnerShipId() {
 		return _ebPartnerShipId;
 	}
@@ -400,6 +460,8 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 		clone.setDossierProcId(getDossierProcId());
 		clone.setGovAgencyId(getGovAgencyId());
 		clone.setGovAgencyName(getGovAgencyName());
+		clone.setBankTransfer(getBankTransfer());
+		clone.setKeypay(getKeypay());
 		clone.setEbPartnerShipId(getEbPartnerShipId());
 
 		return clone;
@@ -453,7 +515,7 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(17);
+		StringBundler sb = new StringBundler(21);
 
 		sb.append("{dossierProcAgentId=");
 		sb.append(getDossierProcAgentId());
@@ -469,6 +531,10 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 		sb.append(getGovAgencyId());
 		sb.append(", govAgencyName=");
 		sb.append(getGovAgencyName());
+		sb.append(", bankTransfer=");
+		sb.append(getBankTransfer());
+		sb.append(", keypay=");
+		sb.append(getKeypay());
 		sb.append(", ebPartnerShipId=");
 		sb.append(getEbPartnerShipId());
 		sb.append("}");
@@ -478,7 +544,7 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(28);
+		StringBundler sb = new StringBundler(34);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.DossierProcAgent");
@@ -513,6 +579,14 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 		sb.append(getGovAgencyName());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>bankTransfer</column-name><column-value><![CDATA[");
+		sb.append(getBankTransfer());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>keypay</column-name><column-value><![CDATA[");
+		sb.append(getKeypay());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>ebPartnerShipId</column-name><column-value><![CDATA[");
 		sb.append(getEbPartnerShipId());
 		sb.append("]]></column-value></column>");
@@ -529,6 +603,8 @@ public class DossierProcAgentClp extends BaseModelImpl<DossierProcAgent>
 	private long _dossierProcId;
 	private String _govAgencyId;
 	private String _govAgencyName;
+	private String _bankTransfer;
+	private String _keypay;
 	private long _ebPartnerShipId;
 	private BaseModel<?> _dossierProcAgentRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.dossiermgt.service.ClpSerializer.class;

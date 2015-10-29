@@ -78,6 +78,8 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 
 		attributes.put("uuid", getUuid());
 		attributes.put("dossierFolderId", getDossierFolderId());
+		attributes.put("userId", getUserId());
+		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
@@ -86,8 +88,11 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 		attributes.put("sequenceNo", getSequenceNo());
 		attributes.put("procedureFilter", getProcedureFilter());
 		attributes.put("statusFilter", getStatusFilter());
+		attributes.put("tagFilter", getTagFilter());
 		attributes.put("filterByOrganization", getFilterByOrganization());
 		attributes.put("filterByUser", getFilterByUser());
+		attributes.put("orderBy", getOrderBy());
+		attributes.put("counting", getCounting());
 
 		return attributes;
 	}
@@ -104,6 +109,18 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 
 		if (dossierFolderId != null) {
 			setDossierFolderId(dossierFolderId);
+		}
+
+		Long userId = (Long)attributes.get("userId");
+
+		if (userId != null) {
+			setUserId(userId);
+		}
+
+		Long groupId = (Long)attributes.get("groupId");
+
+		if (groupId != null) {
+			setGroupId(groupId);
 		}
 
 		Long companyId = (Long)attributes.get("companyId");
@@ -155,6 +172,12 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 			setStatusFilter(statusFilter);
 		}
 
+		String tagFilter = (String)attributes.get("tagFilter");
+
+		if (tagFilter != null) {
+			setTagFilter(tagFilter);
+		}
+
 		Integer filterByOrganization = (Integer)attributes.get(
 				"filterByOrganization");
 
@@ -166,6 +189,18 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 
 		if (filterByUser != null) {
 			setFilterByUser(filterByUser);
+		}
+
+		String orderBy = (String)attributes.get("orderBy");
+
+		if (orderBy != null) {
+			setOrderBy(orderBy);
+		}
+
+		Integer counting = (Integer)attributes.get("counting");
+
+		if (counting != null) {
+			setCounting(counting);
 		}
 	}
 
@@ -208,6 +243,62 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 				Method method = clazz.getMethod("setDossierFolderId", long.class);
 
 				method.invoke(_dossierFolderRemoteModel, dossierFolderId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public long getUserId() {
+		return _userId;
+	}
+
+	@Override
+	public void setUserId(long userId) {
+		_userId = userId;
+
+		if (_dossierFolderRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierFolderRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setUserId", long.class);
+
+				method.invoke(_dossierFolderRemoteModel, userId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getUserUuid() throws SystemException {
+		return PortalUtil.getUserValue(getUserId(), "uuid", _userUuid);
+	}
+
+	@Override
+	public void setUserUuid(String userUuid) {
+		_userUuid = userUuid;
+	}
+
+	@Override
+	public long getGroupId() {
+		return _groupId;
+	}
+
+	@Override
+	public void setGroupId(long groupId) {
+		_groupId = groupId;
+
+		if (_dossierFolderRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierFolderRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setGroupId", long.class);
+
+				method.invoke(_dossierFolderRemoteModel, groupId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -402,6 +493,29 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 	}
 
 	@Override
+	public String getTagFilter() {
+		return _tagFilter;
+	}
+
+	@Override
+	public void setTagFilter(String tagFilter) {
+		_tagFilter = tagFilter;
+
+		if (_dossierFolderRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierFolderRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setTagFilter", String.class);
+
+				method.invoke(_dossierFolderRemoteModel, tagFilter);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
 	public int getFilterByOrganization() {
 		return _filterByOrganization;
 	}
@@ -441,6 +555,52 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 				Method method = clazz.getMethod("setFilterByUser", int.class);
 
 				method.invoke(_dossierFolderRemoteModel, filterByUser);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public String getOrderBy() {
+		return _orderBy;
+	}
+
+	@Override
+	public void setOrderBy(String orderBy) {
+		_orderBy = orderBy;
+
+		if (_dossierFolderRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierFolderRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setOrderBy", String.class);
+
+				method.invoke(_dossierFolderRemoteModel, orderBy);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public int getCounting() {
+		return _counting;
+	}
+
+	@Override
+	public void setCounting(int counting) {
+		_counting = counting;
+
+		if (_dossierFolderRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierFolderRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setCounting", int.class);
+
+				method.invoke(_dossierFolderRemoteModel, counting);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -526,6 +686,8 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 
 		clone.setUuid(getUuid());
 		clone.setDossierFolderId(getDossierFolderId());
+		clone.setUserId(getUserId());
+		clone.setGroupId(getGroupId());
 		clone.setCompanyId(getCompanyId());
 		clone.setCreateDate(getCreateDate());
 		clone.setModifiedDate(getModifiedDate());
@@ -534,8 +696,11 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 		clone.setSequenceNo(getSequenceNo());
 		clone.setProcedureFilter(getProcedureFilter());
 		clone.setStatusFilter(getStatusFilter());
+		clone.setTagFilter(getTagFilter());
 		clone.setFilterByOrganization(getFilterByOrganization());
 		clone.setFilterByUser(getFilterByUser());
+		clone.setOrderBy(getOrderBy());
+		clone.setCounting(getCounting());
 
 		return clone;
 	}
@@ -588,12 +753,16 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(25);
+		StringBundler sb = new StringBundler(35);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
 		sb.append(", dossierFolderId=");
 		sb.append(getDossierFolderId());
+		sb.append(", userId=");
+		sb.append(getUserId());
+		sb.append(", groupId=");
+		sb.append(getGroupId());
 		sb.append(", companyId=");
 		sb.append(getCompanyId());
 		sb.append(", createDate=");
@@ -610,10 +779,16 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 		sb.append(getProcedureFilter());
 		sb.append(", statusFilter=");
 		sb.append(getStatusFilter());
+		sb.append(", tagFilter=");
+		sb.append(getTagFilter());
 		sb.append(", filterByOrganization=");
 		sb.append(getFilterByOrganization());
 		sb.append(", filterByUser=");
 		sb.append(getFilterByUser());
+		sb.append(", orderBy=");
+		sb.append(getOrderBy());
+		sb.append(", counting=");
+		sb.append(getCounting());
 		sb.append("}");
 
 		return sb.toString();
@@ -621,7 +796,7 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(40);
+		StringBundler sb = new StringBundler(55);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.DossierFolder");
@@ -634,6 +809,14 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 		sb.append(
 			"<column><column-name>dossierFolderId</column-name><column-value><![CDATA[");
 		sb.append(getDossierFolderId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>userId</column-name><column-value><![CDATA[");
+		sb.append(getUserId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>groupId</column-name><column-value><![CDATA[");
+		sb.append(getGroupId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>companyId</column-name><column-value><![CDATA[");
@@ -668,12 +851,24 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 		sb.append(getStatusFilter());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>tagFilter</column-name><column-value><![CDATA[");
+		sb.append(getTagFilter());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>filterByOrganization</column-name><column-value><![CDATA[");
 		sb.append(getFilterByOrganization());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>filterByUser</column-name><column-value><![CDATA[");
 		sb.append(getFilterByUser());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>orderBy</column-name><column-value><![CDATA[");
+		sb.append(getOrderBy());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>counting</column-name><column-value><![CDATA[");
+		sb.append(getCounting());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -683,6 +878,9 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 
 	private String _uuid;
 	private long _dossierFolderId;
+	private long _userId;
+	private String _userUuid;
+	private long _groupId;
 	private long _companyId;
 	private Date _createDate;
 	private Date _modifiedDate;
@@ -691,8 +889,11 @@ public class DossierFolderClp extends BaseModelImpl<DossierFolder>
 	private int _sequenceNo;
 	private String _procedureFilter;
 	private String _statusFilter;
+	private String _tagFilter;
 	private int _filterByOrganization;
 	private int _filterByUser;
+	private String _orderBy;
+	private int _counting;
 	private BaseModel<?> _dossierFolderRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.dossiermgt.service.ClpSerializer.class;
 }

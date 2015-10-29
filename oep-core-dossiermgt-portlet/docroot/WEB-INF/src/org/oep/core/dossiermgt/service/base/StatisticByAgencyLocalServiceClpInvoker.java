@@ -106,13 +106,50 @@ public class StatisticByAgencyLocalServiceClpInvoker {
 				"org.oep.core.dossiermgt.model.StatisticByAgency"
 			};
 
-		_methodName136 = "getBeanIdentifier";
+		_methodName152 = "getBeanIdentifier";
 
-		_methodParameterTypes136 = new String[] {  };
+		_methodParameterTypes152 = new String[] {  };
 
-		_methodName137 = "setBeanIdentifier";
+		_methodName153 = "setBeanIdentifier";
 
-		_methodParameterTypes137 = new String[] { "java.lang.String" };
+		_methodParameterTypes153 = new String[] { "java.lang.String" };
+
+		_methodName158 = "addStatisticByAgency";
+
+		_methodParameterTypes158 = new String[] {
+				"int", "int", "java.lang.String", "int", "int", "double", "int",
+				"int", "double", "double",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName159 = "updateStatisticByAgency";
+
+		_methodParameterTypes159 = new String[] {
+				"long", "int", "int", "java.lang.String", "long", "long",
+				"double", "int", "int", "double", "double",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName160 = "updateStatisticByAgency";
+
+		_methodParameterTypes160 = new String[] {
+				"org.oep.core.dossiermgt.model.StatisticByAgency",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName162 = "removeStatisticByAgency";
+
+		_methodParameterTypes162 = new String[] {
+				"org.oep.core.dossiermgt.model.StatisticByAgency"
+			};
+
+		_methodName163 = "removeStatisticByAgency";
+
+		_methodParameterTypes163 = new String[] { "long" };
+
+		_methodName164 = "getStatisticByAgency";
+
+		_methodParameterTypes164 = new String[] { "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -204,16 +241,72 @@ public class StatisticByAgencyLocalServiceClpInvoker {
 			return StatisticByAgencyLocalServiceUtil.updateStatisticByAgency((org.oep.core.dossiermgt.model.StatisticByAgency)arguments[0]);
 		}
 
-		if (_methodName136.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes136, parameterTypes)) {
+		if (_methodName152.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes152, parameterTypes)) {
 			return StatisticByAgencyLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName137.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes137, parameterTypes)) {
+		if (_methodName153.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes153, parameterTypes)) {
 			StatisticByAgencyLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
+		}
+
+		if (_methodName158.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes158, parameterTypes)) {
+			return StatisticByAgencyLocalServiceUtil.addStatisticByAgency(((Integer)arguments[0]).intValue(),
+				((Integer)arguments[1]).intValue(),
+				(java.lang.String)arguments[2],
+				((Integer)arguments[3]).intValue(),
+				((Integer)arguments[4]).intValue(),
+				((Double)arguments[5]).doubleValue(),
+				((Integer)arguments[6]).intValue(),
+				((Integer)arguments[7]).intValue(),
+				((Double)arguments[8]).doubleValue(),
+				((Double)arguments[9]).doubleValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[10]);
+		}
+
+		if (_methodName159.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes159, parameterTypes)) {
+			return StatisticByAgencyLocalServiceUtil.updateStatisticByAgency(((Long)arguments[0]).longValue(),
+				((Integer)arguments[1]).intValue(),
+				((Integer)arguments[2]).intValue(),
+				(java.lang.String)arguments[3],
+				((Long)arguments[4]).longValue(),
+				((Long)arguments[5]).longValue(),
+				((Double)arguments[6]).doubleValue(),
+				((Integer)arguments[7]).intValue(),
+				((Integer)arguments[8]).intValue(),
+				((Double)arguments[9]).doubleValue(),
+				((Double)arguments[10]).doubleValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[11]);
+		}
+
+		if (_methodName160.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes160, parameterTypes)) {
+			return StatisticByAgencyLocalServiceUtil.updateStatisticByAgency((org.oep.core.dossiermgt.model.StatisticByAgency)arguments[0],
+				(com.liferay.portal.service.ServiceContext)arguments[1]);
+		}
+
+		if (_methodName162.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes162, parameterTypes)) {
+			StatisticByAgencyLocalServiceUtil.removeStatisticByAgency((org.oep.core.dossiermgt.model.StatisticByAgency)arguments[0]);
+
+			return null;
+		}
+
+		if (_methodName163.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes163, parameterTypes)) {
+			StatisticByAgencyLocalServiceUtil.removeStatisticByAgency(((Long)arguments[0]).longValue());
+
+			return null;
+		}
+
+		if (_methodName164.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes164, parameterTypes)) {
+			return StatisticByAgencyLocalServiceUtil.getStatisticByAgency(((Long)arguments[0]).longValue());
 		}
 
 		throw new UnsupportedOperationException();
@@ -251,8 +344,20 @@ public class StatisticByAgencyLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName136;
-	private String[] _methodParameterTypes136;
-	private String _methodName137;
-	private String[] _methodParameterTypes137;
+	private String _methodName152;
+	private String[] _methodParameterTypes152;
+	private String _methodName153;
+	private String[] _methodParameterTypes153;
+	private String _methodName158;
+	private String[] _methodParameterTypes158;
+	private String _methodName159;
+	private String[] _methodParameterTypes159;
+	private String _methodName160;
+	private String[] _methodParameterTypes160;
+	private String _methodName162;
+	private String[] _methodParameterTypes162;
+	private String _methodName163;
+	private String[] _methodParameterTypes163;
+	private String _methodName164;
+	private String[] _methodParameterTypes164;
 }

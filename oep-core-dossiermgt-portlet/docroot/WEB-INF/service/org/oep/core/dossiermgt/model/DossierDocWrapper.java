@@ -61,8 +61,7 @@ public class DossierDocWrapper implements DossierDoc, ModelWrapper<DossierDoc> {
 		attributes.put("note", getNote());
 		attributes.put("sequenceNo", getSequenceNo());
 		attributes.put("defaultDocTemplateId", getDefaultDocTemplateId());
-		attributes.put("validationType", getValidationType());
-		attributes.put("requirementType", getRequirementType());
+		attributes.put("dossierDocType", getDossierDocType());
 		attributes.put("numberOfFile", getNumberOfFile());
 		attributes.put("splitSubDossier", getSplitSubDossier());
 		attributes.put("onlineForm", getOnlineForm());
@@ -144,16 +143,10 @@ public class DossierDocWrapper implements DossierDoc, ModelWrapper<DossierDoc> {
 			setDefaultDocTemplateId(defaultDocTemplateId);
 		}
 
-		Integer validationType = (Integer)attributes.get("validationType");
+		Integer dossierDocType = (Integer)attributes.get("dossierDocType");
 
-		if (validationType != null) {
-			setValidationType(validationType);
-		}
-
-		Integer requirementType = (Integer)attributes.get("requirementType");
-
-		if (requirementType != null) {
-			setRequirementType(requirementType);
+		if (dossierDocType != null) {
+			setDossierDocType(dossierDocType);
 		}
 
 		Integer numberOfFile = (Integer)attributes.get("numberOfFile");
@@ -458,43 +451,23 @@ public class DossierDocWrapper implements DossierDoc, ModelWrapper<DossierDoc> {
 	}
 
 	/**
-	* Returns the validation type of this dossier doc.
+	* Returns the dossier doc type of this dossier doc.
 	*
-	* @return the validation type of this dossier doc
+	* @return the dossier doc type of this dossier doc
 	*/
 	@Override
-	public int getValidationType() {
-		return _dossierDoc.getValidationType();
+	public int getDossierDocType() {
+		return _dossierDoc.getDossierDocType();
 	}
 
 	/**
-	* Sets the validation type of this dossier doc.
+	* Sets the dossier doc type of this dossier doc.
 	*
-	* @param validationType the validation type of this dossier doc
+	* @param dossierDocType the dossier doc type of this dossier doc
 	*/
 	@Override
-	public void setValidationType(int validationType) {
-		_dossierDoc.setValidationType(validationType);
-	}
-
-	/**
-	* Returns the requirement type of this dossier doc.
-	*
-	* @return the requirement type of this dossier doc
-	*/
-	@Override
-	public int getRequirementType() {
-		return _dossierDoc.getRequirementType();
-	}
-
-	/**
-	* Sets the requirement type of this dossier doc.
-	*
-	* @param requirementType the requirement type of this dossier doc
-	*/
-	@Override
-	public void setRequirementType(int requirementType) {
-		_dossierDoc.setRequirementType(requirementType);
+	public void setDossierDocType(int dossierDocType) {
+		_dossierDoc.setDossierDocType(dossierDocType);
 	}
 
 	/**

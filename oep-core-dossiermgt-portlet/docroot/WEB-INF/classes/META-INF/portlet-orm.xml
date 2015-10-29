@@ -26,8 +26,14 @@
 			<basic name="dossierDocId" />
 			<basic name="docTemplateId" />
 			<basic name="docFileVersionId" />
-			<basic name="docName" />
+			<basic name="docFileName" />
+			<basic name="docFileType" />
+			<basic name="verifyStatus" />
 			<basic name="note" />
+			<basic name="approveBy" />
+			<basic name="approveDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
 			<basic name="premier" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
@@ -109,15 +115,23 @@
 			<basic name="wardNo" />
 			<basic name="wardName" />
 			<basic name="telNo" />
+			<basic name="email" />
+			<basic name="subjectAsContactPerson" />
 			<basic name="contactPersonName" />
+			<basic name="contactPersonId" />
+			<basic name="contactPersonSex" />
 			<basic name="contactPersonTel" />
 			<basic name="note" />
 			<basic name="resumeDescription" />
 			<basic name="receptionNo" />
+			<basic name="onegate" />
 			<basic name="submitDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
 			<basic name="receiveDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="processDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
 			<basic name="renewDate">
@@ -129,22 +143,26 @@
 			<basic name="finishDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
+			<basic name="handoverDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
 			<basic name="returnDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
-			<basic name="status" />
+			<basic name="archiveDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="mainStatus" />
+			<basic name="subStatus" />
 			<basic name="statusDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
 			<basic name="statusDescription" />
 			<basic name="feedbackNote" />
 			<basic name="daysDelay" />
-			<basic name="closeDate">
-				<temporal>TIMESTAMP</temporal>
-			</basic>
 			<basic name="errorStatus" />
-			<basic name="pendingStatus" />
 			<basic name="errorCode" />
+			<basic name="pendingStatus" />
 			<basic name="dirty" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
@@ -170,8 +188,7 @@
 			<basic name="note" />
 			<basic name="sequenceNo" />
 			<basic name="defaultDocTemplateId" />
-			<basic name="validationType" />
-			<basic name="requirementType" />
+			<basic name="dossierDocType" />
 			<basic name="numberOfFile" />
 			<basic name="splitSubDossier" />
 			<basic name="onlineForm" />
@@ -187,6 +204,8 @@
 			<basic name="uuid">
 				<column name="UUID_" />
 			</basic>
+			<basic name="userId" />
+			<basic name="groupId" />
 			<basic name="companyId" />
 			<basic name="createDate">
 				<temporal>TIMESTAMP</temporal>
@@ -199,11 +218,15 @@
 			<basic name="sequenceNo" />
 			<basic name="procedureFilter" />
 			<basic name="statusFilter" />
+			<basic name="tagFilter" />
 			<basic name="filterByOrganization" />
 			<basic name="filterByUser" />
+			<basic name="orderBy" />
+			<basic name="counting" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
 	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.DossierFolder2RoleModelImpl">
@@ -246,15 +269,15 @@
 			<basic name="administrationName" />
 			<basic name="domainNo" />
 			<basic name="domainName" />
+			<basic name="forCitizen" />
+			<basic name="forBusiness" />
 			<basic name="effectDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
 			<basic name="expireDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
-			<basic name="active">
-				<column name="ACTIVE_" />
-			</basic>
+			<basic name="statusActive" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
@@ -274,10 +297,45 @@
 			<basic name="dossierProcId" />
 			<basic name="govAgencyId" />
 			<basic name="govAgencyName" />
+			<basic name="bankTransfer" />
+			<basic name="keypay" />
 			<basic name="ebPartnerShipId" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.DossierProcBookmarkModelImpl">
+		<attributes>
+			<id name="dossierProcBookmarkId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="dossierProcAgentId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.DossierTagModelImpl">
+		<attributes>
+			<id name="dossierTagId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="dossierId" />
+			<basic name="tag" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
 	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.EbMessageModelImpl">
@@ -455,18 +513,13 @@
 			<basic name="month" />
 			<basic name="year" />
 			<basic name="govAgencyId" />
-			<basic name="submittedNumber" />
-			<basic name="acceptedNumber" />
-			<basic name="deniedNumber" />
-			<basic name="acceptedRatio" />
-			<basic name="finishedNumber" />
+			<basic name="receiveNumber" />
+			<basic name="onlineNumber" />
+			<basic name="onlineRatio" />
+			<basic name="finishNumber" />
 			<basic name="ontimeNumber" />
-			<basic name="delayedNumber" />
 			<basic name="ontimeRatio" />
-			<basic name="doneNumber" />
-			<basic name="doneRatio" />
 			<basic name="delayDaysAvg" />
-			<basic name="furtherDaysAvg" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
@@ -484,18 +537,36 @@
 				<temporal>TIMESTAMP</temporal>
 			</basic>
 			<basic name="statisticWeek" />
-			<basic name="submittedNumber" />
-			<basic name="acceptedNumber" />
-			<basic name="deniedNumber" />
-			<basic name="acceptedRatio" />
-			<basic name="finishedNumber" />
+			<basic name="receiveNumber" />
+			<basic name="onlineNumber" />
+			<basic name="onlineRatio" />
+			<basic name="finishNumber" />
 			<basic name="ontimeNumber" />
-			<basic name="delayedNumber" />
 			<basic name="ontimeRatio" />
-			<basic name="doneNumber" />
-			<basic name="doneRatio" />
 			<basic name="delayDaysAvg" />
-			<basic name="furtherDaysAvg" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.dossiermgt.model.impl.StatisticByDomainModelImpl">
+		<attributes>
+			<id name="statisticByDomainId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="month" />
+			<basic name="year" />
+			<basic name="dossierDomain" />
+			<basic name="receiveNumber" />
+			<basic name="onlineNumber" />
+			<basic name="onlineRatio" />
+			<basic name="finishNumber" />
+			<basic name="ontimeNumber" />
+			<basic name="ontimeRatio" />
+			<basic name="delayDaysAvg" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
@@ -537,6 +608,14 @@
 		<table name="oep_dossiermgt_dossierprocagent" />
 		<attributes />
 	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.DossierProcBookmarkImpl" name="DossierProcBookmark">
+		<table name="oep_dossiermgt_dossierprocbookmark" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.DossierTagImpl" name="DossierTag">
+		<table name="oep_dossiermgt_dossiertag" />
+		<attributes />
+	</entity>
 	<entity class="org.oep.core.dossiermgt.model.impl.EbMessageImpl" name="EbMessage">
 		<table name="oep_dossiermgt_ebmessage" />
 		<attributes />
@@ -567,6 +646,10 @@
 	</entity>
 	<entity class="org.oep.core.dossiermgt.model.impl.StatisticByDayImpl" name="StatisticByDay">
 		<table name="oep_dossiermgt_statisticbyday" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.dossiermgt.model.impl.StatisticByDomainImpl" name="StatisticByDomain">
+		<table name="oep_dossiermgt_statisticbydomain" />
 		<attributes />
 	</entity>
 </entity-mappings>

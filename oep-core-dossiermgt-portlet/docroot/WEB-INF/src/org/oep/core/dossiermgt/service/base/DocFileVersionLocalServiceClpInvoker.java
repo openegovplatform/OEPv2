@@ -122,68 +122,68 @@ public class DocFileVersionLocalServiceClpInvoker {
 				"org.oep.core.dossiermgt.model.DocFileVersion"
 			};
 
-		_methodName146 = "getBeanIdentifier";
+		_methodName162 = "getBeanIdentifier";
 
-		_methodParameterTypes146 = new String[] {  };
+		_methodParameterTypes162 = new String[] {  };
 
-		_methodName147 = "setBeanIdentifier";
+		_methodName163 = "setBeanIdentifier";
 
-		_methodParameterTypes147 = new String[] { "java.lang.String" };
+		_methodParameterTypes163 = new String[] { "java.lang.String" };
 
-		_methodName152 = "addDocFileVersion";
+		_methodName168 = "addDocFileVersion";
 
-		_methodParameterTypes152 = new String[] {
+		_methodParameterTypes168 = new String[] {
 				"long", "long", "java.lang.String", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName153 = "updateDocFileVersion";
+		_methodName169 = "updateDocFileVersion";
 
-		_methodParameterTypes153 = new String[] {
+		_methodParameterTypes169 = new String[] {
 				"long", "long", "long", "java.lang.String", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName154 = "updateDocFileVersionResources";
+		_methodName170 = "updateDocFileVersionResources";
 
-		_methodParameterTypes154 = new String[] {
+		_methodParameterTypes170 = new String[] {
 				"org.oep.core.dossiermgt.model.DocFileVersion",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName155 = "removeDocFileVersion";
+		_methodName171 = "removeDocFileVersion";
 
-		_methodParameterTypes155 = new String[] {
+		_methodParameterTypes171 = new String[] {
 				"org.oep.core.dossiermgt.model.DocFileVersion"
 			};
 
-		_methodName156 = "removeDocFileVersion";
+		_methodName172 = "removeDocFileVersion";
 
-		_methodParameterTypes156 = new String[] { "long" };
+		_methodParameterTypes172 = new String[] { "long" };
 
-		_methodName157 = "getDocFileVersion";
+		_methodName173 = "getDocFileVersion";
 
-		_methodParameterTypes157 = new String[] { "long" };
+		_methodParameterTypes173 = new String[] { "long" };
 
-		_methodName158 = "addDocFileVersionResources";
+		_methodName174 = "addDocFileVersionResources";
 
-		_methodParameterTypes158 = new String[] {
+		_methodParameterTypes174 = new String[] {
 				"org.oep.core.dossiermgt.model.DocFileVersion", "boolean",
 				"boolean", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName159 = "addDocFileVersionResources";
+		_methodName175 = "addDocFileVersionResources";
 
-		_methodParameterTypes159 = new String[] {
+		_methodParameterTypes175 = new String[] {
 				"org.oep.core.dossiermgt.model.DocFileVersion",
 				"java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName160 = "addDocFileVersionResources";
+		_methodName176 = "addDocFileVersionResources";
 
-		_methodParameterTypes160 = new String[] {
+		_methodParameterTypes176 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -302,20 +302,20 @@ public class DocFileVersionLocalServiceClpInvoker {
 			return DocFileVersionLocalServiceUtil.updateDocFileVersion((org.oep.core.dossiermgt.model.DocFileVersion)arguments[0]);
 		}
 
-		if (_methodName146.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes146, parameterTypes)) {
+		if (_methodName162.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes162, parameterTypes)) {
 			return DocFileVersionLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName147.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes147, parameterTypes)) {
+		if (_methodName163.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes163, parameterTypes)) {
 			DocFileVersionLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName152.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes152, parameterTypes)) {
+		if (_methodName168.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes168, parameterTypes)) {
 			return DocFileVersionLocalServiceUtil.addDocFileVersion(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				(java.lang.String)arguments[2],
@@ -323,8 +323,8 @@ public class DocFileVersionLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[4]);
 		}
 
-		if (_methodName153.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes153, parameterTypes)) {
+		if (_methodName169.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes169, parameterTypes)) {
 			return DocFileVersionLocalServiceUtil.updateDocFileVersion(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				((Long)arguments[2]).longValue(),
@@ -333,8 +333,8 @@ public class DocFileVersionLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[5]);
 		}
 
-		if (_methodName154.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes154, parameterTypes)) {
+		if (_methodName170.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes170, parameterTypes)) {
 			DocFileVersionLocalServiceUtil.updateDocFileVersionResources((org.oep.core.dossiermgt.model.DocFileVersion)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -343,27 +343,27 @@ public class DocFileVersionLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName155.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes155, parameterTypes)) {
+		if (_methodName171.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes171, parameterTypes)) {
 			DocFileVersionLocalServiceUtil.removeDocFileVersion((org.oep.core.dossiermgt.model.DocFileVersion)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName156.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes156, parameterTypes)) {
+		if (_methodName172.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes172, parameterTypes)) {
 			DocFileVersionLocalServiceUtil.removeDocFileVersion(((Long)arguments[0]).longValue());
 
 			return null;
 		}
 
-		if (_methodName157.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes157, parameterTypes)) {
+		if (_methodName173.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes173, parameterTypes)) {
 			return DocFileVersionLocalServiceUtil.getDocFileVersion(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName158.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes158, parameterTypes)) {
+		if (_methodName174.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes174, parameterTypes)) {
 			DocFileVersionLocalServiceUtil.addDocFileVersionResources((org.oep.core.dossiermgt.model.DocFileVersion)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Boolean)arguments[2]).booleanValue(),
@@ -372,8 +372,8 @@ public class DocFileVersionLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName159.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes159, parameterTypes)) {
+		if (_methodName175.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes175, parameterTypes)) {
 			DocFileVersionLocalServiceUtil.addDocFileVersionResources((org.oep.core.dossiermgt.model.DocFileVersion)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -382,8 +382,8 @@ public class DocFileVersionLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName160.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes160, parameterTypes)) {
+		if (_methodName176.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes176, parameterTypes)) {
 			DocFileVersionLocalServiceUtil.addDocFileVersionResources(((Long)arguments[0]).longValue(),
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -435,26 +435,26 @@ public class DocFileVersionLocalServiceClpInvoker {
 	private String[] _methodParameterTypes18;
 	private String _methodName19;
 	private String[] _methodParameterTypes19;
-	private String _methodName146;
-	private String[] _methodParameterTypes146;
-	private String _methodName147;
-	private String[] _methodParameterTypes147;
-	private String _methodName152;
-	private String[] _methodParameterTypes152;
-	private String _methodName153;
-	private String[] _methodParameterTypes153;
-	private String _methodName154;
-	private String[] _methodParameterTypes154;
-	private String _methodName155;
-	private String[] _methodParameterTypes155;
-	private String _methodName156;
-	private String[] _methodParameterTypes156;
-	private String _methodName157;
-	private String[] _methodParameterTypes157;
-	private String _methodName158;
-	private String[] _methodParameterTypes158;
-	private String _methodName159;
-	private String[] _methodParameterTypes159;
-	private String _methodName160;
-	private String[] _methodParameterTypes160;
+	private String _methodName162;
+	private String[] _methodParameterTypes162;
+	private String _methodName163;
+	private String[] _methodParameterTypes163;
+	private String _methodName168;
+	private String[] _methodParameterTypes168;
+	private String _methodName169;
+	private String[] _methodParameterTypes169;
+	private String _methodName170;
+	private String[] _methodParameterTypes170;
+	private String _methodName171;
+	private String[] _methodParameterTypes171;
+	private String _methodName172;
+	private String[] _methodParameterTypes172;
+	private String _methodName173;
+	private String[] _methodParameterTypes173;
+	private String _methodName174;
+	private String[] _methodParameterTypes174;
+	private String _methodName175;
+	private String[] _methodParameterTypes175;
+	private String _methodName176;
+	private String[] _methodParameterTypes176;
 }

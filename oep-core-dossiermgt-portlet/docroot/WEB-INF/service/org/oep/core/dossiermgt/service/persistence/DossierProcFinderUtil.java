@@ -64,20 +64,23 @@ public class DossierProcFinderUtil {
 	}
 
 	public static java.util.List<org.oep.core.dossiermgt.model.DossierProc> findByGroupCustomCondition(
-		java.lang.String name, java.util.Date effectDate,
+		java.lang.String name, java.lang.String administrationNo,
+		java.lang.String domainNo, java.util.Date effectDate,
 		java.util.Date expireDate, int active, int startIndex, int endIndex,
 		com.liferay.portal.service.ServiceContext serviceContext) {
 		return getFinder()
-				   .findByGroupCustomCondition(name, effectDate, expireDate,
-			active, startIndex, endIndex, serviceContext);
+				   .findByGroupCustomCondition(name, administrationNo,
+			domainNo, effectDate, expireDate, active, startIndex, endIndex,
+			serviceContext);
 	}
 
 	public static int countByGroupCustomCondition(java.lang.String name,
+		java.lang.String administrationNo, java.lang.String domainNo,
 		java.util.Date effectDate, java.util.Date expireDate, int active,
 		com.liferay.portal.service.ServiceContext serviceContext) {
 		return getFinder()
-				   .countByGroupCustomCondition(name, effectDate, expireDate,
-			active, serviceContext);
+				   .countByGroupCustomCondition(name, administrationNo,
+			domainNo, effectDate, expireDate, active, serviceContext);
 	}
 
 	public static DossierProcFinder getFinder() {

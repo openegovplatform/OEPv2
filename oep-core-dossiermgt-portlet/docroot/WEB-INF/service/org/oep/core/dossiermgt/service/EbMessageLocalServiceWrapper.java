@@ -287,17 +287,32 @@ public class EbMessageLocalServiceWrapper implements EbMessageLocalService,
 	}
 
 	/**
-	* Add eb message
+	* ThÃƒÂªm thÃƒÂ´ng Ã„â€˜iÃ¡Â»â€¡p ebXML
 	*
 	* Version: OEP 2.0
 	*
 	* History:
 	*   DATE        AUTHOR      DESCRIPTION
 	*  -------------------------------------------------
-	*  21-September-2015  trungdk    Create new
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
 	*
-	* @param
-	* @return: new eb message
+	* @param messageId mÃƒÂ£ Ã„â€˜Ã¡Â»â€¹nh danh thÃƒÂ´ng Ã„â€˜iÃ¡Â»â€¡p
+	* @param cpaId
+	* @param service
+	* @param action
+	* @param conversationId
+	* @param fromPartyId
+	* @param fromPartyType
+	* @param toPartyId
+	* @param toPartyType
+	* @param refToMessageId
+	* @param status
+	* @param statusDescription
+	* @param ackMessageId
+	* @param ackStatusDescription
+	* @param messageDescription
+	* @param inbound
+	* @return: thÃƒÂ´ng Ã„â€˜iÃ¡Â»â€¡p mÃ¡Â»â€ºi Ã„â€˜Ã†Â°Ã¡Â»Â£c tÃ¡ÂºÂ¡o
 	*/
 	@Override
 	public org.oep.core.dossiermgt.model.EbMessage addEbMessage(
@@ -320,6 +335,35 @@ public class EbMessageLocalServiceWrapper implements EbMessageLocalService,
 			inbound, serviceContext);
 	}
 
+	/**
+	* CÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t thÃƒÂ´ng Ã„â€˜iÃ¡Â»â€¡p ebXML
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    TÃ¡ÂºÂ¡o mÃ¡Â»â€ºi
+	*
+	* @param id mÃƒÂ£ thÃƒÂ´ng Ã„â€˜iÃ¡Â»â€¡p
+	* @param messageId mÃƒÂ£ Ã„â€˜Ã¡Â»â€¹nh danh thÃƒÂ´ng Ã„â€˜iÃ¡Â»â€¡p
+	* @param cpaId
+	* @param service
+	* @param action
+	* @param conversationId
+	* @param fromPartyId
+	* @param fromPartyType
+	* @param toPartyId
+	* @param toPartyType
+	* @param refToMessageId
+	* @param status
+	* @param statusDescription
+	* @param ackMessageId
+	* @param ackStatusDescription
+	* @param messageDescription
+	* @param inbound
+	* @return: thÃƒÂ´ng Ã„â€˜iÃ¡Â»â€¡p mÃ¡Â»â€ºi Ã„â€˜Ã†Â°Ã¡Â»Â£c cÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t
+	*/
 	@Override
 	public org.oep.core.dossiermgt.model.EbMessage updateEbMessage(long id,
 		java.lang.String messageId, java.lang.String cpaId,

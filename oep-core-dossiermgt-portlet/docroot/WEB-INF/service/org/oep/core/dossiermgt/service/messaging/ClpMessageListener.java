@@ -33,9 +33,12 @@ import org.oep.core.dossiermgt.service.DossierFolderServiceUtil;
 import org.oep.core.dossiermgt.service.DossierLocalServiceUtil;
 import org.oep.core.dossiermgt.service.DossierProcAgentLocalServiceUtil;
 import org.oep.core.dossiermgt.service.DossierProcAgentServiceUtil;
+import org.oep.core.dossiermgt.service.DossierProcBookmarkLocalServiceUtil;
+import org.oep.core.dossiermgt.service.DossierProcBookmarkServiceUtil;
 import org.oep.core.dossiermgt.service.DossierProcLocalServiceUtil;
 import org.oep.core.dossiermgt.service.DossierProcServiceUtil;
-import org.oep.core.dossiermgt.service.DossierServiceUtil;
+import org.oep.core.dossiermgt.service.DossierTagLocalServiceUtil;
+import org.oep.core.dossiermgt.service.DossierTagServiceUtil;
 import org.oep.core.dossiermgt.service.EbMessageLocalServiceUtil;
 import org.oep.core.dossiermgt.service.EbMessageServiceUtil;
 import org.oep.core.dossiermgt.service.EbPartnerShipLocalServiceUtil;
@@ -52,6 +55,8 @@ import org.oep.core.dossiermgt.service.StatisticByAgencyLocalServiceUtil;
 import org.oep.core.dossiermgt.service.StatisticByAgencyServiceUtil;
 import org.oep.core.dossiermgt.service.StatisticByDayLocalServiceUtil;
 import org.oep.core.dossiermgt.service.StatisticByDayServiceUtil;
+import org.oep.core.dossiermgt.service.StatisticByDomainLocalServiceUtil;
+import org.oep.core.dossiermgt.service.StatisticByDomainServiceUtil;
 
 /**
  * @author trungdk
@@ -79,7 +84,6 @@ public class ClpMessageListener extends BaseMessageListener {
 			DocTemplateServiceUtil.clearService();
 			DossierLocalServiceUtil.clearService();
 
-			DossierServiceUtil.clearService();
 			DossierDocLocalServiceUtil.clearService();
 
 			DossierDocServiceUtil.clearService();
@@ -95,6 +99,12 @@ public class ClpMessageListener extends BaseMessageListener {
 			DossierProcAgentLocalServiceUtil.clearService();
 
 			DossierProcAgentServiceUtil.clearService();
+			DossierProcBookmarkLocalServiceUtil.clearService();
+
+			DossierProcBookmarkServiceUtil.clearService();
+			DossierTagLocalServiceUtil.clearService();
+
+			DossierTagServiceUtil.clearService();
 			EbMessageLocalServiceUtil.clearService();
 
 			EbMessageServiceUtil.clearService();
@@ -119,6 +129,9 @@ public class ClpMessageListener extends BaseMessageListener {
 			StatisticByDayLocalServiceUtil.clearService();
 
 			StatisticByDayServiceUtil.clearService();
+			StatisticByDomainLocalServiceUtil.clearService();
+
+			StatisticByDomainServiceUtil.clearService();
 		}
 	}
 }

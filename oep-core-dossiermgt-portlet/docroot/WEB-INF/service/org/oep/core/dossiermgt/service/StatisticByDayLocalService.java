@@ -253,4 +253,124 @@ public interface StatisticByDayLocalService extends BaseLocalService,
 	public java.lang.Object invokeMethod(java.lang.String name,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;
+
+	/**
+	* ThÃªm má»›i má»™t thá»‘ng kÃª há»“ sÆ¡ theo ngÃ y
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Táº¡o má»›i
+	*
+	* @param statisticDate ngÃ y thá»‘ng kÃª
+	* @param statisticWeek tuáº§n thá»‘ng kÃª
+	* @param receiveNumber sá»‘ há»“ sÆ¡ Ä‘Æ°á»£c tiáº¿p nháº­n
+	* @param onlineNumber sá»‘ há»“ sÆ¡ trá»±c tuyáº¿n
+	* @param onlineRatio tá»‰ lá»‡ há»“ sÆ¡ trá»±c tuyáº¿n
+	* @param finishNumber sá»‘ há»“ sÆ¡ Ä‘Æ°á»£c hoÃ n thÃ nh
+	* @param ontimeNumber sá»‘ há»“ sÆ¡ hoÃ n thÃ nh Ä‘Ãºng háº¹n
+	* @param ontimeRatio tá»‰ lá»‡ há»“ sÆ¡ hoÃ n thÃ nh Ä‘Ãºng háº¹n
+	* @param delayDaysAvg sá»‘ ngÃ y trá»… háº¹n trung bÃ¬nh
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return: thá»‘ng kÃª há»“ sÆ¡ má»›i Ä‘Æ°á»£c táº¡o
+	*/
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.dossiermgt.model.StatisticByDay addStatisticByDay(
+		java.util.Date statisticDate, int statisticWeek, int receiveNumber,
+		int onlineNumber, double onlineRatio, int finishNumber,
+		int ontimeNumber, double ontimeRatio, double delayDaysAvg,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Cáº­p nháº­t thÃ´ng tin thá»‘ng kÃª theo ngÃ y
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Cáº­p nháº­t thÃ´ng tin thá»‘ng kÃª theo ngÃ y
+	*
+	* @param id mÃ£ phÃ¢n biá»‡t cá»§a thá»‘ng kÃª theo ngÃ y
+	* @param statisticDate ngÃ y thá»‘ng kÃª
+	* @param statisticWeek tuáº§n thá»‘ng kÃª
+	* @param receiveNumber sá»‘ há»“ sÆ¡ Ä‘Æ°á»£c tiáº¿p nháº­n
+	* @param onlineNumber sá»‘ há»“ sÆ¡ trá»±c tuyáº¿n
+	* @param onlineRatio tá»‰ lá»‡ há»“ sÆ¡ trá»±c tuyáº¿n
+	* @param finishNumber sá»‘ há»“ sÆ¡ Ä‘Æ°á»£c hoÃ n thÃ nh
+	* @param ontimeNumber sá»‘ há»“ sÆ¡ hoÃ n thÃ nh Ä‘Ãºng háº¹n
+	* @param ontimeRatio tá»‰ lá»‡ há»“ sÆ¡ hoÃ n thÃ nh Ä‘Ãºng háº¹n
+	* @param delayDaysAvg sá»‘ ngÃ y trá»… háº¹n trung bÃ¬nh
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return: Ä‘á»‘i tÆ°á»£ng thá»‘ng kÃª theo ngÃ y má»›i Ä‘Æ°á»£c cáº­p nháº­t thÃ´ng tin
+	*/
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.dossiermgt.model.StatisticByDay updateStatisticByDay(
+		long id, java.util.Date statisticDate, int statisticWeek,
+		long receiveNumber, long onlineNumber, double onlineRatio,
+		int finishNumber, int ontimeNumber, double ontimeRatio,
+		double delayDaysAvg,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Cáº­p nháº­t thÃ´ng tin má»™t thá»‘ng kÃª há»“ sÆ¡
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    Cáº­p nháº­t thÃ´ng tin thá»‘ng kÃª há»“ sÆ¡
+	*
+	* @param statisticByDay thá»‘ng kÃª há»“ sÆ¡ theo ngÃ y
+	* @param serviceContext ngá»¯ cáº£nh dá»‹ch vá»¥
+	* @return: Ä‘á»‘i tÆ°á»£ng thá»‘ng kÃª há»“ sÆ¡ theo ngÃ y má»›i Ä‘Æ°á»£c cáº­p nháº­t thÃ´ng tin
+	*/
+	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
+	public org.oep.core.dossiermgt.model.StatisticByDay updateStatisticByDay(
+		org.oep.core.dossiermgt.model.StatisticByDay statisticByDay,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* XÃ³a bá»� thÃ´ng tin má»™t thá»‘ng kÃª theo ngÃ y
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    XÃ³a bá»� thÃ´ng tin thá»‘ng kÃª theo ngÃ y
+	*
+	* @param statisticByDay thá»‘ng kÃª theo ngÃ y Ä‘Æ°á»£c xÃ³a
+	* @return
+	*/
+	public void removeStatisticByDay(
+		org.oep.core.dossiermgt.model.StatisticByDay statisticByDay)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* XÃ³a bá»� thÃ´ng tin má»™t thá»‘ng kÃª theo ngÃ y
+	*
+	* Version: OEP 2.0
+	*
+	* History:
+	*   DATE        AUTHOR      DESCRIPTION
+	*  -------------------------------------------------
+	*  21-September-2015  trungdk    XÃ³a bá»� thÃ´ng tin thá»‘ng kÃª theo ngÃ y
+	*
+	* @param id mÃ£ phÃ¢n biá»‡t thá»‘ng kÃª theo ngÃ y
+	* @return
+	*/
+	public void removeStatisticByDay(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
 }

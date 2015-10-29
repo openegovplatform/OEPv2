@@ -38,7 +38,7 @@ public class DossierProcAgentCacheModel implements CacheModel<DossierProcAgent>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(17);
+		StringBundler sb = new StringBundler(21);
 
 		sb.append("{dossierProcAgentId=");
 		sb.append(dossierProcAgentId);
@@ -54,6 +54,10 @@ public class DossierProcAgentCacheModel implements CacheModel<DossierProcAgent>,
 		sb.append(govAgencyId);
 		sb.append(", govAgencyName=");
 		sb.append(govAgencyName);
+		sb.append(", bankTransfer=");
+		sb.append(bankTransfer);
+		sb.append(", keypay=");
+		sb.append(keypay);
 		sb.append(", ebPartnerShipId=");
 		sb.append(ebPartnerShipId);
 		sb.append("}");
@@ -98,6 +102,20 @@ public class DossierProcAgentCacheModel implements CacheModel<DossierProcAgent>,
 			dossierProcAgentImpl.setGovAgencyName(govAgencyName);
 		}
 
+		if (bankTransfer == null) {
+			dossierProcAgentImpl.setBankTransfer(StringPool.BLANK);
+		}
+		else {
+			dossierProcAgentImpl.setBankTransfer(bankTransfer);
+		}
+
+		if (keypay == null) {
+			dossierProcAgentImpl.setKeypay(StringPool.BLANK);
+		}
+		else {
+			dossierProcAgentImpl.setKeypay(keypay);
+		}
+
 		dossierProcAgentImpl.setEbPartnerShipId(ebPartnerShipId);
 
 		dossierProcAgentImpl.resetOriginalValues();
@@ -114,6 +132,8 @@ public class DossierProcAgentCacheModel implements CacheModel<DossierProcAgent>,
 		dossierProcId = objectInput.readLong();
 		govAgencyId = objectInput.readUTF();
 		govAgencyName = objectInput.readUTF();
+		bankTransfer = objectInput.readUTF();
+		keypay = objectInput.readUTF();
 		ebPartnerShipId = objectInput.readLong();
 	}
 
@@ -140,6 +160,20 @@ public class DossierProcAgentCacheModel implements CacheModel<DossierProcAgent>,
 			objectOutput.writeUTF(govAgencyName);
 		}
 
+		if (bankTransfer == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(bankTransfer);
+		}
+
+		if (keypay == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(keypay);
+		}
+
 		objectOutput.writeLong(ebPartnerShipId);
 	}
 
@@ -150,5 +184,7 @@ public class DossierProcAgentCacheModel implements CacheModel<DossierProcAgent>,
 	public long dossierProcId;
 	public String govAgencyId;
 	public String govAgencyName;
+	public String bankTransfer;
+	public String keypay;
 	public long ebPartnerShipId;
 }

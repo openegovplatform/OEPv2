@@ -160,6 +160,36 @@ public interface DossierProcAgentModel extends BaseModel<DossierProcAgent> {
 	public void setGovAgencyName(String govAgencyName);
 
 	/**
+	 * Returns the bank transfer of this dossier proc agent.
+	 *
+	 * @return the bank transfer of this dossier proc agent
+	 */
+	@AutoEscape
+	public String getBankTransfer();
+
+	/**
+	 * Sets the bank transfer of this dossier proc agent.
+	 *
+	 * @param bankTransfer the bank transfer of this dossier proc agent
+	 */
+	public void setBankTransfer(String bankTransfer);
+
+	/**
+	 * Returns the keypay of this dossier proc agent.
+	 *
+	 * @return the keypay of this dossier proc agent
+	 */
+	@AutoEscape
+	public String getKeypay();
+
+	/**
+	 * Sets the keypay of this dossier proc agent.
+	 *
+	 * @param keypay the keypay of this dossier proc agent
+	 */
+	public void setKeypay(String keypay);
+
+	/**
 	 * Returns the eb partner ship ID of this dossier proc agent.
 	 *
 	 * @return the eb partner ship ID of this dossier proc agent

@@ -71,9 +71,11 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 			{ "dossierProcId", Types.BIGINT },
 			{ "govAgencyId", Types.VARCHAR },
 			{ "govAgencyName", Types.VARCHAR },
+			{ "bankTransfer", Types.VARCHAR },
+			{ "keypay", Types.VARCHAR },
 			{ "ebPartnerShipId", Types.BIGINT }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_dossierprocagent (dossierProcAgentId LONG not null primary key,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcId LONG,govAgencyId VARCHAR(30) null,govAgencyName VARCHAR(200) null,ebPartnerShipId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table oep_dossiermgt_dossierprocagent (dossierProcAgentId LONG not null primary key,companyId LONG,createDate DATE null,modifiedDate DATE null,dossierProcId LONG,govAgencyId VARCHAR(30) null,govAgencyName VARCHAR(200) null,bankTransfer VARCHAR(500) null,keypay VARCHAR(255) null,ebPartnerShipId LONG)";
 	public static final String TABLE_SQL_DROP = "drop table oep_dossiermgt_dossierprocagent";
 	public static final String ORDER_BY_JPQL = " ORDER BY dossierProcAgent.dossierProcAgentId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_dossiermgt_dossierprocagent.dossierProcAgentId ASC";
@@ -108,6 +110,8 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 		model.setDossierProcId(soapModel.getDossierProcId());
 		model.setGovAgencyId(soapModel.getGovAgencyId());
 		model.setGovAgencyName(soapModel.getGovAgencyName());
+		model.setBankTransfer(soapModel.getBankTransfer());
+		model.setKeypay(soapModel.getKeypay());
 		model.setEbPartnerShipId(soapModel.getEbPartnerShipId());
 
 		return model;
@@ -181,6 +185,8 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 		attributes.put("dossierProcId", getDossierProcId());
 		attributes.put("govAgencyId", getGovAgencyId());
 		attributes.put("govAgencyName", getGovAgencyName());
+		attributes.put("bankTransfer", getBankTransfer());
+		attributes.put("keypay", getKeypay());
 		attributes.put("ebPartnerShipId", getEbPartnerShipId());
 
 		return attributes;
@@ -228,6 +234,18 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 
 		if (govAgencyName != null) {
 			setGovAgencyName(govAgencyName);
+		}
+
+		String bankTransfer = (String)attributes.get("bankTransfer");
+
+		if (bankTransfer != null) {
+			setBankTransfer(bankTransfer);
+		}
+
+		String keypay = (String)attributes.get("keypay");
+
+		if (keypay != null) {
+			setKeypay(keypay);
 		}
 
 		Long ebPartnerShipId = (Long)attributes.get("ebPartnerShipId");
@@ -326,6 +344,38 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 
 	@JSON
 	@Override
+	public String getBankTransfer() {
+		if (_bankTransfer == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _bankTransfer;
+		}
+	}
+
+	@Override
+	public void setBankTransfer(String bankTransfer) {
+		_bankTransfer = bankTransfer;
+	}
+
+	@JSON
+	@Override
+	public String getKeypay() {
+		if (_keypay == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _keypay;
+		}
+	}
+
+	@Override
+	public void setKeypay(String keypay) {
+		_keypay = keypay;
+	}
+
+	@JSON
+	@Override
 	public long getEbPartnerShipId() {
 		return _ebPartnerShipId;
 	}
@@ -369,6 +419,8 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 		dossierProcAgentImpl.setDossierProcId(getDossierProcId());
 		dossierProcAgentImpl.setGovAgencyId(getGovAgencyId());
 		dossierProcAgentImpl.setGovAgencyName(getGovAgencyName());
+		dossierProcAgentImpl.setBankTransfer(getBankTransfer());
+		dossierProcAgentImpl.setKeypay(getKeypay());
 		dossierProcAgentImpl.setEbPartnerShipId(getEbPartnerShipId());
 
 		dossierProcAgentImpl.resetOriginalValues();
@@ -466,6 +518,22 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 			dossierProcAgentCacheModel.govAgencyName = null;
 		}
 
+		dossierProcAgentCacheModel.bankTransfer = getBankTransfer();
+
+		String bankTransfer = dossierProcAgentCacheModel.bankTransfer;
+
+		if ((bankTransfer != null) && (bankTransfer.length() == 0)) {
+			dossierProcAgentCacheModel.bankTransfer = null;
+		}
+
+		dossierProcAgentCacheModel.keypay = getKeypay();
+
+		String keypay = dossierProcAgentCacheModel.keypay;
+
+		if ((keypay != null) && (keypay.length() == 0)) {
+			dossierProcAgentCacheModel.keypay = null;
+		}
+
 		dossierProcAgentCacheModel.ebPartnerShipId = getEbPartnerShipId();
 
 		return dossierProcAgentCacheModel;
@@ -473,7 +541,7 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(17);
+		StringBundler sb = new StringBundler(21);
 
 		sb.append("{dossierProcAgentId=");
 		sb.append(getDossierProcAgentId());
@@ -489,6 +557,10 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 		sb.append(getGovAgencyId());
 		sb.append(", govAgencyName=");
 		sb.append(getGovAgencyName());
+		sb.append(", bankTransfer=");
+		sb.append(getBankTransfer());
+		sb.append(", keypay=");
+		sb.append(getKeypay());
 		sb.append(", ebPartnerShipId=");
 		sb.append(getEbPartnerShipId());
 		sb.append("}");
@@ -498,7 +570,7 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(28);
+		StringBundler sb = new StringBundler(34);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.DossierProcAgent");
@@ -533,6 +605,14 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 		sb.append(getGovAgencyName());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>bankTransfer</column-name><column-value><![CDATA[");
+		sb.append(getBankTransfer());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>keypay</column-name><column-value><![CDATA[");
+		sb.append(getKeypay());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>ebPartnerShipId</column-name><column-value><![CDATA[");
 		sb.append(getEbPartnerShipId());
 		sb.append("]]></column-value></column>");
@@ -553,6 +633,8 @@ public class DossierProcAgentModelImpl extends BaseModelImpl<DossierProcAgent>
 	private long _dossierProcId;
 	private String _govAgencyId;
 	private String _govAgencyName;
+	private String _bankTransfer;
+	private String _keypay;
 	private long _ebPartnerShipId;
 	private DossierProcAgent _escapedModel;
 }

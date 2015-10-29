@@ -99,9 +99,11 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 		attributes.put("administrationName", getAdministrationName());
 		attributes.put("domainNo", getDomainNo());
 		attributes.put("domainName", getDomainName());
+		attributes.put("forCitizen", getForCitizen());
+		attributes.put("forBusiness", getForBusiness());
 		attributes.put("effectDate", getEffectDate());
 		attributes.put("expireDate", getExpireDate());
-		attributes.put("active", getActive());
+		attributes.put("statusActive", getStatusActive());
 
 		return attributes;
 	}
@@ -255,6 +257,18 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 			setDomainName(domainName);
 		}
 
+		Integer forCitizen = (Integer)attributes.get("forCitizen");
+
+		if (forCitizen != null) {
+			setForCitizen(forCitizen);
+		}
+
+		Integer forBusiness = (Integer)attributes.get("forBusiness");
+
+		if (forBusiness != null) {
+			setForBusiness(forBusiness);
+		}
+
 		Date effectDate = (Date)attributes.get("effectDate");
 
 		if (effectDate != null) {
@@ -267,10 +281,10 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 			setExpireDate(expireDate);
 		}
 
-		Integer active = (Integer)attributes.get("active");
+		Integer statusActive = (Integer)attributes.get("statusActive");
 
-		if (active != null) {
-			setActive(active);
+		if (statusActive != null) {
+			setStatusActive(statusActive);
 		}
 	}
 
@@ -849,6 +863,52 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 	}
 
 	@Override
+	public int getForCitizen() {
+		return _forCitizen;
+	}
+
+	@Override
+	public void setForCitizen(int forCitizen) {
+		_forCitizen = forCitizen;
+
+		if (_dossierProcRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierProcRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setForCitizen", int.class);
+
+				method.invoke(_dossierProcRemoteModel, forCitizen);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public int getForBusiness() {
+		return _forBusiness;
+	}
+
+	@Override
+	public void setForBusiness(int forBusiness) {
+		_forBusiness = forBusiness;
+
+		if (_dossierProcRemoteModel != null) {
+			try {
+				Class<?> clazz = _dossierProcRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setForBusiness", int.class);
+
+				method.invoke(_dossierProcRemoteModel, forBusiness);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
 	public Date getEffectDate() {
 		return _effectDate;
 	}
@@ -895,21 +955,21 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 	}
 
 	@Override
-	public int getActive() {
-		return _active;
+	public int getStatusActive() {
+		return _statusActive;
 	}
 
 	@Override
-	public void setActive(int active) {
-		_active = active;
+	public void setStatusActive(int statusActive) {
+		_statusActive = statusActive;
 
 		if (_dossierProcRemoteModel != null) {
 			try {
 				Class<?> clazz = _dossierProcRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setActive", int.class);
+				Method method = clazz.getMethod("setStatusActive", int.class);
 
-				method.invoke(_dossierProcRemoteModel, active);
+				method.invoke(_dossierProcRemoteModel, statusActive);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -1010,9 +1070,11 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 		clone.setAdministrationName(getAdministrationName());
 		clone.setDomainNo(getDomainNo());
 		clone.setDomainName(getDomainName());
+		clone.setForCitizen(getForCitizen());
+		clone.setForBusiness(getForBusiness());
 		clone.setEffectDate(getEffectDate());
 		clone.setExpireDate(getExpireDate());
-		clone.setActive(getActive());
+		clone.setStatusActive(getStatusActive());
 
 		return clone;
 	}
@@ -1065,7 +1127,7 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(55);
+		StringBundler sb = new StringBundler(59);
 
 		sb.append("{dossierProcId=");
 		sb.append(getDossierProcId());
@@ -1115,12 +1177,16 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 		sb.append(getDomainNo());
 		sb.append(", domainName=");
 		sb.append(getDomainName());
+		sb.append(", forCitizen=");
+		sb.append(getForCitizen());
+		sb.append(", forBusiness=");
+		sb.append(getForBusiness());
 		sb.append(", effectDate=");
 		sb.append(getEffectDate());
 		sb.append(", expireDate=");
 		sb.append(getExpireDate());
-		sb.append(", active=");
-		sb.append(getActive());
+		sb.append(", statusActive=");
+		sb.append(getStatusActive());
 		sb.append("}");
 
 		return sb.toString();
@@ -1128,7 +1194,7 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(85);
+		StringBundler sb = new StringBundler(91);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.core.dossiermgt.model.DossierProc");
@@ -1231,6 +1297,14 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 		sb.append(getDomainName());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>forCitizen</column-name><column-value><![CDATA[");
+		sb.append(getForCitizen());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>forBusiness</column-name><column-value><![CDATA[");
+		sb.append(getForBusiness());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>effectDate</column-name><column-value><![CDATA[");
 		sb.append(getEffectDate());
 		sb.append("]]></column-value></column>");
@@ -1239,8 +1313,8 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 		sb.append(getExpireDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>active</column-name><column-value><![CDATA[");
-		sb.append(getActive());
+			"<column><column-name>statusActive</column-name><column-value><![CDATA[");
+		sb.append(getStatusActive());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -1273,9 +1347,11 @@ public class DossierProcClp extends BaseModelImpl<DossierProc>
 	private String _administrationName;
 	private String _domainNo;
 	private String _domainName;
+	private int _forCitizen;
+	private int _forBusiness;
 	private Date _effectDate;
 	private Date _expireDate;
-	private int _active;
+	private int _statusActive;
 	private BaseModel<?> _dossierProcRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.core.dossiermgt.service.ClpSerializer.class;
 }
