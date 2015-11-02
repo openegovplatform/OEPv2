@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//docroot/WEB-INF/src/org/oep/core/ssomgt/action/ApplicationManagementPortlet.java=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/core/ssomgt/service/impl/AppMessageLocalServiceImpl.java=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/core/ssomgt/service/impl/AppRoleLocalServiceImpl.java=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/core/ssomgt/service/impl/ApplicationLocalServiceImpl.java=UTF-8

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<custom-sql>
+	<sql id="mysql.org.oep.core.ssomgt.service.persistence.AppMessageFinder.countByCustomCondition">
+		<![CDATA[
+			SELECT COUNT(*) total
+			FROM OEP_SSOMGT_APPMESSAGE
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$FROMAPPLICATION_FILTER$]
+			[$TOUSER_FILTER$]
+			[$MESSAGETYPE_FILTER$]
+			[$FROMDATE_FILTER$]
+			[$TODATE_FILTER$]
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.core.ssomgt.service.persistence.AppMessageFinder.findByCustomCondition">
+		<![CDATA[
+			SELECT *
+			FROM OEP_SSOMGT_APPMESSAGE
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$FROMAPPLICATION_FILTER$]
+			[$TOUSER_FILTER$]
+			[$MESSAGETYPE_FILTER$]
+			[$FROMDATE_FILTER$]
+			[$TODATE_FILTER$]
+		]]>
+	</sql>
+</custom-sql>

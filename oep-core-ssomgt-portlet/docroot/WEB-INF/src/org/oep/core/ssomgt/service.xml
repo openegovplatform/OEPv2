@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="org.oep.core.ssomgt">
+	<author>trungdk</author>
+	<namespace>oep_ssomgt</namespace>
+
+	<entity name="Application" table="oep_ssomgt_application" local-service="true" remote-service="true">
+		<column name="applicationId" type="long" primary="true"></column>
+		<column name="userId" type="long"></column>
+		<column name="groupId" type="long"></column>
+		<column name="companyId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+		<column name="appCode" type="String"></column>
+		<column name="appName" type="String"></column>
+		<column name="appPin" type="String"></column>
+		<column name="appUrl" type="String"></column>
+		<column name="appBigIcon" type="Blob"></column>
+		<column name="appSmallIcon" type="Blob"></column>
+		<column name="pingTime" type="Date"></column>
+		<column name="sequenceNo" type="int"></column>
+        <order by="asc">
+            <order-column name="sequenceNo" order-by="asc"></order-column>
+        </order>
+        <finder name="C" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+        </finder>
+        <finder name="C_G" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="AC" return-type="Application">
+            <finder-column name="appCode"></finder-column>
+        </finder>
+        <finder name="AC_P" return-type="Application">
+            <finder-column name="appCode"></finder-column>
+            <finder-column name="appPin"></finder-column>
+        </finder>
+	</entity>
+	
+	<entity name="AppRole" table="oep_ssomgt_approle" local-service="true" remote-service="true">
+		<column name="appRoleId" type="long" primary="true"></column>
+		<column name="userId" type="long"></column>
+		<column name="groupId" type="long"></column>
+		<column name="companyId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="applicationId" type="long"></column>
+		<column name="roleCode" type="String"></column>
+		<column name="roleName" type="String"></column>
+        <finder name="C" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+        </finder>
+        <finder name="C_G" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="C_G_A" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="applicationId"></finder-column>
+        </finder>		
+	</entity>
+	
+	<entity name="AppRole2JobPos" table="oep_ssomgt_approle2jobpos" local-service="true" remote-service="true">
+		<column name="appRole2JobPosId" type="long" primary="true"></column>
+		<column name="userId" type="long"></column>
+		<column name="groupId" type="long"></column>
+		<column name="companyId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="appRoleId" type="long"></column>
+		<column name="jobPostId" type="long"></column>
+        <finder name="C" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+        </finder>
+        <finder name="C_G" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="C_G_AR" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="appRoleId"></finder-column>
+        </finder>		
+	</entity>
+	
+	<entity name="AppRole2Employee" table="oep_ssomgt_approle2employee" local-service="true" remote-service="true">
+		<column name="appRole2EmployeeId" type="long" primary="true"></column>
+		<column name="userId" type="long"></column>
+		<column name="groupId" type="long"></column>
+		<column name="companyId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="appRoleId" type="long"></column>
+		<column name="employeeId" type="long"></column>
+        <finder name="C" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+        </finder>
+        <finder name="C_G" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="C_G_AR" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="appRoleId"></finder-column>
+        </finder>		
+	</entity>
+	<entity name="UserSync" table="oep_ssomgt_usersync" local-service="true" remote-service="true">
+		<column name="userSyncId" type="long" primary="true"></column>
+		<column name="applicationId" type="long"></column>
+		<column name="employeeId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="accessible" type="int"></column>
+		<column name="checkpoint" type="Date"></column>
+		<column name="syncTime" type="Date"></column>
+	</entity>
+	
+	<entity name="AppMessage" table="oep_ssomgt_appmessage" local-service="true" remote-service="true">
+		<column name="appMessageId" type="long" primary="true"></column>
+		<column name="userId" type="long"></column>
+		<column name="groupId" type="long"></column>
+		<column name="companyId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="fromApplication" type="String"></column>
+		<column name="toUser" type="String"></column>
+		<column name="messageType" type="String"></column>
+		<column name="messageCode" type="String"></column>
+		<column name="messageText" type="String"></column>
+		<column name="messageValue" type="String"></column>
+		<column name="messageUrl" type="String"></column>
+		<column name="visitDate" type="Date"></column>
+        <finder name="TU" return-type="Collection">
+            <finder-column name="toUser"></finder-column>
+        </finder>
+        <finder name="FA_TU" return-type="Collection">
+            <finder-column name="fromApplication"></finder-column>
+            <finder-column name="toUser"></finder-column>
+        </finder>		
+	</entity>	
+</service-builder>

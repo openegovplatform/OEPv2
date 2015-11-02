@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="org.oep.core.ssomgt.model.Application" />
+	<import class="org.oep.core.ssomgt.model.AppMessage" />
+	<import class="org.oep.core.ssomgt.model.AppRole" />
+	<import class="org.oep.core.ssomgt.model.AppRole2Employee" />
+	<import class="org.oep.core.ssomgt.model.AppRole2JobPos" />
+	<import class="org.oep.core.ssomgt.model.UserSync" />
+	<import class="org.oep.core.ssomgt.app.model.SSOApp" />
+	<class name="org.oep.core.ssomgt.model.impl.ApplicationImpl" table="oep_ssomgt_application">
+		<cache usage="read-write" />
+		<id name="applicationId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="appCode" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="appName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="appPin" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="appUrl" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<one-to-one name="appBigIconBlobModel" access="com.liferay.portal.dao.orm.hibernate.PrivatePropertyAccessor" class="org.oep.core.ssomgt.model.ApplicationAppBigIconBlobModel" cascade="save-update" outer-join="false" constrained="true" />
+		<one-to-one name="appSmallIconBlobModel" access="com.liferay.portal.dao.orm.hibernate.PrivatePropertyAccessor" class="org.oep.core.ssomgt.model.ApplicationAppSmallIconBlobModel" cascade="save-update" outer-join="false" constrained="true" />
+		<property name="pingTime" type="org.hibernate.type.TimestampType" />
+		<property name="sequenceNo" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+	</class>
+	<class name="org.oep.core.ssomgt.model.ApplicationAppBigIconBlobModel" table="oep_ssomgt_application" lazy="true">
+		<id name="applicationId" column="applicationId">
+			<generator class="foreign">
+				<param name="property">org.oep.core.ssomgt.model.impl.ApplicationImpl</param>
+			</generator>
+		</id>
+		<property column="appBigIcon" name="appBigIconBlob" type="blob" />
+	</class>
+	<class name="org.oep.core.ssomgt.model.ApplicationAppSmallIconBlobModel" table="oep_ssomgt_application" lazy="true">
+		<id name="applicationId" column="applicationId">
+			<generator class="foreign">
+				<param name="property">org.oep.core.ssomgt.model.impl.ApplicationImpl</param>
+			</generator>
+		</id>
+		<property column="appSmallIcon" name="appSmallIconBlob" type="blob" />
+	</class>
+	<class name="org.oep.core.ssomgt.model.impl.AppMessageImpl" table="oep_ssomgt_appmessage">
+		<cache usage="read-write" />
+		<id name="appMessageId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="fromApplication" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="toUser" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="messageType" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="messageCode" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="messageText" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="messageValue" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="messageUrl" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="visitDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="org.oep.core.ssomgt.model.impl.AppRoleImpl" table="oep_ssomgt_approle">
+		<cache usage="read-write" />
+		<id name="appRoleId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="applicationId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="roleCode" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="roleName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="org.oep.core.ssomgt.model.impl.AppRole2EmployeeImpl" table="oep_ssomgt_approle2employee">
+		<cache usage="read-write" />
+		<id name="appRole2EmployeeId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="appRoleId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="employeeId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="org.oep.core.ssomgt.model.impl.AppRole2JobPosImpl" table="oep_ssomgt_approle2jobpos">
+		<cache usage="read-write" />
+		<id name="appRole2JobPosId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="appRoleId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="jobPostId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="org.oep.core.ssomgt.model.impl.UserSyncImpl" table="oep_ssomgt_usersync">
+		<cache usage="read-write" />
+		<id name="userSyncId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="applicationId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="employeeId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="accessible" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="checkpoint" type="org.hibernate.type.TimestampType" />
+		<property name="syncTime" type="org.hibernate.type.TimestampType" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<custom-sql>
+<!-- mysql  -->
+	<sql file="custom-sql/mysql/appmessage.xml"/>
+	<sql file="custom-sql/mysql/application.xml"/>	
+</custom-sql>

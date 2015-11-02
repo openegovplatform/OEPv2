@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="org.oep.core.ssomgt.model.impl.ApplicationModelImpl">
+		<attributes>
+			<id name="applicationId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="appCode" />
+			<basic name="appName" />
+			<basic name="appPin" />
+			<basic name="appUrl" />
+			<basic name="appBigIcon" />
+			<basic name="appSmallIcon" />
+			<basic name="pingTime">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="sequenceNo" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.ssomgt.model.impl.AppMessageModelImpl">
+		<attributes>
+			<id name="appMessageId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="fromApplication" />
+			<basic name="toUser" />
+			<basic name="messageType" />
+			<basic name="messageCode" />
+			<basic name="messageText" />
+			<basic name="messageValue" />
+			<basic name="messageUrl" />
+			<basic name="visitDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.ssomgt.model.impl.AppRoleModelImpl">
+		<attributes>
+			<id name="appRoleId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="applicationId" />
+			<basic name="roleCode" />
+			<basic name="roleName" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.ssomgt.model.impl.AppRole2EmployeeModelImpl">
+		<attributes>
+			<id name="appRole2EmployeeId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="appRoleId" />
+			<basic name="employeeId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.ssomgt.model.impl.AppRole2JobPosModelImpl">
+		<attributes>
+			<id name="appRole2JobPosId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="appRoleId" />
+			<basic name="jobPostId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.core.ssomgt.model.impl.UserSyncModelImpl">
+		<attributes>
+			<id name="userSyncId" />
+			<basic name="applicationId" />
+			<basic name="employeeId" />
+			<basic name="userId" />
+			<basic name="accessible" />
+			<basic name="checkpoint">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="syncTime">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="org.oep.core.ssomgt.model.impl.ApplicationImpl" name="Application">
+		<table name="oep_ssomgt_application" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.ssomgt.model.impl.AppMessageImpl" name="AppMessage">
+		<table name="oep_ssomgt_appmessage" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.ssomgt.model.impl.AppRoleImpl" name="AppRole">
+		<table name="oep_ssomgt_approle" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.ssomgt.model.impl.AppRole2EmployeeImpl" name="AppRole2Employee">
+		<table name="oep_ssomgt_approle2employee" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.ssomgt.model.impl.AppRole2JobPosImpl" name="AppRole2JobPos">
+		<table name="oep_ssomgt_approle2jobpos" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.core.ssomgt.model.impl.UserSyncImpl" name="UserSync">
+		<table name="oep_ssomgt_usersync" />
+		<attributes />
+	</entity>
+</entity-mappings>
