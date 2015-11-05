@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="org.oep.datamgt.service.DictAttributeLocalService" class="org.oep.datamgt.service.impl.DictAttributeLocalServiceImpl" />
+	<bean id="org.oep.datamgt.service.DictAttributeService" class="org.oep.datamgt.service.impl.DictAttributeServiceImpl" />
+	<bean id="org.oep.datamgt.service.persistence.DictAttributePersistence" class="org.oep.datamgt.service.persistence.DictAttributePersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.datamgt.service.DictCollectionLocalService" class="org.oep.datamgt.service.impl.DictCollectionLocalServiceImpl" />
+	<bean id="org.oep.datamgt.service.DictCollectionService" class="org.oep.datamgt.service.impl.DictCollectionServiceImpl" />
+	<bean id="org.oep.datamgt.service.persistence.DictCollectionPersistence" class="org.oep.datamgt.service.persistence.DictCollectionPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.datamgt.service.persistence.DictCollectionFinder" class="org.oep.datamgt.service.persistence.DictCollectionFinderImpl" parent="basePersistence" />
+	<bean id="org.oep.datamgt.service.DictDataLocalService" class="org.oep.datamgt.service.impl.DictDataLocalServiceImpl" />
+	<bean id="org.oep.datamgt.service.DictDataService" class="org.oep.datamgt.service.impl.DictDataServiceImpl" />
+	<bean id="org.oep.datamgt.service.persistence.DictDataPersistence" class="org.oep.datamgt.service.persistence.DictDataPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.datamgt.service.persistence.DictDataFinder" class="org.oep.datamgt.service.persistence.DictDataFinderImpl" parent="basePersistence" />
+	<bean id="org.oep.datamgt.service.DictMetaDataLocalService" class="org.oep.datamgt.service.impl.DictMetaDataLocalServiceImpl" />
+	<bean id="org.oep.datamgt.service.DictMetaDataService" class="org.oep.datamgt.service.impl.DictMetaDataServiceImpl" />
+	<bean id="org.oep.datamgt.service.persistence.DictMetaDataPersistence" class="org.oep.datamgt.service.persistence.DictMetaDataPersistenceImpl" parent="basePersistence" />
+</beans>

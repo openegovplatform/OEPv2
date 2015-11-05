@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="org.oep.usermgt.model.Business">
+		<field name="businessId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="organizationId" type="long" />
+		<field name="masterUserId" type="long" />
+		<field name="name" type="String" />
+		<field name="enName" type="String" />
+		<field name="shortName" type="String" />
+		<field name="address" type="String" />
+		<field name="cityNo" type="String" />
+		<field name="cityName" type="String" />
+		<field name="districtNo" type="String" />
+		<field name="districtName" type="String" />
+		<field name="wardNo" type="String" />
+		<field name="wardName" type="String" />
+		<field name="gpsPosition" type="String" />
+		<field name="telNo" type="String" />
+		<field name="fax" type="String" />
+		<field name="email" type="String" />
+		<field name="businessNo" type="String" />
+		<field name="businessType" type="String" />
+		<field name="registerAgent" type="String" />
+		<field name="registerDate" type="Date" />
+		<field name="representative" type="String" />
+		<field name="representativeRole" type="String" />
+	</model>
+	<model name="org.oep.usermgt.model.Citizen">
+		<field name="citizenId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="mappingUserId" type="long" />
+		<field name="citizenNo" type="String" />
+		<field name="fullName" type="String" />
+		<field name="gender" type="int" />
+		<field name="identificationNo" type="String" />
+		<field name="address" type="String" />
+		<field name="cityNo" type="String" />
+		<field name="cityName" type="String" />
+		<field name="districtNo" type="String" />
+		<field name="districtName" type="String" />
+		<field name="wardNo" type="String" />
+		<field name="wardName" type="String" />
+		<field name="homeAddress" type="String" />
+		<field name="homeTel" type="String" />
+		<field name="mobile" type="String" />
+		<field name="email" type="String" />
+		<field name="shortName" type="String" />
+	</model>
+	<model name="org.oep.usermgt.model.Delegacy">
+		<field name="delegacyId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="fromEmployeeId" type="long" />
+		<field name="toEmployeeId" type="long" />
+		<field name="roleId" type="long" />
+	</model>
+	<model name="org.oep.usermgt.model.Employee">
+		<field name="employeeId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="mappingUserId" type="long" />
+		<field name="workingUnitId" type="long" />
+		<field name="mainJobPosId" type="long" />
+		<field name="employeeNo" type="String" />
+		<field name="fullName" type="String" />
+		<field name="officeTel" type="String" />
+		<field name="homeTel" type="String" />
+		<field name="mobile" type="String" />
+		<field name="email" type="String" />
+		<field name="shortName" type="String" />
+		<field name="personelDocNo" type="String" />
+		<field name="gender" type="int" />
+		<field name="birthdate" type="Date" />
+	</model>
+	<model name="org.oep.usermgt.model.JobPos">
+		<field name="jobPosId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="title" type="String" />
+		<field name="positionCatNo" type="String" />
+		<field name="workingUnitId" type="long" />
+		<field name="leader" type="int" />
+	</model>
+	<model name="org.oep.usermgt.model.Jobpos2Role">
+		<field name="jobPosId" type="long" />
+		<field name="roleId" type="long" />
+	</model>
+	<model name="org.oep.usermgt.model.SubAccount">
+		<field name="subAccountId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="businessId" type="long" />
+		<field name="mappingUserId" type="long" />
+		<field name="fullName" type="String" />
+		<field name="shortName" type="String" />
+		<field name="workingRole" type="String" />
+		<field name="telNo" type="String" />
+		<field name="mobile" type="String" />
+		<field name="email" type="String" />
+	</model>
+	<model name="org.oep.usermgt.model.WorkingUnit">
+		<field name="workingUnitId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="organizationId" type="String" />
+		<field name="govAgencyId" type="String" />
+		<field name="name" type="String" />
+		<field name="enName" type="String" />
+		<field name="parentWorkingUnitId" type="long" />
+		<field name="address" type="String" />
+		<field name="cityNo" type="String" />
+		<field name="cityName" type="String" />
+		<field name="districtNo" type="String" />
+		<field name="districtName" type="String" />
+		<field name="wardNo" type="String" />
+		<field name="wardName" type="String" />
+		<field name="gpsPosition" type="String" />
+		<field name="telNo" type="String" />
+		<field name="fax" type="String" />
+		<field name="email" type="String" />
+		<field name="website" type="String" />
+		<field name="aaa" type="String" />
+		<field name="shortName" type="String" />
+	</model>
+</model-hints>

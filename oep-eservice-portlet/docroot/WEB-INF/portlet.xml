@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" version="2.0">
+	<portlet>
+		<portlet-name>oep-eservice-listprocedure</portlet-name>
+		<display-name>Danh sách thủ tục</display-name>
+		<portlet-class>org.oep.eservice.action.DossierProcPortlet</portlet-class>
+		<init-param>
+			<name>template-path</name>
+			<value>/html/eservice/portlet/</value>
+		</init-param>
+		<init-param>
+			<name>add-process-action-success-action</name>
+			<value>false</value>
+		</init-param>
+		<init-param>
+			<name>check-auth-token</name>
+			<value>false</value>
+		</init-param>
+		<init-param>
+			<name>view-template</name>
+			<value>/html/eservice/portlet/danhsachthutuc.jsp</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<resource-bundle>content.Language</resource-bundle>
+		<portlet-info>
+			<title>Danh sách thủ tục</title>
+			<short-title>Danh sách thủ tục</short-title>
+			<keywords>Danh sách thủ tục</keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+		<supported-processing-event>
+			<qname xmlns:x="http://org.oep.com/events">x:ipc-domainno</qname>
+		</supported-processing-event>
+		<supported-processing-event>
+			<qname xmlns:x="http://org.oep.com/events">x:ipc-administrationno</qname>
+		</supported-processing-event>
+		<supported-publishing-event>
+			<qname xmlns:x="http://org.oep.com/events">x:ipc-dossierdangky</qname>
+		</supported-publishing-event>
+	</portlet>
+	<portlet>
+		<portlet-name>oep-eservice-domailno</portlet-name>
+		<display-name>Menu thủ tục</display-name>
+		<portlet-class>org.oep.eservice.action.MenuListDomain</portlet-class>
+		<init-param>
+			<name>template-path</name>
+			<value>/html/eservice/portlet/</value>
+		</init-param>
+		<init-param>
+			<name>add-process-action-success-action</name>
+			<value>false</value>
+		</init-param>
+		<init-param>
+			<name>view-template</name>
+			<value>/html/eservice/portlet/menulinhvucthutuc.jsp</value>
+		</init-param>
+		<init-param>
+			<name>view-action</name>
+			<value>/eservice/view</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<resource-bundle>content.Language</resource-bundle>
+		<portlet-info>
+			<title>Menu thủ tục</title>
+			<short-title>MENUTHUTUC</short-title>
+			<keywords>Menu</keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+		<supported-publishing-event>
+			<qname xmlns:x="http://org.oep.com/events">x:ipc-domainno</qname>
+		</supported-publishing-event>
+		<supported-publishing-event>
+			<qname xmlns:x="http://org.oep.com/events">x:ipc-administrationno</qname>
+		</supported-publishing-event>
+	</portlet>
+	<portlet>
+		<portlet-name>oep-eservice-registeronline</portlet-name>
+		<display-name>Đăng ký trực tuyến</display-name>
+		<portlet-class>org.oep.eservice.action.RegisterDossierProc</portlet-class>
+		<init-param>
+			<name>template-path</name>
+			<value>/html/eservice/portlet/</value>
+		</init-param>
+		<init-param>
+			<name>view-template</name>
+			<value>/html/eservice/portlet/dangkytructuyen.jsp</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<resource-bundle>content.Language</resource-bundle>
+		<portlet-info>
+			<title>Thực hiện dịch vụ công trực tuyến</title>
+			<short-title>Thực hiện dịch vụ công trực tuyến</short-title>
+			<keywords>Thực hiện dịch vụ công trực tuyến</keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+</portlet-app>

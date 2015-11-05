@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="org.oep.usermgt">
+	<author>NQMINH</author>
+	<namespace>oep_usermgt</namespace>
+	<entity name="WorkingUnit" table="oep_usermgt_workingunit"
+		local-service="true" human-name="Working Unit">
+		<column name="workingUnitId" db-name="workingUnitId" type="long" primary="true"></column>
+		<column name="companyId" db-name="companyId" type="long"></column>
+		<column name="groupId" db-name="groupId" type="long"></column>
+		<column name="userId" db-name="userId" type="long"></column>
+		<column name="createDate" db-name="createDate" type="Date"></column>
+		<column name="modifiedDate" db-name="modifiedDate" type="Date"></column>
+		<column name="organizationId" db-name="organizationId" type="String"></column>
+		<column name="govAgencyId" db-name="govAgencyId" type="String"></column>
+		<column name="name" db-name="name" type="String"></column>
+		<column name="enName" db-name="enName" type="String"></column>
+		<column name="parentWorkingUnitId" db-name="parentWorkingUnitId"
+			type="long"></column>
+		<column name="address" db-name="address" type="String"></column>
+		<column name="cityNo" db-name="cityNo" type="String"></column>
+		<column name="cityName" db-name="cityName" type="String"></column>
+		<column name="districtNo" db-name="districtNo" type="String"></column>
+		<column name="districtName" db-name="districtName" type="String"></column>
+		<column name="wardNo" db-name="wardNo" type="String"></column>
+		<column name="wardName" db-name="wardName" type="String"></column>
+		<column name="gpsPosition" db-name="gpsPosition" type="String"></column>
+		<column name="telNo" db-name="telNo" type="String"></column>
+		<column name="fax" db-name="fax" type="String"></column>
+		<column name="email" db-name="email" type="String"></column>
+		<column name="website" db-name="website" type="String"></column>
+		<column name="aaa" db-name="aaa" type="String"></column>
+		<column name="shortName" db-name="shortName" type="String"></column>
+		<finder name="C" return-type="Collection">
+			<finder-column name="companyId"></finder-column>
+		</finder>
+		<finder name="G" return-type="Collection">
+			<finder-column name="groupId"></finder-column>
+		</finder>
+		<finder name="O" return-type="Collection">
+			<finder-column name="organizationId"></finder-column>
+		</finder>
+		<finder name="GA" return-type="Collection">
+			<finder-column name="govAgencyId"></finder-column>
+		</finder>
+		<finder name="CN" return-type="Collection">
+			<finder-column name="cityNo"></finder-column>
+		</finder>
+		<finder name="DN" return-type="Collection">
+			<finder-column name="districtNo"></finder-column>
+		</finder>
+		<finder name="WA" return-type="Collection">
+			<finder-column name="wardNo"></finder-column>
+		</finder>
+		<finder name="PW" return-type="Collection">
+			<finder-column name="parentWorkingUnitId"></finder-column>
+		</finder>
+		<finder name="C_PW" return-type="Collection">
+			<finder-column name="companyId"></finder-column>
+			<finder-column name="parentWorkingUnitId"></finder-column>
+		</finder>
+		<finder name="G_PW" return-type="Collection">
+			<finder-column name="groupId"></finder-column>
+			<finder-column name="parentWorkingUnitId"></finder-column>
+		</finder>
+	</entity>
+	<entity name="JobPos" table="oep_usermgt_jobpos" local-service="true"
+		human-name="Job Pos">
+		<column name="jobPosId" db-name="jobPosId" type="long" primary="true"></column>
+		<column name="companyId" db-name="companyId" type="long"></column>
+		<column name="groupId" db-name="groupId" type="long"></column>	
+		<column name="userId" db-name="userId" type="long"></column>
+		<column name="createDate" db-name="createDate" type="Date"></column>
+		<column name="modifiedDate" db-name="modifiedDate" type="Date"></column>
+		<column name="title" db-name="title" type="String"></column>
+		<column name="positionCatNo" db-name="positionCatNo" type="String"></column>
+		<column name="workingUnitId" db-name="workingUnitId" type="long"></column>
+		<column name="leader" db-name="leader" type="int"></column>
+		<column name="employees" type="Collection" entity="Employee"
+			mapping-table="employee2jobpos"></column>
+			<finder name="C" return-type="Collection">
+			<finder-column name="companyId"></finder-column>
+		</finder>
+		<finder name="G" return-type="Collection">
+			<finder-column name="groupId"></finder-column>
+		</finder>
+		
+		<finder name="WU" return-type="Collection">
+			<finder-column name="workingUnitId"></finder-column>
+		</finder>
+		<finder name="WU_PCN" return-type="Collection">
+			<finder-column name="workingUnitId"></finder-column>
+			<finder-column name="positionCatNo"></finder-column>
+		</finder>
+		<finder name="WU_L" return-type="Collection">
+			<finder-column name="workingUnitId"></finder-column>
+			<finder-column name="leader"></finder-column>
+		</finder>
+		
+	</entity>
+	<entity name="Employee" table="oep_usermgt_employee"
+		local-service="true" human-name="employee">
+		<column name="employeeId" db-name="employeeId" type="long" primary="true"></column>
+		<column name="companyId" db-name="companyId" type="long"></column>
+		<column name="groupId" db-name="groupId" type="long"></column>
+		<column name="userId" db-name="userId" type="long"></column>
+		<column name="createDate" db-name="createDate" type="Date"></column>
+		<column name="modifiedDate" db-name="modifiedDate" type="Date"></column>
+		<column name="mappingUserId" db-name="mappingUserId" type="long"></column>
+		<column name="workingUnitId" db-name="workingUnitId" type="long"></column>
+		<column name="mainJobPosId" db-name="mainJobPosId" type="long"></column>
+		<column name="employeeNo" db-name="employeeNo" type="String"></column>
+		<column name="fullName" db-name="fullName" type="String"></column>
+		<column name="officeTel" db-name="officeTel" type="String"></column>
+		<column name="homeTel" db-name="homeTel" type="String"></column>
+		<column name="mobile" db-name="mobile" type="String"></column>
+		<column name="email" db-name="email" type="String"></column>
+		<column name="shortName" db-name="shortName" type="String"></column>
+		<column name="personelDocNo" db-name="personelDocNo" type="String"></column>
+		<column name="gender" db-name="gender" type="int"></column>
+		<column name="birthdate" db-name="birthdate" type="Date"></column>
+		<column name="jobPoss" type="Collection" entity="JobPos"
+			mapping-table="employee2jobpos"></column>
+		
+		<finder name="MU" return-type="Employee">
+			<finder-column name="mappingUserId"></finder-column>
+		</finder>
+		<finder name="WU" return-type="Collection">
+			<finder-column name="workingUnitId"></finder-column>
+		</finder>
+		<finder name="WU_MJ" return-type="Collection">
+			<finder-column name="workingUnitId"></finder-column>
+			<finder-column name="mainJobPosId"></finder-column>
+		</finder>
+	</entity>
+	<entity name="Jobpos2Role" table="oep_usermgt_jobpos2role"
+		local-service="true" human-name="jobpos to role">
+		<column name="jobPosId" db-name="jobPosId" type="long" primary="true"></column>
+		<column name="roleId" db-name="roleId" type="long" primary="true"></column>
+		<finder name="R" return-type="Collection">
+			<finder-column name="roleId"></finder-column>
+		</finder>
+		<finder name="JP" return-type="Collection">
+			<finder-column name="jobPosId"></finder-column>
+		</finder>
+	</entity>
+	
+	<entity name="Delegacy" table="oep_usermgt_delegacy"
+		local-service="true" human-name="delegacy">
+		<column name="delegacyId" db-name="delegacyId" type="long" primary="true"></column>
+		<column name="companyId" db-name="companyId" type="long"></column>
+		<column name="groupId" db-name="groupId" type="long"></column>
+		<column name="userId" db-name="userId" type="long"></column>
+		<column name="createDate" db-name="createDate" type="Date"></column>
+		<column name="fromEmployeeId" db-name="fromEmployeeId" type="long"></column>
+		<column name="toEmployeeId" db-name="toEmployeeId" type="long"></column>
+		<column name="roleId" db-name="roleId" type="long"></column>
+		<finder name="FE" return-type="Collection">
+			<finder-column name="fromEmployeeId"></finder-column>
+		</finder>
+		<finder name="TE" return-type="Collection">
+			<finder-column name="toEmployeeId"></finder-column>
+		</finder>
+		<finder name="TE_R" return-type="Delegacy">
+			<finder-column name="toEmployeeId"></finder-column>
+			<finder-column name="roleId"></finder-column>
+		</finder>
+	</entity>
+	<entity name="Business" table="oep_usermgt_business"
+		local-service="true" human-name="business">
+		<column name="businessId" db-name="businessId" type="long" primary="true"></column>
+		<column name="userId" db-name="userId" type="long"></column>
+		<column name="groupId" db-name="groupId" type="long"></column>
+		<column name="companyId" db-name="companyId" type="long"></column>
+		<column name="createDate" db-name="createDate" type="Date"></column>
+		<column name="modifiedDate" db-name="modifiedDate" type="Date"></column>
+		<column name="organizationId" db-name="organizationId" type="long"></column>
+		<column name="masterUserId" db-name="masterUserId" type="long"></column>
+		<column name="name" db-name="name" type="String"></column>
+		<column name="enName" db-name="enName" type="String"></column>
+		<column name="shortName" db-name="shortName" type="String"></column>
+		<column name="address" db-name="address" type="String"></column>
+		<column name="cityNo" db-name="cityNo" type="String"></column>
+		<column name="cityName" db-name="cityName" type="String"></column>
+		<column name="districtNo" db-name="districtNo" type="String"></column>
+		<column name="districtName" db-name="districtName" type="String"></column>
+		<column name="wardNo" db-name="wardNo" type="String"></column>
+		<column name="wardName" db-name="wardName" type="String"></column>
+		<column name="gpsPosition" db-name="gpsPosition" type="String"></column>
+		<column name="telNo" db-name="telNo" type="String"></column>
+		<column name="fax" db-name="fax" type="String"></column>
+		<column name="email" db-name="email" type="String"></column>
+		<column name="businessNo" db-name="businessNo" type="String"></column>
+		<column name="businessType" db-name="businessType" type="String"></column>
+		<column name="registerAgent" db-name="registerAgent" type="String"></column>
+		<column name="registerDate" db-name="registerDate" type="Date"></column>
+		<column name="representative" db-name="representative" type="String"></column>
+		<column name="representativeRole" db-name="representativeRole"
+			type="String"></column>
+		<finder name="MU" return-type="Collection">
+			<finder-column name="masterUserId"></finder-column>
+		</finder>
+		<finder name="O" return-type="Collection">
+			<finder-column name="organizationId"></finder-column>
+		</finder>
+		<finder name="CN" return-type="Collection">
+			<finder-column name="cityNo"></finder-column>
+		</finder>
+		<finder name="DN" return-type="Collection">
+			<finder-column name="districtNo"></finder-column>
+		</finder>
+		<finder name="WN" return-type="Collection">
+			<finder-column name="wardNo"></finder-column>
+		</finder>
+		<finder name="RA" return-type="Business">
+			<finder-column name="registerAgent"></finder-column>
+		</finder>
+	</entity>
+	<entity name="SubAccount" table="oep_usermgt_subaccount"
+		local-service="true" human-name="sub account">
+		<column name="subAccountId" db-name="subAccountId" type="long" primary="true"></column>
+		<column name="companyId" db-name="companyId" type="long"></column>
+		<column name="groupId" db-name="groupId" type="long"></column>
+		<column name="userId" db-name="userId" type="long"></column>
+		<column name="createDate" db-name="createDate" type="Date"></column>
+		<column name="modifiedDate" db-name="modifiedDate" type="Date"></column>
+		<column name="businessId" db-name="businessId" type="long"></column>
+		<column name="mappingUserId" db-name="mappingUserId" type="long"></column>
+		<column name="fullName" db-name="fullName" type="String"></column>
+		<column name="shortName" db-name="shortName" type="String"></column>
+		<column name="workingRole" db-name="workingRole" type="String"></column>
+		<column name="telNo" db-name="telNo" type="String"></column>
+		<column name="mobile" db-name="mobile" type="String"></column>
+		<column name="email" db-name="email" type="String"></column>
+		<finder name="B" return-type="Collection">
+			<finder-column name="businessId"></finder-column>
+		</finder>
+		<finder name="MU" return-type="Collection">
+			<finder-column name="mappingUserId"></finder-column>
+		</finder>
+		<finder name="B_MU" return-type="SubAccount">
+			<finder-column name="businessId"></finder-column>
+			<finder-column name="mappingUserId"></finder-column>
+		</finder>
+		<finder name="B_WR" return-type="Collection">
+			<finder-column name="businessId"></finder-column>
+			<finder-column name="workingRole"></finder-column>
+		</finder>
+	</entity>
+	<entity name="Citizen" table="oep_usermgt_citizen"
+		local-service="true" human-name=" citizen ">
+		<column name="citizenId" db-name="citizenId" type="long" primary="true"></column>
+		<column name="companyId" db-name="companyId" type="long"></column>
+		<column name="userId" db-name="userId" type="long"></column>
+		<column name="groupId" db-name="groupId" type="long"></column>
+		<column name="createDate" db-name="createDate" type="Date"></column>
+		<column name="modifiedDate" db-name="modifiedDate" type="Date"></column>
+		<column name="mappingUserId" db-name="mappingUserId" type="long"></column>
+		<column name="citizenNo" db-name="citizenNo" type="String"></column>
+		<column name="fullName" db-name="fullName" type="String"></column>
+		<column name="gender" db-name="gender" type="int"></column>
+		<column name="identificationNo" db-name="identificationNo"
+			type="String"></column>
+		<column name="address" db-name="address" type="String"></column>
+		<column name="cityNo" db-name="cityNo" type="String"></column>
+		<column name="cityName" db-name="cityName" type="String"></column>
+		<column name="districtNo" db-name="districtNo" type="String"></column>
+		<column name="districtName" db-name="districtName" type="String"></column>
+		<column name="wardNo" db-name="wardNo" type="String"></column>
+		<column name="wardName" db-name="wardName" type="String"></column>
+		<column name="homeAddress" db-name="homeAddress" type="String"></column>
+		<column name="homeTel" db-name="homeTel" type="String"></column>
+		<column name="mobile" db-name="mobile" type="String"></column>
+		<column name="email" db-name="email" type="String"></column>
+		<column name="shortName" db-name="shortName" type="String"></column>
+		<finder name="CN" return-type="Collection">
+			<finder-column name="cityNo"></finder-column>
+		</finder>
+		<finder name="DN" return-type="Collection">
+			<finder-column name="districtNo"></finder-column>
+		</finder>
+		<finder name="WN" return-type="Collection">
+			<finder-column name="wardNo"></finder-column>
+		</finder>
+		<finder name="MU" return-type="Citizen">
+			<finder-column name="mappingUserId"></finder-column>
+		</finder>
+		<finder name="IN" return-type="Citizen">
+			<finder-column name="identificationNo"></finder-column>
+		</finder>
+	</entity>
+	<exceptions>
+		<exception>NotPermission</exception>
+        <exception>NotFound</exception>
+        <exception>Duplicate</exception>
+        <exception>NotIdentified</exception>
+		<exception>CitizenIdentificationNo</exception>
+		<exception>CitizenNo</exception>
+		<exception>BusinessNo</exception>
+		<exception>CitizenFullName</exception>
+		<exception>SubAccountFullName</exception>
+		<exception>EmployeeFullName</exception>
+		<exception>WorkingUnitName</exception>
+		<exception>WorkingRole</exception>
+		<exception>EmployeeMappingUser</exception>
+		<exception>CitizenMappingUser</exception>
+	</exceptions>
+</service-builder>

@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="org.oep.usermgt.model.impl.BusinessModelImpl">
+		<attributes>
+			<id name="businessId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="organizationId" />
+			<basic name="masterUserId" />
+			<basic name="name" />
+			<basic name="enName" />
+			<basic name="shortName" />
+			<basic name="address" />
+			<basic name="cityNo" />
+			<basic name="cityName" />
+			<basic name="districtNo" />
+			<basic name="districtName" />
+			<basic name="wardNo" />
+			<basic name="wardName" />
+			<basic name="gpsPosition" />
+			<basic name="telNo" />
+			<basic name="fax" />
+			<basic name="email" />
+			<basic name="businessNo" />
+			<basic name="businessType" />
+			<basic name="registerAgent" />
+			<basic name="registerDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="representative" />
+			<basic name="representativeRole" />
+			<transient name="masterUserUuid" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.usermgt.model.impl.CitizenModelImpl">
+		<attributes>
+			<id name="citizenId" />
+			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="groupId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="mappingUserId" />
+			<basic name="citizenNo" />
+			<basic name="fullName" />
+			<basic name="gender" />
+			<basic name="identificationNo" />
+			<basic name="address" />
+			<basic name="cityNo" />
+			<basic name="cityName" />
+			<basic name="districtNo" />
+			<basic name="districtName" />
+			<basic name="wardNo" />
+			<basic name="wardName" />
+			<basic name="homeAddress" />
+			<basic name="homeTel" />
+			<basic name="mobile" />
+			<basic name="email" />
+			<basic name="shortName" />
+			<transient name="mappingUserUuid" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.usermgt.model.impl.DelegacyModelImpl">
+		<attributes>
+			<id name="delegacyId" />
+			<basic name="companyId" />
+			<basic name="groupId" />
+			<basic name="userId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="fromEmployeeId" />
+			<basic name="toEmployeeId" />
+			<basic name="roleId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.usermgt.model.impl.EmployeeModelImpl">
+		<attributes>
+			<id name="employeeId" />
+			<basic name="companyId" />
+			<basic name="groupId" />
+			<basic name="userId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="mappingUserId" />
+			<basic name="workingUnitId" />
+			<basic name="mainJobPosId" />
+			<basic name="employeeNo" />
+			<basic name="fullName" />
+			<basic name="officeTel" />
+			<basic name="homeTel" />
+			<basic name="mobile" />
+			<basic name="email" />
+			<basic name="shortName" />
+			<basic name="personelDocNo" />
+			<basic name="gender" />
+			<basic name="birthdate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="mappingUserUuid" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.usermgt.model.impl.JobPosModelImpl">
+		<attributes>
+			<id name="jobPosId" />
+			<basic name="companyId" />
+			<basic name="groupId" />
+			<basic name="userId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="title" />
+			<basic name="positionCatNo" />
+			<basic name="workingUnitId" />
+			<basic name="leader" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.usermgt.model.impl.Jobpos2RoleModelImpl">
+		<id-class class="org.oep.usermgt.service.persistence.Jobpos2RolePK" />
+		<attributes>
+			<id name="jobPosId" />
+			<id name="roleId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.usermgt.model.impl.SubAccountModelImpl">
+		<attributes>
+			<id name="subAccountId" />
+			<basic name="companyId" />
+			<basic name="groupId" />
+			<basic name="userId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="businessId" />
+			<basic name="mappingUserId" />
+			<basic name="fullName" />
+			<basic name="shortName" />
+			<basic name="workingRole" />
+			<basic name="telNo" />
+			<basic name="mobile" />
+			<basic name="email" />
+			<transient name="mappingUserUuid" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="org.oep.usermgt.model.impl.WorkingUnitModelImpl">
+		<attributes>
+			<id name="workingUnitId" />
+			<basic name="companyId" />
+			<basic name="groupId" />
+			<basic name="userId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="organizationId" />
+			<basic name="govAgencyId" />
+			<basic name="name" />
+			<basic name="enName" />
+			<basic name="parentWorkingUnitId" />
+			<basic name="address" />
+			<basic name="cityNo" />
+			<basic name="cityName" />
+			<basic name="districtNo" />
+			<basic name="districtName" />
+			<basic name="wardNo" />
+			<basic name="wardName" />
+			<basic name="gpsPosition" />
+			<basic name="telNo" />
+			<basic name="fax" />
+			<basic name="email" />
+			<basic name="website" />
+			<basic name="aaa" />
+			<basic name="shortName" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="org.oep.usermgt.model.impl.BusinessImpl" name="Business">
+		<table name="oep_usermgt_business" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.usermgt.model.impl.CitizenImpl" name="Citizen">
+		<table name="oep_usermgt_citizen" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.usermgt.model.impl.DelegacyImpl" name="Delegacy">
+		<table name="oep_usermgt_delegacy" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.usermgt.model.impl.EmployeeImpl" name="Employee">
+		<table name="oep_usermgt_employee" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.usermgt.model.impl.JobPosImpl" name="JobPos">
+		<table name="oep_usermgt_jobpos" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.usermgt.model.impl.Jobpos2RoleImpl" name="Jobpos2Role">
+		<table name="oep_usermgt_jobpos2role" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.usermgt.model.impl.SubAccountImpl" name="SubAccount">
+		<table name="oep_usermgt_subaccount" />
+		<attributes />
+	</entity>
+	<entity class="org.oep.usermgt.model.impl.WorkingUnitImpl" name="WorkingUnit">
+		<table name="oep_usermgt_workingunit" />
+		<attributes />
+	</entity>
+</entity-mappings>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+	<definition name="menulinhvucthutuc.tabs.view" extends="portlet">
+		<put name="portlet_content" value="/html/eservice/portlet/menulinhvucthutuc.jsp"></put>
+	</definition>
+	<definition name="danhsachthutuc.tabs.view" extends="portlet">
+		<put name="portlet_content" value="/html/eservice/portlet/danhsachthutuc.jsp"></put>
+	</definition>
+</tiles-definitions>

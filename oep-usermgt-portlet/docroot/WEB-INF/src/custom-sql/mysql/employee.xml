@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<custom-sql>
+	<sql id="org.oep.usermgt.service.persistence.EmployeeFinder.countByLikeName">
+		<![CDATA[
+			SELECT COUNT(*) total
+			FROM OEP_USERMGT_EMPLOYEE
+			WHERE 1=1
+			[$NAME_FILTER$]
+			[$WORKINGUNIT_FILTER$]
+		]]>
+	</sql>
+	<sql id="org.oep.usermgt.service.persistence.EmployeeFinder.findByLikeName">
+		<![CDATA[
+			SELECT *
+			FROM OEP_USERMGT_EMPLOYEE
+			WHERE 1=1
+			[$NAME_FILTER$]
+			[$WORKINGUNIT_FILTER$]
+		]]>
+	</sql>
+</custom-sql>
