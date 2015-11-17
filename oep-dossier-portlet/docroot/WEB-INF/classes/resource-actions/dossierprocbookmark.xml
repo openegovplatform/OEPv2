@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE resource-action-mapping PUBLIC "-//Liferay//DTD Resource Action Mapping 6.2.0//EN" "http://www.liferay.com/dtd/liferay-resource-action-mapping_6_2_0.dtd">
+
+<resource-action-mapping>
+	<model-resource>
+		<model-name>org.oep.dossiermgt.model.DossierProcBookmark</model-name>
+		<portlet-ref>
+			<portlet-name>oep-core-dossiermgt</portlet-name>
+		</portlet-ref>
+		<weight>2</weight>
+		<permissions>
+			<supports>
+				<action-key>ADMIN_DOSSIERPROC</action-key>
+				<action-key>PERMISSIONS</action-key>
+			</supports>
+			<site-member-defaults>
+				<action-key>ADMIN_DOSSIERPROC</action-key>
+			</site-member-defaults>
+			<guest-defaults />
+			<guest-unsupported>
+				<action-key>PERMISSIONS</action-key>
+				<action-key>ADMIN_DOSSIERPROC</action-key>
+			</guest-unsupported>
+		</permissions>
+	</model-resource>
+</resource-action-mapping>

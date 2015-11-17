@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="org.oep.processmgt">
+	<author>trungdk</author>
+	<namespace>oep_processmgt</namespace>
+    <entity name="DossierProcess" table="oep_processmgt_dossierprocess" local-service="true">
+        <column name="dossierProcessId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <finder name="C" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+        </finder>
+        <finder name="C_G" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        
+        <reference entity="User" package-path="com.liferay.portal"></reference>
+        <reference entity="Group" package-path="com.liferay.portal"></reference>
+        <reference entity="Company" package-path="com.liferay.portal"></reference>
+    </entity>
+	<entity name="DossierProc2Process" table="oep_processmgt_dossierproc2process" local-service="true">
+		<column name="dossierProc2ProcessId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+		<column name="dossierProcId" type="long"></column>
+		<column name="govAgencyId" type="String"></column>
+		<column name="govAgencyName" type="String"></column>
+		<column name="dossierProcessId" type="long"></column>	
+		<column name="aaaa" type="String"></column>
+		<column name="bbb" type="String"></column>
+		<column name="daysDuration" type="int"></column>
+		<column name="paymentFee" type="int"></column>
+		<column name="paymentOneGate" type="int"></column>
+		<column name="paymentEservice" type="int"></column>
+		<column name="organizationId" type="long"></column>
+		<column name="ebPartnershipId" type="long"></column>			
+	</entity>
+	<entity name="DossierProc2Role" table="oep_processmgt_dossierproc2role" local-service="true">
+		<column name="dossierProc2RoleId" type="long" primary="true"></column>
+		<column name="dossierProcId" type="long"></column>
+		<column name="roleId" type="long"></column>
+	</entity>
+    <entity name="DossierStep" table="oep_processmgt_dossierstep" local-service="true">
+        <column name="dossierStepId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="dossierProcessId" type="long"></column>
+        <column name="title" type="String"></column>
+        <column name="sequenceNo" type="int"></column>
+        <column name="daysDuration" type="int"></column>
+        <column name="doForm" type="String"></column>
+		<column name="formLabel" type="String"></column>        
+    	<column name="rollback" type="int"></column>
+    	
+    	<reference package-path="com.liferay.portal" entity="Role"></reference>
+        <reference entity="Group" package-path="com.liferay.portal"></reference>
+        <reference entity="Company" package-path="com.liferay.portal"></reference>
+    </entity>
+    <entity name="StepTransition" table="oep_processmgt_steptransition" local-service="true">
+        <column name="stepTransitionId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="dossierProcessId" type="long"></column>
+        <column name="preDossierStepId" type="long"></column>
+        <column name="postDossierStepId" type="long"></column>
+        <column name="autoCondition" type="String"></column>
+        <column name="transitionName" type="String"></column>
+        <column name="dossierStatus" type="String"></column>
+ 		<column name="sendResults" type="int"></column>
+        <column name="userAssignment" type="int"></column>
+        <column name="newProcessOrder" type="int"></column>
+    </entity>
+    <entity name="ProcessOrder" table="oep_processmgt_processorder" local-service="true" uuid="true" uuid-accessor="true">
+        <column name="processOrderId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="organizationId" type="long"></column>
+        <column name="parentProcessOrderId" type="long"></column>
+        <column name="dossierId" type="long"></column>
+        <column name="dossierProcessId" type="long"></column>
+        <column name="dossierStepId" type="long"></column>
+        <column name="orderStatus" type="String"></column>
+        <column name="orderResume" type="String"></column>
+        <column name="stepDate" type="Date"></column>
+        <column name="stepNote" type="String"></column>
+        <column name="assignToUserId" type="long"></column>
+        <column name="currentCondition" type="String"></column>
+        <column name="lastStepTransitionId" type="long"></column>
+    	<column name="stopRollback" type="int"></column>
+		<column name="ebPartnerShipId" type="long"></column>
+		    	
+    	<reference package-path="com.liferay.portal" entity="User"></reference>
+    </entity>
+    <entity name="DocFile2ProcessOrder" table="oep_processmgt_docfile2processorder" local-service="true">
+    	<column name="docFileId" type="long" primary="true"></column>
+    	<column name="processOrderId" type="long"></column>
+    </entity>
+    <entity name="TransitionHistory" table="oep_processmgt_transitionhistory" local-service="true">
+        <column name="transitionHistoryId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="dossierId" type="long"></column>
+        <column name="processOrderId" type="long"></column>
+        <column name="daysDoing" type="int"></column>
+        <column name="daysDelay" type="int"></column>
+        <column name="startDate" type="Date"></column>
+        <column name="preDossierStatus" type="String"></column>
+        <column name="postDossierStatus" type="String"></column>
+        <column name="stepTransitionId" type="long"></column>
+        <column name="preDossierStepId" type="long"></column>
+        <column name="postDossierStepId" type="long"></column>
+        <column name="transitionName" type="String"></column>
+        <column name="note" type="String"></column>
+        <column name="assignToUserId" type="long"></column>
+        
+        <reference entity="User" package-path="com.liferay.portal"></reference>
+    </entity>
+    <entity name="CreateFile" table="oep_processmgt_createfile" local-service="true">
+    	<column name="createFileId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+		<column name="processOrderId" type="long"></column>
+		<column name="dossierStepId" type="long"></column>
+		<column name="stepDate" type="Date"></column>
+		<column name="docFileId" type="long"></column>    	
+    </entity>
+    <entity name="UserAssignment" table="oep_processmgt_userassignment" local-service="true">
+        <column name="userAssignmentId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="processOrderId" type="long"></column>
+        <column name="dossierStepId" type="long"></column>
+        <column name="assignToUserId" type="long"></column>
+    </entity>
+    <entity name="StatisticByUser" table="oep_processmgt_statisticbyuser" local-service="true">
+    	<column name="statisticByUserId" type="long" primary="true"></column>
+    	<column name="userId" type="long"></column>
+    	<column name="groupId" type="long"></column>
+    	<column name="companyId" type="long"></column>
+    	<column name="createDate" type="Date"></column>
+    	<column name="month" type="int"></column>
+    	<column name="year" type="int"></column>
+    	<column name="totalNumber" type="int"></column>
+    	<column name="ontimeNumber" type="int"></column>
+    	<column name="ontimeRatio" type="double"></column>
+    	<column name="delayDaysAvg" type="double"></column>
+    </entity>
+    <entity name="DossierStep2Role" local-service="true" table="oep_processmgt_dossierstep2role">
+        <column name="dossierStepId" type="long" primary="true"></column>
+        <column name="roleId" type="long" primary="true"></column>
+        <finder name="D" return-type="Collection">
+            <finder-column name="dossierStepId"></finder-column>
+        </finder>
+        <finder name="R" return-type="Collection">
+            <finder-column name="roleId"></finder-column>
+        </finder>
+    </entity>
+    <entity name="ProcessOrder2User" table="oep_processmgt_processorder2user" local-service="true">
+    	<column name="processOrderId" type="long" primary="true"></column>
+    	<column name="userId" type="long" primary="true"></column>
+        <finder name="P" return-type="Collection">
+            <finder-column name="processOrderId"></finder-column>
+        </finder>
+        <finder name="U" return-type="Collection">
+            <finder-column name="userId"></finder-column>
+        </finder>
+    </entity>	
+</service-builder>

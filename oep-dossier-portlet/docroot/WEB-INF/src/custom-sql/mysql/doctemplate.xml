@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<custom-sql>
+	<sql id="mysql.org.oep.dossiermgt.service.persistence.DocTemplateFinder.countByLikeTitle">
+		<![CDATA[
+			SELECT COUNT(*) total
+			FROM OEP_DOSSIERMGT_DOCTEMPLATE
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$TITLE_FILTER$]
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.dossiermgt.service.persistence.DocTemplateFinder.findByLikeTitle">
+		<![CDATA[
+			SELECT *
+			FROM OEP_DOSSIERMGT_DOCTEMPLATE
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$TITLE_FILTER$]
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.dossiermgt.service.persistence.DocTemplateFinder.countByGroupLikeTitle">
+		<![CDATA[
+			SELECT COUNT(*) total
+			FROM OEP_DOSSIERMGT_DOCTEMPLATE
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$TITLE_FILTER$]
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.dossiermgt.service.persistence.DocTemplateFinder.findByGroupLikeTitle">
+		<![CDATA[
+			SELECT *
+			FROM OEP_DOSSIERMGT_DOCTEMPLATE
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$TITLE_FILTER$]
+		]]>
+	</sql>
+</custom-sql>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE resource-action-mapping PUBLIC "-//Liferay//DTD Resource Action Mapping 6.2.0//EN" "http://www.liferay.com/dtd/liferay-resource-action-mapping_6_2_0.dtd">
+
+<resource-action-mapping>
+	<resource file="resource-actions/docfile.xml" />
+	<resource file="resource-actions/docfileversion.xml" />
+	<resource file="resource-actions/doctemplate.xml" />
+	<resource file="resource-actions/dossier.xml" />
+	<resource file="resource-actions/dossierdoc.xml" />
+	<resource file="resource-actions/dossierfolder.xml" />
+	<resource file="resource-actions/dossierproc.xml" />
+	<resource file="resource-actions/dossierprocagent.xml" />
+	<resource file="resource-actions/dossierprocbookmark.xml" />
+	<resource file="resource-actions/dossiertag.xml" />
+	<resource file="resource-actions/profiledata.xml" />
+	<resource file="resource-actions/ebmessage.xml" />
+	<resource file="resource-actions/ebpartnership.xml" />
+	<resource file="resource-actions/paymentconfig.xml" />
+	<resource file="resource-actions/paymentfile.xml" />
+	<resource file="resource-actions/paymentrequest.xml" />
+	<resource file="resource-actions/statisticbyday.xml" />
+	<resource file="resource-actions/statisticbydomain.xml" />
+	<resource file="resource-actions/statisticbyagency.xml" />	
+</resource-action-mapping>

@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<custom-sql>
+<!-- mysql  -->
+	<sql file="custom-sql/mysql/dossierproc.xml"/>
+	<sql file="custom-sql/mysql/doctemplate.xml"/>
+	<sql file="custom-sql/mysql/ebpartnership.xml"/>
+</custom-sql>
