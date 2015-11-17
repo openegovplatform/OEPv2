@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<custom-sql>
+	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2JobPosFinder.countByWorkingUnit">
+		<![CDATA[
+			SELECT COUNT(*) AS total
+			FROM OEP_USERMGT_APPROLE2JOBPOS
+			WHERE 1=1 
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$WORKINGUNIT_FILTER$]		
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2JobPosFinder.findByWorkingUnit">
+		<![CDATA[
+			SELECT OEP_USERMGT_APPROLE2JOBPOS.*
+			FROM OEP_USERMGT_APPROLE2JOBPOS
+			WHERE 1=1 
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$WORKINGUNIT_FILTER$]		
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2JobPosFinder.countByAppRoleWorkingUnit">
+		<![CDATA[
+			SELECT COUNT(*) AS total
+			FROM OEP_USERMGT_APPROLE2JOBPOS
+			WHERE 1=1 
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$APPROLE_FILTER$]
+			[$WORKINGUNIT_FILTER$]		
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2JobPosFinder.findByAppRoleWorkingUnit">
+		<![CDATA[
+			SELECT OEP_USERMGT_APPROLE2JOBPOS.*
+			FROM OEP_USERMGT_APPROLE2JOBPOS
+			WHERE 1=1 
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$APPROLE_FILTER$]
+			[$WORKINGUNIT_FILTER$]		
+		]]>
+	</sql>
+</custom-sql>

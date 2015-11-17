@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="org.oep.ssomgt.model.Application">
+		<field name="applicationId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="appCode" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="appName" type="String">
+			<hint name="max-length">100</hint>
+		</field>
+		<field name="appPin" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="appUrl" type="String">
+			<hint name="max-length">100</hint>
+		</field>
+		<field name="appBigIcon" type="Blob" />
+		<field name="appSmallIcon" type="Blob" />
+		<field name="pingTime" type="Date" />
+		<field name="sequenceNo" type="int" />
+		<field name="publicKey" type="String">
+			<hint name="max-length">256</hint>
+		</field>
+	</model>
+	<model name="org.oep.ssomgt.model.AppMessage">
+		<field name="appMessageId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="fromApplication" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="toUser" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="messageType" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="messageCode" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="messageText" type="String">
+			<hint name="max-length">200</hint>
+		</field>
+		<field name="messageValue" type="String">
+			<hint name="max-length">200</hint>
+		</field>
+		<field name="messageUrl" type="String">
+			<hint name="max-length">200</hint>
+		</field>
+		<field name="visitDate" type="Date" />
+	</model>
+	<model name="org.oep.ssomgt.model.AppRole">
+		<field name="appRoleId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="applicationId" type="long" />
+		<field name="roleCode" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="roleName" type="String">
+			<hint name="max-length">100</hint>
+		</field>
+	</model>
+	<model name="org.oep.ssomgt.model.AppRole2Employee">
+		<field name="appRole2EmployeeId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="appRoleId" type="long" />
+		<field name="employeeId" type="long" />
+	</model>
+	<model name="org.oep.ssomgt.model.AppRole2JobPos">
+		<field name="appRole2JobPosId" type="long" />
+		<field name="userId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="appRoleId" type="long" />
+		<field name="jobPosId" type="long" />
+	</model>
+	<model name="org.oep.ssomgt.model.UserSync">
+		<field name="userSyncId" type="long" />
+		<field name="applicationId" type="long" />
+		<field name="employeeId" type="long" />
+		<field name="userId" type="long" />
+		<field name="ssoUserName" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="appUserName" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="fullName" type="String">
+			<hint name="max-length">80</hint>
+		</field>
+		<field name="email" type="String">
+			<hint name="max-length">30</hint>
+		</field>
+		<field name="password" type="String">
+			<hint name="max-length">200</hint>
+		</field>
+		<field name="accessibleStatus" type="int" />
+		<field name="roles" type="String">
+			<hint name="max-length">200</hint>
+		</field>
+		<field name="checkpoint" type="Date" />
+		<field name="syncTime" type="Date" />
+	</model>
+</model-hints>

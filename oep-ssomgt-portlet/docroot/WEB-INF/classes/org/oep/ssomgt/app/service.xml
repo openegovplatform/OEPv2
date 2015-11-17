@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="org.oep.ssomgt.app">
+	<author>trungdk</author>
+	<namespace>oep_ssomgt</namespace>
+	
+	<entity name="SSOApp" local-service="true" remote-service="true">
+		<reference package-path="org.oep.ssomgt" entity="Application"></reference>
+		<reference package-path="org.oep.ssomgt" entity="AppMessage"></reference>
+	</entity>
+</service-builder>

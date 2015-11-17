@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<custom-sql>
+	<sql id="mysql.org.oep.ssomgt.service.persistence.ApplicationFinder.getMaxSequenceNo">
+		<![CDATA[
+			SELECT MAX(SEQUENCENO) AS maxsequenceno
+			FROM OEP_SSOMGT_APPLICATION
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.ssomgt.service.persistence.ApplicationFinder.getUpApplication">
+		<![CDATA[
+			SELECT *
+			FROM OEP_SSOMGT_APPLICATION
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$SEQUENCENO_FILTER$]
+			ORDER BY SEQUENCENO DESC
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.ssomgt.service.persistence.ApplicationFinder.getDownApplication">
+		<![CDATA[
+			SELECT *
+			FROM OEP_SSOMGT_APPLICATION
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$SEQUENCENO_FILTER$]
+			ORDER BY SEQUENCENO ASC
+		]]>
+	</sql>
+</custom-sql>

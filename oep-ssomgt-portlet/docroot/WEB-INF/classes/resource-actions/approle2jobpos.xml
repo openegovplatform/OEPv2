@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE resource-action-mapping PUBLIC "-//Liferay//DTD Resource Action Mapping 6.2.0//EN" "http://www.liferay.com/dtd/liferay-resource-action-mapping_6_2_0.dtd">
+
+<resource-action-mapping>
+	<model-resource>
+		<model-name>org.oep.ssomgt.model.AppRole2JobPos</model-name>
+		<portlet-ref>
+			<portlet-name>oep-ssomgt</portlet-name>
+		</portlet-ref>
+		<weight>2</weight>
+		<permissions>
+			<supports>
+				<action-key>ADMIN_SSOMGT</action-key>
+				<action-key>PERMISSIONS</action-key>
+			</supports>
+			<site-member-defaults>
+				<action-key>ADMIN_SSOMGT</action-key>
+			</site-member-defaults>
+			<guest-defaults>
+			</guest-defaults>
+			<guest-unsupported>
+				<action-key>PERMISSIONS</action-key>
+				<action-key>ADMIN_SSOMGT</action-key>
+			</guest-unsupported>
+		</permissions>
+	</model-resource>
+</resource-action-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="org.oep.ssomgt.service.ApplicationLocalService" class="org.oep.ssomgt.service.impl.ApplicationLocalServiceImpl" />
+	<bean id="org.oep.ssomgt.service.ApplicationService" class="org.oep.ssomgt.service.impl.ApplicationServiceImpl" />
+	<bean id="org.oep.ssomgt.service.persistence.ApplicationPersistence" class="org.oep.ssomgt.service.persistence.ApplicationPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.ssomgt.service.persistence.ApplicationFinder" class="org.oep.ssomgt.service.persistence.ApplicationFinderImpl" parent="basePersistence" />
+	<bean id="org.oep.ssomgt.service.AppMessageLocalService" class="org.oep.ssomgt.service.impl.AppMessageLocalServiceImpl" />
+	<bean id="org.oep.ssomgt.service.AppMessageService" class="org.oep.ssomgt.service.impl.AppMessageServiceImpl" />
+	<bean id="org.oep.ssomgt.service.persistence.AppMessagePersistence" class="org.oep.ssomgt.service.persistence.AppMessagePersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.ssomgt.service.persistence.AppMessageFinder" class="org.oep.ssomgt.service.persistence.AppMessageFinderImpl" parent="basePersistence" />
+	<bean id="org.oep.ssomgt.service.AppRoleLocalService" class="org.oep.ssomgt.service.impl.AppRoleLocalServiceImpl" />
+	<bean id="org.oep.ssomgt.service.AppRoleService" class="org.oep.ssomgt.service.impl.AppRoleServiceImpl" />
+	<bean id="org.oep.ssomgt.service.persistence.AppRolePersistence" class="org.oep.ssomgt.service.persistence.AppRolePersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.ssomgt.service.AppRole2EmployeeLocalService" class="org.oep.ssomgt.service.impl.AppRole2EmployeeLocalServiceImpl" />
+	<bean id="org.oep.ssomgt.service.AppRole2EmployeeService" class="org.oep.ssomgt.service.impl.AppRole2EmployeeServiceImpl" />
+	<bean id="org.oep.ssomgt.service.persistence.AppRole2EmployeePersistence" class="org.oep.ssomgt.service.persistence.AppRole2EmployeePersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.ssomgt.service.persistence.AppRole2EmployeeFinder" class="org.oep.ssomgt.service.persistence.AppRole2EmployeeFinderImpl" parent="basePersistence" />
+	<bean id="org.oep.ssomgt.service.AppRole2JobPosLocalService" class="org.oep.ssomgt.service.impl.AppRole2JobPosLocalServiceImpl" />
+	<bean id="org.oep.ssomgt.service.AppRole2JobPosService" class="org.oep.ssomgt.service.impl.AppRole2JobPosServiceImpl" />
+	<bean id="org.oep.ssomgt.service.persistence.AppRole2JobPosPersistence" class="org.oep.ssomgt.service.persistence.AppRole2JobPosPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.ssomgt.service.persistence.AppRole2JobPosFinder" class="org.oep.ssomgt.service.persistence.AppRole2JobPosFinderImpl" parent="basePersistence" />
+	<bean id="org.oep.ssomgt.service.UserSyncLocalService" class="org.oep.ssomgt.service.impl.UserSyncLocalServiceImpl" />
+	<bean id="org.oep.ssomgt.service.UserSyncService" class="org.oep.ssomgt.service.impl.UserSyncServiceImpl" />
+	<bean id="org.oep.ssomgt.service.persistence.UserSyncPersistence" class="org.oep.ssomgt.service.persistence.UserSyncPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.ssomgt.service.persistence.UserSyncFinder" class="org.oep.ssomgt.service.persistence.UserSyncFinderImpl" parent="basePersistence" />
+	<bean id="org.oep.ssomgt.app.service.SSOAppLocalService" class="org.oep.ssomgt.app.service.impl.SSOAppLocalServiceImpl" />
+	<bean id="org.oep.ssomgt.app.service.SSOAppService" class="org.oep.ssomgt.app.service.impl.SSOAppServiceImpl" />
+</beans>

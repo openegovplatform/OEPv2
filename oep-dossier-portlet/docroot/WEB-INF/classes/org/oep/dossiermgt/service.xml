@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="org.oep.dossiermgt">
+	<author>trungdk</author>
+	<namespace>oep_dossiermgt</namespace>
+
+    <entity name="DocTemplate" table="oep_dossiermgt_doctemplate" local-service="true">
+        <column name="docTemplateId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="templateNo" type="String"></column>
+        <column name="title" type="String"></column>
+        <column name="enTitle" type="String"></column>
+        <column name="fileEntryId" type="long"></column>
+        
+        <column name="dossierDocs" type="Collection" entity="DossierDoc" mapping-table="dossierdoc2template"></column>
+        
+        <finder name="C" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+        </finder>
+        <finder name="C_G" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="C_G_TNO" return-type="DocTemplate">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="templateNo"></finder-column>
+        </finder>
+        <finder name="C_TNO" return-type="DocTemplate">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="templateNo"></finder-column>
+        </finder>
+		        
+        <reference package-path="com.liferay.portlet.documentlibrary" entity="DLFileEntry" />
+    </entity>
+    <entity name="Dossier" table="oep_dossiermgt_dossier" local-service="true" remote-service="false" uuid="true" uuid-accessor="true">
+        <column name="dossierId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="organizationId" type="long"></column>
+        <column name="dossierProcId" type="long"></column>
+        <column name="govAgencyId" type="String"></column>
+        <column name="govAgencyName" type="String"></column>
+        <column name="subjectId" type="String"></column>
+        <column name="subjectType" type="String"></column>
+        <column name="subjectName" type="String"></column>
+        <column name="address" type="String"></column>
+        <column name="cityNo" type="String"></column>
+        <column name="cityName" type="String"></column>
+        <column name="districtNo" type="String"></column>
+        <column name="districtName" type="String"></column>
+        <column name="wardNo" type="String"></column>
+        <column name="wardName" type="String"></column>
+        <column name="telNo" type="String"></column>
+        <column name="email" type="String"></column>
+        <column name="subjectAsContactPerson" type="int"></column>
+        <column name="contactPersonName" type="String"></column>
+        <column name="contactPersonId" type="String"></column>
+        <column name="contactPersonSex" type="int"></column>
+        <column name="contactPersonTel" type="String"></column>
+        <column name="note" type="String"></column>
+        <column name="resumeDescription" type="String"></column>
+        <column name="receptionNo" type="String"></column>
+        <column name="onegate" type="int"></column>
+        <column name="submitDate" type="Date"></column>
+        <column name="receiveDate" type="Date"></column>
+        <column name="processDate" type="Date"></column>
+        <column name="renewDate" type="Date"></column>
+        <column name="estimateDate" type="Date"></column>
+        <column name="finishDate" type="Date"></column>
+        <column name="handoverDate" type="Date"></column>
+        <column name="returnDate" type="Date"></column>
+        <column name="archiveDate" type="Date"></column>
+        <column name="mainStatus" type="String"></column>
+        <column name="subStatus" type="String"></column>
+        <column name="statusDate" type="Date"></column>
+        <column name="statusDescription" type="String"></column>
+        <column name="feedbackNote" type="String"></column>
+        <column name="daysDelay" type="int"></column>
+		<column name="errorStatus" type="String"></column>
+        <column name="errorCode" type="String"></column>		
+		<column name="pendingStatus" type="int"></column>
+        <column name="dirty" type="int"></column>        
+    </entity>
+    <entity name="DocFile" table="oep_dossiermgt_docfile" local-service="true" uuid="true" uuid-accessor="true">
+        <column name="docFileId" primary="true" type="long"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="dossierId" type="long"></column>
+        <column name="dossierDocId" type="long"></column>
+        <column name="docTemplateId" type="long"></column>
+        <column name="docFileVersionId" type="long"></column>
+        <column name="docFileName" type="String"></column>
+        <column name="docFileType" type="long"></column>
+		<column name="verifyStatus" type="int"></column>
+        <column name="note" type="String"></column>
+        <column name="approveBy" type="String"></column>
+        <column name="approveDate" type="Date"></column>
+    	<column name="premier" type="int"></column>
+    </entity>
+    <entity name="DocFileVersion" table="oep_dossiermgt_docfileversion" local-service="true" uuid="true" uuid-accessor="true">
+        <column name="docFileVersionId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="docFileId" type="long"></column>
+        <column name="fileEntryId" type="long"></column>
+        <column name="xmlContent" type="String"></column>
+		<column name="ebMessageId" type="long"></column>
+        <reference package-path="com.liferay.portlet.documentlibrary" entity="DLFileEntry" />
+    </entity>
+    <entity name="DossierDoc" table="oep_dossiermgt_dossierdoc" local-service="true">
+        <column name="dossierDocId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="dossierProcId" type="long"></column>
+        <column name="dossierDocNo" type="String"></column>
+        <column name="dossierDocName" type="String"></column>
+        <column name="note" type="String"></column>
+        <column name="sequenceNo" type="int"></column>
+        <column name="defaultDocTemplateId" type="long"></column>
+		<column name="dossierDocType" type="int"></column>
+        <column name="numberOfFile" type="int"></column>
+        <column name="splitSubDossier" type="int"></column>
+        <column name="onlineForm" type="String"></column>
+
+        <column name="docTemplates" type="Collection" entity="DocTemplate" mapping-table="dossierdoc2template">
+        </column>
+    </entity>
+    <entity name="DossierProc" table="oep_dossiermgt_dossierproc" local-service="true">
+        <column name="dossierProcId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="dossierProcNo" type="String"></column>
+        <column name="name" type="String"></column>
+        <column name="enName" type="String"></column>
+        <column name="shortName" type="String"></column>
+        <column name="processDescription" type="String"></column>
+        <column name="methodDescription" type="String"></column>
+        <column name="dossierDescription" type="String"></column>
+        <column name="conditionDescription" type="String"></column>
+        <column name="durationDescription" type="String"></column>
+        <column name="actorsDescription" type="String"></column>
+        <column name="resultsDescription" type="String"></column>
+        <column name="recordsDescription" type="String"></column>
+        <column name="feeDescription" type="String"></column>
+        <column name="instructionsDescription" type="String"></column>
+        <column name="administrationNo" type="String"></column>
+        <column name="administrationName" type="String"></column>
+        <column name="domainNo" type="String"></column>
+        <column name="domainName" type="String"></column>
+        <column name="forCitizen" type="int"></column>
+        <column name="forBusiness" type="int"></column>
+        <column name="effectDate" type="Date"></column>
+        <column name="expireDate" type="Date"></column>
+        <column name="statusActive" type="int"></column>
+        <finder name="C" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+        </finder>
+        <finder name="C_G" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="C_G_U" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="userId"></finder-column>
+        </finder>
+        <finder name="C_G_DPN" return-type="DossierProc">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="dossierProcNo"></finder-column>
+        </finder>
+        <finder name="C_ANO" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="administrationNo"></finder-column>
+        </finder>
+        <finder name="C_G_ANO" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="administrationNo"></finder-column>
+        </finder>
+        <finder name="C_DNO" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="domainNo"></finder-column>
+        </finder>
+        <finder name="C_G_DNO" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="domainNo"></finder-column>
+        </finder>
+        <finder name="C_ANO_DNO" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="administrationNo"></finder-column>
+            <finder-column name="domainNo"></finder-column>
+        </finder>
+        <finder name="C_G_ANO_DNO" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="administrationNo"></finder-column>
+            <finder-column name="domainNo"></finder-column>
+        </finder>
+        <finder name="DPN" return-type="DossierProc" unique="true">
+            <finder-column name="dossierProcNo"></finder-column>
+        </finder>
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="C_AC" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="statusActive"></finder-column>
+        </finder>
+        <finder name="G_AC" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="statusActive"></finder-column>
+        </finder>
+        
+        <reference entity="User" package-path="com.liferay.portal"></reference>
+    </entity>
+    <entity name="DossierProcAgent" table="oep_dossiermgt_dossierprocagent" local-service="true">
+        <column name="dossierProcAgentId" type="long" primary="true"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="dossierProcId" type="long"></column>
+        <column name="govAgencyId" type="String"></column>
+        <column name="govAgencyName" type="String"></column>
+        <column name="bankTransfer" type="String"></column>
+        <column name="keypay" type="String"></column>
+        <column name="ebPartnerShipId" type="long"></column>
+    </entity>
+    
+    <entity name="DossierProcBookmark" table="oep_dossiermgt_dossierprocbookmark" local-service="true">
+    	<column name="dossierProcBookmarkId" type="long" primary="true"></column>
+    	<column name="userId" type="long"></column>
+    	<column name="groupId" type="long"></column>
+    	<column name="companyId" type="long"></column>
+    	<column name="createDate" type="Date"></column>
+    	<column name="dossierProcAgentId" type="long"></column>
+    </entity>
+    
+    <entity name="PaymentFile" local-service="true" uuid="true" uuid-accessor="true" table="oep_dossiermgt_paymentfile">
+        <column name="paymentFileId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="organizationId" type="long"></column>
+        <column name="govAgencyId" type="String"></column>
+        <column name="govAgencyName" type="String"></column>
+        <column name="subjectId" type="String"></column>
+        <column name="subjectType" type="String"></column>
+        <column name="subjectName" type="String"></column>
+        <column name="amount" type="long"></column>
+        <column name="paymentType" type="String"></column>
+        <column name="paymentDescription" type="String"></column>
+        <column name="transactionInfo" type="String"></column>
+        <column name="fileEntryId" type="long"></column>
+        <column name="checkingDate" type="Date"></column>
+        <column name="checkingUserId" type="long"></column>
+        <column name="checkingUserName" type="String"></column>
+        <column name="checkingResult" type="int"></column>
+        <column name="checkingNote" type="String"></column>
+        <column name="ebMessageId" type="long"></column>
+    
+        <reference package-path="com.liferay.portlet.documentlibrary" entity="DLFileEntry" />    	
+    </entity>
+    <entity name="PaymentRequest" table="oep_dossiermgt_paymentrequest" local-service="true" uuid="true" uuid-accessor="true">
+        <column name="paymentRequestId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="organizationId" type="long"></column>
+        <column name="dossierId" type="long"></column>
+        <column name="govAgencyId" type="String"></column>
+        <column name="govAgencyName" type="String"></column>
+        <column name="subjectId" type="String"></column>
+        <column name="subjectType" type="String"></column>
+        <column name="subjectName" type="String"></column>
+        <column name="amount" type="long"></column>
+        <column name="requestNote" type="String"></column>
+        <column name="paymentFileId" type="long"></column>
+  		<column name="confirmOK" type="int"></column>
+  		<column name="ebMessageId" type="long"></column>
+    </entity>
+    <entity name="PaymentConfig" table="oep_dossiermgt_paymentconfig" local-service="true">
+        <column name="paymentConfigId" type="long" primary="true"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="govAgencyId" type="String"></column>
+        <column name="govAgencyName" type="String"></column>
+        <column name="bankTransfer" type="String"></column>
+        <column name="keypay" type="String"></column>
+		<column name="ebPartnerShipId" type="long"></column>
+    </entity>
+    
+    <entity name="DossierTag" table="oep_dossiermgt_dossiertag" local-service="true">
+    	<column name="dossierTagId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="dossierId" type="long"></column>
+		<column name="tag" type="String"></column>
+    </entity>
+    
+    <entity name="DossierFolder" table="oep_dossiermgt_dossierfolder" local-service="true" uuid="true" uuid-accessor="true">
+        <column name="dossierFolderId" type="long" primary="true"></column>
+        <column name="userId" type="long"></column>
+        <column name="groupId" type="long"></column>
+        <column name="companyId" type="long"></column>
+        <column name="createDate" type="Date"></column>
+        <column name="modifiedDate" type="Date"></column>
+        <column name="folderName" type="String"></column>
+        <column name="parentDossierFolderId" type="long"></column>
+        <column name="sequenceNo" type="int"></column>
+        <column name="procedureFilter" type="String"></column>
+        <column name="statusFilter" type="String"></column>
+        <column name="tagFilter" type="String"></column>
+        <column name="filterByOrganization" type="int"></column>
+        <column name="filterByUser" type="int"></column>
+		<column name="orderBy" type="String"></column>
+		<column name="counting" type="int"></column>
+    </entity>
+    <entity name="DossierFolder2Role" table="oep_dossiermgt_dossierfolder2role" local-service="true">
+        <column name="dossierFolderId" type="long" primary="true"></column>
+        <column name="roleId" type="long" primary="true"></column>
+    </entity>
+	<entity name="EbMessage" table="oep_dossiermgt_ebmessage" local-service="true">
+		<column name="ebMessageId" type="long" primary="true"></column>
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="groupId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="messageId" type="String"></column>
+		<column name="cpaId" type="String"></column>
+		<column name="service" type="String"></column>
+		<column name="action" type="String"></column>
+		<column name="conversationId" type="String"></column>
+		<column name="fromPartyId" type="String"></column>
+		<column name="fromPartyType" type="String"></column>
+		<column name="toPartyId" type="String"></column>
+		<column name="toPartyType" type="String"></column>
+		<column name="refToMessageId" type="String"></column>
+		<column name="status" type="String"></column>
+		<column name="statusDescription" type="String"></column>
+		<column name="ackMessageId" type="String"></column>
+		<column name="ackStatus" type="String"></column>
+		<column name="ackStatusDescription" type="String"></column>
+		<column name="messageDescription" type="String"></column>
+		<column name="inbound" type="int"></column>
+	</entity>
+	<entity name="EbPartnerShip" table="oep_dossiermgt_ebpartnership" local-service="true">
+		<column name="ebPartnerShipId" type="long" primary="true"></column>
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="groupId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="name" type="String"></column>
+		<column name="cpaId" type="String"></column>
+		<column name="service" type="String"></column>
+	</entity>
+	<entity name="ProfileData" table="oep_dossiermgt_profiledata" local-service="true">
+		<column name="profileDataId" type="long" primary="true"></column>
+		<column name="userId" type="long"></column>
+		<column name="groupId" type="long"></column>
+		<column name="companyId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+		<column name="fieldName" type="String"></column>
+		<column name="fieldValue" type="String"></column>
+	</entity>
+	<entity name="StatisticByDay" table="oep_dossiermgt_statisticbyday" local-service="true">
+		<column name="statisticByDayId" type="long" primary="true"></column>
+		<column name="groupId" type="long"></column>
+		<column name="companyId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="statisticDate" type="Date"></column>
+		<column name="statisticWeek" type="int"></column>
+		<column name="receiveNumber" type="long"></column>
+		<column name="onlineNumber" type="long"></column>
+		<column name="onlineRatio" type="double"></column>
+		<column name="finishNumber" type="int"></column>
+		<column name="ontimeNumber" type="int"></column>
+		<column name="ontimeRatio" type="double"></column>
+		<column name="delayDaysAvg" type="double"></column>
+	</entity>
+	
+	<entity name="StatisticByDomain" table="oep_dossiermgt_statisticbydomain" local-service="true">
+		<column name="statisticByDomainId" type="long" primary="true"></column>
+		<column name="groupId" type="long"></column>
+		<column name="companyId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="month" type="int"></column>
+		<column name="year" type="int"></column>
+		<column name="dossierDomain" type="String"></column>
+		<column name="receiveNumber" type="long"></column>
+		<column name="onlineNumber" type="long"></column>
+		<column name="onlineRatio" type="double"></column>
+		<column name="finishNumber" type="int"></column>
+		<column name="ontimeNumber" type="int"></column>
+		<column name="ontimeRatio" type="double"></column>
+		<column name="delayDaysAvg" type="double"></column>
+	</entity>
+	
+	<entity name="StatisticByAgency" table="oep_dossiermgt_statisticbyagency" local-service="true">
+		<column name="statisticByAgencyId" type="long" primary="true"></column>
+		<column name="groupId" type="long"></column>
+		<column name="companyId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="month" type="int"></column>
+		<column name="year" type="int"></column>
+		<column name="govAgencyId" type="String"></column>
+		<column name="receiveNumber" type="long"></column>
+		<column name="onlineNumber" type="long"></column>
+		<column name="onlineRatio" type="double"></column>
+		<column name="finishNumber" type="int"></column>
+		<column name="ontimeNumber" type="int"></column>
+		<column name="ontimeRatio" type="double"></column>
+		<column name="delayDaysAvg" type="double"></column>
+	</entity>
+    <exceptions>
+        <exception>DossierProcNo</exception>
+        <exception>DupplicateDossier</exception>
+        <exception>NoSuchDossier</exception>
+        <exception>TemplateNo</exception>
+        <exception>DupplicateDocTemplate</exception>
+        <exception>NoSuchDocTemplate</exception>
+        <exception>DossierProcEffectExpireDate</exception>
+        <exception>NoSuchAdministration</exception>
+        <exception>NoSuchDomain</exception>
+    </exceptions></service-builder>

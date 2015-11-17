@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="org.oep.dossiermgt.service.DocFileLocalService" class="org.oep.dossiermgt.service.impl.DocFileLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.DocFileService" class="org.oep.dossiermgt.service.impl.DocFileServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.DocFilePersistence" class="org.oep.dossiermgt.service.persistence.DocFilePersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.DocFileVersionLocalService" class="org.oep.dossiermgt.service.impl.DocFileVersionLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.DocFileVersionService" class="org.oep.dossiermgt.service.impl.DocFileVersionServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.DocFileVersionPersistence" class="org.oep.dossiermgt.service.persistence.DocFileVersionPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.DocTemplateLocalService" class="org.oep.dossiermgt.service.impl.DocTemplateLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.DocTemplateService" class="org.oep.dossiermgt.service.impl.DocTemplateServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.DocTemplatePersistence" class="org.oep.dossiermgt.service.persistence.DocTemplatePersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.persistence.DocTemplateFinder" class="org.oep.dossiermgt.service.persistence.DocTemplateFinderImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.DossierLocalService" class="org.oep.dossiermgt.service.impl.DossierLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.DossierPersistence" class="org.oep.dossiermgt.service.persistence.DossierPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.DossierDocLocalService" class="org.oep.dossiermgt.service.impl.DossierDocLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.DossierDocService" class="org.oep.dossiermgt.service.impl.DossierDocServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.DossierDocPersistence" class="org.oep.dossiermgt.service.persistence.DossierDocPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.DossierFolderLocalService" class="org.oep.dossiermgt.service.impl.DossierFolderLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.DossierFolderService" class="org.oep.dossiermgt.service.impl.DossierFolderServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.DossierFolderPersistence" class="org.oep.dossiermgt.service.persistence.DossierFolderPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.DossierFolder2RoleLocalService" class="org.oep.dossiermgt.service.impl.DossierFolder2RoleLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.DossierFolder2RoleService" class="org.oep.dossiermgt.service.impl.DossierFolder2RoleServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.DossierFolder2RolePersistence" class="org.oep.dossiermgt.service.persistence.DossierFolder2RolePersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.DossierProcLocalService" class="org.oep.dossiermgt.service.impl.DossierProcLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.DossierProcService" class="org.oep.dossiermgt.service.impl.DossierProcServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.DossierProcPersistence" class="org.oep.dossiermgt.service.persistence.DossierProcPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.persistence.DossierProcFinder" class="org.oep.dossiermgt.service.persistence.DossierProcFinderImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.DossierProcAgentLocalService" class="org.oep.dossiermgt.service.impl.DossierProcAgentLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.DossierProcAgentService" class="org.oep.dossiermgt.service.impl.DossierProcAgentServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.DossierProcAgentPersistence" class="org.oep.dossiermgt.service.persistence.DossierProcAgentPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.DossierProcBookmarkLocalService" class="org.oep.dossiermgt.service.impl.DossierProcBookmarkLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.DossierProcBookmarkService" class="org.oep.dossiermgt.service.impl.DossierProcBookmarkServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.DossierProcBookmarkPersistence" class="org.oep.dossiermgt.service.persistence.DossierProcBookmarkPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.DossierTagLocalService" class="org.oep.dossiermgt.service.impl.DossierTagLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.DossierTagService" class="org.oep.dossiermgt.service.impl.DossierTagServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.DossierTagPersistence" class="org.oep.dossiermgt.service.persistence.DossierTagPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.EbMessageLocalService" class="org.oep.dossiermgt.service.impl.EbMessageLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.EbMessageService" class="org.oep.dossiermgt.service.impl.EbMessageServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.EbMessagePersistence" class="org.oep.dossiermgt.service.persistence.EbMessagePersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.EbPartnerShipLocalService" class="org.oep.dossiermgt.service.impl.EbPartnerShipLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.EbPartnerShipService" class="org.oep.dossiermgt.service.impl.EbPartnerShipServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.EbPartnerShipPersistence" class="org.oep.dossiermgt.service.persistence.EbPartnerShipPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.persistence.EbPartnerShipFinder" class="org.oep.dossiermgt.service.persistence.EbPartnerShipFinderImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.PaymentConfigLocalService" class="org.oep.dossiermgt.service.impl.PaymentConfigLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.PaymentConfigService" class="org.oep.dossiermgt.service.impl.PaymentConfigServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.PaymentConfigPersistence" class="org.oep.dossiermgt.service.persistence.PaymentConfigPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.PaymentFileLocalService" class="org.oep.dossiermgt.service.impl.PaymentFileLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.PaymentFileService" class="org.oep.dossiermgt.service.impl.PaymentFileServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.PaymentFilePersistence" class="org.oep.dossiermgt.service.persistence.PaymentFilePersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.PaymentRequestLocalService" class="org.oep.dossiermgt.service.impl.PaymentRequestLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.PaymentRequestService" class="org.oep.dossiermgt.service.impl.PaymentRequestServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.PaymentRequestPersistence" class="org.oep.dossiermgt.service.persistence.PaymentRequestPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.ProfileDataLocalService" class="org.oep.dossiermgt.service.impl.ProfileDataLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.ProfileDataService" class="org.oep.dossiermgt.service.impl.ProfileDataServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.ProfileDataPersistence" class="org.oep.dossiermgt.service.persistence.ProfileDataPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.StatisticByAgencyLocalService" class="org.oep.dossiermgt.service.impl.StatisticByAgencyLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.StatisticByAgencyService" class="org.oep.dossiermgt.service.impl.StatisticByAgencyServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.StatisticByAgencyPersistence" class="org.oep.dossiermgt.service.persistence.StatisticByAgencyPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.StatisticByDayLocalService" class="org.oep.dossiermgt.service.impl.StatisticByDayLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.StatisticByDayService" class="org.oep.dossiermgt.service.impl.StatisticByDayServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.StatisticByDayPersistence" class="org.oep.dossiermgt.service.persistence.StatisticByDayPersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.dossiermgt.service.StatisticByDomainLocalService" class="org.oep.dossiermgt.service.impl.StatisticByDomainLocalServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.StatisticByDomainService" class="org.oep.dossiermgt.service.impl.StatisticByDomainServiceImpl" />
+	<bean id="org.oep.dossiermgt.service.persistence.StatisticByDomainPersistence" class="org.oep.dossiermgt.service.persistence.StatisticByDomainPersistenceImpl" parent="basePersistence" />
+</beans>

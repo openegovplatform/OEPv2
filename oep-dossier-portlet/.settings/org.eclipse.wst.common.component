@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="oep-dossier-portlet">
+        <wb-resource deploy-path="/" source-path="/docroot" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/docroot/WEB-INF/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/docroot/WEB-INF/service"/>
+        <dependent-module archiveName="oep-datamgt-portlet-service.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/oep-datamgt-portlet/docroot/WEB-INF/lib/oep-datamgt-portlet-service.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="oep-dossier-portlet"/>
+        <property name="java-output-path" value="/oep-dossier-portlet/docroot/WEB-INF/classes"/>
+    </wb-module>
+</project-modules>

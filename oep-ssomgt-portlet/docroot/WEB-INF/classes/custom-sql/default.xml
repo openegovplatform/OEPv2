@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<custom-sql>
+<!-- mysql  -->
+	<sql file="custom-sql/mysql/appmessage.xml"/>
+	<sql file="custom-sql/mysql/application.xml"/>	
+	<sql file="custom-sql/mysql/approle2jobpos.xml"/>	
+	<sql file="custom-sql/mysql/approle2employee.xml"/>	
+	<sql file="custom-sql/mysql/usersync.xml"/>	
+</custom-sql>

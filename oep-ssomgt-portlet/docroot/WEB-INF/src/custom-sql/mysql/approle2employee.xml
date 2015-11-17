@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<custom-sql>
+	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2EmployeeFinder.countByWorkingUnit">
+		<![CDATA[
+			SELECT COUNT(*) AS total
+			FROM OEP_USERMGT_APPROLE2EMPLOYEE
+			WHERE 1=1 
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$WORKINGUNIT_FILTER$]		
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2EmployeeFinder.findByWorkingUnit">
+		<![CDATA[
+			SELECT OEP_USERMGT_APPROLE2EMPLOYEE.*
+			FROM OEP_USERMGT_APPROLE2EMPLOYEE
+			WHERE 1=1 
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$WORKINGUNIT_FILTER$]		
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2EmployeeFinder.findRoleByEmployee">
+		<![CDATA[
+			SELECT OEP_USERMGT_APPROLE.*
+			FROM OEP_USERMGT_APPROLE
+			INNER JOIN OEP_USERMGT_APPROLE2EMPLOYEE
+			ON OEP_USERMGT_APPROLE.APPROLEID=OEP_USERMGT_APPROLE2EMPLOYEE.APPROLEID
+			WHERE 1=1 
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$EMPLOYEE_FILTER$]		
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2EmployeeFinder.countByAppRoleWorkingUnit">
+		<![CDATA[
+			SELECT COUNT(*) AS total
+			FROM OEP_USERMGT_APPROLE2EMPLOYEE
+			WHERE 1=1 
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$APPROLE_FILTER$]
+			[$WORKINGUNIT_FILTER$]		
+		]]>
+	</sql>
+	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2EmployeeFinder.findByAppRoleWorkingUnit">
+		<![CDATA[
+			SELECT OEP_USERMGT_APPROLE2EMPLOYEE.*
+			FROM OEP_USERMGT_APPROLE2EMPLOYEE
+			WHERE 1=1 
+			[$COMPANY_FILTER$]
+			[$GROUP_FILTER$]
+			[$APPROLE_FILTER$]
+			[$WORKINGUNIT_FILTER$]		
+		]]>
+	</sql>
+</custom-sql>
