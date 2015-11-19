@@ -41,4 +41,84 @@
 			<role-name>user</role-name>
 		</security-role-ref>
 	</portlet>
+	<portlet>
+		<portlet-name>employee-management</portlet-name>
+		<display-name>Employee Management</display-name>
+		<portlet-class>
+			org.oep.usermgt.action.EmpLoyeePortlet
+		</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>
+				/html/usermgt/portlet/employee/employee_list.jsp
+			</value>
+		</init-param>
+		<init-param>
+		    <name>add-process-action-success-action</name>
+		    <value>false</value>
+		</init-param>				
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+        <resource-bundle>content.Language</resource-bundle>
+		<portlet-info>
+			<title>Employee Management</title>
+			<short-title>Employee Management</short-title>
+			<keywords></keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+	<portlet>
+		<portlet-name>jobpos-management</portlet-name>
+		<display-name>JobPos Management</display-name>
+		<portlet-class>
+			org.oep.usermgt.action.JobPosPortlet
+		</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>
+				/html/usermgt/portlet/jobpos/jobpos_list.jsp
+			</value>
+		</init-param>
+		<init-param>
+		    <name>add-process-action-success-action</name>
+		    <value>false</value>
+		</init-param>				
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+        <resource-bundle>content.Language</resource-bundle>
+		<portlet-info>
+			<title>JobPos Management</title>
+			<short-title>JobPos Management</short-title>
+			<keywords></keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
 </portlet-app>

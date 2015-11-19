@@ -557,11 +557,11 @@ public class EmployeeLocalServiceWrapper implements EmployeeLocalService,
 	}
 
 	@Override
-	public int countJobPosByWorkingUniMainJobPos(long workingUnitId,
+	public int countEmployeeByWorkingUniMainJobPos(long workingUnitId,
 		int mainJobPosId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return _employeeLocalService.countJobPosByWorkingUniMainJobPos(workingUnitId,
+		return _employeeLocalService.countEmployeeByWorkingUniMainJobPos(workingUnitId,
 			mainJobPosId);
 	}
 
@@ -584,11 +584,11 @@ public class EmployeeLocalServiceWrapper implements EmployeeLocalService,
 	}
 
 	@Override
-	public int countJobPosByLikeNameWorkingUnit(java.lang.String textSearch,
+	public int countEmployeeByLikeNameWorkingUnit(java.lang.String textSearch,
 		long workingUnitId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return _employeeLocalService.countJobPosByLikeNameWorkingUnit(textSearch,
+		return _employeeLocalService.countEmployeeByLikeNameWorkingUnit(textSearch,
 			workingUnitId);
 	}
 

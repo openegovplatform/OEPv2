@@ -9,6 +9,22 @@
 		<header-portlet-css>/css/main.css</header-portlet-css>
 		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
 	</portlet>
+	<portlet>
+		<portlet-name>employee-management</portlet-name>
+		<icon>/icon.png</icon>
+		<instanceable>false</instanceable>
+		<requires-namespaced-parameters>false</requires-namespaced-parameters>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
+	</portlet>
+	<portlet>
+		<portlet-name>jobpos-management</portlet-name>
+		<icon>/icon.png</icon>
+		<instanceable>false</instanceable>
+		<requires-namespaced-parameters>false</requires-namespaced-parameters>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
+	</portlet>
 	<role-mapper>
 		<role-name>administrator</role-name>
 		<role-link>Administrator</role-link>

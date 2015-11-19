@@ -34,7 +34,8 @@
 	String districtNo = ParamUtil.getString(request,WorkingUnitKeys.AddEditAttributes.DISTRICTNAME,PortletKeys.TEXT_BOX);
 	String wardNo = ParamUtil.getString(request,WorkingUnitKeys.AddEditAttributes.WARDNAME,PortletKeys.TEXT_BOX);
 	long  parentWorkingUnitId = ParamUtil.getLong(request,WorkingUnitKeys.AddEditAttributes.PARENTWORKINGUNITID,PortletKeys.SELECT_BOX);
-	ServiceContext serviceContext = ServiceContextThreadLocal.getServiceContext();
+	ServiceContext serviceContext = ServiceContextThreadLocal
+			.getServiceContext();
 
 	List<DictData> lstDomainData = DictDataLocalServiceUtil
 			.getByCollectionNameDataLevel(

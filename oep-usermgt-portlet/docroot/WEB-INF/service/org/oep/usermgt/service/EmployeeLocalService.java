@@ -438,7 +438,7 @@ public interface EmployeeLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
-	public int countJobPosByWorkingUniMainJobPos(long workingUnitId,
+	public int countEmployeeByWorkingUniMainJobPos(long workingUnitId,
 		int mainJobPosId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
@@ -455,7 +455,7 @@ public interface EmployeeLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
-	public int countJobPosByLikeNameWorkingUnit(java.lang.String textSearch,
+	public int countEmployeeByLikeNameWorkingUnit(java.lang.String textSearch,
 		long workingUnitId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;

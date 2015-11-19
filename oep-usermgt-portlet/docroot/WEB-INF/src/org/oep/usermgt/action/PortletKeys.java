@@ -3,6 +3,7 @@ package org.oep.usermgt.action;
 public class PortletKeys {
 
 	public static final int PAGE = 1;
+	public static final int INT = 0;
 	public static final int DELTA = 10;
 	public static final long LONG_DEFAULT = 0;
 	public static final String STRING_DEFAULT = "";

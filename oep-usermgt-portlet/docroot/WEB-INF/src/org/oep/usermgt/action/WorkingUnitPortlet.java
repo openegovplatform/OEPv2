@@ -4,11 +4,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+
+
+
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.PortletException;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
+import javax.portlet.PortletRequest;
+import javax.portlet.PortletURL;
 import javax.portlet.ResourceRequest;
 import javax.portlet.ResourceResponse;
 
@@ -16,7 +21,6 @@ import org.oep.usermgt.action.WorkingUnitKeys;
 import org.oep.usermgt.action.PortletKeys;
 import org.oep.usermgt.model.WorkingUnit;
 import org.oep.usermgt.service.WorkingUnitLocalServiceUtil;
-import org.oep.usermgt.service.impl.WorkingUnitLocalServiceImpl;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -28,9 +32,13 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.upload.UploadRequest;
 import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.WebKeys;
+import com.liferay.portal.service.LayoutLocalServiceUtil;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.ServiceContextThreadLocal;
+import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.PortalUtil;
+import com.liferay.portlet.PortletURLFactoryUtil;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 
 import org.oep.datamgt.service.DictDataLocalServiceUtil;
@@ -178,6 +186,7 @@ public class WorkingUnitPortlet extends MVCPortlet {
 		response.sendRedirect(ParamUtil.getString(request,
 				PortletKeys.REDIRECT_PAGE));
 	}
+	
 
 	public void edit(ActionRequest request, ActionResponse response)
 			throws PortalException, SystemException, IOException {
@@ -257,6 +266,14 @@ public class WorkingUnitPortlet extends MVCPortlet {
 				String.valueOf(workingUnit.getWebsite()));
 	}
 
+	public void testLdap(ActionRequest request, ActionResponse response) throws Exception{
+		//Test tg = new Test();
+		//tg.testLdap(request, response);
+		//tg.look();
+	}
+	
+	
+	
 	public void search(ActionRequest request, ActionResponse response) {
 
 	}
@@ -337,7 +354,52 @@ public class WorkingUnitPortlet extends MVCPortlet {
 		resourceResponse.setCharacterEncoding("UTF-8");
 		resourceResponse.getWriter().write(jsonFeed.toString());
 	}
+	
+	public void listChucDanh(ActionRequest request,
+			ActionResponse response) throws PortletException, IOException {
+		ThemeDisplay themeDisplay = (ThemeDisplay) request
+				.getAttribute(WebKeys.THEME_DISPLAY);
+		System.out.println(" ----------- " +  themeDisplay.getPortletDisplay().getPortletName());
+		String portletName = "jobposmanagement_WAR_oepusermgtportlet";
+		long workingUnitId = ParamUtil
+				.getLong(request, WorkingUnitKeys.BaseWorkingUnitAttributes.EDIT_ID, PortletKeys.LONG_DEFAULT);
 
-	private static Log _log = LogFactoryUtil
-			.getLog(WorkingUnitLocalServiceImpl.class);
+
+		PortletURL redirectURL = PortletURLFactoryUtil.create(
+				PortalUtil.getHttpServletRequest(request), portletName, themeDisplay.getPlid(),
+				PortletRequest.RENDER_PHASE);
+		redirectURL.setParameter(WorkingUnitKeys.BaseWorkingUnitAttributes.EDIT_ID, String.valueOf(workingUnitId)); 
+		response.sendRedirect(redirectURL.toString());
+
+	}
+	public void listCanBo(ActionRequest request,
+			ActionResponse response) throws PortletException, IOException {
+		ThemeDisplay themeDisplay = (ThemeDisplay) request
+				.getAttribute(WebKeys.THEME_DISPLAY);
+		//ThemeDisplay themeDisplay = (ThemeDisplay)request.getAttribute(WebKeys.THEME_DISPLAY);
+		String pageName = "/danh-sach-can-bo";
+		String portletName = "employeemanagement_WAR_oepusermgtportlet";
+
+		long plid = 0L;
+		try {
+			plid = LayoutLocalServiceUtil.getFriendlyURLLayout(
+					themeDisplay.getScopeGroupId(), false, pageName).getPlid();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(" ----------- " + pageName + "     " + themeDisplay.getPlid());
+		
+		long workingUnitId = ParamUtil
+				.getLong(request, WorkingUnitKeys.BaseWorkingUnitAttributes.EDIT_ID, PortletKeys.LONG_DEFAULT);
+
+
+		PortletURL redirectURL = PortletURLFactoryUtil.create(
+				PortalUtil.getHttpServletRequest(request), portletName, plid,
+				PortletRequest.RENDER_PHASE);
+		redirectURL.setParameter(WorkingUnitKeys.BaseWorkingUnitAttributes.EDIT_ID, String.valueOf(workingUnitId)); 
+		response.sendRedirect(redirectURL.toString());
+
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(WorkingUnitPortlet.class);
 }

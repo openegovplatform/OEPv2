@@ -82,9 +82,11 @@ public class EmployeeLocalServiceImpl extends EmployeeLocalServiceBaseImpl {
 		employee.setGroupId(serviceContext.getScopeGroupId());
 		employee.setUserId(serviceContext.getUserId());
 		employee.setCreateDate(serviceContext.getCreateDate(now));
-		
+		employee.setModifiedDate(serviceContext.getModifiedDate(null));
+		employee.setShortName("");
+		//System.out.println("toi day roi :  ");
 		employeePersistence.update(employee);
-
+		//System.out.println("toi day roi 1:  ");
 		if (serviceContext.isAddGroupPermissions() || serviceContext.isAddGuestPermissions()) {
 			addEmployeeResources(employee, serviceContext.isAddGroupPermissions(), serviceContext.isAddGuestPermissions(), serviceContext);
 		}
@@ -124,7 +126,7 @@ public class EmployeeLocalServiceImpl extends EmployeeLocalServiceBaseImpl {
 		employee.setPersonelDocNo(personelDocNo);
 		employee.setGender(gender);
 		employee.setBirthdate(birthdate);
-
+		employee.setShortName("");
 		employee.setModifiedDate(serviceContext.getModifiedDate(null));
 		employeePersistence.update(employee);
 
@@ -205,7 +207,7 @@ public class EmployeeLocalServiceImpl extends EmployeeLocalServiceBaseImpl {
 		return employeePersistence.findByWU(workingUnitId, start, end);
 	}
 	/* WorkingUnit MainJobPosId*/
-	public int countJobPosByWorkingUniMainJobPos(long workingUnitId, int mainJobPosId) throws PortalException, SystemException {
+	public int countEmployeeByWorkingUniMainJobPos(long workingUnitId, int mainJobPosId) throws PortalException, SystemException {
 		return employeePersistence.countByWU_MJ(workingUnitId, mainJobPosId);
 	}
 	
@@ -218,7 +220,7 @@ public class EmployeeLocalServiceImpl extends EmployeeLocalServiceBaseImpl {
 	}
 	
 	/* Tim kiem Employee with textSearch and workingUnitId*/
-	public int countJobPosByLikeNameWorkingUnit(String textSearch,long workingUnitId) throws PortalException, SystemException {
+	public int countEmployeeByLikeNameWorkingUnit(String textSearch,long workingUnitId) throws PortalException, SystemException {
 		return employeeFinder.countByLikeName(textSearch, workingUnitId);
 	}
 	

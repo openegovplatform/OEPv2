@@ -5,6 +5,8 @@
 	<category name="OEP">
 		<category name="UserManager">	
 			<portlet id="workingunit-management"></portlet>
+			<portlet id="employee-management"></portlet>
+			<portlet id="jobpos-management"></portlet>
 		</category>
 	</category>
 </display>

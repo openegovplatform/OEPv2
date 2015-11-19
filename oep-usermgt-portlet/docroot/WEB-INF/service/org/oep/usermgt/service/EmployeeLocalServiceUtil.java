@@ -525,12 +525,12 @@ public class EmployeeLocalServiceUtil {
 		return getService().getByWorkingUnit(workingUnitId, start, end);
 	}
 
-	public static int countJobPosByWorkingUniMainJobPos(long workingUnitId,
+	public static int countEmployeeByWorkingUniMainJobPos(long workingUnitId,
 		int mainJobPosId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
-				   .countJobPosByWorkingUniMainJobPos(workingUnitId,
+				   .countEmployeeByWorkingUniMainJobPos(workingUnitId,
 			mainJobPosId);
 	}
 
@@ -551,12 +551,12 @@ public class EmployeeLocalServiceUtil {
 			start, end);
 	}
 
-	public static int countJobPosByLikeNameWorkingUnit(
+	public static int countEmployeeByLikeNameWorkingUnit(
 		java.lang.String textSearch, long workingUnitId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
-				   .countJobPosByLikeNameWorkingUnit(textSearch, workingUnitId);
+				   .countEmployeeByLikeNameWorkingUnit(textSearch, workingUnitId);
 	}
 
 	public static java.util.List<org.oep.usermgt.model.Employee> finnderByLikeNameWorkingUnit(

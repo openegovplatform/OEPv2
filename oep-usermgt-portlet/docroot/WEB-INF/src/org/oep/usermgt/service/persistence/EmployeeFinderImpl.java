@@ -1,9 +1,8 @@
 package org.oep.usermgt.service.persistence;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 import org.oep.usermgt.model.Employee;
 import org.oep.usermgt.model.impl.EmployeeImpl;
@@ -13,20 +12,20 @@ import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.dao.orm.SQLQuery;
 import com.liferay.portal.kernel.dao.orm.Session;
 import com.liferay.portal.kernel.dao.orm.Type;
-import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.persistence.impl.BasePersistenceImpl;
 import com.liferay.util.dao.orm.CustomSQLUtil;
 
 public class EmployeeFinderImpl extends BasePersistenceImpl implements EmployeeFinder{
-	private static final String COUNT_BY_CUSTOMCONDITION = WorkingUnitFinder.class.getName() + ".countByCustomCondition";
-	private static final String FIND_BY_CUSTOMCONDITION = WorkingUnitFinder.class.getName() + ".findByCustomCondition";
-	private static final String FIND_BY_LIKENAME = WorkingUnitFinder.class.getName() + ".findByLikeName";
-	private static final String COUNT_BY_LIKENAME = WorkingUnitFinder.class.getName() + ".countByLikeName";
+	private static final String COUNT_BY_CUSTOMCONDITION = EmployeeFinder.class.getName() + ".countByCustomCondition";
+	private static final String FIND_BY_CUSTOMCONDITION = EmployeeFinder.class.getName() + ".findByCustomCondition";
+	private static final String FIND_BY_LIKENAME = EmployeeFinder.class.getName() + ".findByLikeName";
+	private static final String COUNT_BY_LIKENAME = EmployeeFinder.class.getName() + ".countByLikeName";
 	
 	public List<Employee> findByLikeName(String textSearch, long workingUnitId) {
 		List<Object> params = new ArrayList<Object>();
 		Session session = openSession();
 		String sql = CustomSQLUtil.get(FIND_BY_LIKENAME);
+		
 		if (textSearch != null && !"".equals(textSearch)) {
 			sql = sql.replace("[$NAME_FILTER$]", " AND (LOWER(FULLNAME) LIKE ? OR LOWER(PERSONELDOCNO) LIKE ?)");
 			params.add("%" + textSearch.toLowerCase() + "%");		
@@ -43,7 +42,7 @@ public class EmployeeFinderImpl extends BasePersistenceImpl implements EmployeeF
 		else {
 			sql = sql.replace("[$WORKINGUNIT_FILTER$]", "");			
 		}
-		//System.out.println(" kkkkkkkkkkkkkkkkkkkk " + sql);
+		System.out.println(" kkkkkkkkkkkkkkkkkkkk " + sql);
 		SQLQuery query = session.createSQLQuery(sql);
 		query.addEntity("WorkingUnit", EmployeeImpl.class);
 		if (params != null && params.size() > 0) {
@@ -77,7 +76,7 @@ public class EmployeeFinderImpl extends BasePersistenceImpl implements EmployeeF
 		else {
 			sql = sql.replace("[$WORKINGUNIT_FILTER$]", "");			
 		}
-		//System.out.println(" kkkkkkkkkkkkkkkkkkkk " + sql);
+		System.out.println(" kkkkkkkkkkkkkkkkkkkk " + sql);
 		SQLQuery query = session.createSQLQuery(sql);
 		query.addEntity("WorkingUnit", EmployeeImpl.class);
 		if (params != null && params.size() > 0) {
@@ -96,6 +95,7 @@ public class EmployeeFinderImpl extends BasePersistenceImpl implements EmployeeF
 		List<Object> params = new ArrayList<Object>();
 		Session session = openSession();
 		String sql = CustomSQLUtil.get(COUNT_BY_LIKENAME);
+		System.out.println(" iiiiiiiiiiiiiiiiiiii " + sql);
 		if (textSearch != null && !"".equals(textSearch)) {
 			sql = sql.replace("[$NAME_FILTER$]", " AND (LOWER(FULLNAME) LIKE ? OR LOWER(PERSONELDOCNO) LIKE ?)");
 			params.add("%" + textSearch.toLowerCase() + "%");		
@@ -112,7 +112,7 @@ public class EmployeeFinderImpl extends BasePersistenceImpl implements EmployeeF
 		else {
 			sql = sql.replace("[$WORKINGUNIT_FILTER$]", "");			
 		}
-		///System.out.println(" iiiiiiiiiiiiiiiiiiii " + sql);
+		System.out.println(" iiiiiiiiiiiiiiiiiiii " + sql);
 		SQLQuery query = session.createSQLQuery(sql);
 		query.addScalar("total", Type.LONG);
 		

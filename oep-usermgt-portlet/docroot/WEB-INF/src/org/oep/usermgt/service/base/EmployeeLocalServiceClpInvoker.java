@@ -259,7 +259,7 @@ public class EmployeeLocalServiceClpInvoker {
 
 		_methodParameterTypes116 = new String[] { "long", "int", "int" };
 
-		_methodName117 = "countJobPosByWorkingUniMainJobPos";
+		_methodName117 = "countEmployeeByWorkingUniMainJobPos";
 
 		_methodParameterTypes117 = new String[] { "long", "int" };
 
@@ -271,7 +271,7 @@ public class EmployeeLocalServiceClpInvoker {
 
 		_methodParameterTypes119 = new String[] { "long", "int", "int", "int" };
 
-		_methodName120 = "countJobPosByLikeNameWorkingUnit";
+		_methodName120 = "countEmployeeByLikeNameWorkingUnit";
 
 		_methodParameterTypes120 = new String[] { "java.lang.String", "long" };
 
@@ -615,7 +615,7 @@ public class EmployeeLocalServiceClpInvoker {
 
 		if (_methodName117.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes117, parameterTypes)) {
-			return EmployeeLocalServiceUtil.countJobPosByWorkingUniMainJobPos(((Long)arguments[0]).longValue(),
+			return EmployeeLocalServiceUtil.countEmployeeByWorkingUniMainJobPos(((Long)arguments[0]).longValue(),
 				((Integer)arguments[1]).intValue());
 		}
 
@@ -635,7 +635,7 @@ public class EmployeeLocalServiceClpInvoker {
 
 		if (_methodName120.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes120, parameterTypes)) {
-			return EmployeeLocalServiceUtil.countJobPosByLikeNameWorkingUnit((java.lang.String)arguments[0],
+			return EmployeeLocalServiceUtil.countEmployeeByLikeNameWorkingUnit((java.lang.String)arguments[0],
 				((Long)arguments[1]).longValue());
 		}
 

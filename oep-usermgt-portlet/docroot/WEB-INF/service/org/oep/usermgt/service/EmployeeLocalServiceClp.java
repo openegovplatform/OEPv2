@@ -255,7 +255,7 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 
 		_methodParameterTypes46 = new String[] { "long", "int", "int" };
 
-		_methodName47 = "countJobPosByWorkingUniMainJobPos";
+		_methodName47 = "countEmployeeByWorkingUniMainJobPos";
 
 		_methodParameterTypes47 = new String[] { "long", "int" };
 
@@ -267,7 +267,7 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 
 		_methodParameterTypes49 = new String[] { "long", "int", "int", "int" };
 
-		_methodName50 = "countJobPosByLikeNameWorkingUnit";
+		_methodName50 = "countEmployeeByLikeNameWorkingUnit";
 
 		_methodParameterTypes50 = new String[] { "java.lang.String", "long" };
 
@@ -1765,7 +1765,7 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 	}
 
 	@Override
-	public int countJobPosByWorkingUniMainJobPos(long workingUnitId,
+	public int countEmployeeByWorkingUniMainJobPos(long workingUnitId,
 		int mainJobPosId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -1870,7 +1870,7 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 	}
 
 	@Override
-	public int countJobPosByLikeNameWorkingUnit(java.lang.String textSearch,
+	public int countEmployeeByLikeNameWorkingUnit(java.lang.String textSearch,
 		long workingUnitId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
