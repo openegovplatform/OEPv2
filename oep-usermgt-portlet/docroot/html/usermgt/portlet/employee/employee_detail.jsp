@@ -115,7 +115,10 @@
 					</aui:row>
 		</aui:row>
 		<aui:row>
-		   <%  boolean f= EmployeeKeys.AddEditAttributes.ISCREATUSER.equals("1"); %>
+		   <%  
+		   int check = ParamUtil.getInteger(request,EmployeeKeys.AddEditAttributes.ISCREATUSER,PortletKeys.INT);
+		   
+		   boolean f=  check == 1;%>
 			<aui:column columnWidth="100">
 					<aui:input checked="<%=f%>" label="org.oep.usermgt.portlet.employee.table.header.isCreateUser" name='<%=EmployeeKeys.AddEditAttributes.ISCREATUSER%>' type="checkbox"  value = ''/>
 			</aui:column>
@@ -139,6 +142,7 @@
 		</aui:row>
 	</div>
 </aui:form>
+<%=ParamUtil.getString(request,EmployeeKeys.AddEditAttributes.ISCREATUSER,PortletKeys.TEXT_BOX)%>
 <script type="text/javascript">
 function <portlet:namespace/>save() {
 	var form = document.<portlet:namespace />addEdit;

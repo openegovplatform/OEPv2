@@ -23,10 +23,13 @@ import com.liferay.portal.kernel.util.CalendarFactoryUtil;
 import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.StringPool;
+import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
+import com.liferay.portal.service.ServiceContextFactory;
 import com.liferay.portal.service.ServiceContextThreadLocal;
 import com.liferay.portal.service.UserLocalServiceUtil;
+import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 
@@ -60,7 +63,7 @@ public class EmpLoyeePortlet extends MVCPortlet {
 			String personelDocNo = ParamUtil.getString(uploadRequest,EmployeeKeys.AddEditAttributes.PERSONELDOCNO, PortletKeys.TEXT_BOX);
 			String fullName = ParamUtil.getString(uploadRequest,EmployeeKeys.AddEditAttributes.FULLNAME, PortletKeys.TEXT_BOX);
 			int gender = ParamUtil.getInteger(uploadRequest,EmployeeKeys.AddEditAttributes.GENDER, PortletKeys.DELTA);
-			int createUser = ParamUtil.getInteger(uploadRequest,EmployeeKeys.AddEditAttributes.ISCREATUSER, PortletKeys.INT);
+			boolean createUser = ParamUtil.getBoolean(uploadRequest,EmployeeKeys.AddEditAttributes.ISCREATUSER, PortletKeys.CHECK_BOX);
 			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 			Date birthdate = ParamUtil.getDate(uploadRequest,EmployeeKeys.AddEditAttributes.BIRTHDATE, dateFormat);
 			String officeTel = ParamUtil.getString(uploadRequest,EmployeeKeys.AddEditAttributes.OFFICETEL, PortletKeys.TEXT_BOX);
@@ -70,15 +73,15 @@ public class EmpLoyeePortlet extends MVCPortlet {
 			String screenName = ParamUtil.getString(uploadRequest,EmployeeKeys.AddEditAttributes.SCREENNAME, PortletKeys.TEXT_BOX);
 			String password = ParamUtil.getString(uploadRequest,EmployeeKeys.AddEditAttributes.PASSWORD, PortletKeys.TEXT_BOX);
 			String repassword = ParamUtil.getString(uploadRequest,EmployeeKeys.AddEditAttributes.REPASSWORD, PortletKeys.TEXT_BOX);
+			System.out.println(" ------- " + createUser);
 			Long editId = ParamUtil.getLong(uploadRequest,
 					EmployeeKeys.AddEditAttributes.EDIT_ID,
 					PortletKeys.LONG_DEFAULT);
-			
+		
 			if (editId == PortletKeys.LONG_DEFAULT) {
 				User user = null;
-				if (createUser == 1){
-					user = this.addUser(serviceContext, screenName, password,
-							repassword, birthdate, fullName, email);
+				if (createUser){
+					user = this.addUser(request, screenName, password, repassword, birthdate, fullName, email, gender);
 					mappingUserId = user.getUserId();
 				}
 				EmployeeLocalServiceUtil.addEmployee(mappingUserId, workingUnitId,mainJobPosId,
@@ -94,12 +97,12 @@ public class EmpLoyeePortlet extends MVCPortlet {
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
 				}
-				System.out.println(" sssss  " + fullName + " " + mainJobPosId + "    " + workingUnitId +  "    " + employee.getMappingUserId());
-				if (createUser == 1 && user != null){
-					user = this.addUser(serviceContext, screenName, password,
-							repassword, birthdate, fullName, email);
+				
+				if (createUser && user == null){
+					System.out.println(" sssss  " + fullName + " " + mainJobPosId + "    " + workingUnitId +  "    " + employee.getMappingUserId());
+					user = addUser(request, screenName, password, repassword, birthdate, fullName, email, gender);
 				}
-				if (user!=null){
+				if (user != null){
 					employee.setMappingUserId(user.getUserId());
 				}
 				employee.setWorkingUnitId(workingUnitId);
@@ -115,7 +118,7 @@ public class EmpLoyeePortlet extends MVCPortlet {
 				employee.setBirthdate(birthdate);
 				EmployeeLocalServiceUtil.saveEmployee(employee,serviceContext);
 			}
-
+		
 			
 		}
 		if (!SessionErrors.isEmpty(request)) {
@@ -225,10 +228,80 @@ public class EmpLoyeePortlet extends MVCPortlet {
 		response.setRenderParameter(EmployeeKeys.AddEditAttributes.HOMETEL,String.valueOf(employee.getHomeTel()));
 		response.setRenderParameter(EmployeeKeys.AddEditAttributes.MOBILE,String.valueOf(employee.getMobile()));
 		response.setRenderParameter(EmployeeKeys.AddEditAttributes.EMAIL,String.valueOf(employee.getEmail()));
-		response.setRenderParameter(EmployeeKeys.AddEditAttributes.ISCREATUSER,String.valueOf(1));
+		if (employee.getMappingUserId() > 0){
+			response.setRenderParameter(EmployeeKeys.AddEditAttributes.ISCREATUSER,String.valueOf(1));
+		}else {
+			response.setRenderParameter(EmployeeKeys.AddEditAttributes.ISCREATUSER,String.valueOf(0));
+		}
+		
 
 		
 	}
 
+	private User addUser(final ActionRequest request, String screenName,
+			String password, String repassword, Date birthdate,
+			String fullName, String email, int gender) throws PortalException,
+			SystemException {
+		ThemeDisplay themeDisplay = (ThemeDisplay) request
+				.getAttribute(WebKeys.THEME_DISPLAY);
+
+		long creatorUserId = themeDisplay.getUserId(); // default liferay user
+		long companyId = themeDisplay.getCompanyId(); // default company
+		boolean autoPassword = true;
+		String password1 = "";
+		String password2 = "";
+		boolean autoScreenName = true;
+
+		String emailAddress = email;
+		long facebookId = 0;
+		String openId = "";
+		Locale locale = themeDisplay.getLocale();
+		String[] tg = fullName.split(" ");
+		String firstName = tg[0];
+		String middleName = "";
+		String lastName = "";
+		if (tg.length > 1) {
+			firstName = tg[tg.length - 1];
+			lastName = tg[0];
+		}
+		if (tg.length > 2) {
+			middleName = tg[1];
+			for (int i = 2; i < tg.length - 1; i++) {
+				middleName += " " + tg[i];
+			}
+		}
+		int prefixId = 0;
+		int suffixId = 0;
+		boolean male = gender == 1;
+		Calendar birthday = CalendarFactoryUtil.getCalendar();
+		birthday.setTime(birthdate);
+		int birthdayMonth = birthday.get(Calendar.MONTH);
+		int birthdayDay = birthday.get(Calendar.DAY_OF_MONTH);
+		int birthdayYear = birthday.get(Calendar.YEAR);
+		String jobTitle = "";
+
+		long[] groupIds = null;
+		long[] organizationIds = null;
+		long[] roleIds = null;
+		long[] userGroupIds = null;
+
+		boolean sendEmail = false;
+
+		ServiceContext serviceContext = ServiceContextFactory
+				.getInstance(request);
+		try {
+		User user = UserLocalServiceUtil.addUser(creatorUserId, companyId,
+				autoPassword, password1, password2, autoScreenName, screenName,
+				emailAddress, facebookId, openId, locale, firstName,
+				middleName, lastName, prefixId, suffixId, male, birthdayMonth,
+				birthdayDay, birthdayYear, jobTitle, groupIds, organizationIds,
+				roleIds, userGroupIds, sendEmail, serviceContext);
+		return user;
+		} catch(Exception e){
+			System.out.println(e.getMessage());
+			return null;
+		}
+		
+	}
 	private static Log _log = LogFactoryUtil.getLog(EmpLoyeePortlet.class);
 }

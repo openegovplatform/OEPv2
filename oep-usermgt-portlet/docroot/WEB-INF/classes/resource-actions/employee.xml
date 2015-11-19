@@ -32,17 +32,17 @@
 		<weight>2</weight>
 		<permissions>
 			<supports>
-				<action-key>ADMIN_USERMGT</action-key>
+				<action-key>ADMIN_USER</action-key>
 				<action-key>PERMISSIONS</action-key>
 			</supports>
 			<site-member-defaults>
-				<action-key>ADMIN_USERMGT</action-key>
+				<action-key>ADMIN_USER</action-key>
 			</site-member-defaults>
 			<guest-defaults>
 			</guest-defaults>
 			<guest-unsupported>
 				<action-key>PERMISSIONS</action-key>
-				<action-key>ADMIN_USERMGT</action-key>
+				<action-key>ADMIN_USER</action-key>
 			</guest-unsupported>
 		</permissions>
 	</model-resource>
