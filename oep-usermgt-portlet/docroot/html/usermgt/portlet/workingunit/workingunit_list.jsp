@@ -97,7 +97,7 @@
 				int index=1;
 			%>
 			<tr>
-				<th style="text-align: center" width="8%"><liferay-ui:message
+				<th style="text-align: center" width="5%"><liferay-ui:message
 						key="org.oep.usermgt.portlet.table.header.no" /></th>
 				<th width="20%"><liferay-ui:message
 						key="org.oep.usermgt.portlet.workingunit.table.header.name" /></th>
@@ -109,7 +109,7 @@
 						key="org.oep.usermgt.portlet.workingunit.table.header.address" /></th>
 				<th style="text-align: center"><liferay-ui:message
 						key="org.oep.usermgt.portlet.workingunit.table.header.telNo" /></th>
-				<th style="text-align: center"><liferay-ui:message
+				<th  width="25%" style="text-align: center"><liferay-ui:message
 						key="org.oep.usermgt.portlet.table.header.action" /></th>
 			</tr>
 			<%
@@ -144,9 +144,9 @@
 				<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
 					value="<%=redirectURL%>" />
 				<portlet:param name="<%=PortletKeys.SET_VIEW_PARAMETER%>"
-					value="/html/usermgt/portlet/workingunit/workingunit_detail.jsp" />
+					value="/html/usermgt/portlet/jobpos/jobpos_list.jsp" />
 				<portlet:param
-					name="<%=WorkingUnitKeys.BaseWorkingUnitAttributes.EDIT_ID%>"
+					name="<%=WorkingUnitKeys.AddEditAttributes.WORKINGUNITID%>"
 					value="<%=String.valueOf(data.getWorkingUnitId())%>" />
 			</portlet:actionURL>
 			<%
@@ -171,13 +171,7 @@
 					onclick="location.href = '<%=dschucdanh%>';return false;"><i
 						class="icon-pencil"><liferay-ui:message
 								key="org.oep.usermgt.portlet.table.jobpos.action.title" /></i></a> 
-								<a href="#"
-					class="btn btn-success"
-					title="<liferay-ui:message key="org.oep.ssomgt.portlet.applicationmanagement.table.action.title.edit" />"
-					onclick="location.href = '<%=dscanbo%>';return false;"><i
-						class="icon-pencil"><liferay-ui:message
-								key="org.oep.usermgt.portlet.table.employee.action.title" /></i></a> 
-								<a href="#" class="btn btn-primary"
+					<a href="#" class="btn btn-primary"
 					title="<liferay-ui:message key="org.oep.usermgt.portlet.table.action.title.delete" />"
 					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.usermgt.portlet.confirm.message.beforedelete")%>')) {location.href = '<%=deleteUrl%>';return false;}"><i
 						class="icon-trash"><liferay-ui:message
@@ -206,12 +200,7 @@
 					onclick="location.href = '<%=dschucdanh%>';return false;"><i
 						class="icon-pencil"><liferay-ui:message
 								key="org.oep.usermgt.portlet.table.jobpos.action.title" /></i></a> 
-								<a href="#"
-					class="btn btn-success"
-					title="<liferay-ui:message key="org.oep.ssomgt.portlet.applicationmanagement.table.action.title.edit" />"
-					onclick="location.href = '<%=dscanbo%>';return false;"><i
-						class="icon-pencil"><liferay-ui:message
-								key="org.oep.usermgt.portlet.table.employee.action.title" /></i></a> 
+								
 					<a	href="#" class="btn btn-primary"
 					title="<liferay-ui:message key="org.oep.ssomgt.portlet.applicationmanagement.table.action.title.delete" />"
 					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.ssomgt.portlet.applicationmanagement.confirm.message.beforedelete")%>')) {location.href = '<%=deleteUrl%>';return false;}"><i

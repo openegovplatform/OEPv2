@@ -182,15 +182,15 @@ public class JobPosLocalServiceClpInvoker {
 		_methodName104 = "addJobPos";
 
 		_methodParameterTypes104 = new String[] {
-				"java.lang.String", "java.lang.String", "long", "int",
+				"java.lang.String", "java.lang.String", "long", "long", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName105 = "updateJobPos";
 
 		_methodParameterTypes105 = new String[] {
-				"long", "java.lang.String", "java.lang.String", "long", "int",
-				"com.liferay.portal.service.ServiceContext"
+				"long", "java.lang.String", "java.lang.String", "long", "long",
+				"int", "com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName106 = "saveJobPos";
@@ -502,8 +502,9 @@ public class JobPosLocalServiceClpInvoker {
 			return JobPosLocalServiceUtil.addJobPos((java.lang.String)arguments[0],
 				(java.lang.String)arguments[1],
 				((Long)arguments[2]).longValue(),
-				((Integer)arguments[3]).intValue(),
-				(com.liferay.portal.service.ServiceContext)arguments[4]);
+				((Long)arguments[3]).longValue(),
+				((Integer)arguments[4]).intValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[5]);
 		}
 
 		if (_methodName105.equals(name) &&
@@ -511,8 +512,9 @@ public class JobPosLocalServiceClpInvoker {
 			return JobPosLocalServiceUtil.updateJobPos(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				((Long)arguments[3]).longValue(),
-				((Integer)arguments[4]).intValue(),
-				(com.liferay.portal.service.ServiceContext)arguments[5]);
+				((Long)arguments[4]).longValue(),
+				((Integer)arguments[5]).intValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[6]);
 		}
 
 		if (_methodName106.equals(name) &&

@@ -97,6 +97,7 @@
 		<field name="title" type="String" />
 		<field name="positionCatNo" type="String" />
 		<field name="workingUnitId" type="long" />
+		<field name="subWorkingUnitId" type="long" />
 		<field name="leader" type="int" />
 	</model>
 	<model name="org.oep.usermgt.model.Jobpos2Role">

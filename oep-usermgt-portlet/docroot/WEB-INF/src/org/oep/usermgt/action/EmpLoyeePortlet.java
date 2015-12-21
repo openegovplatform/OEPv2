@@ -12,6 +12,7 @@ import javax.portlet.ActionResponse;
 
 import org.oep.usermgt.model.Employee;
 import org.oep.usermgt.service.EmployeeLocalServiceUtil;
+import org.oep.usermgt.util.ManagerLdap;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -49,7 +50,7 @@ public class EmpLoyeePortlet extends MVCPortlet {
 	}
 */
 	public void addEdit(ActionRequest request, ActionResponse response)
-			throws SystemException, PortalException, IOException {
+			throws Exception {
 
 		if (SessionErrors.isEmpty(request)) {
 			ServiceContext serviceContext = ServiceContextThreadLocal
@@ -73,22 +74,28 @@ public class EmpLoyeePortlet extends MVCPortlet {
 			String screenName = ParamUtil.getString(uploadRequest,EmployeeKeys.AddEditAttributes.SCREENNAME, PortletKeys.TEXT_BOX);
 			String password = ParamUtil.getString(uploadRequest,EmployeeKeys.AddEditAttributes.PASSWORD, PortletKeys.TEXT_BOX);
 			String repassword = ParamUtil.getString(uploadRequest,EmployeeKeys.AddEditAttributes.REPASSWORD, PortletKeys.TEXT_BOX);
-			System.out.println(" ------- " + createUser);
+			//System.out.println(" ------- " + password);
 			Long editId = ParamUtil.getLong(uploadRequest,
 					EmployeeKeys.AddEditAttributes.EDIT_ID,
 					PortletKeys.LONG_DEFAULT);
-		
+			ManagerLdap ld = new ManagerLdap();
 			if (editId == PortletKeys.LONG_DEFAULT) {
 				User user = null;
 				if (createUser){
 					user = this.addUser(request, screenName, password, repassword, birthdate, fullName, email, gender);
 					mappingUserId = user.getUserId();
+					
 				}
-				EmployeeLocalServiceUtil.addEmployee(mappingUserId, workingUnitId,mainJobPosId,
+				Employee employee = EmployeeLocalServiceUtil.addEmployee(mappingUserId, workingUnitId,mainJobPosId,
 				employeeNo, fullName, officeTel, homeTel, mobile, email, personelDocNo, gender,
 				birthdate, serviceContext);
+				if (createUser && ld.getIsZimbraLdap(serviceContext.getCompanyId())){
+					ld.ExportToLdap(serviceContext, user,employee,password);//(serviceContext, user, employee);
+				}
+				
 				
 			} else {
+				
 				Employee employee = EmployeeLocalServiceUtil.getEmployee(editId);
 				//System.out.println(" sssss  " + fullName + " " + mainJobPosId + "    " + workingUnitId +  "    " + employee.getMappingUserId());
 				User user = null;
@@ -101,10 +108,16 @@ public class EmpLoyeePortlet extends MVCPortlet {
 				if (createUser && user == null){
 					System.out.println(" sssss  " + fullName + " " + mainJobPosId + "    " + workingUnitId +  "    " + employee.getMappingUserId());
 					user = addUser(request, screenName, password, repassword, birthdate, fullName, email, gender);
+				}else {
+					///UserLocalServiceUtil.updatePassword(employee.getMappingUserId(), password, repassword, false);
 				}
 				if (user != null){
+					
 					employee.setMappingUserId(user.getUserId());
+				}else {
+					
 				}
+				System.out.println(" Ngu qua di thoi");
 				employee.setWorkingUnitId(workingUnitId);
 				employee.setMainJobPosId(mainJobPosId);
 				employee.setEmployeeNo(employeeNo);
@@ -117,6 +130,11 @@ public class EmpLoyeePortlet extends MVCPortlet {
 				employee.setGender(gender);
 				employee.setBirthdate(birthdate);
 				EmployeeLocalServiceUtil.saveEmployee(employee,serviceContext);
+				if (user != null && ld.getIsZimbraLdap(serviceContext.getCompanyId())){
+					
+					//ld.employeeToLdap(serviceContext, user, employee);
+					ld.ExportToLdap(serviceContext, user,employee,password);
+				}
 			}
 		
 			
@@ -127,6 +145,63 @@ public class EmpLoyeePortlet extends MVCPortlet {
 			response.sendRedirect(ParamUtil.getString(request,
 					PortletKeys.REDIRECT_PAGE));
 		}
+	}
+	
+	public void changePassword(ActionRequest request, ActionResponse response)
+			throws Exception {
+
+		if (SessionErrors.isEmpty(request)) {
+			ServiceContext serviceContext = ServiceContextThreadLocal
+					.getServiceContext();
+			UploadRequest uploadRequest = PortalUtil
+					.getUploadPortletRequest(request);
+			
+			Long editId = ParamUtil.getLong(uploadRequest,
+					EmployeeKeys.AddEditAttributes.EDIT_ID,
+					PortletKeys.LONG_DEFAULT);
+			ManagerLdap ld = new ManagerLdap();
+			if (editId != PortletKeys.LONG_DEFAULT) {
+				Employee employee = EmployeeLocalServiceUtil.getEmployee(editId);
+				//System.out.println(" sssss  " + fullName + " " + mainJobPosId + "    " + workingUnitId +  "    " + employee.getMappingUserId());
+				User user = null;
+				if (employee.getMappingUserId() !=  PortletKeys.LONG_DEFAULT){
+				//	System.out.println(" Doi mat khau  " + employee.getMappingUserId() + password + "  " + repassword);
+					String password = ParamUtil.getString(uploadRequest,EmployeeKeys.AddEditAttributes.PASSWORD, PortletKeys.TEXT_BOX);
+					String repassword = ParamUtil.getString(uploadRequest,EmployeeKeys.AddEditAttributes.REPASSWORD, PortletKeys.TEXT_BOX);
+					System.out.println(" Doi mat khau  " + employee.getMappingUserId() + password + "  " + repassword);
+					
+					try{	
+						Date now = new Date();
+						//UserLocalServiceUtil.upd
+						//UserLocalServiceUtil.updatePassword(employee.getMappingUserId(), password, repassword, false);
+						//		false, false,  serviceContext.getCreateDate(now));
+						
+						UserLocalServiceUtil.updatePasswordManually(employee.getMappingUserId() , password, true, false, serviceContext.getCreateDate(now));
+						System.out.println(" Doi mat khau  " + password + " " + repassword);
+						user =	UserLocalServiceUtil.getUser(employee.getMappingUserId());
+						
+						if (user != null && ld.getIsZimbraLdap(serviceContext.getCompanyId())){
+							//employee.setMappingUserId(user.getUserId());
+							ld.changePassord(serviceContext, user,password);
+						}
+					} catch (Exception e) {
+						System.out.println("Loi o day " + e.getMessage());
+					}
+				}
+			}
+				
+		}
+		if (!SessionErrors.isEmpty(request)) {
+			PortalUtil.copyRequestParameters(request, response);
+		} else {
+			response.sendRedirect(ParamUtil.getString(request,
+					PortletKeys.REDIRECT_PAGE));
+		}
+	}
+	
+	
+	public void changePassword(String pass){
+		
 	}
 	
 	public User addUser(ServiceContext serviceContext, String screenName,String password,String repassword,
@@ -201,10 +276,11 @@ public class EmpLoyeePortlet extends MVCPortlet {
 	public void edit(ActionRequest request, ActionResponse response)
 			throws PortalException, SystemException, IOException {
 		long editId = ParamUtil.getLong(request,
-				WorkingUnitKeys.BaseWorkingUnitAttributes.EDIT_ID,
+				EmployeeKeys.BaseEmployeeAttributes.EDIT_ID,
 				PortletKeys.LONG_DEFAULT);
 
 		Employee empLoyee = EmployeeLocalServiceUtil.getEmployee(editId);
+		System.out.println("Toi day " + editId);
 		setParameterIntoResponse(response, empLoyee);
 
 		if (!SessionErrors.isEmpty(request)) {
@@ -215,7 +291,7 @@ public class EmpLoyeePortlet extends MVCPortlet {
 	}
 
 	private void setParameterIntoResponse(ActionResponse response,
-			Employee employee) {
+			Employee employee) throws PortalException, SystemException {
 		response.setRenderParameter(EmployeeKeys.AddEditAttributes.MAPPINGUSERID,String.valueOf(employee.getMappingUserId()));
 		response.setRenderParameter(EmployeeKeys.AddEditAttributes.WORKINGUNITID,String.valueOf(employee.getWorkingUnitId()));
 		response.setRenderParameter(EmployeeKeys.AddEditAttributes.MAINJOBPOSID,String.valueOf(employee.getMainJobPosId()));
@@ -229,13 +305,22 @@ public class EmpLoyeePortlet extends MVCPortlet {
 		response.setRenderParameter(EmployeeKeys.AddEditAttributes.MOBILE,String.valueOf(employee.getMobile()));
 		response.setRenderParameter(EmployeeKeys.AddEditAttributes.EMAIL,String.valueOf(employee.getEmail()));
 		if (employee.getMappingUserId() > 0){
+			System.out.println("");
+			System.out.println("");
+			System.out.println("");
+			System.out.println("");
+			System.out.println("Thong tin    " + employee.getMappingUserId() + "      " );
+			
+			User user =  UserLocalServiceUtil.getUser(employee.getMappingUserId());
+			System.out.println("Thong tin    " + user.getScreenName() + "      " );
+			response.setRenderParameter(EmployeeKeys.AddEditAttributes.SCREENNAME,String.valueOf(user.getScreenName()));
+			
+			//response.setRenderParameter(EmployeeKeys.AddEditAttributes.PASSWORD,String.valueOf(user.getPassword()));
+			//response.setRenderParameter(EmployeeKeys.AddEditAttributes.REPASSWORD,String.valueOf(user.get()));
 			response.setRenderParameter(EmployeeKeys.AddEditAttributes.ISCREATUSER,String.valueOf(1));
 		}else {
 			response.setRenderParameter(EmployeeKeys.AddEditAttributes.ISCREATUSER,String.valueOf(0));
 		}
-		
-
-		
 	}
 
 	private User addUser(final ActionRequest request, String screenName,

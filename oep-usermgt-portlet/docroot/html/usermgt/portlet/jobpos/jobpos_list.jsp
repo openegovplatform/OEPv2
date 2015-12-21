@@ -24,7 +24,8 @@
 <%@page import="com.liferay.portal.kernel.util.ParamUtil"%>
 <%@page import="com.liferay.portal.service.ServiceContextThreadLocal"%>
 <%@page import="com.liferay.portal.service.ServiceContext"%>
-
+<%@page import="org.oep.usermgt.model.WorkingUnit"%>
+<%@page import="org.oep.usermgt.service.WorkingUnitLocalServiceUtil"%>
 <%@page import="org.oep.usermgt.model.JobPos"%>
 <%@page import="org.oep.usermgt.action.JobPosKeys"%>
 <%@page import="org.oep.usermgt.service.JobPosLocalServiceUtil"%>
@@ -33,6 +34,7 @@
 	int cur = ParamUtil.getInteger(request, PortletKeys.SearchContainer.CURRENT_PAGE, PortletKeys.PAGE);
 	int delta = ParamUtil.getInteger(request, PortletKeys.SearchContainer.DELTA, PortletKeys.DELTA);
 	long workingUnitId = ParamUtil.getLong(request, JobPosKeys.AddEditAttributes.WORKINGUNITID, PortletKeys.SELECT_BOX);
+	WorkingUnit workingUnit = WorkingUnitLocalServiceUtil.getWorkingUnit(workingUnitId);
 	PortletURL iteratorUrl = renderResponse.createRenderURL();
 	SearchContainer<JobPos> searchContainer = new SearchContainer<JobPos>(renderRequest, null, null, SearchContainer.DEFAULT_CUR_PARAM, cur, delta, iteratorUrl, null, null);
 	int total = JobPosLocalServiceUtil.countJobPosByWorkingUnit(workingUnitId);
@@ -44,7 +46,6 @@
 		searchContainer.setResults(datas);
 	}
 %>
-
 <portlet:renderURL var="redirectURL">
 	<portlet:param name="<%=PortletKeys.SearchContainer.DELTA%>"
 		value="<%=String.valueOf(ParamUtil.getInteger(request, PortletKeys.SearchContainer.DELTA, PortletKeys.DELTA))%>" />
@@ -62,24 +63,13 @@
 		value="/html/usermgt/portlet/jobpos/jobpos_detail.jsp" />
 	<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
 		value="<%=redirectURL%>" />
+	<portlet:param	name="<%=JobPosKeys.AddEditAttributes.WORKINGUNITID%>"
+					value="<%=String.valueOf(workingUnitId)%>" />
 </portlet:renderURL>
 <aui:form name="searchApplication"  method="POST">
-		<table  style="width: 100%;">
-			<tr>
-				<td style="width: 100%;">
-					<div class="form-search">
-						<div class="input-append">
-
-						</div>
-					</div>
-				</td>
-				<td style="width: 30%;" align="right">
-				<a
-					onclick="<portlet:namespace/>changeToAddStatus();return false;"
-					class="btn btn-primary"><i class="icon-plus"><liferay-ui:message
-								key="org.oep.usermgt.portlet.jobpos.button.addnew" /></i></a></td>
-			</tr>
-		</table>
+<liferay-ui:message key="org.oep.usermgt.portlet.jobpos.title"></liferay-ui:message>
+<liferay-ui:message key="<%=workingUnit.getName()%>"></liferay-ui:message>
+		
 		<p></p>
 	<div class="table-responsive">
 		<table class="table table-bordered table-hover">
@@ -92,11 +82,11 @@
 			<tr>
 				<th style="text-align: center" width="8%"><liferay-ui:message
 						key="org.oep.usermgt.portlet.table.header.no" /></th>
-				<th width="20%"><liferay-ui:message
+				<th width="30%"><liferay-ui:message
 						key="org.oep.usermgt.portlet.jobpos.table.header.title" /></th>
-				<th width="10%"><liferay-ui:message
-						key="org.oep.usermgt.portlet.jobpos.table.header.positionCatNo" /></th>
 				<th width="20%"><liferay-ui:message
+						key="org.oep.usermgt.portlet.jobpos.table.header.positionCatNo" /></th>
+				<th width="15%"><liferay-ui:message
 						key="org.oep.usermgt.portlet.jobpos.table.header.leader" /></th>
 				<th style="text-align: center"><liferay-ui:message
 						key="org.oep.usermgt.portlet.table.header.action" /></th>
@@ -104,14 +94,17 @@
 			<%
 				for (JobPos data : datas) {
 			%>
-			<portlet:actionURL var="deleteUrl" name="delete">
+			<portlet:actionURL var="deleteUrl" name="deleteJobPos">
 				<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
 					value="<%=redirectURL%>" />
 				<portlet:param
 					name="<%=JobPosKeys.BaseJobPosAttributes.DELETE_ID%>"
 					value="<%=String.valueOf(data.getJobPosId())%>" />
+					<portlet:param	name="<%=JobPosKeys.AddEditAttributes.WORKINGUNITID%>"
+					value="<%=String.valueOf(workingUnitId)%>" />
 			</portlet:actionURL>
-			<portlet:actionURL var="editUrl" name="edit">
+			
+			<portlet:actionURL var="editUrl" name="editJobPos">
 				<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
 					value="<%=redirectURL%>" />
 				<portlet:param name="<%=PortletKeys.SET_VIEW_PARAMETER%>"
@@ -119,6 +112,19 @@
 				<portlet:param
 					name="<%=JobPosKeys.BaseJobPosAttributes.EDIT_ID%>"
 					value="<%=String.valueOf(data.getJobPosId())%>" />
+					<portlet:param	name="<%=JobPosKeys.AddEditAttributes.WORKINGUNITID%>"
+					value="<%=String.valueOf(workingUnitId)%>" />
+			</portlet:actionURL>
+			<portlet:actionURL var="editeRole" name="toNextPage">
+				<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
+					value="<%=redirectURL%>" />
+				<portlet:param name="<%=PortletKeys.SET_VIEW_PARAMETER%>"
+					value="/html/usermgt/portlet/jobpos/jobpos_2_role.jsp" />
+				<portlet:param
+					name="<%=JobPosKeys.BaseJobPosAttributes.EDIT_ID%>"
+					value="<%=String.valueOf(data.getJobPosId())%>" />
+					<portlet:param	name="<%=JobPosKeys.AddEditAttributes.WORKINGUNITID%>"
+					value="<%=String.valueOf(workingUnitId)%>" />
 			</portlet:actionURL>
 			<%
 				if (index % 2 == 0) {
@@ -134,6 +140,12 @@
 					onclick="location.href = '<%=editUrl%>';return false;"><i
 						class="icon-pencil"><liferay-ui:message
 								key="org.oep.usermgt.portlet.table.action.title.edit" /></i></a> 
+					<a href="#"
+					class="btn btn-success"
+					title="<liferay-ui:message key="org.oep.usermgt.portlet.jobpos.button.role" />"
+					onclick="location.href = '<%=editeRole%>';return false;"><i
+						class="icon-pencil"><liferay-ui:message
+								key="org.oep.usermgt.portlet.jobpos.button.role" /></i></a> 
 								<a href="#" class="btn btn-primary"
 					title="<liferay-ui:message key="org.oep.usermgt.portlet.table.action.title.delete" />"
 					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.usermgt.portlet.confirm.message.beforedelete")%>')) {location.href = '<%=deleteUrl%>';return false;}"><i
@@ -154,8 +166,14 @@
 					title="<liferay-ui:message key="org.oep.ssomgt.portlet.applicationmanagement.table.action.title.edit" />"
 					onclick="location.href = '<%=editUrl%>';return false;"><i
 						class="icon-pencil"><liferay-ui:message
-								key="org.oep.usermgt.portlet.table.action.title.edit" /></i></a> <a
-					href="#" class="btn btn-primary"
+								key="org.oep.usermgt.portlet.table.action.title.edit" /></i></a>
+								<a href="#"
+					class="btn btn-success"
+					title="<liferay-ui:message key="org.oep.usermgt.portlet.jobpos.button.role" />"
+					onclick="location.href = '<%=editeRole%>';return false;"><i
+						class="icon-pencil"><liferay-ui:message
+								key="org.oep.usermgt.portlet.jobpos.button.role" /></i></a> 
+								 <a	href="#" class="btn btn-primary"
 					title="<liferay-ui:message key="org.oep.ssomgt.portlet.applicationmanagement.table.action.title.delete" />"
 					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.ssomgt.portlet.applicationmanagement.confirm.message.beforedelete")%>')) {location.href = '<%=deleteUrl%>';return false;}"><i
 						class="icon-trash"><liferay-ui:message
@@ -188,6 +206,17 @@
 			<liferay-ui:search-paginator searchContainer="<%=searchContainer%>" />
 		</div>
 	</c:if>
+	<table  style="width: 100%;">
+			<tr>
+				<td style="width: 70%;">
+				<a
+					onclick="<portlet:namespace/>changeToAddStatus();return false;"
+					class="btn btn-primary"><i class="icon-plus"><liferay-ui:message
+								key="org.oep.usermgt.portlet.jobpos.button.addnew" /></i></a>
+					<input class="btn btn-default" type="button" value="<liferay-ui:message key="org.oep.usermgt.portlet.button.cancel" />" onclick="<portlet:namespace/>back()"/>			
+					</td>
+			</tr>
+		</table>
 </aui:form>
 
 <script type="text/javascript">
@@ -199,8 +228,11 @@
 	
 	function <portlet:namespace/>changeToAddStatus() {
 		var form = document.<portlet:namespace />searchApplication;
-		form.action = "<%= addEdit%>";
+		form.action = "<%=addEdit%>";
 		form.submit();
 	}
+	function <portlet:namespace/>back() {
+		location.href = "<%= ParamUtil.getString(request, PortletKeys.REDIRECT_PAGE) %>";
+	};
 	
 </script>

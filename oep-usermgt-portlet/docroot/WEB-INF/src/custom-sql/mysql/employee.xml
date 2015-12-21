@@ -18,4 +18,14 @@
 			[$WORKINGUNIT_FILTER$]
 		]]>
 	</sql>
+	<sql id="org.oep.usermgt.service.persistence.EmployeeFinder.findByLikeNameFull">
+		<![CDATA[
+			SELECT emp.*,wk.*
+			FROM OEP_USERMGT_EMPLOYEE emp
+			INNER JOIN OEP_USERMGT_WORKINGUNIT AS wk ON emp.workingUnitId = wk.workingUnitId
+			WHERE 1=1
+			[$NAME_FILTER$]
+			[$WORKINGUNIT_FILTER$]
+		]]>
+	</sql>
 </custom-sql>

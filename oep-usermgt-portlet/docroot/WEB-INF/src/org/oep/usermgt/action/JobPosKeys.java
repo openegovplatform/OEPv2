@@ -8,7 +8,10 @@ public class  JobPosKeys {
 		public static final String TITLE="addEditTitle";
 		public static final String POSITIONCATNO="addEditPositionCatNo";
 		public static final String WORKINGUNITID="addEditWorkingUnitId";
+		public static final String SUBWORKINGUNITID="addEditSubWorkingUnitId";
 		public static final String LEADER="addEditLeader";
+		public static final String ROLEID="addEditRoleId";
+		
 	}
 	
 	public class BaseJobPosAttributes {

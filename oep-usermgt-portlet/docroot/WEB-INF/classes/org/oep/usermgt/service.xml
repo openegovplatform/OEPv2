@@ -75,6 +75,7 @@
 		<column name="title" db-name="title" type="String"></column>
 		<column name="positionCatNo" db-name="positionCatNo" type="String"></column>
 		<column name="workingUnitId" db-name="workingUnitId" type="long"></column>
+		<column name="subWorkingUnitId" db-name="subWorkingUnitId" type="long"></column>
 		<column name="leader" db-name="leader" type="int"></column>
 		<column name="employees" type="Collection" entity="Employee"
 			mapping-table="employee2jobpos"></column>

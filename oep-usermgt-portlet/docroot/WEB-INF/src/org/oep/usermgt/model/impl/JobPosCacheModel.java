@@ -37,7 +37,7 @@ import java.util.Date;
 public class JobPosCacheModel implements CacheModel<JobPos>, Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{jobPosId=");
 		sb.append(jobPosId);
@@ -57,6 +57,8 @@ public class JobPosCacheModel implements CacheModel<JobPos>, Externalizable {
 		sb.append(positionCatNo);
 		sb.append(", workingUnitId=");
 		sb.append(workingUnitId);
+		sb.append(", subWorkingUnitId=");
+		sb.append(subWorkingUnitId);
 		sb.append(", leader=");
 		sb.append(leader);
 		sb.append("}");
@@ -102,6 +104,7 @@ public class JobPosCacheModel implements CacheModel<JobPos>, Externalizable {
 		}
 
 		jobPosImpl.setWorkingUnitId(workingUnitId);
+		jobPosImpl.setSubWorkingUnitId(subWorkingUnitId);
 		jobPosImpl.setLeader(leader);
 
 		jobPosImpl.resetOriginalValues();
@@ -120,6 +123,7 @@ public class JobPosCacheModel implements CacheModel<JobPos>, Externalizable {
 		title = objectInput.readUTF();
 		positionCatNo = objectInput.readUTF();
 		workingUnitId = objectInput.readLong();
+		subWorkingUnitId = objectInput.readLong();
 		leader = objectInput.readInt();
 	}
 
@@ -148,6 +152,7 @@ public class JobPosCacheModel implements CacheModel<JobPos>, Externalizable {
 		}
 
 		objectOutput.writeLong(workingUnitId);
+		objectOutput.writeLong(subWorkingUnitId);
 		objectOutput.writeInt(leader);
 	}
 
@@ -160,5 +165,6 @@ public class JobPosCacheModel implements CacheModel<JobPos>, Externalizable {
 	public String title;
 	public String positionCatNo;
 	public long workingUnitId;
+	public long subWorkingUnitId;
 	public int leader;
 }

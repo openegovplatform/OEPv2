@@ -30,6 +30,7 @@ public class WorkingUnitKeys {
 		public static final String NAME="addEditName";
 		public static final String ENNAME="addEditEnName";
 		public static final String PARENTWORKINGUNITID="addEditParentWorkingUnitId";
+		public static final String WORKINGUNITID="addEditWorkingUnitId";
 		public static final String ADDRESS="addEditAddress";
 		public static final String CITYNO="addEditCityNo";
 		public static final String CITYNAME="addEditCityName";

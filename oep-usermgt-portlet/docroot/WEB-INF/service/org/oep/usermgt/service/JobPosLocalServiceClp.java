@@ -182,15 +182,15 @@ public class JobPosLocalServiceClp implements JobPosLocalService {
 		_methodName35 = "addJobPos";
 
 		_methodParameterTypes35 = new String[] {
-				"java.lang.String", "java.lang.String", "long", "int",
+				"java.lang.String", "java.lang.String", "long", "long", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName36 = "updateJobPos";
 
 		_methodParameterTypes36 = new String[] {
-				"long", "java.lang.String", "java.lang.String", "long", "int",
-				"com.liferay.portal.service.ServiceContext"
+				"long", "java.lang.String", "java.lang.String", "long", "long",
+				"int", "com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName37 = "saveJobPos";
@@ -1263,7 +1263,8 @@ public class JobPosLocalServiceClp implements JobPosLocalService {
 
 	@Override
 	public org.oep.usermgt.model.JobPos addJobPos(java.lang.String title,
-		java.lang.String positionCatNo, long workingUnitId, int leader,
+		java.lang.String positionCatNo, long workingUnitId,
+		long subWorkingUnitId, int leader,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -1278,6 +1279,8 @@ public class JobPosLocalServiceClp implements JobPosLocalService {
 					ClpSerializer.translateInput(positionCatNo),
 						
 					workingUnitId,
+						
+					subWorkingUnitId,
 						
 					leader,
 						
@@ -1310,7 +1313,7 @@ public class JobPosLocalServiceClp implements JobPosLocalService {
 	@Override
 	public org.oep.usermgt.model.JobPos updateJobPos(long jobPosId,
 		java.lang.String title, java.lang.String positionCatNo,
-		long workingUnitId, int leader,
+		long workingUnitId, long subWorkingUnitId, int leader,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -1327,6 +1330,8 @@ public class JobPosLocalServiceClp implements JobPosLocalService {
 					ClpSerializer.translateInput(positionCatNo),
 						
 					workingUnitId,
+						
+					subWorkingUnitId,
 						
 					leader,
 						

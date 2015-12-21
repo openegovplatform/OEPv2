@@ -49,6 +49,7 @@ public class JobPosLocalServiceImpl extends JobPosLocalServiceBaseImpl {
 			String title,
 			String positionCatNo,
 			long workingUnitId,
+			long subWorkingUnitId,
 			int leader,
 			ServiceContext serviceContext) throws SystemException, PortalException {
 		//validate(collectionName, dataCode, title, status);
@@ -58,6 +59,7 @@ public class JobPosLocalServiceImpl extends JobPosLocalServiceBaseImpl {
 		jobPos.setTitle(title);
 		jobPos.setPositionCatNo(positionCatNo);
 		jobPos.setWorkingUnitId(workingUnitId);
+		jobPos.setSubWorkingUnitId(subWorkingUnitId);
 		jobPos.setLeader(leader);
 
 
@@ -83,6 +85,7 @@ public class JobPosLocalServiceImpl extends JobPosLocalServiceBaseImpl {
 			String title,
 			String positionCatNo,
 			long  workingUnitId,
+			long subWorkingUnitId,
 			int leader,
 	
 			ServiceContext serviceContext)
@@ -92,7 +95,7 @@ public class JobPosLocalServiceImpl extends JobPosLocalServiceBaseImpl {
 		jobPos.setPositionCatNo(positionCatNo);
 		jobPos.setWorkingUnitId(workingUnitId);
 		jobPos.setLeader(leader);
-
+		jobPos.setSubWorkingUnitId(subWorkingUnitId);
 		jobPos.setModifiedDate(serviceContext.getModifiedDate(null));
 		jobPosPersistence.update(jobPos);
 
@@ -111,6 +114,7 @@ public class JobPosLocalServiceImpl extends JobPosLocalServiceBaseImpl {
 				jobPos.getTitle(),
 				jobPos.getPositionCatNo(),
 				jobPos.getWorkingUnitId(),
+				jobPos.getSubWorkingUnitId(),
 				jobPos.getLeader(),
 
 				serviceContext);

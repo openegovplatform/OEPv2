@@ -118,17 +118,17 @@
 				int index=1;
 			%>
 			<tr>
-				<th style="text-align: center" width="8%"><liferay-ui:message
+				<th style="text-align: center" width="5%"><liferay-ui:message
 						key="org.oep.usermgt.portlet.table.header.no" /></th>
 				<th width="20%"><liferay-ui:message
 						key="org.oep.usermgt.portlet.employee.table.header.fullName" /></th>
 				<th width="10%"><liferay-ui:message
 						key="org.oep.usermgt.portlet.employee.table.header.employeeNo" /></th>
-				<th width="20%"><liferay-ui:message
-						key="org.oep.usermgt.portlet.employee.table.header.workingUnitId" /></th>
 				<th width="15%"><liferay-ui:message
+						key="org.oep.usermgt.portlet.employee.table.header.workingUnitId" /></th>
+				<th width="13%"><liferay-ui:message
 						key="org.oep.usermgt.portlet.employee.table.header.mainJobPosId" /></th>
-				<th style="text-align: center"><liferay-ui:message
+				<th width="10%" style="text-align: center"><liferay-ui:message
 						key="org.oep.usermgt.portlet.employee.table.header.mappingUserId" /></th>
 				<th style="text-align: center"><liferay-ui:message
 						key="org.oep.usermgt.portlet.table.header.action" /></th>
@@ -152,6 +152,15 @@
 					name="<%=EmployeeKeys.BaseEmployeeAttributes.EDIT_ID%>"
 					value="<%=String.valueOf(data.getEmployeeId())%>" />
 			</portlet:actionURL>
+			<portlet:actionURL var="changePassword" name="edit">
+				<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
+					value="<%=redirectURL%>" />
+				<portlet:param name="<%=PortletKeys.SET_VIEW_PARAMETER%>"
+					value="/html/usermgt/portlet/employee/employee_changepassword.jsp" />
+				<portlet:param
+					name="<%=EmployeeKeys.BaseEmployeeAttributes.EDIT_ID%>"
+					value="<%=String.valueOf(data.getEmployeeId())%>" />
+			</portlet:actionURL>
 			<%
 				if (index % 2 == 0) {
 			%>
@@ -168,11 +177,16 @@
 					onclick="location.href = '<%=editUrl%>';return false;"><i
 						class="icon-pencil"><liferay-ui:message
 								key="org.oep.usermgt.portlet.table.action.title.edit" /></i></a> 
+								<a href="#" class="btn btn-success" title= "<liferay-ui:message key="org.oep.usermgt.portlet.employee.table.action.title.changepassword" />"
+					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.usermgt.portlet.employee.table.action.title.beforedelete")%>')) {location.href = '<%=changePassword%>';return false;}"><i
+						class="icon-edit"><liferay-ui:message
+								key="org.oep.usermgt.portlet.employee.table.action.title.changepassword" /></i></a>
 								<a href="#" class="btn btn-primary"
 					title="<liferay-ui:message key="org.oep.usermgt.portlet.table.action.title.delete" />"
 					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.usermgt.portlet.confirm.message.beforedelete")%>')) {location.href = '<%=deleteUrl%>';return false;}"><i
 						class="icon-trash"><liferay-ui:message
-								key="org.oep.usermgt.portlet.table.action.title.delete" /></i></a></td>
+								key="org.oep.usermgt.portlet.table.action.title.delete" /></i></a>
+						</td>
 			</tr>
 			<%
 				}
@@ -187,15 +201,24 @@
 				<td style="text-align: left"><%=data.getMappingUserId()%></td>
 				<td style="text-align: left"><a href="#"
 					class="btn btn-success"
-					title="<liferay-ui:message key="org.oep.ssomgt.portlet.applicationmanagement.table.action.title.edit" />"
+					title="<liferay-ui:message key="org.oep.usermgt.portlet.table.action.title.edit" />"
 					onclick="location.href = '<%=editUrl%>';return false;"><i
 						class="icon-pencil"><liferay-ui:message
-								key="org.oep.usermgt.portlet.table.action.title.edit" /></i></a> <a
+								key="org.oep.usermgt.portlet.table.action.title.edit" /></i></a> 
+								<a
+					href="#" class="btn btn-success"
+					title="<liferay-ui:message key="org.oep.usermgt.portlet.employee.table.action.title.changepassword" />"
+					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.usermgt.portlet.employee.table.action.title.beforechagepassword")%>')) {location.href = '<%=changePassword%>';return false;}"><i
+						class="icon-edit"><liferay-ui:message
+								key="org.oep.usermgt.portlet.employee.table.action.title.changepassword" /></i></a>
+					<a
 					href="#" class="btn btn-primary"
-					title="<liferay-ui:message key="org.oep.ssomgt.portlet.applicationmanagement.table.action.title.delete" />"
-					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.ssomgt.portlet.applicationmanagement.confirm.message.beforedelete")%>')) {location.href = '<%=deleteUrl%>';return false;}"><i
+					title="<liferay-ui:message key="org.oep.usermgt.portlet.table.action.title.delete" />"
+					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.usermgt.portlet.table.action.title.beforedelete")%>')) {location.href = '<%=deleteUrl%>';return false;}"><i
 						class="icon-trash"><liferay-ui:message
-								key="org.oep.usermgt.portlet.table.action.title.delete" /></i></a></td>
+								key="org.oep.usermgt.portlet.table.action.title.delete" /></i></a>
+								
+								</td>
 			</tr>
 			<%
 				}
@@ -238,5 +261,4 @@
 		form.action = "<%= addEdit%>";
 		form.submit();
 	}
-	
 </script>

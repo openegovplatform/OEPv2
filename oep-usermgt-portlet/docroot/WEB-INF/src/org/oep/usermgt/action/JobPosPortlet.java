@@ -36,6 +36,7 @@ public class JobPosPortlet extends MVCPortlet {
 			String title = ParamUtil.getString(uploadRequest,JobPosKeys.AddEditAttributes.TITLE, PortletKeys.TEXT_BOX);
 			String positionCatNo = ParamUtil.getString(uploadRequest,JobPosKeys.AddEditAttributes.POSITIONCATNO, PortletKeys.TEXT_BOX);
 			long workingUnitId = ParamUtil.getLong(uploadRequest,JobPosKeys.AddEditAttributes.WORKINGUNITID);
+			long subWorkingUnitId = ParamUtil.getLong(uploadRequest,JobPosKeys.AddEditAttributes.SUBWORKINGUNITID);
 			int leader = ParamUtil.getInteger(uploadRequest,JobPosKeys.AddEditAttributes.LEADER);
 			Long editId = ParamUtil.getLong(uploadRequest,
 					JobPosKeys.AddEditAttributes.EDIT_ID,
@@ -43,7 +44,7 @@ public class JobPosPortlet extends MVCPortlet {
 
 			// Date pingTime = new Date();
 			if (editId == PortletKeys.LONG_DEFAULT) {
-				JobPosLocalServiceUtil.addJobPos(title, positionCatNo, workingUnitId, leader, serviceContext);
+				JobPosLocalServiceUtil.addJobPos(title, positionCatNo, workingUnitId,subWorkingUnitId, leader, serviceContext);
 				//System.out.println(" sssss  " + name + " " + address);
 			} else {
 				JobPos jobPos = JobPosLocalServiceUtil

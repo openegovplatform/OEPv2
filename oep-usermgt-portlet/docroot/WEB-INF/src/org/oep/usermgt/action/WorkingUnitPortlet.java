@@ -9,6 +9,11 @@ import java.util.List;
 
 
 
+
+
+
+
+
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.PortletException;
@@ -19,8 +24,11 @@ import javax.portlet.ResourceResponse;
 
 import org.oep.usermgt.action.WorkingUnitKeys;
 import org.oep.usermgt.action.PortletKeys;
+import org.oep.usermgt.model.JobPos;
 import org.oep.usermgt.model.WorkingUnit;
+import org.oep.usermgt.service.JobPosLocalServiceUtil;
 import org.oep.usermgt.service.WorkingUnitLocalServiceUtil;
+import org.oep.usermgt.util.ManagerLdap;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -33,9 +41,11 @@ import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.upload.UploadRequest;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
+import com.liferay.portal.model.User;
 import com.liferay.portal.service.LayoutLocalServiceUtil;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.ServiceContextThreadLocal;
+import com.liferay.portal.service.UserLocalServiceUtil;
 import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portlet.PortletURLFactoryUtil;
@@ -267,9 +277,18 @@ public class WorkingUnitPortlet extends MVCPortlet {
 	}
 
 	public void testLdap(ActionRequest request, ActionResponse response) throws Exception{
-		//Test tg = new Test();
-		//tg.testLdap(request, response);
-		//tg.look();
+		ManagerLdap tg = new ManagerLdap();
+		User user = UserLocalServiceUtil.getUser(30115);
+		ServiceContext serviceContext = ServiceContextThreadLocal
+				.getServiceContext();
+		//tg.ExportToLdap(serviceContext, user);//(serviceContext,user);
+	//	tg.look();
+		if (!SessionErrors.isEmpty(request)) {
+			response.sendRedirect(ParamUtil.getString(request,
+					PortletKeys.REDIRECT_PAGE));
+		} else {
+			PortalUtil.copyRequestParameters(request, response);
+		}
 	}
 	
 	
@@ -355,12 +374,38 @@ public class WorkingUnitPortlet extends MVCPortlet {
 		resourceResponse.getWriter().write(jsonFeed.toString());
 	}
 	
-	public void listChucDanh(ActionRequest request,
+	public void listChucDanh(ActionRequest request, ActionResponse response)
+			throws PortalException, SystemException, IOException {
+		//long workingId = ParamUtil.getLong(request,
+		//		WorkingUnitKeys.AddEditAttributes.WORKINGUNITID,
+		//		PortletKeys.LONG_DEFAULT);
+//
+		//WorkingUnitLocalServiceUtil.removeWorkingUnit(deleteId);
+
+		if (!SessionErrors.isEmpty(request)) {
+			response.sendRedirect(ParamUtil.getString(request,
+					PortletKeys.REDIRECT_PAGE));
+		} else {
+			PortalUtil.copyRequestParameters(request, response);
+		}
+	}
+	public void listChucDanh1(ActionRequest request,
 			ActionResponse response) throws PortletException, IOException {
 		ThemeDisplay themeDisplay = (ThemeDisplay) request
 				.getAttribute(WebKeys.THEME_DISPLAY);
 		System.out.println(" ----------- " +  themeDisplay.getPortletDisplay().getPortletName());
 		String portletName = "jobposmanagement_WAR_oepusermgtportlet";
+		String pageName = "/dichvucongtructuyen";
+		//String portletName = "oepeserviceregisteronline_WAR_oepeserviceportlet";
+		String dossierProcId = ParamUtil
+				.getString(request, "dossierProcId", "");
+		long plid = 0L;
+		try {
+			plid = LayoutLocalServiceUtil.getFriendlyURLLayout(
+					themeDisplay.getScopeGroupId(), false, pageName).getPlid();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		long workingUnitId = ParamUtil
 				.getLong(request, WorkingUnitKeys.BaseWorkingUnitAttributes.EDIT_ID, PortletKeys.LONG_DEFAULT);
 
@@ -400,6 +445,99 @@ public class WorkingUnitPortlet extends MVCPortlet {
 		response.sendRedirect(redirectURL.toString());
 
 	}
+	public void addEditJobPos(ActionRequest request, ActionResponse response)
+			throws SystemException, PortalException, IOException {
 
+		if (SessionErrors.isEmpty(request)) {
+			ServiceContext serviceContext = ServiceContextThreadLocal
+					.getServiceContext();
+			UploadRequest uploadRequest = PortalUtil
+					.getUploadPortletRequest(request);
+			
+			String title = ParamUtil.getString(uploadRequest,JobPosKeys.AddEditAttributes.TITLE, PortletKeys.TEXT_BOX);
+			String positionCatNo = ParamUtil.getString(uploadRequest,JobPosKeys.AddEditAttributes.POSITIONCATNO, PortletKeys.TEXT_BOX);
+			long workingUnitId = ParamUtil.getLong(uploadRequest,JobPosKeys.AddEditAttributes.WORKINGUNITID);
+			long subWorkingUnitId = ParamUtil.getLong(uploadRequest,JobPosKeys.AddEditAttributes.SUBWORKINGUNITID);
+			int leader = ParamUtil.getInteger(uploadRequest,JobPosKeys.AddEditAttributes.LEADER);
+			
+			Long editId = ParamUtil.getLong(uploadRequest,
+					JobPosKeys.AddEditAttributes.EDIT_ID,
+					PortletKeys.LONG_DEFAULT);
+			System.out.println(" sssss  " + title + " " + workingUnitId + " " + leader + " " + editId);
+			// Date pingTime = new Date();
+			if (editId == PortletKeys.LONG_DEFAULT) {
+				JobPosLocalServiceUtil.addJobPos(title, positionCatNo, workingUnitId,subWorkingUnitId, leader, serviceContext);
+				//System.out.println(" sssss  " + name + " " + address);
+			} else {
+				JobPos jobPos = JobPosLocalServiceUtil
+						.getJobPos(editId);
+				jobPos.setTitle(title);
+				jobPos.setSubWorkingUnitId(subWorkingUnitId);
+				jobPos.setPositionCatNo(positionCatNo);
+				jobPos.setLeader(leader);
+				JobPosLocalServiceUtil.saveJobPos(jobPos,
+						serviceContext);
+			}
+		}
+		if (!SessionErrors.isEmpty(request)) {
+			PortalUtil.copyRequestParameters(request, response);
+		} else {
+			response.sendRedirect(ParamUtil.getString(request,
+					PortletKeys.REDIRECT_PAGE));
+		}
+	}
+	public void deleteJobPos(ActionRequest request, ActionResponse response)
+			throws PortalException, SystemException, IOException {
+		long deleteId = ParamUtil.getLong(request,
+				JobPosKeys.BaseJobPosAttributes.DELETE_ID,
+				PortletKeys.LONG_DEFAULT);
+
+		JobPosLocalServiceUtil.removeJobPos(deleteId);
+
+		response.sendRedirect(ParamUtil.getString(request,
+				PortletKeys.REDIRECT_PAGE));
+	}
+
+	public void editJobPos(ActionRequest request, ActionResponse response)
+			throws PortalException, SystemException, IOException {
+		long editId = ParamUtil.getLong(request,
+				JobPosKeys.BaseJobPosAttributes.EDIT_ID,
+				PortletKeys.LONG_DEFAULT);
+
+		JobPos application = JobPosLocalServiceUtil
+				.getJobPos(editId);
+		setParameterIntoResponseJobPos(response, application);
+
+		if (!SessionErrors.isEmpty(request)) {
+			response.sendRedirect(ParamUtil.getString(request,
+					PortletKeys.REDIRECT_PAGE));
+		} else {
+			PortalUtil.copyRequestParameters(request, response);
+		}
+	}
+
+	private void setParameterIntoResponseJobPos(ActionResponse response,
+			JobPos jobPos) {
+		response.setRenderParameter(JobPosKeys.AddEditAttributes.TITLE,String.valueOf(jobPos.getTitle()));
+		response.setRenderParameter(JobPosKeys.AddEditAttributes.POSITIONCATNO,String.valueOf(jobPos.getPositionCatNo()));
+		response.setRenderParameter(JobPosKeys.AddEditAttributes.SUBWORKINGUNITID,String.valueOf(jobPos.getSubWorkingUnitId()));
+		response.setRenderParameter(JobPosKeys.AddEditAttributes.LEADER,String.valueOf(jobPos.getLeader()));
+
+	}
+	public void toNextPage(ActionRequest request, ActionResponse response)
+			throws PortalException, SystemException, IOException {
+		//long workingId = ParamUtil.getLong(request,
+		//		WorkingUnitKeys.AddEditAttributes.WORKINGUNITID,
+		//		PortletKeys.LONG_DEFAULT);
+//
+		//WorkingUnitLocalServiceUtil.removeWorkingUnit(deleteId);
+
+		if (!SessionErrors.isEmpty(request)) {
+			response.sendRedirect(ParamUtil.getString(request,
+					PortletKeys.REDIRECT_PAGE));
+		} else {
+			PortalUtil.copyRequestParameters(request, response);
+		}
+	}
 	private static Log _log = LogFactoryUtil.getLog(WorkingUnitPortlet.class);
 }

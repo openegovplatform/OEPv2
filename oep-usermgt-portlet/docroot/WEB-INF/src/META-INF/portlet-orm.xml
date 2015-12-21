@@ -153,6 +153,7 @@
 			<basic name="title" />
 			<basic name="positionCatNo" />
 			<basic name="workingUnitId" />
+			<basic name="subWorkingUnitId" />
 			<basic name="leader" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />

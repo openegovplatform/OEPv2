@@ -104,6 +104,7 @@ create table oep_usermgt_jobpos (
 	title VARCHAR(75) null,
 	positionCatNo VARCHAR(75) null,
 	workingUnitId LONG,
+	subWorkingUnitId LONG,
 	leader INTEGER
 );
 

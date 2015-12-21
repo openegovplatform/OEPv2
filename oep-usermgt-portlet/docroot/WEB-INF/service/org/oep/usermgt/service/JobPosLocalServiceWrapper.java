@@ -434,23 +434,24 @@ public class JobPosLocalServiceWrapper implements JobPosLocalService,
 
 	@Override
 	public org.oep.usermgt.model.JobPos addJobPos(java.lang.String title,
-		java.lang.String positionCatNo, long workingUnitId, int leader,
+		java.lang.String positionCatNo, long workingUnitId,
+		long subWorkingUnitId, int leader,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _jobPosLocalService.addJobPos(title, positionCatNo,
-			workingUnitId, leader, serviceContext);
+			workingUnitId, subWorkingUnitId, leader, serviceContext);
 	}
 
 	@Override
 	public org.oep.usermgt.model.JobPos updateJobPos(long jobPosId,
 		java.lang.String title, java.lang.String positionCatNo,
-		long workingUnitId, int leader,
+		long workingUnitId, long subWorkingUnitId, int leader,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _jobPosLocalService.updateJobPos(jobPosId, title, positionCatNo,
-			workingUnitId, leader, serviceContext);
+			workingUnitId, subWorkingUnitId, leader, serviceContext);
 	}
 
 	@Override

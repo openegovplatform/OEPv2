@@ -75,9 +75,10 @@ public class JobPosModelImpl extends BaseModelImpl<JobPos>
 			{ "title", Types.VARCHAR },
 			{ "positionCatNo", Types.VARCHAR },
 			{ "workingUnitId", Types.BIGINT },
+			{ "subWorkingUnitId", Types.BIGINT },
 			{ "leader", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_usermgt_jobpos (jobPosId LONG not null primary key,companyId LONG,groupId LONG,userId LONG,createDate DATE null,modifiedDate DATE null,title VARCHAR(75) null,positionCatNo VARCHAR(75) null,workingUnitId LONG,leader INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table oep_usermgt_jobpos (jobPosId LONG not null primary key,companyId LONG,groupId LONG,userId LONG,createDate DATE null,modifiedDate DATE null,title VARCHAR(75) null,positionCatNo VARCHAR(75) null,workingUnitId LONG,subWorkingUnitId LONG,leader INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_usermgt_jobpos";
 	public static final String ORDER_BY_JPQL = " ORDER BY jobPos.jobPosId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_usermgt_jobpos.jobPosId ASC";
@@ -122,6 +123,7 @@ public class JobPosModelImpl extends BaseModelImpl<JobPos>
 		model.setTitle(soapModel.getTitle());
 		model.setPositionCatNo(soapModel.getPositionCatNo());
 		model.setWorkingUnitId(soapModel.getWorkingUnitId());
+		model.setSubWorkingUnitId(soapModel.getSubWorkingUnitId());
 		model.setLeader(soapModel.getLeader());
 
 		return model;
@@ -208,6 +210,7 @@ public class JobPosModelImpl extends BaseModelImpl<JobPos>
 		attributes.put("title", getTitle());
 		attributes.put("positionCatNo", getPositionCatNo());
 		attributes.put("workingUnitId", getWorkingUnitId());
+		attributes.put("subWorkingUnitId", getSubWorkingUnitId());
 		attributes.put("leader", getLeader());
 
 		return attributes;
@@ -267,6 +270,12 @@ public class JobPosModelImpl extends BaseModelImpl<JobPos>
 
 		if (workingUnitId != null) {
 			setWorkingUnitId(workingUnitId);
+		}
+
+		Long subWorkingUnitId = (Long)attributes.get("subWorkingUnitId");
+
+		if (subWorkingUnitId != null) {
+			setSubWorkingUnitId(subWorkingUnitId);
 		}
 
 		Integer leader = (Integer)attributes.get("leader");
@@ -443,6 +452,17 @@ public class JobPosModelImpl extends BaseModelImpl<JobPos>
 
 	@JSON
 	@Override
+	public long getSubWorkingUnitId() {
+		return _subWorkingUnitId;
+	}
+
+	@Override
+	public void setSubWorkingUnitId(long subWorkingUnitId) {
+		_subWorkingUnitId = subWorkingUnitId;
+	}
+
+	@JSON
+	@Override
 	public int getLeader() {
 		return _leader;
 	}
@@ -504,6 +524,7 @@ public class JobPosModelImpl extends BaseModelImpl<JobPos>
 		jobPosImpl.setTitle(getTitle());
 		jobPosImpl.setPositionCatNo(getPositionCatNo());
 		jobPosImpl.setWorkingUnitId(getWorkingUnitId());
+		jobPosImpl.setSubWorkingUnitId(getSubWorkingUnitId());
 		jobPosImpl.setLeader(getLeader());
 
 		jobPosImpl.resetOriginalValues();
@@ -626,6 +647,8 @@ public class JobPosModelImpl extends BaseModelImpl<JobPos>
 
 		jobPosCacheModel.workingUnitId = getWorkingUnitId();
 
+		jobPosCacheModel.subWorkingUnitId = getSubWorkingUnitId();
+
 		jobPosCacheModel.leader = getLeader();
 
 		return jobPosCacheModel;
@@ -633,7 +656,7 @@ public class JobPosModelImpl extends BaseModelImpl<JobPos>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{jobPosId=");
 		sb.append(getJobPosId());
@@ -653,6 +676,8 @@ public class JobPosModelImpl extends BaseModelImpl<JobPos>
 		sb.append(getPositionCatNo());
 		sb.append(", workingUnitId=");
 		sb.append(getWorkingUnitId());
+		sb.append(", subWorkingUnitId=");
+		sb.append(getSubWorkingUnitId());
 		sb.append(", leader=");
 		sb.append(getLeader());
 		sb.append("}");
@@ -662,7 +687,7 @@ public class JobPosModelImpl extends BaseModelImpl<JobPos>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(34);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.usermgt.model.JobPos");
@@ -705,6 +730,10 @@ public class JobPosModelImpl extends BaseModelImpl<JobPos>
 		sb.append(getWorkingUnitId());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>subWorkingUnitId</column-name><column-value><![CDATA[");
+		sb.append(getSubWorkingUnitId());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>leader</column-name><column-value><![CDATA[");
 		sb.append(getLeader());
 		sb.append("]]></column-value></column>");
@@ -733,6 +762,7 @@ public class JobPosModelImpl extends BaseModelImpl<JobPos>
 	private long _workingUnitId;
 	private long _originalWorkingUnitId;
 	private boolean _setOriginalWorkingUnitId;
+	private long _subWorkingUnitId;
 	private int _leader;
 	private int _originalLeader;
 	private boolean _setOriginalLeader;

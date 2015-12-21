@@ -128,10 +128,16 @@
 				<aui:input style="width: 80%;" cssClass="form-control" name="<%=EmployeeKeys.AddEditAttributes.SCREENNAME%>" id="<%= EmployeeKeys.AddEditAttributes.SCREENNAME%>" label="org.oep.usermgt.portlet.employee.table.header.screenName" type="text"></aui:input>
 			</aui:column>
 			<aui:column columnWidth="33">
-				<aui:input style="width: 80%;" cssClass="form-control" name="<%=EmployeeKeys.AddEditAttributes.PASSWORD%>" id="<%= EmployeeKeys.AddEditAttributes.PASSWORD%>" label="org.oep.usermgt.portlet.employee.table.header.password" type="text"></aui:input>
+				<aui:input style="width: 80%;" cssClass="form-control" name="<%=EmployeeKeys.AddEditAttributes.PASSWORD%>" id="<%= EmployeeKeys.AddEditAttributes.PASSWORD%>" label="org.oep.usermgt.portlet.employee.table.header.password" type="password">
+				<aui:validator name="required" />
+				</aui:input>
 			</aui:column>
 			<aui:column columnWidth="33">
-				<aui:input style="width: 80%;" cssClass="form-control" name="<%=EmployeeKeys.AddEditAttributes.REPASSWORD%>" id="<%= EmployeeKeys.AddEditAttributes.REPASSWORD%>" label="org.oep.usermgt.portlet.employee.table.header.repassword" type="text"></aui:input>
+				<aui:input style="width: 80%;" cssClass="form-control" name="<%=EmployeeKeys.AddEditAttributes.REPASSWORD%>" id="<%= EmployeeKeys.AddEditAttributes.REPASSWORD%>" label="org.oep.usermgt.portlet.employee.table.header.repassword" type="password">
+				<aui:validator name="equalTo">
+					'#<portlet:namespace /><%=EmployeeKeys.AddEditAttributes.PASSWORD%>'
+				</aui:validator>
+				</aui:input>
 			</aui:column>
 		</aui:row>
 		<aui:row>
@@ -142,7 +148,6 @@
 		</aui:row>
 	</div>
 </aui:form>
-<%=ParamUtil.getString(request,EmployeeKeys.AddEditAttributes.ISCREATUSER,PortletKeys.TEXT_BOX)%>
 <script type="text/javascript">
 function <portlet:namespace/>save() {
 	var form = document.<portlet:namespace />addEdit;
@@ -153,5 +158,3 @@ function <portlet:namespace/>back() {
 	location.href = "<%= ParamUtil.getString(request, PortletKeys.REDIRECT_PAGE) %>";
 };
 </script>
-<portlet:resourceURL var="resourceURL" ></portlet:resourceURL>
-

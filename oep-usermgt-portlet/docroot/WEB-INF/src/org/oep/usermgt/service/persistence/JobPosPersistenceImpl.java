@@ -2990,6 +2990,7 @@ public class JobPosPersistenceImpl extends BasePersistenceImpl<JobPos>
 		jobPosImpl.setTitle(jobPos.getTitle());
 		jobPosImpl.setPositionCatNo(jobPos.getPositionCatNo());
 		jobPosImpl.setWorkingUnitId(jobPos.getWorkingUnitId());
+		jobPosImpl.setSubWorkingUnitId(jobPos.getSubWorkingUnitId());
 		jobPosImpl.setLeader(jobPos.getLeader());
 
 		return jobPosImpl;

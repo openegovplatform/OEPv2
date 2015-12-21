@@ -121,6 +121,7 @@
 		<property name="title" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="positionCatNo" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="workingUnitId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="subWorkingUnitId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="leader" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
 	<class name="org.oep.usermgt.model.impl.Jobpos2RoleImpl" table="oep_usermgt_jobpos2role">

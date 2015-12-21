@@ -83,6 +83,7 @@ public class JobPosClp extends BaseModelImpl<JobPos> implements JobPos {
 		attributes.put("title", getTitle());
 		attributes.put("positionCatNo", getPositionCatNo());
 		attributes.put("workingUnitId", getWorkingUnitId());
+		attributes.put("subWorkingUnitId", getSubWorkingUnitId());
 		attributes.put("leader", getLeader());
 
 		return attributes;
@@ -142,6 +143,12 @@ public class JobPosClp extends BaseModelImpl<JobPos> implements JobPos {
 
 		if (workingUnitId != null) {
 			setWorkingUnitId(workingUnitId);
+		}
+
+		Long subWorkingUnitId = (Long)attributes.get("subWorkingUnitId");
+
+		if (subWorkingUnitId != null) {
+			setSubWorkingUnitId(subWorkingUnitId);
 		}
 
 		Integer leader = (Integer)attributes.get("leader");
@@ -369,6 +376,30 @@ public class JobPosClp extends BaseModelImpl<JobPos> implements JobPos {
 	}
 
 	@Override
+	public long getSubWorkingUnitId() {
+		return _subWorkingUnitId;
+	}
+
+	@Override
+	public void setSubWorkingUnitId(long subWorkingUnitId) {
+		_subWorkingUnitId = subWorkingUnitId;
+
+		if (_jobPosRemoteModel != null) {
+			try {
+				Class<?> clazz = _jobPosRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setSubWorkingUnitId",
+						long.class);
+
+				method.invoke(_jobPosRemoteModel, subWorkingUnitId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
 	public int getLeader() {
 		return _leader;
 	}
@@ -469,6 +500,7 @@ public class JobPosClp extends BaseModelImpl<JobPos> implements JobPos {
 		clone.setTitle(getTitle());
 		clone.setPositionCatNo(getPositionCatNo());
 		clone.setWorkingUnitId(getWorkingUnitId());
+		clone.setSubWorkingUnitId(getSubWorkingUnitId());
 		clone.setLeader(getLeader());
 
 		return clone;
@@ -522,7 +554,7 @@ public class JobPosClp extends BaseModelImpl<JobPos> implements JobPos {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{jobPosId=");
 		sb.append(getJobPosId());
@@ -542,6 +574,8 @@ public class JobPosClp extends BaseModelImpl<JobPos> implements JobPos {
 		sb.append(getPositionCatNo());
 		sb.append(", workingUnitId=");
 		sb.append(getWorkingUnitId());
+		sb.append(", subWorkingUnitId=");
+		sb.append(getSubWorkingUnitId());
 		sb.append(", leader=");
 		sb.append(getLeader());
 		sb.append("}");
@@ -551,7 +585,7 @@ public class JobPosClp extends BaseModelImpl<JobPos> implements JobPos {
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(34);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.usermgt.model.JobPos");
@@ -594,6 +628,10 @@ public class JobPosClp extends BaseModelImpl<JobPos> implements JobPos {
 		sb.append(getWorkingUnitId());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>subWorkingUnitId</column-name><column-value><![CDATA[");
+		sb.append(getSubWorkingUnitId());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>leader</column-name><column-value><![CDATA[");
 		sb.append(getLeader());
 		sb.append("]]></column-value></column>");
@@ -613,6 +651,7 @@ public class JobPosClp extends BaseModelImpl<JobPos> implements JobPos {
 	private String _title;
 	private String _positionCatNo;
 	private long _workingUnitId;
+	private long _subWorkingUnitId;
 	private int _leader;
 	private BaseModel<?> _jobPosRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.usermgt.service.ClpSerializer.class;

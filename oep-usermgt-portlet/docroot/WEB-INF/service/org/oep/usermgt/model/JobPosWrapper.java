@@ -58,6 +58,7 @@ public class JobPosWrapper implements JobPos, ModelWrapper<JobPos> {
 		attributes.put("title", getTitle());
 		attributes.put("positionCatNo", getPositionCatNo());
 		attributes.put("workingUnitId", getWorkingUnitId());
+		attributes.put("subWorkingUnitId", getSubWorkingUnitId());
 		attributes.put("leader", getLeader());
 
 		return attributes;
@@ -117,6 +118,12 @@ public class JobPosWrapper implements JobPos, ModelWrapper<JobPos> {
 
 		if (workingUnitId != null) {
 			setWorkingUnitId(workingUnitId);
+		}
+
+		Long subWorkingUnitId = (Long)attributes.get("subWorkingUnitId");
+
+		if (subWorkingUnitId != null) {
+			setSubWorkingUnitId(subWorkingUnitId);
 		}
 
 		Integer leader = (Integer)attributes.get("leader");
@@ -346,6 +353,26 @@ public class JobPosWrapper implements JobPos, ModelWrapper<JobPos> {
 	@Override
 	public void setWorkingUnitId(long workingUnitId) {
 		_jobPos.setWorkingUnitId(workingUnitId);
+	}
+
+	/**
+	* Returns the sub working unit ID of this Job Pos.
+	*
+	* @return the sub working unit ID of this Job Pos
+	*/
+	@Override
+	public long getSubWorkingUnitId() {
+		return _jobPos.getSubWorkingUnitId();
+	}
+
+	/**
+	* Sets the sub working unit ID of this Job Pos.
+	*
+	* @param subWorkingUnitId the sub working unit ID of this Job Pos
+	*/
+	@Override
+	public void setSubWorkingUnitId(long subWorkingUnitId) {
+		_jobPos.setSubWorkingUnitId(subWorkingUnitId);
 	}
 
 	/**

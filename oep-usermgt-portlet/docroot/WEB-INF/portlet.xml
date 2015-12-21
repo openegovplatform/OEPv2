@@ -85,7 +85,7 @@
 		<portlet-name>jobpos-management</portlet-name>
 		<display-name>JobPos Management</display-name>
 		<portlet-class>
-			org.oep.usermgt.action.JobPosPortlet
+			org.oep.usermgt.action.WorkingUnitPortlet
 		</portlet-class>
 		<init-param>
 			<name>view-template</name>

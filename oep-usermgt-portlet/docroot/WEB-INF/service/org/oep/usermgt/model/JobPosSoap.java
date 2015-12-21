@@ -40,6 +40,7 @@ public class JobPosSoap implements Serializable {
 		soapModel.setTitle(model.getTitle());
 		soapModel.setPositionCatNo(model.getPositionCatNo());
 		soapModel.setWorkingUnitId(model.getWorkingUnitId());
+		soapModel.setSubWorkingUnitId(model.getSubWorkingUnitId());
 		soapModel.setLeader(model.getLeader());
 
 		return soapModel;
@@ -165,6 +166,14 @@ public class JobPosSoap implements Serializable {
 		_workingUnitId = workingUnitId;
 	}
 
+	public long getSubWorkingUnitId() {
+		return _subWorkingUnitId;
+	}
+
+	public void setSubWorkingUnitId(long subWorkingUnitId) {
+		_subWorkingUnitId = subWorkingUnitId;
+	}
+
 	public int getLeader() {
 		return _leader;
 	}
@@ -182,5 +191,6 @@ public class JobPosSoap implements Serializable {
 	private String _title;
 	private String _positionCatNo;
 	private long _workingUnitId;
+	private long _subWorkingUnitId;
 	private int _leader;
 }

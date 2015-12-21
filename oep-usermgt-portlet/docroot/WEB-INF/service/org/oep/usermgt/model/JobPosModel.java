@@ -204,6 +204,20 @@ public interface JobPosModel extends BaseModel<JobPos> {
 	public void setWorkingUnitId(long workingUnitId);
 
 	/**
+	 * Returns the sub working unit ID of this Job Pos.
+	 *
+	 * @return the sub working unit ID of this Job Pos
+	 */
+	public long getSubWorkingUnitId();
+
+	/**
+	 * Sets the sub working unit ID of this Job Pos.
+	 *
+	 * @param subWorkingUnitId the sub working unit ID of this Job Pos
+	 */
+	public void setSubWorkingUnitId(long subWorkingUnitId);
+
+	/**
 	 * Returns the leader of this Job Pos.
 	 *
 	 * @return the leader of this Job Pos

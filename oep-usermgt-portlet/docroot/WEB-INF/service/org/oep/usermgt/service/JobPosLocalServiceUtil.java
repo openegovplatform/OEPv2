@@ -411,24 +411,24 @@ public class JobPosLocalServiceUtil {
 
 	public static org.oep.usermgt.model.JobPos addJobPos(
 		java.lang.String title, java.lang.String positionCatNo,
-		long workingUnitId, int leader,
+		long workingUnitId, long subWorkingUnitId, int leader,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
-				   .addJobPos(title, positionCatNo, workingUnitId, leader,
-			serviceContext);
+				   .addJobPos(title, positionCatNo, workingUnitId,
+			subWorkingUnitId, leader, serviceContext);
 	}
 
 	public static org.oep.usermgt.model.JobPos updateJobPos(long jobPosId,
 		java.lang.String title, java.lang.String positionCatNo,
-		long workingUnitId, int leader,
+		long workingUnitId, long subWorkingUnitId, int leader,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .updateJobPos(jobPosId, title, positionCatNo, workingUnitId,
-			leader, serviceContext);
+			subWorkingUnitId, leader, serviceContext);
 	}
 
 	public static org.oep.usermgt.model.JobPos saveJobPos(

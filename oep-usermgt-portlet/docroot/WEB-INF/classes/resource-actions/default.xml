@@ -4,4 +4,5 @@
 <resource-action-mapping>
 	<resource file="resource-actions/workingunit.xml" />
 	<resource file="resource-actions/employee.xml" />
+	<resource file="resource-actions/jobpos.xml" />
 </resource-action-mapping>

@@ -19,238 +19,116 @@
  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <%@page import="org.oep.usermgt.action.PortletKeys"%>
 <%@page import="com.liferay.portal.kernel.util.ParamUtil"%>
-<%@page import="org.oep.usermgt.action.WorkingUnitKeys"%>
+<%@page import="org.oep.usermgt.action.JobPosKeys"%>
 <%@page import="org.oep.usermgt.model.WorkingUnit"%>
 <%@page import="org.oep.usermgt.service.WorkingUnitLocalServiceUtil"%>
 <%@ page import="org.oep.datamgt.service.DictDataLocalServiceUtil"%>
 <%@ page import="org.oep.datamgt.model.DictData"%>
-<portlet:actionURL var="addEdit" name="addEdit">
-	<portlet:param name="<%= PortletKeys.SET_VIEW_PARAMETER %>" value="/html/usermgt/portlet/workingunit/workingunit_detail.jsp"/>
+
+<portlet:actionURL var="addEdit" name="addEditJobPos">
+	<portlet:param name="<%= PortletKeys.SET_VIEW_PARAMETER %>" value="/html/usermgt/portlet/jobpos/jobpos_detail.jsp"/>
 	<portlet:param name="<%= PortletKeys.REDIRECT_PAGE %>" value="<%= ParamUtil.getString(request, PortletKeys.REDIRECT_PAGE) %>"/>
-	<portlet:param name="<%= WorkingUnitKeys.BaseWorkingUnitAttributes.EDIT_ID %>" value="<%= ParamUtil.getString(request, WorkingUnitKeys.BaseWorkingUnitAttributes.EDIT_ID) %>"/>
+	<portlet:param name="<%= JobPosKeys.BaseJobPosAttributes.EDIT_ID %>" value="<%= ParamUtil.getString(request, JobPosKeys.BaseJobPosAttributes.EDIT_ID) %>"/>
+	<portlet:param name="<%= JobPosKeys.AddEditAttributes.WORKINGUNITID %>" value="<%= ParamUtil.getString(request, JobPosKeys.AddEditAttributes.WORKINGUNITID) %>"/>
 </portlet:actionURL>
 <%
-	String cityNo = ParamUtil.getString(request,WorkingUnitKeys.AddEditAttributes.CITYNAME,PortletKeys.TEXT_BOX);
-	String districtNo = ParamUtil.getString(request,WorkingUnitKeys.AddEditAttributes.DISTRICTNAME,PortletKeys.TEXT_BOX);
-	String wardNo = ParamUtil.getString(request,WorkingUnitKeys.AddEditAttributes.WARDNAME,PortletKeys.TEXT_BOX);
-	long  parentWorkingUnitId = ParamUtil.getLong(request,WorkingUnitKeys.AddEditAttributes.PARENTWORKINGUNITID,PortletKeys.SELECT_BOX);
-	ServiceContext serviceContext = ServiceContextThreadLocal
-			.getServiceContext();
-
-	List<DictData> lstDomainData = DictDataLocalServiceUtil
-			.getByCollectionNameDataLevel(
-					"OEP_ADMINISTRATIVE_REGION", 1, serviceContext);
-	List<DictData> districtList = new ArrayList<DictData>();
-	if (cityNo != null && !cityNo.equals("")){
-		districtList = DictDataLocalServiceUtil.findByDataLevelDataCode("","OEP_ADMINISTRATIVE_REGION", cityNo.split(":")[0], 2,serviceContext);
-	}
-	List<DictData> wardList = new ArrayList<DictData>();
-	if (districtNo != null && !districtNo.equals("")){
-		wardList = DictDataLocalServiceUtil.findByDataLevelDataCode("","OEP_ADMINISTRATIVE_REGION", districtNo.split(":")[0], 3,serviceContext);
-	}
-	List<WorkingUnit>  parentWorkingUnitList = WorkingUnitLocalServiceUtil.getByCompanyTree(serviceContext);
-
+ServiceContext serviceContext = ServiceContextThreadLocal.getServiceContext();	
+List<DictData> lstData = DictDataLocalServiceUtil
+.getByCollectionNameDataLevel(
+		"OEP_GOVERNMENT_DUTY", 1, serviceContext);
+long  parentWorkingUnitId = ParamUtil.getLong(request,JobPosKeys.AddEditAttributes.WORKINGUNITID,PortletKeys.SELECT_BOX);
+long  subWorkingUnitId = ParamUtil.getLong(request,JobPosKeys.AddEditAttributes.SUBWORKINGUNITID,PortletKeys.SELECT_BOX);
+long  positionCatNo = ParamUtil.getLong(request,JobPosKeys.AddEditAttributes.POSITIONCATNO,PortletKeys.SELECT_BOX);
+List<WorkingUnit> listWorkingUnit = WorkingUnitLocalServiceUtil.getByCompanyParentWorkingUnit(parentWorkingUnitId, serviceContext);
 %>
+
 <aui:form name="addEdit" method="post" enctype="multipart/form-data">
 	<div class="form-group">
-		<aui:row>
-			<aui:column columnWidth="60">
-					<aui:row>
-						<aui:column columnWidth="100">
-							<aui:input style="width: 100%;" cssClass="form-control" name="<%=WorkingUnitKeys.AddEditAttributes.NAME%>" id="<%= WorkingUnitKeys.AddEditAttributes.NAME%>" label="org.oep.usermgt.portlet.workingunit.table.header.name" type="text"></aui:input>
-						</aui:column>
-					</aui:row>
-					
-					<aui:row>
-						<aui:column columnWidth="100">
-							<aui:input style="width: 100%;" cssClass="form-control" name="<%=WorkingUnitKeys.AddEditAttributes.ENNAME%>" id="<%= WorkingUnitKeys.AddEditAttributes.ENNAME%>" label="org.oep.usermgt.portlet.workingunit.table.header.enName" type="text"></aui:input>
-						</aui:column>
-					</aui:row>
-					<aui:row>
-					    <aui:column columnWidth="100">
-					    	<aui:select style="width: 98%;" cssClass="form-control"  name="<%=WorkingUnitKeys.AddEditAttributes.PARENTWORKINGUNITID%>" id="<%= WorkingUnitKeys.AddEditAttributes.PARENTWORKINGUNITID%>" label="org.oep.usermgt.portlet.workingunit.table.header.parentWorkingUnitId" >
-							<aui:option value=""><%=LanguageUtil
+		<aui:row>	
+			<aui:column columnWidth="70">
+				<aui:input style="width: 95%;" cssClass="form-control" name="<%=JobPosKeys.AddEditAttributes.TITLE%>" id="<%= JobPosKeys.AddEditAttributes.TITLE%>" label="org.oep.usermgt.portlet.jobpos.table.header.title" type="text">
+				</aui:input>
+			</aui:column>
+		</aui:row>	
+		<aui:row>	
+			<aui:column columnWidth="70">
+			<aui:select style="width: 95%;" cssClass="form-control"  name="<%=JobPosKeys.AddEditAttributes.POSITIONCATNO%>"  id="<%=JobPosKeys.AddEditAttributes.POSITIONCATNO%>" label="org.oep.usermgt.portlet.jobpos.table.header.positionCatNo">
+			<aui:option value=""><%=LanguageUtil
 								.get(pageContext,
-									"org.oep.usermgt.portlet.select.label.parentWorkingUnitId")%></aui:option>
+									"org.oep.usermgt.portlet.jobpos.select.label.positionCatNo")%></aui:option>
 								<%
-									for (WorkingUnit data : parentWorkingUnitList) {
-										boolean selected = data.getWorkingUnitId() == parentWorkingUnitId;
+									for (DictData data : lstData) {
+										boolean selected = data.getDataCode().equals(positionCatNo);
 								%>
 				
-											<aui:option value="<%=data.getWorkingUnitId()%>" selected="<%=selected%>"> <%=data.getName()%></aui:option>
+											<aui:option value="<%=data.getDataCode()%>" selected="<%=selected%>"> <%=data.getTitle()%></aui:option>
 								<%
 										}
 								%>					
 							</aui:select>
-					    
-							<aui:input style="width: 100%;" cssClass="form-control" name="<%=WorkingUnitKeys.AddEditAttributes.PARENTWORKINGUNITID%>" id="<%= WorkingUnitKeys.AddEditAttributes.PARENTWORKINGUNITID%>" label="org.oep.usermgt.portlet.workingunit.table.header.parentWorkingUnitId" type="text"></aui:input>
-						</aui:column>
-					</aui:row>
-					<aui:row>
-							<aui:column columnWidth="40">
-								<aui:input style="width: 98%;" cssClass="form-control" name="<%=WorkingUnitKeys.AddEditAttributes.GOVAGENCYID%>" id="<%= WorkingUnitKeys.AddEditAttributes.GOVAGENCYID%>" label="org.oep.usermgt.portlet.workingunit.table.header.govAgencyId" type="text"></aui:input>
-							</aui:column>
-							<aui:column columnWidth ="60">
-								<aui:input style="width: 98%;" cssClass="form-control" name="<%=WorkingUnitKeys.AddEditAttributes.ADDRESS%>" id="<%= WorkingUnitKeys.AddEditAttributes.ADDRESS%>" label="org.oep.usermgt.portlet.workingunit.table.header.address" type="text"></aui:input>
-							</aui:column>
-					</aui:row>
-					
-			</aui:column>
-			<aui:column columnWidth="40">
-				&nbsp; 
 			</aui:column>
 		</aui:row>
-		<aui:row>
-			<aui:column columnWidth="30">
-			<aui:select style="width: 98%;" cssClass="form-control"  name="<%=WorkingUnitKeys.AddEditAttributes.CITYNO%>"  id="<%=WorkingUnitKeys.AddEditAttributes.CITYNO%>" label="org.oep.usermgt.portlet.workingunit.table.header.cityName">
-				<aui:option value=""><%=LanguageUtil
-							.get(pageContext,
-									"org.oep.usermgt.portlet.select.label.cityName")%></aui:option>
-				<%
-					
-											//DictDataLocalServiceUtil.getByCollectionName("OEP_DOSSIER_DOMAIN", serviceContext);
-											for (DictData data : lstDomainData) {
-												boolean selected = (data.getDataCode() + ":" + data.getTitle()).equals(cityNo);
-				%>
-				
-				<aui:option value='<%=data.getDataCode() + ":" + data.getTitle()%>' selected="<%=selected%>"><%=data.getTitle()%></aui:option>
-				<%
-					}
-				%>
-			</aui:select>
-			</aui:column>
-			<aui:column columnWidth="30">
-				<aui:select style="width: 98%;" cssClass="form-control"  name="<%=WorkingUnitKeys.AddEditAttributes.DISTRICTNO%>" id="<%= WorkingUnitKeys.AddEditAttributes.DISTRICTNO%>" label="org.oep.usermgt.portlet.workingunit.table.header.districtName" >
-				<aui:option value=""><%=LanguageUtil
-							.get(pageContext,
-									"org.oep.usermgt.portlet.select.label.districtName")%></aui:option>
-				<%
-				for (DictData data : districtList) {
-						boolean selected = (data.getDataCode() + ":" + data.getTitle()).equals(districtNo);
-				%>
-				
-					<aui:option value='<%=data.getDataCode() + ":" + data.getTitle()%>' selected="<%=selected%>"><%=data.getTitle()%></aui:option>
-				<%
-					}
-				%>					
-				</aui:select>
-				
-			</aui:column>
-			<aui:column columnWidth="30">
-					<aui:select style="width: 98%;" cssClass="form-control"  name="<%=WorkingUnitKeys.AddEditAttributes.WARDNO%>" id="<%= WorkingUnitKeys.AddEditAttributes.WARDNO%>" label="org.oep.usermgt.portlet.workingunit.table.header.wardName" >
-					<aui:option value=""><%=LanguageUtil
-							.get(pageContext,
-									"org.oep.usermgt.portlet.select.label.wardName")%></aui:option>
-						<%
-				for (DictData data : wardList) {
-						boolean selected = (data.getDataCode() + ":" + data.getTitle()).equals(wardNo);
-				%>
-				
-					<aui:option value='<%=data.getDataCode() + ":" + data.getTitle()%>' selected="<%=selected%>"><%=data.getTitle()%></aui:option>
-				<%
-					}
-				%>		
-					</aui:select>
+		<aui:row>	
+			<aui:column columnWidth="70">
+			<aui:select style="width: 95%;" cssClass="form-control"  name="<%=JobPosKeys.AddEditAttributes.SUBWORKINGUNITID%>"  id="<%=JobPosKeys.AddEditAttributes.SUBWORKINGUNITID%>" label="org.oep.usermgt.portlet.jobpos.table.header.subWorkingUnitId">
+			<aui:option value=""><%=LanguageUtil
+								.get(pageContext,
+									"org.oep.usermgt.portlet.jobpos.select.label.subWorkingUnitId")%></aui:option>
+								<%
+									for (WorkingUnit wk : listWorkingUnit) {
+										boolean selected = wk.getWorkingUnitId() == subWorkingUnitId;
+								%>
+											<aui:option value="<%=wk.getWorkingUnitId()%>" selected="<%=selected%>"> <%=wk.getName()%></aui:option>
+								<%
+										}
+								%>					
+							</aui:select>
 			</aui:column>
 		</aui:row>
-		<aui:row>
-			<aui:column columnWidth="30">
-				<aui:input style="width: 98%;" cssClass="form-control" name="<%=WorkingUnitKeys.AddEditAttributes.TELNO%>" id="<%= WorkingUnitKeys.AddEditAttributes.TELNO%>" label="org.oep.usermgt.portlet.workingunit.table.header.telNo" type="text"></aui:input>
+		 <%  
+		   int check = ParamUtil.getInteger(request,JobPosKeys.AddEditAttributes.LEADER,PortletKeys.INT);
+		   boolean f1 = false;
+		   boolean f2 = false;
+		   boolean f0 = false;
+		   if (check == 1) {
+			   f1 = true;
+		   }
+		    else if(check == 2) {
+		    	f2 = true;
+		    } 
+		    else  f0 = true;
+		    %>
+		<aui:row>	
+		<aui:column columnWidth="70">
+		<aui:field-wrapper name=""> 
+		
+ 			<aui:column columnWidth="20">
+				<aui:input checked="<%=f1%>" inlineLabel="right" name="<%= JobPosKeys.AddEditAttributes.LEADER %>" type="radio" value="1" label="org.oep.usermgt.portlet.jobpos.table.header.leader1" /> 
+ 			</aui:column>
+			<aui:column columnWidth="20">
+					<aui:input checked="<%=f2%>" inlineLabel="right" name="<%= JobPosKeys.AddEditAttributes.LEADER %>" type="radio" value="2" label="org.oep.usermgt.portlet.jobpos.table.header.leader2" /> 
 			</aui:column>
-			<aui:column columnWidth="30">
-				<aui:input style="width: 98%;" cssClass="form-control" name="<%=WorkingUnitKeys.AddEditAttributes.FAX%>" id="<%= WorkingUnitKeys.AddEditAttributes.FAX%>" label="org.oep.usermgt.portlet.workingunit.table.header.fax" type="text"></aui:input>
+			<aui:column columnWidth="20">
+					<aui:input checked="<%=f0%>" inlineLabel="right" name="<%= JobPosKeys.AddEditAttributes.LEADER %>" type="radio" value="0" label="org.oep.usermgt.portlet.jobpos.table.header.leader0" /> 
 			</aui:column>
-			<aui:column columnWidth="30">
-				<aui:input style="width: 98%;" cssClass="form-control" name="<%=WorkingUnitKeys.AddEditAttributes.EMAIL%>" id="<%= WorkingUnitKeys.AddEditAttributes.EMAIL%>" label="org.oep.usermgt.portlet.workingunit.table.header.email" type="text"></aui:input>
-			</aui:column>
-		</aui:row>
-		<aui:row>
-			<aui:column columnWidth="60">
-				<aui:input style="width: 98%;" cssClass="form-control" name="<%=WorkingUnitKeys.AddEditAttributes.WEBSITE%>" id="<%= WorkingUnitKeys.AddEditAttributes.WEBSITE%>" label="org.oep.usermgt.portlet.workingunit.table.header.website" type="text"></aui:input>				
-			</aui:column>
+		</aui:field-wrapper>
+		</aui:column>
 		</aui:row>
 		<aui:row>
 			<aui:column>
 				<input class="btn btn-primary" type="button" value="<liferay-ui:message key="org.oep.usermgt.portlet.button.save" />" onclick="<portlet:namespace/>save()">
-				<input class="btn btn-default" type="button" value="<liferay-ui:message key="org.oep.usermgt.portlet.button.back" />" onclick="<portlet:namespace/>back()"/>
+				<input class="btn btn-default" type="button" value="<liferay-ui:message key="org.oep.usermgt.portlet.button.cancel" />" onclick="<portlet:namespace/>back()"/>
 			</aui:column>
 		</aui:row>
 	</div>
-	<aui:input style="width: 100%;" cssClass="form-control" name="<%=WorkingUnitKeys.AddEditAttributes.GPSPOSITION%>" id="<%= WorkingUnitKeys.AddEditAttributes.GPSPOSITION%>" label="org.oep.usermgt.portlet.workingunit.table.header.gpsPosition" type="text"></aui:input>
-	
 </aui:form>
-
 <script type="text/javascript">
 function <portlet:namespace/>save() {
 	var form = document.<portlet:namespace />addEdit;
-	form.action = "<%= addEdit %>";
+	form.action = "<%=addEdit%>";
 	form.submit();
 };
-
 function <portlet:namespace/>back() {
 	location.href = "<%= ParamUtil.getString(request, PortletKeys.REDIRECT_PAGE) %>";
 };
-
 </script>
-<portlet:resourceURL var="resourceURL" ></portlet:resourceURL>
-<aui:script>
-AUI().use('aui-base','aui-io-request','aui-node', function(A){
-    A.one("#<portlet:namespace/><%=WorkingUnitKeys.AddEditAttributes.CITYNO%>").on('change',function(){
-        A.io.request('<%=resourceURL%>',
-                {
-            
-            method :'POST',
-            data: {'<portlet:namespace/><%=WorkingUnitKeys.AddEditAttributes.CITYNO%>' : A.one("#<portlet:namespace/><%=WorkingUnitKeys.AddEditAttributes.CITYNO%>").val() ,
-            		'<portlet:namespace/>selectAction' : 'citySelected'
-            		},
-            dataType: 'json',
-            on:{
-                success: function(){
-                    var names = this.get('responseData');
-                    // alert(names.districtNameCode.length);
-                     A.one('#<portlet:namespace /><%=WorkingUnitKeys.AddEditAttributes.DISTRICTNO%>').empty();
-                     A.one('#<portlet:namespace /><%=WorkingUnitKeys.AddEditAttributes.WARDNO%>').empty();
-                     //countryNameCode = data.countryNameCode[i].split(":");
-                     //$('.cand').html(names.ata.districtNameCode);
-                     A.one('#<portlet:namespace /><%=WorkingUnitKeys.AddEditAttributes.DISTRICTNO%>').append("<option    value='' >"+ "<%=LanguageUtil.get(pageContext,"org.oep.usermgt.portlet.select.label.districtName")%>" + "</option> ");
-                     A.one('#<portlet:namespace /><%=WorkingUnitKeys.AddEditAttributes.WARDNO%>').append("<option    value='' >"+ "<%=LanguageUtil.get(pageContext,"org.oep.usermgt.portlet.select.label.wardName")%>" + "</option> ");
-                    for( i in names.districtNameCode){
-                           A.one('#<portlet:namespace /><%=WorkingUnitKeys.AddEditAttributes.DISTRICTNO%>').append("<option    value='"+ names.districtNameCode[i].districtCode +"' >"+ names.districtNameCode[i].districtName + "</option> "); 
-                    
-                    }
-                }
-                
-            }
-                    
-    });
-    });
-    A.one("#<portlet:namespace/><%=WorkingUnitKeys.AddEditAttributes.DISTRICTNO%>").on('change',function(){
-        A.io.request('<%=resourceURL%>',
-                {
-            
-            method :'POST',
-            data: {'<portlet:namespace/><%=WorkingUnitKeys.AddEditAttributes.DISTRICTNO%>' : A.one("#<portlet:namespace/><%=WorkingUnitKeys.AddEditAttributes.DISTRICTNO%>").val() ,
-            		'<portlet:namespace/>selectAction' : 'districtSelected'
-            		},
-            dataType: 'json',
-            on:{
-                success: function(){
-                    var names = this.get('responseData');
-                    // alert(names.districtNameCode.length);
-                     A.one('#<portlet:namespace /><%=WorkingUnitKeys.AddEditAttributes.WARDNO%>').empty();
-                     //countryNameCode = data.countryNameCode[i].split(":");
-                     //$('.cand').html(names.ata.districtNameCode);
-                     A.one('#<portlet:namespace /><%=WorkingUnitKeys.AddEditAttributes.WARDNO%>').append("<option    value='' >"+ "<%=LanguageUtil.get(pageContext,"org.oep.usermgt.portlet.select.label.wardName")%>" + "</option> ");
-                    for( i in names.wardNameCode){
-                           A.one('#<portlet:namespace /><%=WorkingUnitKeys.AddEditAttributes.WARDNO%>').append("<option    value='"+ names.wardNameCode[i].wardCode +"' >"+ names.wardNameCode[i].wardName + "</option> "); 
-                    
-                    }
-                }
-                
-            }
-            
-                    
-    });
-    });
-});
-</aui:script>
