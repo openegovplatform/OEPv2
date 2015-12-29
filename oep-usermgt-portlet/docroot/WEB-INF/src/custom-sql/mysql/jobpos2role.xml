@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<custom-sql>
+	<sql id="org.oep.usermgt.service.persistence.JobPos2RoleFinder.findRoleByJobPosId">
+		<![CDATA[
+			SELECT * FROM role_ where roleId IN 
+			(SELECT roleId FROM oep_usermgt_jobpos2role WHERE jobPosId = ?)
+		]]>
+	</sql>
+	<sql id="org.oep.usermgt.service.persistence.JobPos2RoleFinder.findRoleNotInJobPosId">
+		<![CDATA[
+			SELECT * FROM role_ where roleId NOT IN 
+			(SELECT roleId FROM oep_usermgt_jobpos2role WHERE jobPosId = ?)
+		]]>
+	</sql>
+</custom-sql>

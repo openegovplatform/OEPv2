@@ -100,6 +100,8 @@ public class WorkingUnitClp extends BaseModelImpl<WorkingUnit>
 		attributes.put("website", getWebsite());
 		attributes.put("aaa", getAaa());
 		attributes.put("shortName", getShortName());
+		attributes.put("localSiteId", getLocalSiteId());
+		attributes.put("isEmployer", getIsEmployer());
 
 		return attributes;
 	}
@@ -142,7 +144,7 @@ public class WorkingUnitClp extends BaseModelImpl<WorkingUnit>
 			setModifiedDate(modifiedDate);
 		}
 
-		String organizationId = (String)attributes.get("organizationId");
+		Long organizationId = (Long)attributes.get("organizationId");
 
 		if (organizationId != null) {
 			setOrganizationId(organizationId);
@@ -254,6 +256,18 @@ public class WorkingUnitClp extends BaseModelImpl<WorkingUnit>
 
 		if (shortName != null) {
 			setShortName(shortName);
+		}
+
+		Long localSiteId = (Long)attributes.get("localSiteId");
+
+		if (localSiteId != null) {
+			setLocalSiteId(localSiteId);
+		}
+
+		Integer isEmployer = (Integer)attributes.get("isEmployer");
+
+		if (isEmployer != null) {
+			setIsEmployer(isEmployer);
 		}
 	}
 
@@ -406,20 +420,19 @@ public class WorkingUnitClp extends BaseModelImpl<WorkingUnit>
 	}
 
 	@Override
-	public String getOrganizationId() {
+	public long getOrganizationId() {
 		return _organizationId;
 	}
 
 	@Override
-	public void setOrganizationId(String organizationId) {
+	public void setOrganizationId(long organizationId) {
 		_organizationId = organizationId;
 
 		if (_workingUnitRemoteModel != null) {
 			try {
 				Class<?> clazz = _workingUnitRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setOrganizationId",
-						String.class);
+				Method method = clazz.getMethod("setOrganizationId", long.class);
 
 				method.invoke(_workingUnitRemoteModel, organizationId);
 			}
@@ -844,6 +857,52 @@ public class WorkingUnitClp extends BaseModelImpl<WorkingUnit>
 		}
 	}
 
+	@Override
+	public long getLocalSiteId() {
+		return _localSiteId;
+	}
+
+	@Override
+	public void setLocalSiteId(long localSiteId) {
+		_localSiteId = localSiteId;
+
+		if (_workingUnitRemoteModel != null) {
+			try {
+				Class<?> clazz = _workingUnitRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setLocalSiteId", long.class);
+
+				method.invoke(_workingUnitRemoteModel, localSiteId);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
+	@Override
+	public int getIsEmployer() {
+		return _isEmployer;
+	}
+
+	@Override
+	public void setIsEmployer(int isEmployer) {
+		_isEmployer = isEmployer;
+
+		if (_workingUnitRemoteModel != null) {
+			try {
+				Class<?> clazz = _workingUnitRemoteModel.getClass();
+
+				Method method = clazz.getMethod("setIsEmployer", int.class);
+
+				method.invoke(_workingUnitRemoteModel, isEmployer);
+			}
+			catch (Exception e) {
+				throw new UnsupportedOperationException(e);
+			}
+		}
+	}
+
 	public BaseModel<?> getWorkingUnitRemoteModel() {
 		return _workingUnitRemoteModel;
 	}
@@ -938,6 +997,8 @@ public class WorkingUnitClp extends BaseModelImpl<WorkingUnit>
 		clone.setWebsite(getWebsite());
 		clone.setAaa(getAaa());
 		clone.setShortName(getShortName());
+		clone.setLocalSiteId(getLocalSiteId());
+		clone.setIsEmployer(getIsEmployer());
 
 		return clone;
 	}
@@ -990,7 +1051,7 @@ public class WorkingUnitClp extends BaseModelImpl<WorkingUnit>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(51);
+		StringBundler sb = new StringBundler(55);
 
 		sb.append("{workingUnitId=");
 		sb.append(getWorkingUnitId());
@@ -1042,6 +1103,10 @@ public class WorkingUnitClp extends BaseModelImpl<WorkingUnit>
 		sb.append(getAaa());
 		sb.append(", shortName=");
 		sb.append(getShortName());
+		sb.append(", localSiteId=");
+		sb.append(getLocalSiteId());
+		sb.append(", isEmployer=");
+		sb.append(getIsEmployer());
 		sb.append("}");
 
 		return sb.toString();
@@ -1049,7 +1114,7 @@ public class WorkingUnitClp extends BaseModelImpl<WorkingUnit>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(79);
+		StringBundler sb = new StringBundler(85);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.usermgt.model.WorkingUnit");
@@ -1155,6 +1220,14 @@ public class WorkingUnitClp extends BaseModelImpl<WorkingUnit>
 			"<column><column-name>shortName</column-name><column-value><![CDATA[");
 		sb.append(getShortName());
 		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>localSiteId</column-name><column-value><![CDATA[");
+		sb.append(getLocalSiteId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>isEmployer</column-name><column-value><![CDATA[");
+		sb.append(getIsEmployer());
+		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -1168,7 +1241,7 @@ public class WorkingUnitClp extends BaseModelImpl<WorkingUnit>
 	private String _userUuid;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private String _organizationId;
+	private long _organizationId;
 	private String _govAgencyId;
 	private String _name;
 	private String _enName;
@@ -1187,6 +1260,8 @@ public class WorkingUnitClp extends BaseModelImpl<WorkingUnit>
 	private String _website;
 	private String _aaa;
 	private String _shortName;
+	private long _localSiteId;
+	private int _isEmployer;
 	private BaseModel<?> _workingUnitRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.usermgt.service.ClpSerializer.class;
 }

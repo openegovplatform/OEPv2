@@ -7,7 +7,7 @@
 	<import class="org.oep.usermgt.model.Delegacy" />
 	<import class="org.oep.usermgt.model.Employee" />
 	<import class="org.oep.usermgt.model.JobPos" />
-	<import class="org.oep.usermgt.model.Jobpos2Role" />
+	<import class="org.oep.usermgt.model.JobPos2Role" />
 	<import class="org.oep.usermgt.model.SubAccount" />
 	<import class="org.oep.usermgt.model.WorkingUnit" />
 	<class name="org.oep.usermgt.model.impl.BusinessImpl" table="oep_usermgt_business">
@@ -124,9 +124,9 @@
 		<property name="subWorkingUnitId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="leader" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
-	<class name="org.oep.usermgt.model.impl.Jobpos2RoleImpl" table="oep_usermgt_jobpos2role">
+	<class name="org.oep.usermgt.model.impl.JobPos2RoleImpl" table="oep_usermgt_jobpos2role">
 		<cache usage="read-write" />
-		<composite-id name="primaryKey" class="org.oep.usermgt.service.persistence.Jobpos2RolePK">
+		<composite-id name="primaryKey" class="org.oep.usermgt.service.persistence.JobPos2RolePK">
 			<key-property name="jobPosId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 			<key-property name="roleId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		</composite-id>
@@ -160,7 +160,7 @@
 		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="createDate" type="org.hibernate.type.TimestampType" />
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
-		<property name="organizationId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="organizationId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="govAgencyId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="enName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
@@ -179,5 +179,7 @@
 		<property name="website" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="aaa" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="shortName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="localSiteId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="isEmployer" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
 </hibernate-mapping>

@@ -16,7 +16,7 @@ package org.oep.usermgt.service.persistence;
 
 import com.liferay.portal.service.persistence.BasePersistence;
 
-import org.oep.usermgt.model.Jobpos2Role;
+import org.oep.usermgt.model.JobPos2Role;
 
 /**
  * The persistence interface for the jobpos to role service.
@@ -26,15 +26,15 @@ import org.oep.usermgt.model.Jobpos2Role;
  * </p>
  *
  * @author NQMINH
- * @see Jobpos2RolePersistenceImpl
- * @see Jobpos2RoleUtil
+ * @see JobPos2RolePersistenceImpl
+ * @see JobPos2RoleUtil
  * @generated
  */
-public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
+public interface JobPos2RolePersistence extends BasePersistence<JobPos2Role> {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this interface directly. Always use {@link Jobpos2RoleUtil} to access the jobpos to role persistence. Modify <code>service.xml</code> and rerun ServiceBuilder to regenerate this interface.
+	 * Never modify or reference this interface directly. Always use {@link JobPos2RoleUtil} to access the jobpos to role persistence. Modify <code>service.xml</code> and rerun ServiceBuilder to regenerate this interface.
 	 */
 
 	/**
@@ -44,14 +44,14 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @return the matching jobpos to roles
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<org.oep.usermgt.model.Jobpos2Role> findByR(
+	public java.util.List<org.oep.usermgt.model.JobPos2Role> findByR(
 		long roleId) throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
 	* Returns a range of all the jobpos to roles where roleId = &#63;.
 	*
 	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.Jobpos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.JobPos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	* </p>
 	*
 	* @param roleId the role ID
@@ -60,7 +60,7 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @return the range of matching jobpos to roles
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<org.oep.usermgt.model.Jobpos2Role> findByR(
+	public java.util.List<org.oep.usermgt.model.JobPos2Role> findByR(
 		long roleId, int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
@@ -68,7 +68,7 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* Returns an ordered range of all the jobpos to roles where roleId = &#63;.
 	*
 	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.Jobpos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.JobPos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	* </p>
 	*
 	* @param roleId the role ID
@@ -78,7 +78,7 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @return the ordered range of matching jobpos to roles
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<org.oep.usermgt.model.Jobpos2Role> findByR(
+	public java.util.List<org.oep.usermgt.model.JobPos2Role> findByR(
 		long roleId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException;
@@ -89,13 +89,13 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @param roleId the role ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching jobpos to role
-	* @throws org.oep.usermgt.NoSuchJobpos2RoleException if a matching jobpos to role could not be found
+	* @throws org.oep.usermgt.NoSuchJobPos2RoleException if a matching jobpos to role could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.usermgt.model.Jobpos2Role findByR_First(long roleId,
+	public org.oep.usermgt.model.JobPos2Role findByR_First(long roleId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
-			org.oep.usermgt.NoSuchJobpos2RoleException;
+			org.oep.usermgt.NoSuchJobPos2RoleException;
 
 	/**
 	* Returns the first jobpos to role in the ordered set where roleId = &#63;.
@@ -105,7 +105,7 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @return the first matching jobpos to role, or <code>null</code> if a matching jobpos to role could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.usermgt.model.Jobpos2Role fetchByR_First(long roleId,
+	public org.oep.usermgt.model.JobPos2Role fetchByR_First(long roleId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
@@ -115,13 +115,13 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @param roleId the role ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching jobpos to role
-	* @throws org.oep.usermgt.NoSuchJobpos2RoleException if a matching jobpos to role could not be found
+	* @throws org.oep.usermgt.NoSuchJobPos2RoleException if a matching jobpos to role could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.usermgt.model.Jobpos2Role findByR_Last(long roleId,
+	public org.oep.usermgt.model.JobPos2Role findByR_Last(long roleId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
-			org.oep.usermgt.NoSuchJobpos2RoleException;
+			org.oep.usermgt.NoSuchJobPos2RoleException;
 
 	/**
 	* Returns the last jobpos to role in the ordered set where roleId = &#63;.
@@ -131,26 +131,26 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @return the last matching jobpos to role, or <code>null</code> if a matching jobpos to role could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.usermgt.model.Jobpos2Role fetchByR_Last(long roleId,
+	public org.oep.usermgt.model.JobPos2Role fetchByR_Last(long roleId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
 	* Returns the jobpos to roles before and after the current jobpos to role in the ordered set where roleId = &#63;.
 	*
-	* @param jobpos2RolePK the primary key of the current jobpos to role
+	* @param jobPos2RolePK the primary key of the current jobpos to role
 	* @param roleId the role ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next jobpos to role
-	* @throws org.oep.usermgt.NoSuchJobpos2RoleException if a jobpos to role with the primary key could not be found
+	* @throws org.oep.usermgt.NoSuchJobPos2RoleException if a jobpos to role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.usermgt.model.Jobpos2Role[] findByR_PrevAndNext(
-		org.oep.usermgt.service.persistence.Jobpos2RolePK jobpos2RolePK,
+	public org.oep.usermgt.model.JobPos2Role[] findByR_PrevAndNext(
+		org.oep.usermgt.service.persistence.JobPos2RolePK jobPos2RolePK,
 		long roleId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
-			org.oep.usermgt.NoSuchJobpos2RoleException;
+			org.oep.usermgt.NoSuchJobPos2RoleException;
 
 	/**
 	* Removes all the jobpos to roles where roleId = &#63; from the database.
@@ -178,7 +178,7 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @return the matching jobpos to roles
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<org.oep.usermgt.model.Jobpos2Role> findByJP(
+	public java.util.List<org.oep.usermgt.model.JobPos2Role> findByJP(
 		long jobPosId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
@@ -186,7 +186,7 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* Returns a range of all the jobpos to roles where jobPosId = &#63;.
 	*
 	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.Jobpos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.JobPos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	* </p>
 	*
 	* @param jobPosId the job pos ID
@@ -195,7 +195,7 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @return the range of matching jobpos to roles
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<org.oep.usermgt.model.Jobpos2Role> findByJP(
+	public java.util.List<org.oep.usermgt.model.JobPos2Role> findByJP(
 		long jobPosId, int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
@@ -203,7 +203,7 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* Returns an ordered range of all the jobpos to roles where jobPosId = &#63;.
 	*
 	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.Jobpos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.JobPos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	* </p>
 	*
 	* @param jobPosId the job pos ID
@@ -213,7 +213,7 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @return the ordered range of matching jobpos to roles
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<org.oep.usermgt.model.Jobpos2Role> findByJP(
+	public java.util.List<org.oep.usermgt.model.JobPos2Role> findByJP(
 		long jobPosId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException;
@@ -224,13 +224,13 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @param jobPosId the job pos ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching jobpos to role
-	* @throws org.oep.usermgt.NoSuchJobpos2RoleException if a matching jobpos to role could not be found
+	* @throws org.oep.usermgt.NoSuchJobPos2RoleException if a matching jobpos to role could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.usermgt.model.Jobpos2Role findByJP_First(long jobPosId,
+	public org.oep.usermgt.model.JobPos2Role findByJP_First(long jobPosId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
-			org.oep.usermgt.NoSuchJobpos2RoleException;
+			org.oep.usermgt.NoSuchJobPos2RoleException;
 
 	/**
 	* Returns the first jobpos to role in the ordered set where jobPosId = &#63;.
@@ -240,7 +240,7 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @return the first matching jobpos to role, or <code>null</code> if a matching jobpos to role could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.usermgt.model.Jobpos2Role fetchByJP_First(long jobPosId,
+	public org.oep.usermgt.model.JobPos2Role fetchByJP_First(long jobPosId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
@@ -250,13 +250,13 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @param jobPosId the job pos ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching jobpos to role
-	* @throws org.oep.usermgt.NoSuchJobpos2RoleException if a matching jobpos to role could not be found
+	* @throws org.oep.usermgt.NoSuchJobPos2RoleException if a matching jobpos to role could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.usermgt.model.Jobpos2Role findByJP_Last(long jobPosId,
+	public org.oep.usermgt.model.JobPos2Role findByJP_Last(long jobPosId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
-			org.oep.usermgt.NoSuchJobpos2RoleException;
+			org.oep.usermgt.NoSuchJobPos2RoleException;
 
 	/**
 	* Returns the last jobpos to role in the ordered set where jobPosId = &#63;.
@@ -266,26 +266,26 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @return the last matching jobpos to role, or <code>null</code> if a matching jobpos to role could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.usermgt.model.Jobpos2Role fetchByJP_Last(long jobPosId,
+	public org.oep.usermgt.model.JobPos2Role fetchByJP_Last(long jobPosId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
 	* Returns the jobpos to roles before and after the current jobpos to role in the ordered set where jobPosId = &#63;.
 	*
-	* @param jobpos2RolePK the primary key of the current jobpos to role
+	* @param jobPos2RolePK the primary key of the current jobpos to role
 	* @param jobPosId the job pos ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next jobpos to role
-	* @throws org.oep.usermgt.NoSuchJobpos2RoleException if a jobpos to role with the primary key could not be found
+	* @throws org.oep.usermgt.NoSuchJobPos2RoleException if a jobpos to role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.usermgt.model.Jobpos2Role[] findByJP_PrevAndNext(
-		org.oep.usermgt.service.persistence.Jobpos2RolePK jobpos2RolePK,
+	public org.oep.usermgt.model.JobPos2Role[] findByJP_PrevAndNext(
+		org.oep.usermgt.service.persistence.JobPos2RolePK jobPos2RolePK,
 		long jobPosId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
-			org.oep.usermgt.NoSuchJobpos2RoleException;
+			org.oep.usermgt.NoSuchJobPos2RoleException;
 
 	/**
 	* Removes all the jobpos to roles where jobPosId = &#63; from the database.
@@ -309,66 +309,66 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	/**
 	* Caches the jobpos to role in the entity cache if it is enabled.
 	*
-	* @param jobpos2Role the jobpos to role
+	* @param jobPos2Role the jobpos to role
 	*/
-	public void cacheResult(org.oep.usermgt.model.Jobpos2Role jobpos2Role);
+	public void cacheResult(org.oep.usermgt.model.JobPos2Role jobPos2Role);
 
 	/**
 	* Caches the jobpos to roles in the entity cache if it is enabled.
 	*
-	* @param jobpos2Roles the jobpos to roles
+	* @param jobPos2Roles the jobpos to roles
 	*/
 	public void cacheResult(
-		java.util.List<org.oep.usermgt.model.Jobpos2Role> jobpos2Roles);
+		java.util.List<org.oep.usermgt.model.JobPos2Role> jobPos2Roles);
 
 	/**
 	* Creates a new jobpos to role with the primary key. Does not add the jobpos to role to the database.
 	*
-	* @param jobpos2RolePK the primary key for the new jobpos to role
+	* @param jobPos2RolePK the primary key for the new jobpos to role
 	* @return the new jobpos to role
 	*/
-	public org.oep.usermgt.model.Jobpos2Role create(
-		org.oep.usermgt.service.persistence.Jobpos2RolePK jobpos2RolePK);
+	public org.oep.usermgt.model.JobPos2Role create(
+		org.oep.usermgt.service.persistence.JobPos2RolePK jobPos2RolePK);
 
 	/**
 	* Removes the jobpos to role with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param jobpos2RolePK the primary key of the jobpos to role
+	* @param jobPos2RolePK the primary key of the jobpos to role
 	* @return the jobpos to role that was removed
-	* @throws org.oep.usermgt.NoSuchJobpos2RoleException if a jobpos to role with the primary key could not be found
+	* @throws org.oep.usermgt.NoSuchJobPos2RoleException if a jobpos to role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.usermgt.model.Jobpos2Role remove(
-		org.oep.usermgt.service.persistence.Jobpos2RolePK jobpos2RolePK)
+	public org.oep.usermgt.model.JobPos2Role remove(
+		org.oep.usermgt.service.persistence.JobPos2RolePK jobPos2RolePK)
 		throws com.liferay.portal.kernel.exception.SystemException,
-			org.oep.usermgt.NoSuchJobpos2RoleException;
+			org.oep.usermgt.NoSuchJobPos2RoleException;
 
-	public org.oep.usermgt.model.Jobpos2Role updateImpl(
-		org.oep.usermgt.model.Jobpos2Role jobpos2Role)
+	public org.oep.usermgt.model.JobPos2Role updateImpl(
+		org.oep.usermgt.model.JobPos2Role jobPos2Role)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Returns the jobpos to role with the primary key or throws a {@link org.oep.usermgt.NoSuchJobpos2RoleException} if it could not be found.
+	* Returns the jobpos to role with the primary key or throws a {@link org.oep.usermgt.NoSuchJobPos2RoleException} if it could not be found.
 	*
-	* @param jobpos2RolePK the primary key of the jobpos to role
+	* @param jobPos2RolePK the primary key of the jobpos to role
 	* @return the jobpos to role
-	* @throws org.oep.usermgt.NoSuchJobpos2RoleException if a jobpos to role with the primary key could not be found
+	* @throws org.oep.usermgt.NoSuchJobPos2RoleException if a jobpos to role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.usermgt.model.Jobpos2Role findByPrimaryKey(
-		org.oep.usermgt.service.persistence.Jobpos2RolePK jobpos2RolePK)
+	public org.oep.usermgt.model.JobPos2Role findByPrimaryKey(
+		org.oep.usermgt.service.persistence.JobPos2RolePK jobPos2RolePK)
 		throws com.liferay.portal.kernel.exception.SystemException,
-			org.oep.usermgt.NoSuchJobpos2RoleException;
+			org.oep.usermgt.NoSuchJobPos2RoleException;
 
 	/**
 	* Returns the jobpos to role with the primary key or returns <code>null</code> if it could not be found.
 	*
-	* @param jobpos2RolePK the primary key of the jobpos to role
+	* @param jobPos2RolePK the primary key of the jobpos to role
 	* @return the jobpos to role, or <code>null</code> if a jobpos to role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.usermgt.model.Jobpos2Role fetchByPrimaryKey(
-		org.oep.usermgt.service.persistence.Jobpos2RolePK jobpos2RolePK)
+	public org.oep.usermgt.model.JobPos2Role fetchByPrimaryKey(
+		org.oep.usermgt.service.persistence.JobPos2RolePK jobPos2RolePK)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
@@ -377,14 +377,14 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @return the jobpos to roles
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<org.oep.usermgt.model.Jobpos2Role> findAll()
+	public java.util.List<org.oep.usermgt.model.JobPos2Role> findAll()
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
 	* Returns a range of all the jobpos to roles.
 	*
 	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.Jobpos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.JobPos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	* </p>
 	*
 	* @param start the lower bound of the range of jobpos to roles
@@ -392,7 +392,7 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @return the range of jobpos to roles
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<org.oep.usermgt.model.Jobpos2Role> findAll(
+	public java.util.List<org.oep.usermgt.model.JobPos2Role> findAll(
 		int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
@@ -400,7 +400,7 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* Returns an ordered range of all the jobpos to roles.
 	*
 	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.Jobpos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.JobPos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	* </p>
 	*
 	* @param start the lower bound of the range of jobpos to roles
@@ -409,7 +409,7 @@ public interface Jobpos2RolePersistence extends BasePersistence<Jobpos2Role> {
 	* @return the ordered range of jobpos to roles
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<org.oep.usermgt.model.Jobpos2Role> findAll(
+	public java.util.List<org.oep.usermgt.model.JobPos2Role> findAll(
 		int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException;

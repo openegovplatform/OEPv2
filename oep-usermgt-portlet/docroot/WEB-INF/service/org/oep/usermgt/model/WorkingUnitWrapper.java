@@ -75,6 +75,8 @@ public class WorkingUnitWrapper implements WorkingUnit,
 		attributes.put("website", getWebsite());
 		attributes.put("aaa", getAaa());
 		attributes.put("shortName", getShortName());
+		attributes.put("localSiteId", getLocalSiteId());
+		attributes.put("isEmployer", getIsEmployer());
 
 		return attributes;
 	}
@@ -117,7 +119,7 @@ public class WorkingUnitWrapper implements WorkingUnit,
 			setModifiedDate(modifiedDate);
 		}
 
-		String organizationId = (String)attributes.get("organizationId");
+		Long organizationId = (Long)attributes.get("organizationId");
 
 		if (organizationId != null) {
 			setOrganizationId(organizationId);
@@ -229,6 +231,18 @@ public class WorkingUnitWrapper implements WorkingUnit,
 
 		if (shortName != null) {
 			setShortName(shortName);
+		}
+
+		Long localSiteId = (Long)attributes.get("localSiteId");
+
+		if (localSiteId != null) {
+			setLocalSiteId(localSiteId);
+		}
+
+		Integer isEmployer = (Integer)attributes.get("isEmployer");
+
+		if (isEmployer != null) {
+			setIsEmployer(isEmployer);
 		}
 	}
 
@@ -400,7 +414,7 @@ public class WorkingUnitWrapper implements WorkingUnit,
 	* @return the organization ID of this Working Unit
 	*/
 	@Override
-	public java.lang.String getOrganizationId() {
+	public long getOrganizationId() {
 		return _workingUnit.getOrganizationId();
 	}
 
@@ -410,7 +424,7 @@ public class WorkingUnitWrapper implements WorkingUnit,
 	* @param organizationId the organization ID of this Working Unit
 	*/
 	@Override
-	public void setOrganizationId(java.lang.String organizationId) {
+	public void setOrganizationId(long organizationId) {
 		_workingUnit.setOrganizationId(organizationId);
 	}
 
@@ -772,6 +786,46 @@ public class WorkingUnitWrapper implements WorkingUnit,
 	@Override
 	public void setShortName(java.lang.String shortName) {
 		_workingUnit.setShortName(shortName);
+	}
+
+	/**
+	* Returns the local site ID of this Working Unit.
+	*
+	* @return the local site ID of this Working Unit
+	*/
+	@Override
+	public long getLocalSiteId() {
+		return _workingUnit.getLocalSiteId();
+	}
+
+	/**
+	* Sets the local site ID of this Working Unit.
+	*
+	* @param localSiteId the local site ID of this Working Unit
+	*/
+	@Override
+	public void setLocalSiteId(long localSiteId) {
+		_workingUnit.setLocalSiteId(localSiteId);
+	}
+
+	/**
+	* Returns the is employer of this Working Unit.
+	*
+	* @return the is employer of this Working Unit
+	*/
+	@Override
+	public int getIsEmployer() {
+		return _workingUnit.getIsEmployer();
+	}
+
+	/**
+	* Sets the is employer of this Working Unit.
+	*
+	* @param isEmployer the is employer of this Working Unit
+	*/
+	@Override
+	public void setIsEmployer(int isEmployer) {
+		_workingUnit.setIsEmployer(isEmployer);
 	}
 
 	@Override

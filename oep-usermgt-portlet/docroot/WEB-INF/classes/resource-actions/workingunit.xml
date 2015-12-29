@@ -24,4 +24,26 @@
 			</guest-unsupported>
 		</permissions>
 	</model-resource>
+	<model-resource>
+		<model-name>com.liferay.portal.model.Organization</model-name>
+		<portlet-ref>
+			<portlet-name>workingunit-management</portlet-name>
+		</portlet-ref>
+		<weight>2</weight>
+		<permissions>
+			<supports>
+				<action-key>ADMIN_USERMGT</action-key>
+				<action-key>PERMISSIONS</action-key>
+			</supports>
+			<site-member-defaults>
+				<action-key>ADMIN_USERMGT</action-key>
+			</site-member-defaults>
+			<guest-defaults>
+			</guest-defaults>
+			<guest-unsupported>
+				<action-key>PERMISSIONS</action-key>
+				<action-key>ADMIN_USERMGT</action-key>
+			</guest-unsupported>
+		</permissions>
+	</model-resource>
 </resource-action-mapping>

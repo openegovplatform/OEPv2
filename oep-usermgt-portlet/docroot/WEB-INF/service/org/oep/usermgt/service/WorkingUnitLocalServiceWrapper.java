@@ -321,7 +321,7 @@ public class WorkingUnitLocalServiceWrapper implements WorkingUnitLocalService,
 	*/
 	@Override
 	public org.oep.usermgt.model.WorkingUnit addWorkingUnit(
-		java.lang.String organizationId, java.lang.String govAgencyId,
+		long organizationId, java.lang.String govAgencyId,
 		java.lang.String name, java.lang.String enName,
 		long parentWorkingUnitId, java.lang.String address,
 		java.lang.String cityNo, java.lang.String cityName,
@@ -329,33 +329,35 @@ public class WorkingUnitLocalServiceWrapper implements WorkingUnitLocalService,
 		java.lang.String wardNo, java.lang.String wardName,
 		java.lang.String gpsPosition, java.lang.String telNo,
 		java.lang.String fax, java.lang.String email, java.lang.String website,
+		long localSiteId, int isEmployer,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _workingUnitLocalService.addWorkingUnit(organizationId,
 			govAgencyId, name, enName, parentWorkingUnitId, address, cityNo,
 			cityName, districtNo, districtName, wardNo, wardName, gpsPosition,
-			telNo, fax, email, website, serviceContext);
+			telNo, fax, email, website, localSiteId, isEmployer, serviceContext);
 	}
 
 	@Override
 	public org.oep.usermgt.model.WorkingUnit updateWorkingUnit(
-		long workingUnitId, java.lang.String organizationId,
-		java.lang.String govAgencyId, java.lang.String name,
-		java.lang.String enName, long parentWorkingUnitId,
-		java.lang.String address, java.lang.String cityNo,
-		java.lang.String cityName, java.lang.String districtNo,
-		java.lang.String districtName, java.lang.String wardNo,
-		java.lang.String wardName, java.lang.String gpsPosition,
-		java.lang.String telNo, java.lang.String fax, java.lang.String email,
-		java.lang.String website,
+		long workingUnitId, long organizationId, java.lang.String govAgencyId,
+		java.lang.String name, java.lang.String enName,
+		long parentWorkingUnitId, java.lang.String address,
+		java.lang.String cityNo, java.lang.String cityName,
+		java.lang.String districtNo, java.lang.String districtName,
+		java.lang.String wardNo, java.lang.String wardName,
+		java.lang.String gpsPosition, java.lang.String telNo,
+		java.lang.String fax, java.lang.String email, java.lang.String website,
+		long localSiteId, int isEmployer,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _workingUnitLocalService.updateWorkingUnit(workingUnitId,
 			organizationId, govAgencyId, name, enName, parentWorkingUnitId,
 			address, cityNo, cityName, districtNo, districtName, wardNo,
-			wardName, gpsPosition, telNo, fax, email, website, serviceContext);
+			wardName, gpsPosition, telNo, fax, email, website, localSiteId,
+			isEmployer, serviceContext);
 	}
 
 	@Override

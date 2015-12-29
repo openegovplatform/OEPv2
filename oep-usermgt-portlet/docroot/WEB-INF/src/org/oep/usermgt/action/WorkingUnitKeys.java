@@ -43,7 +43,8 @@ public class WorkingUnitKeys {
 		public static final String FAX="addEditFax";
 		public static final String EMAIL="addEditEmail";
 		public static final String WEBSITE="addEditWebsite";
-		
+		public static final String LOCALSITEID="addEditLocalSiteId";
+		public static final String ISEMPLOYER="addEditIsEmployer";
 	}
 	
 	public class BaseWorkingUnitAttributes {

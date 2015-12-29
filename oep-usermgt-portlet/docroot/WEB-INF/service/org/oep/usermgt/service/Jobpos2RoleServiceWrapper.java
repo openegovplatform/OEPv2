@@ -17,16 +17,16 @@ package org.oep.usermgt.service;
 import com.liferay.portal.service.ServiceWrapper;
 
 /**
- * Provides a wrapper for {@link Jobpos2RoleService}.
+ * Provides a wrapper for {@link JobPos2RoleService}.
  *
  * @author NQMINH
- * @see Jobpos2RoleService
+ * @see JobPos2RoleService
  * @generated
  */
-public class Jobpos2RoleServiceWrapper implements Jobpos2RoleService,
-	ServiceWrapper<Jobpos2RoleService> {
-	public Jobpos2RoleServiceWrapper(Jobpos2RoleService jobpos2RoleService) {
-		_jobpos2RoleService = jobpos2RoleService;
+public class JobPos2RoleServiceWrapper implements JobPos2RoleService,
+	ServiceWrapper<JobPos2RoleService> {
+	public JobPos2RoleServiceWrapper(JobPos2RoleService jobPos2RoleService) {
+		_jobPos2RoleService = jobPos2RoleService;
 	}
 
 	/**
@@ -36,7 +36,7 @@ public class Jobpos2RoleServiceWrapper implements Jobpos2RoleService,
 	*/
 	@Override
 	public java.lang.String getBeanIdentifier() {
-		return _jobpos2RoleService.getBeanIdentifier();
+		return _jobPos2RoleService.getBeanIdentifier();
 	}
 
 	/**
@@ -46,40 +46,40 @@ public class Jobpos2RoleServiceWrapper implements Jobpos2RoleService,
 	*/
 	@Override
 	public void setBeanIdentifier(java.lang.String beanIdentifier) {
-		_jobpos2RoleService.setBeanIdentifier(beanIdentifier);
+		_jobPos2RoleService.setBeanIdentifier(beanIdentifier);
 	}
 
 	@Override
 	public java.lang.Object invokeMethod(java.lang.String name,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable {
-		return _jobpos2RoleService.invokeMethod(name, parameterTypes, arguments);
+		return _jobPos2RoleService.invokeMethod(name, parameterTypes, arguments);
 	}
 
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */
-	public Jobpos2RoleService getWrappedJobpos2RoleService() {
-		return _jobpos2RoleService;
+	public JobPos2RoleService getWrappedJobPos2RoleService() {
+		return _jobPos2RoleService;
 	}
 
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #setWrappedService}
 	 */
-	public void setWrappedJobpos2RoleService(
-		Jobpos2RoleService jobpos2RoleService) {
-		_jobpos2RoleService = jobpos2RoleService;
+	public void setWrappedJobPos2RoleService(
+		JobPos2RoleService jobPos2RoleService) {
+		_jobPos2RoleService = jobPos2RoleService;
 	}
 
 	@Override
-	public Jobpos2RoleService getWrappedService() {
-		return _jobpos2RoleService;
+	public JobPos2RoleService getWrappedService() {
+		return _jobPos2RoleService;
 	}
 
 	@Override
-	public void setWrappedService(Jobpos2RoleService jobpos2RoleService) {
-		_jobpos2RoleService = jobpos2RoleService;
+	public void setWrappedService(JobPos2RoleService jobPos2RoleService) {
+		_jobPos2RoleService = jobPos2RoleService;
 	}
 
-	private Jobpos2RoleService _jobpos2RoleService;
+	private JobPos2RoleService _jobPos2RoleService;
 }

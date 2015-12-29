@@ -18,9 +18,10 @@
 	<bean id="org.oep.usermgt.service.JobPosService" class="org.oep.usermgt.service.impl.JobPosServiceImpl" />
 	<bean id="org.oep.usermgt.service.persistence.JobPosPersistence" class="org.oep.usermgt.service.persistence.JobPosPersistenceImpl" parent="basePersistence" />
 	<bean id="org.oep.usermgt.service.persistence.JobPosFinder" class="org.oep.usermgt.service.persistence.JobPosFinderImpl" parent="basePersistence" />
-	<bean id="org.oep.usermgt.service.Jobpos2RoleLocalService" class="org.oep.usermgt.service.impl.Jobpos2RoleLocalServiceImpl" />
-	<bean id="org.oep.usermgt.service.Jobpos2RoleService" class="org.oep.usermgt.service.impl.Jobpos2RoleServiceImpl" />
-	<bean id="org.oep.usermgt.service.persistence.Jobpos2RolePersistence" class="org.oep.usermgt.service.persistence.Jobpos2RolePersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.usermgt.service.JobPos2RoleLocalService" class="org.oep.usermgt.service.impl.JobPos2RoleLocalServiceImpl" />
+	<bean id="org.oep.usermgt.service.JobPos2RoleService" class="org.oep.usermgt.service.impl.JobPos2RoleServiceImpl" />
+	<bean id="org.oep.usermgt.service.persistence.JobPos2RolePersistence" class="org.oep.usermgt.service.persistence.JobPos2RolePersistenceImpl" parent="basePersistence" />
+	<bean id="org.oep.usermgt.service.persistence.JobPos2RoleFinder" class="org.oep.usermgt.service.persistence.JobPos2RoleFinderImpl" parent="basePersistence" />
 	<bean id="org.oep.usermgt.service.SubAccountLocalService" class="org.oep.usermgt.service.impl.SubAccountLocalServiceImpl" />
 	<bean id="org.oep.usermgt.service.SubAccountService" class="org.oep.usermgt.service.impl.SubAccountServiceImpl" />
 	<bean id="org.oep.usermgt.service.persistence.SubAccountPersistence" class="org.oep.usermgt.service.persistence.SubAccountPersistenceImpl" parent="basePersistence" />

@@ -22,6 +22,7 @@ public class  EmployeeKeys {
 		public static final String SCREENNAME="addEditScreenName";
 		public static final String PASSWORD="addPassword";
 		public static final String REPASSWORD="addRePassword";
+		public static final String JOBPOSID="addJobPosId";
 	}
 	
 	public class BaseEmployeeAttributes {

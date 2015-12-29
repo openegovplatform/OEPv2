@@ -20,33 +20,33 @@ import com.liferay.portal.service.InvokableLocalService;
  * @author NQMINH
  * @generated
  */
-public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
-	public Jobpos2RoleLocalServiceClp(
+public class JobPos2RoleLocalServiceClp implements JobPos2RoleLocalService {
+	public JobPos2RoleLocalServiceClp(
 		InvokableLocalService invokableLocalService) {
 		_invokableLocalService = invokableLocalService;
 
-		_methodName0 = "addJobpos2Role";
+		_methodName0 = "addJobPos2Role";
 
 		_methodParameterTypes0 = new String[] {
-				"org.oep.usermgt.model.Jobpos2Role"
+				"org.oep.usermgt.model.JobPos2Role"
 			};
 
-		_methodName1 = "createJobpos2Role";
+		_methodName1 = "createJobPos2Role";
 
 		_methodParameterTypes1 = new String[] {
-				"org.oep.usermgt.service.persistence.Jobpos2RolePK"
+				"org.oep.usermgt.service.persistence.JobPos2RolePK"
 			};
 
-		_methodName2 = "deleteJobpos2Role";
+		_methodName2 = "deleteJobPos2Role";
 
 		_methodParameterTypes2 = new String[] {
-				"org.oep.usermgt.service.persistence.Jobpos2RolePK"
+				"org.oep.usermgt.service.persistence.JobPos2RolePK"
 			};
 
-		_methodName3 = "deleteJobpos2Role";
+		_methodName3 = "deleteJobPos2Role";
 
 		_methodParameterTypes3 = new String[] {
-				"org.oep.usermgt.model.Jobpos2Role"
+				"org.oep.usermgt.model.JobPos2Role"
 			};
 
 		_methodName4 = "dynamicQuery";
@@ -85,34 +85,34 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 				"com.liferay.portal.kernel.dao.orm.Projection"
 			};
 
-		_methodName10 = "fetchJobpos2Role";
+		_methodName10 = "fetchJobPos2Role";
 
 		_methodParameterTypes10 = new String[] {
-				"org.oep.usermgt.service.persistence.Jobpos2RolePK"
+				"org.oep.usermgt.service.persistence.JobPos2RolePK"
 			};
 
-		_methodName11 = "getJobpos2Role";
+		_methodName11 = "getJobPos2Role";
 
 		_methodParameterTypes11 = new String[] {
-				"org.oep.usermgt.service.persistence.Jobpos2RolePK"
+				"org.oep.usermgt.service.persistence.JobPos2RolePK"
 			};
 
 		_methodName12 = "getPersistedModel";
 
 		_methodParameterTypes12 = new String[] { "java.io.Serializable" };
 
-		_methodName13 = "getJobpos2Roles";
+		_methodName13 = "getJobPos2Roles";
 
 		_methodParameterTypes13 = new String[] { "int", "int" };
 
-		_methodName14 = "getJobpos2RolesCount";
+		_methodName14 = "getJobPos2RolesCount";
 
 		_methodParameterTypes14 = new String[] {  };
 
-		_methodName15 = "updateJobpos2Role";
+		_methodName15 = "updateJobPos2Role";
 
 		_methodParameterTypes15 = new String[] {
-				"org.oep.usermgt.model.Jobpos2Role"
+				"org.oep.usermgt.model.JobPos2Role"
 			};
 
 		_methodName16 = "getBeanIdentifier";
@@ -122,18 +122,101 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 		_methodName17 = "setBeanIdentifier";
 
 		_methodParameterTypes17 = new String[] { "java.lang.String" };
+
+		_methodName19 = "addJobPos2Role";
+
+		_methodParameterTypes19 = new String[] {
+				"long", "long", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName20 = "updateJobPos2Role";
+
+		_methodParameterTypes20 = new String[] {
+				"long", "long", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName21 = "saveJobPos2Role";
+
+		_methodParameterTypes21 = new String[] {
+				"org.oep.usermgt.model.JobPos2Role",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName22 = "updateJobPos2RoleResources";
+
+		_methodParameterTypes22 = new String[] {
+				"org.oep.usermgt.model.JobPos2Role", "java.lang.String[][]",
+				"java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName23 = "removeJobPos2Role";
+
+		_methodParameterTypes23 = new String[] {
+				"org.oep.usermgt.model.JobPos2Role"
+			};
+
+		_methodName24 = "removeJobPos2Role";
+
+		_methodParameterTypes24 = new String[] { "long", "long" };
+
+		_methodName25 = "getJobPos2Role";
+
+		_methodParameterTypes25 = new String[] { "long" };
+
+		_methodName26 = "addJobPos2RoleResources";
+
+		_methodParameterTypes26 = new String[] {
+				"org.oep.usermgt.model.JobPos", "boolean", "boolean",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName27 = "addJobPos2RoleResources";
+
+		_methodParameterTypes27 = new String[] {
+				"org.oep.usermgt.model.JobPos", "java.lang.String[][]",
+				"java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName28 = "addJobPos2RoleResources";
+
+		_methodParameterTypes28 = new String[] {
+				"long", "java.lang.String[][]", "java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName29 = "getByJobPos";
+
+		_methodParameterTypes29 = new String[] { "long" };
+
+		_methodName30 = "getRoleIdByJobPosId";
+
+		_methodParameterTypes30 = new String[] { "long" };
+
+		_methodName31 = "getRoleIdByJobPosId";
+
+		_methodParameterTypes31 = new String[] { "java.util.ArrayList", "long" };
+
+		_methodName32 = "getRoleByJobPosId";
+
+		_methodParameterTypes32 = new String[] { "long" };
+
+		_methodName33 = "getRoleByNotInJobPosId";
+
+		_methodParameterTypes33 = new String[] { "long" };
 	}
 
 	@Override
-	public org.oep.usermgt.model.Jobpos2Role addJobpos2Role(
-		org.oep.usermgt.model.Jobpos2Role jobpos2Role)
+	public org.oep.usermgt.model.JobPos2Role addJobPos2Role(
+		org.oep.usermgt.model.JobPos2Role jobPos2Role)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName0,
 					_methodParameterTypes0,
-					new Object[] { ClpSerializer.translateInput(jobpos2Role) });
+					new Object[] { ClpSerializer.translateInput(jobPos2Role) });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -151,18 +234,18 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 			}
 		}
 
-		return (org.oep.usermgt.model.Jobpos2Role)ClpSerializer.translateOutput(returnObj);
+		return (org.oep.usermgt.model.JobPos2Role)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override
-	public org.oep.usermgt.model.Jobpos2Role createJobpos2Role(
-		org.oep.usermgt.service.persistence.Jobpos2RolePK jobpos2RolePK) {
+	public org.oep.usermgt.model.JobPos2Role createJobPos2Role(
+		org.oep.usermgt.service.persistence.JobPos2RolePK jobPos2RolePK) {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName1,
 					_methodParameterTypes1,
-					new Object[] { ClpSerializer.translateInput(jobpos2RolePK) });
+					new Object[] { ClpSerializer.translateInput(jobPos2RolePK) });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -176,12 +259,12 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 			}
 		}
 
-		return (org.oep.usermgt.model.Jobpos2Role)ClpSerializer.translateOutput(returnObj);
+		return (org.oep.usermgt.model.JobPos2Role)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override
-	public org.oep.usermgt.model.Jobpos2Role deleteJobpos2Role(
-		org.oep.usermgt.service.persistence.Jobpos2RolePK jobpos2RolePK)
+	public org.oep.usermgt.model.JobPos2Role deleteJobPos2Role(
+		org.oep.usermgt.service.persistence.JobPos2RolePK jobPos2RolePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
@@ -189,7 +272,7 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName2,
 					_methodParameterTypes2,
-					new Object[] { ClpSerializer.translateInput(jobpos2RolePK) });
+					new Object[] { ClpSerializer.translateInput(jobPos2RolePK) });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -211,19 +294,19 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 			}
 		}
 
-		return (org.oep.usermgt.model.Jobpos2Role)ClpSerializer.translateOutput(returnObj);
+		return (org.oep.usermgt.model.JobPos2Role)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override
-	public org.oep.usermgt.model.Jobpos2Role deleteJobpos2Role(
-		org.oep.usermgt.model.Jobpos2Role jobpos2Role)
+	public org.oep.usermgt.model.JobPos2Role deleteJobPos2Role(
+		org.oep.usermgt.model.JobPos2Role jobPos2Role)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName3,
 					_methodParameterTypes3,
-					new Object[] { ClpSerializer.translateInput(jobpos2Role) });
+					new Object[] { ClpSerializer.translateInput(jobPos2Role) });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -241,7 +324,7 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 			}
 		}
 
-		return (org.oep.usermgt.model.Jobpos2Role)ClpSerializer.translateOutput(returnObj);
+		return (org.oep.usermgt.model.JobPos2Role)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override
@@ -442,15 +525,15 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 	}
 
 	@Override
-	public org.oep.usermgt.model.Jobpos2Role fetchJobpos2Role(
-		org.oep.usermgt.service.persistence.Jobpos2RolePK jobpos2RolePK)
+	public org.oep.usermgt.model.JobPos2Role fetchJobPos2Role(
+		org.oep.usermgt.service.persistence.JobPos2RolePK jobPos2RolePK)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName10,
 					_methodParameterTypes10,
-					new Object[] { ClpSerializer.translateInput(jobpos2RolePK) });
+					new Object[] { ClpSerializer.translateInput(jobPos2RolePK) });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -468,12 +551,12 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 			}
 		}
 
-		return (org.oep.usermgt.model.Jobpos2Role)ClpSerializer.translateOutput(returnObj);
+		return (org.oep.usermgt.model.JobPos2Role)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override
-	public org.oep.usermgt.model.Jobpos2Role getJobpos2Role(
-		org.oep.usermgt.service.persistence.Jobpos2RolePK jobpos2RolePK)
+	public org.oep.usermgt.model.JobPos2Role getJobPos2Role(
+		org.oep.usermgt.service.persistence.JobPos2RolePK jobPos2RolePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
@@ -481,7 +564,7 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName11,
 					_methodParameterTypes11,
-					new Object[] { ClpSerializer.translateInput(jobpos2RolePK) });
+					new Object[] { ClpSerializer.translateInput(jobPos2RolePK) });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -503,7 +586,7 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 			}
 		}
 
-		return (org.oep.usermgt.model.Jobpos2Role)ClpSerializer.translateOutput(returnObj);
+		return (org.oep.usermgt.model.JobPos2Role)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override
@@ -542,7 +625,7 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 	}
 
 	@Override
-	public java.util.List<org.oep.usermgt.model.Jobpos2Role> getJobpos2Roles(
+	public java.util.List<org.oep.usermgt.model.JobPos2Role> getJobPos2Roles(
 		int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
@@ -567,11 +650,11 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 			}
 		}
 
-		return (java.util.List<org.oep.usermgt.model.Jobpos2Role>)ClpSerializer.translateOutput(returnObj);
+		return (java.util.List<org.oep.usermgt.model.JobPos2Role>)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override
-	public int getJobpos2RolesCount()
+	public int getJobPos2RolesCount()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
@@ -599,15 +682,15 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 	}
 
 	@Override
-	public org.oep.usermgt.model.Jobpos2Role updateJobpos2Role(
-		org.oep.usermgt.model.Jobpos2Role jobpos2Role)
+	public org.oep.usermgt.model.JobPos2Role updateJobPos2Role(
+		org.oep.usermgt.model.JobPos2Role jobPos2Role)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName15,
 					_methodParameterTypes15,
-					new Object[] { ClpSerializer.translateInput(jobpos2Role) });
+					new Object[] { ClpSerializer.translateInput(jobPos2Role) });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -625,7 +708,7 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 			}
 		}
 
-		return (org.oep.usermgt.model.Jobpos2Role)ClpSerializer.translateOutput(returnObj);
+		return (org.oep.usermgt.model.JobPos2Role)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override
@@ -678,6 +761,559 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public org.oep.usermgt.model.JobPos2Role addJobPos2Role(long jobPosId,
+		long roleId, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName19,
+					_methodParameterTypes19,
+					new Object[] {
+						jobPosId,
+						
+					roleId,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.usermgt.model.JobPos2Role)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public org.oep.usermgt.model.JobPos2Role updateJobPos2Role(long jobPosId,
+		long roleId, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName20,
+					_methodParameterTypes20,
+					new Object[] {
+						jobPosId,
+						
+					roleId,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.usermgt.model.JobPos2Role)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public org.oep.usermgt.model.JobPos2Role saveJobPos2Role(
+		org.oep.usermgt.model.JobPos2Role jobPos2Role,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName21,
+					_methodParameterTypes21,
+					new Object[] {
+						ClpSerializer.translateInput(jobPos2Role),
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.usermgt.model.JobPos2Role)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public void updateJobPos2RoleResources(
+		org.oep.usermgt.model.JobPos2Role jobPos,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName22,
+				_methodParameterTypes22,
+				new Object[] {
+					ClpSerializer.translateInput(jobPos),
+					
+				ClpSerializer.translateInput(groupPermissions),
+					
+				ClpSerializer.translateInput(guestPermissions),
+					
+				ClpSerializer.translateInput(serviceContext)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void removeJobPos2Role(org.oep.usermgt.model.JobPos2Role jobPos2Role)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName23,
+				_methodParameterTypes23,
+				new Object[] { ClpSerializer.translateInput(jobPos2Role) });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void removeJobPos2Role(long jobPosId, long roleId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName24,
+				_methodParameterTypes24, new Object[] { jobPosId, roleId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public org.oep.usermgt.model.JobPos getJobPos2Role(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName25,
+					_methodParameterTypes25, new Object[] { id });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (org.oep.usermgt.model.JobPos)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public void addJobPos2RoleResources(org.oep.usermgt.model.JobPos jobPos,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName26,
+				_methodParameterTypes26,
+				new Object[] {
+					ClpSerializer.translateInput(jobPos),
+					
+				addGroupPermission,
+					
+				addGuestPermission,
+					
+				ClpSerializer.translateInput(serviceContext)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void addJobPos2RoleResources(org.oep.usermgt.model.JobPos jobPos,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName27,
+				_methodParameterTypes27,
+				new Object[] {
+					ClpSerializer.translateInput(jobPos),
+					
+				ClpSerializer.translateInput(groupPermissions),
+					
+				ClpSerializer.translateInput(guestPermissions),
+					
+				ClpSerializer.translateInput(serviceContext)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void addJobPos2RoleResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName28,
+				_methodParameterTypes28,
+				new Object[] {
+					id,
+					
+				ClpSerializer.translateInput(groupPermissions),
+					
+				ClpSerializer.translateInput(guestPermissions),
+					
+				ClpSerializer.translateInput(serviceContext)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public java.util.List<org.oep.usermgt.model.JobPos2Role> getByJobPos(
+		long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName29,
+					_methodParameterTypes29, new Object[] { jobPosId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<org.oep.usermgt.model.JobPos2Role>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public long[] getRoleIdByJobPosId(long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName30,
+					_methodParameterTypes30, new Object[] { jobPosId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (long[])ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public java.util.ArrayList<com.liferay.portal.model.Role> getRoleIdByJobPosId(
+		java.util.ArrayList<com.liferay.portal.model.Role> listRole,
+		long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName31,
+					_methodParameterTypes31,
+					new Object[] {
+						ClpSerializer.translateInput(listRole),
+						
+					jobPosId
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.ArrayList<com.liferay.portal.model.Role>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public java.util.List<com.liferay.portal.model.Role> getRoleByJobPosId(
+		long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName32,
+					_methodParameterTypes32, new Object[] { jobPosId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<com.liferay.portal.model.Role>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public java.util.List<com.liferay.portal.model.Role> getRoleByNotInJobPosId(
+		long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName33,
+					_methodParameterTypes33, new Object[] { jobPosId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<com.liferay.portal.model.Role>)ClpSerializer.translateOutput(returnObj);
+	}
+
 	private InvokableLocalService _invokableLocalService;
 	private String _methodName0;
 	private String[] _methodParameterTypes0;
@@ -715,4 +1351,34 @@ public class Jobpos2RoleLocalServiceClp implements Jobpos2RoleLocalService {
 	private String[] _methodParameterTypes16;
 	private String _methodName17;
 	private String[] _methodParameterTypes17;
+	private String _methodName19;
+	private String[] _methodParameterTypes19;
+	private String _methodName20;
+	private String[] _methodParameterTypes20;
+	private String _methodName21;
+	private String[] _methodParameterTypes21;
+	private String _methodName22;
+	private String[] _methodParameterTypes22;
+	private String _methodName23;
+	private String[] _methodParameterTypes23;
+	private String _methodName24;
+	private String[] _methodParameterTypes24;
+	private String _methodName25;
+	private String[] _methodParameterTypes25;
+	private String _methodName26;
+	private String[] _methodParameterTypes26;
+	private String _methodName27;
+	private String[] _methodParameterTypes27;
+	private String _methodName28;
+	private String[] _methodParameterTypes28;
+	private String _methodName29;
+	private String[] _methodParameterTypes29;
+	private String _methodName30;
+	private String[] _methodParameterTypes30;
+	private String _methodName31;
+	private String[] _methodParameterTypes31;
+	private String _methodName32;
+	private String[] _methodParameterTypes32;
+	private String _methodName33;
+	private String[] _methodParameterTypes33;
 }

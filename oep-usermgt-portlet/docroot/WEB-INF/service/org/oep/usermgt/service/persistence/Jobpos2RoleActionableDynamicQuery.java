@@ -17,18 +17,18 @@ package org.oep.usermgt.service.persistence;
 import com.liferay.portal.kernel.dao.orm.BaseActionableDynamicQuery;
 import com.liferay.portal.kernel.exception.SystemException;
 
-import org.oep.usermgt.model.Jobpos2Role;
-import org.oep.usermgt.service.Jobpos2RoleLocalServiceUtil;
+import org.oep.usermgt.model.JobPos2Role;
+import org.oep.usermgt.service.JobPos2RoleLocalServiceUtil;
 
 /**
  * @author NQMINH
  * @generated
  */
-public abstract class Jobpos2RoleActionableDynamicQuery
+public abstract class JobPos2RoleActionableDynamicQuery
 	extends BaseActionableDynamicQuery {
-	public Jobpos2RoleActionableDynamicQuery() throws SystemException {
-		setBaseLocalService(Jobpos2RoleLocalServiceUtil.getService());
-		setClass(Jobpos2Role.class);
+	public JobPos2RoleActionableDynamicQuery() throws SystemException {
+		setBaseLocalService(JobPos2RoleLocalServiceUtil.getService());
+		setClass(JobPos2Role.class);
 
 		setClassLoader(org.oep.usermgt.service.ClpSerializer.class.getClassLoader());
 

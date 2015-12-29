@@ -100,73 +100,73 @@ public class DelegacyLocalServiceClpInvoker {
 
 		_methodParameterTypes15 = new String[] { "org.oep.usermgt.model.Delegacy" };
 
-		_methodName82 = "getBeanIdentifier";
+		_methodName84 = "getBeanIdentifier";
 
-		_methodParameterTypes82 = new String[] {  };
+		_methodParameterTypes84 = new String[] {  };
 
-		_methodName83 = "setBeanIdentifier";
+		_methodName85 = "setBeanIdentifier";
 
-		_methodParameterTypes83 = new String[] { "java.lang.String" };
+		_methodParameterTypes85 = new String[] { "java.lang.String" };
 
-		_methodName88 = "addDelegacy";
+		_methodName90 = "addDelegacy";
 
-		_methodParameterTypes88 = new String[] {
+		_methodParameterTypes90 = new String[] {
 				"long", "long", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName89 = "updateDelegacy";
+		_methodName91 = "updateDelegacy";
 
-		_methodParameterTypes89 = new String[] {
+		_methodParameterTypes91 = new String[] {
 				"long", "long", "long", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName90 = "saveDelegacy";
+		_methodName92 = "saveDelegacy";
 
-		_methodParameterTypes90 = new String[] {
+		_methodParameterTypes92 = new String[] {
 				"org.oep.usermgt.model.Delegacy",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName91 = "updateDelegacyResources";
+		_methodName93 = "updateDelegacyResources";
 
-		_methodParameterTypes91 = new String[] {
+		_methodParameterTypes93 = new String[] {
 				"org.oep.usermgt.model.Delegacy", "java.lang.String[][]",
 				"java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName92 = "removeDelegacy";
+		_methodName94 = "removeDelegacy";
 
-		_methodParameterTypes92 = new String[] { "org.oep.usermgt.model.Delegacy" };
+		_methodParameterTypes94 = new String[] { "org.oep.usermgt.model.Delegacy" };
 
-		_methodName93 = "removeDelegacy";
+		_methodName95 = "removeDelegacy";
 
-		_methodParameterTypes93 = new String[] { "long" };
+		_methodParameterTypes95 = new String[] { "long" };
 
-		_methodName94 = "getDelegacy";
+		_methodName96 = "getDelegacy";
 
-		_methodParameterTypes94 = new String[] { "long" };
-
-		_methodName95 = "addDelegacyResources";
-
-		_methodParameterTypes95 = new String[] {
-				"org.oep.usermgt.model.Delegacy", "boolean", "boolean",
-				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName96 = "addDelegacyResources";
-
-		_methodParameterTypes96 = new String[] {
-				"org.oep.usermgt.model.Delegacy", "java.lang.String[][]",
-				"java.lang.String[][]",
-				"com.liferay.portal.service.ServiceContext"
-			};
+		_methodParameterTypes96 = new String[] { "long" };
 
 		_methodName97 = "addDelegacyResources";
 
 		_methodParameterTypes97 = new String[] {
+				"org.oep.usermgt.model.Delegacy", "boolean", "boolean",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName98 = "addDelegacyResources";
+
+		_methodParameterTypes98 = new String[] {
+				"org.oep.usermgt.model.Delegacy", "java.lang.String[][]",
+				"java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName99 = "addDelegacyResources";
+
+		_methodParameterTypes99 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -261,28 +261,28 @@ public class DelegacyLocalServiceClpInvoker {
 			return DelegacyLocalServiceUtil.updateDelegacy((org.oep.usermgt.model.Delegacy)arguments[0]);
 		}
 
-		if (_methodName82.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
+		if (_methodName84.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes84, parameterTypes)) {
 			return DelegacyLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName83.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
+		if (_methodName85.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes85, parameterTypes)) {
 			DelegacyLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName88.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+		if (_methodName90.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes90, parameterTypes)) {
 			return DelegacyLocalServiceUtil.addDelegacy(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				((Long)arguments[2]).longValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[3]);
 		}
 
-		if (_methodName89.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+		if (_methodName91.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes91, parameterTypes)) {
 			return DelegacyLocalServiceUtil.updateDelegacy(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				((Long)arguments[2]).longValue(),
@@ -290,14 +290,14 @@ public class DelegacyLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[4]);
 		}
 
-		if (_methodName90.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes90, parameterTypes)) {
+		if (_methodName92.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes92, parameterTypes)) {
 			return DelegacyLocalServiceUtil.saveDelegacy((org.oep.usermgt.model.Delegacy)arguments[0],
 				(com.liferay.portal.service.ServiceContext)arguments[1]);
 		}
 
-		if (_methodName91.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes91, parameterTypes)) {
+		if (_methodName93.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes93, parameterTypes)) {
 			DelegacyLocalServiceUtil.updateDelegacyResources((org.oep.usermgt.model.Delegacy)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -306,27 +306,27 @@ public class DelegacyLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName92.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes92, parameterTypes)) {
+		if (_methodName94.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
 			DelegacyLocalServiceUtil.removeDelegacy((org.oep.usermgt.model.Delegacy)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName93.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes93, parameterTypes)) {
+		if (_methodName95.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
 			DelegacyLocalServiceUtil.removeDelegacy(((Long)arguments[0]).longValue());
 
 			return null;
 		}
 
-		if (_methodName94.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
+		if (_methodName96.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
 			return DelegacyLocalServiceUtil.getDelegacy(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName95.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
+		if (_methodName97.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
 			DelegacyLocalServiceUtil.addDelegacyResources((org.oep.usermgt.model.Delegacy)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Boolean)arguments[2]).booleanValue(),
@@ -335,8 +335,8 @@ public class DelegacyLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName96.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
+		if (_methodName98.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
 			DelegacyLocalServiceUtil.addDelegacyResources((org.oep.usermgt.model.Delegacy)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -345,8 +345,8 @@ public class DelegacyLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName97.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
+		if (_methodName99.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes99, parameterTypes)) {
 			DelegacyLocalServiceUtil.addDelegacyResources(((Long)arguments[0]).longValue(),
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -390,14 +390,10 @@ public class DelegacyLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName82;
-	private String[] _methodParameterTypes82;
-	private String _methodName83;
-	private String[] _methodParameterTypes83;
-	private String _methodName88;
-	private String[] _methodParameterTypes88;
-	private String _methodName89;
-	private String[] _methodParameterTypes89;
+	private String _methodName84;
+	private String[] _methodParameterTypes84;
+	private String _methodName85;
+	private String[] _methodParameterTypes85;
 	private String _methodName90;
 	private String[] _methodParameterTypes90;
 	private String _methodName91;
@@ -414,4 +410,8 @@ public class DelegacyLocalServiceClpInvoker {
 	private String[] _methodParameterTypes96;
 	private String _methodName97;
 	private String[] _methodParameterTypes97;
+	private String _methodName98;
+	private String[] _methodParameterTypes98;
+	private String _methodName99;
+	private String[] _methodParameterTypes99;
 }

@@ -84,7 +84,7 @@ public class WorkingUnitLocalServiceImpl extends WorkingUnitLocalServiceBaseImpl
 	 */
 	@Indexable(type = IndexableType.REINDEX)	
 	public WorkingUnit addWorkingUnit(
-			String organizationId,
+			long organizationId,
 			String govAgencyId,
 			String name,
 			String enName,
@@ -101,6 +101,8 @@ public class WorkingUnitLocalServiceImpl extends WorkingUnitLocalServiceBaseImpl
 			String fax,
 			String email,
 			String website,
+			long localSiteId,
+			int isEmployer,
 			ServiceContext serviceContext) throws SystemException, PortalException {
 		//validate(collectionName, dataCode, title, status);
 		long id = counterLocalService.increment();
@@ -123,7 +125,8 @@ public class WorkingUnitLocalServiceImpl extends WorkingUnitLocalServiceBaseImpl
 		workingUnit.setFax(fax);
 		workingUnit.setEmail(email);
 		workingUnit.setWebsite(website);
-		
+		workingUnit.setLocalSiteId(localSiteId);
+		workingUnit.setIsEmployer(isEmployer);
 		
 		workingUnit.setCompanyId(serviceContext.getCompanyId());
 		workingUnit.setGroupId(serviceContext.getScopeGroupId());
@@ -152,7 +155,7 @@ public class WorkingUnitLocalServiceImpl extends WorkingUnitLocalServiceBaseImpl
 
 	public WorkingUnit updateWorkingUnit(
 			long workingUnitId,
-			String organizationId,
+			long organizationId,
 			String govAgencyId,
 			String name,
 			String enName,
@@ -169,7 +172,8 @@ public class WorkingUnitLocalServiceImpl extends WorkingUnitLocalServiceBaseImpl
 			String fax,
 			String email,
 			String website,
-	
+			long localSiteId,
+			int isEmployer,
 			ServiceContext serviceContext)
 		throws PortalException, SystemException {
 		WorkingUnit workingUnit = workingUnitPersistence.findByPrimaryKey(workingUnitId);
@@ -190,6 +194,8 @@ public class WorkingUnitLocalServiceImpl extends WorkingUnitLocalServiceBaseImpl
 		workingUnit.setFax(fax);
 		workingUnit.setEmail(email);
 		workingUnit.setWebsite(website);
+		workingUnit.setLocalSiteId(localSiteId);
+		workingUnit.setIsEmployer(isEmployer);
 		Date now = new Date();
 		workingUnit.setModifiedDate(serviceContext.getModifiedDate(now));
 		workingUnitPersistence.update(workingUnit);
@@ -223,6 +229,8 @@ public class WorkingUnitLocalServiceImpl extends WorkingUnitLocalServiceBaseImpl
 				workingUnit.getFax(),
 				workingUnit.getEmail(),
 				workingUnit.getWebsite(),
+				workingUnit.getLocalSiteId(),
+				workingUnit.getIsEmployer(),
 				serviceContext);
 	}
 	

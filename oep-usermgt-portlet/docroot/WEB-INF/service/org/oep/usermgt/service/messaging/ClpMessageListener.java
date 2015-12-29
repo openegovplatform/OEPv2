@@ -26,10 +26,10 @@ import org.oep.usermgt.service.DelegacyLocalServiceUtil;
 import org.oep.usermgt.service.DelegacyServiceUtil;
 import org.oep.usermgt.service.EmployeeLocalServiceUtil;
 import org.oep.usermgt.service.EmployeeServiceUtil;
+import org.oep.usermgt.service.JobPos2RoleLocalServiceUtil;
+import org.oep.usermgt.service.JobPos2RoleServiceUtil;
 import org.oep.usermgt.service.JobPosLocalServiceUtil;
 import org.oep.usermgt.service.JobPosServiceUtil;
-import org.oep.usermgt.service.Jobpos2RoleLocalServiceUtil;
-import org.oep.usermgt.service.Jobpos2RoleServiceUtil;
 import org.oep.usermgt.service.SubAccountLocalServiceUtil;
 import org.oep.usermgt.service.SubAccountServiceUtil;
 import org.oep.usermgt.service.WorkingUnitLocalServiceUtil;
@@ -65,9 +65,9 @@ public class ClpMessageListener extends BaseMessageListener {
 			JobPosLocalServiceUtil.clearService();
 
 			JobPosServiceUtil.clearService();
-			Jobpos2RoleLocalServiceUtil.clearService();
+			JobPos2RoleLocalServiceUtil.clearService();
 
-			Jobpos2RoleServiceUtil.clearService();
+			JobPos2RoleServiceUtil.clearService();
 			SubAccountLocalServiceUtil.clearService();
 
 			SubAccountServiceUtil.clearService();

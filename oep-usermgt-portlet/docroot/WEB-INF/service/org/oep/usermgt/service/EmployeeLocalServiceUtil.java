@@ -423,6 +423,12 @@ public class EmployeeLocalServiceUtil {
 			personelDocNo, gender, birthdate, serviceContext);
 	}
 
+	public static void addEmployee2JoPos(long employeeId, long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().addEmployee2JoPos(employeeId, jobPosId);
+	}
+
 	public static org.oep.usermgt.model.Employee updateEmployee(
 		long employeeId, long mappingUserId, long workingUnitId,
 		long mainJobPosId, java.lang.String employeeNo,
@@ -469,6 +475,12 @@ public class EmployeeLocalServiceUtil {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		getService().removeEmployee(id);
+	}
+
+	public static void removeJobPos(long employeeId, long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().removeJobPos(employeeId, jobPosId);
 	}
 
 	public static void addEmployeeResources(
@@ -574,6 +586,21 @@ public class EmployeeLocalServiceUtil {
 		return getService()
 				   .finderLikeNameWorkingUnit(textSearch, workingUnitId, start,
 			end);
+	}
+
+	public static java.util.List<org.oep.usermgt.model.JobPos> getJobPosByEmployeeId(
+		long employeeId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().getJobPosByEmployeeId(employeeId);
+	}
+
+	public static java.util.List<org.oep.usermgt.model.JobPos> getJobPos(
+		java.util.ArrayList<org.oep.usermgt.model.JobPos> listJobPos,
+		long employeeId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().getJobPos(listJobPos, employeeId);
 	}
 
 	public static void clearService() {

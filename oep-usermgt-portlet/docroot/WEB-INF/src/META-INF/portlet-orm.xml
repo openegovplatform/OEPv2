@@ -161,8 +161,8 @@
 			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
-	<mapped-superclass class="org.oep.usermgt.model.impl.Jobpos2RoleModelImpl">
-		<id-class class="org.oep.usermgt.service.persistence.Jobpos2RolePK" />
+	<mapped-superclass class="org.oep.usermgt.model.impl.JobPos2RoleModelImpl">
+		<id-class class="org.oep.usermgt.service.persistence.JobPos2RolePK" />
 		<attributes>
 			<id name="jobPosId" />
 			<id name="roleId" />
@@ -229,6 +229,8 @@
 			<basic name="website" />
 			<basic name="aaa" />
 			<basic name="shortName" />
+			<basic name="localSiteId" />
+			<basic name="isEmployer" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
@@ -255,7 +257,7 @@
 		<table name="oep_usermgt_jobpos" />
 		<attributes />
 	</entity>
-	<entity class="org.oep.usermgt.model.impl.Jobpos2RoleImpl" name="Jobpos2Role">
+	<entity class="org.oep.usermgt.model.impl.JobPos2RoleImpl" name="JobPos2Role">
 		<table name="oep_usermgt_jobpos2role" />
 		<attributes />
 	</entity>

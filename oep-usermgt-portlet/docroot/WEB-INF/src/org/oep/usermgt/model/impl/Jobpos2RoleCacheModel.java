@@ -17,7 +17,7 @@ package org.oep.usermgt.model.impl;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.CacheModel;
 
-import org.oep.usermgt.model.Jobpos2Role;
+import org.oep.usermgt.model.JobPos2Role;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -25,13 +25,13 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
 /**
- * The cache model class for representing Jobpos2Role in entity cache.
+ * The cache model class for representing JobPos2Role in entity cache.
  *
  * @author NQMINH
- * @see Jobpos2Role
+ * @see JobPos2Role
  * @generated
  */
-public class Jobpos2RoleCacheModel implements CacheModel<Jobpos2Role>,
+public class JobPos2RoleCacheModel implements CacheModel<JobPos2Role>,
 	Externalizable {
 	@Override
 	public String toString() {
@@ -47,15 +47,15 @@ public class Jobpos2RoleCacheModel implements CacheModel<Jobpos2Role>,
 	}
 
 	@Override
-	public Jobpos2Role toEntityModel() {
-		Jobpos2RoleImpl jobpos2RoleImpl = new Jobpos2RoleImpl();
+	public JobPos2Role toEntityModel() {
+		JobPos2RoleImpl jobPos2RoleImpl = new JobPos2RoleImpl();
 
-		jobpos2RoleImpl.setJobPosId(jobPosId);
-		jobpos2RoleImpl.setRoleId(roleId);
+		jobPos2RoleImpl.setJobPosId(jobPosId);
+		jobPos2RoleImpl.setRoleId(roleId);
 
-		jobpos2RoleImpl.resetOriginalValues();
+		jobPos2RoleImpl.resetOriginalValues();
 
-		return jobpos2RoleImpl;
+		return jobPos2RoleImpl;
 	}
 
 	@Override

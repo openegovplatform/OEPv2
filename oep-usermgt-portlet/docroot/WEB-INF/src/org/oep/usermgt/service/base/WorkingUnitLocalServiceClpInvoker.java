@@ -106,187 +106,187 @@ public class WorkingUnitLocalServiceClpInvoker {
 				"org.oep.usermgt.model.WorkingUnit"
 			};
 
-		_methodName82 = "getBeanIdentifier";
+		_methodName84 = "getBeanIdentifier";
 
-		_methodParameterTypes82 = new String[] {  };
+		_methodParameterTypes84 = new String[] {  };
 
-		_methodName83 = "setBeanIdentifier";
+		_methodName85 = "setBeanIdentifier";
 
-		_methodParameterTypes83 = new String[] { "java.lang.String" };
+		_methodParameterTypes85 = new String[] { "java.lang.String" };
 
-		_methodName88 = "addWorkingUnit";
+		_methodName90 = "addWorkingUnit";
 
-		_methodParameterTypes88 = new String[] {
-				"java.lang.String", "java.lang.String", "java.lang.String",
+		_methodParameterTypes90 = new String[] {
+				"long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "long", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "long", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName89 = "updateWorkingUnit";
+		_methodName91 = "updateWorkingUnit";
 
-		_methodParameterTypes89 = new String[] {
-				"long", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String", "long",
+		_methodParameterTypes91 = new String[] {
+				"long", "long", "java.lang.String", "java.lang.String",
+				"java.lang.String", "long", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "long", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName90 = "saveWorkingUnit";
+		_methodName92 = "saveWorkingUnit";
 
-		_methodParameterTypes90 = new String[] {
+		_methodParameterTypes92 = new String[] {
 				"org.oep.usermgt.model.WorkingUnit",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName91 = "updateWorkingUnitResources";
+		_methodName93 = "updateWorkingUnitResources";
 
-		_methodParameterTypes91 = new String[] {
+		_methodParameterTypes93 = new String[] {
 				"org.oep.usermgt.model.WorkingUnit", "java.lang.String[][]",
 				"java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName92 = "removeWorkingUnit";
+		_methodName94 = "removeWorkingUnit";
 
-		_methodParameterTypes92 = new String[] {
+		_methodParameterTypes94 = new String[] {
 				"org.oep.usermgt.model.WorkingUnit"
 			};
 
-		_methodName93 = "removeWorkingUnit";
+		_methodName95 = "removeWorkingUnit";
 
-		_methodParameterTypes93 = new String[] { "long" };
+		_methodParameterTypes95 = new String[] { "long" };
 
-		_methodName94 = "getWorkingUnit";
+		_methodName96 = "getWorkingUnit";
 
-		_methodParameterTypes94 = new String[] { "long" };
-
-		_methodName95 = "addWorkingUnitResources";
-
-		_methodParameterTypes95 = new String[] {
-				"org.oep.usermgt.model.WorkingUnit", "boolean", "boolean",
-				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName96 = "addWorkingUnitResources";
-
-		_methodParameterTypes96 = new String[] {
-				"org.oep.usermgt.model.WorkingUnit", "java.lang.String[][]",
-				"java.lang.String[][]",
-				"com.liferay.portal.service.ServiceContext"
-			};
+		_methodParameterTypes96 = new String[] { "long" };
 
 		_methodName97 = "addWorkingUnitResources";
 
 		_methodParameterTypes97 = new String[] {
+				"org.oep.usermgt.model.WorkingUnit", "boolean", "boolean",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName98 = "addWorkingUnitResources";
+
+		_methodParameterTypes98 = new String[] {
+				"org.oep.usermgt.model.WorkingUnit", "java.lang.String[][]",
+				"java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName99 = "addWorkingUnitResources";
+
+		_methodParameterTypes99 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName98 = "countWorkingUnitByCompany";
-
-		_methodParameterTypes98 = new String[] {
-				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName99 = "getByCompany";
-
-		_methodParameterTypes99 = new String[] {
-				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName100 = "getByCompany";
+		_methodName100 = "countWorkingUnitByCompany";
 
 		_methodParameterTypes100 = new String[] {
-				"int", "int", "com.liferay.portal.service.ServiceContext"
+				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName101 = "countWorkingUnitByCompanyParentWorkingUnit";
+		_methodName101 = "getByCompany";
 
 		_methodParameterTypes101 = new String[] {
-				"long", "com.liferay.portal.service.ServiceContext"
+				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName102 = "getByCompanyParentWorkingUnit";
+		_methodName102 = "getByCompany";
 
 		_methodParameterTypes102 = new String[] {
-				"long", "com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName103 = "getByCompanyParentWorkingUnit";
-
-		_methodParameterTypes103 = new String[] {
-				"long", "int", "int",
-				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName104 = "countWorkingUnitByGroup";
-
-		_methodParameterTypes104 = new String[] {
-				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName105 = "getByGroup";
-
-		_methodParameterTypes105 = new String[] {
-				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName106 = "getByGroup";
-
-		_methodParameterTypes106 = new String[] {
 				"int", "int", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName107 = "countWorkingUnitByGroupParentWorkingUnit";
+		_methodName103 = "countWorkingUnitByCompanyParentWorkingUnit";
 
-		_methodParameterTypes107 = new String[] {
+		_methodParameterTypes103 = new String[] {
 				"long", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName108 = "getByGroupParentWorkingUnit";
+		_methodName104 = "getByCompanyParentWorkingUnit";
 
-		_methodParameterTypes108 = new String[] {
+		_methodParameterTypes104 = new String[] {
 				"long", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName109 = "getByGroupParentWorkingUnit";
+		_methodName105 = "getByCompanyParentWorkingUnit";
 
-		_methodParameterTypes109 = new String[] {
+		_methodParameterTypes105 = new String[] {
 				"long", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName110 = "countWorkingUnitByLikeName";
+		_methodName106 = "countWorkingUnitByGroup";
+
+		_methodParameterTypes106 = new String[] {
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName107 = "getByGroup";
+
+		_methodParameterTypes107 = new String[] {
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName108 = "getByGroup";
+
+		_methodParameterTypes108 = new String[] {
+				"int", "int", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName109 = "countWorkingUnitByGroupParentWorkingUnit";
+
+		_methodParameterTypes109 = new String[] {
+				"long", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName110 = "getByGroupParentWorkingUnit";
 
 		_methodParameterTypes110 = new String[] {
-				"java.lang.String", "long",
-				"com.liferay.portal.service.ServiceContext"
+				"long", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName111 = "finderByLikeName";
+		_methodName111 = "getByGroupParentWorkingUnit";
 
 		_methodParameterTypes111 = new String[] {
+				"long", "int", "int",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName112 = "countWorkingUnitByLikeName";
+
+		_methodParameterTypes112 = new String[] {
 				"java.lang.String", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName112 = "finderByLikeName";
+		_methodName113 = "finderByLikeName";
 
-		_methodParameterTypes112 = new String[] {
+		_methodParameterTypes113 = new String[] {
+				"java.lang.String", "long",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName114 = "finderByLikeName";
+
+		_methodParameterTypes114 = new String[] {
 				"java.lang.String", "long", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName113 = "getByCompanyTree";
+		_methodName115 = "getByCompanyTree";
 
-		_methodParameterTypes113 = new String[] {
+		_methodParameterTypes115 = new String[] {
 				"com.liferay.portal.service.ServiceContext"
 			};
 	}
@@ -380,21 +380,21 @@ public class WorkingUnitLocalServiceClpInvoker {
 			return WorkingUnitLocalServiceUtil.updateWorkingUnit((org.oep.usermgt.model.WorkingUnit)arguments[0]);
 		}
 
-		if (_methodName82.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
+		if (_methodName84.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes84, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName83.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
+		if (_methodName85.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes85, parameterTypes)) {
 			WorkingUnitLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName88.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
-			return WorkingUnitLocalServiceUtil.addWorkingUnit((java.lang.String)arguments[0],
+		if (_methodName90.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes90, parameterTypes)) {
+			return WorkingUnitLocalServiceUtil.addWorkingUnit(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				(java.lang.String)arguments[3],
 				((Long)arguments[4]).longValue(),
@@ -408,14 +408,17 @@ public class WorkingUnitLocalServiceClpInvoker {
 				(java.lang.String)arguments[14],
 				(java.lang.String)arguments[15],
 				(java.lang.String)arguments[16],
-				(com.liferay.portal.service.ServiceContext)arguments[17]);
+				((Long)arguments[17]).longValue(),
+				((Integer)arguments[18]).intValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[19]);
 		}
 
-		if (_methodName89.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+		if (_methodName91.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes91, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.updateWorkingUnit(((Long)arguments[0]).longValue(),
-				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
-				(java.lang.String)arguments[3], (java.lang.String)arguments[4],
+				((Long)arguments[1]).longValue(),
+				(java.lang.String)arguments[2], (java.lang.String)arguments[3],
+				(java.lang.String)arguments[4],
 				((Long)arguments[5]).longValue(),
 				(java.lang.String)arguments[6], (java.lang.String)arguments[7],
 				(java.lang.String)arguments[8], (java.lang.String)arguments[9],
@@ -427,17 +430,19 @@ public class WorkingUnitLocalServiceClpInvoker {
 				(java.lang.String)arguments[15],
 				(java.lang.String)arguments[16],
 				(java.lang.String)arguments[17],
-				(com.liferay.portal.service.ServiceContext)arguments[18]);
+				((Long)arguments[18]).longValue(),
+				((Integer)arguments[19]).intValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[20]);
 		}
 
-		if (_methodName90.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes90, parameterTypes)) {
+		if (_methodName92.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes92, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.saveWorkingUnit((org.oep.usermgt.model.WorkingUnit)arguments[0],
 				(com.liferay.portal.service.ServiceContext)arguments[1]);
 		}
 
-		if (_methodName91.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes91, parameterTypes)) {
+		if (_methodName93.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes93, parameterTypes)) {
 			WorkingUnitLocalServiceUtil.updateWorkingUnitResources((org.oep.usermgt.model.WorkingUnit)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -446,27 +451,27 @@ public class WorkingUnitLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName92.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes92, parameterTypes)) {
+		if (_methodName94.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
 			WorkingUnitLocalServiceUtil.removeWorkingUnit((org.oep.usermgt.model.WorkingUnit)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName93.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes93, parameterTypes)) {
+		if (_methodName95.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
 			WorkingUnitLocalServiceUtil.removeWorkingUnit(((Long)arguments[0]).longValue());
 
 			return null;
 		}
 
-		if (_methodName94.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
+		if (_methodName96.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.getWorkingUnit(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName95.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
+		if (_methodName97.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
 			WorkingUnitLocalServiceUtil.addWorkingUnitResources((org.oep.usermgt.model.WorkingUnit)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Boolean)arguments[2]).booleanValue(),
@@ -475,8 +480,8 @@ public class WorkingUnitLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName96.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
+		if (_methodName98.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
 			WorkingUnitLocalServiceUtil.addWorkingUnitResources((org.oep.usermgt.model.WorkingUnit)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -485,8 +490,8 @@ public class WorkingUnitLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName97.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
+		if (_methodName99.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes99, parameterTypes)) {
 			WorkingUnitLocalServiceUtil.addWorkingUnitResources(((Long)arguments[0]).longValue(),
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -495,96 +500,96 @@ public class WorkingUnitLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName98.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
+		if (_methodName100.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.countWorkingUnitByCompany((com.liferay.portal.service.ServiceContext)arguments[0]);
 		}
 
-		if (_methodName99.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes99, parameterTypes)) {
+		if (_methodName101.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.getByCompany((com.liferay.portal.service.ServiceContext)arguments[0]);
 		}
 
-		if (_methodName100.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
+		if (_methodName102.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes102, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.getByCompany(((Integer)arguments[0]).intValue(),
 				((Integer)arguments[1]).intValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[2]);
 		}
 
-		if (_methodName101.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
+		if (_methodName103.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes103, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.countWorkingUnitByCompanyParentWorkingUnit(((Long)arguments[0]).longValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[1]);
 		}
 
-		if (_methodName102.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes102, parameterTypes)) {
+		if (_methodName104.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.getByCompanyParentWorkingUnit(((Long)arguments[0]).longValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[1]);
 		}
 
-		if (_methodName103.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes103, parameterTypes)) {
+		if (_methodName105.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes105, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.getByCompanyParentWorkingUnit(((Long)arguments[0]).longValue(),
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[3]);
 		}
 
-		if (_methodName104.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
+		if (_methodName106.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.countWorkingUnitByGroup((com.liferay.portal.service.ServiceContext)arguments[0]);
 		}
 
-		if (_methodName105.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes105, parameterTypes)) {
+		if (_methodName107.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes107, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.getByGroup((com.liferay.portal.service.ServiceContext)arguments[0]);
 		}
 
-		if (_methodName106.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
+		if (_methodName108.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes108, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.getByGroup(((Integer)arguments[0]).intValue(),
 				((Integer)arguments[1]).intValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[2]);
 		}
 
-		if (_methodName107.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes107, parameterTypes)) {
+		if (_methodName109.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes109, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.countWorkingUnitByGroupParentWorkingUnit(((Long)arguments[0]).longValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[1]);
 		}
 
-		if (_methodName108.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes108, parameterTypes)) {
+		if (_methodName110.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes110, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.getByGroupParentWorkingUnit(((Long)arguments[0]).longValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[1]);
 		}
 
-		if (_methodName109.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes109, parameterTypes)) {
+		if (_methodName111.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes111, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.getByGroupParentWorkingUnit(((Long)arguments[0]).longValue(),
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[3]);
 		}
 
-		if (_methodName110.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes110, parameterTypes)) {
+		if (_methodName112.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.countWorkingUnitByLikeName((java.lang.String)arguments[0],
 				((Long)arguments[1]).longValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[2]);
 		}
 
-		if (_methodName111.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes111, parameterTypes)) {
+		if (_methodName113.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes113, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.finderByLikeName((java.lang.String)arguments[0],
 				((Long)arguments[1]).longValue(),
 				(com.liferay.portal.service.ServiceContext)arguments[2]);
 		}
 
-		if (_methodName112.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
+		if (_methodName114.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes114, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.finderByLikeName((java.lang.String)arguments[0],
 				((Long)arguments[1]).longValue(),
 				((Integer)arguments[2]).intValue(),
@@ -592,8 +597,8 @@ public class WorkingUnitLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[4]);
 		}
 
-		if (_methodName113.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes113, parameterTypes)) {
+		if (_methodName115.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes115, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.getByCompanyTree((com.liferay.portal.service.ServiceContext)arguments[0]);
 		}
 
@@ -632,14 +637,10 @@ public class WorkingUnitLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName82;
-	private String[] _methodParameterTypes82;
-	private String _methodName83;
-	private String[] _methodParameterTypes83;
-	private String _methodName88;
-	private String[] _methodParameterTypes88;
-	private String _methodName89;
-	private String[] _methodParameterTypes89;
+	private String _methodName84;
+	private String[] _methodParameterTypes84;
+	private String _methodName85;
+	private String[] _methodParameterTypes85;
 	private String _methodName90;
 	private String[] _methodParameterTypes90;
 	private String _methodName91;
@@ -688,4 +689,8 @@ public class WorkingUnitLocalServiceClpInvoker {
 	private String[] _methodParameterTypes112;
 	private String _methodName113;
 	private String[] _methodParameterTypes113;
+	private String _methodName114;
+	private String[] _methodParameterTypes114;
+	private String _methodName115;
+	private String[] _methodParameterTypes115;
 }

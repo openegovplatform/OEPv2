@@ -4,16 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
-
-
-
-
-
-
-
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.PortletException;
@@ -26,6 +16,7 @@ import org.oep.usermgt.action.WorkingUnitKeys;
 import org.oep.usermgt.action.PortletKeys;
 import org.oep.usermgt.model.JobPos;
 import org.oep.usermgt.model.WorkingUnit;
+import org.oep.usermgt.service.JobPos2RoleLocalServiceUtil;
 import org.oep.usermgt.service.JobPosLocalServiceUtil;
 import org.oep.usermgt.service.WorkingUnitLocalServiceUtil;
 import org.oep.usermgt.util.ManagerLdap;
@@ -41,8 +32,10 @@ import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.upload.UploadRequest;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
+import com.liferay.portal.model.Organization;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.LayoutLocalServiceUtil;
+import com.liferay.portal.service.OrganizationLocalServiceUtil;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.ServiceContextThreadLocal;
 import com.liferay.portal.service.UserLocalServiceUtil;
@@ -67,6 +60,7 @@ public class WorkingUnitPortlet extends MVCPortlet {
 			System.out.println(" ssss  " + textSearch);
 			System.out.println(" ssss 1 " + thu);
 			super.render(request, response);
+				GroupConstants.
 	}
 */
 	public void addEdit(ActionRequest request, ActionResponse response)
@@ -88,8 +82,8 @@ public class WorkingUnitPortlet extends MVCPortlet {
 					PortletKeys.TEXT_BOX);
 			long parentWorkingUnitId = ParamUtil.getLong(uploadRequest,
 					WorkingUnitKeys.AddEditAttributes.PARENTWORKINGUNITID);
-			String organizationId = ParamUtil.getString(uploadRequest,
-					WorkingUnitKeys.AddEditAttributes.PARENTWORKINGUNITID);
+			long organizationId = ParamUtil.getLong(uploadRequest,
+					WorkingUnitKeys.AddEditAttributes.ORGANIZATIONID);
 			String address = ParamUtil.getString(uploadRequest,
 					WorkingUnitKeys.AddEditAttributes.ADDRESS,
 					PortletKeys.TEXT_BOX);
@@ -140,18 +134,33 @@ public class WorkingUnitPortlet extends MVCPortlet {
 			String website = ParamUtil.getString(uploadRequest,
 					WorkingUnitKeys.AddEditAttributes.WEBSITE,
 					PortletKeys.TEXT_BOX);
-
-			Long editId = ParamUtil.getLong(uploadRequest,
+			long  localSiteId = ParamUtil.getLong(uploadRequest,
+					WorkingUnitKeys.AddEditAttributes.LOCALSITEID);
+			int  isEmployer = 0;
+			if (ParamUtil.getBoolean(uploadRequest,WorkingUnitKeys.AddEditAttributes.ISEMPLOYER, PortletKeys.CHECK_BOX)){
+				System.out.println(ParamUtil.getBoolean(uploadRequest,WorkingUnitKeys.AddEditAttributes.ISEMPLOYER, PortletKeys.CHECK_BOX));
+				isEmployer = 1;
+			}
+			long editId = ParamUtil.getLong(uploadRequest,
 					WorkingUnitKeys.AddEditAttributes.EDIT_ID,
 					PortletKeys.LONG_DEFAULT);
-
+			
+			if (organizationId == PortletKeys.LONG_DEFAULT){
+				
+				//Organization og = OrganizationLocalServiceUtil.addOrganization
+				//		(serviceContext.getUserId(),
+				//		0,	name, "regular-organization",  
+				//		0, 	0, 0,"",true, serviceContext);
+				//organizationId = og.getOrganizationId();
+						
+			}
 			// Date pingTime = new Date();
 			if (editId == PortletKeys.LONG_DEFAULT) {
 				WorkingUnitLocalServiceUtil.addWorkingUnit(organizationId,
 						govAgencyId, name, enName, parentWorkingUnitId,
 						address, cityNo, cityName, districtNo, districtName,
 						wardNo, wardName, gpsPosition, telNo, fax, email,
-						website, serviceContext);
+						website,localSiteId,isEmployer, serviceContext);
 				//System.out.println(" sssss  " + name + " " + address);
 			} else {
 				WorkingUnit workingUnit = WorkingUnitLocalServiceUtil
@@ -173,6 +182,9 @@ public class WorkingUnitPortlet extends MVCPortlet {
 				workingUnit.setFax(fax);
 				workingUnit.setEmail(email);
 				workingUnit.setWebsite(website);
+				workingUnit.setIsEmployer(isEmployer);
+				workingUnit.setLocalSiteId(localSiteId);
+				workingUnit.setOrganizationId(organizationId);
 				WorkingUnitLocalServiceUtil.saveWorkingUnit(workingUnit,
 						serviceContext);
 			}
@@ -215,7 +227,7 @@ public class WorkingUnitPortlet extends MVCPortlet {
 			PortalUtil.copyRequestParameters(request, response);
 		}
 	}
-
+	
 	private void setParameterIntoResponse(ActionResponse response,
 			WorkingUnit workingUnit) {
 		response.setRenderParameter(
@@ -233,6 +245,10 @@ public class WorkingUnitPortlet extends MVCPortlet {
 				String.valueOf(workingUnit.getParentWorkingUnitId()));
 		response.setRenderParameter(WorkingUnitKeys.AddEditAttributes.ADDRESS,
 				String.valueOf(workingUnit.getAddress()));
+		response.setRenderParameter(WorkingUnitKeys.AddEditAttributes.LOCALSITEID,
+				String.valueOf(workingUnit.getLocalSiteId()));
+		response.setRenderParameter(WorkingUnitKeys.AddEditAttributes.ISEMPLOYER,
+				String.valueOf(workingUnit.getIsEmployer()==1));
 		//response.setRenderParameter(WorkingUnitKeys.AddEditAttributes.CITYNO,
 		//		String.valueOf(workingUnit.getCityNo()));
 		if (workingUnit.getCityNo() == null && workingUnit.getCityNo().equals("")){
@@ -463,7 +479,7 @@ public class WorkingUnitPortlet extends MVCPortlet {
 			Long editId = ParamUtil.getLong(uploadRequest,
 					JobPosKeys.AddEditAttributes.EDIT_ID,
 					PortletKeys.LONG_DEFAULT);
-			System.out.println(" sssss  " + title + " " + workingUnitId + " " + leader + " " + editId);
+			//System.out.println(" sssss  " + title + " " + workingUnitId + " " + leader + " " + editId);
 			// Date pingTime = new Date();
 			if (editId == PortletKeys.LONG_DEFAULT) {
 				JobPosLocalServiceUtil.addJobPos(title, positionCatNo, workingUnitId,subWorkingUnitId, leader, serviceContext);
@@ -493,7 +509,7 @@ public class WorkingUnitPortlet extends MVCPortlet {
 				PortletKeys.LONG_DEFAULT);
 
 		JobPosLocalServiceUtil.removeJobPos(deleteId);
-
+	
 		response.sendRedirect(ParamUtil.getString(request,
 				PortletKeys.REDIRECT_PAGE));
 	}
@@ -522,7 +538,6 @@ public class WorkingUnitPortlet extends MVCPortlet {
 		response.setRenderParameter(JobPosKeys.AddEditAttributes.POSITIONCATNO,String.valueOf(jobPos.getPositionCatNo()));
 		response.setRenderParameter(JobPosKeys.AddEditAttributes.SUBWORKINGUNITID,String.valueOf(jobPos.getSubWorkingUnitId()));
 		response.setRenderParameter(JobPosKeys.AddEditAttributes.LEADER,String.valueOf(jobPos.getLeader()));
-
 	}
 	public void toNextPage(ActionRequest request, ActionResponse response)
 			throws PortalException, SystemException, IOException {
@@ -538,6 +553,62 @@ public class WorkingUnitPortlet extends MVCPortlet {
 		} else {
 			PortalUtil.copyRequestParameters(request, response);
 		}
+	}
+	public void addEditJobPos2Role(ActionRequest request, ActionResponse response)
+			throws SystemException, PortalException, IOException {
+
+		if (SessionErrors.isEmpty(request)) {
+			ServiceContext serviceContext = ServiceContextThreadLocal
+					.getServiceContext();
+			UploadRequest uploadRequest = PortalUtil
+					.getUploadPortletRequest(request);
+			
+			long roleId = ParamUtil.getLong(uploadRequest,JobPosKeys.AddEditAttributes.ROLEID);
+			long jobPosId = ParamUtil.getLong(uploadRequest,JobPosKeys.AddEditAttributes.JOBPOSID);
+			System.out.println(" sssss  " + roleId + " " + jobPosId);
+			// Date pingTime = new Date();
+			if (roleId != PortletKeys.LONG_DEFAULT && jobPosId !=  PortletKeys.LONG_DEFAULT) {
+				JobPos2RoleLocalServiceUtil.addJobPos2Role(jobPosId, roleId, serviceContext);
+				//System.out.println(" sssss  " + name + " " + address);
+			} 
+		}
+		PortalUtil.copyRequestParameters(request, response);
+		/*
+		if (!SessionErrors.isEmpty(request)) {
+			PortalUtil.copyRequestParameters(request, response);
+		} else {
+			response.sendRedirect(ParamUtil.getString(request,
+					PortletKeys.REDIRECT_PAGE));
+		}
+		*/
+	}
+	public void deleteJobPos2Role(ActionRequest request, ActionResponse response)
+			throws SystemException, PortalException, IOException {
+
+		if (SessionErrors.isEmpty(request)) {
+			ServiceContext serviceContext = ServiceContextThreadLocal
+					.getServiceContext();
+			UploadRequest uploadRequest = PortalUtil
+					.getUploadPortletRequest(request);
+			
+			long roleId = ParamUtil.getLong(uploadRequest,JobPosKeys.BaseJobPosAttributes.DELETE_ID);
+			long jobPosId = ParamUtil.getLong(uploadRequest,JobPosKeys.AddEditAttributes.JOBPOSID);
+			System.out.println(" sssss  " + roleId + " " + jobPosId);
+			// Date pingTime = new Date();
+			if (roleId != PortletKeys.LONG_DEFAULT && jobPosId !=  PortletKeys.LONG_DEFAULT) {
+				JobPos2RoleLocalServiceUtil.removeJobPos2Role(jobPosId, roleId);//(jobPosId, roleId, serviceContext);
+				//System.out.println(" sssss  " + name + " " + address);
+			} 
+		}
+		PortalUtil.copyRequestParameters(request, response);
+		/*
+		if (!SessionErrors.isEmpty(request)) {
+			PortalUtil.copyRequestParameters(request, response);
+		} else {
+			response.sendRedirect(ParamUtil.getString(request,
+					PortletKeys.REDIRECT_PAGE));
+		}
+		*/
 	}
 	private static Log _log = LogFactoryUtil.getLog(WorkingUnitPortlet.class);
 }

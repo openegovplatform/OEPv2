@@ -14,7 +14,7 @@
 
 package org.oep.usermgt.model;
 
-import org.oep.usermgt.service.persistence.Jobpos2RolePK;
+import org.oep.usermgt.service.persistence.JobPos2RolePK;
 
 import java.io.Serializable;
 
@@ -22,15 +22,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class is used by SOAP remote services, specifically {@link org.oep.usermgt.service.http.Jobpos2RoleServiceSoap}.
+ * This class is used by SOAP remote services, specifically {@link org.oep.usermgt.service.http.JobPos2RoleServiceSoap}.
  *
  * @author NQMINH
- * @see org.oep.usermgt.service.http.Jobpos2RoleServiceSoap
+ * @see org.oep.usermgt.service.http.JobPos2RoleServiceSoap
  * @generated
  */
-public class Jobpos2RoleSoap implements Serializable {
-	public static Jobpos2RoleSoap toSoapModel(Jobpos2Role model) {
-		Jobpos2RoleSoap soapModel = new Jobpos2RoleSoap();
+public class JobPos2RoleSoap implements Serializable {
+	public static JobPos2RoleSoap toSoapModel(JobPos2Role model) {
+		JobPos2RoleSoap soapModel = new JobPos2RoleSoap();
 
 		soapModel.setJobPosId(model.getJobPosId());
 		soapModel.setRoleId(model.getRoleId());
@@ -38,8 +38,8 @@ public class Jobpos2RoleSoap implements Serializable {
 		return soapModel;
 	}
 
-	public static Jobpos2RoleSoap[] toSoapModels(Jobpos2Role[] models) {
-		Jobpos2RoleSoap[] soapModels = new Jobpos2RoleSoap[models.length];
+	public static JobPos2RoleSoap[] toSoapModels(JobPos2Role[] models) {
+		JobPos2RoleSoap[] soapModels = new JobPos2RoleSoap[models.length];
 
 		for (int i = 0; i < models.length; i++) {
 			soapModels[i] = toSoapModel(models[i]);
@@ -48,14 +48,14 @@ public class Jobpos2RoleSoap implements Serializable {
 		return soapModels;
 	}
 
-	public static Jobpos2RoleSoap[][] toSoapModels(Jobpos2Role[][] models) {
-		Jobpos2RoleSoap[][] soapModels = null;
+	public static JobPos2RoleSoap[][] toSoapModels(JobPos2Role[][] models) {
+		JobPos2RoleSoap[][] soapModels = null;
 
 		if (models.length > 0) {
-			soapModels = new Jobpos2RoleSoap[models.length][models[0].length];
+			soapModels = new JobPos2RoleSoap[models.length][models[0].length];
 		}
 		else {
-			soapModels = new Jobpos2RoleSoap[0][0];
+			soapModels = new JobPos2RoleSoap[0][0];
 		}
 
 		for (int i = 0; i < models.length; i++) {
@@ -65,24 +65,24 @@ public class Jobpos2RoleSoap implements Serializable {
 		return soapModels;
 	}
 
-	public static Jobpos2RoleSoap[] toSoapModels(List<Jobpos2Role> models) {
-		List<Jobpos2RoleSoap> soapModels = new ArrayList<Jobpos2RoleSoap>(models.size());
+	public static JobPos2RoleSoap[] toSoapModels(List<JobPos2Role> models) {
+		List<JobPos2RoleSoap> soapModels = new ArrayList<JobPos2RoleSoap>(models.size());
 
-		for (Jobpos2Role model : models) {
+		for (JobPos2Role model : models) {
 			soapModels.add(toSoapModel(model));
 		}
 
-		return soapModels.toArray(new Jobpos2RoleSoap[soapModels.size()]);
+		return soapModels.toArray(new JobPos2RoleSoap[soapModels.size()]);
 	}
 
-	public Jobpos2RoleSoap() {
+	public JobPos2RoleSoap() {
 	}
 
-	public Jobpos2RolePK getPrimaryKey() {
-		return new Jobpos2RolePK(_jobPosId, _roleId);
+	public JobPos2RolePK getPrimaryKey() {
+		return new JobPos2RolePK(_jobPosId, _roleId);
 	}
 
-	public void setPrimaryKey(Jobpos2RolePK pk) {
+	public void setPrimaryKey(JobPos2RolePK pk) {
 		setJobPosId(pk.jobPosId);
 		setRoleId(pk.roleId);
 	}

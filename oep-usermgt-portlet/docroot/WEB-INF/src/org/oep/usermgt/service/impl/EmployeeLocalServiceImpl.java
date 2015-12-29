@@ -14,10 +14,13 @@
 
 package org.oep.usermgt.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.oep.usermgt.model.Employee;
+import org.oep.usermgt.model.JobPos;
+
 import org.oep.usermgt.service.base.EmployeeLocalServiceBaseImpl;
 
 import com.liferay.portal.kernel.exception.PortalException;
@@ -96,7 +99,20 @@ public class EmployeeLocalServiceImpl extends EmployeeLocalServiceBaseImpl {
 		return getEmployee(id);
 	}
 	
-
+	public void addEmployee2JoPos(
+			long employeeId,
+			long jobPosId) throws SystemException, PortalException {
+			employeePersistence.addJobPos(employeeId, jobPosId); //.update(jobPos2Role);
+		/*
+		if (serviceContext.isAddGroupPermissions() || serviceContext.isAddGuestPermissions()) {
+			addJobPos2RoleResources(jobPos2Role, serviceContext.isAddGroupPermissions(), serviceContext.isAddGuestPermissions(), serviceContext);
+		}
+		else {
+			addJobPos2RoleResources(jobPos2Role, serviceContext.getGroupPermissions(), serviceContext.getGuestPermissions(), serviceContext);
+		}
+		*/
+	//return jobPos2Role;
+	}
 	public Employee updateEmployee(
 			long employeeId,
 			long mappingUserId,
@@ -178,6 +194,10 @@ public class EmployeeLocalServiceImpl extends EmployeeLocalServiceBaseImpl {
 		removeEmployee(employee);
 	}
 	
+	public void removeJobPos(long employeeId, long jobPosId) throws PortalException, SystemException {
+		employeePersistence.removeJobPos(employeeId, jobPosId);
+	}
+	
 	public Employee getEmployee(long id) throws PortalException, SystemException {
 		return employeePersistence.findByPrimaryKey(id);
 	}
@@ -230,6 +250,24 @@ public class EmployeeLocalServiceImpl extends EmployeeLocalServiceBaseImpl {
 	
 	public List<Employee> finderLikeNameWorkingUnit(String textSearch,long workingUnitId, int start, int end) throws PortalException, SystemException {
 		return employeeFinder.findByLikeName(textSearch,workingUnitId, start, end);
+	}
+	public List<JobPos> getJobPosByEmployeeId(long employeeId) throws PortalException, SystemException {
+		return employeePersistence.getJobPoses(employeeId);
+		//return employeePersistence.findByWU(workingUnitId);
+	}
+	
+	public List<JobPos> getJobPos(ArrayList<JobPos> listJobPos, long employeeId) throws PortalException, SystemException {
+		List<JobPos> listEmployee2JobPos=  getJobPosByEmployeeId(employeeId);
+		//ArrayList<Role> roles = new ArrayList<Role>();
+		for (int i = 0; i < listEmployee2JobPos.size();i++){
+			for (int k = 0; k < listJobPos.size();k++){
+				if (listJobPos.get(k).getJobPosId() == listEmployee2JobPos.get(i).getJobPosId()){
+					listJobPos.remove(k);
+					break;
+				}
+			}
+		}
+		return listEmployee2JobPos;
 	}
 	
 }

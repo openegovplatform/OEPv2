@@ -11,7 +11,7 @@
 		<column name="userId" db-name="userId" type="long"></column>
 		<column name="createDate" db-name="createDate" type="Date"></column>
 		<column name="modifiedDate" db-name="modifiedDate" type="Date"></column>
-		<column name="organizationId" db-name="organizationId" type="String"></column>
+		<column name="organizationId" db-name="organizationId" type="long"></column>
 		<column name="govAgencyId" db-name="govAgencyId" type="String"></column>
 		<column name="name" db-name="name" type="String"></column>
 		<column name="enName" db-name="enName" type="String"></column>
@@ -31,6 +31,8 @@
 		<column name="website" db-name="website" type="String"></column>
 		<column name="aaa" db-name="aaa" type="String"></column>
 		<column name="shortName" db-name="shortName" type="String"></column>
+		<column name="localSiteId" db-name="localSiteId" type="long"></column>
+		<column name="isEmployer" db-name="isEmployer" type="int"></column>
 		<finder name="C" return-type="Collection">
 			<finder-column name="companyId"></finder-column>
 		</finder>
@@ -62,6 +64,13 @@
 		<finder name="G_PW" return-type="Collection">
 			<finder-column name="groupId"></finder-column>
 			<finder-column name="parentWorkingUnitId"></finder-column>
+		</finder>
+		<finder name="LS" return-type="Collection">
+			<finder-column name="localSiteId"></finder-column>
+		</finder>
+		<finder name="C_IsE" return-type="Collection">
+			<finder-column name="companyId"></finder-column>
+			<finder-column name="isEmployer"></finder-column>
 		</finder>
 	</entity>
 	<entity name="JobPos" table="oep_usermgt_jobpos" local-service="true"
@@ -134,7 +143,7 @@
 			<finder-column name="mainJobPosId"></finder-column>
 		</finder>
 	</entity>
-	<entity name="Jobpos2Role" table="oep_usermgt_jobpos2role"
+	<entity name="JobPos2Role" table="oep_usermgt_jobpos2role"
 		local-service="true" human-name="jobpos to role">
 		<column name="jobPosId" db-name="jobPosId" type="long" primary="true"></column>
 		<column name="roleId" db-name="roleId" type="long" primary="true"></column>

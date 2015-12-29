@@ -22,8 +22,8 @@ import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
 
 import org.oep.usermgt.service.ClpSerializer;
-import org.oep.usermgt.service.Jobpos2RoleLocalServiceUtil;
-import org.oep.usermgt.service.persistence.Jobpos2RolePK;
+import org.oep.usermgt.service.JobPos2RoleLocalServiceUtil;
+import org.oep.usermgt.service.persistence.JobPos2RolePK;
 
 import java.io.Serializable;
 
@@ -35,40 +35,40 @@ import java.util.Map;
 /**
  * @author NQMINH
  */
-public class Jobpos2RoleClp extends BaseModelImpl<Jobpos2Role>
-	implements Jobpos2Role {
-	public Jobpos2RoleClp() {
+public class JobPos2RoleClp extends BaseModelImpl<JobPos2Role>
+	implements JobPos2Role {
+	public JobPos2RoleClp() {
 	}
 
 	@Override
 	public Class<?> getModelClass() {
-		return Jobpos2Role.class;
+		return JobPos2Role.class;
 	}
 
 	@Override
 	public String getModelClassName() {
-		return Jobpos2Role.class.getName();
+		return JobPos2Role.class.getName();
 	}
 
 	@Override
-	public Jobpos2RolePK getPrimaryKey() {
-		return new Jobpos2RolePK(_jobPosId, _roleId);
+	public JobPos2RolePK getPrimaryKey() {
+		return new JobPos2RolePK(_jobPosId, _roleId);
 	}
 
 	@Override
-	public void setPrimaryKey(Jobpos2RolePK primaryKey) {
+	public void setPrimaryKey(JobPos2RolePK primaryKey) {
 		setJobPosId(primaryKey.jobPosId);
 		setRoleId(primaryKey.roleId);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return new Jobpos2RolePK(_jobPosId, _roleId);
+		return new JobPos2RolePK(_jobPosId, _roleId);
 	}
 
 	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		setPrimaryKey((Jobpos2RolePK)primaryKeyObj);
+		setPrimaryKey((JobPos2RolePK)primaryKeyObj);
 	}
 
 	@Override
@@ -105,13 +105,13 @@ public class Jobpos2RoleClp extends BaseModelImpl<Jobpos2Role>
 	public void setJobPosId(long jobPosId) {
 		_jobPosId = jobPosId;
 
-		if (_jobpos2RoleRemoteModel != null) {
+		if (_jobPos2RoleRemoteModel != null) {
 			try {
-				Class<?> clazz = _jobpos2RoleRemoteModel.getClass();
+				Class<?> clazz = _jobPos2RoleRemoteModel.getClass();
 
 				Method method = clazz.getMethod("setJobPosId", long.class);
 
-				method.invoke(_jobpos2RoleRemoteModel, jobPosId);
+				method.invoke(_jobPos2RoleRemoteModel, jobPosId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -128,13 +128,13 @@ public class Jobpos2RoleClp extends BaseModelImpl<Jobpos2Role>
 	public void setRoleId(long roleId) {
 		_roleId = roleId;
 
-		if (_jobpos2RoleRemoteModel != null) {
+		if (_jobPos2RoleRemoteModel != null) {
 			try {
-				Class<?> clazz = _jobpos2RoleRemoteModel.getClass();
+				Class<?> clazz = _jobPos2RoleRemoteModel.getClass();
 
 				Method method = clazz.getMethod("setRoleId", long.class);
 
-				method.invoke(_jobpos2RoleRemoteModel, roleId);
+				method.invoke(_jobPos2RoleRemoteModel, roleId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -142,12 +142,12 @@ public class Jobpos2RoleClp extends BaseModelImpl<Jobpos2Role>
 		}
 	}
 
-	public BaseModel<?> getJobpos2RoleRemoteModel() {
-		return _jobpos2RoleRemoteModel;
+	public BaseModel<?> getJobPos2RoleRemoteModel() {
+		return _jobPos2RoleRemoteModel;
 	}
 
-	public void setJobpos2RoleRemoteModel(BaseModel<?> jobpos2RoleRemoteModel) {
-		_jobpos2RoleRemoteModel = jobpos2RoleRemoteModel;
+	public void setJobPos2RoleRemoteModel(BaseModel<?> jobPos2RoleRemoteModel) {
+		_jobPos2RoleRemoteModel = jobPos2RoleRemoteModel;
 	}
 
 	public Object invokeOnRemoteModel(String methodName,
@@ -161,7 +161,7 @@ public class Jobpos2RoleClp extends BaseModelImpl<Jobpos2Role>
 			}
 		}
 
-		Class<?> remoteModelClass = _jobpos2RoleRemoteModel.getClass();
+		Class<?> remoteModelClass = _jobPos2RoleRemoteModel.getClass();
 
 		ClassLoader remoteModelClassLoader = remoteModelClass.getClassLoader();
 
@@ -181,7 +181,7 @@ public class Jobpos2RoleClp extends BaseModelImpl<Jobpos2Role>
 		Method method = remoteModelClass.getMethod(methodName,
 				remoteParameterTypes);
 
-		Object returnValue = method.invoke(_jobpos2RoleRemoteModel,
+		Object returnValue = method.invoke(_jobPos2RoleRemoteModel,
 				remoteParameterValues);
 
 		if (returnValue != null) {
@@ -194,22 +194,22 @@ public class Jobpos2RoleClp extends BaseModelImpl<Jobpos2Role>
 	@Override
 	public void persist() throws SystemException {
 		if (this.isNew()) {
-			Jobpos2RoleLocalServiceUtil.addJobpos2Role(this);
+			JobPos2RoleLocalServiceUtil.addJobPos2Role(this);
 		}
 		else {
-			Jobpos2RoleLocalServiceUtil.updateJobpos2Role(this);
+			JobPos2RoleLocalServiceUtil.updateJobPos2Role(this);
 		}
 	}
 
 	@Override
-	public Jobpos2Role toEscapedModel() {
-		return (Jobpos2Role)ProxyUtil.newProxyInstance(Jobpos2Role.class.getClassLoader(),
-			new Class[] { Jobpos2Role.class }, new AutoEscapeBeanHandler(this));
+	public JobPos2Role toEscapedModel() {
+		return (JobPos2Role)ProxyUtil.newProxyInstance(JobPos2Role.class.getClassLoader(),
+			new Class[] { JobPos2Role.class }, new AutoEscapeBeanHandler(this));
 	}
 
 	@Override
 	public Object clone() {
-		Jobpos2RoleClp clone = new Jobpos2RoleClp();
+		JobPos2RoleClp clone = new JobPos2RoleClp();
 
 		clone.setJobPosId(getJobPosId());
 		clone.setRoleId(getRoleId());
@@ -218,8 +218,8 @@ public class Jobpos2RoleClp extends BaseModelImpl<Jobpos2Role>
 	}
 
 	@Override
-	public int compareTo(Jobpos2Role jobpos2Role) {
-		Jobpos2RolePK primaryKey = jobpos2Role.getPrimaryKey();
+	public int compareTo(JobPos2Role jobPos2Role) {
+		JobPos2RolePK primaryKey = jobPos2Role.getPrimaryKey();
 
 		return getPrimaryKey().compareTo(primaryKey);
 	}
@@ -230,13 +230,13 @@ public class Jobpos2RoleClp extends BaseModelImpl<Jobpos2Role>
 			return true;
 		}
 
-		if (!(obj instanceof Jobpos2RoleClp)) {
+		if (!(obj instanceof JobPos2RoleClp)) {
 			return false;
 		}
 
-		Jobpos2RoleClp jobpos2Role = (Jobpos2RoleClp)obj;
+		JobPos2RoleClp jobPos2Role = (JobPos2RoleClp)obj;
 
-		Jobpos2RolePK primaryKey = jobpos2Role.getPrimaryKey();
+		JobPos2RolePK primaryKey = jobPos2Role.getPrimaryKey();
 
 		if (getPrimaryKey().equals(primaryKey)) {
 			return true;
@@ -273,7 +273,7 @@ public class Jobpos2RoleClp extends BaseModelImpl<Jobpos2Role>
 		StringBundler sb = new StringBundler(10);
 
 		sb.append("<model><model-name>");
-		sb.append("org.oep.usermgt.model.Jobpos2Role");
+		sb.append("org.oep.usermgt.model.JobPos2Role");
 		sb.append("</model-name>");
 
 		sb.append(
@@ -292,6 +292,6 @@ public class Jobpos2RoleClp extends BaseModelImpl<Jobpos2Role>
 
 	private long _jobPosId;
 	private long _roleId;
-	private BaseModel<?> _jobpos2RoleRemoteModel;
+	private BaseModel<?> _jobPos2RoleRemoteModel;
 	private Class<?> _clpSerializerClass = org.oep.usermgt.service.ClpSerializer.class;
 }

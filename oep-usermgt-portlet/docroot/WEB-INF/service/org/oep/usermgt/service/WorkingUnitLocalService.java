@@ -288,7 +288,7 @@ public interface WorkingUnitLocalService extends BaseLocalService,
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
 	public org.oep.usermgt.model.WorkingUnit addWorkingUnit(
-		java.lang.String organizationId, java.lang.String govAgencyId,
+		long organizationId, java.lang.String govAgencyId,
 		java.lang.String name, java.lang.String enName,
 		long parentWorkingUnitId, java.lang.String address,
 		java.lang.String cityNo, java.lang.String cityName,
@@ -296,20 +296,21 @@ public interface WorkingUnitLocalService extends BaseLocalService,
 		java.lang.String wardNo, java.lang.String wardName,
 		java.lang.String gpsPosition, java.lang.String telNo,
 		java.lang.String fax, java.lang.String email, java.lang.String website,
+		long localSiteId, int isEmployer,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
 	public org.oep.usermgt.model.WorkingUnit updateWorkingUnit(
-		long workingUnitId, java.lang.String organizationId,
-		java.lang.String govAgencyId, java.lang.String name,
-		java.lang.String enName, long parentWorkingUnitId,
-		java.lang.String address, java.lang.String cityNo,
-		java.lang.String cityName, java.lang.String districtNo,
-		java.lang.String districtName, java.lang.String wardNo,
-		java.lang.String wardName, java.lang.String gpsPosition,
-		java.lang.String telNo, java.lang.String fax, java.lang.String email,
-		java.lang.String website,
+		long workingUnitId, long organizationId, java.lang.String govAgencyId,
+		java.lang.String name, java.lang.String enName,
+		long parentWorkingUnitId, java.lang.String address,
+		java.lang.String cityNo, java.lang.String cityName,
+		java.lang.String districtNo, java.lang.String districtName,
+		java.lang.String wardNo, java.lang.String wardName,
+		java.lang.String gpsPosition, java.lang.String telNo,
+		java.lang.String fax, java.lang.String email, java.lang.String website,
+		long localSiteId, int isEmployer,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;

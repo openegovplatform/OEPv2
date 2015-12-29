@@ -11,6 +11,7 @@ public class  JobPosKeys {
 		public static final String SUBWORKINGUNITID="addEditSubWorkingUnitId";
 		public static final String LEADER="addEditLeader";
 		public static final String ROLEID="addEditRoleId";
+		public static final String JOBPOSID="addJobPosId";
 		
 	}
 	

@@ -19,24 +19,24 @@ import com.liferay.portal.kernel.util.ReferenceRegistry;
 import com.liferay.portal.service.InvokableService;
 
 /**
- * Provides the remote service utility for Jobpos2Role. This utility wraps
- * {@link org.oep.usermgt.service.impl.Jobpos2RoleServiceImpl} and is the
+ * Provides the remote service utility for JobPos2Role. This utility wraps
+ * {@link org.oep.usermgt.service.impl.JobPos2RoleServiceImpl} and is the
  * primary access point for service operations in application layer code running
  * on a remote server. Methods of this service are expected to have security
  * checks based on the propagated JAAS credentials because this service can be
  * accessed remotely.
  *
  * @author NQMINH
- * @see Jobpos2RoleService
- * @see org.oep.usermgt.service.base.Jobpos2RoleServiceBaseImpl
- * @see org.oep.usermgt.service.impl.Jobpos2RoleServiceImpl
+ * @see JobPos2RoleService
+ * @see org.oep.usermgt.service.base.JobPos2RoleServiceBaseImpl
+ * @see org.oep.usermgt.service.impl.JobPos2RoleServiceImpl
  * @generated
  */
-public class Jobpos2RoleServiceUtil {
+public class JobPos2RoleServiceUtil {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify this class directly. Add custom service methods to {@link org.oep.usermgt.service.impl.Jobpos2RoleServiceImpl} and rerun ServiceBuilder to regenerate this class.
+	 * Never modify this class directly. Add custom service methods to {@link org.oep.usermgt.service.impl.JobPos2RoleServiceImpl} and rerun ServiceBuilder to regenerate this class.
 	 */
 
 	/**
@@ -67,19 +67,19 @@ public class Jobpos2RoleServiceUtil {
 		_service = null;
 	}
 
-	public static Jobpos2RoleService getService() {
+	public static JobPos2RoleService getService() {
 		if (_service == null) {
 			InvokableService invokableService = (InvokableService)PortletBeanLocatorUtil.locate(ClpSerializer.getServletContextName(),
-					Jobpos2RoleService.class.getName());
+					JobPos2RoleService.class.getName());
 
-			if (invokableService instanceof Jobpos2RoleService) {
-				_service = (Jobpos2RoleService)invokableService;
+			if (invokableService instanceof JobPos2RoleService) {
+				_service = (JobPos2RoleService)invokableService;
 			}
 			else {
-				_service = new Jobpos2RoleServiceClp(invokableService);
+				_service = new JobPos2RoleServiceClp(invokableService);
 			}
 
-			ReferenceRegistry.registerReference(Jobpos2RoleServiceUtil.class,
+			ReferenceRegistry.registerReference(JobPos2RoleServiceUtil.class,
 				"_service");
 		}
 
@@ -89,8 +89,8 @@ public class Jobpos2RoleServiceUtil {
 	/**
 	 * @deprecated As of 6.2.0
 	 */
-	public void setService(Jobpos2RoleService service) {
+	public void setService(JobPos2RoleService service) {
 	}
 
-	private static Jobpos2RoleService _service;
+	private static JobPos2RoleService _service;
 }

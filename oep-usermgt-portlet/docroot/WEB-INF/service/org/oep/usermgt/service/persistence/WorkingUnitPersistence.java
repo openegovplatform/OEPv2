@@ -313,7 +313,7 @@ public interface WorkingUnitPersistence extends BasePersistence<WorkingUnit> {
 	* @throws SystemException if a system exception occurred
 	*/
 	public java.util.List<org.oep.usermgt.model.WorkingUnit> findByO(
-		java.lang.String organizationId)
+		long organizationId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
@@ -330,7 +330,7 @@ public interface WorkingUnitPersistence extends BasePersistence<WorkingUnit> {
 	* @throws SystemException if a system exception occurred
 	*/
 	public java.util.List<org.oep.usermgt.model.WorkingUnit> findByO(
-		java.lang.String organizationId, int start, int end)
+		long organizationId, int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
@@ -348,7 +348,7 @@ public interface WorkingUnitPersistence extends BasePersistence<WorkingUnit> {
 	* @throws SystemException if a system exception occurred
 	*/
 	public java.util.List<org.oep.usermgt.model.WorkingUnit> findByO(
-		java.lang.String organizationId, int start, int end,
+		long organizationId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
@@ -362,7 +362,7 @@ public interface WorkingUnitPersistence extends BasePersistence<WorkingUnit> {
 	* @throws SystemException if a system exception occurred
 	*/
 	public org.oep.usermgt.model.WorkingUnit findByO_First(
-		java.lang.String organizationId,
+		long organizationId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			org.oep.usermgt.NoSuchWorkingUnitException;
@@ -376,7 +376,7 @@ public interface WorkingUnitPersistence extends BasePersistence<WorkingUnit> {
 	* @throws SystemException if a system exception occurred
 	*/
 	public org.oep.usermgt.model.WorkingUnit fetchByO_First(
-		java.lang.String organizationId,
+		long organizationId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
@@ -389,8 +389,7 @@ public interface WorkingUnitPersistence extends BasePersistence<WorkingUnit> {
 	* @throws org.oep.usermgt.NoSuchWorkingUnitException if a matching Working Unit could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public org.oep.usermgt.model.WorkingUnit findByO_Last(
-		java.lang.String organizationId,
+	public org.oep.usermgt.model.WorkingUnit findByO_Last(long organizationId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			org.oep.usermgt.NoSuchWorkingUnitException;
@@ -404,7 +403,7 @@ public interface WorkingUnitPersistence extends BasePersistence<WorkingUnit> {
 	* @throws SystemException if a system exception occurred
 	*/
 	public org.oep.usermgt.model.WorkingUnit fetchByO_Last(
-		java.lang.String organizationId,
+		long organizationId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
@@ -419,7 +418,7 @@ public interface WorkingUnitPersistence extends BasePersistence<WorkingUnit> {
 	* @throws SystemException if a system exception occurred
 	*/
 	public org.oep.usermgt.model.WorkingUnit[] findByO_PrevAndNext(
-		long workingUnitId, java.lang.String organizationId,
+		long workingUnitId, long organizationId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			org.oep.usermgt.NoSuchWorkingUnitException;
@@ -430,7 +429,7 @@ public interface WorkingUnitPersistence extends BasePersistence<WorkingUnit> {
 	* @param organizationId the organization ID
 	* @throws SystemException if a system exception occurred
 	*/
-	public void removeByO(java.lang.String organizationId)
+	public void removeByO(long organizationId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
@@ -440,7 +439,7 @@ public interface WorkingUnitPersistence extends BasePersistence<WorkingUnit> {
 	* @return the number of matching Working Units
 	* @throws SystemException if a system exception occurred
 	*/
-	public int countByO(java.lang.String organizationId)
+	public int countByO(long organizationId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
@@ -1427,6 +1426,288 @@ public interface WorkingUnitPersistence extends BasePersistence<WorkingUnit> {
 	* @throws SystemException if a system exception occurred
 	*/
 	public int countByG_PW(long groupId, long parentWorkingUnitId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns all the Working Units where localSiteId = &#63;.
+	*
+	* @param localSiteId the local site ID
+	* @return the matching Working Units
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<org.oep.usermgt.model.WorkingUnit> findByLS(
+		long localSiteId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns a range of all the Working Units where localSiteId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.WorkingUnitModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param localSiteId the local site ID
+	* @param start the lower bound of the range of Working Units
+	* @param end the upper bound of the range of Working Units (not inclusive)
+	* @return the range of matching Working Units
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<org.oep.usermgt.model.WorkingUnit> findByLS(
+		long localSiteId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns an ordered range of all the Working Units where localSiteId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.WorkingUnitModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param localSiteId the local site ID
+	* @param start the lower bound of the range of Working Units
+	* @param end the upper bound of the range of Working Units (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching Working Units
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<org.oep.usermgt.model.WorkingUnit> findByLS(
+		long localSiteId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the first Working Unit in the ordered set where localSiteId = &#63;.
+	*
+	* @param localSiteId the local site ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching Working Unit
+	* @throws org.oep.usermgt.NoSuchWorkingUnitException if a matching Working Unit could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public org.oep.usermgt.model.WorkingUnit findByLS_First(long localSiteId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.usermgt.NoSuchWorkingUnitException;
+
+	/**
+	* Returns the first Working Unit in the ordered set where localSiteId = &#63;.
+	*
+	* @param localSiteId the local site ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching Working Unit, or <code>null</code> if a matching Working Unit could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public org.oep.usermgt.model.WorkingUnit fetchByLS_First(long localSiteId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the last Working Unit in the ordered set where localSiteId = &#63;.
+	*
+	* @param localSiteId the local site ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching Working Unit
+	* @throws org.oep.usermgt.NoSuchWorkingUnitException if a matching Working Unit could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public org.oep.usermgt.model.WorkingUnit findByLS_Last(long localSiteId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.usermgt.NoSuchWorkingUnitException;
+
+	/**
+	* Returns the last Working Unit in the ordered set where localSiteId = &#63;.
+	*
+	* @param localSiteId the local site ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching Working Unit, or <code>null</code> if a matching Working Unit could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public org.oep.usermgt.model.WorkingUnit fetchByLS_Last(long localSiteId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the Working Units before and after the current Working Unit in the ordered set where localSiteId = &#63;.
+	*
+	* @param workingUnitId the primary key of the current Working Unit
+	* @param localSiteId the local site ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next Working Unit
+	* @throws org.oep.usermgt.NoSuchWorkingUnitException if a Working Unit with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public org.oep.usermgt.model.WorkingUnit[] findByLS_PrevAndNext(
+		long workingUnitId, long localSiteId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.usermgt.NoSuchWorkingUnitException;
+
+	/**
+	* Removes all the Working Units where localSiteId = &#63; from the database.
+	*
+	* @param localSiteId the local site ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByLS(long localSiteId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the number of Working Units where localSiteId = &#63;.
+	*
+	* @param localSiteId the local site ID
+	* @return the number of matching Working Units
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByLS(long localSiteId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns all the Working Units where companyId = &#63; and isEmployer = &#63;.
+	*
+	* @param companyId the company ID
+	* @param isEmployer the is employer
+	* @return the matching Working Units
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<org.oep.usermgt.model.WorkingUnit> findByC_IsE(
+		long companyId, int isEmployer)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns a range of all the Working Units where companyId = &#63; and isEmployer = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.WorkingUnitModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param isEmployer the is employer
+	* @param start the lower bound of the range of Working Units
+	* @param end the upper bound of the range of Working Units (not inclusive)
+	* @return the range of matching Working Units
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<org.oep.usermgt.model.WorkingUnit> findByC_IsE(
+		long companyId, int isEmployer, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns an ordered range of all the Working Units where companyId = &#63; and isEmployer = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.WorkingUnitModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param isEmployer the is employer
+	* @param start the lower bound of the range of Working Units
+	* @param end the upper bound of the range of Working Units (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching Working Units
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<org.oep.usermgt.model.WorkingUnit> findByC_IsE(
+		long companyId, int isEmployer, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the first Working Unit in the ordered set where companyId = &#63; and isEmployer = &#63;.
+	*
+	* @param companyId the company ID
+	* @param isEmployer the is employer
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching Working Unit
+	* @throws org.oep.usermgt.NoSuchWorkingUnitException if a matching Working Unit could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public org.oep.usermgt.model.WorkingUnit findByC_IsE_First(long companyId,
+		int isEmployer,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.usermgt.NoSuchWorkingUnitException;
+
+	/**
+	* Returns the first Working Unit in the ordered set where companyId = &#63; and isEmployer = &#63;.
+	*
+	* @param companyId the company ID
+	* @param isEmployer the is employer
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching Working Unit, or <code>null</code> if a matching Working Unit could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public org.oep.usermgt.model.WorkingUnit fetchByC_IsE_First(
+		long companyId, int isEmployer,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the last Working Unit in the ordered set where companyId = &#63; and isEmployer = &#63;.
+	*
+	* @param companyId the company ID
+	* @param isEmployer the is employer
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching Working Unit
+	* @throws org.oep.usermgt.NoSuchWorkingUnitException if a matching Working Unit could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public org.oep.usermgt.model.WorkingUnit findByC_IsE_Last(long companyId,
+		int isEmployer,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.usermgt.NoSuchWorkingUnitException;
+
+	/**
+	* Returns the last Working Unit in the ordered set where companyId = &#63; and isEmployer = &#63;.
+	*
+	* @param companyId the company ID
+	* @param isEmployer the is employer
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching Working Unit, or <code>null</code> if a matching Working Unit could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public org.oep.usermgt.model.WorkingUnit fetchByC_IsE_Last(long companyId,
+		int isEmployer,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the Working Units before and after the current Working Unit in the ordered set where companyId = &#63; and isEmployer = &#63;.
+	*
+	* @param workingUnitId the primary key of the current Working Unit
+	* @param companyId the company ID
+	* @param isEmployer the is employer
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next Working Unit
+	* @throws org.oep.usermgt.NoSuchWorkingUnitException if a Working Unit with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public org.oep.usermgt.model.WorkingUnit[] findByC_IsE_PrevAndNext(
+		long workingUnitId, long companyId, int isEmployer,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.usermgt.NoSuchWorkingUnitException;
+
+	/**
+	* Removes all the Working Units where companyId = &#63; and isEmployer = &#63; from the database.
+	*
+	* @param companyId the company ID
+	* @param isEmployer the is employer
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByC_IsE(long companyId, int isEmployer)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the number of Working Units where companyId = &#63; and isEmployer = &#63;.
+	*
+	* @param companyId the company ID
+	* @param isEmployer the is employer
+	* @return the number of matching Working Units
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByC_IsE(long companyId, int isEmployer)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**

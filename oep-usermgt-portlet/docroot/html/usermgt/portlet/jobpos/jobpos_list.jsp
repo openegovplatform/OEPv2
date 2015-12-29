@@ -121,10 +121,11 @@
 				<portlet:param name="<%=PortletKeys.SET_VIEW_PARAMETER%>"
 					value="/html/usermgt/portlet/jobpos/jobpos_2_role.jsp" />
 				<portlet:param
-					name="<%=JobPosKeys.BaseJobPosAttributes.EDIT_ID%>"
+					name="<%=JobPosKeys.AddEditAttributes.JOBPOSID%>"
 					value="<%=String.valueOf(data.getJobPosId())%>" />
-					<portlet:param	name="<%=JobPosKeys.AddEditAttributes.WORKINGUNITID%>"
+				<portlet:param	name="<%=JobPosKeys.AddEditAttributes.WORKINGUNITID%>"
 					value="<%=String.valueOf(workingUnitId)%>" />
+					
 			</portlet:actionURL>
 			<%
 				if (index % 2 == 0) {

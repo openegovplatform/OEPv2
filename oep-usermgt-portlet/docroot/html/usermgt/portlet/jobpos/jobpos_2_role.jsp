@@ -27,9 +27,10 @@
 <%@page import="org.oep.usermgt.model.WorkingUnit"%>
 <%@page import="org.oep.usermgt.service.WorkingUnitLocalServiceUtil"%>
 <%@page import="org.oep.usermgt.model.JobPos"%>
-<%@page import="org.oep.usermgt.model.Jobpos2Role"%>
+<%@page import="org.oep.usermgt.model.JobPos2Role"%>
 <%@page import="org.oep.usermgt.action.JobPosKeys"%>
 <%@page import="org.oep.usermgt.service.JobPosLocalServiceUtil"%>
+<%@page import="org.oep.usermgt.service.JobPos2RoleLocalServiceUtil"%>
 <%@page import="com.liferay.portal.model.Role"%>
 <%@page import="com.liferay.portal.service.RoleLocalServiceUtil"%>
 
@@ -38,20 +39,15 @@
 	int cur = ParamUtil.getInteger(request, PortletKeys.SearchContainer.CURRENT_PAGE, PortletKeys.PAGE);
 	int delta = ParamUtil.getInteger(request, PortletKeys.SearchContainer.DELTA, PortletKeys.DELTA);
 	long workingUnitId = ParamUtil.getLong(request, JobPosKeys.AddEditAttributes.WORKINGUNITID, PortletKeys.SELECT_BOX);
+	long jobPosId = ParamUtil.getLong(request, JobPosKeys.AddEditAttributes.JOBPOSID, PortletKeys.SELECT_BOX);
 	WorkingUnit workingUnit = WorkingUnitLocalServiceUtil.getWorkingUnit(workingUnitId);
 	ServiceContext serviceContext = ServiceContextThreadLocal.getServiceContext();	
-	List<Role>  listRole = RoleLocalServiceUtil.getRoles(serviceContext.getCompanyId());
-	List<WorkingUnit> dsWorkingUnit =new ArrayList();
-	List<Jobpos2Role> datas = new ArrayList();
-	PortletURL iteratorUrl = renderResponse.createRenderURL();
-	SearchContainer<Jobpos2Role> searchContainer = new SearchContainer<Jobpos2Role>(renderRequest, null, null, SearchContainer.DEFAULT_CUR_PARAM, cur, delta, iteratorUrl, null, null);
-	int total = JobPosLocalServiceUtil.countJobPosByWorkingUnit(workingUnitId);
-	if (total > 0) {
-		int startIndex = searchContainer.getStart();
-		int endIndex = searchContainer.getEnd();
-		//datas = JobPosLocalServiceUtil.getByWorkingUnit(workingUnitId);
-		searchContainer.setResults(datas);
-	}
+	ArrayList<Role> listRole = new ArrayList<Role>();
+	listRole.addAll(RoleLocalServiceUtil.getRoles(serviceContext.getCompanyId()));
+	ArrayList<Role>  datas = JobPos2RoleLocalServiceUtil.getRoleIdByJobPosId(listRole, jobPosId);
+
+
+	
 %>
 <portlet:renderURL var="redirectURL">
 	<portlet:param name="<%=PortletKeys.SearchContainer.DELTA%>"
@@ -59,27 +55,19 @@
 	<portlet:param name="<%=PortletKeys.SearchContainer.CURRENT_PAGE%>"
 		value="<%=String.valueOf(ParamUtil.getInteger(request, PortletKeys.SearchContainer.CURRENT_PAGE, PortletKeys.PAGE))%>" />
 </portlet:renderURL>
-<portlet:renderURL var="search">
-	<portlet:param name="<%=PortletKeys.SearchContainer.DELTA%>"
-		value="<%=String.valueOf(ParamUtil.getInteger(request, PortletKeys.SearchContainer.DELTA, PortletKeys.DELTA))%>" />
-	<portlet:param name="<%=PortletKeys.SearchContainer.CURRENT_PAGE%>"
-		value="<%=String.valueOf(ParamUtil.getInteger(request, PortletKeys.SearchContainer.CURRENT_PAGE, PortletKeys.PAGE))%>" />
-</portlet:renderURL>
-<portlet:renderURL var="addEdit">
-	<portlet:param name="<%=PortletKeys.SET_VIEW_PARAMETER%>"
-		value="/html/usermgt/portlet/jobpos/jobpos_detail.jsp" />
-	<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
-		value="<%=redirectURL%>" />
-	<portlet:param	name="<%=JobPosKeys.AddEditAttributes.WORKINGUNITID%>"
-					value="<%=String.valueOf(workingUnitId)%>" />
-</portlet:renderURL>
+<portlet:actionURL var="addEdit" name="addEditJobPos2Role">
+	<portlet:param name="<%= PortletKeys.SET_VIEW_PARAMETER %>" value="/html/usermgt/portlet/jobpos/jobpos_2_role.jsp"/>
+	<portlet:param name="<%= PortletKeys.REDIRECT_PAGE %>" value="<%= ParamUtil.getString(request, PortletKeys.REDIRECT_PAGE) %>"/>
+	<portlet:param name="<%= JobPosKeys.AddEditAttributes.JOBPOSID %>" value="<%= ParamUtil.getString(request, JobPosKeys.AddEditAttributes.JOBPOSID) %>"/>
+	<portlet:param name="<%= JobPosKeys.AddEditAttributes.WORKINGUNITID %>" value="<%= ParamUtil.getString(request, JobPosKeys.AddEditAttributes.WORKINGUNITID) %>"/>
+</portlet:actionURL>
 <aui:form name="searchApplication"  method="POST">
 <liferay-ui:message key="org.oep.usermgt.portlet.jobpos.title"></liferay-ui:message>
 <liferay-ui:message key="<%=workingUnit.getName()%>"></liferay-ui:message>
 		<table  style="width: 100%;">
 			<tr>
 				<td style="width: 40%;">
-				<aui:select style="width: 98%;" cssClass="form-control"  name="<%= JobPosKeys.AddEditAttributes.ROLEID%>" id="<%= JobPosKeys.AddEditAttributes.ROLEID%>" label="&nbsp;&nbsp;&nbsp;" >
+				<aui:select style="width: 98%;" cssClass="form-control"  name="<%= JobPosKeys.AddEditAttributes.ROLEID%>" id="<%= JobPosKeys.AddEditAttributes.ROLEID%>" label="" >
 				<aui:option value=""><%=LanguageUtil
 							.get(pageContext,
 									"org.oep.usermgt.portlet.select.label.workingunit")%></aui:option>
@@ -105,8 +93,7 @@
 			<%
 				int index=1;
 			%>
-
-			
+		
 			<tr>
 				<th style="text-align: center" width="8%"><liferay-ui:message
 						key="org.oep.usermgt.portlet.table.header.no" /></th>
@@ -118,47 +105,27 @@
 						key="org.oep.usermgt.portlet.table.header.action" /></th>
 			</tr>
 			<%
-				for (Jobpos2Role data : datas) {
+				for (Role data : datas) {
 			%>
 			<portlet:actionURL var="deleteUrl" name="deleteJobPos">
 				<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
 					value="<%=redirectURL%>" />
 				<portlet:param
 					name="<%=JobPosKeys.BaseJobPosAttributes.DELETE_ID%>"
-					value="<%=String.valueOf(data.getJobPosId())%>" />
+					value="<%=String.valueOf(data.getRoleId())%>" />
 					<portlet:param	name="<%=JobPosKeys.AddEditAttributes.WORKINGUNITID%>"
 					value="<%=String.valueOf(workingUnitId)%>" />
+					<portlet:param	name="<%=JobPosKeys.AddEditAttributes.JOBPOSID%>"
+					value="<%=String.valueOf(jobPosId)%>" />
 			</portlet:actionURL>
-			
-			<portlet:actionURL var="editUrl" name="editJobPos">
-				<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
-					value="<%=redirectURL%>" />
-				<portlet:param name="<%=PortletKeys.SET_VIEW_PARAMETER%>"
-					value="/html/usermgt/portlet/jobpos/jobpos_detail.jsp" />
-				<portlet:param
-					name="<%=JobPosKeys.BaseJobPosAttributes.EDIT_ID%>"
-					value="<%=String.valueOf(data.getJobPosId())%>" />
-					<portlet:param	name="<%=JobPosKeys.AddEditAttributes.WORKINGUNITID%>"
-					value="<%=String.valueOf(workingUnitId)%>" />
-			</portlet:actionURL>
-			<portlet:actionURL var="editeRole" name="toNextPage">
-				<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
-					value="<%=redirectURL%>" />
-				<portlet:param name="<%=PortletKeys.SET_VIEW_PARAMETER%>"
-					value="/html/usermgt/portlet/jobpos/jobpos_role.jsp" />
-				<portlet:param
-					name="<%=JobPosKeys.BaseJobPosAttributes.EDIT_ID%>"
-					value="<%=String.valueOf(data.getJobPosId())%>" />
-					<portlet:param	name="<%=JobPosKeys.AddEditAttributes.WORKINGUNITID%>"
-					value="<%=String.valueOf(workingUnitId)%>" />
-			</portlet:actionURL>
+
 			<%
 				if (index % 2 == 0) {
 			%>
 			<tr class="success">
-				<td style="text-align: center"><%=(searchContainer.getStart() +  (index++))%></td>
-				<td style="text-align: left"><%=data.getRoleId()%></td>
-				<td style="text-align: left"><%=data.getJobPosId()%></td>
+				<td style="text-align: center"><%=(index++)%></td>
+				<td style="text-align: left"><%=data.getName()%></td>
+				<td style="text-align: left"><%=data.getDescription()%></td>
 				<td style="text-align: left">
 								<a href="#" class="btn btn-primary"
 					title="<liferay-ui:message key="org.oep.usermgt.portlet.table.action.title.delete" />"
@@ -171,9 +138,9 @@
 						else {
 			%>
 			<tr class="info">
-				<td style="text-align: center"><%=(searchContainer.getStart() +  (index++))%></td>
-				<td style="text-align: left"><%=data.getRoleId()%></td>
-				<td style="text-align: left"><%=data.getJobPosId()%></td>
+				<td style="text-align: center"><%=(index++)%></td>
+				<td style="text-align: left"><%=data.getName()%></td>
+				<td style="text-align: left"><%=data.getDescription()%></td>
 				<td style="text-align: left">
 								 <a	href="#" class="btn btn-primary"
 					title="<liferay-ui:message key="org.oep.ssomgt.portlet.applicationmanagement.table.action.title.delete" />"
@@ -187,12 +154,7 @@
 			%>
 		</table>
 	</div>
-	<c:if test="<%=searchContainer!= null%>">
-		<br />
-		<div id="pagination">
-			<liferay-ui:search-paginator searchContainer="<%=searchContainer%>" />
-		</div>
-	</c:if>
+	
 	<table  style="width: 100%;">
 			<tr>
 				<td style="width: 70%;">
@@ -203,11 +165,7 @@
 </aui:form>
 
 <script type="text/javascript">
-	function <portlet:namespace/>search() {
-		var form = document.<portlet:namespace />searchApplication;
-		form.action = "<%=search%>";
-		form.submit();
-	};
+
 	
 	function <portlet:namespace/>changeToAddStatus() {
 		var form = document.<portlet:namespace />searchApplication;

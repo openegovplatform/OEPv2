@@ -171,26 +171,30 @@ public class EmployeeLocalServiceClpInvoker {
 
 		_methodParameterTypes31 = new String[] { "long", "long[][]" };
 
-		_methodName98 = "getBeanIdentifier";
+		_methodName100 = "getBeanIdentifier";
 
-		_methodParameterTypes98 = new String[] {  };
+		_methodParameterTypes100 = new String[] {  };
 
-		_methodName99 = "setBeanIdentifier";
+		_methodName101 = "setBeanIdentifier";
 
-		_methodParameterTypes99 = new String[] { "java.lang.String" };
+		_methodParameterTypes101 = new String[] { "java.lang.String" };
 
-		_methodName104 = "addEmployee";
+		_methodName106 = "addEmployee";
 
-		_methodParameterTypes104 = new String[] {
+		_methodParameterTypes106 = new String[] {
 				"long", "long", "long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "int", "java.util.Date",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName105 = "updateEmployee";
+		_methodName107 = "addEmployee2JoPos";
 
-		_methodParameterTypes105 = new String[] {
+		_methodParameterTypes107 = new String[] { "long", "long" };
+
+		_methodName108 = "updateEmployee";
+
+		_methodParameterTypes108 = new String[] {
 				"long", "long", "long", "long", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
@@ -198,92 +202,104 @@ public class EmployeeLocalServiceClpInvoker {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName106 = "saveEmployee";
+		_methodName109 = "saveEmployee";
 
-		_methodParameterTypes106 = new String[] {
+		_methodParameterTypes109 = new String[] {
 				"org.oep.usermgt.model.Employee",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName107 = "updateEmployeeResources";
+		_methodName110 = "updateEmployeeResources";
 
-		_methodParameterTypes107 = new String[] {
+		_methodParameterTypes110 = new String[] {
 				"org.oep.usermgt.model.Employee", "java.lang.String[][]",
 				"java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName108 = "removeEmployee";
+		_methodName111 = "removeEmployee";
 
-		_methodParameterTypes108 = new String[] { "org.oep.usermgt.model.Employee" };
+		_methodParameterTypes111 = new String[] { "org.oep.usermgt.model.Employee" };
 
-		_methodName109 = "removeEmployee";
+		_methodName112 = "removeEmployee";
 
-		_methodParameterTypes109 = new String[] { "long" };
+		_methodParameterTypes112 = new String[] { "long" };
 
-		_methodName110 = "getEmployee";
+		_methodName113 = "removeJobPos";
 
-		_methodParameterTypes110 = new String[] { "long" };
+		_methodParameterTypes113 = new String[] { "long", "long" };
 
-		_methodName111 = "addEmployeeResources";
+		_methodName114 = "getEmployee";
 
-		_methodParameterTypes111 = new String[] {
+		_methodParameterTypes114 = new String[] { "long" };
+
+		_methodName115 = "addEmployeeResources";
+
+		_methodParameterTypes115 = new String[] {
 				"org.oep.usermgt.model.Employee", "boolean", "boolean",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName112 = "addEmployeeResources";
+		_methodName116 = "addEmployeeResources";
 
-		_methodParameterTypes112 = new String[] {
+		_methodParameterTypes116 = new String[] {
 				"org.oep.usermgt.model.Employee", "java.lang.String[][]",
 				"java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName113 = "addEmployeeResources";
+		_methodName117 = "addEmployeeResources";
 
-		_methodParameterTypes113 = new String[] {
+		_methodParameterTypes117 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName114 = "countEmployeeByWorkingUnit";
+		_methodName118 = "countEmployeeByWorkingUnit";
 
-		_methodParameterTypes114 = new String[] { "long" };
+		_methodParameterTypes118 = new String[] { "long" };
 
-		_methodName115 = "getByWorkingUnit";
+		_methodName119 = "getByWorkingUnit";
 
-		_methodParameterTypes115 = new String[] { "long" };
+		_methodParameterTypes119 = new String[] { "long" };
 
-		_methodName116 = "getByWorkingUnit";
+		_methodName120 = "getByWorkingUnit";
 
-		_methodParameterTypes116 = new String[] { "long", "int", "int" };
+		_methodParameterTypes120 = new String[] { "long", "int", "int" };
 
-		_methodName117 = "countEmployeeByWorkingUniMainJobPos";
+		_methodName121 = "countEmployeeByWorkingUniMainJobPos";
 
-		_methodParameterTypes117 = new String[] { "long", "int" };
+		_methodParameterTypes121 = new String[] { "long", "int" };
 
-		_methodName118 = "getByWorkingUnitMainJobPos";
+		_methodName122 = "getByWorkingUnitMainJobPos";
 
-		_methodParameterTypes118 = new String[] { "long", "int" };
+		_methodParameterTypes122 = new String[] { "long", "int" };
 
-		_methodName119 = "getByWorkingUnitMainJobPos";
+		_methodName123 = "getByWorkingUnitMainJobPos";
 
-		_methodParameterTypes119 = new String[] { "long", "int", "int", "int" };
+		_methodParameterTypes123 = new String[] { "long", "int", "int", "int" };
 
-		_methodName120 = "countEmployeeByLikeNameWorkingUnit";
+		_methodName124 = "countEmployeeByLikeNameWorkingUnit";
 
-		_methodParameterTypes120 = new String[] { "java.lang.String", "long" };
+		_methodParameterTypes124 = new String[] { "java.lang.String", "long" };
 
-		_methodName121 = "finnderByLikeNameWorkingUnit";
+		_methodName125 = "finnderByLikeNameWorkingUnit";
 
-		_methodParameterTypes121 = new String[] { "java.lang.String", "long" };
+		_methodParameterTypes125 = new String[] { "java.lang.String", "long" };
 
-		_methodName122 = "finderLikeNameWorkingUnit";
+		_methodName126 = "finderLikeNameWorkingUnit";
 
-		_methodParameterTypes122 = new String[] {
+		_methodParameterTypes126 = new String[] {
 				"java.lang.String", "long", "int", "int"
 			};
+
+		_methodName127 = "getJobPosByEmployeeId";
+
+		_methodParameterTypes127 = new String[] { "long" };
+
+		_methodName128 = "getJobPos";
+
+		_methodParameterTypes128 = new String[] { "java.util.ArrayList", "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -490,20 +506,20 @@ public class EmployeeLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName98.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
+		if (_methodName100.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
 			return EmployeeLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName99.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes99, parameterTypes)) {
+		if (_methodName101.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
 			EmployeeLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName104.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes104, parameterTypes)) {
+		if (_methodName106.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
 			return EmployeeLocalServiceUtil.addEmployee(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				((Long)arguments[2]).longValue(),
@@ -516,8 +532,16 @@ public class EmployeeLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[12]);
 		}
 
-		if (_methodName105.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes105, parameterTypes)) {
+		if (_methodName107.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes107, parameterTypes)) {
+			EmployeeLocalServiceUtil.addEmployee2JoPos(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
+
+			return null;
+		}
+
+		if (_methodName108.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes108, parameterTypes)) {
 			return EmployeeLocalServiceUtil.updateEmployee(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				((Long)arguments[2]).longValue(),
@@ -531,14 +555,14 @@ public class EmployeeLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[13]);
 		}
 
-		if (_methodName106.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
+		if (_methodName109.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes109, parameterTypes)) {
 			return EmployeeLocalServiceUtil.saveEmployee((org.oep.usermgt.model.Employee)arguments[0],
 				(com.liferay.portal.service.ServiceContext)arguments[1]);
 		}
 
-		if (_methodName107.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes107, parameterTypes)) {
+		if (_methodName110.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes110, parameterTypes)) {
 			EmployeeLocalServiceUtil.updateEmployeeResources((org.oep.usermgt.model.Employee)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -547,27 +571,35 @@ public class EmployeeLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName108.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes108, parameterTypes)) {
+		if (_methodName111.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes111, parameterTypes)) {
 			EmployeeLocalServiceUtil.removeEmployee((org.oep.usermgt.model.Employee)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName109.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes109, parameterTypes)) {
+		if (_methodName112.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
 			EmployeeLocalServiceUtil.removeEmployee(((Long)arguments[0]).longValue());
 
 			return null;
 		}
 
-		if (_methodName110.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes110, parameterTypes)) {
+		if (_methodName113.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes113, parameterTypes)) {
+			EmployeeLocalServiceUtil.removeJobPos(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
+
+			return null;
+		}
+
+		if (_methodName114.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes114, parameterTypes)) {
 			return EmployeeLocalServiceUtil.getEmployee(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName111.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes111, parameterTypes)) {
+		if (_methodName115.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes115, parameterTypes)) {
 			EmployeeLocalServiceUtil.addEmployeeResources((org.oep.usermgt.model.Employee)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Boolean)arguments[2]).booleanValue(),
@@ -576,8 +608,8 @@ public class EmployeeLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName112.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes112, parameterTypes)) {
+		if (_methodName116.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes116, parameterTypes)) {
 			EmployeeLocalServiceUtil.addEmployeeResources((org.oep.usermgt.model.Employee)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -586,8 +618,8 @@ public class EmployeeLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName113.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes113, parameterTypes)) {
+		if (_methodName117.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes117, parameterTypes)) {
 			EmployeeLocalServiceUtil.addEmployeeResources(((Long)arguments[0]).longValue(),
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -596,61 +628,72 @@ public class EmployeeLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName114.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes114, parameterTypes)) {
+		if (_methodName118.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes118, parameterTypes)) {
 			return EmployeeLocalServiceUtil.countEmployeeByWorkingUnit(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName115.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes115, parameterTypes)) {
+		if (_methodName119.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes119, parameterTypes)) {
 			return EmployeeLocalServiceUtil.getByWorkingUnit(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName116.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes116, parameterTypes)) {
+		if (_methodName120.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes120, parameterTypes)) {
 			return EmployeeLocalServiceUtil.getByWorkingUnit(((Long)arguments[0]).longValue(),
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue());
 		}
 
-		if (_methodName117.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes117, parameterTypes)) {
+		if (_methodName121.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes121, parameterTypes)) {
 			return EmployeeLocalServiceUtil.countEmployeeByWorkingUniMainJobPos(((Long)arguments[0]).longValue(),
 				((Integer)arguments[1]).intValue());
 		}
 
-		if (_methodName118.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes118, parameterTypes)) {
+		if (_methodName122.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes122, parameterTypes)) {
 			return EmployeeLocalServiceUtil.getByWorkingUnitMainJobPos(((Long)arguments[0]).longValue(),
 				((Integer)arguments[1]).intValue());
 		}
 
-		if (_methodName119.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes119, parameterTypes)) {
+		if (_methodName123.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes123, parameterTypes)) {
 			return EmployeeLocalServiceUtil.getByWorkingUnitMainJobPos(((Long)arguments[0]).longValue(),
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue(),
 				((Integer)arguments[3]).intValue());
 		}
 
-		if (_methodName120.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes120, parameterTypes)) {
+		if (_methodName124.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes124, parameterTypes)) {
 			return EmployeeLocalServiceUtil.countEmployeeByLikeNameWorkingUnit((java.lang.String)arguments[0],
 				((Long)arguments[1]).longValue());
 		}
 
-		if (_methodName121.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes121, parameterTypes)) {
+		if (_methodName125.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes125, parameterTypes)) {
 			return EmployeeLocalServiceUtil.finnderByLikeNameWorkingUnit((java.lang.String)arguments[0],
 				((Long)arguments[1]).longValue());
 		}
 
-		if (_methodName122.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes122, parameterTypes)) {
+		if (_methodName126.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes126, parameterTypes)) {
 			return EmployeeLocalServiceUtil.finderLikeNameWorkingUnit((java.lang.String)arguments[0],
 				((Long)arguments[1]).longValue(),
 				((Integer)arguments[2]).intValue(),
 				((Integer)arguments[3]).intValue());
+		}
+
+		if (_methodName127.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes127, parameterTypes)) {
+			return EmployeeLocalServiceUtil.getJobPosByEmployeeId(((Long)arguments[0]).longValue());
+		}
+
+		if (_methodName128.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes128, parameterTypes)) {
+			return EmployeeLocalServiceUtil.getJobPos((java.util.ArrayList<org.oep.usermgt.model.JobPos>)arguments[0],
+				((Long)arguments[1]).longValue());
 		}
 
 		throw new UnsupportedOperationException();
@@ -720,14 +763,10 @@ public class EmployeeLocalServiceClpInvoker {
 	private String[] _methodParameterTypes30;
 	private String _methodName31;
 	private String[] _methodParameterTypes31;
-	private String _methodName98;
-	private String[] _methodParameterTypes98;
-	private String _methodName99;
-	private String[] _methodParameterTypes99;
-	private String _methodName104;
-	private String[] _methodParameterTypes104;
-	private String _methodName105;
-	private String[] _methodParameterTypes105;
+	private String _methodName100;
+	private String[] _methodParameterTypes100;
+	private String _methodName101;
+	private String[] _methodParameterTypes101;
 	private String _methodName106;
 	private String[] _methodParameterTypes106;
 	private String _methodName107;
@@ -762,4 +801,16 @@ public class EmployeeLocalServiceClpInvoker {
 	private String[] _methodParameterTypes121;
 	private String _methodName122;
 	private String[] _methodParameterTypes122;
+	private String _methodName123;
+	private String[] _methodParameterTypes123;
+	private String _methodName124;
+	private String[] _methodParameterTypes124;
+	private String _methodName125;
+	private String[] _methodParameterTypes125;
+	private String _methodName126;
+	private String[] _methodParameterTypes126;
+	private String _methodName127;
+	private String[] _methodParameterTypes127;
+	private String _methodName128;
+	private String[] _methodParameterTypes128;
 }

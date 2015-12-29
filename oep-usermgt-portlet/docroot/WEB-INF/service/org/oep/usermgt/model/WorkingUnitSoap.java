@@ -56,6 +56,8 @@ public class WorkingUnitSoap implements Serializable {
 		soapModel.setWebsite(model.getWebsite());
 		soapModel.setAaa(model.getAaa());
 		soapModel.setShortName(model.getShortName());
+		soapModel.setLocalSiteId(model.getLocalSiteId());
+		soapModel.setIsEmployer(model.getIsEmployer());
 
 		return soapModel;
 	}
@@ -156,11 +158,11 @@ public class WorkingUnitSoap implements Serializable {
 		_modifiedDate = modifiedDate;
 	}
 
-	public String getOrganizationId() {
+	public long getOrganizationId() {
 		return _organizationId;
 	}
 
-	public void setOrganizationId(String organizationId) {
+	public void setOrganizationId(long organizationId) {
 		_organizationId = organizationId;
 	}
 
@@ -308,13 +310,29 @@ public class WorkingUnitSoap implements Serializable {
 		_shortName = shortName;
 	}
 
+	public long getLocalSiteId() {
+		return _localSiteId;
+	}
+
+	public void setLocalSiteId(long localSiteId) {
+		_localSiteId = localSiteId;
+	}
+
+	public int getIsEmployer() {
+		return _isEmployer;
+	}
+
+	public void setIsEmployer(int isEmployer) {
+		_isEmployer = isEmployer;
+	}
+
 	private long _workingUnitId;
 	private long _companyId;
 	private long _groupId;
 	private long _userId;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private String _organizationId;
+	private long _organizationId;
 	private String _govAgencyId;
 	private String _name;
 	private String _enName;
@@ -333,4 +351,6 @@ public class WorkingUnitSoap implements Serializable {
 	private String _website;
 	private String _aaa;
 	private String _shortName;
+	private long _localSiteId;
+	private int _isEmployer;
 }

@@ -24,25 +24,25 @@ import com.liferay.portal.service.BaseService;
 import com.liferay.portal.service.InvokableService;
 
 /**
- * Provides the remote service interface for Jobpos2Role. Methods of this
+ * Provides the remote service interface for JobPos2Role. Methods of this
  * service are expected to have security checks based on the propagated JAAS
  * credentials because this service can be accessed remotely.
  *
  * @author NQMINH
- * @see Jobpos2RoleServiceUtil
- * @see org.oep.usermgt.service.base.Jobpos2RoleServiceBaseImpl
- * @see org.oep.usermgt.service.impl.Jobpos2RoleServiceImpl
+ * @see JobPos2RoleServiceUtil
+ * @see org.oep.usermgt.service.base.JobPos2RoleServiceBaseImpl
+ * @see org.oep.usermgt.service.impl.JobPos2RoleServiceImpl
  * @generated
  */
 @AccessControlled
 @JSONWebService
 @Transactional(isolation = Isolation.PORTAL, rollbackFor =  {
 	PortalException.class, SystemException.class})
-public interface Jobpos2RoleService extends BaseService, InvokableService {
+public interface JobPos2RoleService extends BaseService, InvokableService {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this interface directly. Always use {@link Jobpos2RoleServiceUtil} to access the jobpos to role remote service. Add custom service methods to {@link org.oep.usermgt.service.impl.Jobpos2RoleServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
+	 * Never modify or reference this interface directly. Always use {@link JobPos2RoleServiceUtil} to access the jobpos to role remote service. Add custom service methods to {@link org.oep.usermgt.service.impl.JobPos2RoleServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
 
 	/**

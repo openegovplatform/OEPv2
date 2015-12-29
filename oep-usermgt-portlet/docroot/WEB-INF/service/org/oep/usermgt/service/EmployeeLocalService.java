@@ -370,6 +370,10 @@ public interface EmployeeLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	public void addEmployee2JoPos(long employeeId, long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
 	public org.oep.usermgt.model.Employee updateEmployee(long employeeId,
 		long mappingUserId, long workingUnitId, long mainJobPosId,
 		java.lang.String employeeNo, java.lang.String fullName,
@@ -399,6 +403,10 @@ public interface EmployeeLocalService extends BaseLocalService,
 			com.liferay.portal.kernel.exception.SystemException;
 
 	public void removeEmployee(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void removeJobPos(long employeeId, long jobPosId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
@@ -467,6 +475,19 @@ public interface EmployeeLocalService extends BaseLocalService,
 
 	public java.util.List<org.oep.usermgt.model.Employee> finderLikeNameWorkingUnit(
 		java.lang.String textSearch, long workingUnitId, int start, int end)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<org.oep.usermgt.model.JobPos> getJobPosByEmployeeId(
+		long employeeId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<org.oep.usermgt.model.JobPos> getJobPos(
+		java.util.ArrayList<org.oep.usermgt.model.JobPos> listJobPos,
+		long employeeId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 }

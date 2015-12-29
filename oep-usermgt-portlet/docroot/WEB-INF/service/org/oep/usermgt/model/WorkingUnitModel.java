@@ -164,15 +164,14 @@ public interface WorkingUnitModel extends BaseModel<WorkingUnit> {
 	 *
 	 * @return the organization ID of this Working Unit
 	 */
-	@AutoEscape
-	public String getOrganizationId();
+	public long getOrganizationId();
 
 	/**
 	 * Sets the organization ID of this Working Unit.
 	 *
 	 * @param organizationId the organization ID of this Working Unit
 	 */
-	public void setOrganizationId(String organizationId);
+	public void setOrganizationId(long organizationId);
 
 	/**
 	 * Returns the gov agency ID of this Working Unit.
@@ -442,6 +441,34 @@ public interface WorkingUnitModel extends BaseModel<WorkingUnit> {
 	 * @param shortName the short name of this Working Unit
 	 */
 	public void setShortName(String shortName);
+
+	/**
+	 * Returns the local site ID of this Working Unit.
+	 *
+	 * @return the local site ID of this Working Unit
+	 */
+	public long getLocalSiteId();
+
+	/**
+	 * Sets the local site ID of this Working Unit.
+	 *
+	 * @param localSiteId the local site ID of this Working Unit
+	 */
+	public void setLocalSiteId(long localSiteId);
+
+	/**
+	 * Returns the is employer of this Working Unit.
+	 *
+	 * @return the is employer of this Working Unit
+	 */
+	public int getIsEmployer();
+
+	/**
+	 * Sets the is employer of this Working Unit.
+	 *
+	 * @param isEmployer the is employer of this Working Unit
+	 */
+	public void setIsEmployer(int isEmployer);
 
 	@Override
 	public boolean isNew();

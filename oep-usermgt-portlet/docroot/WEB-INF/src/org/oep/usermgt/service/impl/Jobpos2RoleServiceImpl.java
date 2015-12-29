@@ -14,26 +14,26 @@
 
 package org.oep.usermgt.service.impl;
 
-import org.oep.usermgt.service.base.Jobpos2RoleServiceBaseImpl;
+import org.oep.usermgt.service.base.JobPos2RoleServiceBaseImpl;
 
 /**
  * The implementation of the jobpos to role remote service.
  *
  * <p>
- * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link org.oep.usermgt.service.Jobpos2RoleService} interface.
+ * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link org.oep.usermgt.service.JobPos2RoleService} interface.
  *
  * <p>
  * This is a remote service. Methods of this service are expected to have security checks based on the propagated JAAS credentials because this service can be accessed remotely.
  * </p>
  *
  * @author NQMINH
- * @see org.oep.usermgt.service.base.Jobpos2RoleServiceBaseImpl
- * @see org.oep.usermgt.service.Jobpos2RoleServiceUtil
+ * @see org.oep.usermgt.service.base.JobPos2RoleServiceBaseImpl
+ * @see org.oep.usermgt.service.JobPos2RoleServiceUtil
  */
-public class Jobpos2RoleServiceImpl extends Jobpos2RoleServiceBaseImpl {
+public class JobPos2RoleServiceImpl extends JobPos2RoleServiceBaseImpl {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never reference this interface directly. Always use {@link org.oep.usermgt.service.Jobpos2RoleServiceUtil} to access the jobpos to role remote service.
+	 * Never reference this interface directly. Always use {@link org.oep.usermgt.service.JobPos2RoleServiceUtil} to access the jobpos to role remote service.
 	 */
 }

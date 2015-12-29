@@ -1057,7 +1057,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 			WorkingUnitModelImpl.FINDER_CACHE_ENABLED, WorkingUnitImpl.class,
 			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByO",
 			new String[] {
-				String.class.getName(),
+				Long.class.getName(),
 				
 			Integer.class.getName(), Integer.class.getName(),
 				OrderByComparator.class.getName()
@@ -1065,12 +1065,12 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_O = new FinderPath(WorkingUnitModelImpl.ENTITY_CACHE_ENABLED,
 			WorkingUnitModelImpl.FINDER_CACHE_ENABLED, WorkingUnitImpl.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByO",
-			new String[] { String.class.getName() },
+			new String[] { Long.class.getName() },
 			WorkingUnitModelImpl.ORGANIZATIONID_COLUMN_BITMASK);
 	public static final FinderPath FINDER_PATH_COUNT_BY_O = new FinderPath(WorkingUnitModelImpl.ENTITY_CACHE_ENABLED,
 			WorkingUnitModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByO",
-			new String[] { String.class.getName() });
+			new String[] { Long.class.getName() });
 
 	/**
 	 * Returns all the Working Units where organizationId = &#63;.
@@ -1080,7 +1080,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<WorkingUnit> findByO(String organizationId)
+	public List<WorkingUnit> findByO(long organizationId)
 		throws SystemException {
 		return findByO(organizationId, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
 			null);
@@ -1100,7 +1100,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<WorkingUnit> findByO(String organizationId, int start, int end)
+	public List<WorkingUnit> findByO(long organizationId, int start, int end)
 		throws SystemException {
 		return findByO(organizationId, start, end, null);
 	}
@@ -1120,7 +1120,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<WorkingUnit> findByO(String organizationId, int start, int end,
+	public List<WorkingUnit> findByO(long organizationId, int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
 		boolean pagination = true;
 		FinderPath finderPath = null;
@@ -1146,8 +1146,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 
 		if ((list != null) && !list.isEmpty()) {
 			for (WorkingUnit workingUnit : list) {
-				if (!Validator.equals(organizationId,
-							workingUnit.getOrganizationId())) {
+				if ((organizationId != workingUnit.getOrganizationId())) {
 					list = null;
 
 					break;
@@ -1168,19 +1167,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 
 			query.append(_SQL_SELECT_WORKINGUNIT_WHERE);
 
-			boolean bindOrganizationId = false;
-
-			if (organizationId == null) {
-				query.append(_FINDER_COLUMN_O_ORGANIZATIONID_1);
-			}
-			else if (organizationId.equals(StringPool.BLANK)) {
-				query.append(_FINDER_COLUMN_O_ORGANIZATIONID_3);
-			}
-			else {
-				bindOrganizationId = true;
-
-				query.append(_FINDER_COLUMN_O_ORGANIZATIONID_2);
-			}
+			query.append(_FINDER_COLUMN_O_ORGANIZATIONID_2);
 
 			if (orderByComparator != null) {
 				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
@@ -1202,9 +1189,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 
 				QueryPos qPos = QueryPos.getInstance(q);
 
-				if (bindOrganizationId) {
-					qPos.add(organizationId);
-				}
+				qPos.add(organizationId);
 
 				if (!pagination) {
 					list = (List<WorkingUnit>)QueryUtil.list(q, getDialect(),
@@ -1246,7 +1231,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public WorkingUnit findByO_First(String organizationId,
+	public WorkingUnit findByO_First(long organizationId,
 		OrderByComparator orderByComparator)
 		throws NoSuchWorkingUnitException, SystemException {
 		WorkingUnit workingUnit = fetchByO_First(organizationId,
@@ -1277,7 +1262,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public WorkingUnit fetchByO_First(String organizationId,
+	public WorkingUnit fetchByO_First(long organizationId,
 		OrderByComparator orderByComparator) throws SystemException {
 		List<WorkingUnit> list = findByO(organizationId, 0, 1, orderByComparator);
 
@@ -1298,7 +1283,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public WorkingUnit findByO_Last(String organizationId,
+	public WorkingUnit findByO_Last(long organizationId,
 		OrderByComparator orderByComparator)
 		throws NoSuchWorkingUnitException, SystemException {
 		WorkingUnit workingUnit = fetchByO_Last(organizationId,
@@ -1329,7 +1314,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public WorkingUnit fetchByO_Last(String organizationId,
+	public WorkingUnit fetchByO_Last(long organizationId,
 		OrderByComparator orderByComparator) throws SystemException {
 		int count = countByO(organizationId);
 
@@ -1359,7 +1344,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 	 */
 	@Override
 	public WorkingUnit[] findByO_PrevAndNext(long workingUnitId,
-		String organizationId, OrderByComparator orderByComparator)
+		long organizationId, OrderByComparator orderByComparator)
 		throws NoSuchWorkingUnitException, SystemException {
 		WorkingUnit workingUnit = findByPrimaryKey(workingUnitId);
 
@@ -1389,7 +1374,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 	}
 
 	protected WorkingUnit getByO_PrevAndNext(Session session,
-		WorkingUnit workingUnit, String organizationId,
+		WorkingUnit workingUnit, long organizationId,
 		OrderByComparator orderByComparator, boolean previous) {
 		StringBundler query = null;
 
@@ -1403,19 +1388,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 
 		query.append(_SQL_SELECT_WORKINGUNIT_WHERE);
 
-		boolean bindOrganizationId = false;
-
-		if (organizationId == null) {
-			query.append(_FINDER_COLUMN_O_ORGANIZATIONID_1);
-		}
-		else if (organizationId.equals(StringPool.BLANK)) {
-			query.append(_FINDER_COLUMN_O_ORGANIZATIONID_3);
-		}
-		else {
-			bindOrganizationId = true;
-
-			query.append(_FINDER_COLUMN_O_ORGANIZATIONID_2);
-		}
+		query.append(_FINDER_COLUMN_O_ORGANIZATIONID_2);
 
 		if (orderByComparator != null) {
 			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
@@ -1485,9 +1458,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 
 		QueryPos qPos = QueryPos.getInstance(q);
 
-		if (bindOrganizationId) {
-			qPos.add(organizationId);
-		}
+		qPos.add(organizationId);
 
 		if (orderByComparator != null) {
 			Object[] values = orderByComparator.getOrderByConditionValues(workingUnit);
@@ -1514,7 +1485,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public void removeByO(String organizationId) throws SystemException {
+	public void removeByO(long organizationId) throws SystemException {
 		for (WorkingUnit workingUnit : findByO(organizationId,
 				QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
 			remove(workingUnit);
@@ -1529,7 +1500,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public int countByO(String organizationId) throws SystemException {
+	public int countByO(long organizationId) throws SystemException {
 		FinderPath finderPath = FINDER_PATH_COUNT_BY_O;
 
 		Object[] finderArgs = new Object[] { organizationId };
@@ -1542,19 +1513,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 
 			query.append(_SQL_COUNT_WORKINGUNIT_WHERE);
 
-			boolean bindOrganizationId = false;
-
-			if (organizationId == null) {
-				query.append(_FINDER_COLUMN_O_ORGANIZATIONID_1);
-			}
-			else if (organizationId.equals(StringPool.BLANK)) {
-				query.append(_FINDER_COLUMN_O_ORGANIZATIONID_3);
-			}
-			else {
-				bindOrganizationId = true;
-
-				query.append(_FINDER_COLUMN_O_ORGANIZATIONID_2);
-			}
+			query.append(_FINDER_COLUMN_O_ORGANIZATIONID_2);
 
 			String sql = query.toString();
 
@@ -1567,9 +1526,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 
 				QueryPos qPos = QueryPos.getInstance(q);
 
-				if (bindOrganizationId) {
-					qPos.add(organizationId);
-				}
+				qPos.add(organizationId);
 
 				count = (Long)q.uniqueResult();
 
@@ -1588,9 +1545,7 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 		return count.intValue();
 	}
 
-	private static final String _FINDER_COLUMN_O_ORGANIZATIONID_1 = "workingUnit.organizationId IS NULL";
 	private static final String _FINDER_COLUMN_O_ORGANIZATIONID_2 = "workingUnit.organizationId = ?";
-	private static final String _FINDER_COLUMN_O_ORGANIZATIONID_3 = "(workingUnit.organizationId IS NULL OR workingUnit.organizationId = '')";
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_GA = new FinderPath(WorkingUnitModelImpl.ENTITY_CACHE_ENABLED,
 			WorkingUnitModelImpl.FINDER_CACHE_ENABLED, WorkingUnitImpl.class,
 			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByGA",
@@ -5264,6 +5219,1020 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 
 	private static final String _FINDER_COLUMN_G_PW_GROUPID_2 = "workingUnit.groupId = ? AND ";
 	private static final String _FINDER_COLUMN_G_PW_PARENTWORKINGUNITID_2 = "workingUnit.parentWorkingUnitId = ?";
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_LS = new FinderPath(WorkingUnitModelImpl.ENTITY_CACHE_ENABLED,
+			WorkingUnitModelImpl.FINDER_CACHE_ENABLED, WorkingUnitImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByLS",
+			new String[] {
+				Long.class.getName(),
+				
+			Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_LS = new FinderPath(WorkingUnitModelImpl.ENTITY_CACHE_ENABLED,
+			WorkingUnitModelImpl.FINDER_CACHE_ENABLED, WorkingUnitImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByLS",
+			new String[] { Long.class.getName() },
+			WorkingUnitModelImpl.LOCALSITEID_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_LS = new FinderPath(WorkingUnitModelImpl.ENTITY_CACHE_ENABLED,
+			WorkingUnitModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByLS",
+			new String[] { Long.class.getName() });
+
+	/**
+	 * Returns all the Working Units where localSiteId = &#63;.
+	 *
+	 * @param localSiteId the local site ID
+	 * @return the matching Working Units
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<WorkingUnit> findByLS(long localSiteId)
+		throws SystemException {
+		return findByLS(localSiteId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the Working Units where localSiteId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.WorkingUnitModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param localSiteId the local site ID
+	 * @param start the lower bound of the range of Working Units
+	 * @param end the upper bound of the range of Working Units (not inclusive)
+	 * @return the range of matching Working Units
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<WorkingUnit> findByLS(long localSiteId, int start, int end)
+		throws SystemException {
+		return findByLS(localSiteId, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the Working Units where localSiteId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.WorkingUnitModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param localSiteId the local site ID
+	 * @param start the lower bound of the range of Working Units
+	 * @param end the upper bound of the range of Working Units (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching Working Units
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<WorkingUnit> findByLS(long localSiteId, int start, int end,
+		OrderByComparator orderByComparator) throws SystemException {
+		boolean pagination = true;
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			pagination = false;
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_LS;
+			finderArgs = new Object[] { localSiteId };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_LS;
+			finderArgs = new Object[] { localSiteId, start, end, orderByComparator };
+		}
+
+		List<WorkingUnit> list = (List<WorkingUnit>)FinderCacheUtil.getResult(finderPath,
+				finderArgs, this);
+
+		if ((list != null) && !list.isEmpty()) {
+			for (WorkingUnit workingUnit : list) {
+				if ((localSiteId != workingUnit.getLocalSiteId())) {
+					list = null;
+
+					break;
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(3 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(3);
+			}
+
+			query.append(_SQL_SELECT_WORKINGUNIT_WHERE);
+
+			query.append(_FINDER_COLUMN_LS_LOCALSITEID_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+			else
+			 if (pagination) {
+				query.append(WorkingUnitModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(localSiteId);
+
+				if (!pagination) {
+					list = (List<WorkingUnit>)QueryUtil.list(q, getDialect(),
+							start, end, false);
+
+					Collections.sort(list);
+
+					list = new UnmodifiableList<WorkingUnit>(list);
+				}
+				else {
+					list = (List<WorkingUnit>)QueryUtil.list(q, getDialect(),
+							start, end);
+				}
+
+				cacheResult(list);
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, list);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first Working Unit in the ordered set where localSiteId = &#63;.
+	 *
+	 * @param localSiteId the local site ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching Working Unit
+	 * @throws org.oep.usermgt.NoSuchWorkingUnitException if a matching Working Unit could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public WorkingUnit findByLS_First(long localSiteId,
+		OrderByComparator orderByComparator)
+		throws NoSuchWorkingUnitException, SystemException {
+		WorkingUnit workingUnit = fetchByLS_First(localSiteId, orderByComparator);
+
+		if (workingUnit != null) {
+			return workingUnit;
+		}
+
+		StringBundler msg = new StringBundler(4);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("localSiteId=");
+		msg.append(localSiteId);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchWorkingUnitException(msg.toString());
+	}
+
+	/**
+	 * Returns the first Working Unit in the ordered set where localSiteId = &#63;.
+	 *
+	 * @param localSiteId the local site ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching Working Unit, or <code>null</code> if a matching Working Unit could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public WorkingUnit fetchByLS_First(long localSiteId,
+		OrderByComparator orderByComparator) throws SystemException {
+		List<WorkingUnit> list = findByLS(localSiteId, 0, 1, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last Working Unit in the ordered set where localSiteId = &#63;.
+	 *
+	 * @param localSiteId the local site ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching Working Unit
+	 * @throws org.oep.usermgt.NoSuchWorkingUnitException if a matching Working Unit could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public WorkingUnit findByLS_Last(long localSiteId,
+		OrderByComparator orderByComparator)
+		throws NoSuchWorkingUnitException, SystemException {
+		WorkingUnit workingUnit = fetchByLS_Last(localSiteId, orderByComparator);
+
+		if (workingUnit != null) {
+			return workingUnit;
+		}
+
+		StringBundler msg = new StringBundler(4);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("localSiteId=");
+		msg.append(localSiteId);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchWorkingUnitException(msg.toString());
+	}
+
+	/**
+	 * Returns the last Working Unit in the ordered set where localSiteId = &#63;.
+	 *
+	 * @param localSiteId the local site ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching Working Unit, or <code>null</code> if a matching Working Unit could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public WorkingUnit fetchByLS_Last(long localSiteId,
+		OrderByComparator orderByComparator) throws SystemException {
+		int count = countByLS(localSiteId);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<WorkingUnit> list = findByLS(localSiteId, count - 1, count,
+				orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the Working Units before and after the current Working Unit in the ordered set where localSiteId = &#63;.
+	 *
+	 * @param workingUnitId the primary key of the current Working Unit
+	 * @param localSiteId the local site ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next Working Unit
+	 * @throws org.oep.usermgt.NoSuchWorkingUnitException if a Working Unit with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public WorkingUnit[] findByLS_PrevAndNext(long workingUnitId,
+		long localSiteId, OrderByComparator orderByComparator)
+		throws NoSuchWorkingUnitException, SystemException {
+		WorkingUnit workingUnit = findByPrimaryKey(workingUnitId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			WorkingUnit[] array = new WorkingUnitImpl[3];
+
+			array[0] = getByLS_PrevAndNext(session, workingUnit, localSiteId,
+					orderByComparator, true);
+
+			array[1] = workingUnit;
+
+			array[2] = getByLS_PrevAndNext(session, workingUnit, localSiteId,
+					orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected WorkingUnit getByLS_PrevAndNext(Session session,
+		WorkingUnit workingUnit, long localSiteId,
+		OrderByComparator orderByComparator, boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_WORKINGUNIT_WHERE);
+
+		query.append(_FINDER_COLUMN_LS_LOCALSITEID_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			query.append(WorkingUnitModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(localSiteId);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(workingUnit);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<WorkingUnit> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the Working Units where localSiteId = &#63; from the database.
+	 *
+	 * @param localSiteId the local site ID
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public void removeByLS(long localSiteId) throws SystemException {
+		for (WorkingUnit workingUnit : findByLS(localSiteId, QueryUtil.ALL_POS,
+				QueryUtil.ALL_POS, null)) {
+			remove(workingUnit);
+		}
+	}
+
+	/**
+	 * Returns the number of Working Units where localSiteId = &#63;.
+	 *
+	 * @param localSiteId the local site ID
+	 * @return the number of matching Working Units
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public int countByLS(long localSiteId) throws SystemException {
+		FinderPath finderPath = FINDER_PATH_COUNT_BY_LS;
+
+		Object[] finderArgs = new Object[] { localSiteId };
+
+		Long count = (Long)FinderCacheUtil.getResult(finderPath, finderArgs,
+				this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(2);
+
+			query.append(_SQL_COUNT_WORKINGUNIT_WHERE);
+
+			query.append(_FINDER_COLUMN_LS_LOCALSITEID_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(localSiteId);
+
+				count = (Long)q.uniqueResult();
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_LS_LOCALSITEID_2 = "workingUnit.localSiteId = ?";
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_C_ISE = new FinderPath(WorkingUnitModelImpl.ENTITY_CACHE_ENABLED,
+			WorkingUnitModelImpl.FINDER_CACHE_ENABLED, WorkingUnitImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByC_IsE",
+			new String[] {
+				Long.class.getName(), Integer.class.getName(),
+				
+			Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_C_ISE = new FinderPath(WorkingUnitModelImpl.ENTITY_CACHE_ENABLED,
+			WorkingUnitModelImpl.FINDER_CACHE_ENABLED, WorkingUnitImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByC_IsE",
+			new String[] { Long.class.getName(), Integer.class.getName() },
+			WorkingUnitModelImpl.COMPANYID_COLUMN_BITMASK |
+			WorkingUnitModelImpl.ISEMPLOYER_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_C_ISE = new FinderPath(WorkingUnitModelImpl.ENTITY_CACHE_ENABLED,
+			WorkingUnitModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByC_IsE",
+			new String[] { Long.class.getName(), Integer.class.getName() });
+
+	/**
+	 * Returns all the Working Units where companyId = &#63; and isEmployer = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param isEmployer the is employer
+	 * @return the matching Working Units
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<WorkingUnit> findByC_IsE(long companyId, int isEmployer)
+		throws SystemException {
+		return findByC_IsE(companyId, isEmployer, QueryUtil.ALL_POS,
+			QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the Working Units where companyId = &#63; and isEmployer = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.WorkingUnitModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param isEmployer the is employer
+	 * @param start the lower bound of the range of Working Units
+	 * @param end the upper bound of the range of Working Units (not inclusive)
+	 * @return the range of matching Working Units
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<WorkingUnit> findByC_IsE(long companyId, int isEmployer,
+		int start, int end) throws SystemException {
+		return findByC_IsE(companyId, isEmployer, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the Working Units where companyId = &#63; and isEmployer = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.WorkingUnitModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param isEmployer the is employer
+	 * @param start the lower bound of the range of Working Units
+	 * @param end the upper bound of the range of Working Units (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching Working Units
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<WorkingUnit> findByC_IsE(long companyId, int isEmployer,
+		int start, int end, OrderByComparator orderByComparator)
+		throws SystemException {
+		boolean pagination = true;
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			pagination = false;
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_C_ISE;
+			finderArgs = new Object[] { companyId, isEmployer };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_C_ISE;
+			finderArgs = new Object[] {
+					companyId, isEmployer,
+					
+					start, end, orderByComparator
+				};
+		}
+
+		List<WorkingUnit> list = (List<WorkingUnit>)FinderCacheUtil.getResult(finderPath,
+				finderArgs, this);
+
+		if ((list != null) && !list.isEmpty()) {
+			for (WorkingUnit workingUnit : list) {
+				if ((companyId != workingUnit.getCompanyId()) ||
+						(isEmployer != workingUnit.getIsEmployer())) {
+					list = null;
+
+					break;
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(4 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(4);
+			}
+
+			query.append(_SQL_SELECT_WORKINGUNIT_WHERE);
+
+			query.append(_FINDER_COLUMN_C_ISE_COMPANYID_2);
+
+			query.append(_FINDER_COLUMN_C_ISE_ISEMPLOYER_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+			else
+			 if (pagination) {
+				query.append(WorkingUnitModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(companyId);
+
+				qPos.add(isEmployer);
+
+				if (!pagination) {
+					list = (List<WorkingUnit>)QueryUtil.list(q, getDialect(),
+							start, end, false);
+
+					Collections.sort(list);
+
+					list = new UnmodifiableList<WorkingUnit>(list);
+				}
+				else {
+					list = (List<WorkingUnit>)QueryUtil.list(q, getDialect(),
+							start, end);
+				}
+
+				cacheResult(list);
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, list);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first Working Unit in the ordered set where companyId = &#63; and isEmployer = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param isEmployer the is employer
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching Working Unit
+	 * @throws org.oep.usermgt.NoSuchWorkingUnitException if a matching Working Unit could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public WorkingUnit findByC_IsE_First(long companyId, int isEmployer,
+		OrderByComparator orderByComparator)
+		throws NoSuchWorkingUnitException, SystemException {
+		WorkingUnit workingUnit = fetchByC_IsE_First(companyId, isEmployer,
+				orderByComparator);
+
+		if (workingUnit != null) {
+			return workingUnit;
+		}
+
+		StringBundler msg = new StringBundler(6);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("companyId=");
+		msg.append(companyId);
+
+		msg.append(", isEmployer=");
+		msg.append(isEmployer);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchWorkingUnitException(msg.toString());
+	}
+
+	/**
+	 * Returns the first Working Unit in the ordered set where companyId = &#63; and isEmployer = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param isEmployer the is employer
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching Working Unit, or <code>null</code> if a matching Working Unit could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public WorkingUnit fetchByC_IsE_First(long companyId, int isEmployer,
+		OrderByComparator orderByComparator) throws SystemException {
+		List<WorkingUnit> list = findByC_IsE(companyId, isEmployer, 0, 1,
+				orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last Working Unit in the ordered set where companyId = &#63; and isEmployer = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param isEmployer the is employer
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching Working Unit
+	 * @throws org.oep.usermgt.NoSuchWorkingUnitException if a matching Working Unit could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public WorkingUnit findByC_IsE_Last(long companyId, int isEmployer,
+		OrderByComparator orderByComparator)
+		throws NoSuchWorkingUnitException, SystemException {
+		WorkingUnit workingUnit = fetchByC_IsE_Last(companyId, isEmployer,
+				orderByComparator);
+
+		if (workingUnit != null) {
+			return workingUnit;
+		}
+
+		StringBundler msg = new StringBundler(6);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("companyId=");
+		msg.append(companyId);
+
+		msg.append(", isEmployer=");
+		msg.append(isEmployer);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchWorkingUnitException(msg.toString());
+	}
+
+	/**
+	 * Returns the last Working Unit in the ordered set where companyId = &#63; and isEmployer = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param isEmployer the is employer
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching Working Unit, or <code>null</code> if a matching Working Unit could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public WorkingUnit fetchByC_IsE_Last(long companyId, int isEmployer,
+		OrderByComparator orderByComparator) throws SystemException {
+		int count = countByC_IsE(companyId, isEmployer);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<WorkingUnit> list = findByC_IsE(companyId, isEmployer, count - 1,
+				count, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the Working Units before and after the current Working Unit in the ordered set where companyId = &#63; and isEmployer = &#63;.
+	 *
+	 * @param workingUnitId the primary key of the current Working Unit
+	 * @param companyId the company ID
+	 * @param isEmployer the is employer
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next Working Unit
+	 * @throws org.oep.usermgt.NoSuchWorkingUnitException if a Working Unit with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public WorkingUnit[] findByC_IsE_PrevAndNext(long workingUnitId,
+		long companyId, int isEmployer, OrderByComparator orderByComparator)
+		throws NoSuchWorkingUnitException, SystemException {
+		WorkingUnit workingUnit = findByPrimaryKey(workingUnitId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			WorkingUnit[] array = new WorkingUnitImpl[3];
+
+			array[0] = getByC_IsE_PrevAndNext(session, workingUnit, companyId,
+					isEmployer, orderByComparator, true);
+
+			array[1] = workingUnit;
+
+			array[2] = getByC_IsE_PrevAndNext(session, workingUnit, companyId,
+					isEmployer, orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected WorkingUnit getByC_IsE_PrevAndNext(Session session,
+		WorkingUnit workingUnit, long companyId, int isEmployer,
+		OrderByComparator orderByComparator, boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_WORKINGUNIT_WHERE);
+
+		query.append(_FINDER_COLUMN_C_ISE_COMPANYID_2);
+
+		query.append(_FINDER_COLUMN_C_ISE_ISEMPLOYER_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			query.append(WorkingUnitModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(companyId);
+
+		qPos.add(isEmployer);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(workingUnit);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<WorkingUnit> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the Working Units where companyId = &#63; and isEmployer = &#63; from the database.
+	 *
+	 * @param companyId the company ID
+	 * @param isEmployer the is employer
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public void removeByC_IsE(long companyId, int isEmployer)
+		throws SystemException {
+		for (WorkingUnit workingUnit : findByC_IsE(companyId, isEmployer,
+				QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+			remove(workingUnit);
+		}
+	}
+
+	/**
+	 * Returns the number of Working Units where companyId = &#63; and isEmployer = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param isEmployer the is employer
+	 * @return the number of matching Working Units
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public int countByC_IsE(long companyId, int isEmployer)
+		throws SystemException {
+		FinderPath finderPath = FINDER_PATH_COUNT_BY_C_ISE;
+
+		Object[] finderArgs = new Object[] { companyId, isEmployer };
+
+		Long count = (Long)FinderCacheUtil.getResult(finderPath, finderArgs,
+				this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(3);
+
+			query.append(_SQL_COUNT_WORKINGUNIT_WHERE);
+
+			query.append(_FINDER_COLUMN_C_ISE_COMPANYID_2);
+
+			query.append(_FINDER_COLUMN_C_ISE_ISEMPLOYER_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(companyId);
+
+				qPos.add(isEmployer);
+
+				count = (Long)q.uniqueResult();
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_C_ISE_COMPANYID_2 = "workingUnit.companyId = ? AND ";
+	private static final String _FINDER_COLUMN_C_ISE_ISEMPLOYER_2 = "workingUnit.isEmployer = ?";
 
 	public WorkingUnitPersistenceImpl() {
 		setModelClass(WorkingUnit.class);
@@ -5668,6 +6637,44 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_PW,
 					args);
 			}
+
+			if ((workingUnitModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_LS.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						workingUnitModelImpl.getOriginalLocalSiteId()
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_LS, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_LS,
+					args);
+
+				args = new Object[] { workingUnitModelImpl.getLocalSiteId() };
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_LS, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_LS,
+					args);
+			}
+
+			if ((workingUnitModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_C_ISE.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						workingUnitModelImpl.getOriginalCompanyId(),
+						workingUnitModelImpl.getOriginalIsEmployer()
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_C_ISE, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_C_ISE,
+					args);
+
+				args = new Object[] {
+						workingUnitModelImpl.getCompanyId(),
+						workingUnitModelImpl.getIsEmployer()
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_C_ISE, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_C_ISE,
+					args);
+			}
 		}
 
 		EntityCacheUtil.putResult(WorkingUnitModelImpl.ENTITY_CACHE_ENABLED,
@@ -5711,6 +6718,8 @@ public class WorkingUnitPersistenceImpl extends BasePersistenceImpl<WorkingUnit>
 		workingUnitImpl.setWebsite(workingUnit.getWebsite());
 		workingUnitImpl.setAaa(workingUnit.getAaa());
 		workingUnitImpl.setShortName(workingUnit.getShortName());
+		workingUnitImpl.setLocalSiteId(workingUnit.getLocalSiteId());
+		workingUnitImpl.setIsEmployer(workingUnit.getIsEmployer());
 
 		return workingUnitImpl;
 	}

@@ -15,20 +15,20 @@
 package org.oep.usermgt.model.impl;
 
 /**
- * The extended model implementation for the Jobpos2Role service. Represents a row in the &quot;oep_usermgt_jobpos2role&quot; database table, with each column mapped to a property of this class.
+ * The extended model implementation for the JobPos2Role service. Represents a row in the &quot;oep_usermgt_jobpos2role&quot; database table, with each column mapped to a property of this class.
  *
  * <p>
- * Helper methods and all application logic should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link org.oep.usermgt.model.Jobpos2Role} interface.
+ * Helper methods and all application logic should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link org.oep.usermgt.model.JobPos2Role} interface.
  * </p>
  *
  * @author NQMINH
  */
-public class Jobpos2RoleImpl extends Jobpos2RoleBaseImpl {
+public class JobPos2RoleImpl extends JobPos2RoleBaseImpl {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never reference this class directly. All methods that expect a jobpos to role model instance should use the {@link org.oep.usermgt.model.Jobpos2Role} interface instead.
+	 * Never reference this class directly. All methods that expect a jobpos to role model instance should use the {@link org.oep.usermgt.model.JobPos2Role} interface instead.
 	 */
-	public Jobpos2RoleImpl() {
+	public JobPos2RoleImpl() {
 	}
 }

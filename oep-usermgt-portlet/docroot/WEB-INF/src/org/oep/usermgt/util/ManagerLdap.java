@@ -38,9 +38,6 @@ import com.liferay.portal.service.ServiceContext;
 public class ManagerLdap {
 
 	String[][] zimbraProperty = new String[][] {
-
-	
-	{ "zimbraMailTransport", "lmtp:dev.vast.vn:7025" },
 			{ "zimbraAccountStatus", "active" },
 			{ "zimbraMailStatus", "enabled" },
 			{ "zimbraAuthTokenValidityValue", "1" },
@@ -161,6 +158,8 @@ public class ManagerLdap {
 			ctx.modifyAttributes(name, modItems);
 	}
 	
+	
+	
 	public void changePassord(ServiceContext serviceContext, User user, String password) throws Exception{
 		long companyId = serviceContext.getCompanyId();
 		Properties userMappings = getUserMappings(serviceContext.getCompanyId());
@@ -178,7 +177,36 @@ public class ManagerLdap {
 		sb.append(getUsersDN(companyId));
 		name = sb.toString();
 		Modifications mods = Modifications.getInstance();  
+		
 		mods.addItem(userMappings.getProperty(UserConverterKeys.PASSWORD),password);
+		ModificationItem[] modItems = mods.getItems();
+		if (binding != null) {
+			ctx.modifyAttributes(name, modItems);
+		}
+		
+	}
+	public void changeActive(ServiceContext serviceContext, User user, int active) throws Exception{
+		long companyId = serviceContext.getCompanyId();
+		Properties userMappings = getUserMappings(serviceContext.getCompanyId());
+		Binding binding = getUser(companyId, user.getScreenName());
+	    String name = StringPool.BLANK;
+		StringBuilder sb = new StringBuilder();
+		LdapContext ctx = getContext(serviceContext.getCompanyId());
+        sb = new StringBuilder();
+		sb.append(userMappings.getProperty("screenName"));
+		sb.append(StringPool.EQUAL);
+		sb.append(user.getScreenName());
+		sb.append(StringPool.COMMA);
+		sb.append(getUsersDN(companyId));
+		name = sb.toString();
+		Modifications mods = Modifications.getInstance();
+		String[] status  = {"locked","active","closed"};
+		if (getIsZimbraLdap(companyId)){
+			mods.addItem(userMappings.getProperty(UserConverterKeys.STATUS),status[active]);
+		}else {
+			mods.addItem(userMappings.getProperty(UserConverterKeys.STATUS),String.valueOf(active));
+		}
+		
 		ModificationItem[] modItems = mods.getItems();
 		if (binding != null) {
 			ctx.modifyAttributes(name, modItems);
@@ -365,7 +393,7 @@ public class ManagerLdap {
 			//addAttributeMapping(
 			//	userMappings.getProperty(UserConverterKeys.STATUS),
 			//	String.valueOf(user.getStatus()), attributes);
-			for (int i = 0; i < 5;i++){
+			for (int i = 0; i < 4;i++){
 				addAttributeMapping(
 						zimbraProperty[i][0],
 						zimbraProperty[i][1], attributes);
@@ -376,6 +404,11 @@ public class ManagerLdap {
 				user.getCompanyId(),
 				LADAP_ZIMBRA_MAILHOST);
 			if (mailhost != null && !mailhost.equals("")){
+
+				//{ "zimbraMailTransport", "lmtp:dev.vast.vn:7025" },
+				addAttributeMapping(
+						"zimbraMailTransport",
+						"lmtp:" + mailhost + ":7025", attributes);
 				addAttributeMapping(
 						"zimbraMailHost",
 						mailhost, attributes);

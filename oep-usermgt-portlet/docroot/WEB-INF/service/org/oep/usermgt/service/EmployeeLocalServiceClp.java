@@ -188,9 +188,13 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName36 = "updateEmployee";
+		_methodName36 = "addEmployee2JoPos";
 
-		_methodParameterTypes36 = new String[] {
+		_methodParameterTypes36 = new String[] { "long", "long" };
+
+		_methodName37 = "updateEmployee";
+
+		_methodParameterTypes37 = new String[] {
 				"long", "long", "long", "long", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
@@ -198,88 +202,100 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName37 = "saveEmployee";
+		_methodName38 = "saveEmployee";
 
-		_methodParameterTypes37 = new String[] {
+		_methodParameterTypes38 = new String[] {
 				"org.oep.usermgt.model.Employee",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName38 = "updateEmployeeResources";
+		_methodName39 = "updateEmployeeResources";
 
-		_methodParameterTypes38 = new String[] {
+		_methodParameterTypes39 = new String[] {
 				"org.oep.usermgt.model.Employee", "java.lang.String[][]",
 				"java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
-
-		_methodName39 = "removeEmployee";
-
-		_methodParameterTypes39 = new String[] { "org.oep.usermgt.model.Employee" };
 
 		_methodName40 = "removeEmployee";
 
-		_methodParameterTypes40 = new String[] { "long" };
+		_methodParameterTypes40 = new String[] { "org.oep.usermgt.model.Employee" };
 
-		_methodName41 = "addEmployeeResources";
+		_methodName41 = "removeEmployee";
 
-		_methodParameterTypes41 = new String[] {
-				"org.oep.usermgt.model.Employee", "boolean", "boolean",
-				"com.liferay.portal.service.ServiceContext"
-			};
+		_methodParameterTypes41 = new String[] { "long" };
 
-		_methodName42 = "addEmployeeResources";
+		_methodName42 = "removeJobPos";
 
-		_methodParameterTypes42 = new String[] {
-				"org.oep.usermgt.model.Employee", "java.lang.String[][]",
-				"java.lang.String[][]",
-				"com.liferay.portal.service.ServiceContext"
-			};
+		_methodParameterTypes42 = new String[] { "long", "long" };
 
 		_methodName43 = "addEmployeeResources";
 
 		_methodParameterTypes43 = new String[] {
+				"org.oep.usermgt.model.Employee", "boolean", "boolean",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName44 = "addEmployeeResources";
+
+		_methodParameterTypes44 = new String[] {
+				"org.oep.usermgt.model.Employee", "java.lang.String[][]",
+				"java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName45 = "addEmployeeResources";
+
+		_methodParameterTypes45 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName44 = "countEmployeeByWorkingUnit";
+		_methodName46 = "countEmployeeByWorkingUnit";
 
-		_methodParameterTypes44 = new String[] { "long" };
+		_methodParameterTypes46 = new String[] { "long" };
 
-		_methodName45 = "getByWorkingUnit";
+		_methodName47 = "getByWorkingUnit";
 
-		_methodParameterTypes45 = new String[] { "long" };
+		_methodParameterTypes47 = new String[] { "long" };
 
-		_methodName46 = "getByWorkingUnit";
+		_methodName48 = "getByWorkingUnit";
 
-		_methodParameterTypes46 = new String[] { "long", "int", "int" };
+		_methodParameterTypes48 = new String[] { "long", "int", "int" };
 
-		_methodName47 = "countEmployeeByWorkingUniMainJobPos";
+		_methodName49 = "countEmployeeByWorkingUniMainJobPos";
 
-		_methodParameterTypes47 = new String[] { "long", "int" };
+		_methodParameterTypes49 = new String[] { "long", "int" };
 
-		_methodName48 = "getByWorkingUnitMainJobPos";
+		_methodName50 = "getByWorkingUnitMainJobPos";
 
-		_methodParameterTypes48 = new String[] { "long", "int" };
+		_methodParameterTypes50 = new String[] { "long", "int" };
 
-		_methodName49 = "getByWorkingUnitMainJobPos";
+		_methodName51 = "getByWorkingUnitMainJobPos";
 
-		_methodParameterTypes49 = new String[] { "long", "int", "int", "int" };
+		_methodParameterTypes51 = new String[] { "long", "int", "int", "int" };
 
-		_methodName50 = "countEmployeeByLikeNameWorkingUnit";
+		_methodName52 = "countEmployeeByLikeNameWorkingUnit";
 
-		_methodParameterTypes50 = new String[] { "java.lang.String", "long" };
+		_methodParameterTypes52 = new String[] { "java.lang.String", "long" };
 
-		_methodName51 = "finnderByLikeNameWorkingUnit";
+		_methodName53 = "finnderByLikeNameWorkingUnit";
 
-		_methodParameterTypes51 = new String[] { "java.lang.String", "long" };
+		_methodParameterTypes53 = new String[] { "java.lang.String", "long" };
 
-		_methodName52 = "finderLikeNameWorkingUnit";
+		_methodName54 = "finderLikeNameWorkingUnit";
 
-		_methodParameterTypes52 = new String[] {
+		_methodParameterTypes54 = new String[] {
 				"java.lang.String", "long", "int", "int"
 			};
+
+		_methodName55 = "getJobPosByEmployeeId";
+
+		_methodParameterTypes55 = new String[] { "long" };
+
+		_methodName56 = "getJobPos";
+
+		_methodParameterTypes56 = new String[] { "java.util.ArrayList", "long" };
 	}
 
 	@Override
@@ -1332,6 +1348,35 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 	}
 
 	@Override
+	public void addEmployee2JoPos(long employeeId, long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName36,
+				_methodParameterTypes36, new Object[] { employeeId, jobPosId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
 	public org.oep.usermgt.model.Employee updateEmployee(long employeeId,
 		long mappingUserId, long workingUnitId, long mainJobPosId,
 		java.lang.String employeeNo, java.lang.String fullName,
@@ -1344,8 +1389,8 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName36,
-					_methodParameterTypes36,
+			returnObj = _invokableLocalService.invokeMethod(_methodName37,
+					_methodParameterTypes37,
 					new Object[] {
 						employeeId,
 						
@@ -1408,8 +1453,8 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName37,
-					_methodParameterTypes37,
+			returnObj = _invokableLocalService.invokeMethod(_methodName38,
+					_methodParameterTypes38,
 					new Object[] {
 						ClpSerializer.translateInput(employee),
 						
@@ -1448,8 +1493,8 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName38,
-				_methodParameterTypes38,
+			_invokableLocalService.invokeMethod(_methodName39,
+				_methodParameterTypes39,
 				new Object[] {
 					ClpSerializer.translateInput(employee),
 					
@@ -1486,8 +1531,8 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName39,
-				_methodParameterTypes39,
+			_invokableLocalService.invokeMethod(_methodName40,
+				_methodParameterTypes40,
 				new Object[] { ClpSerializer.translateInput(employee) });
 		}
 		catch (Throwable t) {
@@ -1516,8 +1561,37 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName40,
-				_methodParameterTypes40, new Object[] { id });
+			_invokableLocalService.invokeMethod(_methodName41,
+				_methodParameterTypes41, new Object[] { id });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void removeJobPos(long employeeId, long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName42,
+				_methodParameterTypes42, new Object[] { employeeId, jobPosId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -1547,8 +1621,8 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName41,
-				_methodParameterTypes41,
+			_invokableLocalService.invokeMethod(_methodName43,
+				_methodParameterTypes43,
 				new Object[] {
 					ClpSerializer.translateInput(employee),
 					
@@ -1588,8 +1662,8 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName42,
-				_methodParameterTypes42,
+			_invokableLocalService.invokeMethod(_methodName44,
+				_methodParameterTypes44,
 				new Object[] {
 					ClpSerializer.translateInput(employee),
 					
@@ -1629,8 +1703,8 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName43,
-				_methodParameterTypes43,
+			_invokableLocalService.invokeMethod(_methodName45,
+				_methodParameterTypes45,
 				new Object[] {
 					id,
 					
@@ -1669,8 +1743,8 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName44,
-					_methodParameterTypes44, new Object[] { workingUnitId });
+			returnObj = _invokableLocalService.invokeMethod(_methodName46,
+					_methodParameterTypes46, new Object[] { workingUnitId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -1703,8 +1777,8 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName45,
-					_methodParameterTypes45, new Object[] { workingUnitId });
+			returnObj = _invokableLocalService.invokeMethod(_methodName47,
+					_methodParameterTypes47, new Object[] { workingUnitId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -1737,8 +1811,8 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName46,
-					_methodParameterTypes46,
+			returnObj = _invokableLocalService.invokeMethod(_methodName48,
+					_methodParameterTypes48,
 					new Object[] { workingUnitId, start, end });
 		}
 		catch (Throwable t) {
@@ -1772,8 +1846,8 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName47,
-					_methodParameterTypes47,
+			returnObj = _invokableLocalService.invokeMethod(_methodName49,
+					_methodParameterTypes49,
 					new Object[] { workingUnitId, mainJobPosId });
 		}
 		catch (Throwable t) {
@@ -1807,8 +1881,8 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName48,
-					_methodParameterTypes48,
+			returnObj = _invokableLocalService.invokeMethod(_methodName50,
+					_methodParameterTypes50,
 					new Object[] { workingUnitId, mainJobPosId });
 		}
 		catch (Throwable t) {
@@ -1842,8 +1916,8 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName49,
-					_methodParameterTypes49,
+			returnObj = _invokableLocalService.invokeMethod(_methodName51,
+					_methodParameterTypes51,
 					new Object[] { workingUnitId, mainJobPosId, start, end });
 		}
 		catch (Throwable t) {
@@ -1877,8 +1951,8 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName50,
-					_methodParameterTypes50,
+			returnObj = _invokableLocalService.invokeMethod(_methodName52,
+					_methodParameterTypes52,
 					new Object[] {
 						ClpSerializer.translateInput(textSearch),
 						
@@ -1916,8 +1990,8 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName51,
-					_methodParameterTypes51,
+			returnObj = _invokableLocalService.invokeMethod(_methodName53,
+					_methodParameterTypes53,
 					new Object[] {
 						ClpSerializer.translateInput(textSearch),
 						
@@ -1955,8 +2029,8 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName52,
-					_methodParameterTypes52,
+			returnObj = _invokableLocalService.invokeMethod(_methodName54,
+					_methodParameterTypes54,
 					new Object[] {
 						ClpSerializer.translateInput(textSearch),
 						
@@ -1988,6 +2062,80 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 		}
 
 		return (java.util.List<org.oep.usermgt.model.Employee>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public java.util.List<org.oep.usermgt.model.JobPos> getJobPosByEmployeeId(
+		long employeeId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName55,
+					_methodParameterTypes55, new Object[] { employeeId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<org.oep.usermgt.model.JobPos>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public java.util.List<org.oep.usermgt.model.JobPos> getJobPos(
+		java.util.ArrayList<org.oep.usermgt.model.JobPos> listJobPos,
+		long employeeId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName56,
+					_methodParameterTypes56,
+					new Object[] {
+						ClpSerializer.translateInput(listJobPos),
+						
+					employeeId
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<org.oep.usermgt.model.JobPos>)ClpSerializer.translateOutput(returnObj);
 	}
 
 	private InvokableLocalService _invokableLocalService;
@@ -2095,4 +2243,12 @@ public class EmployeeLocalServiceClp implements EmployeeLocalService {
 	private String[] _methodParameterTypes51;
 	private String _methodName52;
 	private String[] _methodParameterTypes52;
+	private String _methodName53;
+	private String[] _methodParameterTypes53;
+	private String _methodName54;
+	private String[] _methodParameterTypes54;
+	private String _methodName55;
+	private String[] _methodParameterTypes55;
+	private String _methodName56;
+	private String[] _methodParameterTypes56;
 }

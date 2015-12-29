@@ -29,8 +29,8 @@ import org.oep.usermgt.model.BusinessClp;
 import org.oep.usermgt.model.CitizenClp;
 import org.oep.usermgt.model.DelegacyClp;
 import org.oep.usermgt.model.EmployeeClp;
+import org.oep.usermgt.model.JobPos2RoleClp;
 import org.oep.usermgt.model.JobPosClp;
-import org.oep.usermgt.model.Jobpos2RoleClp;
 import org.oep.usermgt.model.SubAccountClp;
 import org.oep.usermgt.model.WorkingUnitClp;
 
@@ -129,8 +129,8 @@ public class ClpSerializer {
 			return translateInputJobPos(oldModel);
 		}
 
-		if (oldModelClassName.equals(Jobpos2RoleClp.class.getName())) {
-			return translateInputJobpos2Role(oldModel);
+		if (oldModelClassName.equals(JobPos2RoleClp.class.getName())) {
+			return translateInputJobPos2Role(oldModel);
 		}
 
 		if (oldModelClassName.equals(SubAccountClp.class.getName())) {
@@ -206,10 +206,10 @@ public class ClpSerializer {
 		return newModel;
 	}
 
-	public static Object translateInputJobpos2Role(BaseModel<?> oldModel) {
-		Jobpos2RoleClp oldClpModel = (Jobpos2RoleClp)oldModel;
+	public static Object translateInputJobPos2Role(BaseModel<?> oldModel) {
+		JobPos2RoleClp oldClpModel = (JobPos2RoleClp)oldModel;
 
-		BaseModel<?> newModel = oldClpModel.getJobpos2RoleRemoteModel();
+		BaseModel<?> newModel = oldClpModel.getJobPos2RoleRemoteModel();
 
 		newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -434,8 +434,8 @@ public class ClpSerializer {
 		}
 
 		if (oldModelClassName.equals(
-					"org.oep.usermgt.model.impl.Jobpos2RoleImpl")) {
-			return translateOutputJobpos2Role(oldModel);
+					"org.oep.usermgt.model.impl.JobPos2RoleImpl")) {
+			return translateOutputJobPos2Role(oldModel);
 		}
 		else if (oldModelClassName.endsWith("Clp")) {
 			try {
@@ -700,8 +700,8 @@ public class ClpSerializer {
 			return new org.oep.usermgt.NoSuchJobPosException();
 		}
 
-		if (className.equals("org.oep.usermgt.NoSuchJobpos2RoleException")) {
-			return new org.oep.usermgt.NoSuchJobpos2RoleException();
+		if (className.equals("org.oep.usermgt.NoSuchJobPos2RoleException")) {
+			return new org.oep.usermgt.NoSuchJobPos2RoleException();
 		}
 
 		if (className.equals("org.oep.usermgt.NoSuchSubAccountException")) {
@@ -765,12 +765,12 @@ public class ClpSerializer {
 		return newModel;
 	}
 
-	public static Object translateOutputJobpos2Role(BaseModel<?> oldModel) {
-		Jobpos2RoleClp newModel = new Jobpos2RoleClp();
+	public static Object translateOutputJobPos2Role(BaseModel<?> oldModel) {
+		JobPos2RoleClp newModel = new JobPos2RoleClp();
 
 		newModel.setModelAttributes(oldModel.getModelAttributes());
 
-		newModel.setJobpos2RoleRemoteModel(oldModel);
+		newModel.setJobPos2RoleRemoteModel(oldModel);
 
 		return newModel;
 	}

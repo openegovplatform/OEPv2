@@ -100,17 +100,17 @@ public class CitizenLocalServiceClpInvoker {
 
 		_methodParameterTypes15 = new String[] { "org.oep.usermgt.model.Citizen" };
 
-		_methodName82 = "getBeanIdentifier";
+		_methodName84 = "getBeanIdentifier";
 
-		_methodParameterTypes82 = new String[] {  };
+		_methodParameterTypes84 = new String[] {  };
 
-		_methodName83 = "setBeanIdentifier";
+		_methodName85 = "setBeanIdentifier";
 
-		_methodParameterTypes83 = new String[] { "java.lang.String" };
+		_methodParameterTypes85 = new String[] { "java.lang.String" };
 
-		_methodName88 = "addCitizen";
+		_methodName90 = "addCitizen";
 
-		_methodParameterTypes88 = new String[] {
+		_methodParameterTypes90 = new String[] {
 				"long", "java.lang.String", "java.lang.String", "int",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
@@ -119,9 +119,9 @@ public class CitizenLocalServiceClpInvoker {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName89 = "updateCitizen";
+		_methodName91 = "updateCitizen";
 
-		_methodParameterTypes89 = new String[] {
+		_methodParameterTypes91 = new String[] {
 				"long", "long", "java.lang.String", "java.lang.String", "int",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
@@ -130,51 +130,51 @@ public class CitizenLocalServiceClpInvoker {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName90 = "saveCitizen";
+		_methodName92 = "saveCitizen";
 
-		_methodParameterTypes90 = new String[] {
+		_methodParameterTypes92 = new String[] {
 				"org.oep.usermgt.model.Citizen",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName91 = "updateCitizenResources";
+		_methodName93 = "updateCitizenResources";
 
-		_methodParameterTypes91 = new String[] {
+		_methodParameterTypes93 = new String[] {
 				"org.oep.usermgt.model.Citizen", "java.lang.String[][]",
 				"java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName92 = "removeCitizen";
+		_methodName94 = "removeCitizen";
 
-		_methodParameterTypes92 = new String[] { "org.oep.usermgt.model.Citizen" };
+		_methodParameterTypes94 = new String[] { "org.oep.usermgt.model.Citizen" };
 
-		_methodName93 = "removeCitizen";
+		_methodName95 = "removeCitizen";
 
-		_methodParameterTypes93 = new String[] { "long" };
+		_methodParameterTypes95 = new String[] { "long" };
 
-		_methodName94 = "getCitizen";
+		_methodName96 = "getCitizen";
 
-		_methodParameterTypes94 = new String[] { "long" };
-
-		_methodName95 = "addCitizenResources";
-
-		_methodParameterTypes95 = new String[] {
-				"org.oep.usermgt.model.Citizen", "boolean", "boolean",
-				"com.liferay.portal.service.ServiceContext"
-			};
-
-		_methodName96 = "addCitizenResources";
-
-		_methodParameterTypes96 = new String[] {
-				"org.oep.usermgt.model.Citizen", "java.lang.String[][]",
-				"java.lang.String[][]",
-				"com.liferay.portal.service.ServiceContext"
-			};
+		_methodParameterTypes96 = new String[] { "long" };
 
 		_methodName97 = "addCitizenResources";
 
 		_methodParameterTypes97 = new String[] {
+				"org.oep.usermgt.model.Citizen", "boolean", "boolean",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName98 = "addCitizenResources";
+
+		_methodParameterTypes98 = new String[] {
+				"org.oep.usermgt.model.Citizen", "java.lang.String[][]",
+				"java.lang.String[][]",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName99 = "addCitizenResources";
+
+		_methodParameterTypes99 = new String[] {
 				"long", "java.lang.String[][]", "java.lang.String[][]",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -269,20 +269,20 @@ public class CitizenLocalServiceClpInvoker {
 			return CitizenLocalServiceUtil.updateCitizen((org.oep.usermgt.model.Citizen)arguments[0]);
 		}
 
-		if (_methodName82.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
+		if (_methodName84.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes84, parameterTypes)) {
 			return CitizenLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName83.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
+		if (_methodName85.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes85, parameterTypes)) {
 			CitizenLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName88.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+		if (_methodName90.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes90, parameterTypes)) {
 			return CitizenLocalServiceUtil.addCitizen(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				((Integer)arguments[3]).intValue(),
@@ -298,8 +298,8 @@ public class CitizenLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[16]);
 		}
 
-		if (_methodName89.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+		if (_methodName91.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes91, parameterTypes)) {
 			return CitizenLocalServiceUtil.updateCitizen(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				(java.lang.String)arguments[2], (java.lang.String)arguments[3],
@@ -317,14 +317,14 @@ public class CitizenLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[17]);
 		}
 
-		if (_methodName90.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes90, parameterTypes)) {
+		if (_methodName92.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes92, parameterTypes)) {
 			return CitizenLocalServiceUtil.saveCitizen((org.oep.usermgt.model.Citizen)arguments[0],
 				(com.liferay.portal.service.ServiceContext)arguments[1]);
 		}
 
-		if (_methodName91.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes91, parameterTypes)) {
+		if (_methodName93.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes93, parameterTypes)) {
 			CitizenLocalServiceUtil.updateCitizenResources((org.oep.usermgt.model.Citizen)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -333,27 +333,27 @@ public class CitizenLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName92.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes92, parameterTypes)) {
+		if (_methodName94.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
 			CitizenLocalServiceUtil.removeCitizen((org.oep.usermgt.model.Citizen)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName93.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes93, parameterTypes)) {
+		if (_methodName95.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
 			CitizenLocalServiceUtil.removeCitizen(((Long)arguments[0]).longValue());
 
 			return null;
 		}
 
-		if (_methodName94.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
+		if (_methodName96.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
 			return CitizenLocalServiceUtil.getCitizen(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName95.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
+		if (_methodName97.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
 			CitizenLocalServiceUtil.addCitizenResources((org.oep.usermgt.model.Citizen)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Boolean)arguments[2]).booleanValue(),
@@ -362,8 +362,8 @@ public class CitizenLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName96.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
+		if (_methodName98.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes98, parameterTypes)) {
 			CitizenLocalServiceUtil.addCitizenResources((org.oep.usermgt.model.Citizen)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -372,8 +372,8 @@ public class CitizenLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName97.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes97, parameterTypes)) {
+		if (_methodName99.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes99, parameterTypes)) {
 			CitizenLocalServiceUtil.addCitizenResources(((Long)arguments[0]).longValue(),
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2],
@@ -417,14 +417,10 @@ public class CitizenLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName82;
-	private String[] _methodParameterTypes82;
-	private String _methodName83;
-	private String[] _methodParameterTypes83;
-	private String _methodName88;
-	private String[] _methodParameterTypes88;
-	private String _methodName89;
-	private String[] _methodParameterTypes89;
+	private String _methodName84;
+	private String[] _methodParameterTypes84;
+	private String _methodName85;
+	private String[] _methodParameterTypes85;
 	private String _methodName90;
 	private String[] _methodParameterTypes90;
 	private String _methodName91;
@@ -441,4 +437,8 @@ public class CitizenLocalServiceClpInvoker {
 	private String[] _methodParameterTypes96;
 	private String _methodName97;
 	private String[] _methodParameterTypes97;
+	private String _methodName98;
+	private String[] _methodParameterTypes98;
+	private String _methodName99;
+	private String[] _methodParameterTypes99;
 }

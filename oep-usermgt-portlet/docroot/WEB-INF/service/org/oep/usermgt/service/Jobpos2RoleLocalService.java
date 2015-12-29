@@ -25,72 +25,72 @@ import com.liferay.portal.service.InvokableLocalService;
 import com.liferay.portal.service.PersistedModelLocalService;
 
 /**
- * Provides the local service interface for Jobpos2Role. Methods of this
+ * Provides the local service interface for JobPos2Role. Methods of this
  * service will not have security checks based on the propagated JAAS
  * credentials because this service can only be accessed from within the same
  * VM.
  *
  * @author NQMINH
- * @see Jobpos2RoleLocalServiceUtil
- * @see org.oep.usermgt.service.base.Jobpos2RoleLocalServiceBaseImpl
- * @see org.oep.usermgt.service.impl.Jobpos2RoleLocalServiceImpl
+ * @see JobPos2RoleLocalServiceUtil
+ * @see org.oep.usermgt.service.base.JobPos2RoleLocalServiceBaseImpl
+ * @see org.oep.usermgt.service.impl.JobPos2RoleLocalServiceImpl
  * @generated
  */
 @Transactional(isolation = Isolation.PORTAL, rollbackFor =  {
 	PortalException.class, SystemException.class})
-public interface Jobpos2RoleLocalService extends BaseLocalService,
+public interface JobPos2RoleLocalService extends BaseLocalService,
 	InvokableLocalService, PersistedModelLocalService {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this interface directly. Always use {@link Jobpos2RoleLocalServiceUtil} to access the jobpos to role local service. Add custom service methods to {@link org.oep.usermgt.service.impl.Jobpos2RoleLocalServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
+	 * Never modify or reference this interface directly. Always use {@link JobPos2RoleLocalServiceUtil} to access the jobpos to role local service. Add custom service methods to {@link org.oep.usermgt.service.impl.JobPos2RoleLocalServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
 
 	/**
 	* Adds the jobpos to role to the database. Also notifies the appropriate model listeners.
 	*
-	* @param jobpos2Role the jobpos to role
+	* @param jobPos2Role the jobpos to role
 	* @return the jobpos to role that was added
 	* @throws SystemException if a system exception occurred
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
-	public org.oep.usermgt.model.Jobpos2Role addJobpos2Role(
-		org.oep.usermgt.model.Jobpos2Role jobpos2Role)
+	public org.oep.usermgt.model.JobPos2Role addJobPos2Role(
+		org.oep.usermgt.model.JobPos2Role jobPos2Role)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
 	* Creates a new jobpos to role with the primary key. Does not add the jobpos to role to the database.
 	*
-	* @param jobpos2RolePK the primary key for the new jobpos to role
+	* @param jobPos2RolePK the primary key for the new jobpos to role
 	* @return the new jobpos to role
 	*/
-	public org.oep.usermgt.model.Jobpos2Role createJobpos2Role(
-		org.oep.usermgt.service.persistence.Jobpos2RolePK jobpos2RolePK);
+	public org.oep.usermgt.model.JobPos2Role createJobPos2Role(
+		org.oep.usermgt.service.persistence.JobPos2RolePK jobPos2RolePK);
 
 	/**
 	* Deletes the jobpos to role with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param jobpos2RolePK the primary key of the jobpos to role
+	* @param jobPos2RolePK the primary key of the jobpos to role
 	* @return the jobpos to role that was removed
 	* @throws PortalException if a jobpos to role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.DELETE)
-	public org.oep.usermgt.model.Jobpos2Role deleteJobpos2Role(
-		org.oep.usermgt.service.persistence.Jobpos2RolePK jobpos2RolePK)
+	public org.oep.usermgt.model.JobPos2Role deleteJobPos2Role(
+		org.oep.usermgt.service.persistence.JobPos2RolePK jobPos2RolePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
 	/**
 	* Deletes the jobpos to role from the database. Also notifies the appropriate model listeners.
 	*
-	* @param jobpos2Role the jobpos to role
+	* @param jobPos2Role the jobpos to role
 	* @return the jobpos to role that was removed
 	* @throws SystemException if a system exception occurred
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.DELETE)
-	public org.oep.usermgt.model.Jobpos2Role deleteJobpos2Role(
-		org.oep.usermgt.model.Jobpos2Role jobpos2Role)
+	public org.oep.usermgt.model.JobPos2Role deleteJobPos2Role(
+		org.oep.usermgt.model.JobPos2Role jobPos2Role)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	public com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery();
@@ -111,7 +111,7 @@ public interface Jobpos2RoleLocalService extends BaseLocalService,
 	* Performs a dynamic query on the database and returns a range of the matching rows.
 	*
 	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.Jobpos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.JobPos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	* </p>
 	*
 	* @param dynamicQuery the dynamic query
@@ -129,7 +129,7 @@ public interface Jobpos2RoleLocalService extends BaseLocalService,
 	* Performs a dynamic query on the database and returns an ordered range of the matching rows.
 	*
 	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.Jobpos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.JobPos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	* </p>
 	*
 	* @param dynamicQuery the dynamic query
@@ -171,21 +171,21 @@ public interface Jobpos2RoleLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public org.oep.usermgt.model.Jobpos2Role fetchJobpos2Role(
-		org.oep.usermgt.service.persistence.Jobpos2RolePK jobpos2RolePK)
+	public org.oep.usermgt.model.JobPos2Role fetchJobPos2Role(
+		org.oep.usermgt.service.persistence.JobPos2RolePK jobPos2RolePK)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
 	* Returns the jobpos to role with the primary key.
 	*
-	* @param jobpos2RolePK the primary key of the jobpos to role
+	* @param jobPos2RolePK the primary key of the jobpos to role
 	* @return the jobpos to role
 	* @throws PortalException if a jobpos to role with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public org.oep.usermgt.model.Jobpos2Role getJobpos2Role(
-		org.oep.usermgt.service.persistence.Jobpos2RolePK jobpos2RolePK)
+	public org.oep.usermgt.model.JobPos2Role getJobPos2Role(
+		org.oep.usermgt.service.persistence.JobPos2RolePK jobPos2RolePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
@@ -200,7 +200,7 @@ public interface Jobpos2RoleLocalService extends BaseLocalService,
 	* Returns a range of all the jobpos to roles.
 	*
 	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.Jobpos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.JobPos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	* </p>
 	*
 	* @param start the lower bound of the range of jobpos to roles
@@ -209,7 +209,7 @@ public interface Jobpos2RoleLocalService extends BaseLocalService,
 	* @throws SystemException if a system exception occurred
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public java.util.List<org.oep.usermgt.model.Jobpos2Role> getJobpos2Roles(
+	public java.util.List<org.oep.usermgt.model.JobPos2Role> getJobPos2Roles(
 		int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
@@ -220,19 +220,19 @@ public interface Jobpos2RoleLocalService extends BaseLocalService,
 	* @throws SystemException if a system exception occurred
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public int getJobpos2RolesCount()
+	public int getJobPos2RolesCount()
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
 	* Updates the jobpos to role in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	*
-	* @param jobpos2Role the jobpos to role
+	* @param jobPos2Role the jobpos to role
 	* @return the jobpos to role that was updated
 	* @throws SystemException if a system exception occurred
 	*/
 	@com.liferay.portal.kernel.search.Indexable(type = IndexableType.REINDEX)
-	public org.oep.usermgt.model.Jobpos2Role updateJobpos2Role(
-		org.oep.usermgt.model.Jobpos2Role jobpos2Role)
+	public org.oep.usermgt.model.JobPos2Role updateJobPos2Role(
+		org.oep.usermgt.model.JobPos2Role jobPos2Role)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
@@ -253,4 +253,91 @@ public interface Jobpos2RoleLocalService extends BaseLocalService,
 	public java.lang.Object invokeMethod(java.lang.String name,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;
+
+	public org.oep.usermgt.model.JobPos2Role addJobPos2Role(long jobPosId,
+		long roleId, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public org.oep.usermgt.model.JobPos2Role updateJobPos2Role(long jobPosId,
+		long roleId, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public org.oep.usermgt.model.JobPos2Role saveJobPos2Role(
+		org.oep.usermgt.model.JobPos2Role jobPos2Role,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void updateJobPos2RoleResources(
+		org.oep.usermgt.model.JobPos2Role jobPos,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void removeJobPos2Role(org.oep.usermgt.model.JobPos2Role jobPos2Role)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void removeJobPos2Role(long jobPosId, long roleId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public org.oep.usermgt.model.JobPos getJobPos2Role(long id)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addJobPos2RoleResources(org.oep.usermgt.model.JobPos jobPos,
+		boolean addGroupPermission, boolean addGuestPermission,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addJobPos2RoleResources(org.oep.usermgt.model.JobPos jobPos,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addJobPos2RoleResources(long id,
+		java.lang.String[] groupPermissions,
+		java.lang.String[] guestPermissions,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<org.oep.usermgt.model.JobPos2Role> getByJobPos(
+		long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public long[] getRoleIdByJobPosId(long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.ArrayList<com.liferay.portal.model.Role> getRoleIdByJobPosId(
+		java.util.ArrayList<com.liferay.portal.model.Role> listRole,
+		long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<com.liferay.portal.model.Role> getRoleByJobPosId(
+		long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<com.liferay.portal.model.Role> getRoleByNotInJobPosId(
+		long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
 }

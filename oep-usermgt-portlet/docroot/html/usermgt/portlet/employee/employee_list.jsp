@@ -124,9 +124,9 @@
 						key="org.oep.usermgt.portlet.employee.table.header.fullName" /></th>
 				<th width="10%"><liferay-ui:message
 						key="org.oep.usermgt.portlet.employee.table.header.employeeNo" /></th>
-				<th width="15%"><liferay-ui:message
+				<th width="25%"><liferay-ui:message
 						key="org.oep.usermgt.portlet.employee.table.header.workingUnitId" /></th>
-				<th width="13%"><liferay-ui:message
+				<th width="15%"><liferay-ui:message
 						key="org.oep.usermgt.portlet.employee.table.header.mainJobPosId" /></th>
 				<th width="10%" style="text-align: center"><liferay-ui:message
 						key="org.oep.usermgt.portlet.employee.table.header.mappingUserId" /></th>
@@ -160,7 +160,17 @@
 				<portlet:param
 					name="<%=EmployeeKeys.BaseEmployeeAttributes.EDIT_ID%>"
 					value="<%=String.valueOf(data.getEmployeeId())%>" />
+				
 			</portlet:actionURL>
+			<portlet:renderURL var="changeJopPos">
+				<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
+					value="<%=redirectURL%>" />
+				<portlet:param name="<%=PortletKeys.SET_VIEW_PARAMETER%>"
+					value="/html/usermgt/portlet/employee/employee_2_jobpos.jsp" />
+				<portlet:param
+					name="<%=EmployeeKeys.BaseEmployeeAttributes.EDIT_ID%>"
+					value="<%=String.valueOf(data.getEmployeeId())%>" />
+			</portlet:renderURL>
 			<%
 				if (index % 2 == 0) {
 			%>
@@ -171,21 +181,14 @@
 				<td style="text-align: left"><%=data.getWorkingUnitId()%></td>
 				<td style="text-align: left"><%=data.getMainJobPosId()%></td>
 				<td style="text-align: left"><%=data.getMappingUserId()%></td>
-				<td style="text-align: left"><a href="#"
-					class="btn btn-success"
-					title="<liferay-ui:message key="org.oep.usermgt.portlet.table.action.title.edit" />"
-					onclick="location.href = '<%=editUrl%>';return false;"><i
-						class="icon-pencil"><liferay-ui:message
-								key="org.oep.usermgt.portlet.table.action.title.edit" /></i></a> 
-								<a href="#" class="btn btn-success" title= "<liferay-ui:message key="org.oep.usermgt.portlet.employee.table.action.title.changepassword" />"
-					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.usermgt.portlet.employee.table.action.title.beforedelete")%>')) {location.href = '<%=changePassword%>';return false;}"><i
-						class="icon-edit"><liferay-ui:message
-								key="org.oep.usermgt.portlet.employee.table.action.title.changepassword" /></i></a>
-								<a href="#" class="btn btn-primary"
-					title="<liferay-ui:message key="org.oep.usermgt.portlet.table.action.title.delete" />"
-					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.usermgt.portlet.confirm.message.beforedelete")%>')) {location.href = '<%=deleteUrl%>';return false;}"><i
-						class="icon-trash"><liferay-ui:message
-								key="org.oep.usermgt.portlet.table.action.title.delete" /></i></a>
+				<td style="text-align: left">
+				<liferay-ui:icon-menu>
+						<liferay-ui:icon image="edit" url="<%=editUrl%>" message="org.oep.usermgt.portlet.table.action.title.edit"/> 
+						<liferay-ui:icon image="add_location" url="<%=changeJopPos%>" message="org.oep.usermgt.portlet.employee.table.action.title.changejobpos"/>  
+					 	<liferay-ui:icon image="key" useDialog="<%= true %>" url="<%= changePassword %>" message="org.oep.usermgt.portlet.employee.table.action.title.changepassword"/> 
+					 	<liferay-ui:icon image="delete" url="<%= deleteUrl %>" message="org.oep.usermgt.portlet.table.action.title.delete"/> 
+					 	
+				</liferay-ui:icon-menu>
 						</td>
 			</tr>
 			<%
@@ -199,24 +202,16 @@
 				<td style="text-align: left"><%=data.getWorkingUnitId()%></td>
 				<td style="text-align: left"><%=data.getMainJobPosId()%></td>
 				<td style="text-align: left"><%=data.getMappingUserId()%></td>
-				<td style="text-align: left"><a href="#"
-					class="btn btn-success"
-					title="<liferay-ui:message key="org.oep.usermgt.portlet.table.action.title.edit" />"
-					onclick="location.href = '<%=editUrl%>';return false;"><i
-						class="icon-pencil"><liferay-ui:message
-								key="org.oep.usermgt.portlet.table.action.title.edit" /></i></a> 
-								<a
-					href="#" class="btn btn-success"
-					title="<liferay-ui:message key="org.oep.usermgt.portlet.employee.table.action.title.changepassword" />"
-					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.usermgt.portlet.employee.table.action.title.beforechagepassword")%>')) {location.href = '<%=changePassword%>';return false;}"><i
-						class="icon-edit"><liferay-ui:message
-								key="org.oep.usermgt.portlet.employee.table.action.title.changepassword" /></i></a>
-					<a
-					href="#" class="btn btn-primary"
-					title="<liferay-ui:message key="org.oep.usermgt.portlet.table.action.title.delete" />"
-					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.usermgt.portlet.table.action.title.beforedelete")%>')) {location.href = '<%=deleteUrl%>';return false;}"><i
-						class="icon-trash"><liferay-ui:message
-								key="org.oep.usermgt.portlet.table.action.title.delete" /></i></a>
+				<td style="text-align: left">
+				
+				<liferay-ui:icon-menu>
+						<liferay-ui:icon image="edit" url="<%=editUrl%>" message="org.oep.usermgt.portlet.table.action.title.edit"/>  
+					 	<liferay-ui:icon image="add_location" url="<%=changeJopPos%>" message="org.oep.usermgt.portlet.employee.table.action.title.changejobpos"/>  
+					 	<liferay-ui:icon image="key" useDialog="<%= true %>" url="<%= changePassword %>" message="org.oep.usermgt.portlet.employee.table.action.title.changepassword" />
+					 	<liferay-ui:icon image="delete" url="<%= deleteUrl %>" message="org.oep.usermgt.portlet.table.action.title.delete"/> 
+						
+				</liferay-ui:icon-menu>
+				
 								
 								</td>
 			</tr>

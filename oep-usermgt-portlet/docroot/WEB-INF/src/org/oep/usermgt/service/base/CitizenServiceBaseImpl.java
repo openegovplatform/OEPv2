@@ -29,9 +29,10 @@ import org.oep.usermgt.service.persistence.CitizenPersistence;
 import org.oep.usermgt.service.persistence.DelegacyPersistence;
 import org.oep.usermgt.service.persistence.EmployeeFinder;
 import org.oep.usermgt.service.persistence.EmployeePersistence;
+import org.oep.usermgt.service.persistence.JobPos2RoleFinder;
+import org.oep.usermgt.service.persistence.JobPos2RolePersistence;
 import org.oep.usermgt.service.persistence.JobPosFinder;
 import org.oep.usermgt.service.persistence.JobPosPersistence;
-import org.oep.usermgt.service.persistence.Jobpos2RolePersistence;
 import org.oep.usermgt.service.persistence.SubAccountPersistence;
 import org.oep.usermgt.service.persistence.WorkingUnitFinder;
 import org.oep.usermgt.service.persistence.WorkingUnitPersistence;
@@ -379,18 +380,18 @@ public abstract class CitizenServiceBaseImpl extends BaseServiceImpl
 	 *
 	 * @return the jobpos to role local service
 	 */
-	public org.oep.usermgt.service.Jobpos2RoleLocalService getJobpos2RoleLocalService() {
-		return jobpos2RoleLocalService;
+	public org.oep.usermgt.service.JobPos2RoleLocalService getJobPos2RoleLocalService() {
+		return jobPos2RoleLocalService;
 	}
 
 	/**
 	 * Sets the jobpos to role local service.
 	 *
-	 * @param jobpos2RoleLocalService the jobpos to role local service
+	 * @param jobPos2RoleLocalService the jobpos to role local service
 	 */
-	public void setJobpos2RoleLocalService(
-		org.oep.usermgt.service.Jobpos2RoleLocalService jobpos2RoleLocalService) {
-		this.jobpos2RoleLocalService = jobpos2RoleLocalService;
+	public void setJobPos2RoleLocalService(
+		org.oep.usermgt.service.JobPos2RoleLocalService jobPos2RoleLocalService) {
+		this.jobPos2RoleLocalService = jobPos2RoleLocalService;
 	}
 
 	/**
@@ -398,18 +399,18 @@ public abstract class CitizenServiceBaseImpl extends BaseServiceImpl
 	 *
 	 * @return the jobpos to role remote service
 	 */
-	public org.oep.usermgt.service.Jobpos2RoleService getJobpos2RoleService() {
-		return jobpos2RoleService;
+	public org.oep.usermgt.service.JobPos2RoleService getJobPos2RoleService() {
+		return jobPos2RoleService;
 	}
 
 	/**
 	 * Sets the jobpos to role remote service.
 	 *
-	 * @param jobpos2RoleService the jobpos to role remote service
+	 * @param jobPos2RoleService the jobpos to role remote service
 	 */
-	public void setJobpos2RoleService(
-		org.oep.usermgt.service.Jobpos2RoleService jobpos2RoleService) {
-		this.jobpos2RoleService = jobpos2RoleService;
+	public void setJobPos2RoleService(
+		org.oep.usermgt.service.JobPos2RoleService jobPos2RoleService) {
+		this.jobPos2RoleService = jobPos2RoleService;
 	}
 
 	/**
@@ -417,18 +418,36 @@ public abstract class CitizenServiceBaseImpl extends BaseServiceImpl
 	 *
 	 * @return the jobpos to role persistence
 	 */
-	public Jobpos2RolePersistence getJobpos2RolePersistence() {
-		return jobpos2RolePersistence;
+	public JobPos2RolePersistence getJobPos2RolePersistence() {
+		return jobPos2RolePersistence;
 	}
 
 	/**
 	 * Sets the jobpos to role persistence.
 	 *
-	 * @param jobpos2RolePersistence the jobpos to role persistence
+	 * @param jobPos2RolePersistence the jobpos to role persistence
 	 */
-	public void setJobpos2RolePersistence(
-		Jobpos2RolePersistence jobpos2RolePersistence) {
-		this.jobpos2RolePersistence = jobpos2RolePersistence;
+	public void setJobPos2RolePersistence(
+		JobPos2RolePersistence jobPos2RolePersistence) {
+		this.jobPos2RolePersistence = jobPos2RolePersistence;
+	}
+
+	/**
+	 * Returns the jobpos to role finder.
+	 *
+	 * @return the jobpos to role finder
+	 */
+	public JobPos2RoleFinder getJobPos2RoleFinder() {
+		return jobPos2RoleFinder;
+	}
+
+	/**
+	 * Sets the jobpos to role finder.
+	 *
+	 * @param jobPos2RoleFinder the jobpos to role finder
+	 */
+	public void setJobPos2RoleFinder(JobPos2RoleFinder jobPos2RoleFinder) {
+		this.jobPos2RoleFinder = jobPos2RoleFinder;
 	}
 
 	/**
@@ -768,12 +787,14 @@ public abstract class CitizenServiceBaseImpl extends BaseServiceImpl
 	protected JobPosPersistence jobPosPersistence;
 	@BeanReference(type = JobPosFinder.class)
 	protected JobPosFinder jobPosFinder;
-	@BeanReference(type = org.oep.usermgt.service.Jobpos2RoleLocalService.class)
-	protected org.oep.usermgt.service.Jobpos2RoleLocalService jobpos2RoleLocalService;
-	@BeanReference(type = org.oep.usermgt.service.Jobpos2RoleService.class)
-	protected org.oep.usermgt.service.Jobpos2RoleService jobpos2RoleService;
-	@BeanReference(type = Jobpos2RolePersistence.class)
-	protected Jobpos2RolePersistence jobpos2RolePersistence;
+	@BeanReference(type = org.oep.usermgt.service.JobPos2RoleLocalService.class)
+	protected org.oep.usermgt.service.JobPos2RoleLocalService jobPos2RoleLocalService;
+	@BeanReference(type = org.oep.usermgt.service.JobPos2RoleService.class)
+	protected org.oep.usermgt.service.JobPos2RoleService jobPos2RoleService;
+	@BeanReference(type = JobPos2RolePersistence.class)
+	protected JobPos2RolePersistence jobPos2RolePersistence;
+	@BeanReference(type = JobPos2RoleFinder.class)
+	protected JobPos2RoleFinder jobPos2RoleFinder;
 	@BeanReference(type = org.oep.usermgt.service.SubAccountLocalService.class)
 	protected org.oep.usermgt.service.SubAccountLocalService subAccountLocalService;
 	@BeanReference(type = org.oep.usermgt.service.SubAccountService.class)

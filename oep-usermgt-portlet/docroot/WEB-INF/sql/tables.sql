@@ -138,7 +138,7 @@ create table oep_usermgt_workingunit (
 	userId LONG,
 	createDate DATE null,
 	modifiedDate DATE null,
-	organizationId VARCHAR(75) null,
+	organizationId LONG,
 	govAgencyId VARCHAR(75) null,
 	name VARCHAR(75) null,
 	enName VARCHAR(75) null,
@@ -156,5 +156,7 @@ create table oep_usermgt_workingunit (
 	email VARCHAR(75) null,
 	website VARCHAR(75) null,
 	aaa VARCHAR(75) null,
-	shortName VARCHAR(75) null
+	shortName VARCHAR(75) null,
+	localSiteId LONG,
+	isEmployer INTEGER
 );

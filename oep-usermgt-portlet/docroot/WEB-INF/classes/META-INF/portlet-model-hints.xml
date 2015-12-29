@@ -100,7 +100,7 @@
 		<field name="subWorkingUnitId" type="long" />
 		<field name="leader" type="int" />
 	</model>
-	<model name="org.oep.usermgt.model.Jobpos2Role">
+	<model name="org.oep.usermgt.model.JobPos2Role">
 		<field name="jobPosId" type="long" />
 		<field name="roleId" type="long" />
 	</model>
@@ -127,7 +127,7 @@
 		<field name="userId" type="long" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
-		<field name="organizationId" type="String" />
+		<field name="organizationId" type="long" />
 		<field name="govAgencyId" type="String" />
 		<field name="name" type="String" />
 		<field name="enName" type="String" />
@@ -146,5 +146,7 @@
 		<field name="website" type="String" />
 		<field name="aaa" type="String" />
 		<field name="shortName" type="String" />
+		<field name="localSiteId" type="long" />
+		<field name="isEmployer" type="int" />
 	</model>
 </model-hints>

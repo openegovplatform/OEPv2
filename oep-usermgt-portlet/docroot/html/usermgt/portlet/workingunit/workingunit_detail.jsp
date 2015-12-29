@@ -24,6 +24,11 @@
 <%@page import="org.oep.usermgt.service.WorkingUnitLocalServiceUtil"%>
 <%@ page import="org.oep.datamgt.service.DictDataLocalServiceUtil"%>
 <%@ page import="org.oep.datamgt.model.DictData"%>
+<%@page import="com.liferay.portal.model.Organization"%>
+<%@page import="com.liferay.portal.model.Group"%>
+<%@page import="com.liferay.portal.service.OrganizationLocalServiceUtil"%>
+<%@page import="com.liferay.portal.service.GroupLocalServiceUtil"%>
+<%@page import="com.liferay.portal.model.GroupConstants"%>
 <portlet:actionURL var="addEdit" name="addEdit">
 	<portlet:param name="<%= PortletKeys.SET_VIEW_PARAMETER %>" value="/html/usermgt/portlet/workingunit/workingunit_detail.jsp"/>
 	<portlet:param name="<%= PortletKeys.REDIRECT_PAGE %>" value="<%= ParamUtil.getString(request, PortletKeys.REDIRECT_PAGE) %>"/>
@@ -34,6 +39,8 @@
 	String districtNo = ParamUtil.getString(request,WorkingUnitKeys.AddEditAttributes.DISTRICTNAME,PortletKeys.TEXT_BOX);
 	String wardNo = ParamUtil.getString(request,WorkingUnitKeys.AddEditAttributes.WARDNAME,PortletKeys.TEXT_BOX);
 	long  parentWorkingUnitId = ParamUtil.getLong(request,WorkingUnitKeys.AddEditAttributes.PARENTWORKINGUNITID,PortletKeys.SELECT_BOX);
+	long  localSiteId = ParamUtil.getLong(request,WorkingUnitKeys.AddEditAttributes.LOCALSITEID,PortletKeys.SELECT_BOX);
+	long  organizationId = ParamUtil.getLong(request,WorkingUnitKeys.AddEditAttributes.ORGANIZATIONID,PortletKeys.SELECT_BOX);
 	ServiceContext serviceContext = ServiceContextThreadLocal.getServiceContext();
 
 	List<DictData> lstDomainData = DictDataLocalServiceUtil
@@ -48,6 +55,9 @@
 		wardList = DictDataLocalServiceUtil.findByDataLevelDataCode("","OEP_ADMINISTRATIVE_REGION", districtNo.split(":")[0], 3,serviceContext);
 	}
 	List<WorkingUnit>  parentWorkingUnitList = WorkingUnitLocalServiceUtil.getByCompanyTree(serviceContext);
+	List<Group>  groupList = GroupLocalServiceUtil.getGroups(serviceContext.getCompanyId(), 0, true);
+	List<Organization>  organizationList = OrganizationLocalServiceUtil.getNoAssetOrganizations();
+	System.out.println(" Ds group " + groupList.size());
 
 %>
 <aui:form name="addEdit" method="post" enctype="multipart/form-data">
@@ -66,7 +76,7 @@
 						</aui:column>
 					</aui:row>
 					<aui:row>
-					    <aui:column columnWidth="100">
+					    <aui:column columnWidth="50">
 					    	<aui:select style="width: 98%;" cssClass="form-control"  name="<%=WorkingUnitKeys.AddEditAttributes.PARENTWORKINGUNITID%>" id="<%= WorkingUnitKeys.AddEditAttributes.PARENTWORKINGUNITID%>" label="org.oep.usermgt.portlet.workingunit.table.header.parentWorkingUnitId" >
 							<aui:option value=""><%=LanguageUtil
 								.get(pageContext,
@@ -81,9 +91,47 @@
 										}
 								%>					
 							</aui:select>
-					    
-							<aui:input style="width: 100%;" cssClass="form-control" name="<%=WorkingUnitKeys.AddEditAttributes.PARENTWORKINGUNITID%>" id="<%= WorkingUnitKeys.AddEditAttributes.PARENTWORKINGUNITID%>" label="org.oep.usermgt.portlet.workingunit.table.header.parentWorkingUnitId" type="text"></aui:input>
-						</aui:column>
+							</aui:column>
+					    	  <%  
+		   Boolean check = ParamUtil.getBoolean(request,WorkingUnitKeys.AddEditAttributes.ISEMPLOYER);
+		   
+		  // boolean f=  check == 1;%>
+			<aui:column columnWidth="50">
+					<aui:input checked="<%=check%>" label="org.oep.usermgt.portlet.workingunit.table.header.isEmployer" name='<%=WorkingUnitKeys.AddEditAttributes.ISEMPLOYER%>' type="checkbox"  value = ''/>
+			</aui:column>
+						
+					</aui:row>
+					<aui:row>
+							<aui:column columnWidth="50">
+								<aui:select style="width: 98%;" cssClass="form-control"  name="<%=WorkingUnitKeys.AddEditAttributes.LOCALSITEID%>" id="<%= WorkingUnitKeys.AddEditAttributes.LOCALSITEID%>" label="org.oep.usermgt.portlet.workingunit.table.header.localSiteId" >
+							<aui:option value=""><%=LanguageUtil
+								.get(pageContext,
+									"org.oep.usermgt.portlet.select.label.localSiteId")%></aui:option>
+								<%
+									for (Group data : groupList) {
+										boolean selected = data.getGroupId() == localSiteId;
+								%>
+											<aui:option value="<%=data.getGroupId()%>" selected="<%=selected%>"> <%=data.getDescriptiveName()%></aui:option>
+								<%
+										}
+								%>					
+							</aui:select>
+							</aui:column>
+							<aui:column columnWidth ="50">
+										<aui:select style="width: 98%;" cssClass="form-control"  name="<%=WorkingUnitKeys.AddEditAttributes.ORGANIZATIONID %>" id="<%= WorkingUnitKeys.AddEditAttributes.ORGANIZATIONID%>" label="org.oep.usermgt.portlet.workingunit.table.header.organizationId" >
+							<aui:option value=""><%=LanguageUtil
+								.get(pageContext,
+									"org.oep.usermgt.portlet.select.label.organizationId")%></aui:option>
+								<%
+									for (Organization data : organizationList) {
+										boolean selected = data.getOrganizationId() == organizationId;
+								%>
+											<aui:option value="<%=data.getOrganizationId()%>" selected="<%=selected%>"> <%=data.getName()%></aui:option>
+								<%
+										}
+								%>					
+							</aui:select>
+							</aui:column>
 					</aui:row>
 					<aui:row>
 							<aui:column columnWidth="40">

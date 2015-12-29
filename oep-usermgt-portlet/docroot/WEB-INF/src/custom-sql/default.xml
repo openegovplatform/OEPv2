@@ -3,5 +3,6 @@
 <!-- mysql  -->
 	<sql file="custom-sql/mysql/employee.xml"/>
 	<sql file="custom-sql/mysql/workingunit.xml"/>
+	<sql file="custom-sql/mysql/jobpos2role.xml"/>
 </custom-sql>
 

@@ -14,7 +14,7 @@
 
 package org.oep.usermgt.service.base;
 
-import org.oep.usermgt.service.Jobpos2RoleServiceUtil;
+import org.oep.usermgt.service.JobPos2RoleServiceUtil;
 
 import java.util.Arrays;
 
@@ -22,27 +22,27 @@ import java.util.Arrays;
  * @author NQMINH
  * @generated
  */
-public class Jobpos2RoleServiceClpInvoker {
-	public Jobpos2RoleServiceClpInvoker() {
-		_methodName66 = "getBeanIdentifier";
+public class JobPos2RoleServiceClpInvoker {
+	public JobPos2RoleServiceClpInvoker() {
+		_methodName68 = "getBeanIdentifier";
 
-		_methodParameterTypes66 = new String[] {  };
+		_methodParameterTypes68 = new String[] {  };
 
-		_methodName67 = "setBeanIdentifier";
+		_methodName69 = "setBeanIdentifier";
 
-		_methodParameterTypes67 = new String[] { "java.lang.String" };
+		_methodParameterTypes69 = new String[] { "java.lang.String" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
 		Object[] arguments) throws Throwable {
-		if (_methodName66.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes66, parameterTypes)) {
-			return Jobpos2RoleServiceUtil.getBeanIdentifier();
+		if (_methodName68.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes68, parameterTypes)) {
+			return JobPos2RoleServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName67.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes67, parameterTypes)) {
-			Jobpos2RoleServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
+		if (_methodName69.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes69, parameterTypes)) {
+			JobPos2RoleServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
@@ -50,8 +50,8 @@ public class Jobpos2RoleServiceClpInvoker {
 		throw new UnsupportedOperationException();
 	}
 
-	private String _methodName66;
-	private String[] _methodParameterTypes66;
-	private String _methodName67;
-	private String[] _methodParameterTypes67;
+	private String _methodName68;
+	private String[] _methodParameterTypes68;
+	private String _methodName69;
+	private String[] _methodParameterTypes69;
 }

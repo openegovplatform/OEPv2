@@ -20,8 +20,8 @@ import com.liferay.portal.service.InvokableService;
  * @author NQMINH
  * @generated
  */
-public class Jobpos2RoleServiceClp implements Jobpos2RoleService {
-	public Jobpos2RoleServiceClp(InvokableService invokableService) {
+public class JobPos2RoleServiceClp implements JobPos2RoleService {
+	public JobPos2RoleServiceClp(InvokableService invokableService) {
 		_invokableService = invokableService;
 
 		_methodName0 = "getBeanIdentifier";

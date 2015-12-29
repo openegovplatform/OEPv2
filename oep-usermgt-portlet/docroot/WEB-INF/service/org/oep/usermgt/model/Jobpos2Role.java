@@ -17,18 +17,18 @@ package org.oep.usermgt.model;
 import com.liferay.portal.model.PersistedModel;
 
 /**
- * The extended model interface for the Jobpos2Role service. Represents a row in the &quot;oep_usermgt_jobpos2role&quot; database table, with each column mapped to a property of this class.
+ * The extended model interface for the JobPos2Role service. Represents a row in the &quot;oep_usermgt_jobpos2role&quot; database table, with each column mapped to a property of this class.
  *
  * @author NQMINH
- * @see Jobpos2RoleModel
- * @see org.oep.usermgt.model.impl.Jobpos2RoleImpl
- * @see org.oep.usermgt.model.impl.Jobpos2RoleModelImpl
+ * @see JobPos2RoleModel
+ * @see org.oep.usermgt.model.impl.JobPos2RoleImpl
+ * @see org.oep.usermgt.model.impl.JobPos2RoleModelImpl
  * @generated
  */
-public interface Jobpos2Role extends Jobpos2RoleModel, PersistedModel {
+public interface JobPos2Role extends JobPos2RoleModel, PersistedModel {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify this interface directly. Add methods to {@link org.oep.usermgt.model.impl.Jobpos2RoleImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
+	 * Never modify this interface directly. Add methods to {@link org.oep.usermgt.model.impl.JobPos2RoleImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
 }

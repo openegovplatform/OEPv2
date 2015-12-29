@@ -16,7 +16,7 @@ package org.oep.usermgt.service.http;
 
 /**
  * Provides the SOAP utility for the
- * {@link org.oep.usermgt.service.Jobpos2RoleServiceUtil} service utility. The
+ * {@link org.oep.usermgt.service.JobPos2RoleServiceUtil} service utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it is difficult for SOAP to
  * support certain types.
@@ -24,10 +24,10 @@ package org.oep.usermgt.service.http;
  * <p>
  * ServiceBuilder follows certain rules in translating the methods. For example,
  * if the method in the service utility returns a {@link java.util.List}, that
- * is translated to an array of {@link org.oep.usermgt.model.Jobpos2RoleSoap}.
+ * is translated to an array of {@link org.oep.usermgt.model.JobPos2RoleSoap}.
  * If the method in the service utility returns a
- * {@link org.oep.usermgt.model.Jobpos2Role}, that is translated to a
- * {@link org.oep.usermgt.model.Jobpos2RoleSoap}. Methods that SOAP cannot
+ * {@link org.oep.usermgt.model.JobPos2Role}, that is translated to a
+ * {@link org.oep.usermgt.model.JobPos2RoleSoap}. Methods that SOAP cannot
  * safely wire are skipped.
  * </p>
  *
@@ -49,10 +49,10 @@ package org.oep.usermgt.service.http;
  * </p>
  *
  * @author NQMINH
- * @see Jobpos2RoleServiceHttp
- * @see org.oep.usermgt.model.Jobpos2RoleSoap
- * @see org.oep.usermgt.service.Jobpos2RoleServiceUtil
+ * @see JobPos2RoleServiceHttp
+ * @see org.oep.usermgt.model.JobPos2RoleSoap
+ * @see org.oep.usermgt.service.JobPos2RoleServiceUtil
  * @generated
  */
-public class Jobpos2RoleServiceSoap {
+public class JobPos2RoleServiceSoap {
 }

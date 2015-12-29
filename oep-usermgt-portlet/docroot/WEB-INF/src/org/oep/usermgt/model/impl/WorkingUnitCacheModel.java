@@ -38,7 +38,7 @@ public class WorkingUnitCacheModel implements CacheModel<WorkingUnit>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(51);
+		StringBundler sb = new StringBundler(55);
 
 		sb.append("{workingUnitId=");
 		sb.append(workingUnitId);
@@ -90,6 +90,10 @@ public class WorkingUnitCacheModel implements CacheModel<WorkingUnit>,
 		sb.append(aaa);
 		sb.append(", shortName=");
 		sb.append(shortName);
+		sb.append(", localSiteId=");
+		sb.append(localSiteId);
+		sb.append(", isEmployer=");
+		sb.append(isEmployer);
 		sb.append("}");
 
 		return sb.toString();
@@ -118,12 +122,7 @@ public class WorkingUnitCacheModel implements CacheModel<WorkingUnit>,
 			workingUnitImpl.setModifiedDate(new Date(modifiedDate));
 		}
 
-		if (organizationId == null) {
-			workingUnitImpl.setOrganizationId(StringPool.BLANK);
-		}
-		else {
-			workingUnitImpl.setOrganizationId(organizationId);
-		}
+		workingUnitImpl.setOrganizationId(organizationId);
 
 		if (govAgencyId == null) {
 			workingUnitImpl.setGovAgencyId(StringPool.BLANK);
@@ -246,6 +245,9 @@ public class WorkingUnitCacheModel implements CacheModel<WorkingUnit>,
 			workingUnitImpl.setShortName(shortName);
 		}
 
+		workingUnitImpl.setLocalSiteId(localSiteId);
+		workingUnitImpl.setIsEmployer(isEmployer);
+
 		workingUnitImpl.resetOriginalValues();
 
 		return workingUnitImpl;
@@ -259,7 +261,7 @@ public class WorkingUnitCacheModel implements CacheModel<WorkingUnit>,
 		userId = objectInput.readLong();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
-		organizationId = objectInput.readUTF();
+		organizationId = objectInput.readLong();
 		govAgencyId = objectInput.readUTF();
 		name = objectInput.readUTF();
 		enName = objectInput.readUTF();
@@ -278,6 +280,8 @@ public class WorkingUnitCacheModel implements CacheModel<WorkingUnit>,
 		website = objectInput.readUTF();
 		aaa = objectInput.readUTF();
 		shortName = objectInput.readUTF();
+		localSiteId = objectInput.readLong();
+		isEmployer = objectInput.readInt();
 	}
 
 	@Override
@@ -289,13 +293,7 @@ public class WorkingUnitCacheModel implements CacheModel<WorkingUnit>,
 		objectOutput.writeLong(userId);
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
-
-		if (organizationId == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(organizationId);
-		}
+		objectOutput.writeLong(organizationId);
 
 		if (govAgencyId == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
@@ -417,6 +415,9 @@ public class WorkingUnitCacheModel implements CacheModel<WorkingUnit>,
 		else {
 			objectOutput.writeUTF(shortName);
 		}
+
+		objectOutput.writeLong(localSiteId);
+		objectOutput.writeInt(isEmployer);
 	}
 
 	public long workingUnitId;
@@ -425,7 +426,7 @@ public class WorkingUnitCacheModel implements CacheModel<WorkingUnit>,
 	public long userId;
 	public long createDate;
 	public long modifiedDate;
-	public String organizationId;
+	public long organizationId;
 	public String govAgencyId;
 	public String name;
 	public String enName;
@@ -444,4 +445,6 @@ public class WorkingUnitCacheModel implements CacheModel<WorkingUnit>,
 	public String website;
 	public String aaa;
 	public String shortName;
+	public long localSiteId;
+	public int isEmployer;
 }

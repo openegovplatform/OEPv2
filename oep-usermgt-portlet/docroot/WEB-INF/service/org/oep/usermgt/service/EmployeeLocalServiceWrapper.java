@@ -451,6 +451,13 @@ public class EmployeeLocalServiceWrapper implements EmployeeLocalService,
 	}
 
 	@Override
+	public void addEmployee2JoPos(long employeeId, long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_employeeLocalService.addEmployee2JoPos(employeeId, jobPosId);
+	}
+
+	@Override
 	public org.oep.usermgt.model.Employee updateEmployee(long employeeId,
 		long mappingUserId, long workingUnitId, long mainJobPosId,
 		java.lang.String employeeNo, java.lang.String fullName,
@@ -499,6 +506,13 @@ public class EmployeeLocalServiceWrapper implements EmployeeLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		_employeeLocalService.removeEmployee(id);
+	}
+
+	@Override
+	public void removeJobPos(long employeeId, long jobPosId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_employeeLocalService.removeJobPos(employeeId, jobPosId);
 	}
 
 	@Override
@@ -608,6 +622,23 @@ public class EmployeeLocalServiceWrapper implements EmployeeLocalService,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _employeeLocalService.finderLikeNameWorkingUnit(textSearch,
 			workingUnitId, start, end);
+	}
+
+	@Override
+	public java.util.List<org.oep.usermgt.model.JobPos> getJobPosByEmployeeId(
+		long employeeId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _employeeLocalService.getJobPosByEmployeeId(employeeId);
+	}
+
+	@Override
+	public java.util.List<org.oep.usermgt.model.JobPos> getJobPos(
+		java.util.ArrayList<org.oep.usermgt.model.JobPos> listJobPos,
+		long employeeId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _employeeLocalService.getJobPos(listJobPos, employeeId);
 	}
 
 	/**

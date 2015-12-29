@@ -118,24 +118,24 @@ public class WorkingUnitLocalServiceClp implements WorkingUnitLocalService {
 		_methodName19 = "addWorkingUnit";
 
 		_methodParameterTypes19 = new String[] {
-				"java.lang.String", "java.lang.String", "java.lang.String",
+				"long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "long", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "long", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName20 = "updateWorkingUnit";
 
 		_methodParameterTypes20 = new String[] {
-				"long", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String", "long",
+				"long", "long", "java.lang.String", "java.lang.String",
+				"java.lang.String", "long", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "long", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -839,7 +839,7 @@ public class WorkingUnitLocalServiceClp implements WorkingUnitLocalService {
 
 	@Override
 	public org.oep.usermgt.model.WorkingUnit addWorkingUnit(
-		java.lang.String organizationId, java.lang.String govAgencyId,
+		long organizationId, java.lang.String govAgencyId,
 		java.lang.String name, java.lang.String enName,
 		long parentWorkingUnitId, java.lang.String address,
 		java.lang.String cityNo, java.lang.String cityName,
@@ -847,6 +847,7 @@ public class WorkingUnitLocalServiceClp implements WorkingUnitLocalService {
 		java.lang.String wardNo, java.lang.String wardName,
 		java.lang.String gpsPosition, java.lang.String telNo,
 		java.lang.String fax, java.lang.String email, java.lang.String website,
+		long localSiteId, int isEmployer,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -856,7 +857,7 @@ public class WorkingUnitLocalServiceClp implements WorkingUnitLocalService {
 			returnObj = _invokableLocalService.invokeMethod(_methodName19,
 					_methodParameterTypes19,
 					new Object[] {
-						ClpSerializer.translateInput(organizationId),
+						organizationId,
 						
 					ClpSerializer.translateInput(govAgencyId),
 						
@@ -889,6 +890,10 @@ public class WorkingUnitLocalServiceClp implements WorkingUnitLocalService {
 					ClpSerializer.translateInput(email),
 						
 					ClpSerializer.translateInput(website),
+						
+					localSiteId,
+						
+					isEmployer,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});
@@ -918,15 +923,15 @@ public class WorkingUnitLocalServiceClp implements WorkingUnitLocalService {
 
 	@Override
 	public org.oep.usermgt.model.WorkingUnit updateWorkingUnit(
-		long workingUnitId, java.lang.String organizationId,
-		java.lang.String govAgencyId, java.lang.String name,
-		java.lang.String enName, long parentWorkingUnitId,
-		java.lang.String address, java.lang.String cityNo,
-		java.lang.String cityName, java.lang.String districtNo,
-		java.lang.String districtName, java.lang.String wardNo,
-		java.lang.String wardName, java.lang.String gpsPosition,
-		java.lang.String telNo, java.lang.String fax, java.lang.String email,
-		java.lang.String website,
+		long workingUnitId, long organizationId, java.lang.String govAgencyId,
+		java.lang.String name, java.lang.String enName,
+		long parentWorkingUnitId, java.lang.String address,
+		java.lang.String cityNo, java.lang.String cityName,
+		java.lang.String districtNo, java.lang.String districtName,
+		java.lang.String wardNo, java.lang.String wardName,
+		java.lang.String gpsPosition, java.lang.String telNo,
+		java.lang.String fax, java.lang.String email, java.lang.String website,
+		long localSiteId, int isEmployer,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -938,7 +943,7 @@ public class WorkingUnitLocalServiceClp implements WorkingUnitLocalService {
 					new Object[] {
 						workingUnitId,
 						
-					ClpSerializer.translateInput(organizationId),
+					organizationId,
 						
 					ClpSerializer.translateInput(govAgencyId),
 						
@@ -971,6 +976,10 @@ public class WorkingUnitLocalServiceClp implements WorkingUnitLocalService {
 					ClpSerializer.translateInput(email),
 						
 					ClpSerializer.translateInput(website),
+						
+					localSiteId,
+						
+					isEmployer,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});

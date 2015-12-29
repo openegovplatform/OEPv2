@@ -23,14 +23,14 @@ import java.io.Serializable;
  * @author NQMINH
  * @generated
  */
-public class Jobpos2RolePK implements Comparable<Jobpos2RolePK>, Serializable {
+public class JobPos2RolePK implements Comparable<JobPos2RolePK>, Serializable {
 	public long jobPosId;
 	public long roleId;
 
-	public Jobpos2RolePK() {
+	public JobPos2RolePK() {
 	}
 
-	public Jobpos2RolePK(long jobPosId, long roleId) {
+	public JobPos2RolePK(long jobPosId, long roleId) {
 		this.jobPosId = jobPosId;
 		this.roleId = roleId;
 	}
@@ -52,7 +52,7 @@ public class Jobpos2RolePK implements Comparable<Jobpos2RolePK>, Serializable {
 	}
 
 	@Override
-	public int compareTo(Jobpos2RolePK pk) {
+	public int compareTo(JobPos2RolePK pk) {
 		if (pk == null) {
 			return -1;
 		}
@@ -96,11 +96,11 @@ public class Jobpos2RolePK implements Comparable<Jobpos2RolePK>, Serializable {
 			return true;
 		}
 
-		if (!(obj instanceof Jobpos2RolePK)) {
+		if (!(obj instanceof JobPos2RolePK)) {
 			return false;
 		}
 
-		Jobpos2RolePK pk = (Jobpos2RolePK)obj;
+		JobPos2RolePK pk = (JobPos2RolePK)obj;
 
 		if ((jobPosId == pk.jobPosId) && (roleId == pk.roleId)) {
 			return true;

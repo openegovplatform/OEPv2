@@ -19,21 +19,21 @@ import com.liferay.portal.NoSuchModelException;
 /**
  * @author NQMINH
  */
-public class NoSuchJobpos2RoleException extends NoSuchModelException {
+public class NoSuchJobPos2RoleException extends NoSuchModelException {
 
-	public NoSuchJobpos2RoleException() {
+	public NoSuchJobPos2RoleException() {
 		super();
 	}
 
-	public NoSuchJobpos2RoleException(String msg) {
+	public NoSuchJobPos2RoleException(String msg) {
 		super(msg);
 	}
 
-	public NoSuchJobpos2RoleException(String msg, Throwable cause) {
+	public NoSuchJobPos2RoleException(String msg, Throwable cause) {
 		super(msg, cause);
 	}
 
-	public NoSuchJobpos2RoleException(Throwable cause) {
+	public NoSuchJobPos2RoleException(Throwable cause) {
 		super(cause);
 	}
 

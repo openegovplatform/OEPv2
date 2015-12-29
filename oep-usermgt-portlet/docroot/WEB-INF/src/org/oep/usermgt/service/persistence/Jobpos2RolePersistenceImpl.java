@@ -38,10 +38,10 @@ import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.model.ModelListener;
 import com.liferay.portal.service.persistence.impl.BasePersistenceImpl;
 
-import org.oep.usermgt.NoSuchJobpos2RoleException;
-import org.oep.usermgt.model.Jobpos2Role;
-import org.oep.usermgt.model.impl.Jobpos2RoleImpl;
-import org.oep.usermgt.model.impl.Jobpos2RoleModelImpl;
+import org.oep.usermgt.NoSuchJobPos2RoleException;
+import org.oep.usermgt.model.JobPos2Role;
+import org.oep.usermgt.model.impl.JobPos2RoleImpl;
+import org.oep.usermgt.model.impl.JobPos2RoleModelImpl;
 
 import java.io.Serializable;
 
@@ -57,33 +57,33 @@ import java.util.List;
  * </p>
  *
  * @author NQMINH
- * @see Jobpos2RolePersistence
- * @see Jobpos2RoleUtil
+ * @see JobPos2RolePersistence
+ * @see JobPos2RoleUtil
  * @generated
  */
-public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
-	implements Jobpos2RolePersistence {
+public class JobPos2RolePersistenceImpl extends BasePersistenceImpl<JobPos2Role>
+	implements JobPos2RolePersistence {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this class directly. Always use {@link Jobpos2RoleUtil} to access the jobpos to role persistence. Modify <code>service.xml</code> and rerun ServiceBuilder to regenerate this class.
+	 * Never modify or reference this class directly. Always use {@link JobPos2RoleUtil} to access the jobpos to role persistence. Modify <code>service.xml</code> and rerun ServiceBuilder to regenerate this class.
 	 */
-	public static final String FINDER_CLASS_NAME_ENTITY = Jobpos2RoleImpl.class.getName();
+	public static final String FINDER_CLASS_NAME_ENTITY = JobPos2RoleImpl.class.getName();
 	public static final String FINDER_CLASS_NAME_LIST_WITH_PAGINATION = FINDER_CLASS_NAME_ENTITY +
 		".List1";
 	public static final String FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION = FINDER_CLASS_NAME_ENTITY +
 		".List2";
-	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_ALL = new FinderPath(Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-			Jobpos2RoleModelImpl.FINDER_CACHE_ENABLED, Jobpos2RoleImpl.class,
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_ALL = new FinderPath(JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+			JobPos2RoleModelImpl.FINDER_CACHE_ENABLED, JobPos2RoleImpl.class,
 			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findAll", new String[0]);
-	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_ALL = new FinderPath(Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-			Jobpos2RoleModelImpl.FINDER_CACHE_ENABLED, Jobpos2RoleImpl.class,
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_ALL = new FinderPath(JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+			JobPos2RoleModelImpl.FINDER_CACHE_ENABLED, JobPos2RoleImpl.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findAll", new String[0]);
-	public static final FinderPath FINDER_PATH_COUNT_ALL = new FinderPath(Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-			Jobpos2RoleModelImpl.FINDER_CACHE_ENABLED, Long.class,
+	public static final FinderPath FINDER_PATH_COUNT_ALL = new FinderPath(JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+			JobPos2RoleModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countAll", new String[0]);
-	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_R = new FinderPath(Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-			Jobpos2RoleModelImpl.FINDER_CACHE_ENABLED, Jobpos2RoleImpl.class,
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_R = new FinderPath(JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+			JobPos2RoleModelImpl.FINDER_CACHE_ENABLED, JobPos2RoleImpl.class,
 			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByR",
 			new String[] {
 				Long.class.getName(),
@@ -91,13 +91,13 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 			Integer.class.getName(), Integer.class.getName(),
 				OrderByComparator.class.getName()
 			});
-	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_R = new FinderPath(Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-			Jobpos2RoleModelImpl.FINDER_CACHE_ENABLED, Jobpos2RoleImpl.class,
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_R = new FinderPath(JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+			JobPos2RoleModelImpl.FINDER_CACHE_ENABLED, JobPos2RoleImpl.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByR",
 			new String[] { Long.class.getName() },
-			Jobpos2RoleModelImpl.ROLEID_COLUMN_BITMASK);
-	public static final FinderPath FINDER_PATH_COUNT_BY_R = new FinderPath(Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-			Jobpos2RoleModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			JobPos2RoleModelImpl.ROLEID_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_R = new FinderPath(JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+			JobPos2RoleModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByR",
 			new String[] { Long.class.getName() });
 
@@ -109,7 +109,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<Jobpos2Role> findByR(long roleId) throws SystemException {
+	public List<JobPos2Role> findByR(long roleId) throws SystemException {
 		return findByR(roleId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
@@ -117,7 +117,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * Returns a range of all the jobpos to roles where roleId = &#63;.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.Jobpos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.JobPos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param roleId the role ID
@@ -127,7 +127,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<Jobpos2Role> findByR(long roleId, int start, int end)
+	public List<JobPos2Role> findByR(long roleId, int start, int end)
 		throws SystemException {
 		return findByR(roleId, start, end, null);
 	}
@@ -136,7 +136,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * Returns an ordered range of all the jobpos to roles where roleId = &#63;.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.Jobpos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.JobPos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param roleId the role ID
@@ -147,7 +147,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<Jobpos2Role> findByR(long roleId, int start, int end,
+	public List<JobPos2Role> findByR(long roleId, int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
 		boolean pagination = true;
 		FinderPath finderPath = null;
@@ -164,12 +164,12 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 			finderArgs = new Object[] { roleId, start, end, orderByComparator };
 		}
 
-		List<Jobpos2Role> list = (List<Jobpos2Role>)FinderCacheUtil.getResult(finderPath,
+		List<JobPos2Role> list = (List<JobPos2Role>)FinderCacheUtil.getResult(finderPath,
 				finderArgs, this);
 
 		if ((list != null) && !list.isEmpty()) {
-			for (Jobpos2Role jobpos2Role : list) {
-				if ((roleId != jobpos2Role.getRoleId())) {
+			for (JobPos2Role jobPos2Role : list) {
+				if ((roleId != jobPos2Role.getRoleId())) {
 					list = null;
 
 					break;
@@ -198,7 +198,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 			}
 			else
 			 if (pagination) {
-				query.append(Jobpos2RoleModelImpl.ORDER_BY_JPQL);
+				query.append(JobPos2RoleModelImpl.ORDER_BY_JPQL);
 			}
 
 			String sql = query.toString();
@@ -215,15 +215,15 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 				qPos.add(roleId);
 
 				if (!pagination) {
-					list = (List<Jobpos2Role>)QueryUtil.list(q, getDialect(),
+					list = (List<JobPos2Role>)QueryUtil.list(q, getDialect(),
 							start, end, false);
 
 					Collections.sort(list);
 
-					list = new UnmodifiableList<Jobpos2Role>(list);
+					list = new UnmodifiableList<JobPos2Role>(list);
 				}
 				else {
-					list = (List<Jobpos2Role>)QueryUtil.list(q, getDialect(),
+					list = (List<JobPos2Role>)QueryUtil.list(q, getDialect(),
 							start, end);
 				}
 
@@ -250,17 +250,17 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @param roleId the role ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching jobpos to role
-	 * @throws org.oep.usermgt.NoSuchJobpos2RoleException if a matching jobpos to role could not be found
+	 * @throws org.oep.usermgt.NoSuchJobPos2RoleException if a matching jobpos to role could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Jobpos2Role findByR_First(long roleId,
+	public JobPos2Role findByR_First(long roleId,
 		OrderByComparator orderByComparator)
-		throws NoSuchJobpos2RoleException, SystemException {
-		Jobpos2Role jobpos2Role = fetchByR_First(roleId, orderByComparator);
+		throws NoSuchJobPos2RoleException, SystemException {
+		JobPos2Role jobPos2Role = fetchByR_First(roleId, orderByComparator);
 
-		if (jobpos2Role != null) {
-			return jobpos2Role;
+		if (jobPos2Role != null) {
+			return jobPos2Role;
 		}
 
 		StringBundler msg = new StringBundler(4);
@@ -272,7 +272,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 
 		msg.append(StringPool.CLOSE_CURLY_BRACE);
 
-		throw new NoSuchJobpos2RoleException(msg.toString());
+		throw new NoSuchJobPos2RoleException(msg.toString());
 	}
 
 	/**
@@ -284,9 +284,9 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Jobpos2Role fetchByR_First(long roleId,
+	public JobPos2Role fetchByR_First(long roleId,
 		OrderByComparator orderByComparator) throws SystemException {
-		List<Jobpos2Role> list = findByR(roleId, 0, 1, orderByComparator);
+		List<JobPos2Role> list = findByR(roleId, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -301,17 +301,17 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @param roleId the role ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching jobpos to role
-	 * @throws org.oep.usermgt.NoSuchJobpos2RoleException if a matching jobpos to role could not be found
+	 * @throws org.oep.usermgt.NoSuchJobPos2RoleException if a matching jobpos to role could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Jobpos2Role findByR_Last(long roleId,
+	public JobPos2Role findByR_Last(long roleId,
 		OrderByComparator orderByComparator)
-		throws NoSuchJobpos2RoleException, SystemException {
-		Jobpos2Role jobpos2Role = fetchByR_Last(roleId, orderByComparator);
+		throws NoSuchJobPos2RoleException, SystemException {
+		JobPos2Role jobPos2Role = fetchByR_Last(roleId, orderByComparator);
 
-		if (jobpos2Role != null) {
-			return jobpos2Role;
+		if (jobPos2Role != null) {
+			return jobPos2Role;
 		}
 
 		StringBundler msg = new StringBundler(4);
@@ -323,7 +323,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 
 		msg.append(StringPool.CLOSE_CURLY_BRACE);
 
-		throw new NoSuchJobpos2RoleException(msg.toString());
+		throw new NoSuchJobPos2RoleException(msg.toString());
 	}
 
 	/**
@@ -335,7 +335,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Jobpos2Role fetchByR_Last(long roleId,
+	public JobPos2Role fetchByR_Last(long roleId,
 		OrderByComparator orderByComparator) throws SystemException {
 		int count = countByR(roleId);
 
@@ -343,7 +343,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 			return null;
 		}
 
-		List<Jobpos2Role> list = findByR(roleId, count - 1, count,
+		List<JobPos2Role> list = findByR(roleId, count - 1, count,
 				orderByComparator);
 
 		if (!list.isEmpty()) {
@@ -356,32 +356,32 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	/**
 	 * Returns the jobpos to roles before and after the current jobpos to role in the ordered set where roleId = &#63;.
 	 *
-	 * @param jobpos2RolePK the primary key of the current jobpos to role
+	 * @param jobPos2RolePK the primary key of the current jobpos to role
 	 * @param roleId the role ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next jobpos to role
-	 * @throws org.oep.usermgt.NoSuchJobpos2RoleException if a jobpos to role with the primary key could not be found
+	 * @throws org.oep.usermgt.NoSuchJobPos2RoleException if a jobpos to role with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Jobpos2Role[] findByR_PrevAndNext(Jobpos2RolePK jobpos2RolePK,
+	public JobPos2Role[] findByR_PrevAndNext(JobPos2RolePK jobPos2RolePK,
 		long roleId, OrderByComparator orderByComparator)
-		throws NoSuchJobpos2RoleException, SystemException {
-		Jobpos2Role jobpos2Role = findByPrimaryKey(jobpos2RolePK);
+		throws NoSuchJobPos2RoleException, SystemException {
+		JobPos2Role jobPos2Role = findByPrimaryKey(jobPos2RolePK);
 
 		Session session = null;
 
 		try {
 			session = openSession();
 
-			Jobpos2Role[] array = new Jobpos2RoleImpl[3];
+			JobPos2Role[] array = new JobPos2RoleImpl[3];
 
-			array[0] = getByR_PrevAndNext(session, jobpos2Role, roleId,
+			array[0] = getByR_PrevAndNext(session, jobPos2Role, roleId,
 					orderByComparator, true);
 
-			array[1] = jobpos2Role;
+			array[1] = jobPos2Role;
 
-			array[2] = getByR_PrevAndNext(session, jobpos2Role, roleId,
+			array[2] = getByR_PrevAndNext(session, jobPos2Role, roleId,
 					orderByComparator, false);
 
 			return array;
@@ -394,8 +394,8 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 		}
 	}
 
-	protected Jobpos2Role getByR_PrevAndNext(Session session,
-		Jobpos2Role jobpos2Role, long roleId,
+	protected JobPos2Role getByR_PrevAndNext(Session session,
+		JobPos2Role jobPos2Role, long roleId,
 		OrderByComparator orderByComparator, boolean previous) {
 		StringBundler query = null;
 
@@ -467,7 +467,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 			}
 		}
 		else {
-			query.append(Jobpos2RoleModelImpl.ORDER_BY_JPQL);
+			query.append(JobPos2RoleModelImpl.ORDER_BY_JPQL);
 		}
 
 		String sql = query.toString();
@@ -482,14 +482,14 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 		qPos.add(roleId);
 
 		if (orderByComparator != null) {
-			Object[] values = orderByComparator.getOrderByConditionValues(jobpos2Role);
+			Object[] values = orderByComparator.getOrderByConditionValues(jobPos2Role);
 
 			for (Object value : values) {
 				qPos.add(value);
 			}
 		}
 
-		List<Jobpos2Role> list = q.list();
+		List<JobPos2Role> list = q.list();
 
 		if (list.size() == 2) {
 			return list.get(1);
@@ -507,9 +507,9 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 */
 	@Override
 	public void removeByR(long roleId) throws SystemException {
-		for (Jobpos2Role jobpos2Role : findByR(roleId, QueryUtil.ALL_POS,
+		for (JobPos2Role jobPos2Role : findByR(roleId, QueryUtil.ALL_POS,
 				QueryUtil.ALL_POS, null)) {
-			remove(jobpos2Role);
+			remove(jobPos2Role);
 		}
 	}
 
@@ -566,9 +566,9 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 		return count.intValue();
 	}
 
-	private static final String _FINDER_COLUMN_R_ROLEID_2 = "jobpos2Role.id.roleId = ?";
-	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_JP = new FinderPath(Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-			Jobpos2RoleModelImpl.FINDER_CACHE_ENABLED, Jobpos2RoleImpl.class,
+	private static final String _FINDER_COLUMN_R_ROLEID_2 = "jobPos2Role.id.roleId = ?";
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_JP = new FinderPath(JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+			JobPos2RoleModelImpl.FINDER_CACHE_ENABLED, JobPos2RoleImpl.class,
 			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByJP",
 			new String[] {
 				Long.class.getName(),
@@ -576,13 +576,13 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 			Integer.class.getName(), Integer.class.getName(),
 				OrderByComparator.class.getName()
 			});
-	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_JP = new FinderPath(Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-			Jobpos2RoleModelImpl.FINDER_CACHE_ENABLED, Jobpos2RoleImpl.class,
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_JP = new FinderPath(JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+			JobPos2RoleModelImpl.FINDER_CACHE_ENABLED, JobPos2RoleImpl.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByJP",
 			new String[] { Long.class.getName() },
-			Jobpos2RoleModelImpl.JOBPOSID_COLUMN_BITMASK);
-	public static final FinderPath FINDER_PATH_COUNT_BY_JP = new FinderPath(Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-			Jobpos2RoleModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			JobPos2RoleModelImpl.JOBPOSID_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_JP = new FinderPath(JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+			JobPos2RoleModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByJP",
 			new String[] { Long.class.getName() });
 
@@ -594,7 +594,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<Jobpos2Role> findByJP(long jobPosId) throws SystemException {
+	public List<JobPos2Role> findByJP(long jobPosId) throws SystemException {
 		return findByJP(jobPosId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
@@ -602,7 +602,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * Returns a range of all the jobpos to roles where jobPosId = &#63;.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.Jobpos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.JobPos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param jobPosId the job pos ID
@@ -612,7 +612,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<Jobpos2Role> findByJP(long jobPosId, int start, int end)
+	public List<JobPos2Role> findByJP(long jobPosId, int start, int end)
 		throws SystemException {
 		return findByJP(jobPosId, start, end, null);
 	}
@@ -621,7 +621,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * Returns an ordered range of all the jobpos to roles where jobPosId = &#63;.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.Jobpos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.JobPos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param jobPosId the job pos ID
@@ -632,7 +632,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<Jobpos2Role> findByJP(long jobPosId, int start, int end,
+	public List<JobPos2Role> findByJP(long jobPosId, int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
 		boolean pagination = true;
 		FinderPath finderPath = null;
@@ -649,12 +649,12 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 			finderArgs = new Object[] { jobPosId, start, end, orderByComparator };
 		}
 
-		List<Jobpos2Role> list = (List<Jobpos2Role>)FinderCacheUtil.getResult(finderPath,
+		List<JobPos2Role> list = (List<JobPos2Role>)FinderCacheUtil.getResult(finderPath,
 				finderArgs, this);
 
 		if ((list != null) && !list.isEmpty()) {
-			for (Jobpos2Role jobpos2Role : list) {
-				if ((jobPosId != jobpos2Role.getJobPosId())) {
+			for (JobPos2Role jobPos2Role : list) {
+				if ((jobPosId != jobPos2Role.getJobPosId())) {
 					list = null;
 
 					break;
@@ -683,7 +683,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 			}
 			else
 			 if (pagination) {
-				query.append(Jobpos2RoleModelImpl.ORDER_BY_JPQL);
+				query.append(JobPos2RoleModelImpl.ORDER_BY_JPQL);
 			}
 
 			String sql = query.toString();
@@ -700,15 +700,15 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 				qPos.add(jobPosId);
 
 				if (!pagination) {
-					list = (List<Jobpos2Role>)QueryUtil.list(q, getDialect(),
+					list = (List<JobPos2Role>)QueryUtil.list(q, getDialect(),
 							start, end, false);
 
 					Collections.sort(list);
 
-					list = new UnmodifiableList<Jobpos2Role>(list);
+					list = new UnmodifiableList<JobPos2Role>(list);
 				}
 				else {
-					list = (List<Jobpos2Role>)QueryUtil.list(q, getDialect(),
+					list = (List<JobPos2Role>)QueryUtil.list(q, getDialect(),
 							start, end);
 				}
 
@@ -735,17 +735,17 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @param jobPosId the job pos ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching jobpos to role
-	 * @throws org.oep.usermgt.NoSuchJobpos2RoleException if a matching jobpos to role could not be found
+	 * @throws org.oep.usermgt.NoSuchJobPos2RoleException if a matching jobpos to role could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Jobpos2Role findByJP_First(long jobPosId,
+	public JobPos2Role findByJP_First(long jobPosId,
 		OrderByComparator orderByComparator)
-		throws NoSuchJobpos2RoleException, SystemException {
-		Jobpos2Role jobpos2Role = fetchByJP_First(jobPosId, orderByComparator);
+		throws NoSuchJobPos2RoleException, SystemException {
+		JobPos2Role jobPos2Role = fetchByJP_First(jobPosId, orderByComparator);
 
-		if (jobpos2Role != null) {
-			return jobpos2Role;
+		if (jobPos2Role != null) {
+			return jobPos2Role;
 		}
 
 		StringBundler msg = new StringBundler(4);
@@ -757,7 +757,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 
 		msg.append(StringPool.CLOSE_CURLY_BRACE);
 
-		throw new NoSuchJobpos2RoleException(msg.toString());
+		throw new NoSuchJobPos2RoleException(msg.toString());
 	}
 
 	/**
@@ -769,9 +769,9 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Jobpos2Role fetchByJP_First(long jobPosId,
+	public JobPos2Role fetchByJP_First(long jobPosId,
 		OrderByComparator orderByComparator) throws SystemException {
-		List<Jobpos2Role> list = findByJP(jobPosId, 0, 1, orderByComparator);
+		List<JobPos2Role> list = findByJP(jobPosId, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -786,17 +786,17 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @param jobPosId the job pos ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching jobpos to role
-	 * @throws org.oep.usermgt.NoSuchJobpos2RoleException if a matching jobpos to role could not be found
+	 * @throws org.oep.usermgt.NoSuchJobPos2RoleException if a matching jobpos to role could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Jobpos2Role findByJP_Last(long jobPosId,
+	public JobPos2Role findByJP_Last(long jobPosId,
 		OrderByComparator orderByComparator)
-		throws NoSuchJobpos2RoleException, SystemException {
-		Jobpos2Role jobpos2Role = fetchByJP_Last(jobPosId, orderByComparator);
+		throws NoSuchJobPos2RoleException, SystemException {
+		JobPos2Role jobPos2Role = fetchByJP_Last(jobPosId, orderByComparator);
 
-		if (jobpos2Role != null) {
-			return jobpos2Role;
+		if (jobPos2Role != null) {
+			return jobPos2Role;
 		}
 
 		StringBundler msg = new StringBundler(4);
@@ -808,7 +808,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 
 		msg.append(StringPool.CLOSE_CURLY_BRACE);
 
-		throw new NoSuchJobpos2RoleException(msg.toString());
+		throw new NoSuchJobPos2RoleException(msg.toString());
 	}
 
 	/**
@@ -820,7 +820,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Jobpos2Role fetchByJP_Last(long jobPosId,
+	public JobPos2Role fetchByJP_Last(long jobPosId,
 		OrderByComparator orderByComparator) throws SystemException {
 		int count = countByJP(jobPosId);
 
@@ -828,7 +828,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 			return null;
 		}
 
-		List<Jobpos2Role> list = findByJP(jobPosId, count - 1, count,
+		List<JobPos2Role> list = findByJP(jobPosId, count - 1, count,
 				orderByComparator);
 
 		if (!list.isEmpty()) {
@@ -841,32 +841,32 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	/**
 	 * Returns the jobpos to roles before and after the current jobpos to role in the ordered set where jobPosId = &#63;.
 	 *
-	 * @param jobpos2RolePK the primary key of the current jobpos to role
+	 * @param jobPos2RolePK the primary key of the current jobpos to role
 	 * @param jobPosId the job pos ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next jobpos to role
-	 * @throws org.oep.usermgt.NoSuchJobpos2RoleException if a jobpos to role with the primary key could not be found
+	 * @throws org.oep.usermgt.NoSuchJobPos2RoleException if a jobpos to role with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Jobpos2Role[] findByJP_PrevAndNext(Jobpos2RolePK jobpos2RolePK,
+	public JobPos2Role[] findByJP_PrevAndNext(JobPos2RolePK jobPos2RolePK,
 		long jobPosId, OrderByComparator orderByComparator)
-		throws NoSuchJobpos2RoleException, SystemException {
-		Jobpos2Role jobpos2Role = findByPrimaryKey(jobpos2RolePK);
+		throws NoSuchJobPos2RoleException, SystemException {
+		JobPos2Role jobPos2Role = findByPrimaryKey(jobPos2RolePK);
 
 		Session session = null;
 
 		try {
 			session = openSession();
 
-			Jobpos2Role[] array = new Jobpos2RoleImpl[3];
+			JobPos2Role[] array = new JobPos2RoleImpl[3];
 
-			array[0] = getByJP_PrevAndNext(session, jobpos2Role, jobPosId,
+			array[0] = getByJP_PrevAndNext(session, jobPos2Role, jobPosId,
 					orderByComparator, true);
 
-			array[1] = jobpos2Role;
+			array[1] = jobPos2Role;
 
-			array[2] = getByJP_PrevAndNext(session, jobpos2Role, jobPosId,
+			array[2] = getByJP_PrevAndNext(session, jobPos2Role, jobPosId,
 					orderByComparator, false);
 
 			return array;
@@ -879,8 +879,8 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 		}
 	}
 
-	protected Jobpos2Role getByJP_PrevAndNext(Session session,
-		Jobpos2Role jobpos2Role, long jobPosId,
+	protected JobPos2Role getByJP_PrevAndNext(Session session,
+		JobPos2Role jobPos2Role, long jobPosId,
 		OrderByComparator orderByComparator, boolean previous) {
 		StringBundler query = null;
 
@@ -952,7 +952,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 			}
 		}
 		else {
-			query.append(Jobpos2RoleModelImpl.ORDER_BY_JPQL);
+			query.append(JobPos2RoleModelImpl.ORDER_BY_JPQL);
 		}
 
 		String sql = query.toString();
@@ -967,14 +967,14 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 		qPos.add(jobPosId);
 
 		if (orderByComparator != null) {
-			Object[] values = orderByComparator.getOrderByConditionValues(jobpos2Role);
+			Object[] values = orderByComparator.getOrderByConditionValues(jobPos2Role);
 
 			for (Object value : values) {
 				qPos.add(value);
 			}
 		}
 
-		List<Jobpos2Role> list = q.list();
+		List<JobPos2Role> list = q.list();
 
 		if (list.size() == 2) {
 			return list.get(1);
@@ -992,9 +992,9 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 */
 	@Override
 	public void removeByJP(long jobPosId) throws SystemException {
-		for (Jobpos2Role jobpos2Role : findByJP(jobPosId, QueryUtil.ALL_POS,
+		for (JobPos2Role jobPos2Role : findByJP(jobPosId, QueryUtil.ALL_POS,
 				QueryUtil.ALL_POS, null)) {
-			remove(jobpos2Role);
+			remove(jobPos2Role);
 		}
 	}
 
@@ -1051,40 +1051,40 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 		return count.intValue();
 	}
 
-	private static final String _FINDER_COLUMN_JP_JOBPOSID_2 = "jobpos2Role.id.jobPosId = ?";
+	private static final String _FINDER_COLUMN_JP_JOBPOSID_2 = "jobPos2Role.id.jobPosId = ?";
 
-	public Jobpos2RolePersistenceImpl() {
-		setModelClass(Jobpos2Role.class);
+	public JobPos2RolePersistenceImpl() {
+		setModelClass(JobPos2Role.class);
 	}
 
 	/**
 	 * Caches the jobpos to role in the entity cache if it is enabled.
 	 *
-	 * @param jobpos2Role the jobpos to role
+	 * @param jobPos2Role the jobpos to role
 	 */
 	@Override
-	public void cacheResult(Jobpos2Role jobpos2Role) {
-		EntityCacheUtil.putResult(Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-			Jobpos2RoleImpl.class, jobpos2Role.getPrimaryKey(), jobpos2Role);
+	public void cacheResult(JobPos2Role jobPos2Role) {
+		EntityCacheUtil.putResult(JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+			JobPos2RoleImpl.class, jobPos2Role.getPrimaryKey(), jobPos2Role);
 
-		jobpos2Role.resetOriginalValues();
+		jobPos2Role.resetOriginalValues();
 	}
 
 	/**
 	 * Caches the jobpos to roles in the entity cache if it is enabled.
 	 *
-	 * @param jobpos2Roles the jobpos to roles
+	 * @param jobPos2Roles the jobpos to roles
 	 */
 	@Override
-	public void cacheResult(List<Jobpos2Role> jobpos2Roles) {
-		for (Jobpos2Role jobpos2Role : jobpos2Roles) {
+	public void cacheResult(List<JobPos2Role> jobPos2Roles) {
+		for (JobPos2Role jobPos2Role : jobPos2Roles) {
 			if (EntityCacheUtil.getResult(
-						Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-						Jobpos2RoleImpl.class, jobpos2Role.getPrimaryKey()) == null) {
-				cacheResult(jobpos2Role);
+						JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+						JobPos2RoleImpl.class, jobPos2Role.getPrimaryKey()) == null) {
+				cacheResult(jobPos2Role);
 			}
 			else {
-				jobpos2Role.resetOriginalValues();
+				jobPos2Role.resetOriginalValues();
 			}
 		}
 	}
@@ -1099,10 +1099,10 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	@Override
 	public void clearCache() {
 		if (_HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE) {
-			CacheRegistryUtil.clear(Jobpos2RoleImpl.class.getName());
+			CacheRegistryUtil.clear(JobPos2RoleImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(Jobpos2RoleImpl.class.getName());
+		EntityCacheUtil.clearCache(JobPos2RoleImpl.class.getName());
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -1117,53 +1117,53 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * </p>
 	 */
 	@Override
-	public void clearCache(Jobpos2Role jobpos2Role) {
-		EntityCacheUtil.removeResult(Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-			Jobpos2RoleImpl.class, jobpos2Role.getPrimaryKey());
+	public void clearCache(JobPos2Role jobPos2Role) {
+		EntityCacheUtil.removeResult(JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+			JobPos2RoleImpl.class, jobPos2Role.getPrimaryKey());
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
 	}
 
 	@Override
-	public void clearCache(List<Jobpos2Role> jobpos2Roles) {
+	public void clearCache(List<JobPos2Role> jobPos2Roles) {
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
 
-		for (Jobpos2Role jobpos2Role : jobpos2Roles) {
-			EntityCacheUtil.removeResult(Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-				Jobpos2RoleImpl.class, jobpos2Role.getPrimaryKey());
+		for (JobPos2Role jobPos2Role : jobPos2Roles) {
+			EntityCacheUtil.removeResult(JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+				JobPos2RoleImpl.class, jobPos2Role.getPrimaryKey());
 		}
 	}
 
 	/**
 	 * Creates a new jobpos to role with the primary key. Does not add the jobpos to role to the database.
 	 *
-	 * @param jobpos2RolePK the primary key for the new jobpos to role
+	 * @param jobPos2RolePK the primary key for the new jobpos to role
 	 * @return the new jobpos to role
 	 */
 	@Override
-	public Jobpos2Role create(Jobpos2RolePK jobpos2RolePK) {
-		Jobpos2Role jobpos2Role = new Jobpos2RoleImpl();
+	public JobPos2Role create(JobPos2RolePK jobPos2RolePK) {
+		JobPos2Role jobPos2Role = new JobPos2RoleImpl();
 
-		jobpos2Role.setNew(true);
-		jobpos2Role.setPrimaryKey(jobpos2RolePK);
+		jobPos2Role.setNew(true);
+		jobPos2Role.setPrimaryKey(jobPos2RolePK);
 
-		return jobpos2Role;
+		return jobPos2Role;
 	}
 
 	/**
 	 * Removes the jobpos to role with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param jobpos2RolePK the primary key of the jobpos to role
+	 * @param jobPos2RolePK the primary key of the jobpos to role
 	 * @return the jobpos to role that was removed
-	 * @throws org.oep.usermgt.NoSuchJobpos2RoleException if a jobpos to role with the primary key could not be found
+	 * @throws org.oep.usermgt.NoSuchJobPos2RoleException if a jobpos to role with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Jobpos2Role remove(Jobpos2RolePK jobpos2RolePK)
-		throws NoSuchJobpos2RoleException, SystemException {
-		return remove((Serializable)jobpos2RolePK);
+	public JobPos2Role remove(JobPos2RolePK jobPos2RolePK)
+		throws NoSuchJobPos2RoleException, SystemException {
+		return remove((Serializable)jobPos2RolePK);
 	}
 
 	/**
@@ -1171,32 +1171,32 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 *
 	 * @param primaryKey the primary key of the jobpos to role
 	 * @return the jobpos to role that was removed
-	 * @throws org.oep.usermgt.NoSuchJobpos2RoleException if a jobpos to role with the primary key could not be found
+	 * @throws org.oep.usermgt.NoSuchJobPos2RoleException if a jobpos to role with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Jobpos2Role remove(Serializable primaryKey)
-		throws NoSuchJobpos2RoleException, SystemException {
+	public JobPos2Role remove(Serializable primaryKey)
+		throws NoSuchJobPos2RoleException, SystemException {
 		Session session = null;
 
 		try {
 			session = openSession();
 
-			Jobpos2Role jobpos2Role = (Jobpos2Role)session.get(Jobpos2RoleImpl.class,
+			JobPos2Role jobPos2Role = (JobPos2Role)session.get(JobPos2RoleImpl.class,
 					primaryKey);
 
-			if (jobpos2Role == null) {
+			if (jobPos2Role == null) {
 				if (_log.isWarnEnabled()) {
 					_log.warn(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY + primaryKey);
 				}
 
-				throw new NoSuchJobpos2RoleException(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY +
+				throw new NoSuchJobPos2RoleException(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY +
 					primaryKey);
 			}
 
-			return remove(jobpos2Role);
+			return remove(jobPos2Role);
 		}
-		catch (NoSuchJobpos2RoleException nsee) {
+		catch (NoSuchJobPos2RoleException nsee) {
 			throw nsee;
 		}
 		catch (Exception e) {
@@ -1208,22 +1208,22 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	}
 
 	@Override
-	protected Jobpos2Role removeImpl(Jobpos2Role jobpos2Role)
+	protected JobPos2Role removeImpl(JobPos2Role jobPos2Role)
 		throws SystemException {
-		jobpos2Role = toUnwrappedModel(jobpos2Role);
+		jobPos2Role = toUnwrappedModel(jobPos2Role);
 
 		Session session = null;
 
 		try {
 			session = openSession();
 
-			if (!session.contains(jobpos2Role)) {
-				jobpos2Role = (Jobpos2Role)session.get(Jobpos2RoleImpl.class,
-						jobpos2Role.getPrimaryKeyObj());
+			if (!session.contains(jobPos2Role)) {
+				jobPos2Role = (JobPos2Role)session.get(JobPos2RoleImpl.class,
+						jobPos2Role.getPrimaryKeyObj());
 			}
 
-			if (jobpos2Role != null) {
-				session.delete(jobpos2Role);
+			if (jobPos2Role != null) {
+				session.delete(jobPos2Role);
 			}
 		}
 		catch (Exception e) {
@@ -1233,34 +1233,34 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 			closeSession(session);
 		}
 
-		if (jobpos2Role != null) {
-			clearCache(jobpos2Role);
+		if (jobPos2Role != null) {
+			clearCache(jobPos2Role);
 		}
 
-		return jobpos2Role;
+		return jobPos2Role;
 	}
 
 	@Override
-	public Jobpos2Role updateImpl(org.oep.usermgt.model.Jobpos2Role jobpos2Role)
+	public JobPos2Role updateImpl(org.oep.usermgt.model.JobPos2Role jobPos2Role)
 		throws SystemException {
-		jobpos2Role = toUnwrappedModel(jobpos2Role);
+		jobPos2Role = toUnwrappedModel(jobPos2Role);
 
-		boolean isNew = jobpos2Role.isNew();
+		boolean isNew = jobPos2Role.isNew();
 
-		Jobpos2RoleModelImpl jobpos2RoleModelImpl = (Jobpos2RoleModelImpl)jobpos2Role;
+		JobPos2RoleModelImpl jobPos2RoleModelImpl = (JobPos2RoleModelImpl)jobPos2Role;
 
 		Session session = null;
 
 		try {
 			session = openSession();
 
-			if (jobpos2Role.isNew()) {
-				session.save(jobpos2Role);
+			if (jobPos2Role.isNew()) {
+				session.save(jobPos2Role);
 
-				jobpos2Role.setNew(false);
+				jobPos2Role.setNew(false);
 			}
 			else {
-				session.merge(jobpos2Role);
+				session.merge(jobPos2Role);
 			}
 		}
 		catch (Exception e) {
@@ -1272,39 +1272,39 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 
-		if (isNew || !Jobpos2RoleModelImpl.COLUMN_BITMASK_ENABLED) {
+		if (isNew || !JobPos2RoleModelImpl.COLUMN_BITMASK_ENABLED) {
 			FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
 		}
 
 		else {
-			if ((jobpos2RoleModelImpl.getColumnBitmask() &
+			if ((jobPos2RoleModelImpl.getColumnBitmask() &
 					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_R.getColumnBitmask()) != 0) {
 				Object[] args = new Object[] {
-						jobpos2RoleModelImpl.getOriginalRoleId()
+						jobPos2RoleModelImpl.getOriginalRoleId()
 					};
 
 				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_R, args);
 				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_R,
 					args);
 
-				args = new Object[] { jobpos2RoleModelImpl.getRoleId() };
+				args = new Object[] { jobPos2RoleModelImpl.getRoleId() };
 
 				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_R, args);
 				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_R,
 					args);
 			}
 
-			if ((jobpos2RoleModelImpl.getColumnBitmask() &
+			if ((jobPos2RoleModelImpl.getColumnBitmask() &
 					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_JP.getColumnBitmask()) != 0) {
 				Object[] args = new Object[] {
-						jobpos2RoleModelImpl.getOriginalJobPosId()
+						jobPos2RoleModelImpl.getOriginalJobPosId()
 					};
 
 				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_JP, args);
 				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_JP,
 					args);
 
-				args = new Object[] { jobpos2RoleModelImpl.getJobPosId() };
+				args = new Object[] { jobPos2RoleModelImpl.getJobPosId() };
 
 				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_JP, args);
 				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_JP,
@@ -1312,26 +1312,26 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 			}
 		}
 
-		EntityCacheUtil.putResult(Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-			Jobpos2RoleImpl.class, jobpos2Role.getPrimaryKey(), jobpos2Role);
+		EntityCacheUtil.putResult(JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+			JobPos2RoleImpl.class, jobPos2Role.getPrimaryKey(), jobPos2Role);
 
-		return jobpos2Role;
+		return jobPos2Role;
 	}
 
-	protected Jobpos2Role toUnwrappedModel(Jobpos2Role jobpos2Role) {
-		if (jobpos2Role instanceof Jobpos2RoleImpl) {
-			return jobpos2Role;
+	protected JobPos2Role toUnwrappedModel(JobPos2Role jobPos2Role) {
+		if (jobPos2Role instanceof JobPos2RoleImpl) {
+			return jobPos2Role;
 		}
 
-		Jobpos2RoleImpl jobpos2RoleImpl = new Jobpos2RoleImpl();
+		JobPos2RoleImpl jobPos2RoleImpl = new JobPos2RoleImpl();
 
-		jobpos2RoleImpl.setNew(jobpos2Role.isNew());
-		jobpos2RoleImpl.setPrimaryKey(jobpos2Role.getPrimaryKey());
+		jobPos2RoleImpl.setNew(jobPos2Role.isNew());
+		jobPos2RoleImpl.setPrimaryKey(jobPos2Role.getPrimaryKey());
 
-		jobpos2RoleImpl.setJobPosId(jobpos2Role.getJobPosId());
-		jobpos2RoleImpl.setRoleId(jobpos2Role.getRoleId());
+		jobPos2RoleImpl.setJobPosId(jobPos2Role.getJobPosId());
+		jobPos2RoleImpl.setRoleId(jobPos2Role.getRoleId());
 
-		return jobpos2RoleImpl;
+		return jobPos2RoleImpl;
 	}
 
 	/**
@@ -1339,38 +1339,38 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 *
 	 * @param primaryKey the primary key of the jobpos to role
 	 * @return the jobpos to role
-	 * @throws org.oep.usermgt.NoSuchJobpos2RoleException if a jobpos to role with the primary key could not be found
+	 * @throws org.oep.usermgt.NoSuchJobPos2RoleException if a jobpos to role with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Jobpos2Role findByPrimaryKey(Serializable primaryKey)
-		throws NoSuchJobpos2RoleException, SystemException {
-		Jobpos2Role jobpos2Role = fetchByPrimaryKey(primaryKey);
+	public JobPos2Role findByPrimaryKey(Serializable primaryKey)
+		throws NoSuchJobPos2RoleException, SystemException {
+		JobPos2Role jobPos2Role = fetchByPrimaryKey(primaryKey);
 
-		if (jobpos2Role == null) {
+		if (jobPos2Role == null) {
 			if (_log.isWarnEnabled()) {
 				_log.warn(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY + primaryKey);
 			}
 
-			throw new NoSuchJobpos2RoleException(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY +
+			throw new NoSuchJobPos2RoleException(_NO_SUCH_ENTITY_WITH_PRIMARY_KEY +
 				primaryKey);
 		}
 
-		return jobpos2Role;
+		return jobPos2Role;
 	}
 
 	/**
-	 * Returns the jobpos to role with the primary key or throws a {@link org.oep.usermgt.NoSuchJobpos2RoleException} if it could not be found.
+	 * Returns the jobpos to role with the primary key or throws a {@link org.oep.usermgt.NoSuchJobPos2RoleException} if it could not be found.
 	 *
-	 * @param jobpos2RolePK the primary key of the jobpos to role
+	 * @param jobPos2RolePK the primary key of the jobpos to role
 	 * @return the jobpos to role
-	 * @throws org.oep.usermgt.NoSuchJobpos2RoleException if a jobpos to role with the primary key could not be found
+	 * @throws org.oep.usermgt.NoSuchJobPos2RoleException if a jobpos to role with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Jobpos2Role findByPrimaryKey(Jobpos2RolePK jobpos2RolePK)
-		throws NoSuchJobpos2RoleException, SystemException {
-		return findByPrimaryKey((Serializable)jobpos2RolePK);
+	public JobPos2Role findByPrimaryKey(JobPos2RolePK jobPos2RolePK)
+		throws NoSuchJobPos2RoleException, SystemException {
+		return findByPrimaryKey((Serializable)jobPos2RolePK);
 	}
 
 	/**
@@ -1381,35 +1381,35 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Jobpos2Role fetchByPrimaryKey(Serializable primaryKey)
+	public JobPos2Role fetchByPrimaryKey(Serializable primaryKey)
 		throws SystemException {
-		Jobpos2Role jobpos2Role = (Jobpos2Role)EntityCacheUtil.getResult(Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-				Jobpos2RoleImpl.class, primaryKey);
+		JobPos2Role jobPos2Role = (JobPos2Role)EntityCacheUtil.getResult(JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+				JobPos2RoleImpl.class, primaryKey);
 
-		if (jobpos2Role == _nullJobpos2Role) {
+		if (jobPos2Role == _nullJobPos2Role) {
 			return null;
 		}
 
-		if (jobpos2Role == null) {
+		if (jobPos2Role == null) {
 			Session session = null;
 
 			try {
 				session = openSession();
 
-				jobpos2Role = (Jobpos2Role)session.get(Jobpos2RoleImpl.class,
+				jobPos2Role = (JobPos2Role)session.get(JobPos2RoleImpl.class,
 						primaryKey);
 
-				if (jobpos2Role != null) {
-					cacheResult(jobpos2Role);
+				if (jobPos2Role != null) {
+					cacheResult(jobPos2Role);
 				}
 				else {
-					EntityCacheUtil.putResult(Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-						Jobpos2RoleImpl.class, primaryKey, _nullJobpos2Role);
+					EntityCacheUtil.putResult(JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+						JobPos2RoleImpl.class, primaryKey, _nullJobPos2Role);
 				}
 			}
 			catch (Exception e) {
-				EntityCacheUtil.removeResult(Jobpos2RoleModelImpl.ENTITY_CACHE_ENABLED,
-					Jobpos2RoleImpl.class, primaryKey);
+				EntityCacheUtil.removeResult(JobPos2RoleModelImpl.ENTITY_CACHE_ENABLED,
+					JobPos2RoleImpl.class, primaryKey);
 
 				throw processException(e);
 			}
@@ -1418,20 +1418,20 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 			}
 		}
 
-		return jobpos2Role;
+		return jobPos2Role;
 	}
 
 	/**
 	 * Returns the jobpos to role with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param jobpos2RolePK the primary key of the jobpos to role
+	 * @param jobPos2RolePK the primary key of the jobpos to role
 	 * @return the jobpos to role, or <code>null</code> if a jobpos to role with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public Jobpos2Role fetchByPrimaryKey(Jobpos2RolePK jobpos2RolePK)
+	public JobPos2Role fetchByPrimaryKey(JobPos2RolePK jobPos2RolePK)
 		throws SystemException {
-		return fetchByPrimaryKey((Serializable)jobpos2RolePK);
+		return fetchByPrimaryKey((Serializable)jobPos2RolePK);
 	}
 
 	/**
@@ -1441,7 +1441,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<Jobpos2Role> findAll() throws SystemException {
+	public List<JobPos2Role> findAll() throws SystemException {
 		return findAll(QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
@@ -1449,7 +1449,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * Returns a range of all the jobpos to roles.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.Jobpos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.JobPos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param start the lower bound of the range of jobpos to roles
@@ -1458,7 +1458,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<Jobpos2Role> findAll(int start, int end)
+	public List<JobPos2Role> findAll(int start, int end)
 		throws SystemException {
 		return findAll(start, end, null);
 	}
@@ -1467,7 +1467,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * Returns an ordered range of all the jobpos to roles.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.Jobpos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.usermgt.model.impl.JobPos2RoleModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	 * </p>
 	 *
 	 * @param start the lower bound of the range of jobpos to roles
@@ -1477,7 +1477,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<Jobpos2Role> findAll(int start, int end,
+	public List<JobPos2Role> findAll(int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
 		boolean pagination = true;
 		FinderPath finderPath = null;
@@ -1494,7 +1494,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 			finderArgs = new Object[] { start, end, orderByComparator };
 		}
 
-		List<Jobpos2Role> list = (List<Jobpos2Role>)FinderCacheUtil.getResult(finderPath,
+		List<JobPos2Role> list = (List<JobPos2Role>)FinderCacheUtil.getResult(finderPath,
 				finderArgs, this);
 
 		if (list == null) {
@@ -1516,7 +1516,7 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 				sql = _SQL_SELECT_JOBPOS2ROLE;
 
 				if (pagination) {
-					sql = sql.concat(Jobpos2RoleModelImpl.ORDER_BY_JPQL);
+					sql = sql.concat(JobPos2RoleModelImpl.ORDER_BY_JPQL);
 				}
 			}
 
@@ -1528,15 +1528,15 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 				Query q = session.createQuery(sql);
 
 				if (!pagination) {
-					list = (List<Jobpos2Role>)QueryUtil.list(q, getDialect(),
+					list = (List<JobPos2Role>)QueryUtil.list(q, getDialect(),
 							start, end, false);
 
 					Collections.sort(list);
 
-					list = new UnmodifiableList<Jobpos2Role>(list);
+					list = new UnmodifiableList<JobPos2Role>(list);
 				}
 				else {
-					list = (List<Jobpos2Role>)QueryUtil.list(q, getDialect(),
+					list = (List<JobPos2Role>)QueryUtil.list(q, getDialect(),
 							start, end);
 				}
 
@@ -1564,8 +1564,8 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	 */
 	@Override
 	public void removeAll() throws SystemException {
-		for (Jobpos2Role jobpos2Role : findAll()) {
-			remove(jobpos2Role);
+		for (JobPos2Role jobPos2Role : findAll()) {
+			remove(jobPos2Role);
 		}
 	}
 
@@ -1613,14 +1613,14 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	public void afterPropertiesSet() {
 		String[] listenerClassNames = StringUtil.split(GetterUtil.getString(
 					com.liferay.util.service.ServiceProps.get(
-						"value.object.listener.org.oep.usermgt.model.Jobpos2Role")));
+						"value.object.listener.org.oep.usermgt.model.JobPos2Role")));
 
 		if (listenerClassNames.length > 0) {
 			try {
-				List<ModelListener<Jobpos2Role>> listenersList = new ArrayList<ModelListener<Jobpos2Role>>();
+				List<ModelListener<JobPos2Role>> listenersList = new ArrayList<ModelListener<JobPos2Role>>();
 
 				for (String listenerClassName : listenerClassNames) {
-					listenersList.add((ModelListener<Jobpos2Role>)InstanceFactory.newInstance(
+					listenersList.add((ModelListener<JobPos2Role>)InstanceFactory.newInstance(
 							getClassLoader(), listenerClassName));
 				}
 
@@ -1633,38 +1633,38 @@ public class Jobpos2RolePersistenceImpl extends BasePersistenceImpl<Jobpos2Role>
 	}
 
 	public void destroy() {
-		EntityCacheUtil.removeCache(Jobpos2RoleImpl.class.getName());
+		EntityCacheUtil.removeCache(JobPos2RoleImpl.class.getName());
 		FinderCacheUtil.removeCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.removeCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 		FinderCacheUtil.removeCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
 	}
 
-	private static final String _SQL_SELECT_JOBPOS2ROLE = "SELECT jobpos2Role FROM Jobpos2Role jobpos2Role";
-	private static final String _SQL_SELECT_JOBPOS2ROLE_WHERE = "SELECT jobpos2Role FROM Jobpos2Role jobpos2Role WHERE ";
-	private static final String _SQL_COUNT_JOBPOS2ROLE = "SELECT COUNT(jobpos2Role) FROM Jobpos2Role jobpos2Role";
-	private static final String _SQL_COUNT_JOBPOS2ROLE_WHERE = "SELECT COUNT(jobpos2Role) FROM Jobpos2Role jobpos2Role WHERE ";
-	private static final String _ORDER_BY_ENTITY_ALIAS = "jobpos2Role.";
-	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No Jobpos2Role exists with the primary key ";
-	private static final String _NO_SUCH_ENTITY_WITH_KEY = "No Jobpos2Role exists with the key {";
+	private static final String _SQL_SELECT_JOBPOS2ROLE = "SELECT jobPos2Role FROM JobPos2Role jobPos2Role";
+	private static final String _SQL_SELECT_JOBPOS2ROLE_WHERE = "SELECT jobPos2Role FROM JobPos2Role jobPos2Role WHERE ";
+	private static final String _SQL_COUNT_JOBPOS2ROLE = "SELECT COUNT(jobPos2Role) FROM JobPos2Role jobPos2Role";
+	private static final String _SQL_COUNT_JOBPOS2ROLE_WHERE = "SELECT COUNT(jobPos2Role) FROM JobPos2Role jobPos2Role WHERE ";
+	private static final String _ORDER_BY_ENTITY_ALIAS = "jobPos2Role.";
+	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No JobPos2Role exists with the primary key ";
+	private static final String _NO_SUCH_ENTITY_WITH_KEY = "No JobPos2Role exists with the key {";
 	private static final boolean _HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE = GetterUtil.getBoolean(PropsUtil.get(
 				PropsKeys.HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE));
-	private static Log _log = LogFactoryUtil.getLog(Jobpos2RolePersistenceImpl.class);
-	private static Jobpos2Role _nullJobpos2Role = new Jobpos2RoleImpl() {
+	private static Log _log = LogFactoryUtil.getLog(JobPos2RolePersistenceImpl.class);
+	private static JobPos2Role _nullJobPos2Role = new JobPos2RoleImpl() {
 			@Override
 			public Object clone() {
 				return this;
 			}
 
 			@Override
-			public CacheModel<Jobpos2Role> toCacheModel() {
-				return _nullJobpos2RoleCacheModel;
+			public CacheModel<JobPos2Role> toCacheModel() {
+				return _nullJobPos2RoleCacheModel;
 			}
 		};
 
-	private static CacheModel<Jobpos2Role> _nullJobpos2RoleCacheModel = new CacheModel<Jobpos2Role>() {
+	private static CacheModel<JobPos2Role> _nullJobPos2RoleCacheModel = new CacheModel<JobPos2Role>() {
 			@Override
-			public Jobpos2Role toEntityModel() {
-				return _nullJobpos2Role;
+			public JobPos2Role toEntityModel() {
+				return _nullJobPos2Role;
 			}
 		};
 }

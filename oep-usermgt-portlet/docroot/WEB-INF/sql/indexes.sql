@@ -38,11 +38,13 @@ create index IX_FFDFCD5C on oep_usermgt_subaccount (mappingUserId);
 
 create index IX_5000E2C6 on oep_usermgt_workingunit (cityNo);
 create index IX_BD5A8A2 on oep_usermgt_workingunit (companyId);
+create index IX_E8BA98DB on oep_usermgt_workingunit (companyId, isEmployer);
 create index IX_803B8514 on oep_usermgt_workingunit (companyId, parentWorkingUnitId);
 create index IX_BE3E6F69 on oep_usermgt_workingunit (districtNo);
 create index IX_44093958 on oep_usermgt_workingunit (govAgencyId);
 create index IX_9A93EFA4 on oep_usermgt_workingunit (groupId);
 create index IX_580B1352 on oep_usermgt_workingunit (groupId, parentWorkingUnitId);
+create index IX_13B7A0F7 on oep_usermgt_workingunit (localSiteId);
 create index IX_9C3D1B68 on oep_usermgt_workingunit (organizationId);
 create index IX_31F3E870 on oep_usermgt_workingunit (parentWorkingUnitId);
 create index IX_C1D4EB57 on oep_usermgt_workingunit (wardNo);

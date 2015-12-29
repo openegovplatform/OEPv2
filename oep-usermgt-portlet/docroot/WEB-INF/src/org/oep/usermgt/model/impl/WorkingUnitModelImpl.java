@@ -72,7 +72,7 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 			{ "userId", Types.BIGINT },
 			{ "createDate", Types.TIMESTAMP },
 			{ "modifiedDate", Types.TIMESTAMP },
-			{ "organizationId", Types.VARCHAR },
+			{ "organizationId", Types.BIGINT },
 			{ "govAgencyId", Types.VARCHAR },
 			{ "name", Types.VARCHAR },
 			{ "enName", Types.VARCHAR },
@@ -90,9 +90,11 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 			{ "email", Types.VARCHAR },
 			{ "website", Types.VARCHAR },
 			{ "aaa", Types.VARCHAR },
-			{ "shortName", Types.VARCHAR }
+			{ "shortName", Types.VARCHAR },
+			{ "localSiteId", Types.BIGINT },
+			{ "isEmployer", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table oep_usermgt_workingunit (workingUnitId LONG not null primary key,companyId LONG,groupId LONG,userId LONG,createDate DATE null,modifiedDate DATE null,organizationId VARCHAR(75) null,govAgencyId VARCHAR(75) null,name VARCHAR(75) null,enName VARCHAR(75) null,parentWorkingUnitId LONG,address VARCHAR(75) null,cityNo VARCHAR(75) null,cityName VARCHAR(75) null,districtNo VARCHAR(75) null,districtName VARCHAR(75) null,wardNo VARCHAR(75) null,wardName VARCHAR(75) null,gpsPosition VARCHAR(75) null,telNo VARCHAR(75) null,fax VARCHAR(75) null,email VARCHAR(75) null,website VARCHAR(75) null,aaa VARCHAR(75) null,shortName VARCHAR(75) null)";
+	public static final String TABLE_SQL_CREATE = "create table oep_usermgt_workingunit (workingUnitId LONG not null primary key,companyId LONG,groupId LONG,userId LONG,createDate DATE null,modifiedDate DATE null,organizationId LONG,govAgencyId VARCHAR(75) null,name VARCHAR(75) null,enName VARCHAR(75) null,parentWorkingUnitId LONG,address VARCHAR(75) null,cityNo VARCHAR(75) null,cityName VARCHAR(75) null,districtNo VARCHAR(75) null,districtName VARCHAR(75) null,wardNo VARCHAR(75) null,wardName VARCHAR(75) null,gpsPosition VARCHAR(75) null,telNo VARCHAR(75) null,fax VARCHAR(75) null,email VARCHAR(75) null,website VARCHAR(75) null,aaa VARCHAR(75) null,shortName VARCHAR(75) null,localSiteId LONG,isEmployer INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table oep_usermgt_workingunit";
 	public static final String ORDER_BY_JPQL = " ORDER BY workingUnit.workingUnitId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY oep_usermgt_workingunit.workingUnitId ASC";
@@ -113,10 +115,12 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 	public static long DISTRICTNO_COLUMN_BITMASK = 4L;
 	public static long GOVAGENCYID_COLUMN_BITMASK = 8L;
 	public static long GROUPID_COLUMN_BITMASK = 16L;
-	public static long ORGANIZATIONID_COLUMN_BITMASK = 32L;
-	public static long PARENTWORKINGUNITID_COLUMN_BITMASK = 64L;
-	public static long WARDNO_COLUMN_BITMASK = 128L;
-	public static long WORKINGUNITID_COLUMN_BITMASK = 256L;
+	public static long ISEMPLOYER_COLUMN_BITMASK = 32L;
+	public static long LOCALSITEID_COLUMN_BITMASK = 64L;
+	public static long ORGANIZATIONID_COLUMN_BITMASK = 128L;
+	public static long PARENTWORKINGUNITID_COLUMN_BITMASK = 256L;
+	public static long WARDNO_COLUMN_BITMASK = 512L;
+	public static long WORKINGUNITID_COLUMN_BITMASK = 1024L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -156,6 +160,8 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 		model.setWebsite(soapModel.getWebsite());
 		model.setAaa(soapModel.getAaa());
 		model.setShortName(soapModel.getShortName());
+		model.setLocalSiteId(soapModel.getLocalSiteId());
+		model.setIsEmployer(soapModel.getIsEmployer());
 
 		return model;
 	}
@@ -245,6 +251,8 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 		attributes.put("website", getWebsite());
 		attributes.put("aaa", getAaa());
 		attributes.put("shortName", getShortName());
+		attributes.put("localSiteId", getLocalSiteId());
+		attributes.put("isEmployer", getIsEmployer());
 
 		return attributes;
 	}
@@ -287,7 +295,7 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 			setModifiedDate(modifiedDate);
 		}
 
-		String organizationId = (String)attributes.get("organizationId");
+		Long organizationId = (Long)attributes.get("organizationId");
 
 		if (organizationId != null) {
 			setOrganizationId(organizationId);
@@ -400,6 +408,18 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 		if (shortName != null) {
 			setShortName(shortName);
 		}
+
+		Long localSiteId = (Long)attributes.get("localSiteId");
+
+		if (localSiteId != null) {
+			setLocalSiteId(localSiteId);
+		}
+
+		Integer isEmployer = (Integer)attributes.get("isEmployer");
+
+		if (isEmployer != null) {
+			setIsEmployer(isEmployer);
+		}
 	}
 
 	@JSON
@@ -504,28 +524,25 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 
 	@JSON
 	@Override
-	public String getOrganizationId() {
-		if (_organizationId == null) {
-			return StringPool.BLANK;
-		}
-		else {
-			return _organizationId;
-		}
+	public long getOrganizationId() {
+		return _organizationId;
 	}
 
 	@Override
-	public void setOrganizationId(String organizationId) {
+	public void setOrganizationId(long organizationId) {
 		_columnBitmask |= ORGANIZATIONID_COLUMN_BITMASK;
 
-		if (_originalOrganizationId == null) {
+		if (!_setOriginalOrganizationId) {
+			_setOriginalOrganizationId = true;
+
 			_originalOrganizationId = _organizationId;
 		}
 
 		_organizationId = organizationId;
 	}
 
-	public String getOriginalOrganizationId() {
-		return GetterUtil.getString(_originalOrganizationId);
+	public long getOriginalOrganizationId() {
+		return _originalOrganizationId;
 	}
 
 	@JSON
@@ -863,6 +880,52 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 		_shortName = shortName;
 	}
 
+	@JSON
+	@Override
+	public long getLocalSiteId() {
+		return _localSiteId;
+	}
+
+	@Override
+	public void setLocalSiteId(long localSiteId) {
+		_columnBitmask |= LOCALSITEID_COLUMN_BITMASK;
+
+		if (!_setOriginalLocalSiteId) {
+			_setOriginalLocalSiteId = true;
+
+			_originalLocalSiteId = _localSiteId;
+		}
+
+		_localSiteId = localSiteId;
+	}
+
+	public long getOriginalLocalSiteId() {
+		return _originalLocalSiteId;
+	}
+
+	@JSON
+	@Override
+	public int getIsEmployer() {
+		return _isEmployer;
+	}
+
+	@Override
+	public void setIsEmployer(int isEmployer) {
+		_columnBitmask |= ISEMPLOYER_COLUMN_BITMASK;
+
+		if (!_setOriginalIsEmployer) {
+			_setOriginalIsEmployer = true;
+
+			_originalIsEmployer = _isEmployer;
+		}
+
+		_isEmployer = isEmployer;
+	}
+
+	public int getOriginalIsEmployer() {
+		return _originalIsEmployer;
+	}
+
 	public long getColumnBitmask() {
 		return _columnBitmask;
 	}
@@ -919,6 +982,8 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 		workingUnitImpl.setWebsite(getWebsite());
 		workingUnitImpl.setAaa(getAaa());
 		workingUnitImpl.setShortName(getShortName());
+		workingUnitImpl.setLocalSiteId(getLocalSiteId());
+		workingUnitImpl.setIsEmployer(getIsEmployer());
 
 		workingUnitImpl.resetOriginalValues();
 
@@ -981,6 +1046,8 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 
 		workingUnitModelImpl._originalOrganizationId = workingUnitModelImpl._organizationId;
 
+		workingUnitModelImpl._setOriginalOrganizationId = false;
+
 		workingUnitModelImpl._originalGovAgencyId = workingUnitModelImpl._govAgencyId;
 
 		workingUnitModelImpl._originalParentWorkingUnitId = workingUnitModelImpl._parentWorkingUnitId;
@@ -992,6 +1059,14 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 		workingUnitModelImpl._originalDistrictNo = workingUnitModelImpl._districtNo;
 
 		workingUnitModelImpl._originalWardNo = workingUnitModelImpl._wardNo;
+
+		workingUnitModelImpl._originalLocalSiteId = workingUnitModelImpl._localSiteId;
+
+		workingUnitModelImpl._setOriginalLocalSiteId = false;
+
+		workingUnitModelImpl._originalIsEmployer = workingUnitModelImpl._isEmployer;
+
+		workingUnitModelImpl._setOriginalIsEmployer = false;
 
 		workingUnitModelImpl._columnBitmask = 0;
 	}
@@ -1027,12 +1102,6 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 		}
 
 		workingUnitCacheModel.organizationId = getOrganizationId();
-
-		String organizationId = workingUnitCacheModel.organizationId;
-
-		if ((organizationId != null) && (organizationId.length() == 0)) {
-			workingUnitCacheModel.organizationId = null;
-		}
 
 		workingUnitCacheModel.govAgencyId = getGovAgencyId();
 
@@ -1172,12 +1241,16 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 			workingUnitCacheModel.shortName = null;
 		}
 
+		workingUnitCacheModel.localSiteId = getLocalSiteId();
+
+		workingUnitCacheModel.isEmployer = getIsEmployer();
+
 		return workingUnitCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(51);
+		StringBundler sb = new StringBundler(55);
 
 		sb.append("{workingUnitId=");
 		sb.append(getWorkingUnitId());
@@ -1229,6 +1302,10 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 		sb.append(getAaa());
 		sb.append(", shortName=");
 		sb.append(getShortName());
+		sb.append(", localSiteId=");
+		sb.append(getLocalSiteId());
+		sb.append(", isEmployer=");
+		sb.append(getIsEmployer());
 		sb.append("}");
 
 		return sb.toString();
@@ -1236,7 +1313,7 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(79);
+		StringBundler sb = new StringBundler(85);
 
 		sb.append("<model><model-name>");
 		sb.append("org.oep.usermgt.model.WorkingUnit");
@@ -1342,6 +1419,14 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 			"<column><column-name>shortName</column-name><column-value><![CDATA[");
 		sb.append(getShortName());
 		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>localSiteId</column-name><column-value><![CDATA[");
+		sb.append(getLocalSiteId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>isEmployer</column-name><column-value><![CDATA[");
+		sb.append(getIsEmployer());
+		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -1363,8 +1448,9 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 	private String _userUuid;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private String _organizationId;
-	private String _originalOrganizationId;
+	private long _organizationId;
+	private long _originalOrganizationId;
+	private boolean _setOriginalOrganizationId;
 	private String _govAgencyId;
 	private String _originalGovAgencyId;
 	private String _name;
@@ -1389,6 +1475,12 @@ public class WorkingUnitModelImpl extends BaseModelImpl<WorkingUnit>
 	private String _website;
 	private String _aaa;
 	private String _shortName;
+	private long _localSiteId;
+	private long _originalLocalSiteId;
+	private boolean _setOriginalLocalSiteId;
+	private int _isEmployer;
+	private int _originalIsEmployer;
+	private boolean _setOriginalIsEmployer;
 	private long _columnBitmask;
 	private WorkingUnit _escapedModel;
 }

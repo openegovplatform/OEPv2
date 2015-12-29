@@ -22,27 +22,27 @@ import java.util.Map;
 
 /**
  * <p>
- * This class is a wrapper for {@link Jobpos2Role}.
+ * This class is a wrapper for {@link JobPos2Role}.
  * </p>
  *
  * @author NQMINH
- * @see Jobpos2Role
+ * @see JobPos2Role
  * @generated
  */
-public class Jobpos2RoleWrapper implements Jobpos2Role,
-	ModelWrapper<Jobpos2Role> {
-	public Jobpos2RoleWrapper(Jobpos2Role jobpos2Role) {
-		_jobpos2Role = jobpos2Role;
+public class JobPos2RoleWrapper implements JobPos2Role,
+	ModelWrapper<JobPos2Role> {
+	public JobPos2RoleWrapper(JobPos2Role jobPos2Role) {
+		_jobPos2Role = jobPos2Role;
 	}
 
 	@Override
 	public Class<?> getModelClass() {
-		return Jobpos2Role.class;
+		return JobPos2Role.class;
 	}
 
 	@Override
 	public String getModelClassName() {
-		return Jobpos2Role.class.getName();
+		return JobPos2Role.class.getName();
 	}
 
 	@Override
@@ -76,8 +76,8 @@ public class Jobpos2RoleWrapper implements Jobpos2Role,
 	* @return the primary key of this jobpos to role
 	*/
 	@Override
-	public org.oep.usermgt.service.persistence.Jobpos2RolePK getPrimaryKey() {
-		return _jobpos2Role.getPrimaryKey();
+	public org.oep.usermgt.service.persistence.JobPos2RolePK getPrimaryKey() {
+		return _jobPos2Role.getPrimaryKey();
 	}
 
 	/**
@@ -87,8 +87,8 @@ public class Jobpos2RoleWrapper implements Jobpos2Role,
 	*/
 	@Override
 	public void setPrimaryKey(
-		org.oep.usermgt.service.persistence.Jobpos2RolePK primaryKey) {
-		_jobpos2Role.setPrimaryKey(primaryKey);
+		org.oep.usermgt.service.persistence.JobPos2RolePK primaryKey) {
+		_jobPos2Role.setPrimaryKey(primaryKey);
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class Jobpos2RoleWrapper implements Jobpos2Role,
 	*/
 	@Override
 	public long getJobPosId() {
-		return _jobpos2Role.getJobPosId();
+		return _jobPos2Role.getJobPosId();
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class Jobpos2RoleWrapper implements Jobpos2Role,
 	*/
 	@Override
 	public void setJobPosId(long jobPosId) {
-		_jobpos2Role.setJobPosId(jobPosId);
+		_jobPos2Role.setJobPosId(jobPosId);
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class Jobpos2RoleWrapper implements Jobpos2Role,
 	*/
 	@Override
 	public long getRoleId() {
-		return _jobpos2Role.getRoleId();
+		return _jobPos2Role.getRoleId();
 	}
 
 	/**
@@ -128,111 +128,111 @@ public class Jobpos2RoleWrapper implements Jobpos2Role,
 	*/
 	@Override
 	public void setRoleId(long roleId) {
-		_jobpos2Role.setRoleId(roleId);
+		_jobPos2Role.setRoleId(roleId);
 	}
 
 	@Override
 	public boolean isNew() {
-		return _jobpos2Role.isNew();
+		return _jobPos2Role.isNew();
 	}
 
 	@Override
 	public void setNew(boolean n) {
-		_jobpos2Role.setNew(n);
+		_jobPos2Role.setNew(n);
 	}
 
 	@Override
 	public boolean isCachedModel() {
-		return _jobpos2Role.isCachedModel();
+		return _jobPos2Role.isCachedModel();
 	}
 
 	@Override
 	public void setCachedModel(boolean cachedModel) {
-		_jobpos2Role.setCachedModel(cachedModel);
+		_jobPos2Role.setCachedModel(cachedModel);
 	}
 
 	@Override
 	public boolean isEscapedModel() {
-		return _jobpos2Role.isEscapedModel();
+		return _jobPos2Role.isEscapedModel();
 	}
 
 	@Override
 	public java.io.Serializable getPrimaryKeyObj() {
-		return _jobpos2Role.getPrimaryKeyObj();
+		return _jobPos2Role.getPrimaryKeyObj();
 	}
 
 	@Override
 	public void setPrimaryKeyObj(java.io.Serializable primaryKeyObj) {
-		_jobpos2Role.setPrimaryKeyObj(primaryKeyObj);
+		_jobPos2Role.setPrimaryKeyObj(primaryKeyObj);
 	}
 
 	@Override
 	public com.liferay.portlet.expando.model.ExpandoBridge getExpandoBridge() {
-		return _jobpos2Role.getExpandoBridge();
+		return _jobPos2Role.getExpandoBridge();
 	}
 
 	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portal.model.BaseModel<?> baseModel) {
-		_jobpos2Role.setExpandoBridgeAttributes(baseModel);
+		_jobPos2Role.setExpandoBridgeAttributes(baseModel);
 	}
 
 	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portlet.expando.model.ExpandoBridge expandoBridge) {
-		_jobpos2Role.setExpandoBridgeAttributes(expandoBridge);
+		_jobPos2Role.setExpandoBridgeAttributes(expandoBridge);
 	}
 
 	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portal.service.ServiceContext serviceContext) {
-		_jobpos2Role.setExpandoBridgeAttributes(serviceContext);
+		_jobPos2Role.setExpandoBridgeAttributes(serviceContext);
 	}
 
 	@Override
 	public java.lang.Object clone() {
-		return new Jobpos2RoleWrapper((Jobpos2Role)_jobpos2Role.clone());
+		return new JobPos2RoleWrapper((JobPos2Role)_jobPos2Role.clone());
 	}
 
 	@Override
-	public int compareTo(org.oep.usermgt.model.Jobpos2Role jobpos2Role) {
-		return _jobpos2Role.compareTo(jobpos2Role);
+	public int compareTo(org.oep.usermgt.model.JobPos2Role jobPos2Role) {
+		return _jobPos2Role.compareTo(jobPos2Role);
 	}
 
 	@Override
 	public int hashCode() {
-		return _jobpos2Role.hashCode();
+		return _jobPos2Role.hashCode();
 	}
 
 	@Override
-	public com.liferay.portal.model.CacheModel<org.oep.usermgt.model.Jobpos2Role> toCacheModel() {
-		return _jobpos2Role.toCacheModel();
+	public com.liferay.portal.model.CacheModel<org.oep.usermgt.model.JobPos2Role> toCacheModel() {
+		return _jobPos2Role.toCacheModel();
 	}
 
 	@Override
-	public org.oep.usermgt.model.Jobpos2Role toEscapedModel() {
-		return new Jobpos2RoleWrapper(_jobpos2Role.toEscapedModel());
+	public org.oep.usermgt.model.JobPos2Role toEscapedModel() {
+		return new JobPos2RoleWrapper(_jobPos2Role.toEscapedModel());
 	}
 
 	@Override
-	public org.oep.usermgt.model.Jobpos2Role toUnescapedModel() {
-		return new Jobpos2RoleWrapper(_jobpos2Role.toUnescapedModel());
+	public org.oep.usermgt.model.JobPos2Role toUnescapedModel() {
+		return new JobPos2RoleWrapper(_jobPos2Role.toUnescapedModel());
 	}
 
 	@Override
 	public java.lang.String toString() {
-		return _jobpos2Role.toString();
+		return _jobPos2Role.toString();
 	}
 
 	@Override
 	public java.lang.String toXmlString() {
-		return _jobpos2Role.toXmlString();
+		return _jobPos2Role.toXmlString();
 	}
 
 	@Override
 	public void persist()
 		throws com.liferay.portal.kernel.exception.SystemException {
-		_jobpos2Role.persist();
+		_jobPos2Role.persist();
 	}
 
 	@Override
@@ -241,13 +241,13 @@ public class Jobpos2RoleWrapper implements Jobpos2Role,
 			return true;
 		}
 
-		if (!(obj instanceof Jobpos2RoleWrapper)) {
+		if (!(obj instanceof JobPos2RoleWrapper)) {
 			return false;
 		}
 
-		Jobpos2RoleWrapper jobpos2RoleWrapper = (Jobpos2RoleWrapper)obj;
+		JobPos2RoleWrapper jobPos2RoleWrapper = (JobPos2RoleWrapper)obj;
 
-		if (Validator.equals(_jobpos2Role, jobpos2RoleWrapper._jobpos2Role)) {
+		if (Validator.equals(_jobPos2Role, jobPos2RoleWrapper._jobPos2Role)) {
 			return true;
 		}
 
@@ -257,19 +257,19 @@ public class Jobpos2RoleWrapper implements Jobpos2Role,
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedModel}
 	 */
-	public Jobpos2Role getWrappedJobpos2Role() {
-		return _jobpos2Role;
+	public JobPos2Role getWrappedJobPos2Role() {
+		return _jobPos2Role;
 	}
 
 	@Override
-	public Jobpos2Role getWrappedModel() {
-		return _jobpos2Role;
+	public JobPos2Role getWrappedModel() {
+		return _jobPos2Role;
 	}
 
 	@Override
 	public void resetOriginalValues() {
-		_jobpos2Role.resetOriginalValues();
+		_jobPos2Role.resetOriginalValues();
 	}
 
-	private Jobpos2Role _jobpos2Role;
+	private JobPos2Role _jobPos2Role;
 }

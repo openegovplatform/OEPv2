@@ -50,6 +50,7 @@
 <%@ page import="com.liferay.portal.service.ServiceContext"%>
 <%@ page import="com.liferay.portal.kernel.language.LanguageUtil"%>
 <%@ page import="com.liferay.portal.theme.ThemeDisplay"%>
+<%@ page import="com.liferay.portal.kernel.portlet.LiferayWindowState" %>
 <%@ page import="java.util.ArrayList"%>
 <portlet:defineObjects />
 <liferay-theme:defineObjects />
