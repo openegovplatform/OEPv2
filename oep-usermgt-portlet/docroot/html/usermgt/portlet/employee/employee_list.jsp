@@ -152,7 +152,20 @@
 					name="<%=EmployeeKeys.BaseEmployeeAttributes.EDIT_ID%>"
 					value="<%=String.valueOf(data.getEmployeeId())%>" />
 			</portlet:actionURL>
-			<portlet:actionURL var="changePassword" name="edit">
+			
+
+			<liferay-portlet:renderURL
+   					 var="testPopupURL"
+   					 windowState="<%=LiferayWindowState.POP_UP.toString() %>">
+    				<liferay-portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
+						value="<%=redirectURL%>" />
+					<liferay-portlet:param name="<%=PortletKeys.SET_VIEW_PARAMETER%>"
+						value="/html/usermgt/portlet/employee/employee_changepassword.jsp" />
+					<liferay-portlet:param
+						name="<%=EmployeeKeys.BaseEmployeeAttributes.EDIT_ID%>"
+						value="<%=String.valueOf(data.getEmployeeId())%>" />
+			</liferay-portlet:renderURL>
+			<portlet:actionURL var="changePassword" name="edit" windowState="<%=LiferayWindowState.POP_UP.toString() %>">
 				<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
 					value="<%=redirectURL%>" />
 				<portlet:param name="<%=PortletKeys.SET_VIEW_PARAMETER%>"
@@ -162,7 +175,7 @@
 					value="<%=String.valueOf(data.getEmployeeId())%>" />
 				
 			</portlet:actionURL>
-			<portlet:renderURL var="changeJopPos">
+			<portlet:renderURL var="changeJopPos" windowState="<%=LiferayWindowState.POP_UP.toString() %>">
 				<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
 					value="<%=redirectURL%>" />
 				<portlet:param name="<%=PortletKeys.SET_VIEW_PARAMETER%>"
@@ -172,6 +185,13 @@
 					value="<%=String.valueOf(data.getEmployeeId())%>" />
 			</portlet:renderURL>
 			<%
+			
+			 %>
+			<%
+				String popuppass = "javascript:Liferay.ABC.popup('"+changePassword.toString()+"',350,350,'"+
+						LanguageUtil.get(pageContext,"org.oep.usermgt.portlet.employee.table.action.title.changepassword")+"')";
+				String popupjob = "javascript:Liferay.ABC.popup('"+changeJopPos.toString()+"',600,600,'"+
+						LanguageUtil.get(pageContext,"org.oep.usermgt.portlet.employee.table.action.title.changejobpos")+"')";
 				if (index % 2 == 0) {
 			%>
 			<tr class="success">
@@ -184,8 +204,8 @@
 				<td style="text-align: left">
 				<liferay-ui:icon-menu>
 						<liferay-ui:icon image="edit" url="<%=editUrl%>" message="org.oep.usermgt.portlet.table.action.title.edit"/> 
-						<liferay-ui:icon image="add_location" url="<%=changeJopPos%>" message="org.oep.usermgt.portlet.employee.table.action.title.changejobpos"/>  
-					 	<liferay-ui:icon image="key" useDialog="<%= true %>" url="<%= changePassword %>" message="org.oep.usermgt.portlet.employee.table.action.title.changepassword"/> 
+						<liferay-ui:icon image="add_location" url="<%=popupjob%>" message="org.oep.usermgt.portlet.employee.table.action.title.changejobpos"/>  
+					 	<liferay-ui:icon image="key" url="<%=popuppass%>" message="org.oep.usermgt.portlet.employee.table.action.title.changepassword"  /> 
 					 	<liferay-ui:icon image="delete" url="<%= deleteUrl %>" message="org.oep.usermgt.portlet.table.action.title.delete"/> 
 					 	
 				</liferay-ui:icon-menu>
@@ -205,9 +225,10 @@
 				<td style="text-align: left">
 				
 				<liferay-ui:icon-menu>
+		
 						<liferay-ui:icon image="edit" url="<%=editUrl%>" message="org.oep.usermgt.portlet.table.action.title.edit"/>  
-					 	<liferay-ui:icon image="add_location" url="<%=changeJopPos%>" message="org.oep.usermgt.portlet.employee.table.action.title.changejobpos"/>  
-					 	<liferay-ui:icon image="key" useDialog="<%= true %>" url="<%= changePassword %>" message="org.oep.usermgt.portlet.employee.table.action.title.changepassword" />
+					 	<liferay-ui:icon image="add_location" url="<%=popupjob%>" message="org.oep.usermgt.portlet.employee.table.action.title.changejobpos"/>  
+					 	<liferay-ui:icon image="key" method="get"  url="<%=popuppass%>" message="org.oep.usermgt.portlet.employee.table.action.title.changepassword" />
 					 	<liferay-ui:icon image="delete" url="<%= deleteUrl %>" message="org.oep.usermgt.portlet.table.action.title.delete"/> 
 						
 				</liferay-ui:icon-menu>
@@ -243,7 +264,13 @@
 		</div>
 	</c:if>
 </aui:form>
+<portlet:renderURL var="somePageURL" windowState="<%= LiferayWindowState.POP_UP.toString() %>">
+	<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
+						value="<%=redirectURL%>" />
+					<portlet:param name="<%=PortletKeys.SET_VIEW_PARAMETER%>"
+						value="/html/usermgt/portlet/employee/employee_changepassword.jsp" />
 
+</portlet:renderURL>
 <script type="text/javascript">
 	function <portlet:namespace/>search() {
 		var form = document.<portlet:namespace />searchApplication;
@@ -256,4 +283,81 @@
 		form.action = "<%= addEdit%>";
 		form.submit();
 	}
+
+	
 </script>
+
+<aui:script use="liferay-util-window">
+Liferay.namespace('ABC');
+		Liferay.provide(Liferay.ABC,'popup',function(url,width,height,title) {
+				var A = AUI();
+				var data = {};
+				var dialog = Liferay.Util.Window.getWindow({
+				dialog: {
+						centered: true,
+                    	constrain2view: true,
+					  	modal: true,
+					  	height: width,
+						width: height,
+						resizable: false
+						},
+						title: title,
+						buttons: [{
+							label: 'Close',
+							text: 'Close',
+								on: {
+							click: function() { 
+							dialog.destroy();
+								}}
+						}]
+						
+				}
+				).render();
+
+					dialog.plug(
+						A.Plugin.DialogIframe,
+						{
+							id: '<portlet:namespace/>dialog',
+							autoLoad: true,
+			                iframeCssClass: 'dialog-iframe',
+							data: data,
+							uri: url
+						} 
+					);
+
+			},
+		['aui-base','aui-dialog','aui-io-deprecated','liferay-util-window']
+	);
+		
+
+</aui:script>
+
+<aui:script>
+Liferay.provide(window,'<portlet:namespace/>closePopup',
+		function(data, dialogId) {
+			var A = AUI();
+			 alert('pop');
+			// Here you can use "data" parameter
+			
+			// Closing the dialog
+			var dialog = Liferay.Util.Window.getById(dialogId);
+			dialog.destroy();
+		
+		},
+		['aui-base','liferay-util-window']
+	);
+	
+Liferay.provide(window,'thu',
+		function(data, dialogId) {
+			var A = AUI();
+			 alert('pop');
+			// Here you can use "data" parameter
+			
+			// Closing the dialog
+			var dialog = Liferay.Util.Window.getById(dialogId);
+			dialog.destroy();
+		
+		},
+		['aui-base','liferay-util-window']
+	);
+</aui:script>

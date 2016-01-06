@@ -57,7 +57,7 @@
 	<portlet:param name="<%= PortletKeys.REDIRECT_PAGE %>" value="<%= ParamUtil.getString(request, PortletKeys.REDIRECT_PAGE) %>"/>
 	<portlet:param name="<%= EmployeeKeys.BaseEmployeeAttributes.EDIT_ID%>" value="<%= ParamUtil.getString(request, EmployeeKeys.BaseEmployeeAttributes.EDIT_ID) %>"/>
 </portlet:actionURL>
-<aui:form name="searchApplication"  method="POST">
+<aui:form name="addEdit"  method="POST">
 <liferay-ui:message key="org.oep.usermgt.portlet.jobpos.title"></liferay-ui:message>
 <liferay-ui:message key="<%=employee.getFullName()%>"></liferay-ui:message>
 		<table  style="width: 100%;">
@@ -164,7 +164,7 @@
 
 	
 	function <portlet:namespace/>changeToAddStatus() {
-		var form = document.<portlet:namespace />searchApplication;
+		var form = document.<portlet:namespace />addEdit;
 		form.action = "<%=addEdit%>";
 		form.submit();
 	}
@@ -173,3 +173,16 @@
 	};
 	
 </script>
+<portlet:namespace/>
+ <aui:button name="closeDialog"  type="button" value="close" />
+  <portlet:namespace/>  
+ <aui:script use="aui-base">
+
+
+    A.one('#<portlet:namespace/>closeDialog').on('click', function(event) {
+    	// Let's suppose that "data" contains the processing results
+    	 alert('pop');
+    	// Invoke a function with processgin results and dialog id
+    	Liferay.Util.getOpener().thu(data,'<portlet:namespace/>dialog');
+    });
+    </aui:script>
