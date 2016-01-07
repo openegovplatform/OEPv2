@@ -89,4 +89,15 @@ public interface SSOAppService extends BaseService, InvokableService {
 	@com.liferay.portal.security.ac.AccessControlled(guestAccessEnabled = true)
 	public java.lang.String syncAccounts(java.lang.String appCode,
 		java.lang.String pin, long timestamp);
+
+	@com.liferay.portal.kernel.jsonwebservice.JSONWebService(value = "syncDateAccounts")
+	@com.liferay.portal.security.ac.AccessControlled(guestAccessEnabled = true)
+	public java.lang.String unsecuredSyncDateAccounts(
+		java.lang.String appCode, java.lang.String pin,
+		java.util.Date checkpoint);
+
+	@com.liferay.portal.kernel.jsonwebservice.JSONWebService(value = "syncAccounts")
+	@com.liferay.portal.security.ac.AccessControlled(guestAccessEnabled = true)
+	public java.lang.String unsecuredSyncAccounts(java.lang.String appCode,
+		java.lang.String pin, long timestamp);
 }

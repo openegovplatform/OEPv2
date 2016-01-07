@@ -58,6 +58,18 @@ public class SSOAppServiceClp implements SSOAppService {
 		_methodParameterTypes6 = new String[] {
 				"java.lang.String", "java.lang.String", "long"
 			};
+
+		_methodName7 = "unsecuredSyncDateAccounts";
+
+		_methodParameterTypes7 = new String[] {
+				"java.lang.String", "java.lang.String", "java.util.Date"
+			};
+
+		_methodName8 = "unsecuredSyncAccounts";
+
+		_methodParameterTypes8 = new String[] {
+				"java.lang.String", "java.lang.String", "long"
+			};
 	}
 
 	@Override
@@ -264,6 +276,69 @@ public class SSOAppServiceClp implements SSOAppService {
 		return (java.lang.String)ClpSerializer.translateOutput(returnObj);
 	}
 
+	@Override
+	public java.lang.String unsecuredSyncDateAccounts(
+		java.lang.String appCode, java.lang.String pin,
+		java.util.Date checkpoint) {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableService.invokeMethod(_methodName7,
+					_methodParameterTypes7,
+					new Object[] {
+						ClpSerializer.translateInput(appCode),
+						
+					ClpSerializer.translateInput(pin),
+						
+					ClpSerializer.translateInput(checkpoint)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.lang.String)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public java.lang.String unsecuredSyncAccounts(java.lang.String appCode,
+		java.lang.String pin, long timestamp) {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableService.invokeMethod(_methodName8,
+					_methodParameterTypes8,
+					new Object[] {
+						ClpSerializer.translateInput(appCode),
+						
+					ClpSerializer.translateInput(pin),
+						
+					timestamp
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.lang.String)ClpSerializer.translateOutput(returnObj);
+	}
+
 	private InvokableService _invokableService;
 	private String _methodName0;
 	private String[] _methodParameterTypes0;
@@ -277,4 +352,8 @@ public class SSOAppServiceClp implements SSOAppService {
 	private String[] _methodParameterTypes5;
 	private String _methodName6;
 	private String[] _methodParameterTypes6;
+	private String _methodName7;
+	private String[] _methodParameterTypes7;
+	private String _methodName8;
+	private String[] _methodParameterTypes8;
 }

@@ -58,6 +58,18 @@ public class SSOAppServiceClpInvoker {
 		_methodParameterTypes39 = new String[] {
 				"java.lang.String", "java.lang.String", "long"
 			};
+
+		_methodName40 = "unsecuredSyncDateAccounts";
+
+		_methodParameterTypes40 = new String[] {
+				"java.lang.String", "java.lang.String", "java.util.Date"
+			};
+
+		_methodName41 = "unsecuredSyncAccounts";
+
+		_methodParameterTypes41 = new String[] {
+				"java.lang.String", "java.lang.String", "long"
+			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -102,6 +114,18 @@ public class SSOAppServiceClpInvoker {
 				(java.lang.String)arguments[1], ((Long)arguments[2]).longValue());
 		}
 
+		if (_methodName40.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes40, parameterTypes)) {
+			return SSOAppServiceUtil.unsecuredSyncDateAccounts((java.lang.String)arguments[0],
+				(java.lang.String)arguments[1], (java.util.Date)arguments[2]);
+		}
+
+		if (_methodName41.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes41, parameterTypes)) {
+			return SSOAppServiceUtil.unsecuredSyncAccounts((java.lang.String)arguments[0],
+				(java.lang.String)arguments[1], ((Long)arguments[2]).longValue());
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -117,4 +141,8 @@ public class SSOAppServiceClpInvoker {
 	private String[] _methodParameterTypes38;
 	private String _methodName39;
 	private String[] _methodParameterTypes39;
+	private String _methodName40;
+	private String[] _methodParameterTypes40;
+	private String _methodName41;
+	private String[] _methodParameterTypes41;
 }

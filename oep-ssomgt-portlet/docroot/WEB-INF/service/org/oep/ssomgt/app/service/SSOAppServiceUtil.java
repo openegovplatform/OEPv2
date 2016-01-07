@@ -93,6 +93,17 @@ public class SSOAppServiceUtil {
 		return getService().syncAccounts(appCode, pin, timestamp);
 	}
 
+	public static java.lang.String unsecuredSyncDateAccounts(
+		java.lang.String appCode, java.lang.String pin,
+		java.util.Date checkpoint) {
+		return getService().unsecuredSyncDateAccounts(appCode, pin, checkpoint);
+	}
+
+	public static java.lang.String unsecuredSyncAccounts(
+		java.lang.String appCode, java.lang.String pin, long timestamp) {
+		return getService().unsecuredSyncAccounts(appCode, pin, timestamp);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

@@ -293,6 +293,153 @@ public class UserSyncUtil {
 	}
 
 	/**
+	* Returns the user sync where applicationId = &#63; and employeeId = &#63; or throws a {@link org.oep.ssomgt.NoSuchUserSyncException} if it could not be found.
+	*
+	* @param applicationId the application ID
+	* @param employeeId the employee ID
+	* @return the matching user sync
+	* @throws org.oep.ssomgt.NoSuchUserSyncException if a matching user sync could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.UserSync findByA_E(long applicationId,
+		long employeeId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.ssomgt.NoSuchUserSyncException {
+		return getPersistence().findByA_E(applicationId, employeeId);
+	}
+
+	/**
+	* Returns the user sync where applicationId = &#63; and employeeId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	*
+	* @param applicationId the application ID
+	* @param employeeId the employee ID
+	* @return the matching user sync, or <code>null</code> if a matching user sync could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.UserSync fetchByA_E(long applicationId,
+		long employeeId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByA_E(applicationId, employeeId);
+	}
+
+	/**
+	* Returns the user sync where applicationId = &#63; and employeeId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	*
+	* @param applicationId the application ID
+	* @param employeeId the employee ID
+	* @param retrieveFromCache whether to use the finder cache
+	* @return the matching user sync, or <code>null</code> if a matching user sync could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.UserSync fetchByA_E(long applicationId,
+		long employeeId, boolean retrieveFromCache)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByA_E(applicationId, employeeId, retrieveFromCache);
+	}
+
+	/**
+	* Removes the user sync where applicationId = &#63; and employeeId = &#63; from the database.
+	*
+	* @param applicationId the application ID
+	* @param employeeId the employee ID
+	* @return the user sync that was removed
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.UserSync removeByA_E(
+		long applicationId, long employeeId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.ssomgt.NoSuchUserSyncException {
+		return getPersistence().removeByA_E(applicationId, employeeId);
+	}
+
+	/**
+	* Returns the number of user syncs where applicationId = &#63; and employeeId = &#63;.
+	*
+	* @param applicationId the application ID
+	* @param employeeId the employee ID
+	* @return the number of matching user syncs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByA_E(long applicationId, long employeeId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByA_E(applicationId, employeeId);
+	}
+
+	/**
+	* Returns the user sync where applicationId = &#63; and userId = &#63; or throws a {@link org.oep.ssomgt.NoSuchUserSyncException} if it could not be found.
+	*
+	* @param applicationId the application ID
+	* @param userId the user ID
+	* @return the matching user sync
+	* @throws org.oep.ssomgt.NoSuchUserSyncException if a matching user sync could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.UserSync findByA_U(long applicationId,
+		long userId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.ssomgt.NoSuchUserSyncException {
+		return getPersistence().findByA_U(applicationId, userId);
+	}
+
+	/**
+	* Returns the user sync where applicationId = &#63; and userId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	*
+	* @param applicationId the application ID
+	* @param userId the user ID
+	* @return the matching user sync, or <code>null</code> if a matching user sync could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.UserSync fetchByA_U(long applicationId,
+		long userId) throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByA_U(applicationId, userId);
+	}
+
+	/**
+	* Returns the user sync where applicationId = &#63; and userId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	*
+	* @param applicationId the application ID
+	* @param userId the user ID
+	* @param retrieveFromCache whether to use the finder cache
+	* @return the matching user sync, or <code>null</code> if a matching user sync could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.UserSync fetchByA_U(long applicationId,
+		long userId, boolean retrieveFromCache)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByA_U(applicationId, userId, retrieveFromCache);
+	}
+
+	/**
+	* Removes the user sync where applicationId = &#63; and userId = &#63; from the database.
+	*
+	* @param applicationId the application ID
+	* @param userId the user ID
+	* @return the user sync that was removed
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.UserSync removeByA_U(
+		long applicationId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.ssomgt.NoSuchUserSyncException {
+		return getPersistence().removeByA_U(applicationId, userId);
+	}
+
+	/**
+	* Returns the number of user syncs where applicationId = &#63; and userId = &#63;.
+	*
+	* @param applicationId the application ID
+	* @param userId the user ID
+	* @return the number of matching user syncs
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByA_U(long applicationId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByA_U(applicationId, userId);
+	}
+
+	/**
 	* Caches the user sync in the entity cache if it is enabled.
 	*
 	* @param userSync the user sync

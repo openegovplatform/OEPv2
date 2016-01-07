@@ -376,4 +376,9 @@ public interface AppRole2EmployeeLocalService extends BaseLocalService,
 	public java.util.List<org.oep.ssomgt.model.AppRole> findRoleByEmployee(
 		long employeeId, long companyId)
 		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<org.oep.ssomgt.model.AppRole2Employee> findByArrayOfAppRole(
+		long[] appRoleIds,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

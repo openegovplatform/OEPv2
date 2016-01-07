@@ -29,12 +29,12 @@ public class AppRole2JobPosFinderImpl extends BasePersistenceImpl implements App
 		List<Object> params = new ArrayList<Object>();
 		Session session = openSession();
 		String sql = CustomSQLUtil.get(AppRole2JobPosFinder.class.getName(), COUNT_BY_WORKING_UNIT);		
-		sql = sql.replace("[$COMPANY_FILTER$]", " AND COMPANYID = ?");
+		sql = sql.replace("[$COMPANY_FILTER$]", " AND companyId = ?");
 		params.add(serviceContext.getCompanyId());
 		
 		sql = sql.replace("[$GROUP_FILTER$]", "");
 		if (workingUnitId != 0) {
-			sql = sql.replace("[$WORKINGUNIT_FILTER$]", " AND JOBPOSID IN (SELECT OEP_USERMGT_JOBPOS.JOBPOSID FROM OEP_USERMGT_JOBPOS INNER JOIN OEP_USERMGT_WORKINGUNIT ON OEP_USERMGT_JOBPOS.WORKINGUNITID = OEP_USERMGT_WORKINGUNIT.WORKINGUNITID WHERE OEP_USERMGT_WORKINGUNIT.WORKINGUNITID = ?)");
+			sql = sql.replace("[$WORKINGUNIT_FILTER$]", " AND jobPosId IN (SELECT oep_usermgt_jobpos.jobPosId FROM oep_usermgt_jobpos INNER JOIN oep_usermgt_workingunit ON oep_usermgt_jobpos.workingUnitId = oep_usermgt_workingunit.workingUnitId WHERE oep_usermgt_workingunit.workingUnitId = ?)");
 			params.add(workingUnitId);			
 		}
 		else {
@@ -43,7 +43,7 @@ public class AppRole2JobPosFinderImpl extends BasePersistenceImpl implements App
 		_log.info("SQL:" + sql);
 		
 		SQLQuery query = session.createSQLQuery(sql);
-		query.addScalar("total", Type.LONG);
+		query.addScalar("TOTAL", Type.LONG);
 		
 		if (params != null && params.size() > 0) {
 			for (int index = 0; index < params.size(); index++) {
@@ -63,12 +63,12 @@ public class AppRole2JobPosFinderImpl extends BasePersistenceImpl implements App
 		List<Object> params = new ArrayList<Object>();
 		Session session = openSession();
 		String sql = CustomSQLUtil.get(AppRole2JobPosFinder.class.getName(), FIND_BY_WORKING_UNIT);		
-		sql = sql.replace("[$COMPANY_FILTER$]", " AND COMPANYID = ?");
+		sql = sql.replace("[$COMPANY_FILTER$]", " AND companyId = ?");
 		params.add(serviceContext.getCompanyId());
 		
 		sql = sql.replace("[$GROUP_FILTER$]", "");
 		if (workingUnitId != 0) {
-			sql = sql.replace("[$WORKINGUNIT_FILTER$]", " AND JOBPOSID IN (SELECT OEP_USERMGT_JOBPOS.JOBPOSID FROM OEP_USERMGT_JOBPOS INNER JOIN OEP_USERMGT_WORKINGUNIT ON OEP_USERMGT_JOBPOS.WORKINGUNITID = OEP_USERMGT_WORKINGUNIT.WORKINGUNITID WHERE OEP_USERMGT_WORKINGUNIT.WORKINGUNITID = ?)");
+			sql = sql.replace("[$WORKINGUNIT_FILTER$]", " AND jobPosId IN (SELECT oep_usermgt_jobpos.jobPosId FROM oep_usermgt_jobpos INNER JOIN oep_usermgt_workingunit ON oep_usermgt_jobpos.workingUnitId = oep_usermgt_workingunit.workingUnitId WHERE oep_usermgt_workingunit.workingUnitId = ?)");
 			params.add(workingUnitId);			
 		}
 		else {
@@ -90,19 +90,19 @@ public class AppRole2JobPosFinderImpl extends BasePersistenceImpl implements App
 		List<Object> params = new ArrayList<Object>();
 		Session session = openSession();
 		String sql = CustomSQLUtil.get(AppRole2JobPosFinder.class.getName(), COUNT_BY_APPROLE_WORKING_UNIT);		
-		sql = sql.replace("[$COMPANY_FILTER$]", " AND COMPANYID = ?");
+		sql = sql.replace("[$COMPANY_FILTER$]", " AND companyId = ?");
 		params.add(serviceContext.getCompanyId());
 		
 		sql = sql.replace("[$GROUP_FILTER$]", "");
 		if (appRoleId != 0) {
-			sql = sql.replace("[$APPROLE_FILTER$]", " AND APPROLEID = ?");
+			sql = sql.replace("[$APPROLE_FILTER$]", " AND appRoleId = ?");
 			params.add(appRoleId);						
 		}
 		else {
 			sql = sql.replace("[$APPROLE_FILTER$]", "");			
 		}
 		if (workingUnitId != 0) {
-			sql = sql.replace("[$WORKINGUNIT_FILTER$]", " AND JOBPOSID IN (SELECT OEP_USERMGT_JOBPOS.JOBPOSID FROM OEP_USERMGT_JOBPOS INNER JOIN OEP_USERMGT_WORKINGUNIT ON OEP_USERMGT_JOBPOS.WORKINGUNITID = OEP_USERMGT_WORKINGUNIT.WORKINGUNITID WHERE OEP_USERMGT_WORKINGUNIT.WORKINGUNITID = ?)");
+			sql = sql.replace("[$WORKINGUNIT_FILTER$]", " AND jobPosId IN (SELECT oep_usermgt_jobpos.jobPosId FROM oep_usermgt_jobpos INNER JOIN oep_usermgt_workingunit ON oep_usermgt_jobpos.workingUnitId = oep_usermgt_workingunit.workingUnitId WHERE oep_usermgt_workingunit.workingUnitId = ?)");
 			params.add(workingUnitId);			
 		}
 		else {
@@ -111,7 +111,7 @@ public class AppRole2JobPosFinderImpl extends BasePersistenceImpl implements App
 		_log.info("SQL:" + sql);
 		
 		SQLQuery query = session.createSQLQuery(sql);
-		query.addScalar("total", Type.LONG);
+		query.addScalar("TOTAL", Type.LONG);
 		
 		if (params != null && params.size() > 0) {
 			for (int index = 0; index < params.size(); index++) {
@@ -131,12 +131,12 @@ public class AppRole2JobPosFinderImpl extends BasePersistenceImpl implements App
 		List<Object> params = new ArrayList<Object>();
 		Session session = openSession();
 		String sql = CustomSQLUtil.get(AppRole2JobPosFinder.class.getName(), FIND_BY_APPROLE_WORKING_UNIT);		
-		sql = sql.replace("[$COMPANY_FILTER$]", " AND COMPANYID = ?");
+		sql = sql.replace("[$COMPANY_FILTER$]", " AND companyId = ?");
 		params.add(serviceContext.getCompanyId());
 		
 		sql = sql.replace("[$GROUP_FILTER$]", "");
 		if (appRoleId != 0) {
-			sql = sql.replace("[$APPROLE_FILTER$]", " AND APPROLEID = ?");
+			sql = sql.replace("[$APPROLE_FILTER$]", " AND appRoleId = ?");
 			params.add(appRoleId);						
 		}
 		else {
@@ -144,7 +144,7 @@ public class AppRole2JobPosFinderImpl extends BasePersistenceImpl implements App
 		}
 		
 		if (workingUnitId != 0) {
-			sql = sql.replace("[$WORKINGUNIT_FILTER$]", " AND JOBPOSID IN (SELECT OEP_USERMGT_JOBPOS.JOBPOSID FROM OEP_USERMGT_JOBPOS INNER JOIN OEP_USERMGT_WORKINGUNIT ON OEP_USERMGT_JOBPOS.WORKINGUNITID = OEP_USERMGT_WORKINGUNIT.WORKINGUNITID WHERE OEP_USERMGT_WORKINGUNIT.WORKINGUNITID = ?)");
+			sql = sql.replace("[$WORKINGUNIT_FILTER$]", " AND jobPosId IN (SELECT oep_usermgt_jobpos.jobPosId FROM oep_usermgt_jobpos INNER JOIN oep_usermgt_workingunit ON oep_usermgt_jobpos.workingUnitId = oep_usermgt_workingunit.workingUnitId WHERE oep_usermgt_workingunit.workingUnitId = ?)");
 			params.add(workingUnitId);			
 		}
 		else {

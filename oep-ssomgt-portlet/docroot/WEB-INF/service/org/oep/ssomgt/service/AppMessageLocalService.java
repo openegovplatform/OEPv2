@@ -446,6 +446,36 @@ public interface AppMessageLocalService extends BaseLocalService,
 		java.lang.String fromApplication, java.lang.String toUser)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
+	public java.util.List<org.oep.ssomgt.model.AppMessage> findByFromApplicationToUserMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByFromApplicationToUserMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<org.oep.ssomgt.model.AppMessage> findByFromApplicationToUserMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType, int startIndex, int endIndex)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<org.oep.ssomgt.model.AppMessage> findByFromApplicationToUserNotMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByFromApplicationToUserNotMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<org.oep.ssomgt.model.AppMessage> findByFromApplicationToUserNotMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType, int startIndex, int endIndex)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
 	public java.util.List<org.oep.ssomgt.model.AppMessage> findByApplicationUser(
 		java.lang.String fromApplication, java.lang.String toUser,
 		com.liferay.portal.service.ServiceContext serviceContext)

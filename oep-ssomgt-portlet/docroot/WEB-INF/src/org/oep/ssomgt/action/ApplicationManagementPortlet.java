@@ -63,7 +63,6 @@ public class ApplicationManagementPortlet extends MVCPortlet {
 		String appPin = ParamUtil.getString(request, ApplicationKeys.AddEditAttributes.APP_PIN, PortletKeys.TEXT_BOX);
 		String appUrl = ParamUtil.getString(request, ApplicationKeys.AddEditAttributes.APP_URL, PortletKeys.TEXT_BOX);
 		String publicKey = ParamUtil.getString(request, ApplicationKeys.AddEditAttributes.PUBLICKEY, PortletKeys.TEXT_BOX);
-		System.out.println("App code: " + appCode);
 		
 		Long editId = ParamUtil.getLong(request, ApplicationKeys.AddEditAttributes.EDIT_ID, PortletKeys.LONG_DEFAULT);
 		
@@ -71,13 +70,10 @@ public class ApplicationManagementPortlet extends MVCPortlet {
 			ApplicationLocalServiceUtil.validate(editId, appCode, appName, appPin, appUrl, publicKey);
 		}
 		catch (DuplicateAppCodeException dae) {
-			System.out.println("Catch in validate");
 			SessionErrors.add(outRequest, ApplicationKeys.ErrorMessageKeys.ORG_OEP_SSOMGT_PORTLET_APPLICATIONMANAGEMENT_APPCODE);
 		}
 		catch (AppCodeRangeLengthException acr) {
-			System.out.println("App code error");
 			SessionErrors.add(outRequest, ApplicationKeys.ErrorMessageKeys.ORG_OEP_SSOMGT_PORTLET_APPLICATIONMANAGEMENT_APPCODE);			
-			System.out.println("Session error: " + SessionErrors.isEmpty(outRequest));
 		}
 		catch (AppNameRangeLengthException anr) {
 			SessionErrors.add(outRequest, ApplicationKeys.ErrorMessageKeys.ORG_OEP_SSOMGT_PORTLET_APPLICATIONMANAGEMENT_APPNAME);			
@@ -97,7 +93,6 @@ public class ApplicationManagementPortlet extends MVCPortlet {
 		UploadRequest uploadRequest = PortalUtil.getUploadPortletRequest(request);
 		validateParamsIntoSessionError(uploadRequest, request);
 	
-		System.out.println("Not error: " + SessionErrors.isEmpty(request));
 		String appName = null;
 		String appCode = null;
 		String appPin = null;
@@ -131,17 +126,14 @@ public class ApplicationManagementPortlet extends MVCPortlet {
 			}
 			
 			Date pingTime = new Date();
-			System.out.println("Edit ID: " + editId);
 			if (editId == PortletKeys.LONG_DEFAULT) {
-				System.out.println("Add new application: " + editId);
 				if (smallIconBlob != null && bigIconBlob != null) {
-					System.out.println("New application");
 					ApplicationLocalServiceUtil.addApplication(appCode, appName, appPin, appUrl, bigIconBlob, smallIconBlob, pingTime, publicKey, serviceContext);					
 					SessionMessages.add(request, ApplicationKeys.SuccessMessageKeys.ORG_OEP_SSOMGT_PORTLET_APPLICATION_SUCCESS_ADDNEW);	
 				}
 				else {
 					ApplicationLocalServiceUtil.addApplication(appCode, appName, appPin, appUrl, pingTime, publicKey, serviceContext);
-					SessionMessages.add(request, ApplicationKeys.SuccessMessageKeys.ORG_OEP_SSOMGT_PORTLET_APPLICATION_SUCCESS_UPDATE);	
+					SessionMessages.add(request, ApplicationKeys.SuccessMessageKeys.ORG_OEP_SSOMGT_PORTLET_APPLICATION_SUCCESS_ADDNEW);	
 				}
 			} else {
 				Application application = ApplicationLocalServiceUtil.getApplication(editId);
@@ -157,11 +149,11 @@ public class ApplicationManagementPortlet extends MVCPortlet {
 				application.setPingTime(pingTime);
 				
 				ApplicationLocalServiceUtil.updateApplication(application, serviceContext);
+				SessionMessages.add(request, ApplicationKeys.SuccessMessageKeys.ORG_OEP_SSOMGT_PORTLET_APPLICATION_SUCCESS_UPDATE);	
 			}
 		}
 		SessionMessages.add(request, PortalUtil.getPortletId(request) + SessionMessages.KEY_SUFFIX_HIDE_DEFAULT_ERROR_MESSAGE); 		
 		if (!SessionErrors.isEmpty(request)) {
-			System.out.println("Error data");
 			appName = ParamUtil.getString(uploadRequest, ApplicationKeys.AddEditAttributes.APP_NAME, PortletKeys.TEXT_BOX);
 			appCode = ParamUtil.getString(uploadRequest, ApplicationKeys.AddEditAttributes.APP_CODE, PortletKeys.TEXT_BOX);
 			appPin = ParamUtil.getString(uploadRequest, ApplicationKeys.AddEditAttributes.APP_PIN, PortletKeys.TEXT_BOX);
@@ -238,12 +230,11 @@ public class ApplicationManagementPortlet extends MVCPortlet {
 		 try {
 			 long editId = ParamUtil.getLong(resourceRequest, ApplicationKeys.AddEditAttributes.EDIT_ID);
              String iconType = ParamUtil.getString(resourceRequest, "icon", PortletKeys.TEXT_BOX);
-			 System.out.println("Application Id: " + editId);
              Application application = ApplicationLocalServiceUtil.getApplication(editId);
              if (application != null) {
             	 if ("smallIcon".equals(iconType)) {
             		 Blob image = application.getAppSmallIcon();
-                     byte[ ] imgData = image.getBytes(1, (int)image.length());
+                     byte[] imgData = image.getBytes(1, (int)image.length());
                      resourceResponse.setContentType("image/jpg");
                      OutputStream o = resourceResponse.getPortletOutputStream();
                      o.write(imgData);

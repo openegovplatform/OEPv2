@@ -81,10 +81,8 @@
 		<liferay-ui:success key="<%= AppRoleKeys.SuccessMessageKeys.ORG_OEP_SSOMGT_PORTLET_APPROLE_SUCCESS_DELETE %>" message = "<%= AppRoleKeys.SuccessMessageKeys.ORG_OEP_SSOMGT_PORTLET_APPROLE_SUCCESS_DELETE %>"/>
 		<liferay-ui:error key="<%= AppRoleKeys.ErrorMessageKeys.ORG_OEP_SSOMGT_PORTLET_APPROLE_ERROR_DELETE %>" message = "<%= AppRoleKeys.ErrorMessageKeys.ORG_OEP_SSOMGT_PORTLET_APPROLE_ERROR_DELETE %>"/>
 
-		<div class="container">	
-			<table style="width: 100%;">
-				<tr>
-					<td style="width: 50%;">
+		<aui:row>
+			<aui:column columnWidth="50">
 						<aui:select style="width: 100%" onChange="applicationChange()" label="<%= LanguageUtil.get(pageContext, \"org.oep.ssomgt.portlet.approle.empty\") %>" name="<%= AppRoleKeys.SearchAttributes.APPLICATION_ID %>" id="<%= AppRoleKeys.SearchAttributes.APPLICATION_ID %>" >
 							<aui:option value="<%= PortletKeys.LONG_DEFAULT %>"><liferay-ui:message key="org.oep.ssomgt.portlet.approle.selectbox.applicationid" /></aui:option>
 							<%
@@ -104,15 +102,13 @@
 								</c:forEach>
 							</c:if>
 						</aui:select>
-					</td>
-					<td valign="top">
-						<c:if test='<%= SSOPermission.contains(permissionChecker, scopeGroupId, "ADMIN_SSOMGT") %>'>
-							<a onclick="<portlet:namespace/>changeToAddStatus();return false;" class="btn btn-primary pull-right"><i class="icon-plus"><liferay-ui:message key="org.oep.ssomgt.portlet.approle.button.addnew" /></i></a>
-						</c:if>
-					</td>
-				</tr>
-			</table>
-		
+				</aui:column>
+				<aui:column columnWidth="50">
+					<c:if test='<%= SSOPermission.contains(permissionChecker, scopeGroupId, "ADMIN_SSOMGT") %>'>
+						<a onclick="<portlet:namespace/>changeToAddStatus();return false;" class="btn btn-primary pull-right"><i class="icon-plus"><liferay-ui:message key="org.oep.ssomgt.portlet.approle.button.addnew" /></i></a>
+					</c:if>
+				</aui:column>
+			</aui:row>
 		</div>
 		<p></p>
 		<table class="table table-bordered table-hover">
@@ -193,7 +189,6 @@
 		}
 		%>
 		</table>
-		</div>
 		<c:if test="<%= searchContainer != null %>">
 			<br />
 			<div id = "pagination">

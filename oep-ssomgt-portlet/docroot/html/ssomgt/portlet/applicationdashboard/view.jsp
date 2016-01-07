@@ -16,6 +16,8 @@
  */
  --%>
 
+<%@page import="com.liferay.portal.kernel.util.GetterUtil"%>
+<%@page import="com.liferay.portal.kernel.util.StringPool"%>
 <%@page import="com.liferay.portal.service.UserLocalServiceUtil"%>
 <%@page import="com.liferay.portal.model.User"%>
 <%@page import="org.oep.ssomgt.service.AppMessageLocalServiceUtil"%>
@@ -29,27 +31,125 @@
 <%
 	ServiceContext serviceContext = ServiceContextThreadLocal.getServiceContext();
 	List<Application> lstApps = ApplicationLocalServiceUtil.findByCompany(serviceContext.getCompanyId());
+    boolean showToUser = GetterUtil.getBoolean(portletPreferences.getValue("showtouser", StringPool.FALSE));
+	Integer numberOfUserMessage = GetterUtil.getInteger(portletPreferences.getValue("numberofusermessage", "5"));
 %>
-<div class="portlet-layout row-fluid">
+<div style="margin-top: 20px;" class="cms-app-tiles box100">
 <c:forEach items="<%= lstApps %>" var="appitem">
-	<div class="portlet-column span6" style="height: 150px;">
-			<portlet:resourceURL var="bigIconResourceURL">
-				<portlet:param name="icon" value="bigIcon"/>
+			<portlet:resourceURL var="smallIconResourceURL">
+				<portlet:param name="icon" value="smallIcon"/>
 				<portlet:param name="applicationId" value="${appitem.applicationId}"/>
 			</portlet:resourceURL>				
 		
-			<img style="height: 100px;" src="<%= bigIconResourceURL.toString() %>" class="img-circle">
-			<%
-				List<AppMessage> lstAppMessages = AppMessageLocalServiceUtil.findByApplicationUser(((Application)pageContext.findAttribute("appitem")).getAppCode(), user.getScreenName(), serviceContext);
-			%>
-			<br/>
-			<ul>
-				<c:forEach items="<%= lstAppMessages %>" var="appmessage">
-					<li>
-						${ appmessage.messageText }
-					</li>
-				</c:forEach>
-			</ul>
+			<div class="box30">
+				<div class="box_cn_small">
+					<div class="box_left text-center">
+						<a href="${ appitem.appUrl }" target="_blank">
+							<img style="width: 70px; height: 70px;" src="<%= smallIconResourceURL.toString() %>" class="img-circle">
+						</a>
+					</div>
+					<div class="box_right">
+						<h4 class="box_title">
+							<a href="${appitem.appUrl}" title="${appitem.appName}">
+								${appitem.appName}</a>
+						</h4>
+						
+						<div class="box_information">
+							<%
+								List<AppMessage> lstDataMessages = new ArrayList<AppMessage>(); 
+								AppMessageLocalServiceUtil.findByFromApplicationToUserMessageType(((Application)pageContext.findAttribute("appitem")).getAppCode(), "everyone", "data");
+								List<AppMessage> lstAppMessages = new ArrayList<AppMessage>(); 
+								if (showToUser) {
+									lstDataMessages = AppMessageLocalServiceUtil.findByFromApplicationToUserMessageType(((Application)pageContext.findAttribute("appitem")).getAppCode(), user.getScreenName(), "data");
+									lstAppMessages = AppMessageLocalServiceUtil.findByFromApplicationToUserNotMessageType(((Application)pageContext.findAttribute("appitem")).getAppCode(), user.getScreenName(), "data");					
+								}
+								else {
+									lstDataMessages = AppMessageLocalServiceUtil.findByFromApplicationToUserMessageType(((Application)pageContext.findAttribute("appitem")).getAppCode(), "everyone", "data");
+									lstAppMessages = AppMessageLocalServiceUtil.findByFromApplicationToUserNotMessageType(((Application)pageContext.findAttribute("appitem")).getAppCode(), "everyone", "data");					
+								}
+								AppMessage appMessage = null;
+								if (lstDataMessages.size() > 0)
+									appMessage = lstDataMessages.get(0);
+							%>
+							<p>
+								<% if (appMessage != null) { %>
+									<%
+										String[] data = appMessage.getMessageValue().split(",");
+										StringBuilder echoDatas = new StringBuilder();
+										boolean first = true;
+										for (int i = 0; i < data.length; i += 2) {
+											if (first) {
+												first = false;
+												echoDatas.append("<p>");
+												echoDatas.append(data[i + 1]);
+												echoDatas.append("<span class='textfl xanhduong'>" + data[i] + "</span>");
+												echoDatas.append("</p>");
+											}
+											else {
+												echoDatas.append("<p>");
+												echoDatas.append(data[i + 1]);
+												echoDatas.append("<span class='textfl xanhduong'>" + data[i] + "</span>");
+												echoDatas.append("</p>");
+											}
+										}
+									%>
+									<%= echoDatas.toString() %>
+								<%
+									}
+								%>
+							</p>
+						</div>
+					</div>					
+		<div style="width: 100%;">
+			<c:forEach items="<%= lstAppMessages %>" var="appmessage" end="<%= numberOfUserMessage - 1 %>">
+				<c:choose>
+					<c:when test="${appmessage.messageType eq 'notification'}">
+						<p class="text-info">
+							<a>
+								- ${ appmessage.messageText }
+							</a>
+						</p>					
+					</c:when>
+					<c:when test="${appmessage.messageType eq 'warning'}">
+						<p class="text-warning">
+							<a>
+								- ${ appmessage.messageText }
+							</a>						
+						</p>
+					</c:when>
+					<c:when test="${appmessage.messageType eq 'alert'}">
+						<p class="muted">
+							<a>
+								- ${ appmessage.messageText }
+							</a>						
+						</p>
+					</c:when>
+					<c:when test="${appmessage.messageType eq 'error'}">
+						<p class="text-error">
+							<a>
+								- ${ appmessage.messageText }
+							</a>						
+						</p>
+					</c:when>
+					<c:when test="${appmessage.messageType eq 'critical'}">
+						<p class="text-error">
+							<a>
+								- ${ appmessage.messageText }
+							</a>						
+						</p>
+					</c:when>
+					<c:otherwise>
+						<p class="text-success">
+							<a>
+								- ${ appmessage.messageText }
+							</a>						
+						</p>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+		</div>
+
+				</div>
 	</div>
 </c:forEach>
 </div>

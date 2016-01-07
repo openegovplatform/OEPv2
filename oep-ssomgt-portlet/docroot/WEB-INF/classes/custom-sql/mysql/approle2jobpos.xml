@@ -3,7 +3,7 @@
 	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2JobPosFinder.countByWorkingUnit">
 		<![CDATA[
 			SELECT COUNT(*) AS total
-			FROM OEP_USERMGT_APPROLE2JOBPOS
+			FROM oep_usermgt_approle2jobpos
 			WHERE 1=1 
 			[$COMPANY_FILTER$]
 			[$GROUP_FILTER$]
@@ -12,8 +12,8 @@
 	</sql>
 	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2JobPosFinder.findByWorkingUnit">
 		<![CDATA[
-			SELECT OEP_USERMGT_APPROLE2JOBPOS.*
-			FROM OEP_USERMGT_APPROLE2JOBPOS
+			SELECT oep_usermgt_approle2jobpos.*
+			FROM oep_usermgt_approle2jobpos
 			WHERE 1=1 
 			[$COMPANY_FILTER$]
 			[$GROUP_FILTER$]
@@ -23,7 +23,7 @@
 	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2JobPosFinder.countByAppRoleWorkingUnit">
 		<![CDATA[
 			SELECT COUNT(*) AS total
-			FROM OEP_USERMGT_APPROLE2JOBPOS
+			FROM oep_usermgt_approle2jobpos
 			WHERE 1=1 
 			[$COMPANY_FILTER$]
 			[$GROUP_FILTER$]
@@ -33,8 +33,8 @@
 	</sql>
 	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2JobPosFinder.findByAppRoleWorkingUnit">
 		<![CDATA[
-			SELECT OEP_USERMGT_APPROLE2JOBPOS.*
-			FROM OEP_USERMGT_APPROLE2JOBPOS
+			SELECT oep_usermgt_approle2jobpos.*
+			FROM oep_usermgt_approle2jobpos
 			WHERE 1=1 
 			[$COMPANY_FILTER$]
 			[$GROUP_FILTER$]

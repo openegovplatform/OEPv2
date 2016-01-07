@@ -375,4 +375,14 @@ public interface UserSyncLocalService extends BaseLocalService,
 		long applicationId, boolean isSync, int startIndex, int endIndex,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public org.oep.ssomgt.model.UserSync findByApplicationEmployee(
+		long applicationId, long employeeId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.ssomgt.NoSuchUserSyncException;
+
+	public org.oep.ssomgt.model.UserSync findByApplicationUser(
+		long applicationId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.ssomgt.NoSuchUserSyncException;
 }

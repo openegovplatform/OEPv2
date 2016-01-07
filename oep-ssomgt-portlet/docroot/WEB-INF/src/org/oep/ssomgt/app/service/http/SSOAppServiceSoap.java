@@ -116,5 +116,37 @@ public class SSOAppServiceSoap {
 		}
 	}
 
+	public static java.lang.String unsecuredSyncDateAccounts(
+		java.lang.String appCode, java.lang.String pin,
+		java.util.Date checkpoint) throws RemoteException {
+		try {
+			java.lang.String returnValue = SSOAppServiceUtil.unsecuredSyncDateAccounts(appCode,
+					pin, checkpoint);
+
+			return returnValue;
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static java.lang.String unsecuredSyncAccounts(
+		java.lang.String appCode, java.lang.String pin, long timestamp)
+		throws RemoteException {
+		try {
+			java.lang.String returnValue = SSOAppServiceUtil.unsecuredSyncAccounts(appCode,
+					pin, timestamp);
+
+			return returnValue;
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
 	private static Log _log = LogFactoryUtil.getLog(SSOAppServiceSoap.class);
 }

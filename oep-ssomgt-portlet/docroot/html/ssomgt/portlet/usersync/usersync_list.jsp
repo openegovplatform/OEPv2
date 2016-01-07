@@ -79,7 +79,7 @@
 		<div class="container">	
 			<table style="width: 100%;">
 				<tr>
-					<td style="width: 60%;">
+					<td style="width: 50%;">
 						<aui:select style="width: 100%" label="<%= LanguageUtil.get(pageContext, \"org.oep.ssomgt.portlet.usersync.empty\") %>" name="<%= UserSyncKeys.SearchAttributes.APPLICATION_ID %>" id="<%= UserSyncKeys.SearchAttributes.APPLICATION_ID %>" >
 							<aui:option value="<%= PortletKeys.LONG_DEFAULT %>"><liferay-ui:message key="org.oep.ssomgt.portlet.usersync.selectbox.applicationid" /></aui:option>
 							<%
@@ -103,7 +103,7 @@
 					<td style="width: 20%" valign="top">
 						<aui:input cssClass="pull-right" label="<%= LanguageUtil.get(pageContext, \"org.oep.ssomgt.portlet.usersync.label.issync\") %>" name="<%= UserSyncKeys.SearchAttributes.IS_SYNC %>" id="<%= UserSyncKeys.SearchAttributes.IS_SYNC %>" type="checkbox"></aui:input>
 					</td>
-					<td style="width: 20%" valign="top">
+					<td style="width: 30%" valign="top">
 						<a href="#" class="btn btn-primary" onclick="<portlet:namespace/>search();return false;"><i class="icon-search"><liferay-ui:message key="org.oep.ssomgt.portlet.usersync.button.search" /></i></a>
 					</td>
 				</tr>

@@ -191,6 +191,5 @@
 		var form = document.<portlet:namespace />searchApplication;
 		form.action = "<%= addEditApplication %>";
 		form.submit();
-	}
-	
+	}	
 </script>

@@ -518,6 +518,60 @@ public class AppMessageLocalServiceWrapper implements AppMessageLocalService,
 	}
 
 	@Override
+	public java.util.List<org.oep.ssomgt.model.AppMessage> findByFromApplicationToUserMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _appMessageLocalService.findByFromApplicationToUserMessageType(fromApplication,
+			toUser, messageType);
+	}
+
+	@Override
+	public int countByFromApplicationToUserMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _appMessageLocalService.countByFromApplicationToUserMessageType(fromApplication,
+			toUser, messageType);
+	}
+
+	@Override
+	public java.util.List<org.oep.ssomgt.model.AppMessage> findByFromApplicationToUserMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType, int startIndex, int endIndex)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _appMessageLocalService.findByFromApplicationToUserMessageType(fromApplication,
+			toUser, messageType, startIndex, endIndex);
+	}
+
+	@Override
+	public java.util.List<org.oep.ssomgt.model.AppMessage> findByFromApplicationToUserNotMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _appMessageLocalService.findByFromApplicationToUserNotMessageType(fromApplication,
+			toUser, messageType);
+	}
+
+	@Override
+	public int countByFromApplicationToUserNotMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _appMessageLocalService.countByFromApplicationToUserNotMessageType(fromApplication,
+			toUser, messageType);
+	}
+
+	@Override
+	public java.util.List<org.oep.ssomgt.model.AppMessage> findByFromApplicationToUserNotMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType, int startIndex, int endIndex)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _appMessageLocalService.findByFromApplicationToUserNotMessageType(fromApplication,
+			toUser, messageType, startIndex, endIndex);
+	}
+
+	@Override
 	public java.util.List<org.oep.ssomgt.model.AppMessage> findByApplicationUser(
 		java.lang.String fromApplication, java.lang.String toUser,
 		com.liferay.portal.service.ServiceContext serviceContext)

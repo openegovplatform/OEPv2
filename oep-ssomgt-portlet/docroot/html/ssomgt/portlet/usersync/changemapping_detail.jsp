@@ -28,7 +28,12 @@
 <portlet:resourceURL var="getAppUsers">
 	<portlet:param name="<%=Constants.CMD%>" value="getAppUsers" />
 </portlet:resourceURL>
-<aui:form>
+<portlet:actionURL var="addEditUserSync" name="addEditUserSync">
+	<portlet:param name="<%= PortletKeys.SET_VIEW_PARAMETER %>" value="/html/ssomgt/portlet/usersync/changemapping_detail.jsp"/>
+	<portlet:param name="<%= PortletKeys.REDIRECT_PAGE %>" value="<%= ParamUtil.getString(request, PortletKeys.REDIRECT_PAGE) %>"/>
+	<portlet:param name="<%= UserSyncKeys.AddEditAttributes.EDIT_ID %>" value="<%= ParamUtil.getString(request, UserSyncKeys.AddEditAttributes.EDIT_ID) %>"/>
+</portlet:actionURL>
+<aui:form name="addEditUserSyncForm" method="post">
 	<table class="table">
 		<tr>
 			<td>
@@ -59,7 +64,7 @@
 				<liferay-ui:message key="org.oep.ssomgt.portlet.usersync.changemapping.label.appusername"></liferay-ui:message>:
 			</td>
 			<td>
-				<aui:input label="" name="<%= UserSyncKeys.AddEditAttributes.APP_USERNAME %>" id="<%= UserSyncKeys.AddEditAttributes.APP_USERNAME %>" type="text" value="<%= ParamUtil.getString(request, UserSyncKeys.AddEditAttributes.APP_USERNAME, PortletKeys.TEXT_BOX) %>"></aui:input>
+				<aui:input label="org.oep.ssomgt.portlet.usersync.changemapping.label.empty" name="<%= UserSyncKeys.AddEditAttributes.APP_USERNAME %>" id="<%= UserSyncKeys.AddEditAttributes.APP_USERNAME %>" type="text" value="<%= ParamUtil.getString(request, UserSyncKeys.AddEditAttributes.APP_USERNAME, PortletKeys.TEXT_BOX) %>"></aui:input>
 			</td>
 		</tr>
 		<tr>
@@ -74,8 +79,14 @@
 function <portlet:namespace/>back() {
 	location.href = "<%= ParamUtil.getString(request, PortletKeys.REDIRECT_PAGE) %>";
 };
+function <portlet:namespace/>save() {
+	var form = document.<portlet:namespace />addEditUserSyncForm;
+	form.action = "<%= addEditUserSync %>";
+	form.submit();
+};
 </script>
 <aui:script>
+	/*
 	AUI().use('autocomplete-list','aui-base','aui-io-request','autocomplete-filters','autocomplete-highlighters',function (A) {
 	A.io.request('<%=getAppUsers%>',{
 		dataType: 'json',
@@ -96,4 +107,5 @@ function <portlet:namespace/>back() {
 			}}
 		});
 	});
+	*/
 </aui:script>

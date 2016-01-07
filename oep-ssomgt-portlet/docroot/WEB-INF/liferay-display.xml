@@ -3,15 +3,17 @@
 
 <display>
 	<category name="OEP">
-		<category name="SSO management">
+		<category name="oep.category.ssomgt.title">
 			<portlet id="application-management"></portlet>
 			<portlet id="app-role"></portlet>
-			<portlet id="assign-role"></portlet>
 			<portlet id="app-message"></portlet>
 			<portlet id="application-vertical-menu"></portlet>
 			<portlet id="application-dashboard"></portlet>
 			<portlet id="user-sync"></portlet>
 			<portlet id="rsa-tool"></portlet>
+			<portlet id="my-dashboard"></portlet>
+			<portlet id="sso-management"></portlet>
+			<portlet id="sso-dashboard"></portlet>
 		</category>
 	</category>
 </display>

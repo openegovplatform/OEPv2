@@ -47,7 +47,9 @@
 	<portlet>
 		<portlet-name>application-dashboard</portlet-name>
 		<icon>/icon.png</icon>
+		<configuration-action-class>com.liferay.portal.kernel.portlet.DefaultConfigurationAction</configuration-action-class>
 		<header-portlet-css>/css/main.css</header-portlet-css>
+		<header-portlet-css>/css/font-awesome.min.css</header-portlet-css>
 		<footer-portlet-javascript>
 			/js/main.js
 		</footer-portlet-javascript>
@@ -72,6 +74,38 @@
 			/js/main.js
 		</footer-portlet-javascript>
 		<css-class-wrapper>rsa-tool-portlet</css-class-wrapper>
+	</portlet>
+	<portlet>
+		<portlet-name>my-dashboard</portlet-name>
+		<icon>/icon.png</icon>
+		<configuration-action-class>com.liferay.portal.kernel.portlet.DefaultConfigurationAction</configuration-action-class>
+		<instanceable>true</instanceable>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<header-portlet-css>/css/font-awesome.min.css</header-portlet-css>
+		<footer-portlet-javascript>
+			/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>my-dashboard-portlet</css-class-wrapper>
+	</portlet>
+	<portlet>
+		<portlet-name>sso-management</portlet-name>
+		<icon>/icon.png</icon>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>
+			/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>sso-management-portlet</css-class-wrapper>
+	</portlet>
+	<portlet>
+		<portlet-name>sso-dashboard</portlet-name>
+		<icon>/icon.png</icon>
+		<configuration-action-class>com.liferay.portal.kernel.portlet.DefaultConfigurationAction</configuration-action-class>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<header-portlet-css>/css/font-awesome.min.css</header-portlet-css>
+		<footer-portlet-javascript>
+			/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>sso-dashboard-portlet</css-class-wrapper>
 	</portlet>
 	<role-mapper>
 		<role-name>administrator</role-name>

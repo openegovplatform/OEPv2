@@ -126,6 +126,11 @@
             <finder-column name="companyId"></finder-column>
             <finder-column name="groupId"></finder-column>
             <finder-column name="employeeId" comparator="=" arrayable-operator="OR"></finder-column>
+        </finder>
+        <finder name="C_G_InAR" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+            <finder-column name="groupId"></finder-column>
+            <finder-column name="appRoleId" comparator="=" arrayable-operator="OR"></finder-column>
         </finder>		
 	</entity>
 	<entity name="UserSync" table="oep_usermgt_usersync" local-service="true" remote-service="true">
@@ -146,6 +151,14 @@
             <finder-column name="applicationId"></finder-column>
             <finder-column name="checkpoint" comparator="&gt;"></finder-column>
         </finder>
+        <finder name="A_E" return-type="UserSync">
+            <finder-column name="applicationId"></finder-column>
+            <finder-column name="employeeId"></finder-column>
+        </finder>
+        <finder name="A_U" return-type="UserSync">
+            <finder-column name="applicationId"></finder-column>
+            <finder-column name="userId"></finder-column>
+        </finder>
 	</entity>
 	
 	<entity name="AppMessage" table="oep_usermgt_appmessage" local-service="true" remote-service="true">
@@ -162,12 +175,25 @@
 		<column name="messageValue" type="String"></column>
 		<column name="messageUrl" type="String"></column>
 		<column name="visitDate" type="Date"></column>
+        <order by="desc">
+            <order-column name="createDate" order-by="desc"></order-column>
+        </order>
         <finder name="TU" return-type="Collection">
             <finder-column name="toUser"></finder-column>
         </finder>
         <finder name="FA_TU" return-type="Collection">
             <finder-column name="fromApplication"></finder-column>
             <finder-column name="toUser"></finder-column>
+        </finder>
+        <finder name="FA_TU_MT" return-type="Collection">
+            <finder-column name="fromApplication"></finder-column>
+            <finder-column name="toUser"></finder-column>
+            <finder-column name="messageType"></finder-column>
+        </finder>
+        <finder name="FA_TU_NotMT" return-type="Collection">
+            <finder-column name="fromApplication"></finder-column>
+            <finder-column name="toUser"></finder-column>
+            <finder-column name="messageType" comparator="!="></finder-column>
         </finder>		
 	</entity>
     <exceptions>

@@ -33,6 +33,7 @@ package org.oep.ssomgt.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.oep.ssomgt.NoSuchUserSyncException;
 import org.oep.ssomgt.model.UserSync;
 import org.oep.ssomgt.service.base.UserSyncLocalServiceBaseImpl;
 
@@ -249,6 +250,14 @@ public class UserSyncLocalServiceImpl extends UserSyncLocalServiceBaseImpl {
 	
 	public List<UserSync> findByApplicationSync(long applicationId, boolean isSync, int startIndex, int endIndex, ServiceContext serviceContext) throws SystemException {
 		return userSyncFinder.findByApplicationSync(applicationId, isSync, startIndex, endIndex, serviceContext);
+	}
+	
+	public UserSync findByApplicationEmployee(long applicationId, long employeeId) throws SystemException, NoSuchUserSyncException {
+		return userSyncPersistence.findByA_E(applicationId, employeeId);
+	}
+	
+	public UserSync findByApplicationUser(long applicationId, long userId) throws SystemException, NoSuchUserSyncException {
+		return userSyncPersistence.findByA_U(applicationId, userId);
 	}
 	private static Log _log = LogFactoryUtil.getLog(UserSyncLocalServiceImpl.class);	
 	

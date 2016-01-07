@@ -175,6 +175,12 @@ public class AppRole2EmployeeLocalServiceClp
 		_methodName28 = "findRoleByEmployee";
 
 		_methodParameterTypes28 = new String[] { "long", "long" };
+
+		_methodName29 = "findByArrayOfAppRole";
+
+		_methodParameterTypes29 = new String[] {
+				"long[][]", "com.liferay.portal.service.ServiceContext"
+			};
 	}
 
 	@Override
@@ -1096,6 +1102,41 @@ public class AppRole2EmployeeLocalServiceClp
 		return (java.util.List<org.oep.ssomgt.model.AppRole>)ClpSerializer.translateOutput(returnObj);
 	}
 
+	@Override
+	public java.util.List<org.oep.ssomgt.model.AppRole2Employee> findByArrayOfAppRole(
+		long[] appRoleIds,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName29,
+					_methodParameterTypes29,
+					new Object[] {
+						ClpSerializer.translateInput(appRoleIds),
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<org.oep.ssomgt.model.AppRole2Employee>)ClpSerializer.translateOutput(returnObj);
+	}
+
 	private InvokableLocalService _invokableLocalService;
 	private String _methodName0;
 	private String[] _methodParameterTypes0;
@@ -1153,4 +1194,6 @@ public class AppRole2EmployeeLocalServiceClp
 	private String[] _methodParameterTypes27;
 	private String _methodName28;
 	private String[] _methodParameterTypes28;
+	private String _methodName29;
+	private String[] _methodParameterTypes29;
 }

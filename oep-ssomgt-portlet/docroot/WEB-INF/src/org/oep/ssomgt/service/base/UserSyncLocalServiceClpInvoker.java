@@ -160,6 +160,14 @@ public class UserSyncLocalServiceClpInvoker {
 				"long", "boolean", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
+
+		_methodName89 = "findByApplicationEmployee";
+
+		_methodParameterTypes89 = new String[] { "long", "long" };
+
+		_methodName90 = "findByApplicationUser";
+
+		_methodParameterTypes90 = new String[] { "long", "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -337,6 +345,18 @@ public class UserSyncLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[4]);
 		}
 
+		if (_methodName89.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+			return UserSyncLocalServiceUtil.findByApplicationEmployee(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
+		}
+
+		if (_methodName90.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes90, parameterTypes)) {
+			return UserSyncLocalServiceUtil.findByApplicationUser(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -394,4 +414,8 @@ public class UserSyncLocalServiceClpInvoker {
 	private String[] _methodParameterTypes87;
 	private String _methodName88;
 	private String[] _methodParameterTypes88;
+	private String _methodName89;
+	private String[] _methodParameterTypes89;
+	private String _methodName90;
+	private String[] _methodParameterTypes90;
 }

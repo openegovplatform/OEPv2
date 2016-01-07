@@ -25,12 +25,12 @@ public class ApplicationFinderImpl extends BasePersistenceImpl implements Applic
 
 		try {
 			String sql = CustomSQLUtil.get(ApplicationFinder.class.getName(), GET_UP_APPLICATION);		
-			sql = sql.replace("[$COMPANY_FILTER$]", " AND COMPANYID = ?");
+			sql = sql.replace("[$COMPANY_FILTER$]", " AND companyId = ?");
 			params.add(serviceContext.getCompanyId());
 			sql = sql.replace("[$GROUP_FILTER$]", "");
 			
 			if (app != null) {
-				sql = sql.replace("[$SEQUENCENO_FILTER$]", " AND SEQUENCENO < ?");
+				sql = sql.replace("[$SEQUENCENO_FILTER$]", " AND sequenceNo < ?");
 				params.add(app.getSequenceNo());			
 			}
 			else {
@@ -56,12 +56,12 @@ public class ApplicationFinderImpl extends BasePersistenceImpl implements Applic
 		Session session = openSession();
 		try {
 			String sql = CustomSQLUtil.get(ApplicationFinder.class.getName(), GET_DOWN_APPLICATION);		
-			sql = sql.replace("[$COMPANY_FILTER$]", " AND COMPANYID = ?");
+			sql = sql.replace("[$COMPANY_FILTER$]", " AND companyId = ?");
 			params.add(serviceContext.getCompanyId());
 			sql = sql.replace("[$GROUP_FILTER$]", "");
 			
 			if (app != null) {
-				sql = sql.replace("[$SEQUENCENO_FILTER$]", " AND SEQUENCENO > ?");
+				sql = sql.replace("[$SEQUENCENO_FILTER$]", " AND sequenceNo > ?");
 				params.add(app.getSequenceNo());			
 			}
 			else {
@@ -91,12 +91,12 @@ public class ApplicationFinderImpl extends BasePersistenceImpl implements Applic
 		Session session = openSession();
 		try {
 			String sql = CustomSQLUtil.get(ApplicationFinder.class.getName(), GET_DOWN_APPLICATION);		
-			sql = sql.replace("[$COMPANY_FILTER$]", " AND COMPANYID = ?");
+			sql = sql.replace("[$COMPANY_FILTER$]", " AND companyId = ?");
 			params.add(serviceContext.getCompanyId());
 			sql = sql.replace("[$GROUP_FILTER$]", "");
 			
 			if (app != null) {
-				sql = sql.replace("[$SEQUENCENO_FILTER$]", " AND SEQUENCENO > ?");
+				sql = sql.replace("[$SEQUENCENO_FILTER$]", " AND sequenceNo > ?");
 				params.add(app.getSequenceNo());			
 			}
 			else {
@@ -131,7 +131,7 @@ public class ApplicationFinderImpl extends BasePersistenceImpl implements Applic
 		Session session = openSession();
 		try {
 			String sql = CustomSQLUtil.get(ApplicationFinder.class.getName(), GET_MAX_SEQUENCENO);		
-			sql = sql.replace("[$COMPANY_FILTER$]", " AND COMPANYID = ?");
+			sql = sql.replace("[$COMPANY_FILTER$]", " AND companyId = ?");
 			params.add(serviceContext.getCompanyId());
 			sql = sql.replace("[$GROUP_FILTER$]", "");
 							

@@ -88,6 +88,19 @@ public class SSOAppServiceWrapper implements SSOAppService,
 		return _ssoAppService.syncAccounts(appCode, pin, timestamp);
 	}
 
+	@Override
+	public java.lang.String unsecuredSyncDateAccounts(
+		java.lang.String appCode, java.lang.String pin,
+		java.util.Date checkpoint) {
+		return _ssoAppService.unsecuredSyncDateAccounts(appCode, pin, checkpoint);
+	}
+
+	@Override
+	public java.lang.String unsecuredSyncAccounts(java.lang.String appCode,
+		java.lang.String pin, long timestamp) {
+		return _ssoAppService.unsecuredSyncAccounts(appCode, pin, timestamp);
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */

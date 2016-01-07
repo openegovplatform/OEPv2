@@ -3,7 +3,7 @@
 	<sql id="mysql.org.oep.ssomgt.service.persistence.UserSyncFinder.countByApplicationSync">
 		<![CDATA[
 			SELECT COUNT(*) AS total
-			FROM OEP_USERMGT_USERSYNC
+			FROM oep_usermgt_usersync
 			WHERE 1=1 
 			[$COMPANY_FILTER$]
 			[$GROUP_FILTER$]
@@ -14,7 +14,7 @@
 	<sql id="mysql.org.oep.ssomgt.service.persistence.UserSyncFinder.findByApplicationSync">
 		<![CDATA[
 			SELECT *
-			FROM OEP_USERMGT_USERSYNC
+			FROM oep_usermgt_usersync
 			WHERE 1=1 
 			[$COMPANY_FILTER$]
 			[$GROUP_FILTER$]

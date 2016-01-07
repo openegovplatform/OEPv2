@@ -421,6 +421,20 @@ public class UserSyncLocalServiceUtil {
 			endIndex, serviceContext);
 	}
 
+	public static org.oep.ssomgt.model.UserSync findByApplicationEmployee(
+		long applicationId, long employeeId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.ssomgt.NoSuchUserSyncException {
+		return getService().findByApplicationEmployee(applicationId, employeeId);
+	}
+
+	public static org.oep.ssomgt.model.UserSync findByApplicationUser(
+		long applicationId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.ssomgt.NoSuchUserSyncException {
+		return getService().findByApplicationUser(applicationId, userId);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

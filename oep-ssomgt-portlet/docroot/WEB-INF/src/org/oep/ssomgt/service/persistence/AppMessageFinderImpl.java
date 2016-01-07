@@ -32,21 +32,21 @@ public class AppMessageFinderImpl extends BasePersistenceImpl implements AppMess
 		sql = sql.replace("[$GROUP_FILTER$]", "");
 		
 		if (!StringUtil.isNullOrEmpty(fromApplication)) {
-			sql = sql.replace("[$FROMAPPLICATION_FILTER$]", " AND FROMAPPLICATION = ?");
+			sql = sql.replace("[$FROMAPPLICATION_FILTER$]", " AND fromApplication = ?");
 			params.add(fromApplication);			
 		}
 		else {
 			sql = sql.replace("[$FROMAPPLICATION_FILTER$]", "");
 		}
 		if (!StringUtil.isNullOrEmpty(toUser)) {
-			sql = sql.replace("[$TOUSER_FILTER$]", " AND TOUSER = ?");
+			sql = sql.replace("[$TOUSER_FILTER$]", " AND toUser = ?");
 			params.add(toUser);			
 		}
 		else {
 			sql = sql.replace("[$TOUSER_FILTER$]", "");
 		}
 		if (!StringUtil.isNullOrEmpty(messageType)) {
-			sql = sql.replace("[$MESSAGETYPE_FILTER$]", " AND MESSAGETYPE = ?");
+			sql = sql.replace("[$MESSAGETYPE_FILTER$]", " AND messageType = ?");
 			params.add(messageType);			
 		}
 		else {
@@ -55,14 +55,14 @@ public class AppMessageFinderImpl extends BasePersistenceImpl implements AppMess
 
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		if (fromDate != null) {
-			sql = sql.replace("[$FROMDATE_FILTER$]", " AND CREATEDATE >= ?");
+			sql = sql.replace("[$FROMDATE_FILTER$]", " AND createDate >= ?");
 			params.add(df.format(fromDate));			
 		}
 		else {
 			sql = sql.replace("[$FROMDATE_FILTER$]", "");
 		}		
 		if (toDate != null) {
-			sql = sql.replace("[$TODATE_FILTER$]", " AND CREATEDATE <= ?");
+			sql = sql.replace("[$TODATE_FILTER$]", " AND createDate <= ?");
 			params.add(df.format(toDate));			
 		}
 		else {
@@ -87,21 +87,21 @@ public class AppMessageFinderImpl extends BasePersistenceImpl implements AppMess
 		sql = sql.replace("[$GROUP_FILTER$]", "");
 		
 		if (!StringUtil.isNullOrEmpty(fromApplication)) {
-			sql = sql.replace("[$FROMAPPLICATION_FILTER$]", " AND FROMAPPLICATION = ?");
+			sql = sql.replace("[$FROMAPPLICATION_FILTER$]", " AND fromApplication = ?");
 			params.add(fromApplication);			
 		}
 		else {
 			sql = sql.replace("[$FROMAPPLICATION_FILTER$]", "");
 		}
 		if (!StringUtil.isNullOrEmpty(toUser)) {
-			sql = sql.replace("[$TOUSER_FILTER$]", " AND TOUSER = ?");
+			sql = sql.replace("[$TOUSER_FILTER$]", " AND toUser = ?");
 			params.add(toUser);			
 		}
 		else {
 			sql = sql.replace("[$TOUSER_FILTER$]", "");
 		}
 		if (!StringUtil.isNullOrEmpty(messageType)) {
-			sql = sql.replace("[$MESSAGETYPE_FILTER$]", " AND MESSAGETYPE = ?");
+			sql = sql.replace("[$MESSAGETYPE_FILTER$]", " AND messageType = ?");
 			params.add(messageType);			
 		}
 		else {
@@ -110,14 +110,14 @@ public class AppMessageFinderImpl extends BasePersistenceImpl implements AppMess
 
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		if (fromDate != null) {
-			sql = sql.replace("[$FROMDATE_FILTER$]", " AND CREATEDATE >= ?");
+			sql = sql.replace("[$FROMDATE_FILTER$]", " AND createDate >= ?");
 			params.add(df.format(fromDate));			
 		}
 		else {
 			sql = sql.replace("[$FROMDATE_FILTER$]", "");
 		}		
 		if (toDate != null) {
-			sql = sql.replace("[$TODATE_FILTER$]", " AND CREATEDATE <= ?");
+			sql = sql.replace("[$TODATE_FILTER$]", " AND createDate <= ?");
 			params.add(df.format(toDate));			
 		}
 		else {
@@ -145,19 +145,19 @@ public class AppMessageFinderImpl extends BasePersistenceImpl implements AppMess
 		List<Object> params = new ArrayList<Object>();
 		Session session = openSession();
 		String sql = CustomSQLUtil.get(AppMessageFinder.class.getName(), FIND_BY_APPLICATION_USER);		
-		sql = sql.replace("[$COMPANY_FILTER$]", " AND COMPANYID = ?");
+		sql = sql.replace("[$COMPANY_FILTER$]", " AND companyId = ?");
 		params.add(serviceContext.getCompanyId());
 		sql = sql.replace("[$GROUP_FILTER$]", "");
 		
 		if (!StringUtil.isNullOrEmpty(fromApplication)) {
-			sql = sql.replace("[$FROMAPPLICATION_FILTER$]", " AND FROMAPPLICATION = ?");
+			sql = sql.replace("[$FROMAPPLICATION_FILTER$]", " AND fromApplication = ?");
 			params.add(fromApplication);			
 		}
 		else {
 			sql = sql.replace("[$FROMAPPLICATION_FILTER$]", "");
 		}
 		if (!StringUtil.isNullOrEmpty(toUser)) {
-			sql = sql.replace("[$TOUSER_FILTER$]", " AND TOUSER = ?");
+			sql = sql.replace("[$TOUSER_FILTER$]", " AND toUser = ?");
 			params.add(toUser);			
 		}
 		else {
@@ -179,19 +179,19 @@ public class AppMessageFinderImpl extends BasePersistenceImpl implements AppMess
 		List<Object> params = new ArrayList<Object>();
 		Session session = openSession();
 		String sql = CustomSQLUtil.get(AppMessageFinder.class.getName(), COUNT_BY_APPLICATION_USER);		
-		sql = sql.replace("[$COMPANY_FILTER$]", " AND COMPANYID = ?");
+		sql = sql.replace("[$COMPANY_FILTER$]", " AND companyId = ?");
 		params.add(serviceContext.getCompanyId());
 		sql = sql.replace("[$GROUP_FILTER$]", "");
 		
 		if (!StringUtil.isNullOrEmpty(fromApplication)) {
-			sql = sql.replace("[$FROMAPPLICATION_FILTER$]", " AND FROMAPPLICATION = ?");
+			sql = sql.replace("[$FROMAPPLICATION_FILTER$]", " AND fromApplication = ?");
 			params.add(fromApplication);			
 		}
 		else {
 			sql = sql.replace("[$FROMAPPLICATION_FILTER$]", "");
 		}
 		if (!StringUtil.isNullOrEmpty(toUser)) {
-			sql = sql.replace("[$TOUSER_FILTER$]", " AND TOUSER = ?");
+			sql = sql.replace("[$TOUSER_FILTER$]", " AND toUser = ?");
 			params.add(toUser);			
 		}
 		else {

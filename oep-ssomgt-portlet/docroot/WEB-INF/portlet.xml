@@ -66,7 +66,7 @@
 			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
 		</supports>
-        <resource-bundle>content.Language</resource-bundle>
+        <resource-bundle>org.oep.ssomgt.action.lang.applicationmanagement.Language</resource-bundle>
 		<portlet-info>
 			<title>Application Management</title>
 			<short-title>Application Management</short-title>
@@ -104,7 +104,7 @@
 			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
 		</supports>
-        <resource-bundle>content.Language</resource-bundle>
+        <resource-bundle>org.oep.ssomgt.action.lang.approle.Language</resource-bundle>
 		<portlet-info>
 			<title>Application Role</title>
 			<short-title>App Role</short-title>
@@ -142,7 +142,7 @@
 			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
 		</supports>
-        <resource-bundle>content.Language</resource-bundle>
+        <resource-bundle>org.oep.ssomgt.action.lang.appmessage.Language</resource-bundle>
 		<portlet-info>
 			<title>Application Message</title>
 			<short-title>App Message</short-title>
@@ -182,7 +182,7 @@
 			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
 		</supports>
-        <resource-bundle>content.Language</resource-bundle>
+        <resource-bundle>org.oep.ssomgt.action.lang.applicationverticalmenu.Language</resource-bundle>
 		<portlet-info>
 			<title>Application Vertical Menu</title>
 			<short-title>Application Vertical Menu</short-title>
@@ -208,6 +208,10 @@
 			org.oep.ssomgt.action.ApplicationDashboardPortlet
 		</portlet-class>
 		<init-param>
+		     <name>config-template</name>
+		     <value>/html/ssomgt/portlet/applicationdashboard/configuration.jsp</value>
+		 </init-param>		
+		<init-param>
 			<name>view-template</name>
 			<value>
 				/html/ssomgt/portlet/applicationdashboard/view.jsp
@@ -222,7 +226,7 @@
 			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
 		</supports>
-        <resource-bundle>content.Language</resource-bundle>
+        <resource-bundle>org.oep.ssomgt.action.lang.applicationdashboard.Language</resource-bundle>
 		<portlet-info>
 			<title>Application Dashboard</title>
 			<short-title>Application Dashboard</short-title>
@@ -260,7 +264,7 @@
 			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
 		</supports>
-        <resource-bundle>content.Language</resource-bundle>
+        <resource-bundle>org.oep.ssomgt.action.lang.usersync.Language</resource-bundle>
 		<portlet-info>
 			<title>User Synchronized</title>
 			<short-title>User Sync</short-title>
@@ -298,10 +302,132 @@
 			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
 		</supports>
-        <resource-bundle>content.Language</resource-bundle>
+        <resource-bundle>org.oep.ssomgt.action.lang.rsatool.Language</resource-bundle>
 		<portlet-info>
 			<title>RSA Tool</title>
 			<short-title>Rsa Tool</short-title>
+			<keywords></keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+	<portlet>
+		<portlet-name>my-dashboard</portlet-name>
+		<display-name>My Dashboard</display-name>
+		<portlet-class>
+			org.oep.ssomgt.action.MyDashboardPortlet
+		</portlet-class>
+		<init-param>
+		     <name>config-template</name>
+		     <value>/html/ssomgt/portlet/mydashboard/configuration.jsp</value>
+		 </init-param>		
+		<init-param>
+			<name>view-template</name>
+			<value>/html/ssomgt/portlet/mydashboard/view.jsp</value>
+		</init-param>
+		<init-param>
+		    <name>add-process-action-success-action</name>
+		    <value>false</value>
+		</init-param>				
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+        <resource-bundle>org.oep.ssomgt.action.lang.mydashboard.Language</resource-bundle>
+		<portlet-info>
+			<title>My Dashboard</title>
+			<short-title>My Dashboard</short-title>
+			<keywords></keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+	<portlet>
+		<portlet-name>sso-management</portlet-name>
+		<display-name>SSO Management</display-name>
+		<portlet-class>
+			org.oep.ssomgt.action.SSOManagementPortlet
+		</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>/html/ssomgt/portlet/ssomanagement/view.jsp</value>
+		</init-param>
+		<init-param>
+		    <name>add-process-action-success-action</name>
+		    <value>false</value>
+		</init-param>				
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+        <resource-bundle>org.oep.ssomgt.action.lang.ssomanagement.Language</resource-bundle>
+		<portlet-info>
+			<title>SSO Management</title>
+			<short-title>Sso Management</short-title>
+			<keywords></keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+	<portlet>
+		<portlet-name>sso-dashboard</portlet-name>
+		<display-name>SSO Dashboard</display-name>
+		<portlet-class>
+			org.oep.ssomgt.action.SSODashboardPortlet
+		</portlet-class>
+		<init-param>
+		     <name>config-template</name>
+		     <value>/html/ssomgt/portlet/ssodashboard/configuration.jsp</value>
+		 </init-param>		
+		<init-param>
+			<name>view-template</name>
+			<value>/html/ssomgt/portlet/ssodashboard/view.jsp</value>
+		</init-param>
+		<init-param>
+		    <name>add-process-action-success-action</name>
+		    <value>false</value>
+		</init-param>				
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+        <resource-bundle>org.oep.ssomgt.action.lang.ssodashboard.Language</resource-bundle>
+		<portlet-info>
+			<title>SSO Dashboard</title>
+			<short-title>Sso Dashboard</short-title>
 			<keywords></keywords>
 		</portlet-info>
 		<security-role-ref>

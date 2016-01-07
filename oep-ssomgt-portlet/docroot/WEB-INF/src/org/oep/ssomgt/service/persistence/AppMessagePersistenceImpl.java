@@ -96,7 +96,8 @@ public class AppMessagePersistenceImpl extends BasePersistenceImpl<AppMessage>
 			AppMessageModelImpl.FINDER_CACHE_ENABLED, AppMessageImpl.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByTU",
 			new String[] { String.class.getName() },
-			AppMessageModelImpl.TOUSER_COLUMN_BITMASK);
+			AppMessageModelImpl.TOUSER_COLUMN_BITMASK |
+			AppMessageModelImpl.CREATEDATE_COLUMN_BITMASK);
 	public static final FinderPath FINDER_PATH_COUNT_BY_TU = new FinderPath(AppMessageModelImpl.ENTITY_CACHE_ENABLED,
 			AppMessageModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByTU",
@@ -626,7 +627,8 @@ public class AppMessagePersistenceImpl extends BasePersistenceImpl<AppMessage>
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByFA_TU",
 			new String[] { String.class.getName(), String.class.getName() },
 			AppMessageModelImpl.FROMAPPLICATION_COLUMN_BITMASK |
-			AppMessageModelImpl.TOUSER_COLUMN_BITMASK);
+			AppMessageModelImpl.TOUSER_COLUMN_BITMASK |
+			AppMessageModelImpl.CREATEDATE_COLUMN_BITMASK);
 	public static final FinderPath FINDER_PATH_COUNT_BY_FA_TU = new FinderPath(AppMessageModelImpl.ENTITY_CACHE_ENABLED,
 			AppMessageModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByFA_TU",
@@ -1230,6 +1232,1408 @@ public class AppMessagePersistenceImpl extends BasePersistenceImpl<AppMessage>
 	private static final String _FINDER_COLUMN_FA_TU_TOUSER_1 = "appMessage.toUser IS NULL";
 	private static final String _FINDER_COLUMN_FA_TU_TOUSER_2 = "appMessage.toUser = ?";
 	private static final String _FINDER_COLUMN_FA_TU_TOUSER_3 = "(appMessage.toUser IS NULL OR appMessage.toUser = '')";
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_FA_TU_MT = new FinderPath(AppMessageModelImpl.ENTITY_CACHE_ENABLED,
+			AppMessageModelImpl.FINDER_CACHE_ENABLED, AppMessageImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByFA_TU_MT",
+			new String[] {
+				String.class.getName(), String.class.getName(),
+				String.class.getName(),
+				
+			Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FA_TU_MT =
+		new FinderPath(AppMessageModelImpl.ENTITY_CACHE_ENABLED,
+			AppMessageModelImpl.FINDER_CACHE_ENABLED, AppMessageImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByFA_TU_MT",
+			new String[] {
+				String.class.getName(), String.class.getName(),
+				String.class.getName()
+			},
+			AppMessageModelImpl.FROMAPPLICATION_COLUMN_BITMASK |
+			AppMessageModelImpl.TOUSER_COLUMN_BITMASK |
+			AppMessageModelImpl.MESSAGETYPE_COLUMN_BITMASK |
+			AppMessageModelImpl.CREATEDATE_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_FA_TU_MT = new FinderPath(AppMessageModelImpl.ENTITY_CACHE_ENABLED,
+			AppMessageModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByFA_TU_MT",
+			new String[] {
+				String.class.getName(), String.class.getName(),
+				String.class.getName()
+			});
+
+	/**
+	 * Returns all the app messages where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @return the matching app messages
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<AppMessage> findByFA_TU_MT(String fromApplication,
+		String toUser, String messageType) throws SystemException {
+		return findByFA_TU_MT(fromApplication, toUser, messageType,
+			QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the app messages where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.ssomgt.model.impl.AppMessageModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @param start the lower bound of the range of app messages
+	 * @param end the upper bound of the range of app messages (not inclusive)
+	 * @return the range of matching app messages
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<AppMessage> findByFA_TU_MT(String fromApplication,
+		String toUser, String messageType, int start, int end)
+		throws SystemException {
+		return findByFA_TU_MT(fromApplication, toUser, messageType, start, end,
+			null);
+	}
+
+	/**
+	 * Returns an ordered range of all the app messages where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.ssomgt.model.impl.AppMessageModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @param start the lower bound of the range of app messages
+	 * @param end the upper bound of the range of app messages (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching app messages
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<AppMessage> findByFA_TU_MT(String fromApplication,
+		String toUser, String messageType, int start, int end,
+		OrderByComparator orderByComparator) throws SystemException {
+		boolean pagination = true;
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			pagination = false;
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FA_TU_MT;
+			finderArgs = new Object[] { fromApplication, toUser, messageType };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_FA_TU_MT;
+			finderArgs = new Object[] {
+					fromApplication, toUser, messageType,
+					
+					start, end, orderByComparator
+				};
+		}
+
+		List<AppMessage> list = (List<AppMessage>)FinderCacheUtil.getResult(finderPath,
+				finderArgs, this);
+
+		if ((list != null) && !list.isEmpty()) {
+			for (AppMessage appMessage : list) {
+				if (!Validator.equals(fromApplication,
+							appMessage.getFromApplication()) ||
+						!Validator.equals(toUser, appMessage.getToUser()) ||
+						!Validator.equals(messageType,
+							appMessage.getMessageType())) {
+					list = null;
+
+					break;
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(5 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(5);
+			}
+
+			query.append(_SQL_SELECT_APPMESSAGE_WHERE);
+
+			boolean bindFromApplication = false;
+
+			if (fromApplication == null) {
+				query.append(_FINDER_COLUMN_FA_TU_MT_FROMAPPLICATION_1);
+			}
+			else if (fromApplication.equals(StringPool.BLANK)) {
+				query.append(_FINDER_COLUMN_FA_TU_MT_FROMAPPLICATION_3);
+			}
+			else {
+				bindFromApplication = true;
+
+				query.append(_FINDER_COLUMN_FA_TU_MT_FROMAPPLICATION_2);
+			}
+
+			boolean bindToUser = false;
+
+			if (toUser == null) {
+				query.append(_FINDER_COLUMN_FA_TU_MT_TOUSER_1);
+			}
+			else if (toUser.equals(StringPool.BLANK)) {
+				query.append(_FINDER_COLUMN_FA_TU_MT_TOUSER_3);
+			}
+			else {
+				bindToUser = true;
+
+				query.append(_FINDER_COLUMN_FA_TU_MT_TOUSER_2);
+			}
+
+			boolean bindMessageType = false;
+
+			if (messageType == null) {
+				query.append(_FINDER_COLUMN_FA_TU_MT_MESSAGETYPE_1);
+			}
+			else if (messageType.equals(StringPool.BLANK)) {
+				query.append(_FINDER_COLUMN_FA_TU_MT_MESSAGETYPE_3);
+			}
+			else {
+				bindMessageType = true;
+
+				query.append(_FINDER_COLUMN_FA_TU_MT_MESSAGETYPE_2);
+			}
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+			else
+			 if (pagination) {
+				query.append(AppMessageModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				if (bindFromApplication) {
+					qPos.add(fromApplication);
+				}
+
+				if (bindToUser) {
+					qPos.add(toUser);
+				}
+
+				if (bindMessageType) {
+					qPos.add(messageType);
+				}
+
+				if (!pagination) {
+					list = (List<AppMessage>)QueryUtil.list(q, getDialect(),
+							start, end, false);
+
+					Collections.sort(list);
+
+					list = new UnmodifiableList<AppMessage>(list);
+				}
+				else {
+					list = (List<AppMessage>)QueryUtil.list(q, getDialect(),
+							start, end);
+				}
+
+				cacheResult(list);
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, list);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching app message
+	 * @throws org.oep.ssomgt.NoSuchAppMessageException if a matching app message could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public AppMessage findByFA_TU_MT_First(String fromApplication,
+		String toUser, String messageType, OrderByComparator orderByComparator)
+		throws NoSuchAppMessageException, SystemException {
+		AppMessage appMessage = fetchByFA_TU_MT_First(fromApplication, toUser,
+				messageType, orderByComparator);
+
+		if (appMessage != null) {
+			return appMessage;
+		}
+
+		StringBundler msg = new StringBundler(8);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("fromApplication=");
+		msg.append(fromApplication);
+
+		msg.append(", toUser=");
+		msg.append(toUser);
+
+		msg.append(", messageType=");
+		msg.append(messageType);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchAppMessageException(msg.toString());
+	}
+
+	/**
+	 * Returns the first app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching app message, or <code>null</code> if a matching app message could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public AppMessage fetchByFA_TU_MT_First(String fromApplication,
+		String toUser, String messageType, OrderByComparator orderByComparator)
+		throws SystemException {
+		List<AppMessage> list = findByFA_TU_MT(fromApplication, toUser,
+				messageType, 0, 1, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching app message
+	 * @throws org.oep.ssomgt.NoSuchAppMessageException if a matching app message could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public AppMessage findByFA_TU_MT_Last(String fromApplication,
+		String toUser, String messageType, OrderByComparator orderByComparator)
+		throws NoSuchAppMessageException, SystemException {
+		AppMessage appMessage = fetchByFA_TU_MT_Last(fromApplication, toUser,
+				messageType, orderByComparator);
+
+		if (appMessage != null) {
+			return appMessage;
+		}
+
+		StringBundler msg = new StringBundler(8);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("fromApplication=");
+		msg.append(fromApplication);
+
+		msg.append(", toUser=");
+		msg.append(toUser);
+
+		msg.append(", messageType=");
+		msg.append(messageType);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchAppMessageException(msg.toString());
+	}
+
+	/**
+	 * Returns the last app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching app message, or <code>null</code> if a matching app message could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public AppMessage fetchByFA_TU_MT_Last(String fromApplication,
+		String toUser, String messageType, OrderByComparator orderByComparator)
+		throws SystemException {
+		int count = countByFA_TU_MT(fromApplication, toUser, messageType);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<AppMessage> list = findByFA_TU_MT(fromApplication, toUser,
+				messageType, count - 1, count, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the app messages before and after the current app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	 *
+	 * @param appMessageId the primary key of the current app message
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next app message
+	 * @throws org.oep.ssomgt.NoSuchAppMessageException if a app message with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public AppMessage[] findByFA_TU_MT_PrevAndNext(long appMessageId,
+		String fromApplication, String toUser, String messageType,
+		OrderByComparator orderByComparator)
+		throws NoSuchAppMessageException, SystemException {
+		AppMessage appMessage = findByPrimaryKey(appMessageId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			AppMessage[] array = new AppMessageImpl[3];
+
+			array[0] = getByFA_TU_MT_PrevAndNext(session, appMessage,
+					fromApplication, toUser, messageType, orderByComparator,
+					true);
+
+			array[1] = appMessage;
+
+			array[2] = getByFA_TU_MT_PrevAndNext(session, appMessage,
+					fromApplication, toUser, messageType, orderByComparator,
+					false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected AppMessage getByFA_TU_MT_PrevAndNext(Session session,
+		AppMessage appMessage, String fromApplication, String toUser,
+		String messageType, OrderByComparator orderByComparator,
+		boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_APPMESSAGE_WHERE);
+
+		boolean bindFromApplication = false;
+
+		if (fromApplication == null) {
+			query.append(_FINDER_COLUMN_FA_TU_MT_FROMAPPLICATION_1);
+		}
+		else if (fromApplication.equals(StringPool.BLANK)) {
+			query.append(_FINDER_COLUMN_FA_TU_MT_FROMAPPLICATION_3);
+		}
+		else {
+			bindFromApplication = true;
+
+			query.append(_FINDER_COLUMN_FA_TU_MT_FROMAPPLICATION_2);
+		}
+
+		boolean bindToUser = false;
+
+		if (toUser == null) {
+			query.append(_FINDER_COLUMN_FA_TU_MT_TOUSER_1);
+		}
+		else if (toUser.equals(StringPool.BLANK)) {
+			query.append(_FINDER_COLUMN_FA_TU_MT_TOUSER_3);
+		}
+		else {
+			bindToUser = true;
+
+			query.append(_FINDER_COLUMN_FA_TU_MT_TOUSER_2);
+		}
+
+		boolean bindMessageType = false;
+
+		if (messageType == null) {
+			query.append(_FINDER_COLUMN_FA_TU_MT_MESSAGETYPE_1);
+		}
+		else if (messageType.equals(StringPool.BLANK)) {
+			query.append(_FINDER_COLUMN_FA_TU_MT_MESSAGETYPE_3);
+		}
+		else {
+			bindMessageType = true;
+
+			query.append(_FINDER_COLUMN_FA_TU_MT_MESSAGETYPE_2);
+		}
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			query.append(AppMessageModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		if (bindFromApplication) {
+			qPos.add(fromApplication);
+		}
+
+		if (bindToUser) {
+			qPos.add(toUser);
+		}
+
+		if (bindMessageType) {
+			qPos.add(messageType);
+		}
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(appMessage);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<AppMessage> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the app messages where fromApplication = &#63; and toUser = &#63; and messageType = &#63; from the database.
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public void removeByFA_TU_MT(String fromApplication, String toUser,
+		String messageType) throws SystemException {
+		for (AppMessage appMessage : findByFA_TU_MT(fromApplication, toUser,
+				messageType, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+			remove(appMessage);
+		}
+	}
+
+	/**
+	 * Returns the number of app messages where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @return the number of matching app messages
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public int countByFA_TU_MT(String fromApplication, String toUser,
+		String messageType) throws SystemException {
+		FinderPath finderPath = FINDER_PATH_COUNT_BY_FA_TU_MT;
+
+		Object[] finderArgs = new Object[] { fromApplication, toUser, messageType };
+
+		Long count = (Long)FinderCacheUtil.getResult(finderPath, finderArgs,
+				this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(4);
+
+			query.append(_SQL_COUNT_APPMESSAGE_WHERE);
+
+			boolean bindFromApplication = false;
+
+			if (fromApplication == null) {
+				query.append(_FINDER_COLUMN_FA_TU_MT_FROMAPPLICATION_1);
+			}
+			else if (fromApplication.equals(StringPool.BLANK)) {
+				query.append(_FINDER_COLUMN_FA_TU_MT_FROMAPPLICATION_3);
+			}
+			else {
+				bindFromApplication = true;
+
+				query.append(_FINDER_COLUMN_FA_TU_MT_FROMAPPLICATION_2);
+			}
+
+			boolean bindToUser = false;
+
+			if (toUser == null) {
+				query.append(_FINDER_COLUMN_FA_TU_MT_TOUSER_1);
+			}
+			else if (toUser.equals(StringPool.BLANK)) {
+				query.append(_FINDER_COLUMN_FA_TU_MT_TOUSER_3);
+			}
+			else {
+				bindToUser = true;
+
+				query.append(_FINDER_COLUMN_FA_TU_MT_TOUSER_2);
+			}
+
+			boolean bindMessageType = false;
+
+			if (messageType == null) {
+				query.append(_FINDER_COLUMN_FA_TU_MT_MESSAGETYPE_1);
+			}
+			else if (messageType.equals(StringPool.BLANK)) {
+				query.append(_FINDER_COLUMN_FA_TU_MT_MESSAGETYPE_3);
+			}
+			else {
+				bindMessageType = true;
+
+				query.append(_FINDER_COLUMN_FA_TU_MT_MESSAGETYPE_2);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				if (bindFromApplication) {
+					qPos.add(fromApplication);
+				}
+
+				if (bindToUser) {
+					qPos.add(toUser);
+				}
+
+				if (bindMessageType) {
+					qPos.add(messageType);
+				}
+
+				count = (Long)q.uniqueResult();
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_FA_TU_MT_FROMAPPLICATION_1 = "appMessage.fromApplication IS NULL AND ";
+	private static final String _FINDER_COLUMN_FA_TU_MT_FROMAPPLICATION_2 = "appMessage.fromApplication = ? AND ";
+	private static final String _FINDER_COLUMN_FA_TU_MT_FROMAPPLICATION_3 = "(appMessage.fromApplication IS NULL OR appMessage.fromApplication = '') AND ";
+	private static final String _FINDER_COLUMN_FA_TU_MT_TOUSER_1 = "appMessage.toUser IS NULL AND ";
+	private static final String _FINDER_COLUMN_FA_TU_MT_TOUSER_2 = "appMessage.toUser = ? AND ";
+	private static final String _FINDER_COLUMN_FA_TU_MT_TOUSER_3 = "(appMessage.toUser IS NULL OR appMessage.toUser = '') AND ";
+	private static final String _FINDER_COLUMN_FA_TU_MT_MESSAGETYPE_1 = "appMessage.messageType IS NULL";
+	private static final String _FINDER_COLUMN_FA_TU_MT_MESSAGETYPE_2 = "appMessage.messageType = ?";
+	private static final String _FINDER_COLUMN_FA_TU_MT_MESSAGETYPE_3 = "(appMessage.messageType IS NULL OR appMessage.messageType = '')";
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_FA_TU_NOTMT =
+		new FinderPath(AppMessageModelImpl.ENTITY_CACHE_ENABLED,
+			AppMessageModelImpl.FINDER_CACHE_ENABLED, AppMessageImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByFA_TU_NotMT",
+			new String[] {
+				String.class.getName(), String.class.getName(),
+				String.class.getName(),
+				
+			Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			});
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_COUNT_BY_FA_TU_NOTMT =
+		new FinderPath(AppMessageModelImpl.ENTITY_CACHE_ENABLED,
+			AppMessageModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "countByFA_TU_NotMT",
+			new String[] {
+				String.class.getName(), String.class.getName(),
+				String.class.getName()
+			});
+
+	/**
+	 * Returns all the app messages where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @return the matching app messages
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<AppMessage> findByFA_TU_NotMT(String fromApplication,
+		String toUser, String messageType) throws SystemException {
+		return findByFA_TU_NotMT(fromApplication, toUser, messageType,
+			QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the app messages where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.ssomgt.model.impl.AppMessageModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @param start the lower bound of the range of app messages
+	 * @param end the upper bound of the range of app messages (not inclusive)
+	 * @return the range of matching app messages
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<AppMessage> findByFA_TU_NotMT(String fromApplication,
+		String toUser, String messageType, int start, int end)
+		throws SystemException {
+		return findByFA_TU_NotMT(fromApplication, toUser, messageType, start,
+			end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the app messages where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.ssomgt.model.impl.AppMessageModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @param start the lower bound of the range of app messages
+	 * @param end the upper bound of the range of app messages (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching app messages
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<AppMessage> findByFA_TU_NotMT(String fromApplication,
+		String toUser, String messageType, int start, int end,
+		OrderByComparator orderByComparator) throws SystemException {
+		boolean pagination = true;
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_FA_TU_NOTMT;
+		finderArgs = new Object[] {
+				fromApplication, toUser, messageType,
+				
+				start, end, orderByComparator
+			};
+
+		List<AppMessage> list = (List<AppMessage>)FinderCacheUtil.getResult(finderPath,
+				finderArgs, this);
+
+		if ((list != null) && !list.isEmpty()) {
+			for (AppMessage appMessage : list) {
+				if (!Validator.equals(fromApplication,
+							appMessage.getFromApplication()) ||
+						!Validator.equals(toUser, appMessage.getToUser()) ||
+						Validator.equals(messageType,
+							appMessage.getMessageType())) {
+					list = null;
+
+					break;
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(5 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(5);
+			}
+
+			query.append(_SQL_SELECT_APPMESSAGE_WHERE);
+
+			boolean bindFromApplication = false;
+
+			if (fromApplication == null) {
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_FROMAPPLICATION_1);
+			}
+			else if (fromApplication.equals(StringPool.BLANK)) {
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_FROMAPPLICATION_3);
+			}
+			else {
+				bindFromApplication = true;
+
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_FROMAPPLICATION_2);
+			}
+
+			boolean bindToUser = false;
+
+			if (toUser == null) {
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_TOUSER_1);
+			}
+			else if (toUser.equals(StringPool.BLANK)) {
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_TOUSER_3);
+			}
+			else {
+				bindToUser = true;
+
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_TOUSER_2);
+			}
+
+			boolean bindMessageType = false;
+
+			if (messageType == null) {
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_MESSAGETYPE_1);
+			}
+			else if (messageType.equals(StringPool.BLANK)) {
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_MESSAGETYPE_3);
+			}
+			else {
+				bindMessageType = true;
+
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_MESSAGETYPE_2);
+			}
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+			else
+			 if (pagination) {
+				query.append(AppMessageModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				if (bindFromApplication) {
+					qPos.add(fromApplication);
+				}
+
+				if (bindToUser) {
+					qPos.add(toUser);
+				}
+
+				if (bindMessageType) {
+					qPos.add(messageType);
+				}
+
+				if (!pagination) {
+					list = (List<AppMessage>)QueryUtil.list(q, getDialect(),
+							start, end, false);
+
+					Collections.sort(list);
+
+					list = new UnmodifiableList<AppMessage>(list);
+				}
+				else {
+					list = (List<AppMessage>)QueryUtil.list(q, getDialect(),
+							start, end);
+				}
+
+				cacheResult(list);
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, list);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching app message
+	 * @throws org.oep.ssomgt.NoSuchAppMessageException if a matching app message could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public AppMessage findByFA_TU_NotMT_First(String fromApplication,
+		String toUser, String messageType, OrderByComparator orderByComparator)
+		throws NoSuchAppMessageException, SystemException {
+		AppMessage appMessage = fetchByFA_TU_NotMT_First(fromApplication,
+				toUser, messageType, orderByComparator);
+
+		if (appMessage != null) {
+			return appMessage;
+		}
+
+		StringBundler msg = new StringBundler(8);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("fromApplication=");
+		msg.append(fromApplication);
+
+		msg.append(", toUser=");
+		msg.append(toUser);
+
+		msg.append(", messageType=");
+		msg.append(messageType);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchAppMessageException(msg.toString());
+	}
+
+	/**
+	 * Returns the first app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching app message, or <code>null</code> if a matching app message could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public AppMessage fetchByFA_TU_NotMT_First(String fromApplication,
+		String toUser, String messageType, OrderByComparator orderByComparator)
+		throws SystemException {
+		List<AppMessage> list = findByFA_TU_NotMT(fromApplication, toUser,
+				messageType, 0, 1, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching app message
+	 * @throws org.oep.ssomgt.NoSuchAppMessageException if a matching app message could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public AppMessage findByFA_TU_NotMT_Last(String fromApplication,
+		String toUser, String messageType, OrderByComparator orderByComparator)
+		throws NoSuchAppMessageException, SystemException {
+		AppMessage appMessage = fetchByFA_TU_NotMT_Last(fromApplication,
+				toUser, messageType, orderByComparator);
+
+		if (appMessage != null) {
+			return appMessage;
+		}
+
+		StringBundler msg = new StringBundler(8);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("fromApplication=");
+		msg.append(fromApplication);
+
+		msg.append(", toUser=");
+		msg.append(toUser);
+
+		msg.append(", messageType=");
+		msg.append(messageType);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchAppMessageException(msg.toString());
+	}
+
+	/**
+	 * Returns the last app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching app message, or <code>null</code> if a matching app message could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public AppMessage fetchByFA_TU_NotMT_Last(String fromApplication,
+		String toUser, String messageType, OrderByComparator orderByComparator)
+		throws SystemException {
+		int count = countByFA_TU_NotMT(fromApplication, toUser, messageType);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<AppMessage> list = findByFA_TU_NotMT(fromApplication, toUser,
+				messageType, count - 1, count, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the app messages before and after the current app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	 *
+	 * @param appMessageId the primary key of the current app message
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next app message
+	 * @throws org.oep.ssomgt.NoSuchAppMessageException if a app message with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public AppMessage[] findByFA_TU_NotMT_PrevAndNext(long appMessageId,
+		String fromApplication, String toUser, String messageType,
+		OrderByComparator orderByComparator)
+		throws NoSuchAppMessageException, SystemException {
+		AppMessage appMessage = findByPrimaryKey(appMessageId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			AppMessage[] array = new AppMessageImpl[3];
+
+			array[0] = getByFA_TU_NotMT_PrevAndNext(session, appMessage,
+					fromApplication, toUser, messageType, orderByComparator,
+					true);
+
+			array[1] = appMessage;
+
+			array[2] = getByFA_TU_NotMT_PrevAndNext(session, appMessage,
+					fromApplication, toUser, messageType, orderByComparator,
+					false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected AppMessage getByFA_TU_NotMT_PrevAndNext(Session session,
+		AppMessage appMessage, String fromApplication, String toUser,
+		String messageType, OrderByComparator orderByComparator,
+		boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_APPMESSAGE_WHERE);
+
+		boolean bindFromApplication = false;
+
+		if (fromApplication == null) {
+			query.append(_FINDER_COLUMN_FA_TU_NOTMT_FROMAPPLICATION_1);
+		}
+		else if (fromApplication.equals(StringPool.BLANK)) {
+			query.append(_FINDER_COLUMN_FA_TU_NOTMT_FROMAPPLICATION_3);
+		}
+		else {
+			bindFromApplication = true;
+
+			query.append(_FINDER_COLUMN_FA_TU_NOTMT_FROMAPPLICATION_2);
+		}
+
+		boolean bindToUser = false;
+
+		if (toUser == null) {
+			query.append(_FINDER_COLUMN_FA_TU_NOTMT_TOUSER_1);
+		}
+		else if (toUser.equals(StringPool.BLANK)) {
+			query.append(_FINDER_COLUMN_FA_TU_NOTMT_TOUSER_3);
+		}
+		else {
+			bindToUser = true;
+
+			query.append(_FINDER_COLUMN_FA_TU_NOTMT_TOUSER_2);
+		}
+
+		boolean bindMessageType = false;
+
+		if (messageType == null) {
+			query.append(_FINDER_COLUMN_FA_TU_NOTMT_MESSAGETYPE_1);
+		}
+		else if (messageType.equals(StringPool.BLANK)) {
+			query.append(_FINDER_COLUMN_FA_TU_NOTMT_MESSAGETYPE_3);
+		}
+		else {
+			bindMessageType = true;
+
+			query.append(_FINDER_COLUMN_FA_TU_NOTMT_MESSAGETYPE_2);
+		}
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			query.append(AppMessageModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		if (bindFromApplication) {
+			qPos.add(fromApplication);
+		}
+
+		if (bindToUser) {
+			qPos.add(toUser);
+		}
+
+		if (bindMessageType) {
+			qPos.add(messageType);
+		}
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(appMessage);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<AppMessage> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the app messages where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63; from the database.
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public void removeByFA_TU_NotMT(String fromApplication, String toUser,
+		String messageType) throws SystemException {
+		for (AppMessage appMessage : findByFA_TU_NotMT(fromApplication, toUser,
+				messageType, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+			remove(appMessage);
+		}
+	}
+
+	/**
+	 * Returns the number of app messages where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	 *
+	 * @param fromApplication the from application
+	 * @param toUser the to user
+	 * @param messageType the message type
+	 * @return the number of matching app messages
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public int countByFA_TU_NotMT(String fromApplication, String toUser,
+		String messageType) throws SystemException {
+		FinderPath finderPath = FINDER_PATH_WITH_PAGINATION_COUNT_BY_FA_TU_NOTMT;
+
+		Object[] finderArgs = new Object[] { fromApplication, toUser, messageType };
+
+		Long count = (Long)FinderCacheUtil.getResult(finderPath, finderArgs,
+				this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(4);
+
+			query.append(_SQL_COUNT_APPMESSAGE_WHERE);
+
+			boolean bindFromApplication = false;
+
+			if (fromApplication == null) {
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_FROMAPPLICATION_1);
+			}
+			else if (fromApplication.equals(StringPool.BLANK)) {
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_FROMAPPLICATION_3);
+			}
+			else {
+				bindFromApplication = true;
+
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_FROMAPPLICATION_2);
+			}
+
+			boolean bindToUser = false;
+
+			if (toUser == null) {
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_TOUSER_1);
+			}
+			else if (toUser.equals(StringPool.BLANK)) {
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_TOUSER_3);
+			}
+			else {
+				bindToUser = true;
+
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_TOUSER_2);
+			}
+
+			boolean bindMessageType = false;
+
+			if (messageType == null) {
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_MESSAGETYPE_1);
+			}
+			else if (messageType.equals(StringPool.BLANK)) {
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_MESSAGETYPE_3);
+			}
+			else {
+				bindMessageType = true;
+
+				query.append(_FINDER_COLUMN_FA_TU_NOTMT_MESSAGETYPE_2);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				if (bindFromApplication) {
+					qPos.add(fromApplication);
+				}
+
+				if (bindToUser) {
+					qPos.add(toUser);
+				}
+
+				if (bindMessageType) {
+					qPos.add(messageType);
+				}
+
+				count = (Long)q.uniqueResult();
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_FA_TU_NOTMT_FROMAPPLICATION_1 = "appMessage.fromApplication IS NULL AND ";
+	private static final String _FINDER_COLUMN_FA_TU_NOTMT_FROMAPPLICATION_2 = "appMessage.fromApplication = ? AND ";
+	private static final String _FINDER_COLUMN_FA_TU_NOTMT_FROMAPPLICATION_3 = "(appMessage.fromApplication IS NULL OR appMessage.fromApplication = '') AND ";
+	private static final String _FINDER_COLUMN_FA_TU_NOTMT_TOUSER_1 = "appMessage.toUser IS NULL AND ";
+	private static final String _FINDER_COLUMN_FA_TU_NOTMT_TOUSER_2 = "appMessage.toUser = ? AND ";
+	private static final String _FINDER_COLUMN_FA_TU_NOTMT_TOUSER_3 = "(appMessage.toUser IS NULL OR appMessage.toUser = '') AND ";
+	private static final String _FINDER_COLUMN_FA_TU_NOTMT_MESSAGETYPE_1 = "appMessage.messageType IS NOT NULL";
+	private static final String _FINDER_COLUMN_FA_TU_NOTMT_MESSAGETYPE_2 = "appMessage.messageType != ?";
+	private static final String _FINDER_COLUMN_FA_TU_NOTMT_MESSAGETYPE_3 = "(appMessage.messageType IS NULL OR appMessage.messageType != '')";
 
 	public AppMessagePersistenceImpl() {
 		setModelClass(AppMessage.class);
@@ -1490,6 +2894,29 @@ public class AppMessagePersistenceImpl extends BasePersistenceImpl<AppMessage>
 
 				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_FA_TU, args);
 				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FA_TU,
+					args);
+			}
+
+			if ((appMessageModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FA_TU_MT.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						appMessageModelImpl.getOriginalFromApplication(),
+						appMessageModelImpl.getOriginalToUser(),
+						appMessageModelImpl.getOriginalMessageType()
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_FA_TU_MT, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FA_TU_MT,
+					args);
+
+				args = new Object[] {
+						appMessageModelImpl.getFromApplication(),
+						appMessageModelImpl.getToUser(),
+						appMessageModelImpl.getMessageType()
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_FA_TU_MT, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FA_TU_MT,
 					args);
 			}
 		}

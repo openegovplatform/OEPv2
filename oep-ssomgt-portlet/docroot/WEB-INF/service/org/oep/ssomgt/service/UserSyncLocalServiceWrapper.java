@@ -436,6 +436,23 @@ public class UserSyncLocalServiceWrapper implements UserSyncLocalService,
 			isSync, startIndex, endIndex, serviceContext);
 	}
 
+	@Override
+	public org.oep.ssomgt.model.UserSync findByApplicationEmployee(
+		long applicationId, long employeeId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.ssomgt.NoSuchUserSyncException {
+		return _userSyncLocalService.findByApplicationEmployee(applicationId,
+			employeeId);
+	}
+
+	@Override
+	public org.oep.ssomgt.model.UserSync findByApplicationUser(
+		long applicationId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.ssomgt.NoSuchUserSyncException {
+		return _userSyncLocalService.findByApplicationUser(applicationId, userId);
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */

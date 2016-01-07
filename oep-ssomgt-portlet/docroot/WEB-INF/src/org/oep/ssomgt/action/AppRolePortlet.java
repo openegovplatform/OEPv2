@@ -17,6 +17,7 @@
 package org.oep.ssomgt.action;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -25,17 +26,24 @@ import org.oep.ssomgt.DuplicateRoleCodeException;
 import org.oep.ssomgt.RoleCodeRangeLengthException;
 import org.oep.ssomgt.RoleNameRangeLengthException;
 import org.oep.ssomgt.model.AppRole;
+import org.oep.ssomgt.model.AppRole2Employee;
+import org.oep.ssomgt.model.UserSync;
 import org.oep.ssomgt.service.AppRole2EmployeeLocalServiceUtil;
 import org.oep.ssomgt.service.AppRole2JobPosLocalServiceUtil;
 import org.oep.ssomgt.service.AppRoleLocalServiceUtil;
+import org.oep.ssomgt.service.UserSyncLocalServiceUtil;
+import org.oep.usermgt.model.Employee;
+import org.oep.usermgt.service.EmployeeLocalServiceUtil;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.ServiceContextThreadLocal;
+import com.liferay.portal.service.UserLocalServiceUtil;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 
@@ -72,7 +80,29 @@ public class AppRolePortlet extends MVCPortlet {
 			
 			Long editId = ParamUtil.getLong(request, AppRole2EmployeeKeys.AddEditAttributes.EDIT_ID, PortletKeys.LONG_DEFAULT);
 			if (editId == PortletKeys.LONG_DEFAULT) {
+				Employee employee = EmployeeLocalServiceUtil.getEmployee(employeeId);
 				AppRole2EmployeeLocalServiceUtil.addAppRole2Employee(appRoleId, employeeId, serviceContext);
+				AppRole role = AppRoleLocalServiceUtil.getAppRole(appRoleId);
+				try {
+					UserSync userSync = UserSyncLocalServiceUtil.findByApplicationEmployee(role.getApplicationId(), employeeId);
+					String roles = userSync.getRoles();
+					userSync.setCheckpoint(new Date());
+					if (!roles.contains(role.getRoleCode())) {
+						if (roles.equals(""))
+							roles = role.getRoleCode();
+						else
+							roles += "," + role.getRoleCode();
+					}
+					else {
+						
+					}
+					UserSyncLocalServiceUtil.updateUserSync(userSync);
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+					User user = UserLocalServiceUtil.getUser(employee.getMappingUserId());
+					UserSyncLocalServiceUtil.addUserSync(role.getApplicationId(), employeeId, employee.getMappingUserId(), user.getScreenName(), user.getScreenName(), employee.getFullName(), user.getEmailAddress(), user.getPassword(), 1, role.getRoleCode(), new Date(), null);
+				}
 				SessionMessages.add(request, AssignRoleKeys.SuccessMessageKeys.ORG_OEP_SSOMGT_PORTLET_APPROLE_ASSIGNROLE2EMPLOYEE_SUCCESS_ADDNEW);	
 			} else {
 			}
@@ -100,6 +130,19 @@ public class AppRolePortlet extends MVCPortlet {
 	public void deleteEP(ActionRequest request, ActionResponse response) throws PortalException, SystemException, IOException {
 		long deleteId = ParamUtil.getLong(request, AppRole2JobPosKeys.BaseAppRole2JobPosAttributes.DELETE_ID, PortletKeys.LONG_DEFAULT);
 		try {
+			AppRole2Employee a2e = AppRole2EmployeeLocalServiceUtil.getAppRole2Employee(deleteId);
+			if (a2e != null) {
+				try {
+					AppRole role = AppRoleLocalServiceUtil.getAppRole(a2e.getAppRoleId());
+					UserSync userSync = UserSyncLocalServiceUtil.findByApplicationEmployee(role.getApplicationId(), a2e.getEmployeeId());
+					userSync.setCheckpoint(new Date());
+					userSync.setAccessibleStatus(0);
+					UserSyncLocalServiceUtil.updateUserSync(userSync);
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+				}				
+			}
 			AppRole2EmployeeLocalServiceUtil.removeAppRole2Employee(deleteId);
 			SessionMessages.add(request, AssignRoleKeys.SuccessMessageKeys.ORG_OEP_SSOMGT_PORTLET_APPROLE_ASSIGNROLE2EMPLOYEE_SUCCESS_DELETE);	
 		}

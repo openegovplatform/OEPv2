@@ -98,7 +98,9 @@ public class UserSyncModelImpl extends BaseModelImpl<UserSync>
 			true);
 	public static long APPLICATIONID_COLUMN_BITMASK = 1L;
 	public static long CHECKPOINT_COLUMN_BITMASK = 2L;
-	public static long USERSYNCID_COLUMN_BITMASK = 4L;
+	public static long EMPLOYEEID_COLUMN_BITMASK = 4L;
+	public static long USERID_COLUMN_BITMASK = 8L;
+	public static long USERSYNCID_COLUMN_BITMASK = 16L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -330,7 +332,19 @@ public class UserSyncModelImpl extends BaseModelImpl<UserSync>
 
 	@Override
 	public void setEmployeeId(long employeeId) {
+		_columnBitmask |= EMPLOYEEID_COLUMN_BITMASK;
+
+		if (!_setOriginalEmployeeId) {
+			_setOriginalEmployeeId = true;
+
+			_originalEmployeeId = _employeeId;
+		}
+
 		_employeeId = employeeId;
+	}
+
+	public long getOriginalEmployeeId() {
+		return _originalEmployeeId;
 	}
 
 	@JSON
@@ -341,6 +355,14 @@ public class UserSyncModelImpl extends BaseModelImpl<UserSync>
 
 	@Override
 	public void setUserId(long userId) {
+		_columnBitmask |= USERID_COLUMN_BITMASK;
+
+		if (!_setOriginalUserId) {
+			_setOriginalUserId = true;
+
+			_originalUserId = _userId;
+		}
+
 		_userId = userId;
 	}
 
@@ -352,6 +374,10 @@ public class UserSyncModelImpl extends BaseModelImpl<UserSync>
 	@Override
 	public void setUserUuid(String userUuid) {
 		_userUuid = userUuid;
+	}
+
+	public long getOriginalUserId() {
+		return _originalUserId;
 	}
 
 	@JSON
@@ -593,6 +619,14 @@ public class UserSyncModelImpl extends BaseModelImpl<UserSync>
 
 		userSyncModelImpl._setOriginalApplicationId = false;
 
+		userSyncModelImpl._originalEmployeeId = userSyncModelImpl._employeeId;
+
+		userSyncModelImpl._setOriginalEmployeeId = false;
+
+		userSyncModelImpl._originalUserId = userSyncModelImpl._userId;
+
+		userSyncModelImpl._setOriginalUserId = false;
+
 		userSyncModelImpl._originalCheckpoint = userSyncModelImpl._checkpoint;
 
 		userSyncModelImpl._columnBitmask = 0;
@@ -791,8 +825,12 @@ public class UserSyncModelImpl extends BaseModelImpl<UserSync>
 	private long _originalApplicationId;
 	private boolean _setOriginalApplicationId;
 	private long _employeeId;
+	private long _originalEmployeeId;
+	private boolean _setOriginalEmployeeId;
 	private long _userId;
 	private String _userUuid;
+	private long _originalUserId;
+	private boolean _setOriginalUserId;
 	private String _ssoUserName;
 	private String _appUserName;
 	private String _fullName;

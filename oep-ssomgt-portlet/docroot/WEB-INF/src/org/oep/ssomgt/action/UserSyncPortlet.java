@@ -2,6 +2,7 @@ package org.oep.ssomgt.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -18,6 +19,7 @@ import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.servlet.SessionErrors;
+import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.util.Constants;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.util.PortalUtil;
@@ -27,7 +29,40 @@ import com.liferay.util.bridges.mvc.MVCPortlet;
  * Portlet implementation class UserSyncPortlet
  */
 public class UserSyncPortlet extends MVCPortlet {
- 
+	public void addEditUserSync(ActionRequest request, ActionResponse response) throws SystemException, PortalException, IOException {
+		if (SessionErrors.isEmpty(request)) {
+			String appUserName = ParamUtil.getString(request, UserSyncKeys.AddEditAttributes.APP_USERNAME, PortletKeys.TEXT_BOX);
+						
+			Long editId = ParamUtil.getLong(request, UserSyncKeys.AddEditAttributes.EDIT_ID, PortletKeys.LONG_DEFAULT);
+			if (editId == PortletKeys.LONG_DEFAULT) {
+			} else {
+				UserSync userSync = UserSyncLocalServiceUtil.getUserSync(editId);
+				userSync.setAppUserName(appUserName);
+				userSync.setCheckpoint(new Date());
+				UserSyncLocalServiceUtil.updateUserSync(userSync);
+			}
+		}
+		SessionMessages.add(request, PortalUtil.getPortletId(request) + SessionMessages.KEY_SUFFIX_HIDE_DEFAULT_ERROR_MESSAGE); 		
+		if (!SessionErrors.isEmpty(request)) {
+			PortalUtil.copyRequestParameters(request, response);
+		} else {
+			response.sendRedirect(ParamUtil.getString(request, PortletKeys.REDIRECT_PAGE));
+		}
+	} 
+
+	public void viewUserSync(ActionRequest request, ActionResponse response) throws PortalException, SystemException, IOException {
+		long editId = ParamUtil.getLong(request, UserSyncKeys.BaseUserSyncAttributes.EDIT_ID, PortletKeys.LONG_DEFAULT);
+		
+		UserSync userSync = UserSyncLocalServiceUtil.getUserSync(editId);
+		setParameterIntoResponse(response, userSync);
+		
+		if (!SessionErrors.isEmpty(request)) {
+			response.sendRedirect(ParamUtil.getString(request, PortletKeys.REDIRECT_PAGE));
+		} else {
+			PortalUtil.copyRequestParameters(request, response);
+		}
+	}
+	
 	public void changeMapping(ActionRequest request, ActionResponse response) throws PortalException, SystemException, IOException {
 		long editId = ParamUtil.getLong(request, UserSyncKeys.BaseUserSyncAttributes.EDIT_ID, PortletKeys.LONG_DEFAULT);
 		

@@ -635,6 +635,484 @@ public class UserSyncPersistenceImpl extends BasePersistenceImpl<UserSync>
 	private static final String _FINDER_COLUMN_A_GTCP_APPLICATIONID_2 = "userSync.applicationId = ? AND ";
 	private static final String _FINDER_COLUMN_A_GTCP_CHECKPOINT_1 = "userSync.checkpoint > NULL";
 	private static final String _FINDER_COLUMN_A_GTCP_CHECKPOINT_2 = "userSync.checkpoint > ?";
+	public static final FinderPath FINDER_PATH_FETCH_BY_A_E = new FinderPath(UserSyncModelImpl.ENTITY_CACHE_ENABLED,
+			UserSyncModelImpl.FINDER_CACHE_ENABLED, UserSyncImpl.class,
+			FINDER_CLASS_NAME_ENTITY, "fetchByA_E",
+			new String[] { Long.class.getName(), Long.class.getName() },
+			UserSyncModelImpl.APPLICATIONID_COLUMN_BITMASK |
+			UserSyncModelImpl.EMPLOYEEID_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_A_E = new FinderPath(UserSyncModelImpl.ENTITY_CACHE_ENABLED,
+			UserSyncModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByA_E",
+			new String[] { Long.class.getName(), Long.class.getName() });
+
+	/**
+	 * Returns the user sync where applicationId = &#63; and employeeId = &#63; or throws a {@link org.oep.ssomgt.NoSuchUserSyncException} if it could not be found.
+	 *
+	 * @param applicationId the application ID
+	 * @param employeeId the employee ID
+	 * @return the matching user sync
+	 * @throws org.oep.ssomgt.NoSuchUserSyncException if a matching user sync could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public UserSync findByA_E(long applicationId, long employeeId)
+		throws NoSuchUserSyncException, SystemException {
+		UserSync userSync = fetchByA_E(applicationId, employeeId);
+
+		if (userSync == null) {
+			StringBundler msg = new StringBundler(6);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("applicationId=");
+			msg.append(applicationId);
+
+			msg.append(", employeeId=");
+			msg.append(employeeId);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			if (_log.isWarnEnabled()) {
+				_log.warn(msg.toString());
+			}
+
+			throw new NoSuchUserSyncException(msg.toString());
+		}
+
+		return userSync;
+	}
+
+	/**
+	 * Returns the user sync where applicationId = &#63; and employeeId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 *
+	 * @param applicationId the application ID
+	 * @param employeeId the employee ID
+	 * @return the matching user sync, or <code>null</code> if a matching user sync could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public UserSync fetchByA_E(long applicationId, long employeeId)
+		throws SystemException {
+		return fetchByA_E(applicationId, employeeId, true);
+	}
+
+	/**
+	 * Returns the user sync where applicationId = &#63; and employeeId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param applicationId the application ID
+	 * @param employeeId the employee ID
+	 * @param retrieveFromCache whether to use the finder cache
+	 * @return the matching user sync, or <code>null</code> if a matching user sync could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public UserSync fetchByA_E(long applicationId, long employeeId,
+		boolean retrieveFromCache) throws SystemException {
+		Object[] finderArgs = new Object[] { applicationId, employeeId };
+
+		Object result = null;
+
+		if (retrieveFromCache) {
+			result = FinderCacheUtil.getResult(FINDER_PATH_FETCH_BY_A_E,
+					finderArgs, this);
+		}
+
+		if (result instanceof UserSync) {
+			UserSync userSync = (UserSync)result;
+
+			if ((applicationId != userSync.getApplicationId()) ||
+					(employeeId != userSync.getEmployeeId())) {
+				result = null;
+			}
+		}
+
+		if (result == null) {
+			StringBundler query = new StringBundler(4);
+
+			query.append(_SQL_SELECT_USERSYNC_WHERE);
+
+			query.append(_FINDER_COLUMN_A_E_APPLICATIONID_2);
+
+			query.append(_FINDER_COLUMN_A_E_EMPLOYEEID_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(applicationId);
+
+				qPos.add(employeeId);
+
+				List<UserSync> list = q.list();
+
+				if (list.isEmpty()) {
+					FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_A_E,
+						finderArgs, list);
+				}
+				else {
+					if ((list.size() > 1) && _log.isWarnEnabled()) {
+						_log.warn(
+							"UserSyncPersistenceImpl.fetchByA_E(long, long, boolean) with parameters (" +
+							StringUtil.merge(finderArgs) +
+							") yields a result set with more than 1 result. This violates the logical unique restriction. There is no order guarantee on which result is returned by this finder.");
+					}
+
+					UserSync userSync = list.get(0);
+
+					result = userSync;
+
+					cacheResult(userSync);
+
+					if ((userSync.getApplicationId() != applicationId) ||
+							(userSync.getEmployeeId() != employeeId)) {
+						FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_A_E,
+							finderArgs, userSync);
+					}
+				}
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_A_E,
+					finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		if (result instanceof List<?>) {
+			return null;
+		}
+		else {
+			return (UserSync)result;
+		}
+	}
+
+	/**
+	 * Removes the user sync where applicationId = &#63; and employeeId = &#63; from the database.
+	 *
+	 * @param applicationId the application ID
+	 * @param employeeId the employee ID
+	 * @return the user sync that was removed
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public UserSync removeByA_E(long applicationId, long employeeId)
+		throws NoSuchUserSyncException, SystemException {
+		UserSync userSync = findByA_E(applicationId, employeeId);
+
+		return remove(userSync);
+	}
+
+	/**
+	 * Returns the number of user syncs where applicationId = &#63; and employeeId = &#63;.
+	 *
+	 * @param applicationId the application ID
+	 * @param employeeId the employee ID
+	 * @return the number of matching user syncs
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public int countByA_E(long applicationId, long employeeId)
+		throws SystemException {
+		FinderPath finderPath = FINDER_PATH_COUNT_BY_A_E;
+
+		Object[] finderArgs = new Object[] { applicationId, employeeId };
+
+		Long count = (Long)FinderCacheUtil.getResult(finderPath, finderArgs,
+				this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(3);
+
+			query.append(_SQL_COUNT_USERSYNC_WHERE);
+
+			query.append(_FINDER_COLUMN_A_E_APPLICATIONID_2);
+
+			query.append(_FINDER_COLUMN_A_E_EMPLOYEEID_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(applicationId);
+
+				qPos.add(employeeId);
+
+				count = (Long)q.uniqueResult();
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_A_E_APPLICATIONID_2 = "userSync.applicationId = ? AND ";
+	private static final String _FINDER_COLUMN_A_E_EMPLOYEEID_2 = "userSync.employeeId = ?";
+	public static final FinderPath FINDER_PATH_FETCH_BY_A_U = new FinderPath(UserSyncModelImpl.ENTITY_CACHE_ENABLED,
+			UserSyncModelImpl.FINDER_CACHE_ENABLED, UserSyncImpl.class,
+			FINDER_CLASS_NAME_ENTITY, "fetchByA_U",
+			new String[] { Long.class.getName(), Long.class.getName() },
+			UserSyncModelImpl.APPLICATIONID_COLUMN_BITMASK |
+			UserSyncModelImpl.USERID_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_A_U = new FinderPath(UserSyncModelImpl.ENTITY_CACHE_ENABLED,
+			UserSyncModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByA_U",
+			new String[] { Long.class.getName(), Long.class.getName() });
+
+	/**
+	 * Returns the user sync where applicationId = &#63; and userId = &#63; or throws a {@link org.oep.ssomgt.NoSuchUserSyncException} if it could not be found.
+	 *
+	 * @param applicationId the application ID
+	 * @param userId the user ID
+	 * @return the matching user sync
+	 * @throws org.oep.ssomgt.NoSuchUserSyncException if a matching user sync could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public UserSync findByA_U(long applicationId, long userId)
+		throws NoSuchUserSyncException, SystemException {
+		UserSync userSync = fetchByA_U(applicationId, userId);
+
+		if (userSync == null) {
+			StringBundler msg = new StringBundler(6);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("applicationId=");
+			msg.append(applicationId);
+
+			msg.append(", userId=");
+			msg.append(userId);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			if (_log.isWarnEnabled()) {
+				_log.warn(msg.toString());
+			}
+
+			throw new NoSuchUserSyncException(msg.toString());
+		}
+
+		return userSync;
+	}
+
+	/**
+	 * Returns the user sync where applicationId = &#63; and userId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 *
+	 * @param applicationId the application ID
+	 * @param userId the user ID
+	 * @return the matching user sync, or <code>null</code> if a matching user sync could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public UserSync fetchByA_U(long applicationId, long userId)
+		throws SystemException {
+		return fetchByA_U(applicationId, userId, true);
+	}
+
+	/**
+	 * Returns the user sync where applicationId = &#63; and userId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param applicationId the application ID
+	 * @param userId the user ID
+	 * @param retrieveFromCache whether to use the finder cache
+	 * @return the matching user sync, or <code>null</code> if a matching user sync could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public UserSync fetchByA_U(long applicationId, long userId,
+		boolean retrieveFromCache) throws SystemException {
+		Object[] finderArgs = new Object[] { applicationId, userId };
+
+		Object result = null;
+
+		if (retrieveFromCache) {
+			result = FinderCacheUtil.getResult(FINDER_PATH_FETCH_BY_A_U,
+					finderArgs, this);
+		}
+
+		if (result instanceof UserSync) {
+			UserSync userSync = (UserSync)result;
+
+			if ((applicationId != userSync.getApplicationId()) ||
+					(userId != userSync.getUserId())) {
+				result = null;
+			}
+		}
+
+		if (result == null) {
+			StringBundler query = new StringBundler(4);
+
+			query.append(_SQL_SELECT_USERSYNC_WHERE);
+
+			query.append(_FINDER_COLUMN_A_U_APPLICATIONID_2);
+
+			query.append(_FINDER_COLUMN_A_U_USERID_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(applicationId);
+
+				qPos.add(userId);
+
+				List<UserSync> list = q.list();
+
+				if (list.isEmpty()) {
+					FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_A_U,
+						finderArgs, list);
+				}
+				else {
+					if ((list.size() > 1) && _log.isWarnEnabled()) {
+						_log.warn(
+							"UserSyncPersistenceImpl.fetchByA_U(long, long, boolean) with parameters (" +
+							StringUtil.merge(finderArgs) +
+							") yields a result set with more than 1 result. This violates the logical unique restriction. There is no order guarantee on which result is returned by this finder.");
+					}
+
+					UserSync userSync = list.get(0);
+
+					result = userSync;
+
+					cacheResult(userSync);
+
+					if ((userSync.getApplicationId() != applicationId) ||
+							(userSync.getUserId() != userId)) {
+						FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_A_U,
+							finderArgs, userSync);
+					}
+				}
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_A_U,
+					finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		if (result instanceof List<?>) {
+			return null;
+		}
+		else {
+			return (UserSync)result;
+		}
+	}
+
+	/**
+	 * Removes the user sync where applicationId = &#63; and userId = &#63; from the database.
+	 *
+	 * @param applicationId the application ID
+	 * @param userId the user ID
+	 * @return the user sync that was removed
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public UserSync removeByA_U(long applicationId, long userId)
+		throws NoSuchUserSyncException, SystemException {
+		UserSync userSync = findByA_U(applicationId, userId);
+
+		return remove(userSync);
+	}
+
+	/**
+	 * Returns the number of user syncs where applicationId = &#63; and userId = &#63;.
+	 *
+	 * @param applicationId the application ID
+	 * @param userId the user ID
+	 * @return the number of matching user syncs
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public int countByA_U(long applicationId, long userId)
+		throws SystemException {
+		FinderPath finderPath = FINDER_PATH_COUNT_BY_A_U;
+
+		Object[] finderArgs = new Object[] { applicationId, userId };
+
+		Long count = (Long)FinderCacheUtil.getResult(finderPath, finderArgs,
+				this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(3);
+
+			query.append(_SQL_COUNT_USERSYNC_WHERE);
+
+			query.append(_FINDER_COLUMN_A_U_APPLICATIONID_2);
+
+			query.append(_FINDER_COLUMN_A_U_USERID_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(applicationId);
+
+				qPos.add(userId);
+
+				count = (Long)q.uniqueResult();
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_A_U_APPLICATIONID_2 = "userSync.applicationId = ? AND ";
+	private static final String _FINDER_COLUMN_A_U_USERID_2 = "userSync.userId = ?";
 
 	public UserSyncPersistenceImpl() {
 		setModelClass(UserSync.class);
@@ -649,6 +1127,14 @@ public class UserSyncPersistenceImpl extends BasePersistenceImpl<UserSync>
 	public void cacheResult(UserSync userSync) {
 		EntityCacheUtil.putResult(UserSyncModelImpl.ENTITY_CACHE_ENABLED,
 			UserSyncImpl.class, userSync.getPrimaryKey(), userSync);
+
+		FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_A_E,
+			new Object[] { userSync.getApplicationId(), userSync.getEmployeeId() },
+			userSync);
+
+		FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_A_U,
+			new Object[] { userSync.getApplicationId(), userSync.getUserId() },
+			userSync);
 
 		userSync.resetOriginalValues();
 	}
@@ -706,6 +1192,8 @@ public class UserSyncPersistenceImpl extends BasePersistenceImpl<UserSync>
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
+
+		clearUniqueFindersCache(userSync);
 	}
 
 	@Override
@@ -716,6 +1204,93 @@ public class UserSyncPersistenceImpl extends BasePersistenceImpl<UserSync>
 		for (UserSync userSync : userSyncs) {
 			EntityCacheUtil.removeResult(UserSyncModelImpl.ENTITY_CACHE_ENABLED,
 				UserSyncImpl.class, userSync.getPrimaryKey());
+
+			clearUniqueFindersCache(userSync);
+		}
+	}
+
+	protected void cacheUniqueFindersCache(UserSync userSync) {
+		if (userSync.isNew()) {
+			Object[] args = new Object[] {
+					userSync.getApplicationId(), userSync.getEmployeeId()
+				};
+
+			FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_A_E, args,
+				Long.valueOf(1));
+			FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_A_E, args, userSync);
+
+			args = new Object[] {
+					userSync.getApplicationId(), userSync.getUserId()
+				};
+
+			FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_A_U, args,
+				Long.valueOf(1));
+			FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_A_U, args, userSync);
+		}
+		else {
+			UserSyncModelImpl userSyncModelImpl = (UserSyncModelImpl)userSync;
+
+			if ((userSyncModelImpl.getColumnBitmask() &
+					FINDER_PATH_FETCH_BY_A_E.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						userSync.getApplicationId(), userSync.getEmployeeId()
+					};
+
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_A_E, args,
+					Long.valueOf(1));
+				FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_A_E, args,
+					userSync);
+			}
+
+			if ((userSyncModelImpl.getColumnBitmask() &
+					FINDER_PATH_FETCH_BY_A_U.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						userSync.getApplicationId(), userSync.getUserId()
+					};
+
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_A_U, args,
+					Long.valueOf(1));
+				FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_A_U, args,
+					userSync);
+			}
+		}
+	}
+
+	protected void clearUniqueFindersCache(UserSync userSync) {
+		UserSyncModelImpl userSyncModelImpl = (UserSyncModelImpl)userSync;
+
+		Object[] args = new Object[] {
+				userSync.getApplicationId(), userSync.getEmployeeId()
+			};
+
+		FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_A_E, args);
+		FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_A_E, args);
+
+		if ((userSyncModelImpl.getColumnBitmask() &
+				FINDER_PATH_FETCH_BY_A_E.getColumnBitmask()) != 0) {
+			args = new Object[] {
+					userSyncModelImpl.getOriginalApplicationId(),
+					userSyncModelImpl.getOriginalEmployeeId()
+				};
+
+			FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_A_E, args);
+			FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_A_E, args);
+		}
+
+		args = new Object[] { userSync.getApplicationId(), userSync.getUserId() };
+
+		FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_A_U, args);
+		FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_A_U, args);
+
+		if ((userSyncModelImpl.getColumnBitmask() &
+				FINDER_PATH_FETCH_BY_A_U.getColumnBitmask()) != 0) {
+			args = new Object[] {
+					userSyncModelImpl.getOriginalApplicationId(),
+					userSyncModelImpl.getOriginalUserId()
+				};
+
+			FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_A_U, args);
+			FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_A_U, args);
 		}
 	}
 
@@ -858,6 +1433,9 @@ public class UserSyncPersistenceImpl extends BasePersistenceImpl<UserSync>
 
 		EntityCacheUtil.putResult(UserSyncModelImpl.ENTITY_CACHE_ENABLED,
 			UserSyncImpl.class, userSync.getPrimaryKey(), userSync);
+
+		clearUniqueFindersCache(userSync);
+		cacheUniqueFindersCache(userSync);
 
 		return userSync;
 	}

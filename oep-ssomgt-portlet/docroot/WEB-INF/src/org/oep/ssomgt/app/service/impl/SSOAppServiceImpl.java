@@ -15,6 +15,7 @@
 package org.oep.ssomgt.app.service.impl;
 
 import java.security.InvalidKeyException;
+import java.security.Key;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
@@ -39,6 +40,7 @@ import org.oep.ssomgt.model.UserSync;
 import org.oep.ssomgt.service.AppMessageLocalServiceUtil;
 import org.oep.ssomgt.service.ApplicationLocalServiceUtil;
 import org.oep.ssomgt.service.UserSyncLocalServiceUtil;
+import org.oep.ssomgt.util.SecurityUtil;
 
 import com.liferay.portal.kernel.cache.CacheRegistryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -189,6 +191,8 @@ public class SSOAppServiceImpl extends SSOAppServiceBaseImpl {
 		
 		JSONArray accounts = JSONFactoryUtil.createJSONArray();
 		Application app = null;
+		String aesKey = SecurityUtil.randomKeyBase64();
+
 		try {
 			app = ApplicationLocalServiceUtil.getByAppCode(appCode);
 			if (app == null) {
@@ -236,31 +240,212 @@ public class SSOAppServiceImpl extends SSOAppServiceBaseImpl {
 				resObj.put("errorCode", 2);
 				return resObj.toString();
 			}
+
+			byte[] cipherData = null;
+	        try {
+				cipherData = cipher.doFinal(Base64.decode(aesKey));
+				resObj.put("key", new String(Base64.encode(cipherData)));
+	        } catch (IllegalBlockSizeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resObj.put("success", false);
+				resObj.put("errorCode", 2);
+				return resObj.toString();
+			} catch (BadPaddingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resObj.put("success", false);
+				resObj.put("errorCode", 2);
+				return resObj.toString();
+			}
+			
 			for (UserSync us : lstSyncs) {
 				User user = UserLocalServiceUtil.getUser(us.getUserId());
 				JSONObject account = JSONFactoryUtil.createJSONObject();
-		        byte[] cipherData = null;
-		        try {
-					cipherData = cipher.doFinal(us.getSsoUserName().getBytes());
-					account.put("ssousername", new String(Base64.encode(cipherData)));
-					cipherData = cipher.doFinal(us.getAppUserName().getBytes());
-					account.put("appusername", new String(Base64.encode(cipherData)));
-		        } catch (IllegalBlockSizeException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					resObj.put("success", false);
-					resObj.put("errorCode", 2);
-					return resObj.toString();
-				} catch (BadPaddingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					resObj.put("success", false);
-					resObj.put("errorCode", 2);
-					return resObj.toString();
-				}
 
-				//account.put("ssousername", us.getSsoUserName());
-				//account.put("appusername", us.getAppUserName());
+				account.put("ssousername", us.getSsoUserName());
+				account.put("appusername", us.getAppUserName());
+				account.put("fullname", us.getFullName());
+				account.put("accessiblestatus", us.getAccessibleStatus());
+				account.put("email", user.getEmailAddress());
+				account.put("password", user.getPassword());
+				account.put("checkpoint", us.getCheckpoint().getTime() / 1000);
+				account.put("roles", us.getRoles());
+				accounts.put(account);
+			}
+		} catch (NoSuchApplicationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resObj.put("success", false);
+			resObj.put("errorCode", 1);
+			return resObj.toString();
+		} catch (SystemException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resObj.put("success", false);
+			resObj.put("errorCode", 1);
+			return resObj.toString();
+		} catch (PortalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resObj.put("success", false);
+			resObj.put("errorCode", 1);
+			return resObj.toString();
+		}
+
+		String text = accounts.toString();
+		System.out.println("Accounts: " + text);
+		resObj.put("success", true);
+		resObj.put("data", SecurityUtil.encrypt(text, new String(Base64.decode(aesKey))));
+		return resObj.toString();
+	}
+
+	@JSONWebService(value="syncAccounts")
+	@AccessControlled(guestAccessEnabled=true)
+	public String syncAccounts(String appCode, String pin, long timestamp) {
+		CacheRegistryUtil.clear();
+		JSONObject resObj = JSONFactoryUtil.createJSONObject();
+		
+		JSONArray accounts = JSONFactoryUtil.createJSONArray();
+		Date checkpoint = new Date(timestamp);
+		Application app = null;
+
+		Key aesKey = SecurityUtil.randomKey();
+		
+		try {
+			app = ApplicationLocalServiceUtil.getByAppCode(appCode);
+			if (app == null) {
+				return resObj.toString();
+			}
+			else if (!app.getAppPin().equals(pin)) {
+				resObj.put("success", false);
+				resObj.put("errorCode", 3);
+				return resObj.toString();
+			}
+
+			List<UserSync> lstSyncs = UserSyncLocalServiceUtil.findByApplicationCheckPoint(app.getApplicationId(), checkpoint);
+	        KeyFactory kFactory;
+	        Cipher cipher = null;
+			try {
+				kFactory = KeyFactory.getInstance("RSA", new BouncyCastleProvider());
+		        // decode base64 of your key
+		        byte yourKey[] =  Base64.decode(app.getPublicKey());
+		        X509EncodedKeySpec spec =  new X509EncodedKeySpec(yourKey);
+		        PublicKey publicKey = (PublicKey) kFactory.generatePublic(spec);
+		        //Cipher cipher = Cipher.getInstance("RSA");
+		        cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+		        cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+		        //resObj.put("success", true);
+		        //return new String(Base64.encode(cipherData));
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resObj.put("success", false);
+				resObj.put("errorCode", 2);
+				return resObj.toString();
+			} catch (InvalidKeySpecException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchPaddingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resObj.put("success", false);
+				resObj.put("errorCode", 2);
+				return resObj.toString();
+			} catch (InvalidKeyException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resObj.put("success", false);
+				resObj.put("errorCode", 2);
+				return resObj.toString();
+			}
+
+			byte[] cipherData = null;
+	        try {
+				cipherData = cipher.doFinal(aesKey.getEncoded());
+				resObj.put("key", Base64.toBase64String(cipherData));
+	        } catch (IllegalBlockSizeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resObj.put("success", false);
+				resObj.put("errorCode", 2);
+				return resObj.toString();
+			} catch (BadPaddingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resObj.put("success", false);
+				resObj.put("errorCode", 2);
+				return resObj.toString();
+			}
+			
+			for (UserSync us : lstSyncs) {
+				User user = UserLocalServiceUtil.getUser(us.getUserId());
+				JSONObject account = JSONFactoryUtil.createJSONObject();
+
+				account.put("ssousername", us.getSsoUserName());
+				account.put("appusername", us.getAppUserName());
+				account.put("fullname", us.getFullName());
+				account.put("accessiblestatus", us.getAccessibleStatus());
+				account.put("email", user.getEmailAddress());
+				account.put("password", user.getPassword());
+				account.put("checkpoint", us.getCheckpoint().getTime() / 1000);
+				account.put("roles", us.getRoles());
+				accounts.put(account);
+			}
+		} catch (NoSuchApplicationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resObj.put("success", false);
+			resObj.put("errorCode", 1);
+			return resObj.toString();
+		} catch (SystemException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resObj.put("success", false);
+			resObj.put("errorCode", 1);
+			return resObj.toString();
+		} catch (PortalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			resObj.put("success", false);
+			resObj.put("errorCode", 1);
+			return resObj.toString();
+		}
+
+		String text = accounts.toString();
+		System.out.println("Accounts: " + text);
+		resObj.put("success", true);
+		resObj.put("data", SecurityUtil.encrypt(text, aesKey));
+		return resObj.toString();
+	}
+
+	
+	@JSONWebService(value="unsecuredSyncDateAccounts")
+	@AccessControlled(guestAccessEnabled=true)
+	public String unsecuredSyncDateAccounts(String appCode, String pin, Date checkpoint) {
+		CacheRegistryUtil.clear();
+		JSONObject resObj = JSONFactoryUtil.createJSONObject();
+		
+		JSONArray accounts = JSONFactoryUtil.createJSONArray();
+		Application app = null;
+		try {
+			app = ApplicationLocalServiceUtil.getByAppCode(appCode);
+			if (app == null) {
+				return resObj.toString();
+			}
+			else if (!app.getAppPin().equals(pin)) {
+				resObj.put("success", false);
+				resObj.put("errorCode", 3);
+				return resObj.toString();
+			}
+
+			List<UserSync> lstSyncs = UserSyncLocalServiceUtil.findByApplicationCheckPoint(app.getApplicationId(), checkpoint);
+			for (UserSync us : lstSyncs) {
+				User user = UserLocalServiceUtil.getUser(us.getUserId());
+				JSONObject account = JSONFactoryUtil.createJSONObject();
+
+				account.put("ssousername", us.getSsoUserName());
+				account.put("appusername", us.getAppUserName());
 				account.put("fullname", us.getFullName());
 				account.put("accessiblestatus", us.getAccessibleStatus());
 				account.put("email", user.getEmailAddress());
@@ -296,9 +481,9 @@ public class SSOAppServiceImpl extends SSOAppServiceBaseImpl {
 		return resObj.toString();
 	}
 
-	@JSONWebService(value="syncAccounts")
+	@JSONWebService(value="unsecuredSyncAccounts")
 	@AccessControlled(guestAccessEnabled=true)
-	public String syncAccounts(String appCode, String pin, long timestamp) {
+	public String unsecuredSyncAccounts(String appCode, String pin, long timestamp) {
 		CacheRegistryUtil.clear();
 		JSONObject resObj = JSONFactoryUtil.createJSONObject();
 		
@@ -317,66 +502,12 @@ public class SSOAppServiceImpl extends SSOAppServiceBaseImpl {
 			}
 
 			List<UserSync> lstSyncs = UserSyncLocalServiceUtil.findByApplicationCheckPoint(app.getApplicationId(), checkpoint);
-	        KeyFactory kFactory;
-	        Cipher cipher = null;
-			try {
-				kFactory = KeyFactory.getInstance("RSA", new BouncyCastleProvider());
-		        // decode base64 of your key
-		        byte yourKey[] =  Base64.decode(app.getPublicKey());
-		        X509EncodedKeySpec spec =  new X509EncodedKeySpec(yourKey);
-		        PublicKey publicKey = (PublicKey) kFactory.generatePublic(spec);
-		        //Cipher cipher = Cipher.getInstance("RSA");
-		        cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-		        cipher.init(Cipher.ENCRYPT_MODE, publicKey);
-		        //resObj.put("success", true);
-		        //return new String(Base64.encode(cipherData));
-			} catch (NoSuchAlgorithmException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				resObj.put("success", false);
-				resObj.put("errorCode", 2);
-				return resObj.toString();
-			} catch (InvalidKeySpecException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (NoSuchPaddingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				resObj.put("success", false);
-				resObj.put("errorCode", 2);
-				return resObj.toString();
-			} catch (InvalidKeyException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				resObj.put("success", false);
-				resObj.put("errorCode", 2);
-				return resObj.toString();
-			}
 			for (UserSync us : lstSyncs) {
 				User user = UserLocalServiceUtil.getUser(us.getUserId());
 				JSONObject account = JSONFactoryUtil.createJSONObject();
-		        byte[] cipherData = null;
-		        try {
-					cipherData = cipher.doFinal(us.getSsoUserName().getBytes());
-					account.put("ssousername", new String(Base64.encode(cipherData)));
-					cipherData = cipher.doFinal(us.getAppUserName().getBytes());
-					account.put("appusername", new String(Base64.encode(cipherData)));
-		        } catch (IllegalBlockSizeException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					resObj.put("success", false);
-					resObj.put("errorCode", 2);
-					return resObj.toString();
-				} catch (BadPaddingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					resObj.put("success", false);
-					resObj.put("errorCode", 2);
-					return resObj.toString();
-				}
 
-				//account.put("ssousername", us.getSsoUserName());
-				//account.put("appusername", us.getAppUserName());
+				account.put("ssousername", us.getSsoUserName());
+				account.put("appusername", us.getAppUserName());
 				account.put("fullname", us.getFullName());
 				account.put("accessiblestatus", us.getAccessibleStatus());
 				account.put("email", user.getEmailAddress());
@@ -411,5 +542,5 @@ public class SSOAppServiceImpl extends SSOAppServiceBaseImpl {
 		resObj.put("data", accounts);
 		return resObj.toString();
 	}
-
+	
 }

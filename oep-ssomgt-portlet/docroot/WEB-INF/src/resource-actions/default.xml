@@ -3,27 +3,9 @@
 
 <resource-action-mapping>
     <model-resource>
-        <model-name>org.oep.core.ssomgt.model</model-name>
+        <model-name>org.oep.ssomgt.model</model-name>
         <portlet-ref>
-            <portlet-name>oep-core-ssomgt</portlet-name>
-        </portlet-ref>
-        <permissions>
-        <supports>
-            <action-key>ADMIN_SSOMGT</action-key>
-        </supports>
-        <site-member-defaults>
-            <action-key>ADMIN_SSOMGT</action-key>
-        </site-member-defaults>
-        <guest-defaults />
-        <guest-unsupported>
-            <action-key>ADMIN_SSOMGT</action-key>
-        </guest-unsupported>
-        </permissions>
-    </model-resource>
-    <model-resource>
-        <model-name>org.oep.core.ssomgt.model</model-name>
-        <portlet-ref>
-            <portlet-name>application-management</portlet-name>
+            <portlet-name>oep-ssomgt</portlet-name>
         </portlet-ref>
         <permissions>
         <supports>

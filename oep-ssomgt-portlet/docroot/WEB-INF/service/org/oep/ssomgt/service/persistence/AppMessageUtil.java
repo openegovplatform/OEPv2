@@ -451,6 +451,415 @@ public class AppMessageUtil {
 	}
 
 	/**
+	* Returns all the app messages where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @return the matching app messages
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.ssomgt.model.AppMessage> findByFA_TU_MT(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByFA_TU_MT(fromApplication, toUser, messageType);
+	}
+
+	/**
+	* Returns a range of all the app messages where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.ssomgt.model.impl.AppMessageModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @param start the lower bound of the range of app messages
+	* @param end the upper bound of the range of app messages (not inclusive)
+	* @return the range of matching app messages
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.ssomgt.model.AppMessage> findByFA_TU_MT(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByFA_TU_MT(fromApplication, toUser, messageType, start,
+			end);
+	}
+
+	/**
+	* Returns an ordered range of all the app messages where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.ssomgt.model.impl.AppMessageModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @param start the lower bound of the range of app messages
+	* @param end the upper bound of the range of app messages (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching app messages
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.ssomgt.model.AppMessage> findByFA_TU_MT(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByFA_TU_MT(fromApplication, toUser, messageType, start,
+			end, orderByComparator);
+	}
+
+	/**
+	* Returns the first app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching app message
+	* @throws org.oep.ssomgt.NoSuchAppMessageException if a matching app message could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.AppMessage findByFA_TU_MT_First(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.ssomgt.NoSuchAppMessageException {
+		return getPersistence()
+				   .findByFA_TU_MT_First(fromApplication, toUser, messageType,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the first app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching app message, or <code>null</code> if a matching app message could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.AppMessage fetchByFA_TU_MT_First(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByFA_TU_MT_First(fromApplication, toUser, messageType,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the last app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching app message
+	* @throws org.oep.ssomgt.NoSuchAppMessageException if a matching app message could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.AppMessage findByFA_TU_MT_Last(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.ssomgt.NoSuchAppMessageException {
+		return getPersistence()
+				   .findByFA_TU_MT_Last(fromApplication, toUser, messageType,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the last app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching app message, or <code>null</code> if a matching app message could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.AppMessage fetchByFA_TU_MT_Last(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByFA_TU_MT_Last(fromApplication, toUser, messageType,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the app messages before and after the current app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	*
+	* @param appMessageId the primary key of the current app message
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next app message
+	* @throws org.oep.ssomgt.NoSuchAppMessageException if a app message with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.AppMessage[] findByFA_TU_MT_PrevAndNext(
+		long appMessageId, java.lang.String fromApplication,
+		java.lang.String toUser, java.lang.String messageType,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.ssomgt.NoSuchAppMessageException {
+		return getPersistence()
+				   .findByFA_TU_MT_PrevAndNext(appMessageId, fromApplication,
+			toUser, messageType, orderByComparator);
+	}
+
+	/**
+	* Removes all the app messages where fromApplication = &#63; and toUser = &#63; and messageType = &#63; from the database.
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByFA_TU_MT(java.lang.String fromApplication,
+		java.lang.String toUser, java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().removeByFA_TU_MT(fromApplication, toUser, messageType);
+	}
+
+	/**
+	* Returns the number of app messages where fromApplication = &#63; and toUser = &#63; and messageType = &#63;.
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @return the number of matching app messages
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByFA_TU_MT(java.lang.String fromApplication,
+		java.lang.String toUser, java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .countByFA_TU_MT(fromApplication, toUser, messageType);
+	}
+
+	/**
+	* Returns all the app messages where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @return the matching app messages
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.ssomgt.model.AppMessage> findByFA_TU_NotMT(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByFA_TU_NotMT(fromApplication, toUser, messageType);
+	}
+
+	/**
+	* Returns a range of all the app messages where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.ssomgt.model.impl.AppMessageModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @param start the lower bound of the range of app messages
+	* @param end the upper bound of the range of app messages (not inclusive)
+	* @return the range of matching app messages
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.ssomgt.model.AppMessage> findByFA_TU_NotMT(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByFA_TU_NotMT(fromApplication, toUser, messageType,
+			start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the app messages where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link org.oep.ssomgt.model.impl.AppMessageModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @param start the lower bound of the range of app messages
+	* @param end the upper bound of the range of app messages (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching app messages
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<org.oep.ssomgt.model.AppMessage> findByFA_TU_NotMT(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByFA_TU_NotMT(fromApplication, toUser, messageType,
+			start, end, orderByComparator);
+	}
+
+	/**
+	* Returns the first app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching app message
+	* @throws org.oep.ssomgt.NoSuchAppMessageException if a matching app message could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.AppMessage findByFA_TU_NotMT_First(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.ssomgt.NoSuchAppMessageException {
+		return getPersistence()
+				   .findByFA_TU_NotMT_First(fromApplication, toUser,
+			messageType, orderByComparator);
+	}
+
+	/**
+	* Returns the first app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching app message, or <code>null</code> if a matching app message could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.AppMessage fetchByFA_TU_NotMT_First(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByFA_TU_NotMT_First(fromApplication, toUser,
+			messageType, orderByComparator);
+	}
+
+	/**
+	* Returns the last app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching app message
+	* @throws org.oep.ssomgt.NoSuchAppMessageException if a matching app message could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.AppMessage findByFA_TU_NotMT_Last(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.ssomgt.NoSuchAppMessageException {
+		return getPersistence()
+				   .findByFA_TU_NotMT_Last(fromApplication, toUser,
+			messageType, orderByComparator);
+	}
+
+	/**
+	* Returns the last app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching app message, or <code>null</code> if a matching app message could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.AppMessage fetchByFA_TU_NotMT_Last(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByFA_TU_NotMT_Last(fromApplication, toUser,
+			messageType, orderByComparator);
+	}
+
+	/**
+	* Returns the app messages before and after the current app message in the ordered set where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	*
+	* @param appMessageId the primary key of the current app message
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next app message
+	* @throws org.oep.ssomgt.NoSuchAppMessageException if a app message with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static org.oep.ssomgt.model.AppMessage[] findByFA_TU_NotMT_PrevAndNext(
+		long appMessageId, java.lang.String fromApplication,
+		java.lang.String toUser, java.lang.String messageType,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			org.oep.ssomgt.NoSuchAppMessageException {
+		return getPersistence()
+				   .findByFA_TU_NotMT_PrevAndNext(appMessageId,
+			fromApplication, toUser, messageType, orderByComparator);
+	}
+
+	/**
+	* Removes all the app messages where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63; from the database.
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByFA_TU_NotMT(java.lang.String fromApplication,
+		java.lang.String toUser, java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence()
+			.removeByFA_TU_NotMT(fromApplication, toUser, messageType);
+	}
+
+	/**
+	* Returns the number of app messages where fromApplication = &#63; and toUser = &#63; and messageType &ne; &#63;.
+	*
+	* @param fromApplication the from application
+	* @param toUser the to user
+	* @param messageType the message type
+	* @return the number of matching app messages
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByFA_TU_NotMT(java.lang.String fromApplication,
+		java.lang.String toUser, java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .countByFA_TU_NotMT(fromApplication, toUser, messageType);
+	}
+
+	/**
 	* Caches the app message in the entity cache if it is enabled.
 	*
 	* @param appMessage the app message

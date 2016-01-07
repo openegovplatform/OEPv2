@@ -415,6 +415,31 @@ public class AppMessageLocalServiceImpl extends AppMessageLocalServiceBaseImpl {
 		return appMessagePersistence.findByFA_TU(fromApplication, toUser);
 	}
 	
+	public List<AppMessage> findByFromApplicationToUserMessageType(String fromApplication, String toUser, String messageType) throws SystemException {
+		_log.info(fromApplication + "," + toUser + "," + messageType);
+		return appMessagePersistence.findByFA_TU_MT(fromApplication, toUser, messageType);
+	}
+	
+	public int countByFromApplicationToUserMessageType(String fromApplication, String toUser, String messageType) throws SystemException {
+		return appMessagePersistence.countByFA_TU_MT(fromApplication, toUser, messageType);
+	}
+	
+	public List<AppMessage> findByFromApplicationToUserMessageType(String fromApplication, String toUser, String messageType, int startIndex, int endIndex) throws SystemException {
+		return appMessagePersistence.findByFA_TU_MT(fromApplication, toUser, messageType, startIndex, endIndex);
+	}
+	
+	public List<AppMessage> findByFromApplicationToUserNotMessageType(String fromApplication, String toUser, String messageType) throws SystemException {
+		return appMessagePersistence.findByFA_TU_NotMT(fromApplication, toUser, messageType);
+	}
+	
+	public int countByFromApplicationToUserNotMessageType(String fromApplication, String toUser, String messageType) throws SystemException {
+		return appMessagePersistence.countByFA_TU_NotMT(fromApplication, toUser, messageType);
+	}
+	
+	public List<AppMessage> findByFromApplicationToUserNotMessageType(String fromApplication, String toUser, String messageType, int startIndex, int endIndex) throws SystemException {
+		return appMessagePersistence.findByFA_TU_NotMT(fromApplication, toUser, messageType, startIndex, endIndex);
+	}
+	
 	public List<AppMessage> findByApplicationUser(String fromApplication, String toUser, ServiceContext serviceContext) throws SystemException {
 		List<AppMessage> lstAppMessages = appMessageFinder.findByApplicationUser(fromApplication, toUser, serviceContext);
 		List<AppMessage> lstTemp = appMessageFinder.findByApplicationUser(fromApplication, "everyone", serviceContext);

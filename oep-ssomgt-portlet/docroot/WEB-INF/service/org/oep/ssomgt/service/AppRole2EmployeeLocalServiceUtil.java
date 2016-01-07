@@ -426,6 +426,13 @@ public class AppRole2EmployeeLocalServiceUtil {
 		return getService().findRoleByEmployee(employeeId, companyId);
 	}
 
+	public static java.util.List<org.oep.ssomgt.model.AppRole2Employee> findByArrayOfAppRole(
+		long[] appRoleIds,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByArrayOfAppRole(appRoleIds, serviceContext);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

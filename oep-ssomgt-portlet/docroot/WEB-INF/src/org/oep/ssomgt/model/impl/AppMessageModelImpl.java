@@ -17,6 +17,7 @@ package org.oep.ssomgt.model.impl;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSON;
+import com.liferay.portal.kernel.util.DateUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -82,8 +83,8 @@ public class AppMessageModelImpl extends BaseModelImpl<AppMessage>
 		};
 	public static final String TABLE_SQL_CREATE = "create table oep_usermgt_appmessage (appMessageId LONG not null primary key,userId LONG,groupId LONG,companyId LONG,createDate DATE null,fromApplication VARCHAR(30) null,toUser VARCHAR(30) null,messageType VARCHAR(30) null,messageCode VARCHAR(30) null,messageText VARCHAR(200) null,messageValue VARCHAR(200) null,messageUrl VARCHAR(200) null,visitDate DATE null)";
 	public static final String TABLE_SQL_DROP = "drop table oep_usermgt_appmessage";
-	public static final String ORDER_BY_JPQL = " ORDER BY appMessage.appMessageId ASC";
-	public static final String ORDER_BY_SQL = " ORDER BY oep_usermgt_appmessage.appMessageId ASC";
+	public static final String ORDER_BY_JPQL = " ORDER BY appMessage.createDate DESC";
+	public static final String ORDER_BY_SQL = " ORDER BY oep_usermgt_appmessage.createDate DESC";
 	public static final String DATA_SOURCE = "liferayDataSource";
 	public static final String SESSION_FACTORY = "liferaySessionFactory";
 	public static final String TX_MANAGER = "liferayTransactionManager";
@@ -97,8 +98,9 @@ public class AppMessageModelImpl extends BaseModelImpl<AppMessage>
 				"value.object.column.bitmask.enabled.org.oep.ssomgt.model.AppMessage"),
 			true);
 	public static long FROMAPPLICATION_COLUMN_BITMASK = 1L;
-	public static long TOUSER_COLUMN_BITMASK = 2L;
-	public static long APPMESSAGEID_COLUMN_BITMASK = 4L;
+	public static long MESSAGETYPE_COLUMN_BITMASK = 2L;
+	public static long TOUSER_COLUMN_BITMASK = 4L;
+	public static long CREATEDATE_COLUMN_BITMASK = 8L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -350,6 +352,8 @@ public class AppMessageModelImpl extends BaseModelImpl<AppMessage>
 
 	@Override
 	public void setCreateDate(Date createDate) {
+		_columnBitmask = -1L;
+
 		_createDate = createDate;
 	}
 
@@ -418,7 +422,17 @@ public class AppMessageModelImpl extends BaseModelImpl<AppMessage>
 
 	@Override
 	public void setMessageType(String messageType) {
+		_columnBitmask |= MESSAGETYPE_COLUMN_BITMASK;
+
+		if (_originalMessageType == null) {
+			_originalMessageType = _messageType;
+		}
+
 		_messageType = messageType;
+	}
+
+	public String getOriginalMessageType() {
+		return GetterUtil.getString(_originalMessageType);
 	}
 
 	@JSON
@@ -548,17 +562,17 @@ public class AppMessageModelImpl extends BaseModelImpl<AppMessage>
 
 	@Override
 	public int compareTo(AppMessage appMessage) {
-		long primaryKey = appMessage.getPrimaryKey();
+		int value = 0;
 
-		if (getPrimaryKey() < primaryKey) {
-			return -1;
+		value = DateUtil.compareTo(getCreateDate(), appMessage.getCreateDate());
+
+		value = value * -1;
+
+		if (value != 0) {
+			return value;
 		}
-		else if (getPrimaryKey() > primaryKey) {
-			return 1;
-		}
-		else {
-			return 0;
-		}
+
+		return 0;
 	}
 
 	@Override
@@ -595,6 +609,8 @@ public class AppMessageModelImpl extends BaseModelImpl<AppMessage>
 		appMessageModelImpl._originalFromApplication = appMessageModelImpl._fromApplication;
 
 		appMessageModelImpl._originalToUser = appMessageModelImpl._toUser;
+
+		appMessageModelImpl._originalMessageType = appMessageModelImpl._messageType;
 
 		appMessageModelImpl._columnBitmask = 0;
 	}
@@ -804,6 +820,7 @@ public class AppMessageModelImpl extends BaseModelImpl<AppMessage>
 	private String _toUser;
 	private String _originalToUser;
 	private String _messageType;
+	private String _originalMessageType;
 	private String _messageCode;
 	private String _messageText;
 	private String _messageValue;

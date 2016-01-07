@@ -177,6 +177,12 @@ public class AppRole2EmployeeLocalServiceClpInvoker {
 		_methodName94 = "findRoleByEmployee";
 
 		_methodParameterTypes94 = new String[] { "long", "long" };
+
+		_methodName95 = "findByArrayOfAppRole";
+
+		_methodParameterTypes95 = new String[] {
+				"long[][]", "com.liferay.portal.service.ServiceContext"
+			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -356,6 +362,12 @@ public class AppRole2EmployeeLocalServiceClpInvoker {
 				((Long)arguments[1]).longValue());
 		}
 
+		if (_methodName95.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
+			return AppRole2EmployeeLocalServiceUtil.findByArrayOfAppRole((long[])arguments[0],
+				(com.liferay.portal.service.ServiceContext)arguments[1]);
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -417,4 +429,6 @@ public class AppRole2EmployeeLocalServiceClpInvoker {
 	private String[] _methodParameterTypes93;
 	private String _methodName94;
 	private String[] _methodParameterTypes94;
+	private String _methodName95;
+	private String[] _methodParameterTypes95;
 }

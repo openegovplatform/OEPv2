@@ -502,6 +502,60 @@ public class AppMessageLocalServiceUtil {
 		return getService().findByFromApplicationToUser(fromApplication, toUser);
 	}
 
+	public static java.util.List<org.oep.ssomgt.model.AppMessage> findByFromApplicationToUserMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .findByFromApplicationToUserMessageType(fromApplication,
+			toUser, messageType);
+	}
+
+	public static int countByFromApplicationToUserMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .countByFromApplicationToUserMessageType(fromApplication,
+			toUser, messageType);
+	}
+
+	public static java.util.List<org.oep.ssomgt.model.AppMessage> findByFromApplicationToUserMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType, int startIndex, int endIndex)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .findByFromApplicationToUserMessageType(fromApplication,
+			toUser, messageType, startIndex, endIndex);
+	}
+
+	public static java.util.List<org.oep.ssomgt.model.AppMessage> findByFromApplicationToUserNotMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .findByFromApplicationToUserNotMessageType(fromApplication,
+			toUser, messageType);
+	}
+
+	public static int countByFromApplicationToUserNotMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .countByFromApplicationToUserNotMessageType(fromApplication,
+			toUser, messageType);
+	}
+
+	public static java.util.List<org.oep.ssomgt.model.AppMessage> findByFromApplicationToUserNotMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType, int startIndex, int endIndex)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .findByFromApplicationToUserNotMessageType(fromApplication,
+			toUser, messageType, startIndex, endIndex);
+	}
+
 	public static java.util.List<org.oep.ssomgt.model.AppMessage> findByApplicationUser(
 		java.lang.String fromApplication, java.lang.String toUser,
 		com.liferay.portal.service.ServiceContext serviceContext)

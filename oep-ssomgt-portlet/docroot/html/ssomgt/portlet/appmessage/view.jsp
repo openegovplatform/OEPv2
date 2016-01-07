@@ -15,6 +15,18 @@
  * limitations under the License.
  */
  --%>
+<%@page import="com.liferay.portal.kernel.exception.PortalException"%>
+<%@page import="com.liferay.portal.service.UserLocalServiceUtil"%>
+<%@page import="com.liferay.portal.model.User"%>
+<%@page import="org.oep.ssomgt.service.AppRole2EmployeeLocalServiceUtil"%>
+<%@page import="org.oep.ssomgt.model.AppRole2Employee"%>
+<%@page import="com.liferay.portal.kernel.exception.SystemException"%>
+<%@page import="org.oep.ssomgt.NoSuchApplicationException"%>
+<%@page import="org.oep.ssomgt.service.AppRoleLocalServiceUtil"%>
+<%@page import="org.oep.ssomgt.model.AppRole"%>
+<%@page import="org.oep.datamgt.service.DictDataLocalServiceUtil"%>
+<%@page import="org.oep.datamgt.model.DictData"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="org.oep.ssomgt.service.ApplicationLocalServiceUtil"%>
 <%@page import="org.oep.ssomgt.model.Application"%>
 <%@page import="org.oep.ssomgt.model.AppMessage"%>
@@ -45,6 +57,46 @@
 	Date fromDate = ParamUtil.getDate(request, AppMessageKeys.SearchAttributes.FROM_DATE, dateFormat, null);
 	Date toDate = ParamUtil.getDate(request, AppMessageKeys.SearchAttributes.TO_DATE, dateFormat, null);
 	
+	List<AppRole> lstAppRoles = new ArrayList<AppRole>();
+	try {
+		Application app = ApplicationLocalServiceUtil.getByAppCode(fromApplication);
+		lstAppRoles = AppRoleLocalServiceUtil.findByCompanyGroupApplication(app.getApplicationId(), serviceContext);
+	} catch (NoSuchApplicationException ex) {
+		// TODO Auto-generated catch block
+		ex.printStackTrace();
+	} catch (SystemException ex) {
+		// TODO Auto-generated catch block
+		ex.printStackTrace();
+	}
+			
+	long[] appRoleIds = new long[lstAppRoles.size()];
+	List<AppRole2Employee> lstA2E = new ArrayList<AppRole2Employee>(); 
+	for (int i = 0; i < lstAppRoles.size(); i++) {
+		appRoleIds[i] = lstAppRoles.get(i).getAppRoleId();
+	}
+	
+	try {
+		lstA2E = AppRole2EmployeeLocalServiceUtil.findByArrayOfAppRole(appRoleIds, serviceContext);
+	} catch (SystemException ex) {
+		// TODO Auto-generated catch block
+		ex.printStackTrace();
+	}
+	
+	List<User> lstUser = new ArrayList<User>();
+	for (AppRole2Employee a2e : lstA2E) {
+		User u;
+		try {
+			u = UserLocalServiceUtil.getUser(a2e.getUserId());
+			lstUser.add(u);
+		} catch (PortalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SystemException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	String messageType = ParamUtil.getString(request, AppMessageKeys.SearchAttributes.MESSAGE_TYPE, PortletKeys.TEXT_BOX);
 	
 	int total = AppMessageLocalServiceUtil.countByCustomCondition(fromApplication, toUser, fromDate, toDate, messageType, serviceContext);
@@ -58,6 +110,12 @@
 		
 		searchContainer.setResults(datas);
 	}
+	Date now = new Date();
+	Calendar calendar = Calendar.getInstance();
+	calendar.setTime(now);
+	int day = calendar.get(Calendar.DAY_OF_MONTH);
+	int month = calendar.get(Calendar.MONTH);
+	int year = calendar.get(Calendar.YEAR);
 %>
 
 <portlet:renderURL var="redirectURL">
@@ -101,7 +159,23 @@
 				<aui:row>
 					<aui:column columnWidth="60">
 						<aui:select style="width: 100%" label="<%= LanguageUtil.get(pageContext, \"org.oep.ssomgt.portlet.appmessage.empty\") %>" name="<%= AppMessageKeys.SearchAttributes.TO_USER %>" id="<%= AppMessageKeys.SearchAttributes.TO_USER %>" >
-							<aui:option value="<%= PortletKeys.TEXT_BOX %>"><liferay-ui:message key="org.oep.ssomgt.portlet.appmessage.selectbox.touser" /></aui:option>
+							<aui:option value="everyone"><liferay-ui:message key="org.oep.ssomgt.portlet.appmessage.selectbox.touser" /></aui:option>
+							<%
+								for (User u : lstUser) {
+									if (toUser.equals(u.getScreenName())) {
+							%>
+							<aui:option selected="<%= true %>" value="<%= u.getScreenName() %>"><%= u.getScreenName() %></aui:option>
+							<%
+									}
+									else {
+							%>
+							<aui:option value="<%= u.getScreenName() %>"><%= u.getScreenName() %></aui:option>
+							<%
+									}
+							%>
+							<%
+								}
+							%>
 						</aui:select>			
 					</aui:column>
 					<aui:column columnWidth="40">
@@ -115,17 +189,23 @@
 				<aui:row>
 					<aui:column columnWidth="50">
 						<liferay-ui:message key="org.oep.ssomgt.portlet.appmessage.label.fromdate"></liferay-ui:message>
-        				<liferay-ui:input-date formName="<%= AppMessageKeys.SearchAttributes.FROM_DATE %>" yearValue="2010" monthValue="3" dayValue="21" />					
+        				<liferay-ui:input-date formName="<%= AppMessageKeys.SearchAttributes.FROM_DATE %>" yearValue="<%= year %>" monthValue="0" dayValue="1" />					
 					</aui:column>
 					<aui:column columnWidth="50">
 						<liferay-ui:message key="org.oep.ssomgt.portlet.appmessage.label.todate"></liferay-ui:message>
-        				<liferay-ui:input-date formName="<%= AppMessageKeys.SearchAttributes.TO_DATE %>" yearValue="2010" monthValue="3" dayValue="21" />					
+        				<liferay-ui:input-date formName="<%= AppMessageKeys.SearchAttributes.TO_DATE %>" yearValue="<%= year %>" monthValue="<%= month %>" dayValue="<%= day %>" />					
 					</aui:column>
 				</aui:row>
 			</aui:column>
 			<aui:column columnWidth="50">
 				<aui:select style="width: 100%" label="<%= LanguageUtil.get(pageContext, \"org.oep.ssomgt.portlet.appmessage.empty\") %>" name="<%= AppMessageKeys.SearchAttributes.MESSAGE_TYPE %>" id="<%= AppMessageKeys.SearchAttributes.MESSAGE_TYPE %>" >
 					<aui:option value="<%= PortletKeys.TEXT_BOX %>"><liferay-ui:message key="org.oep.ssomgt.portlet.appmessage.selectbox.messagetype" /></aui:option>
+					<%
+						List<DictData> lstMessageType = DictDataLocalServiceUtil.getByCollectionName("OEP_MESSAGE_TYPE", serviceContext);
+					%>
+					<c:forEach var="mtype" items="<%= lstMessageType %>">
+						<aui:option value="${ mtype.dataCode }">${ mtype.title }</aui:option>
+					</c:forEach>
 				</aui:select>			
 			</aui:column>
 		</aui:row>
@@ -186,7 +266,7 @@
 			</div>
 		</c:if>
 </aui:form>
-
+<portlet:resourceURL var="resourceURL" ></portlet:resourceURL>
 <script type="text/javascript">
 	function <portlet:namespace/>search() {
 		var form = document.<portlet:namespace />searchAppMessage;
@@ -195,4 +275,28 @@
 	};
 		
 </script>
- 
+<aui:script>
+AUI().use('aui-base','aui-io-request','aui-node', function(A){
+    A.one("#<portlet:namespace/><%= AppMessageKeys.SearchAttributes.FROM_APPLICATION %>").on('change',function(){
+        A.io.request('<%= resourceURL %>', { 
+            method :'POST',
+            data: {
+            	'<portlet:namespace/><%= AppMessageKeys.SearchAttributes.FROM_APPLICATION %>' : A.one("#<portlet:namespace/><%= AppMessageKeys.SearchAttributes.FROM_APPLICATION %>").val() ,
+           	},
+            dataType: 'json',
+            on:{
+                success: function(){
+	                var users = this.get('responseData');
+	                A.one('#<portlet:namespace /><%= AppMessageKeys.SearchAttributes.TO_USER %>').empty();
+	                
+	                A.one('#<portlet:namespace /><%= AppMessageKeys.SearchAttributes.TO_USER %>').append("<option value='everyone'>" + "<%= LanguageUtil.get(pageContext,"org.oep.ssomgt.portlet.appmessage.selectbox.touser") %>" + "</option>");
+	                for( var i = 0; i < users.length; i++ ) {
+	               		A.one('#<portlet:namespace /><%= AppMessageKeys.SearchAttributes.TO_USER %>').append("<option value='"+ users[i].screenName  +"' >"+ users[i].screenName + "</option>"); 	                    
+	                }
+                }                
+            }
+                    
+	    });
+    });
+});
+</aui:script> 

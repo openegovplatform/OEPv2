@@ -36,7 +36,7 @@
 	</portlet:resourceURL>				
 	<li style="padding-bottom: 10px;">
 		<a href="${appitem.appUrl}" target="_blank">
-			<img style="width: 100%; height: 150px;" src="<%= smallIconResourceURL.toString() %>" class="img-rounded">
+			<img style="width: 90%; padding: 5px;" src="<%= smallIconResourceURL.toString() %>" class="img-rounded">
 		</a>
 	</li>
 </c:forEach>

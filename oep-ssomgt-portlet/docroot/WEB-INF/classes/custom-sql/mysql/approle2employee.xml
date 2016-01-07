@@ -3,7 +3,7 @@
 	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2EmployeeFinder.countByWorkingUnit">
 		<![CDATA[
 			SELECT COUNT(*) AS total
-			FROM OEP_USERMGT_APPROLE2EMPLOYEE
+			FROM oep_usermgt_approle2employee
 			WHERE 1=1 
 			[$COMPANY_FILTER$]
 			[$GROUP_FILTER$]
@@ -12,8 +12,8 @@
 	</sql>
 	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2EmployeeFinder.findByWorkingUnit">
 		<![CDATA[
-			SELECT OEP_USERMGT_APPROLE2EMPLOYEE.*
-			FROM OEP_USERMGT_APPROLE2EMPLOYEE
+			SELECT oep_usermgt_approle2employee.*
+			FROM oep_usermgt_approle2employee
 			WHERE 1=1 
 			[$COMPANY_FILTER$]
 			[$GROUP_FILTER$]
@@ -22,10 +22,10 @@
 	</sql>
 	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2EmployeeFinder.findRoleByEmployee">
 		<![CDATA[
-			SELECT OEP_USERMGT_APPROLE.*
-			FROM OEP_USERMGT_APPROLE
-			INNER JOIN OEP_USERMGT_APPROLE2EMPLOYEE
-			ON OEP_USERMGT_APPROLE.APPROLEID=OEP_USERMGT_APPROLE2EMPLOYEE.APPROLEID
+			SELECT oep_usermgt_approle.*
+			FROM oep_usermgt_approle
+			INNER JOIN oep_usermgt_approle2employee
+			ON oep_usermgt_approle.appRoleId=oep_usermgt_approle2employee.appRoleId
 			WHERE 1=1 
 			[$COMPANY_FILTER$]
 			[$GROUP_FILTER$]
@@ -35,7 +35,7 @@
 	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2EmployeeFinder.countByAppRoleWorkingUnit">
 		<![CDATA[
 			SELECT COUNT(*) AS total
-			FROM OEP_USERMGT_APPROLE2EMPLOYEE
+			FROM oep_usermgt_approle2employee
 			WHERE 1=1 
 			[$COMPANY_FILTER$]
 			[$GROUP_FILTER$]
@@ -45,8 +45,8 @@
 	</sql>
 	<sql id="mysql.org.oep.ssomgt.service.persistence.AppRole2EmployeeFinder.findByAppRoleWorkingUnit">
 		<![CDATA[
-			SELECT OEP_USERMGT_APPROLE2EMPLOYEE.*
-			FROM OEP_USERMGT_APPROLE2EMPLOYEE
+			SELECT oep_usermgt_approle2employee.*
+			FROM oep_usermgt_approle2employee
 			WHERE 1=1 
 			[$COMPANY_FILTER$]
 			[$GROUP_FILTER$]

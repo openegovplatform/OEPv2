@@ -259,7 +259,11 @@ public class AppRole2EmployeeLocalServiceImpl
 	}
 	
 	public List<AppRole> findRoleByEmployee(long employeeId, long companyId) throws SystemException {
-		return appRole2EmployeeFinder.findRoleByEmployee(employeeId, companyId);
+		return appRole2EmployeeFinder.findRoleByEmployee(employeeId, companyId);		
+	}
+		
+	public List<AppRole2Employee> findByArrayOfAppRole(long[] appRoleIds, ServiceContext serviceContext) throws SystemException {
+		return appRole2EmployeePersistence.findByC_G_InAR(serviceContext.getCompanyId(), serviceContext.getScopeGroupId(), appRoleIds);
 	}
 	private static Log _log = LogFactoryUtil.getLog(AppRole2EmployeeLocalServiceImpl.class);	
 

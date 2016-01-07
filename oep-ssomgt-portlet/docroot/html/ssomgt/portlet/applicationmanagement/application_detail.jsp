@@ -125,5 +125,16 @@ function <portlet:namespace/>save() {
 function <portlet:namespace/>back() {
 	location.href = "<%= ParamUtil.getString(request, PortletKeys.REDIRECT_PAGE) %>";
 };
+	YUI().ready(
+		'aui-tooltip',
+			function(Y) {
+				new Y.Tooltip(
+				{
+					trigger: '#<%= ApplicationKeys.AddEditAttributes.APP_NAME %>',
+				    position: 'right'
+				}
+			).render();
+			}
+	);	
 
 </script>

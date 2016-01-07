@@ -181,9 +181,47 @@ public class AppMessageLocalServiceClp implements AppMessageLocalService {
 				"java.lang.String", "java.lang.String"
 			};
 
-		_methodName29 = "findByApplicationUser";
+		_methodName29 = "findByFromApplicationToUserMessageType";
 
 		_methodParameterTypes29 = new String[] {
+				"java.lang.String", "java.lang.String", "java.lang.String"
+			};
+
+		_methodName30 = "countByFromApplicationToUserMessageType";
+
+		_methodParameterTypes30 = new String[] {
+				"java.lang.String", "java.lang.String", "java.lang.String"
+			};
+
+		_methodName31 = "findByFromApplicationToUserMessageType";
+
+		_methodParameterTypes31 = new String[] {
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"int", "int"
+			};
+
+		_methodName32 = "findByFromApplicationToUserNotMessageType";
+
+		_methodParameterTypes32 = new String[] {
+				"java.lang.String", "java.lang.String", "java.lang.String"
+			};
+
+		_methodName33 = "countByFromApplicationToUserNotMessageType";
+
+		_methodParameterTypes33 = new String[] {
+				"java.lang.String", "java.lang.String", "java.lang.String"
+			};
+
+		_methodName34 = "findByFromApplicationToUserNotMessageType";
+
+		_methodParameterTypes34 = new String[] {
+				"java.lang.String", "java.lang.String", "java.lang.String",
+				"int", "int"
+			};
+
+		_methodName35 = "findByApplicationUser";
+
+		_methodParameterTypes35 = new String[] {
 				"java.lang.String", "java.lang.String",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -1191,6 +1229,236 @@ public class AppMessageLocalServiceClp implements AppMessageLocalService {
 	}
 
 	@Override
+	public java.util.List<org.oep.ssomgt.model.AppMessage> findByFromApplicationToUserMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName29,
+					_methodParameterTypes29,
+					new Object[] {
+						ClpSerializer.translateInput(fromApplication),
+						
+					ClpSerializer.translateInput(toUser),
+						
+					ClpSerializer.translateInput(messageType)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<org.oep.ssomgt.model.AppMessage>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public int countByFromApplicationToUserMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName30,
+					_methodParameterTypes30,
+					new Object[] {
+						ClpSerializer.translateInput(fromApplication),
+						
+					ClpSerializer.translateInput(toUser),
+						
+					ClpSerializer.translateInput(messageType)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	@Override
+	public java.util.List<org.oep.ssomgt.model.AppMessage> findByFromApplicationToUserMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType, int startIndex, int endIndex)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName31,
+					_methodParameterTypes31,
+					new Object[] {
+						ClpSerializer.translateInput(fromApplication),
+						
+					ClpSerializer.translateInput(toUser),
+						
+					ClpSerializer.translateInput(messageType),
+						
+					startIndex,
+						
+					endIndex
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<org.oep.ssomgt.model.AppMessage>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public java.util.List<org.oep.ssomgt.model.AppMessage> findByFromApplicationToUserNotMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName32,
+					_methodParameterTypes32,
+					new Object[] {
+						ClpSerializer.translateInput(fromApplication),
+						
+					ClpSerializer.translateInput(toUser),
+						
+					ClpSerializer.translateInput(messageType)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<org.oep.ssomgt.model.AppMessage>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public int countByFromApplicationToUserNotMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName33,
+					_methodParameterTypes33,
+					new Object[] {
+						ClpSerializer.translateInput(fromApplication),
+						
+					ClpSerializer.translateInput(toUser),
+						
+					ClpSerializer.translateInput(messageType)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	@Override
+	public java.util.List<org.oep.ssomgt.model.AppMessage> findByFromApplicationToUserNotMessageType(
+		java.lang.String fromApplication, java.lang.String toUser,
+		java.lang.String messageType, int startIndex, int endIndex)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName34,
+					_methodParameterTypes34,
+					new Object[] {
+						ClpSerializer.translateInput(fromApplication),
+						
+					ClpSerializer.translateInput(toUser),
+						
+					ClpSerializer.translateInput(messageType),
+						
+					startIndex,
+						
+					endIndex
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<org.oep.ssomgt.model.AppMessage>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
 	public java.util.List<org.oep.ssomgt.model.AppMessage> findByApplicationUser(
 		java.lang.String fromApplication, java.lang.String toUser,
 		com.liferay.portal.service.ServiceContext serviceContext)
@@ -1198,8 +1466,8 @@ public class AppMessageLocalServiceClp implements AppMessageLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName29,
-					_methodParameterTypes29,
+			returnObj = _invokableLocalService.invokeMethod(_methodName35,
+					_methodParameterTypes35,
 					new Object[] {
 						ClpSerializer.translateInput(fromApplication),
 						
@@ -1286,4 +1554,16 @@ public class AppMessageLocalServiceClp implements AppMessageLocalService {
 	private String[] _methodParameterTypes28;
 	private String _methodName29;
 	private String[] _methodParameterTypes29;
+	private String _methodName30;
+	private String[] _methodParameterTypes30;
+	private String _methodName31;
+	private String[] _methodParameterTypes31;
+	private String _methodName32;
+	private String[] _methodParameterTypes32;
+	private String _methodName33;
+	private String[] _methodParameterTypes33;
+	private String _methodName34;
+	private String[] _methodParameterTypes34;
+	private String _methodName35;
+	private String[] _methodParameterTypes35;
 }

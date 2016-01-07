@@ -1,1 +1,135 @@
+.aui .table td.table-cell {
+  vertical-align: middle; }
+
+.aui .table td.table-cell.assigned-no-body.status a {
+  color: red; }
+
+.aui .portlet-body .alert {
+  margin: 20px 0; }
+
+/* dashboard */
+.box100 {
+  margin: 0 auto; }
+  .box100:after {
+    clear: both;
+    line-height: 0;
+    display: table;
+    content: ""; }
+
+.box100all {
+  width: 100%;
+  float: left; }
+
+.box30 {
+  width: 33.33%;
+  float: left; }
+
+.box_cn {
+  border: solid 1px #CCC;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 4px; }
+
+.box_cn .box_information {
+  height: 85px;
+  overflow: hidden;
+  font-size: 13px; }
+
+.box_cn_small {
+  border: solid 1px #CCC;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 4px;
+  height: 120px; }
+
+.box_cn_small .box_information {
+  height: 85px;
+  overflow: hidden;
+  font-size: 13px; }
+
+.textfl {
+  border-radius: 10px;
+  float: right;
+  padding: 3px 10px;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 14px; }
+
+.xanhduong {
+  background: #06F; }
+
+.xanhla {
+  background: #090; }
+
+.do {
+  background: #F00; }
+
+.box_cn .box_left {
+  float: left;
+  margin-right: 10px;
+  padding-top: 0; }
+
+.box_cn .box_left a {
+  height: 140px;
+  width: 140px;
+  display: inline-block;
+  font-size: 40px;
+  color: #06C;
+  border-radius: 100%;
+  border: 3px solid #06C; }
+
+.box_cn .box_left a i {
+  padding-top: 13px; }
+
+.box_right h4.box_title a {
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase; }
+
+.box_cn_small .box_left {
+  float: left;
+  margin-right: 10px;
+  padding-top: 0; }
+
+.box_cn_small .box_left a {
+  height: 70px;
+  width: 70px;
+  display: inline-block;
+  font-size: 40px;
+  color: #06C;
+  border-radius: 100%;
+  border: 3px solid #06C; }
+
+.box_cn_small .box_left a i {
+  padding-top: 13px; }
+
+/* menu icon */
+ul.lfr-menu-icon {
+  margin: 0; }
+
+ul.lfr-menu-icon:clearfix {
+  clear: both;
+  line-height: 0;
+  content: "";
+  display: table; }
+
+ul.lfr-menu-icon li {
+  list-style-type: none;
+  float: left;
+  padding: 0 5px; }
+
+ul.lfr-ico-btn li {
+  width: 16px; }
+
+.task-activity .task-act-header {
+  font-weight: bold; }
+
+ul.nav-category-tbl {
+  margin: 0 0 0 15px;
+  padding: 0;
+  list-style-type: disc; }
+
+ul.nav-category-tbl li {
+  line-height: 24px; }
 

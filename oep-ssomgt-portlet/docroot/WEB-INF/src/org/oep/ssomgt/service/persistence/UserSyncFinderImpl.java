@@ -26,7 +26,7 @@ public class UserSyncFinderImpl extends BasePersistenceImpl implements UserSyncF
 		sql = sql.replace("[$GROUP_FILTER$]", "");
 		
 		if (applicationId != 0) {
-			sql = sql.replace("[$APPLICATION_FILTER$]", " AND APPLICATIONID=?");
+			sql = sql.replace("[$APPLICATION_FILTER$]", " AND applicationId=?");
 			params.add(applicationId);
 		}
 		else {
@@ -34,11 +34,13 @@ public class UserSyncFinderImpl extends BasePersistenceImpl implements UserSyncF
 		}
 		
 		if (isSync) {
-			sql = sql.replace("[$SYNCTIME_FILTER$]", "AND UNIX_TIMESTAMP(SYNCTIME)!=0");
+			sql = sql.replace("[$SYNCTIME_FILTER$]", "AND (UNIX_TIMESTAMP(syncTime)!=0 OR syncTime IS NOT NULL)");
 		}
 		else {
-			sql = sql.replace("[$SYNCTIME_FILTER$]", " AND UNIX_TIMESTAMP(SYNCTIME)=0");
+			sql = sql.replace("[$SYNCTIME_FILTER$]", " AND (UNIX_TIMESTAMP(syncTime)=0 OR syncTIME IS NULL)");
 		}
+		
+		System.out.println("SQL: " +sql);
 		
 		SQLQuery query = session.createSQLQuery(sql);
 		query.addEntity("UserSync", UserSyncImpl.class);
@@ -59,7 +61,7 @@ public class UserSyncFinderImpl extends BasePersistenceImpl implements UserSyncF
 		sql = sql.replace("[$GROUP_FILTER$]", "");
 		
 		if (applicationId != 0) {
-			sql = sql.replace("[$APPLICATION_FILTER$]", " AND APPLICATIONID=?");
+			sql = sql.replace("[$APPLICATION_FILTER$]", " AND applicationId=?");
 			params.add(applicationId);
 		}
 		else {
@@ -67,12 +69,14 @@ public class UserSyncFinderImpl extends BasePersistenceImpl implements UserSyncF
 		}
 		
 		if (isSync) {
-			sql = sql.replace("[$SYNCTIME_FILTER$]", "AND UNIX_TIMESTAMP(SYNCTIME)!=0");
+			sql = sql.replace("[$SYNCTIME_FILTER$]", "AND (UNIX_TIMESTAMP(syncTime)!=0 OR syncTime IS NOT NULL)");
 		}
 		else {
-			sql = sql.replace("[$SYNCTIME_FILTER$]", " AND UNIX_TIMESTAMP(SYNCTIME)=0");
+			sql = sql.replace("[$SYNCTIME_FILTER$]", " AND (UNIX_TIMESTAMP(syncTime)=0 OR syncTIME IS NULL)");
 		}
 				
+		System.out.println("SQL: " +sql);
+
 		SQLQuery query = session.createSQLQuery(sql);
 		query.addScalar("total", Type.LONG);
 		
