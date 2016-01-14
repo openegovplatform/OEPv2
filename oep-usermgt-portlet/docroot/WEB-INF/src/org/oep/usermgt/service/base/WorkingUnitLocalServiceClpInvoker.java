@@ -277,16 +277,30 @@ public class WorkingUnitLocalServiceClpInvoker {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName114 = "finderByLikeName";
+		_methodName114 = "finderByLikeNameShort";
 
 		_methodParameterTypes114 = new String[] {
+				"java.lang.String", "long",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName115 = "finderByLikeName";
+
+		_methodParameterTypes115 = new String[] {
 				"java.lang.String", "long", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName115 = "getByCompanyTree";
+		_methodName116 = "finderByLikeNameShort";
 
-		_methodParameterTypes115 = new String[] {
+		_methodParameterTypes116 = new String[] {
+				"java.lang.String", "long", "int", "int",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName117 = "getByCompanyTree";
+
+		_methodParameterTypes117 = new String[] {
 				"com.liferay.portal.service.ServiceContext"
 			};
 	}
@@ -590,6 +604,13 @@ public class WorkingUnitLocalServiceClpInvoker {
 
 		if (_methodName114.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes114, parameterTypes)) {
+			return WorkingUnitLocalServiceUtil.finderByLikeNameShort((java.lang.String)arguments[0],
+				((Long)arguments[1]).longValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[2]);
+		}
+
+		if (_methodName115.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes115, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.finderByLikeName((java.lang.String)arguments[0],
 				((Long)arguments[1]).longValue(),
 				((Integer)arguments[2]).intValue(),
@@ -597,8 +618,17 @@ public class WorkingUnitLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[4]);
 		}
 
-		if (_methodName115.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes115, parameterTypes)) {
+		if (_methodName116.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes116, parameterTypes)) {
+			return WorkingUnitLocalServiceUtil.finderByLikeNameShort((java.lang.String)arguments[0],
+				((Long)arguments[1]).longValue(),
+				((Integer)arguments[2]).intValue(),
+				((Integer)arguments[3]).intValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[4]);
+		}
+
+		if (_methodName117.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes117, parameterTypes)) {
 			return WorkingUnitLocalServiceUtil.getByCompanyTree((com.liferay.portal.service.ServiceContext)arguments[0]);
 		}
 
@@ -693,4 +723,8 @@ public class WorkingUnitLocalServiceClpInvoker {
 	private String[] _methodParameterTypes114;
 	private String _methodName115;
 	private String[] _methodParameterTypes115;
+	private String _methodName116;
+	private String[] _methodParameterTypes116;
+	private String _methodName117;
+	private String[] _methodParameterTypes117;
 }

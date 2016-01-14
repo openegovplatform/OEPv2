@@ -18,11 +18,13 @@
 			[$WORKINGUNIT_FILTER$]
 		]]>
 	</sql>
-	<sql id="org.oep.usermgt.service.persistence.EmployeeFinder.findByLikeNameFull">
+	<sql id="org.oep.usermgt.service.persistence.EmployeeFinder.findByLikeNameForView">
 		<![CDATA[
-			SELECT emp.*,wk.*
-			FROM OEP_USERMGT_EMPLOYEE emp
-			INNER JOIN OEP_USERMGT_WORKINGUNIT AS wk ON emp.workingUnitId = wk.workingUnitId
+			SELECT emp.*,wk.name as workingUnitName,job.title as jobPosName, us.screenName
+			FROM oep_usermgt_employee emp
+			LEFT JOIN oep_usermgt_workingunit wk ON emp.workingUnitId = wk.workingUnitId
+			LEFT JOIN oep_usermgt_jobpos job ON job.jobPosId = emp.mainJobPosId
+			LEFT JOIN user_ us ON emp.mappingUserId = us.userId
 			WHERE 1=1
 			[$NAME_FILTER$]
 			[$WORKINGUNIT_FILTER$]

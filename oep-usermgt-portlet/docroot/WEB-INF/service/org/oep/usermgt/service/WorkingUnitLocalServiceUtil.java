@@ -537,12 +537,30 @@ public class WorkingUnitLocalServiceUtil {
 			serviceContext);
 	}
 
+	public static java.util.List<java.lang.Object[]> finderByLikeNameShort(
+		java.lang.String textSearch, long parentWorkingUnitId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .finderByLikeNameShort(textSearch, parentWorkingUnitId,
+			serviceContext);
+	}
+
 	public static java.util.List<org.oep.usermgt.model.WorkingUnit> finderByLikeName(
 		java.lang.String textSearch, long parentWorkingUnitId, int startIndex,
 		int endIndex, com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .finderByLikeName(textSearch, parentWorkingUnitId,
+			startIndex, endIndex, serviceContext);
+	}
+
+	public static java.util.List<java.lang.Object[]> finderByLikeNameShort(
+		java.lang.String textSearch, long parentWorkingUnitId, int startIndex,
+		int endIndex, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .finderByLikeNameShort(textSearch, parentWorkingUnitId,
 			startIndex, endIndex, serviceContext);
 	}
 

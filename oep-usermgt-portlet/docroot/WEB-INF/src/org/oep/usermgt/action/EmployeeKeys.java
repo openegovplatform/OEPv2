@@ -30,6 +30,7 @@ public class  EmployeeKeys {
 		public static final String EDIT_ID = "editId";
 		public static final String TEXTSEARCH="textSearch";
 		public static final String WORKINGUNITID = "workingUnitId";
+		public static final String ISOK = "isOk";
 	}
 	
 	public class ErrorMessageKeys {

@@ -34,6 +34,19 @@ public class EmployeeFinderUtil {
 			endIndex);
 	}
 
+	public static java.util.List<java.lang.Object[]> findByLikeNameForView(
+		java.lang.String textSearch, long workingUnitId) {
+		return getFinder().findByLikeNameForView(textSearch, workingUnitId);
+	}
+
+	public static java.util.List<java.lang.Object[]> findByLikeNameForView(
+		java.lang.String textSearch, long workingUnitId, int startIndex,
+		int endIndex) {
+		return getFinder()
+				   .findByLikeNameForView(textSearch, workingUnitId,
+			startIndex, endIndex);
+	}
+
 	public static int countByLikeName(java.lang.String textSearch,
 		long workingUnitId) {
 		return getFinder().countByLikeName(textSearch, workingUnitId);

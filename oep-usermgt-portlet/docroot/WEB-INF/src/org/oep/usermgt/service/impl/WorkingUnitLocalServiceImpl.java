@@ -330,8 +330,16 @@ public class WorkingUnitLocalServiceImpl extends WorkingUnitLocalServiceBaseImpl
 		return workingUnitFinder.findByLikeName(textSearch, parentWorkingUnitId, serviceContext);
 	}
 	
+	public List<Object[]> finderByLikeNameShort(String textSearch, long parentWorkingUnitId,ServiceContext serviceContext) throws SystemException {
+		return workingUnitFinder.findByLikeNameShort(textSearch, parentWorkingUnitId, serviceContext);
+	}
+	
 	public List<WorkingUnit> finderByLikeName(String textSearch, long parentWorkingUnitId,int startIndex, int endIndex, ServiceContext serviceContext) throws SystemException {
 		return workingUnitFinder.findByLikeName(textSearch, parentWorkingUnitId, startIndex, endIndex, serviceContext);
+	}
+	
+	public List<Object[]> finderByLikeNameShort(String textSearch, long parentWorkingUnitId,int startIndex, int endIndex, ServiceContext serviceContext) throws SystemException {
+		return workingUnitFinder.findByLikeNameShort(textSearch, parentWorkingUnitId, startIndex, endIndex, serviceContext);
 	}
 	
 	public List<WorkingUnit> getByCompanyTree (ServiceContext serviceContext) throws SystemException {

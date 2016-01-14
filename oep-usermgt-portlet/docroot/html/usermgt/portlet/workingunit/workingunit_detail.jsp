@@ -29,6 +29,10 @@
 <%@page import="com.liferay.portal.service.OrganizationLocalServiceUtil"%>
 <%@page import="com.liferay.portal.service.GroupLocalServiceUtil"%>
 <%@page import="com.liferay.portal.model.GroupConstants"%>
+
+<%@page import="org.oep.usermgt.dto.SelectionDataDTO"%>
+<%@page import="org.oep.usermgt.util.CustomAUIUtil"%>
+
 <portlet:actionURL var="addEdit" name="addEdit">
 	<portlet:param name="<%= PortletKeys.SET_VIEW_PARAMETER %>" value="/html/usermgt/portlet/workingunit/workingunit_detail.jsp"/>
 	<portlet:param name="<%= PortletKeys.REDIRECT_PAGE %>" value="<%= ParamUtil.getString(request, PortletKeys.REDIRECT_PAGE) %>"/>
@@ -55,10 +59,10 @@
 		wardList = DictDataLocalServiceUtil.findByDataLevelDataCode("","OEP_ADMINISTRATIVE_REGION", districtNo.split(":")[0], 3,serviceContext);
 	}
 	List<WorkingUnit>  parentWorkingUnitList = WorkingUnitLocalServiceUtil.getByCompanyTree(serviceContext);
-	List<Group>  groupList = GroupLocalServiceUtil.getGroups(serviceContext.getCompanyId(), 0, true);
+	
+	ArrayList<SelectionDataDTO>  siteList = CustomAUIUtil.getListGroup(0,serviceContext.getCompanyId());
+	
 	List<Organization>  organizationList = OrganizationLocalServiceUtil.getNoAssetOrganizations();
-	System.out.println(" Ds group " + groupList.size());
-
 %>
 <aui:form name="addEdit" method="post" enctype="multipart/form-data">
 	<div class="form-group">
@@ -108,10 +112,10 @@
 								.get(pageContext,
 									"org.oep.usermgt.portlet.select.label.localSiteId")%></aui:option>
 								<%
-									for (Group data : groupList) {
-										boolean selected = data.getGroupId() == localSiteId;
+									for (SelectionDataDTO data : siteList) {
+										boolean selected = data.getId() == localSiteId;
 								%>
-											<aui:option value="<%=data.getGroupId()%>" selected="<%=selected%>"> <%=data.getDescriptiveName()%></aui:option>
+											<aui:option value="<%=data.getId()%>" selected="<%=selected%>"> <%=data.getNameForLevel()%></aui:option>
 								<%
 										}
 								%>					

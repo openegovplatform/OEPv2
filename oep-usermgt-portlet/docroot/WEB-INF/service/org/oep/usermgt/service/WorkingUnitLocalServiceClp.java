@@ -274,16 +274,30 @@ public class WorkingUnitLocalServiceClp implements WorkingUnitLocalService {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName42 = "finderByLikeName";
+		_methodName42 = "finderByLikeNameShort";
 
 		_methodParameterTypes42 = new String[] {
+				"java.lang.String", "long",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName43 = "finderByLikeName";
+
+		_methodParameterTypes43 = new String[] {
 				"java.lang.String", "long", "int", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName43 = "getByCompanyTree";
+		_methodName44 = "finderByLikeNameShort";
 
-		_methodParameterTypes43 = new String[] {
+		_methodParameterTypes44 = new String[] {
+				"java.lang.String", "long", "int", "int",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName45 = "getByCompanyTree";
+
+		_methodParameterTypes45 = new String[] {
 				"com.liferay.portal.service.ServiceContext"
 			};
 	}
@@ -1819,6 +1833,43 @@ public class WorkingUnitLocalServiceClp implements WorkingUnitLocalService {
 	}
 
 	@Override
+	public java.util.List<java.lang.Object[]> finderByLikeNameShort(
+		java.lang.String textSearch, long parentWorkingUnitId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName42,
+					_methodParameterTypes42,
+					new Object[] {
+						ClpSerializer.translateInput(textSearch),
+						
+					parentWorkingUnitId,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<java.lang.Object[]>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
 	public java.util.List<org.oep.usermgt.model.WorkingUnit> finderByLikeName(
 		java.lang.String textSearch, long parentWorkingUnitId, int startIndex,
 		int endIndex, com.liferay.portal.service.ServiceContext serviceContext)
@@ -1826,8 +1877,8 @@ public class WorkingUnitLocalServiceClp implements WorkingUnitLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName42,
-					_methodParameterTypes42,
+			returnObj = _invokableLocalService.invokeMethod(_methodName43,
+					_methodParameterTypes43,
 					new Object[] {
 						ClpSerializer.translateInput(textSearch),
 						
@@ -1860,14 +1911,55 @@ public class WorkingUnitLocalServiceClp implements WorkingUnitLocalService {
 	}
 
 	@Override
+	public java.util.List<java.lang.Object[]> finderByLikeNameShort(
+		java.lang.String textSearch, long parentWorkingUnitId, int startIndex,
+		int endIndex, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName44,
+					_methodParameterTypes44,
+					new Object[] {
+						ClpSerializer.translateInput(textSearch),
+						
+					parentWorkingUnitId,
+						
+					startIndex,
+						
+					endIndex,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<java.lang.Object[]>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
 	public java.util.List<org.oep.usermgt.model.WorkingUnit> getByCompanyTree(
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName43,
-					_methodParameterTypes43,
+			returnObj = _invokableLocalService.invokeMethod(_methodName45,
+					_methodParameterTypes45,
 					new Object[] { ClpSerializer.translateInput(serviceContext) });
 		}
 		catch (Throwable t) {
@@ -1976,4 +2068,8 @@ public class WorkingUnitLocalServiceClp implements WorkingUnitLocalService {
 	private String[] _methodParameterTypes42;
 	private String _methodName43;
 	private String[] _methodParameterTypes43;
+	private String _methodName44;
+	private String[] _methodParameterTypes44;
+	private String _methodName45;
+	private String[] _methodParameterTypes45;
 }

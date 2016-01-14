@@ -478,6 +478,16 @@ public interface EmployeeLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	public java.util.List<java.lang.Object[]> finnderByLikeNameForView(
+		java.lang.String textSearch, long workingUnitId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<java.lang.Object[]> finderLikeNameForView(
+		java.lang.String textSearch, long workingUnitId, int start, int end)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<org.oep.usermgt.model.JobPos> getJobPosByEmployeeId(
 		long employeeId)

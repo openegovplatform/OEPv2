@@ -26,7 +26,10 @@
 <%@page import = "org.oep.usermgt.model.WorkingUnit" %>
 <%@page import = "org.oep.usermgt.service.WorkingUnitLocalServiceUtil" %>
 <%@ page import="org.oep.datamgt.model.DictData"%>
+<%@page import="org.oep.usermgt.dto.SelectionDataDTO"%>
+<%@page import="org.oep.usermgt.util.CustomAUIUtil"%>
 <portlet:actionURL var="addEdit" name="addEdit">
+
 	<portlet:param name="<%= PortletKeys.SET_VIEW_PARAMETER %>" value="/html/usermgt/portlet/employee/employee_detail.jsp"/>
 	<portlet:param name="<%= PortletKeys.REDIRECT_PAGE %>" value="<%= ParamUtil.getString(request, PortletKeys.REDIRECT_PAGE) %>"/>
 	<portlet:param name="<%= EmployeeKeys.BaseEmployeeAttributes.EDIT_ID %>" value="<%= ParamUtil.getString(request, EmployeeKeys.BaseEmployeeAttributes.EDIT_ID) %>"/>
@@ -40,7 +43,7 @@
 	ServiceContext serviceContext = ServiceContextThreadLocal.getServiceContext();
 
 	long workingUnitId = ParamUtil.getLong(request,EmployeeKeys.AddEditAttributes.WORKINGUNITID,PortletKeys.LONG_DEFAULT);
-	List<WorkingUnit> dsWorkingUnit = WorkingUnitLocalServiceUtil.getByCompany(serviceContext);
+	ArrayList<SelectionDataDTO>  dsWorkingUnit = CustomAUIUtil.getListWorkingUnit(serviceContext);
 	
 	//List<Employee>  parentEmployeeList = EmployeeLocalServiceUtil.getByCompanyTree(serviceContext);
 
@@ -56,11 +59,11 @@
 							.get(pageContext,
 									"org.oep.usermgt.portlet.select.label.workingunit")%></aui:option>
 				<%
-				for (WorkingUnit data : dsWorkingUnit) {
-						boolean selected = workingUnitId == data.getWorkingUnitId();
+				for (SelectionDataDTO data : dsWorkingUnit) {
+						boolean selected = workingUnitId == data.getId();
 				%>
 				
-					<aui:option value='<%=data.getWorkingUnitId()%>' selected="<%=selected%>"><%=data.getName()%></aui:option>
+					<aui:option value='<%=data.getId()%>' selected="<%=selected%>"><%=data.getNameForLevel()%></aui:option>
 				<%
 					}
 				%>					

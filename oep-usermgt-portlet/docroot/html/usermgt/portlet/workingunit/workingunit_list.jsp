@@ -34,16 +34,20 @@
 	int cur = ParamUtil.getInteger(request, PortletKeys.SearchContainer.CURRENT_PAGE, PortletKeys.PAGE);
 	int delta = ParamUtil.getInteger(request, PortletKeys.SearchContainer.DELTA, PortletKeys.DELTA);
 	PortletURL iteratorUrl = renderResponse.createRenderURL();
-	SearchContainer<WorkingUnit> searchContainer = new SearchContainer<WorkingUnit>(renderRequest, null, null, SearchContainer.DEFAULT_CUR_PARAM, cur, delta, iteratorUrl, null, null);
+	SearchContainer<Object[]> searchContainer = new SearchContainer<Object[]>(renderRequest, null, null, SearchContainer.DEFAULT_CUR_PARAM, cur, delta, iteratorUrl, null, null);
 	int total = WorkingUnitLocalServiceUtil.countWorkingUnitByLikeName(textSearch, 0, serviceContext);
 	searchContainer.setTotal(total);
-	List<WorkingUnit> datas = new ArrayList<WorkingUnit>();
+	//List<WorkingUnit> datas = new ArrayList<WorkingUnit>();
+	
+	List<Object[]> datas = new ArrayList<Object[]>();
 	if (total > 0) {
 		int startIndex = searchContainer.getStart();
 		int endIndex = searchContainer.getEnd();
-		datas = WorkingUnitLocalServiceUtil.finderByLikeName(textSearch, 0, serviceContext);
+		//datas = WorkingUnitLocalServiceUtil.finderByLikeName(textSearch, 0, serviceContext);
+		datas = WorkingUnitLocalServiceUtil.finderByLikeNameShort(textSearch, 0, serviceContext);
 		searchContainer.setResults(datas);
 	}
+
 %>
 
 <portlet:renderURL var="redirectURL">
@@ -105,15 +109,21 @@
 						key="org.oep.usermgt.portlet.workingunit.table.header.workingUnitCode" /></th>
 				<th width="20%"><liferay-ui:message
 						key="org.oep.usermgt.portlet.workingunit.table.header.parentWorkingUnitId" /></th>
-				<th width="15%"><liferay-ui:message
+				<th width="22%"><liferay-ui:message
 						key="org.oep.usermgt.portlet.workingunit.table.header.address" /></th>
-				<th style="text-align: center"><liferay-ui:message
+				<th width="10%" style="text-align: center"><liferay-ui:message
 						key="org.oep.usermgt.portlet.workingunit.table.header.telNo" /></th>
-				<th  width="25%" style="text-align: center"><liferay-ui:message
+				<th  style="text-align: center"><liferay-ui:message
 						key="org.oep.usermgt.portlet.table.header.action" /></th>
 			</tr>
 			<%
-				for (WorkingUnit data : datas) {
+				for (Object object : datas) {
+					Object[] objects = (Object[])object;
+					WorkingUnit data = (WorkingUnit)objects[0];
+					String workpar = (String)objects[1];
+					if (workpar == null ){
+						workpar = "";
+					}
 			%>
 			<portlet:actionURL var="deleteUrl" name="delete">
 				<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
@@ -156,26 +166,21 @@
 				<td style="text-align: center"><%=(searchContainer.getStart() +  (index++))%></td>
 				<td style="text-align: left"><%=data.getName()%></td>
 				<td style="text-align: left"><%=data.getGovAgencyId()%></td>
-				<td style="text-align: left"><%=data.getParentWorkingUnitId()%></td>
+				<td style="text-align: left"><%=workpar%></td>
 				<td style="text-align: left"><%=data.getAddress()%></td>
 				<td style="text-align: left"><%=data.getTelNo()%></td>
-				<td style="text-align: left"><a href="#"
-					class="btn btn-success"
-					title="<liferay-ui:message key="org.oep.usermgt.portlet.table.action.title.edit" />"
-					onclick="location.href = '<%=editUrl%>';return false;"><i
-						class="icon-pencil"><liferay-ui:message
-								key="org.oep.usermgt.portlet.table.action.title.edit" /></i></a> 
-								<a href="#"
-					class="btn btn-success"
-					title="<liferay-ui:message key="org.oep.ssomgt.portlet.applicationmanagement.table.action.title.edit" />"
-					onclick="location.href = '<%=dschucdanh%>';return false;"><i
-						class="icon-pencil"><liferay-ui:message
-								key="org.oep.usermgt.portlet.table.jobpos.action.title" /></i></a> 
-					<a href="#" class="btn btn-primary"
-					title="<liferay-ui:message key="org.oep.usermgt.portlet.table.action.title.delete" />"
-					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.usermgt.portlet.confirm.message.beforedelete")%>')) {location.href = '<%=deleteUrl%>';return false;}"><i
-						class="icon-trash"><liferay-ui:message
-								key="org.oep.usermgt.portlet.table.action.title.delete" /></i></a></td>
+				<td style="text-align: left">
+				
+				<liferay-ui:icon-menu>
+		
+						<liferay-ui:icon image="edit" url="<%=editUrl%>" message="org.oep.usermgt.portlet.table.action.title.edit"/>  
+					 	<liferay-ui:icon image="add_location" url="<%=dschucdanh%>" message="org.oep.usermgt.portlet.table.jobpos.action.title"/>  
+					 	<liferay-ui:icon image="delete" url="<%= deleteUrl %>" message="org.oep.usermgt.portlet.table.action.title.delete"/> 
+						
+				</liferay-ui:icon-menu>
+				
+				
+				</td>
 			</tr>
 			<%
 				}
@@ -185,27 +190,16 @@
 				<td style="text-align: center"><%=(searchContainer.getStart() +  (index++))%></td>
 				<td style="text-align: left"><%=data.getName()%></td>
 				<td style="text-align: left"><%=data.getGovAgencyId()%></td>
-				<td style="text-align: left"><%=data.getParentWorkingUnitId()%></td>
+				<td style="text-align: left"><%=workpar%></td>
 				<td style="text-align: left"><%=data.getAddress()%></td>
 				<td style="text-align: left"><%=data.getTelNo()%></td>
-				<td style="text-align: left"><a href="#"
-					class="btn btn-success"
-					title="<liferay-ui:message key="org.oep.ssomgt.portlet.applicationmanagement.table.action.title.edit" />"
-					onclick="location.href = '<%=editUrl%>';return false;"><i
-						class="icon-pencil"><liferay-ui:message
-								key="org.oep.usermgt.portlet.table.action.title.edit" /></i></a> 
-								<a href="#"
-					class="btn btn-success"
-					title="<liferay-ui:message key="org.oep.ssomgt.portlet.applicationmanagement.table.action.title.edit" />"
-					onclick="location.href = '<%=dschucdanh%>';return false;"><i
-						class="icon-pencil"><liferay-ui:message
-								key="org.oep.usermgt.portlet.table.jobpos.action.title" /></i></a> 
-								
-					<a	href="#" class="btn btn-primary"
-					title="<liferay-ui:message key="org.oep.ssomgt.portlet.applicationmanagement.table.action.title.delete" />"
-					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.ssomgt.portlet.applicationmanagement.confirm.message.beforedelete")%>')) {location.href = '<%=deleteUrl%>';return false;}"><i
-						class="icon-trash"><liferay-ui:message
-								key="org.oep.usermgt.portlet.table.action.title.delete" /></i></a></td>
+				<td style="text-align: left">
+				<liferay-ui:icon-menu>
+						<liferay-ui:icon image="edit" url="<%=editUrl%>" message="org.oep.usermgt.portlet.table.action.title.edit"/>  
+					 	<liferay-ui:icon image="add_location" url="<%=dschucdanh%>" message="org.oep.usermgt.portlet.table.jobpos.action.title"/>  
+					 	<liferay-ui:icon image="delete" url="<%= deleteUrl %>" message="org.oep.usermgt.portlet.table.action.title.delete"/> 
+				</liferay-ui:icon-menu>
+				</td>
 			</tr>
 			<%
 				}
@@ -236,14 +230,6 @@
 	</c:if>
 </aui:form>
 
-<a
-					onclick="<portlet:namespace/>test();return false;"
-					class="btn btn-primary"><i class="icon-plus"><liferay-ui:message
-								key="org.oep.usermgt.portlet.workingunit.button.addnew" /></i></a>
-<portlet:actionURL var="testLdap" name="testLdap">
-				<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
-					value="<%=redirectURL%>" />
-</portlet:actionURL>
 <script type="text/javascript">
 	function <portlet:namespace/>search() {
 		var form = document.<portlet:namespace />searchApplication;
@@ -256,10 +242,4 @@
 		form.action = "<%= addEdit%>";
 		form.submit();
 	}
-	function <portlet:namespace/>test() {
-		var form = document.<portlet:namespace />searchApplication;
-		form.action = "<%=testLdap%>";
-		form.submit();
-	}
-	
 </script>

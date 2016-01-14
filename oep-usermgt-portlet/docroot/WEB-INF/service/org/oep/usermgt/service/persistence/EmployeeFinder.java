@@ -25,5 +25,12 @@ public interface EmployeeFinder {
 		java.lang.String textSearch, long workingUnitId, int startIndex,
 		int endIndex);
 
+	public java.util.List<java.lang.Object[]> findByLikeNameForView(
+		java.lang.String textSearch, long workingUnitId);
+
+	public java.util.List<java.lang.Object[]> findByLikeNameForView(
+		java.lang.String textSearch, long workingUnitId, int startIndex,
+		int endIndex);
+
 	public int countByLikeName(java.lang.String textSearch, long workingUnitId);
 }

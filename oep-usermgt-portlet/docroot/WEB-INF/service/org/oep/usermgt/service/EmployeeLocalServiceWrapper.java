@@ -625,6 +625,24 @@ public class EmployeeLocalServiceWrapper implements EmployeeLocalService,
 	}
 
 	@Override
+	public java.util.List<java.lang.Object[]> finnderByLikeNameForView(
+		java.lang.String textSearch, long workingUnitId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _employeeLocalService.finnderByLikeNameForView(textSearch,
+			workingUnitId);
+	}
+
+	@Override
+	public java.util.List<java.lang.Object[]> finderLikeNameForView(
+		java.lang.String textSearch, long workingUnitId, int start, int end)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _employeeLocalService.finderLikeNameForView(textSearch,
+			workingUnitId, start, end);
+	}
+
+	@Override
 	public java.util.List<org.oep.usermgt.model.JobPos> getJobPosByEmployeeId(
 		long employeeId)
 		throws com.liferay.portal.kernel.exception.PortalException,

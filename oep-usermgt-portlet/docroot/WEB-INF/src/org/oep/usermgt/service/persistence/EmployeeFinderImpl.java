@@ -17,7 +17,7 @@ import com.liferay.util.dao.orm.CustomSQLUtil;
 
 public class EmployeeFinderImpl extends BasePersistenceImpl implements EmployeeFinder{
 	private static final String COUNT_BY_CUSTOMCONDITION = EmployeeFinder.class.getName() + ".countByCustomCondition";
-	private static final String FIND_BY_CUSTOMCONDITION = EmployeeFinder.class.getName() + ".findByCustomCondition";
+	private static final String FIND_BY_LIKENAMEFORVIEW = EmployeeFinder.class.getName() + ".findByLikeNameForView";
 	private static final String FIND_BY_LIKENAME = EmployeeFinder.class.getName() + ".findByLikeName";
 	private static final String COUNT_BY_LIKENAME = EmployeeFinder.class.getName() + ".countByLikeName";
 	
@@ -44,7 +44,7 @@ public class EmployeeFinderImpl extends BasePersistenceImpl implements EmployeeF
 		}
 		//System.out.println(" kkkkkkkkkkkkkkkkkkkk " + sql);
 		SQLQuery query = session.createSQLQuery(sql);
-		query.addEntity("WorkingUnit", EmployeeImpl.class);
+		query.addEntity("Employee", EmployeeImpl.class);
 		if (params != null && params.size() > 0) {
 			for (int index = 0; index < params.size(); index++) {
 				query.setString(index, String.valueOf(params.get(index)));
@@ -78,7 +78,7 @@ public class EmployeeFinderImpl extends BasePersistenceImpl implements EmployeeF
 		}
 		//System.out.println(" kkkkkkkkkkkkkkkkkkkk " + sql);
 		SQLQuery query = session.createSQLQuery(sql);
-		query.addEntity("WorkingUnit", EmployeeImpl.class);
+		query.addEntity("Employee", EmployeeImpl.class);
 		if (params != null && params.size() > 0) {
 			for (int index = 0; index < params.size(); index++) {
 				query.setString(index, String.valueOf(params.get(index)));
@@ -88,6 +88,82 @@ public class EmployeeFinderImpl extends BasePersistenceImpl implements EmployeeF
 			return (List<Employee>) QueryUtil.list(query, getDialect(), startIndex, endIndex);
 		}
 		return new ArrayList<Employee>();
+		//return (List<WorkingUnit>) query.list();
+	}
+	
+	public List<Object[]> findByLikeNameForView(String textSearch, long workingUnitId) {
+		List<Object> params = new ArrayList<Object>();
+		Session session = openSession();
+		String sql = CustomSQLUtil.get(FIND_BY_LIKENAMEFORVIEW);
+		
+		if (textSearch != null && !"".equals(textSearch)) {
+			sql = sql.replace("[$NAME_FILTER$]", " AND (LOWER(emp.fullNme) LIKE ? OR LOWER(emp.personelDocNo) LIKE ?)");
+			params.add("%" + textSearch.toLowerCase() + "%");		
+			params.add("%" + textSearch.toLowerCase() + "%");	
+		}
+		else {
+			sql = sql.replace("[$NAME_FILTER$]", "");
+		}
+		
+		if (workingUnitId > 0) {
+			sql = sql.replace("[$WORKINGUNIT_FILTER$]", " AND emp.workingUnitId = ?");
+			params.add(workingUnitId);						
+		}
+		else {
+			sql = sql.replace("[$WORKINGUNIT_FILTER$]", "");			
+		}
+		//System.out.println(" kkkkkkkkkkkkkkkkkkkk " + sql);
+		SQLQuery query = session.createSQLQuery(sql);
+		query.addEntity("Employee", EmployeeImpl.class);
+		query.addScalar("workingUnitName",Type.STRING);
+		query.addScalar("jobPosName",Type.STRING);
+		query.addScalar("screenName",Type.STRING);
+		if (params != null && params.size() > 0) {
+			for (int index = 0; index < params.size(); index++) {
+				query.setString(index, String.valueOf(params.get(index)));
+			}
+		}
+		if (query.list() != null){
+			return (List) query.list();
+		}
+		return new ArrayList();
+		//return (List<WorkingUnit>) query.list();
+	}
+	public List<Object[]> findByLikeNameForView(String textSearch, long workingUnitId, int startIndex, int endIndex) {
+		List<Object> params = new ArrayList<Object>();
+		Session session = openSession();
+		String sql = CustomSQLUtil.get(FIND_BY_LIKENAMEFORVIEW);
+		if (textSearch != null && !"".equals(textSearch)) {
+			sql = sql.replace("[$NAME_FILTER$]", " AND (LOWER(emp.fullName) LIKE ? OR LOWER(emp.personelDocNo) LIKE ?)");
+			params.add("%" + textSearch.toLowerCase() + "%");		
+			params.add("%" + textSearch.toLowerCase() + "%");	
+		}
+		else {
+			sql = sql.replace("[$NAME_FILTER$]", "");
+		}
+		
+		if (workingUnitId > 0) {
+			sql = sql.replace("[$WORKINGUNIT_FILTER$]", " AND emp.workingUnitId = ?");
+			params.add(workingUnitId);						
+		}
+		else {
+			sql = sql.replace("[$WORKINGUNIT_FILTER$]", "");			
+		}
+		//System.out.println(" kkkkkkkkkkkkkkkkkkkk " + sql);
+		SQLQuery query = session.createSQLQuery(sql);
+		query.addEntity("Employee", EmployeeImpl.class);
+		query.addScalar("workingUnitName",Type.STRING);
+		query.addScalar("jobPosName",Type.STRING);
+		query.addScalar("screenName",Type.STRING);
+		if (params != null && params.size() > 0) {
+			for (int index = 0; index < params.size(); index++) {
+				query.setString(index, String.valueOf(params.get(index)));
+			}
+		}
+		if (query.list() != null){
+			return (List) QueryUtil.list(query, getDialect(), startIndex, endIndex);
+		}
+		return new ArrayList();
 		//return (List<WorkingUnit>) query.list();
 	}
 	

@@ -29,12 +29,28 @@ public class WorkingUnitFinderUtil {
 			serviceContext);
 	}
 
+	public static java.util.List<java.lang.Object[]> findByLikeNameShort(
+		java.lang.String textSearch, long parentWorkingUnitId,
+		com.liferay.portal.service.ServiceContext serviceContext) {
+		return getFinder()
+				   .findByLikeNameShort(textSearch, parentWorkingUnitId,
+			serviceContext);
+	}
+
 	public static java.util.List<org.oep.usermgt.model.WorkingUnit> findByLikeName(
 		java.lang.String textSearch, long parentWorkingUnitId, int startIndex,
 		int endIndex, com.liferay.portal.service.ServiceContext serviceContext) {
 		return getFinder()
 				   .findByLikeName(textSearch, parentWorkingUnitId, startIndex,
 			endIndex, serviceContext);
+	}
+
+	public static java.util.List<java.lang.Object[]> findByLikeNameShort(
+		java.lang.String textSearch, long parentWorkingUnitId, int startIndex,
+		int endIndex, com.liferay.portal.service.ServiceContext serviceContext) {
+		return getFinder()
+				   .findByLikeNameShort(textSearch, parentWorkingUnitId,
+			startIndex, endIndex, serviceContext);
 	}
 
 	public static int countByLikeName(java.lang.String textSearch,

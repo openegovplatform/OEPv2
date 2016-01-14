@@ -588,6 +588,21 @@ public class EmployeeLocalServiceUtil {
 			end);
 	}
 
+	public static java.util.List<java.lang.Object[]> finnderByLikeNameForView(
+		java.lang.String textSearch, long workingUnitId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().finnderByLikeNameForView(textSearch, workingUnitId);
+	}
+
+	public static java.util.List<java.lang.Object[]> finderLikeNameForView(
+		java.lang.String textSearch, long workingUnitId, int start, int end)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .finderLikeNameForView(textSearch, workingUnitId, start, end);
+	}
+
 	public static java.util.List<org.oep.usermgt.model.JobPos> getJobPosByEmployeeId(
 		long employeeId)
 		throws com.liferay.portal.kernel.exception.PortalException,

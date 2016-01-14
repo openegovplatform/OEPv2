@@ -10,6 +10,7 @@ import java.util.Locale;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
+import javax.portlet.PortletException;
 
 import org.oep.usermgt.model.Employee;
 import org.oep.usermgt.model.WorkingUnit;
@@ -56,6 +57,11 @@ public class EmpLoyeePortlet extends MVCPortlet {
 			super.render(request, response);
 	}
 */
+	@Override
+	 public void init() throws PortletException {
+	  super.init();
+	  copyRequestParameters = true;
+	 }
 	public void addEdit(ActionRequest request, ActionResponse response)
 			throws Exception {
 
@@ -169,7 +175,6 @@ public class EmpLoyeePortlet extends MVCPortlet {
 	public void addToSite(long workingUnitId, long userId) throws PortalException, SystemException{
 		WorkingUnit work = WorkingUnitLocalServiceUtil.getWorkingUnit(workingUnitId);
 		if (work.getLocalSiteId() != PortletKeys.LONG_DEFAULT){ 
-			System.out.println(" addToSite " + workingUnitId + "  "  + work.getLocalSiteId());
 			GroupLocalServiceUtil.addUserGroup(userId, work.getLocalSiteId());
 		}
 	}
@@ -186,7 +191,6 @@ public class EmpLoyeePortlet extends MVCPortlet {
 				break;
 			}
 		}
-		System.out.println(" changeToShite " + workingUnitId + "  "  + work.getLocalSiteId() + "  " + userId + "  " + groups.size());
 		if (work.getLocalSiteId()  != workold.getLocalSiteId() || !f){
 			if (workold.getLocalSiteId() != PortletKeys.LONG_DEFAULT && f) {
 				GroupLocalServiceUtil.deleteUserGroup(userId,
@@ -251,9 +255,7 @@ public class EmpLoyeePortlet extends MVCPortlet {
 	}
 	
 	
-	public void changePassword(String pass){
-		
-	}
+	
 	
 	public User addUser(ServiceContext serviceContext, String screenName,String password,String repassword,
 			Date birthdate,String fullName,String email) throws PortalException, SystemException{
@@ -448,13 +450,43 @@ public class EmpLoyeePortlet extends MVCPortlet {
 			
 			long employeeId = ParamUtil.getLong(uploadRequest,EmployeeKeys.BaseEmployeeAttributes.EDIT_ID);
 			long jobPosId = ParamUtil.getLong(uploadRequest,EmployeeKeys.AddEditAttributes.JOBPOSID);
-			System.out.println(" sssss  " + employeeId + " " + jobPosId);
 			// Date pingTime = new Date();
 			if (employeeId != PortletKeys.LONG_DEFAULT && jobPosId !=  PortletKeys.LONG_DEFAULT) {
 				//JobPos2RoleLocalServiceUtil.addJobPos2Role(jobPosId, roleId, serviceContext);
 				EmployeeLocalServiceUtil.addEmployee2JoPos(employeeId, jobPosId);
 				//System.out.println(" sssss  " + name + " " + address);
 			} 
+		}
+		PortalUtil.copyRequestParameters(request, response);
+		/*
+		if (!SessionErrors.isEmpty(request)) {
+			PortalUtil.copyRequestParameters(request, response);
+		} else {
+			response.sendRedirect(ParamUtil.getString(request,
+					PortletKeys.REDIRECT_PAGE));
+		}
+		*/
+	}
+	
+	public void setDefaultJobPos(ActionRequest request, ActionResponse response)
+			throws SystemException, PortalException, IOException {
+		System.out.println(" Ngu ngoc  " );
+	
+
+			
+			long employeeId = ParamUtil.getLong(request,EmployeeKeys.BaseEmployeeAttributes.EDIT_ID);
+			
+			long mainJobPosId = ParamUtil.getLong(request,EmployeeKeys.AddEditAttributes.MAINJOBPOSID);
+			// Date pingTime = new Date();
+			System.out.println(employeeId + "   " +  mainJobPosId);
+			if (employeeId != PortletKeys.LONG_DEFAULT && mainJobPosId !=  PortletKeys.LONG_DEFAULT) {
+				//JobPos2RoleLocalServiceUtil.addJobPos2Role(jobPosId, roleId, serviceContext);
+				Employee employee = EmployeeLocalServiceUtil.getEmployee(employeeId);
+				employee.setMainJobPosId(mainJobPosId);
+				EmployeeLocalServiceUtil.updateEmployee(employee);
+				//EmployeeLocalServiceUtil.addEmployee2JoPos(employeeId, jobPosId);
+				//System.out.println(" sssss  " + name + " " + address);
+
 		}
 		PortalUtil.copyRequestParameters(request, response);
 		/*

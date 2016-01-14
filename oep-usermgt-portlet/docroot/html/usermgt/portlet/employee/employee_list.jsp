@@ -29,6 +29,9 @@
 <%@page import="org.oep.usermgt.model.Employee"%>
 <%@page import="org.oep.usermgt.action.EmployeeKeys"%>
 <%@page import="org.oep.usermgt.service.EmployeeLocalServiceUtil"%>
+
+<%@page import="org.oep.usermgt.dto.SelectionDataDTO"%>
+<%@page import="org.oep.usermgt.util.CustomAUIUtil"%>
 <%
 	ServiceContext serviceContext = ServiceContextThreadLocal.getServiceContext();
 	String textSearch = ParamUtil.getString(request,EmployeeKeys.BaseEmployeeAttributes.TEXTSEARCH,PortletKeys.TEXT_BOX);
@@ -37,17 +40,17 @@
 	int delta = ParamUtil.getInteger(request, PortletKeys.SearchContainer.DELTA, PortletKeys.DELTA);
 	PortletURL iteratorUrl = renderResponse.createRenderURL();
 	long workingUnitId = ParamUtil.getLong(request,EmployeeKeys.BaseEmployeeAttributes.WORKINGUNITID,PortletKeys.LONG_DEFAULT);
-	List<WorkingUnit> dsWorkingUnit = WorkingUnitLocalServiceUtil.getByCompany(serviceContext);
-	
-	SearchContainer<Employee> searchContainer = new SearchContainer<Employee>(renderRequest, null, null, SearchContainer.DEFAULT_CUR_PARAM, cur, delta, iteratorUrl, null, null);
+	//List<WorkingUnit> dsWorkingUnit = WorkingUnitLocalServiceUtil.getByCompany(serviceContext);
+	ArrayList<SelectionDataDTO>  dsWorkingUnit = CustomAUIUtil.getListWorkingUnit(serviceContext);
+	SearchContainer<Object[]> searchContainer = new SearchContainer<Object[]>(renderRequest, null, null, SearchContainer.DEFAULT_CUR_PARAM, cur, delta, iteratorUrl, null, null);
 	int total = EmployeeLocalServiceUtil.countEmployeeByLikeNameWorkingUnit(textSearch, workingUnitId);
 	
 	searchContainer.setTotal(total);
-	List<Employee> datas = new ArrayList<Employee>();
+	List<Object[]> datas = new ArrayList<Object[]>();
 	if (total > 0) {
 		int startIndex = searchContainer.getStart();
 		int endIndex = searchContainer.getEnd();
-		datas = EmployeeLocalServiceUtil.finnderByLikeNameWorkingUnit(textSearch, workingUnitId);
+		datas = EmployeeLocalServiceUtil.finnderByLikeNameForView(textSearch, workingUnitId);
 		searchContainer.setResults(datas);
 	}
 %>
@@ -75,16 +78,16 @@
 		<table  style="width: 100%;">
 			<tr>
 				<td style="width: 40%;">
-				<aui:select style="width: 98%;" cssClass="form-control"  name="<%=EmployeeKeys.BaseEmployeeAttributes.WORKINGUNITID%>" id="<%= EmployeeKeys.BaseEmployeeAttributes.WORKINGUNITID%>" label="&nbsp;&nbsp;&nbsp;" >
+				<aui:select style="width: 98%;" cssClass="form-control"  name="<%=EmployeeKeys.BaseEmployeeAttributes.WORKINGUNITID%>" id="<%= EmployeeKeys.BaseEmployeeAttributes.WORKINGUNITID%>" label="" >
 				<aui:option value=""><%=LanguageUtil
 							.get(pageContext,
 									"org.oep.usermgt.portlet.select.label.workingunit")%></aui:option>
 				<%
-				for (WorkingUnit data : dsWorkingUnit) {
-						boolean selected = workingUnitId == data.getWorkingUnitId();
+				for (SelectionDataDTO data : dsWorkingUnit) {
+						boolean selected = workingUnitId == data.getId();
 				%>
 				
-					<aui:option value='<%=data.getWorkingUnitId()%>' selected="<%=selected%>"><%=data.getName()%></aui:option>
+					<aui:option value='<%=data.getId()%>' selected="<%=selected%>"><%=data.getNameForLevel()%></aui:option>
 				<%
 					}
 				%>					
@@ -134,7 +137,15 @@
 						key="org.oep.usermgt.portlet.table.header.action" /></th>
 			</tr>
 			<%
-				for (Employee data : datas) {
+				for (Object obj : datas) {
+					Object[] objects = (Object[])obj;
+					Employee data = (Employee)objects[0];
+					String work = (String)objects[1];
+					if (work == null) work = "";
+					String jobpos = (String)objects[2];
+					if (jobpos == null) jobpos = "";
+					String screenName = (String)objects[3];
+					if (screenName == null) screenName = "";
 			%>
 			<portlet:actionURL var="deleteUrl" name="delete">
 				<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
@@ -188,7 +199,7 @@
 			
 			 %>
 			<%
-				String popuppass = "javascript:Liferay.ABC.popup('"+changePassword.toString()+"',350,350,'"+
+				String popuppass = "javascript:Liferay.ABC.popup('"+changePassword.toString()+"',500,350,'"+
 						LanguageUtil.get(pageContext,"org.oep.usermgt.portlet.employee.table.action.title.changepassword")+"')";
 				String popupjob = "javascript:Liferay.ABC.popup('"+changeJopPos.toString()+"',600,600,'"+
 						LanguageUtil.get(pageContext,"org.oep.usermgt.portlet.employee.table.action.title.changejobpos")+"')";
@@ -198,9 +209,9 @@
 				<td style="text-align: center"><%=(searchContainer.getStart() +  (index++))%></td>
 				<td style="text-align: left"><%=data.getFullName()%></td>
 				<td style="text-align: left"><%=data.getEmployeeNo()%></td>
-				<td style="text-align: left"><%=data.getWorkingUnitId()%></td>
-				<td style="text-align: left"><%=data.getMainJobPosId()%></td>
-				<td style="text-align: left"><%=data.getMappingUserId()%></td>
+				<td style="text-align: left"><%=work%></td>
+				<td style="text-align: left"><%=jobpos%></td>
+				<td style="text-align: left"><%=screenName%></td>
 				<td style="text-align: left">
 				<liferay-ui:icon-menu>
 						<liferay-ui:icon image="edit" url="<%=editUrl%>" message="org.oep.usermgt.portlet.table.action.title.edit"/> 
@@ -219,9 +230,9 @@
 				<td style="text-align: center"><%=(searchContainer.getStart() +  (index++))%></td>
 				<td style="text-align: left"><%=data.getFullName()%></td>
 				<td style="text-align: left"><%=data.getEmployeeNo()%></td>
-				<td style="text-align: left"><%=data.getWorkingUnitId()%></td>
-				<td style="text-align: left"><%=data.getMainJobPosId()%></td>
-				<td style="text-align: left"><%=data.getMappingUserId()%></td>
+				<td style="text-align: left"><%=work%></td>
+				<td style="text-align: left"><%=jobpos%></td>
+				<td style="text-align: left"><%=screenName%></td>
 				<td style="text-align: left">
 				
 				<liferay-ui:icon-menu>
@@ -291,39 +302,17 @@
 Liferay.namespace('ABC');
 		Liferay.provide(Liferay.ABC,'popup',function(url,width,height,title) {
 				var A = AUI();
-				var data = {};
-				var dialog = Liferay.Util.Window.getWindow({
-				dialog: {
-						centered: true,
-                    	constrain2view: true,
-					  	modal: true,
-					  	height: width,
-						width: height,
-						resizable: false
-						},
-						title: title,
-						buttons: [{
-							label: 'Close',
-							text: 'Close',
-								on: {
-							click: function() { 
-							dialog.destroy();
-								}}
-						}]
-						
-				}
-				).render();
-
-					dialog.plug(
-						A.Plugin.DialogIframe,
-						{
-							id: '<portlet:namespace/>dialog',
-							autoLoad: true,
-			                iframeCssClass: 'dialog-iframe',
-							data: data,
-							uri: url
-						} 
-					);
+				Liferay.Util.openWindow({
+		            dialog: {
+		                centered: true,
+		                height: height,
+		                modal: true,
+		                width: width
+		            },
+		            id: 'dialogId',
+		            title: title,
+		            uri: url
+		        });
 
 			},
 		['aui-base','aui-dialog','aui-io-deprecated','liferay-util-window']
@@ -333,31 +322,12 @@ Liferay.namespace('ABC');
 </aui:script>
 
 <aui:script>
-Liferay.provide(window,'<portlet:namespace/>closePopup',
-		function(data, dialogId) {
+Liferay.provide(window,'closePopup',
+		function() {
 			var A = AUI();
-			 alert('pop');
-			// Here you can use "data" parameter
-			
-			// Closing the dialog
-			var dialog = Liferay.Util.Window.getById(dialogId);
+			var dialog = Liferay.Util.Window.getById('dialogId');
 			dialog.destroy();
-		
 		},
-		['aui-base','liferay-util-window']
-	);
-	
-Liferay.provide(window,'thu',
-		function(data, dialogId) {
-			var A = AUI();
-			 alert('pop');
-			// Here you can use "data" parameter
-			
-			// Closing the dialog
-			var dialog = Liferay.Util.Window.getById(dialogId);
-			dialog.destroy();
-		
-		},
-		['aui-base','liferay-util-window']
+		['liferay-util-window']
 	);
 </aui:script>

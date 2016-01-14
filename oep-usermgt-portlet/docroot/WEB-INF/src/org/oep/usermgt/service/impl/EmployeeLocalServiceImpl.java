@@ -251,13 +251,24 @@ public class EmployeeLocalServiceImpl extends EmployeeLocalServiceBaseImpl {
 	public List<Employee> finderLikeNameWorkingUnit(String textSearch,long workingUnitId, int start, int end) throws PortalException, SystemException {
 		return employeeFinder.findByLikeName(textSearch,workingUnitId, start, end);
 	}
+	
+	public List<Object[]> finnderByLikeNameForView(String textSearch,long workingUnitId) throws PortalException, SystemException {
+		return employeeFinder.findByLikeNameForView(textSearch, workingUnitId);
+	}
+	
+	public List<Object[]> finderLikeNameForView(String textSearch,long workingUnitId, int start, int end) throws PortalException, SystemException {
+		return employeeFinder.findByLikeNameForView(textSearch,workingUnitId, start, end);
+	}
+	
 	public List<JobPos> getJobPosByEmployeeId(long employeeId) throws PortalException, SystemException {
 		return employeePersistence.getJobPoses(employeeId);
 		//return employeePersistence.findByWU(workingUnitId);
 	}
 	
 	public List<JobPos> getJobPos(ArrayList<JobPos> listJobPos, long employeeId) throws PortalException, SystemException {
-		List<JobPos> listEmployee2JobPos=  getJobPosByEmployeeId(employeeId);
+		//System.out.println(employeeId);
+		List<JobPos> listEmployee2JobPos=  employeePersistence.getJobPoses(employeeId);
+		//System.out.println(employeeId);
 		//ArrayList<Role> roles = new ArrayList<Role>();
 		for (int i = 0; i < listEmployee2JobPos.size();i++){
 			for (int k = 0; k < listJobPos.size();k++){

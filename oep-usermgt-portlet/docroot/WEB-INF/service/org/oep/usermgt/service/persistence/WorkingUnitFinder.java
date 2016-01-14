@@ -22,7 +22,15 @@ public interface WorkingUnitFinder {
 		java.lang.String textSearch, long parentWorkingUnitId,
 		com.liferay.portal.service.ServiceContext serviceContext);
 
+	public java.util.List<java.lang.Object[]> findByLikeNameShort(
+		java.lang.String textSearch, long parentWorkingUnitId,
+		com.liferay.portal.service.ServiceContext serviceContext);
+
 	public java.util.List<org.oep.usermgt.model.WorkingUnit> findByLikeName(
+		java.lang.String textSearch, long parentWorkingUnitId, int startIndex,
+		int endIndex, com.liferay.portal.service.ServiceContext serviceContext);
+
+	public java.util.List<java.lang.Object[]> findByLikeNameShort(
 		java.lang.String textSearch, long parentWorkingUnitId, int startIndex,
 		int endIndex, com.liferay.portal.service.ServiceContext serviceContext);
 

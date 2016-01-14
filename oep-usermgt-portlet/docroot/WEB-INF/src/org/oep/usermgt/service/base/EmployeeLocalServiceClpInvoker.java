@@ -293,13 +293,23 @@ public class EmployeeLocalServiceClpInvoker {
 				"java.lang.String", "long", "int", "int"
 			};
 
-		_methodName127 = "getJobPosByEmployeeId";
+		_methodName127 = "finnderByLikeNameForView";
 
-		_methodParameterTypes127 = new String[] { "long" };
+		_methodParameterTypes127 = new String[] { "java.lang.String", "long" };
 
-		_methodName128 = "getJobPos";
+		_methodName128 = "finderLikeNameForView";
 
-		_methodParameterTypes128 = new String[] { "java.util.ArrayList", "long" };
+		_methodParameterTypes128 = new String[] {
+				"java.lang.String", "long", "int", "int"
+			};
+
+		_methodName129 = "getJobPosByEmployeeId";
+
+		_methodParameterTypes129 = new String[] { "long" };
+
+		_methodName130 = "getJobPos";
+
+		_methodParameterTypes130 = new String[] { "java.util.ArrayList", "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -687,11 +697,25 @@ public class EmployeeLocalServiceClpInvoker {
 
 		if (_methodName127.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes127, parameterTypes)) {
-			return EmployeeLocalServiceUtil.getJobPosByEmployeeId(((Long)arguments[0]).longValue());
+			return EmployeeLocalServiceUtil.finnderByLikeNameForView((java.lang.String)arguments[0],
+				((Long)arguments[1]).longValue());
 		}
 
 		if (_methodName128.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes128, parameterTypes)) {
+			return EmployeeLocalServiceUtil.finderLikeNameForView((java.lang.String)arguments[0],
+				((Long)arguments[1]).longValue(),
+				((Integer)arguments[2]).intValue(),
+				((Integer)arguments[3]).intValue());
+		}
+
+		if (_methodName129.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes129, parameterTypes)) {
+			return EmployeeLocalServiceUtil.getJobPosByEmployeeId(((Long)arguments[0]).longValue());
+		}
+
+		if (_methodName130.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes130, parameterTypes)) {
 			return EmployeeLocalServiceUtil.getJobPos((java.util.ArrayList<org.oep.usermgt.model.JobPos>)arguments[0],
 				((Long)arguments[1]).longValue());
 		}
@@ -813,4 +837,8 @@ public class EmployeeLocalServiceClpInvoker {
 	private String[] _methodParameterTypes127;
 	private String _methodName128;
 	private String[] _methodParameterTypes128;
+	private String _methodName129;
+	private String[] _methodParameterTypes129;
+	private String _methodName130;
+	private String[] _methodParameterTypes130;
 }

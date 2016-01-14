@@ -20,4 +20,25 @@
 			[$PARENT_FILTER$]
 		]]>
 	</sql>
+	<sql id="org.oep.usermgt.service.persistence.WorkingUnitFinder.findByLikeName">
+		<![CDATA[
+			SELECT *
+			FROM OEP_USERMGT_WORKINGUNIT
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$NAME_FILTER$]
+			[$PARENT_FILTER$]
+		]]>
+	</sql>
+	<sql id="org.oep.usermgt.service.persistence.WorkingUnitFinder.findByLikeNameShort">
+		<![CDATA[
+			SELECT wk.*, par.name as parentWorkingUnitName
+			FROM oep_usermgt_workingunit wk
+			left join oep_usermgt_workingunit par on wk.parentWorkingUnitId = par.workingUnitId
+			WHERE 1=1
+			[$COMPANY_FILTER$]
+			[$NAME_FILTER$]
+			[$PARENT_FILTER$]
+		]]>
+	</sql>
 </custom-sql>

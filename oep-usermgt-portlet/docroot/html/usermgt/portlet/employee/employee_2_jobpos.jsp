@@ -33,7 +33,7 @@
 <%@page import="org.oep.usermgt.service.EmployeeLocalServiceUtil"%>
 <%@page import="com.liferay.portal.model.Role"%>
 <%@page import="com.liferay.portal.service.RoleLocalServiceUtil"%>
-
+<%@page import="com.liferay.portal.kernel.portlet.LiferayWindowState"%> 
 <%
 	//ServiceContext serviceContext = ServiceContextThreadLocal.getServiceContext();
 	
@@ -114,6 +114,17 @@
 					<portlet:param	name="<%=EmployeeKeys.BaseEmployeeAttributes.EDIT_ID%>"
 					value="<%=String.valueOf(employeeId)%>" />
 			</portlet:actionURL>
+			<portlet:actionURL var="daultJobPosUrl" name="setDefaultJobPos">
+				<portlet:param name="<%=PortletKeys.REDIRECT_PAGE%>"
+					value="<%=redirectURL%>" />
+				<portlet:param name="<%= PortletKeys.SET_VIEW_PARAMETER %>" 
+					value="/html/usermgt/portlet/employee/employee_2_jobpos.jsp"/>
+				<portlet:param
+					name="<%=EmployeeKeys.AddEditAttributes.MAINJOBPOSID%>"
+					value="<%=String.valueOf(data.getJobPosId())%>" />
+					<portlet:param	name="<%=EmployeeKeys.BaseEmployeeAttributes.EDIT_ID%>"
+					value="<%=String.valueOf(employeeId)%>" />
+			</portlet:actionURL>
 
 			<%
 				if (index % 2 == 0) {
@@ -123,6 +134,12 @@
 				<td style="text-align: left"><%=data.getTitle()%></td>
 				<td style="text-align: left"><%=data.getLeader()%></td>
 				<td style="text-align: left">
+				<td style="text-align: left"><a href="#"
+					class="btn btn-success"
+					title="<liferay-ui:message key="org.oep.usermgt.portlet.employee2jobpos.button.mainJobPos" />"
+					onclick="location.href = '<%=daultJobPosUrl%>';return false;"><i
+						class="icon-pencil"><liferay-ui:message
+								key="org.oep.usermgt.portlet.employee2jobpos.button.mainJobPos" /></i></a> 
 								<a href="#" class="btn btn-primary"
 					title="<liferay-ui:message key="org.oep.usermgt.portlet.table.action.title.delete" />"
 					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.usermgt.portlet.confirm.message.beforedelete")%>')) {location.href = '<%=deleteUrl%>';return false;}"><i
@@ -138,6 +155,12 @@
 				<td style="text-align: left"><%=data.getTitle()%></td>
 				<td style="text-align: left"><%=data.getLeader()%></td>
 				<td style="text-align: left">
+				<a href="#"
+					class="btn btn-success"
+					title="<liferay-ui:message key="org.oep.usermgt.portlet.employee2jobpos.button.mainJobPos" />"
+					onclick="location.href = '<%=daultJobPosUrl%>';return false;"><i
+						class="icon-pencil"><liferay-ui:message
+								key="org.oep.usermgt.portlet.employee2jobpos.button.mainJobPos" /></i></a> 
 								 <a	href="#" class="btn btn-primary"
 					title="<liferay-ui:message key="org.oep.ssomgt.portlet.applicationmanagement.table.action.title.delete" />"
 					onclick="if (confirm('<%=LanguageUtil.get(pageContext, "org.oep.ssomgt.portlet.applicationmanagement.confirm.message.beforedelete")%>')) {location.href = '<%=deleteUrl%>';return false;}"><i
@@ -151,15 +174,14 @@
 		</table>
 	</div>
 	
-	<table  style="width: 100%;">
+	<table >
 			<tr>
-				<td style="width: 70%;">
-					<input class="btn btn-default" type="button" value="<liferay-ui:message key="org.oep.usermgt.portlet.button.cancel" />" onclick="<portlet:namespace/>back()"/>			
+				<td>
+					<aui:button class="btn btn-default" name="closeDialog" type="button" value="org.oep.usermgt.portlet.button.cancel" />
 				</td>
 			</tr>
-		</table>
+	</table>
 </aui:form>
-
 <script type="text/javascript">
 
 	
@@ -173,16 +195,12 @@
 	};
 	
 </script>
-<portlet:namespace/>
- <aui:button name="closeDialog"  type="button" value="close" />
-  <portlet:namespace/>  
  <aui:script use="aui-base">
-
-
     A.one('#<portlet:namespace/>closeDialog').on('click', function(event) {
     	// Let's suppose that "data" contains the processing results
-    	 alert('pop');
+    	//alert('pop');
     	// Invoke a function with processgin results and dialog id
-    	Liferay.Util.getOpener().thu(data,'<portlet:namespace/>dialog');
+    	Liferay.Util.getOpener().closePopup();
+    	//Liferay.Util.getOpener().<portlet:namespace/>.closePopup('<portlet:namespace/>dialog');
     });
-    </aui:script>
+ </aui:script>
