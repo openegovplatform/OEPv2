@@ -151,8 +151,8 @@
 					<td style="text-align:center">
 						<c:if test='<%= SSOPermission.contains(permissionChecker, scopeGroupId, "ADMIN_SSOMGT") %>'>
 							<a class="btn btn-primary" href="#" title="<liferay-ui:message key="org.oep.ssomgt.portlet.usersync.table.action.title.view" />" onclick="location.href = '<%= viewUrl %>';return false;"><i class="icon-eye-open"><liferay-ui:message key="org.oep.ssomgt.portlet.usersync.table.action.title.view" /></i></a>
+							<a class="btn btn-success" href="#" title="<liferay-ui:message key="org.oep.ssomgt.portlet.usersync.table.action.title.changemapping" />" onclick="location.href = '<%= changeMappingUrl %>';return false;"><i class="icon-random"><liferay-ui:message key="org.oep.ssomgt.portlet.usersync.table.action.title.changemapping" /></i></a>
 						</c:if>
-						<a class="btn btn-success" href="#" title="<liferay-ui:message key="org.oep.ssomgt.portlet.usersync.table.action.title.changemapping" />" onclick="location.href = '<%= changeMappingUrl %>';return false;"><i class="icon-random"><liferay-ui:message key="org.oep.ssomgt.portlet.usersync.table.action.title.changemapping" /></i></a>
 					</td>
 				</tr>
 				<%
@@ -169,8 +169,8 @@
 					<td style="text-align:center">
 						<c:if test='<%= SSOPermission.contains(permissionChecker, scopeGroupId, "ADMIN_SSOMGT") %>'>
 							<a class="btn btn-primary" href="#" title="<liferay-ui:message key="org.oep.ssomgt.portlet.usersync.table.action.title.view" />" onclick="location.href = '<%= viewUrl %>';return false;"><i class="icon-eye-open"><liferay-ui:message key="org.oep.ssomgt.portlet.usersync.table.action.title.view" /></i></a>
+							<a class="btn btn-success" href="#" title="<liferay-ui:message key="org.oep.ssomgt.portlet.usersync.table.action.title.changemapping" />" onclick="location.href = '<%= changeMappingUrl %>';return false;"><i class="icon-random"><liferay-ui:message key="org.oep.ssomgt.portlet.usersync.table.action.title.changemapping" /></i></a>
 						</c:if>
-						<a class="btn btn-success" href="#" title="<liferay-ui:message key="org.oep.ssomgt.portlet.usersync.table.action.title.changemapping" />" onclick="location.href = '<%= changeMappingUrl %>';return false;"><i class="icon-random"><liferay-ui:message key="org.oep.ssomgt.portlet.usersync.table.action.title.changemapping" /></i></a>
 					</td>
 				</tr>
 				<%

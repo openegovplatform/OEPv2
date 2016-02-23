@@ -34,30 +34,6 @@
 		<css-class-wrapper>app-message-portlet</css-class-wrapper>
 	</portlet>
 	<portlet>
-		<portlet-name>application-vertical-menu</portlet-name>
-		<icon>/icon.png</icon>
-		<header-portlet-css>/css/main.css</header-portlet-css>
-		<footer-portlet-javascript>
-			/js/main.js
-		</footer-portlet-javascript>
-		<css-class-wrapper>
-			application-vertical-menu-portlet
-		</css-class-wrapper>
-	</portlet>
-	<portlet>
-		<portlet-name>application-dashboard</portlet-name>
-		<icon>/icon.png</icon>
-		<configuration-action-class>com.liferay.portal.kernel.portlet.DefaultConfigurationAction</configuration-action-class>
-		<header-portlet-css>/css/main.css</header-portlet-css>
-		<header-portlet-css>/css/font-awesome.min.css</header-portlet-css>
-		<footer-portlet-javascript>
-			/js/main.js
-		</footer-portlet-javascript>
-		<css-class-wrapper>
-			application-dashboard-portlet
-		</css-class-wrapper>
-	</portlet>
-	<portlet>
 		<portlet-name>user-sync</portlet-name>
 		<icon>/icon.png</icon>
 		<header-portlet-css>/css/main.css</header-portlet-css>
@@ -106,6 +82,41 @@
 			/js/main.js
 		</footer-portlet-javascript>
 		<css-class-wrapper>sso-dashboard-portlet</css-class-wrapper>
+	</portlet>
+	<portlet>
+		<portlet-name>dashboard-employee</portlet-name>
+		<icon>/icon.png</icon>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>
+			/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>
+			dashboard-employee-portlet
+		</css-class-wrapper>
+	</portlet>
+	<portlet>
+		<portlet-name>dashboard-working-unit</portlet-name>
+		<icon>/icon.png</icon>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>
+			/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>
+			dashboard-working-unit-portlet
+		</css-class-wrapper>
+	</portlet>
+	<portlet>
+		<portlet-name>dashboard-application</portlet-name>
+		<icon>/icon.png</icon>
+		<configuration-action-class>com.liferay.portal.kernel.portlet.DefaultConfigurationAction</configuration-action-class>
+		<instanceable>true</instanceable>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>
+			/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>
+			dashboard-application-portlet
+		</css-class-wrapper>
 	</portlet>
 	<role-mapper>
 		<role-name>administrator</role-name>

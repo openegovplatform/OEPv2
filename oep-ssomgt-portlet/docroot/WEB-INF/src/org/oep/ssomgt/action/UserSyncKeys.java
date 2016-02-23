@@ -4,6 +4,7 @@ public class UserSyncKeys {
 	public class SearchAttributes extends BaseUserSyncAttributes {
 		public static final String APPLICATION_ID = "searchApplicationId";
 		public static final String IS_SYNC = "searchIsSync";
+		public static final String USER_SEARCH = "userSearch";
 	}
 	
 	public class AddEditAttributes extends BaseUserSyncAttributes {

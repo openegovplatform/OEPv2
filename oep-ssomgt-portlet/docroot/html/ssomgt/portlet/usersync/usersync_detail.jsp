@@ -30,7 +30,7 @@
 </portlet:resourceURL>
 <aui:form>
 	<table class="table">
-		<tr>
+		<tr class="success">
 			<td>
 				<liferay-ui:message key="org.oep.ssomgt.portlet.usersync.changemapping.label.ssousername"></liferay-ui:message>:
 			</td>
@@ -38,7 +38,7 @@
 				<%= ParamUtil.get(request, UserSyncKeys.AddEditAttributes.SSO_USERNAME, PortletKeys.TEXT_BOX) %>
 			</td>
 		</tr>
-		<tr>
+		<tr class="info">
 			<td>
 				<liferay-ui:message key="org.oep.ssomgt.portlet.usersync.changemapping.label.email"></liferay-ui:message>:
 			</td>
@@ -46,7 +46,7 @@
 				<%= ParamUtil.get(request, UserSyncKeys.AddEditAttributes.EMAIL, PortletKeys.TEXT_BOX) %>
 			</td>
 		</tr>
-		<tr>
+		<tr class="warning">
 			<td>
 				<liferay-ui:message key="org.oep.ssomgt.portlet.usersync.changemapping.label.application"></liferay-ui:message>:
 			</td>
@@ -54,7 +54,7 @@
 				<%= app.getAppName() %>
 			</td>
 		</tr>
-		<tr>
+		<tr class="success">
 			<td>
 				<liferay-ui:message key="org.oep.ssomgt.portlet.usersync.changemapping.label.appusername"></liferay-ui:message>:
 			</td>

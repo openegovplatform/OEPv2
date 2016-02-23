@@ -113,42 +113,42 @@
 				<c:choose>
 					<c:when test="${appmessage.messageType eq 'notification'}">
 						<p class="text-info">
-							<a>
+							<a href="${appmessage.messageUrl}" target="_blank">
 								- ${ appmessage.messageText }
 							</a>
 						</p>					
 					</c:when>
 					<c:when test="${appmessage.messageType eq 'warning'}">
 						<p class="text-warning">
-							<a>
+							<a href="${appmessage.messageUrl}" target="_blank">
 								- ${ appmessage.messageText }
 							</a>						
 						</p>
 					</c:when>
 					<c:when test="${appmessage.messageType eq 'alert'}">
 						<p class="muted">
-							<a>
+							<a href="${appmessage.messageUrl}" target="_blank">
 								- ${ appmessage.messageText }
 							</a>						
 						</p>
 					</c:when>
 					<c:when test="${appmessage.messageType eq 'error'}">
 						<p class="text-error">
-							<a>
+							<a href="${appmessage.messageUrl}" target="_blank">
 								- ${ appmessage.messageText }
 							</a>						
 						</p>
 					</c:when>
 					<c:when test="${appmessage.messageType eq 'critical'}">
 						<p class="text-error">
-							<a>
+							<a href="${appmessage.messageUrl}" target="_blank">
 								- ${ appmessage.messageText }
 							</a>						
 						</p>
 					</c:when>
 					<c:otherwise>
 						<p class="text-success">
-							<a>
+							<a href="${appmessage.messageUrl}" target="_blank">
 								- ${ appmessage.messageText }
 							</a>						
 						</p>

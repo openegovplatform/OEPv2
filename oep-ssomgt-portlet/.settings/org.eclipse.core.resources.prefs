@@ -1,10 +1,10 @@
 eclipse.preferences.version=1
-encoding//docroot/WEB-INF/src/org/oep/ssomgt/action/lang/applicationdashboard/Language_vi_VN.properties=UTF-8
 encoding//docroot/WEB-INF/src/org/oep/ssomgt/action/lang/applicationmanagement/Language_vi_VN.properties=UTF-8
-encoding//docroot/WEB-INF/src/org/oep/ssomgt/action/lang/applicationverticalmenu/Language.properties=UTF-8
-encoding//docroot/WEB-INF/src/org/oep/ssomgt/action/lang/applicationverticalmenu/Language_vi_VN.properties=UTF-8
 encoding//docroot/WEB-INF/src/org/oep/ssomgt/action/lang/approle/Language.properties=UTF-8
 encoding//docroot/WEB-INF/src/org/oep/ssomgt/action/lang/approle/Language_vi_VN.properties=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/ssomgt/action/lang/dashboardapplication/Language.properties=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/ssomgt/action/lang/dashboardemployee/Language.properties=UTF-8
+encoding//docroot/WEB-INF/src/org/oep/ssomgt/action/lang/dashboardworkingunit/Language.properties=UTF-8
 encoding//docroot/WEB-INF/src/org/oep/ssomgt/action/lang/rsatool/Language.properties=UTF-8
 encoding//docroot/WEB-INF/src/org/oep/ssomgt/action/lang/rsatool/Language_vi_VN.properties=UTF-8
 encoding//docroot/WEB-INF/src/org/oep/ssomgt/action/lang/ssomanagement/Language.properties=UTF-8

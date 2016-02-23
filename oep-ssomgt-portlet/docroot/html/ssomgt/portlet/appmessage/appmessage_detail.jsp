@@ -83,7 +83,9 @@
 	<tr class="success">
 		<td colspan="2">
 			<liferay-ui:message key="org.oep.ssomgt.portlet.appmessage.detail.label.messageurl"></liferay-ui:message>: 
+			<a target="_blank" href="<%= appMessage.getMessageUrl() %>">
 			<%= appMessage.getMessageUrl() %>													
+			</a>
 		</td>
 	</tr>
 	<tr>

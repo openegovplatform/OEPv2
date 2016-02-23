@@ -232,7 +232,10 @@
 					<portlet:param name="<%= PortletKeys.SET_VIEW_PARAMETER %>" value="/html/ssomgt/portlet/appmessage/appmessage_detail.jsp"/>
 					<portlet:param name="<%= AppMessageKeys.BaseAppMessageAttributes.EDIT_ID %>" value="<%= String.valueOf(data.getAppMessageId()) %>"/>
 				</portlet:renderURL>
-				<tr>
+				<%
+					if (index % 2 == 0) {
+				%>				
+				<tr class="success">
 					<td style="text-align:center"><%=(searchContainer.getStart() +  (index++))%></td>
 					<td style="text-align:left"><%= simpledf.format(data.getCreateDate()) %></td>
 					<td style="text-align:left"><%= data.getFromApplication() %></td>
@@ -243,6 +246,24 @@
 						<a class="btn btn-success" href="#" title="<liferay-ui:message key="org.oep.ssomgt.portlet.appmessage.table.action.title.view" />" onclick="location.href = '<%= viewUrl %>';return false;"><%= LanguageUtil.get(pageContext, "org.oep.ssomgt.portlet.appmessage.table.action.title.view") %></a>
 					</td>
 				</tr>
+				<%
+					}
+					else {
+				%>
+				<tr class="info">
+					<td style="text-align:center"><%=(searchContainer.getStart() +  (index++))%></td>
+					<td style="text-align:left"><%= simpledf.format(data.getCreateDate()) %></td>
+					<td style="text-align:left"><%= data.getFromApplication() %></td>
+					<td style="text-align:left"><%= data.getToUser() %></td>
+					<td style="text-align:left"><%= data.getMessageText() %></td>
+					<td style="text-align:left"><%= data.getMessageType() %></td>
+					<td style="text-align:center">
+						<a class="btn btn-success" href="#" title="<liferay-ui:message key="org.oep.ssomgt.portlet.appmessage.table.action.title.view" />" onclick="location.href = '<%= viewUrl %>';return false;"><%= LanguageUtil.get(pageContext, "org.oep.ssomgt.portlet.appmessage.table.action.title.view") %></a>
+					</td>
+				</tr>
+				<%
+					}
+				%>
 				<%
 			}
 		} else {

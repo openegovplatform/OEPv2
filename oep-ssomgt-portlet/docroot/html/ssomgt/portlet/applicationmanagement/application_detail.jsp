@@ -108,7 +108,10 @@
 			<aui:column>
 				<c:if test='<%= SSOPermission.contains(permissionChecker, scopeGroupId, "ADMIN_SSOMGT") %>'>
 					<input class="btn btn-primary" type="button" value="<liferay-ui:message key="org.oep.ssomgt.portlet.applicationmanagement.button.save" />" onclick="<portlet:namespace/>save()">
-					<input class="btn btn-default" type="button" value="<liferay-ui:message key="org.oep.ssomgt.portlet.applicationmanagement.button.back" />" onclick="<portlet:namespace/>back()"/>
+					<a class="btn btn-default" onclick="<portlet:namespace/>back(); return false;">
+						<i class="icon-arrow-left"></i>
+						<liferay-ui:message key="org.oep.ssomgt.portlet.applicationmanagement.button.back" />
+					</a>
 				</c:if>
 			</aui:column>
 		</aui:row>
